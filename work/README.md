@@ -14,6 +14,7 @@ that owns each one. Scrubbed at submission.
 | `screens/` | frontend workflows | Screen specifications |
 | `audits/` | audit workflows | Dated findings and check results |
 | `research/` | `research` | Investigation notes |
+| [eda/](eda/README.md) | data exploration | Computed coverage, feasibility, scenarios, scripts and figures for choosing project scale |
 | `template-development.md` | template maintenance | History of work on this template; discard when starting a hackathon |
 | `submission/` | `submission` | Platform confirmations and screenshots with timestamps |
 
