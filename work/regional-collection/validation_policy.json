@@ -1,0 +1,11 @@
+{
+  "collection_date": "2026-11-07",
+  "scope": "70 new regional tasks; the four pre-existing supplementation tasks are excluded",
+  "unknown_publication_date": "Empty source_date; never substitute access date. confidence=low.",
+  "unknown_season": "Empty season accepted only with confidence=low and explanatory freq_note; all requires evidence of year-round operation.",
+  "marine_services": "Encoded as river/ferry under the requested mode vocabulary; actual maritime nature is explained in notes.",
+  "settlement_matching": "Exact input IDs and names; ext: only for destinations outside the region. Unmatched locations and within-settlement crossings are documented in regional notes.",
+  "remoteness": "Statutory medical/tax/electoral categories retain their specific purpose and historical edition; they do not establish absence of roads.",
+  "availability": "Some records are historical, partial or undated. Do not treat the whole corpus as a verified current transport network. Read period, confidence, freq_note and regional note before routing.",
+  "source_audit": "Structural checks cover all output files; independent source checks cover a sample, not every link."
+}

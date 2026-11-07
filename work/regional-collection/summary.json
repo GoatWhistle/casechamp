@@ -1,0 +1,50 @@
+{
+  "regions": 70,
+  "regional_files": 210,
+  "counts": {
+    "remote_rows": 11804,
+    "unique_remote_settlements": 11804,
+    "links": 751,
+    "links_with_frequency": 341,
+    "undated_links": 58,
+    "unknown_season_links": 67
+  },
+  "modes": {
+    "air": 307,
+    "winter_road": 61,
+    "ice_crossing": 61,
+    "ferry": 66,
+    "river": 231,
+    "pontoon_bridge": 25
+  },
+  "confidence": {
+    "high": 444,
+    "low": 135,
+    "medium": 172
+  },
+  "road_status": {
+    "unknown": 11771,
+    "no": 33
+  },
+  "unique_source_urls": 279,
+  "regions_without_confirmed_links": [
+    "96000000",
+    "83000000",
+    "66000000",
+    "38000000",
+    "54000000",
+    "75000000",
+    "91000000",
+    "70000000",
+    "73000000",
+    "07000000",
+    "14000000",
+    "15000000",
+    "42000000",
+    "68000000",
+    "90000000"
+  ],
+  "review_findings": [],
+  "validation": "passed",
+  "scope": "70 new regional tasks; four pre-existing supplementation tasks unchanged"
+}

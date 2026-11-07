@@ -1,0 +1,759 @@
+{
+  "status": "complete",
+  "requested_regions": 70,
+  "completed_regions": 70,
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "medium",
+  "base_commit": "3f6b609",
+  "regions": [
+    {
+      "code": "96000000",
+      "links": 0,
+      "remote": 0,
+      "modes": {},
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "01000000",
+      "links": 8,
+      "remote": 308,
+      "modes": {
+        "river": 3,
+        "ice_crossing": 5
+      },
+      "frequencies": 3,
+      "errors": []
+    },
+    {
+      "code": "30000000",
+      "links": 53,
+      "remote": 44,
+      "modes": {
+        "air": 46,
+        "winter_road": 1,
+        "ice_crossing": 3,
+        "ferry": 2,
+        "river": 1
+      },
+      "frequencies": 15,
+      "errors": []
+    },
+    {
+      "code": "83000000",
+      "links": 0,
+      "remote": 98,
+      "modes": {},
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "92000000",
+      "links": 21,
+      "remote": 1,
+      "modes": {
+        "river": 15,
+        "ice_crossing": 4,
+        "ferry": 2
+      },
+      "frequencies": 15,
+      "errors": []
+    },
+    {
+      "code": "63000000",
+      "links": 12,
+      "remote": 1209,
+      "modes": {
+        "river": 12
+      },
+      "frequencies": 12,
+      "errors": []
+    },
+    {
+      "code": "86000000",
+      "links": 3,
+      "remote": 58,
+      "modes": {
+        "air": 1,
+        "river": 2
+      },
+      "frequencies": 2,
+      "errors": []
+    },
+    {
+      "code": "80000000",
+      "links": 4,
+      "remote": 26,
+      "modes": {
+        "ice_crossing": 2,
+        "pontoon_bridge": 1,
+        "ferry": 1
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "53000000",
+      "links": 1,
+      "remote": 50,
+      "modes": {
+        "ferry": 1
+      },
+      "frequencies": 1,
+      "errors": []
+    },
+    {
+      "code": "71800000",
+      "links": 71,
+      "remote": 36,
+      "modes": {
+        "air": 20,
+        "river": 26,
+        "winter_road": 18,
+        "ice_crossing": 5,
+        "ferry": 2
+      },
+      "frequencies": 43,
+      "errors": []
+    },
+    {
+      "code": "88000000",
+      "links": 3,
+      "remote": 1,
+      "modes": {
+        "ferry": 2,
+        "river": 1
+      },
+      "frequencies": 1,
+      "errors": []
+    },
+    {
+      "code": "11000000",
+      "links": 32,
+      "remote": 12,
+      "modes": {
+        "air": 23,
+        "river": 7,
+        "winter_road": 1,
+        "ice_crossing": 1
+      },
+      "frequencies": 27,
+      "errors": []
+    },
+    {
+      "code": "81000000",
+      "links": 10,
+      "remote": 19,
+      "modes": {
+        "air": 7,
+        "ferry": 1,
+        "winter_road": 2
+      },
+      "frequencies": 7,
+      "errors": []
+    },
+    {
+      "code": "10000000",
+      "links": 16,
+      "remote": 24,
+      "modes": {
+        "air": 11,
+        "ice_crossing": 2,
+        "winter_road": 1,
+        "river": 1,
+        "pontoon_bridge": 1
+      },
+      "frequencies": 11,
+      "errors": []
+    },
+    {
+      "code": "08000000",
+      "links": 22,
+      "remote": 21,
+      "modes": {
+        "air": 11,
+        "winter_road": 4,
+        "river": 6,
+        "ice_crossing": 1
+      },
+      "frequencies": 10,
+      "errors": []
+    },
+    {
+      "code": "69000000",
+      "links": 36,
+      "remote": 25,
+      "modes": {
+        "air": 24,
+        "river": 6,
+        "ferry": 4,
+        "winter_road": 1,
+        "ice_crossing": 1
+      },
+      "frequencies": 20,
+      "errors": []
+    },
+    {
+      "code": "58000000",
+      "links": 7,
+      "remote": 2,
+      "modes": {
+        "river": 7
+      },
+      "frequencies": 4,
+      "errors": []
+    },
+    {
+      "code": "87000000",
+      "links": 66,
+      "remote": 307,
+      "modes": {
+        "air": 47,
+        "river": 14,
+        "ferry": 1,
+        "winter_road": 1,
+        "ice_crossing": 3
+      },
+      "frequencies": 35,
+      "errors": []
+    },
+    {
+      "code": "56000000",
+      "links": 1,
+      "remote": 1161,
+      "modes": {
+        "pontoon_bridge": 1
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "66000000",
+      "links": 0,
+      "remote": 177,
+      "modes": {},
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "12000000",
+      "links": 3,
+      "remote": 114,
+      "modes": {
+        "river": 1,
+        "ferry": 2
+      },
+      "frequencies": 2,
+      "errors": []
+    },
+    {
+      "code": "04000000",
+      "links": 115,
+      "remote": 114,
+      "modes": {
+        "air": 33,
+        "winter_road": 19,
+        "ice_crossing": 15,
+        "pontoon_bridge": 6,
+        "ferry": 11,
+        "river": 31
+      },
+      "frequencies": 19,
+      "errors": []
+    },
+    {
+      "code": "38000000",
+      "links": 0,
+      "remote": 3,
+      "modes": {},
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "94000000",
+      "links": 4,
+      "remote": 342,
+      "modes": {
+        "ferry": 1,
+        "ice_crossing": 1,
+        "river": 2
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "29000000",
+      "links": 1,
+      "remote": 0,
+      "modes": {
+        "pontoon_bridge": 1
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "25000000",
+      "links": 29,
+      "remote": 116,
+      "modes": {
+        "air": 22,
+        "ferry": 3,
+        "river": 4
+      },
+      "frequencies": 2,
+      "errors": []
+    },
+    {
+      "code": "97000000",
+      "links": 8,
+      "remote": 0,
+      "modes": {
+        "river": 6,
+        "pontoon_bridge": 1,
+        "ice_crossing": 1
+      },
+      "frequencies": 2,
+      "errors": []
+    },
+    {
+      "code": "28000000",
+      "links": 5,
+      "remote": 21,
+      "modes": {
+        "river": 4,
+        "winter_road": 1
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "54000000",
+      "links": 0,
+      "remote": 723,
+      "modes": {},
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "79000000",
+      "links": 1,
+      "remote": 0,
+      "modes": {
+        "ferry": 1
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "75000000",
+      "links": 0,
+      "remote": 35,
+      "modes": {},
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "18000000",
+      "links": 6,
+      "remote": 21,
+      "modes": {
+        "river": 6
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "91000000",
+      "links": 0,
+      "remote": 70,
+      "modes": {},
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "19000000",
+      "links": 6,
+      "remote": 59,
+      "modes": {
+        "air": 2,
+        "river": 1,
+        "ferry": 1,
+        "ice_crossing": 2
+      },
+      "frequencies": 3,
+      "errors": []
+    },
+    {
+      "code": "78000000",
+      "links": 11,
+      "remote": 41,
+      "modes": {
+        "river": 9,
+        "ferry": 2
+      },
+      "frequencies": 8,
+      "errors": []
+    },
+    {
+      "code": "33000000",
+      "links": 1,
+      "remote": 67,
+      "modes": {
+        "pontoon_bridge": 1
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "49000000",
+      "links": 1,
+      "remote": 129,
+      "modes": {
+        "river": 1
+      },
+      "frequencies": 1,
+      "errors": []
+    },
+    {
+      "code": "57000000",
+      "links": 14,
+      "remote": 3,
+      "modes": {
+        "ice_crossing": 4,
+        "river": 7,
+        "ferry": 3
+      },
+      "frequencies": 2,
+      "errors": []
+    },
+    {
+      "code": "61000000",
+      "links": 3,
+      "remote": 3,
+      "modes": {
+        "river": 2,
+        "pontoon_bridge": 1
+      },
+      "frequencies": 2,
+      "errors": []
+    },
+    {
+      "code": "60000000",
+      "links": 5,
+      "remote": 111,
+      "modes": {
+        "river": 5
+      },
+      "frequencies": 5,
+      "errors": []
+    },
+    {
+      "code": "70000000",
+      "links": 0,
+      "remote": 8,
+      "modes": {},
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "73000000",
+      "links": 0,
+      "remote": 51,
+      "modes": {},
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "05000000",
+      "links": 18,
+      "remote": 165,
+      "modes": {
+        "air": 14,
+        "ferry": 4
+      },
+      "frequencies": 16,
+      "errors": []
+    },
+    {
+      "code": "17000000",
+      "links": 1,
+      "remote": 425,
+      "modes": {
+        "pontoon_bridge": 1
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "27000000",
+      "links": 1,
+      "remote": 11,
+      "modes": {
+        "pontoon_bridge": 1
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "36000000",
+      "links": 25,
+      "remote": 1,
+      "modes": {
+        "river": 23,
+        "ferry": 2
+      },
+      "frequencies": 15,
+      "errors": []
+    },
+    {
+      "code": "07000000",
+      "links": 0,
+      "remote": 297,
+      "modes": {},
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "14000000",
+      "links": 0,
+      "remote": 495,
+      "modes": {},
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "34000000",
+      "links": 4,
+      "remote": 20,
+      "modes": {
+        "river": 3,
+        "ferry": 1
+      },
+      "frequencies": 3,
+      "errors": []
+    },
+    {
+      "code": "24000000",
+      "links": 4,
+      "remote": 840,
+      "modes": {
+        "river": 3,
+        "pontoon_bridge": 1
+      },
+      "frequencies": 3,
+      "errors": []
+    },
+    {
+      "code": "44000000",
+      "links": 13,
+      "remote": 15,
+      "modes": {
+        "air": 12,
+        "winter_road": 1
+      },
+      "frequencies": 9,
+      "errors": []
+    },
+    {
+      "code": "15000000",
+      "links": 0,
+      "remote": 210,
+      "modes": {},
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "95000000",
+      "links": 1,
+      "remote": 160,
+      "modes": {
+        "air": 1
+      },
+      "frequencies": 1,
+      "errors": []
+    },
+    {
+      "code": "41000000",
+      "links": 1,
+      "remote": 1070,
+      "modes": {
+        "river": 1
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "03000000",
+      "links": 2,
+      "remote": 124,
+      "modes": {
+        "river": 2
+      },
+      "frequencies": 2,
+      "errors": []
+    },
+    {
+      "code": "35000000",
+      "links": 1,
+      "remote": 0,
+      "modes": {
+        "river": 1
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "32000000",
+      "links": 5,
+      "remote": 98,
+      "modes": {
+        "air": 3,
+        "ice_crossing": 2
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "42000000",
+      "links": 0,
+      "remote": 59,
+      "modes": {},
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "46000000",
+      "links": 3,
+      "remote": 427,
+      "modes": {
+        "river": 2,
+        "pontoon_bridge": 1
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "22000000",
+      "links": 12,
+      "remote": 18,
+      "modes": {
+        "river": 6,
+        "ferry": 3,
+        "ice_crossing": 2,
+        "pontoon_bridge": 1
+      },
+      "frequencies": 5,
+      "errors": []
+    },
+    {
+      "code": "64000000",
+      "links": 19,
+      "remote": 34,
+      "modes": {
+        "air": 13,
+        "ferry": 6
+      },
+      "frequencies": 11,
+      "errors": []
+    },
+    {
+      "code": "65000000",
+      "links": 6,
+      "remote": 24,
+      "modes": {
+        "river": 3,
+        "winter_road": 2,
+        "ferry": 1
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "50000000",
+      "links": 8,
+      "remote": 1461,
+      "modes": {
+        "ferry": 3,
+        "ice_crossing": 2,
+        "river": 3
+      },
+      "frequencies": 3,
+      "errors": []
+    },
+    {
+      "code": "71000000",
+      "links": 13,
+      "remote": 13,
+      "modes": {
+        "air": 8,
+        "river": 1,
+        "winter_road": 4
+      },
+      "frequencies": 7,
+      "errors": []
+    },
+    {
+      "code": "99000000",
+      "links": 5,
+      "remote": 6,
+      "modes": {
+        "air": 1,
+        "pontoon_bridge": 2,
+        "ferry": 2
+      },
+      "frequencies": 3,
+      "errors": []
+    },
+    {
+      "code": "20000000",
+      "links": 5,
+      "remote": 23,
+      "modes": {
+        "pontoon_bridge": 5
+      },
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "47000000",
+      "links": 13,
+      "remote": 42,
+      "modes": {
+        "air": 7,
+        "river": 1,
+        "winter_road": 5
+      },
+      "frequencies": 8,
+      "errors": []
+    },
+    {
+      "code": "52000000",
+      "links": 12,
+      "remote": 6,
+      "modes": {
+        "ice_crossing": 5,
+        "ferry": 4,
+        "river": 2,
+        "air": 1
+      },
+      "frequencies": 3,
+      "errors": []
+    },
+    {
+      "code": "68000000",
+      "links": 0,
+      "remote": 45,
+      "modes": {},
+      "frequencies": 0,
+      "errors": []
+    },
+    {
+      "code": "90000000",
+      "links": 0,
+      "remote": 105,
+      "modes": {},
+      "frequencies": 0,
+      "errors": []
+    }
+  ]
+}
