@@ -1,17 +1,18 @@
 # Open questions
 
-No questions have been sent to organizers.
+Updated 2026-11-09 after implementation audit. Earlier questions saying the product name and
+all formulas were undecided are superseded by actual Plexus code; the final target decision is still open.
 
-| ID | Question | Decision affected | Source to consult | Status |
-|---|---|---|---|---|
-| Q1 | What year and timezone apply to 10 November, 23:59; what time is the 13 November defense? | Schedule and submission cutoff | Official event page or organizers | open |
-| Q2 | Where are the task page, passport template, full submission rules and form? | Required fields, formats, uploads, update rules | Links and event chat | open |
-| Q3 | What weights, scoring scale, bonuses and disqualification rules apply? Four qualitative expert criteria are listed in A2_citations.md, «ЗАОЧНЫЙ ОТБОР». | Priorities and final checks | Full rules or organizers | partially answered |
-| Q4 | Where are the organizer data catalog and glossary? | Data coverage, licenses and terminology | Links from the task page | open |
-| Q5 | Which economic opportunities, beneficiary, territories and real corridors should be evaluated? User prioritizes GRP, development, criticality and traffic. | Product hypothesis, scope and P0 | Team and user decision, then data inspection | open |
-| Q6 | What final index and transport-change scenarios should be used? AI-assisted EDA and its checks are already documented; product choices remain open. | Calculation, validation and work plan | Team decision after Q5 and source inspection | open |
-| Q7 | Must the final index be one number as in the presentation excerpts, or may it be a system of indicators as in the task text? | Index definition and presentation | Original slides or organizer clarification | open |
+| ID | Question | Why it matters | Status |
+|---|---|---|---|
+| Q1 | Is the submission cutoff 10 November 23:39 or 23:59, and in which timezone? What is the defense time on 13 November? | Primary message 266 preserved verbatim in brief/QA.md; use earlier 23:39 for planning, timezone unconfirmed. | Verify primary message; no new organizer message sent in this audit. |
+| Q2 | Where is the submission form, exact passport template and receipt? | No completed team passport or receipt found in checkout. | Open |
+| Q3 | Are scoring weights or format rules published beyond the four qualitative criteria? | Avoid inventing score estimates. | No weights in inspected sources |
+| Q4 | Where is the authoritative input snapshot / DuckDB used for national results? | data/ missing, EDA raw ZIP missing; cannot reproduce published aggregate results here. | Open |
+| Q5 | Is the primary decision economic market access or seasonal access of remote residents to named centres? Which pilot and trips? | README promise and Hansen target do not yet align. Audit recommends a checked local pilot, with national map as context. | Resolved in project-plan.md: national Hansen + Tuva centre trips. |
+| Q6 | Which concrete improvements are compared, and what waiting model/seasonal closure rules apply? | Seasons alone are not a final intervention comparison. 24h cap loses frequency sensitivity. | Open |
+| Q7 | Which AI outputs and validation records go into submission? | work/ is scrubbed; evidence must survive in the final attachments. | Open |
 
-## Assumptions pending answers
-
-No year, timezone, product hypothesis, formula, scoring weights or data coverage assumed. Supplied presentation excerpts provide passport length (1–2 pages) and four qualitative expert criteria; the original deck and its date remain unavailable. The source receipt date is 2026-11-06; it does not establish the event year. The existing data inventory is not the confirmed organizer catalog.
+Original A2 PDF explicitly permits a number or system of indicators, so a single scalar is not
+an established mandatory constraint. The transport briefing is marked 2026. Whether every historical
+transport link remains active is unverified; source URLs alone do not establish that.

@@ -1,31 +1,36 @@
 # Project context
 
-Project: transport connectivity index; product name and goal not selected.
-Direction: «Транспорт и территории». Event name not supplied.
-Deadline from supplied text: 10 November, 23:59; year and timezone unknown.
-Defense: 13 November; year and start time unknown.
-P0 scenario: not agreed; exploratory calculations complete, objective and scale await team choice.
+Plexus — transport connectivity atlas for regional policy analysts, focused on settlements,
+seasonal links and access to centres/markets. Case A2, «Транспорт и территории».
+Current implementation: React/Vite frontend + read-only FastAPI over exported JSON;
+separate DuckDB/OSM calculation pipeline. Russian UI, one light theme per user instruction.
 
-## Current facts
+## Current facts, 2026-11-09
 
-| Topic | Status | Current fact | Evidence |
-|---|---|---|---|
-| Brief, 2026-11-06 | implemented | Supplied task preserved verbatim; requirements R01–R18 extracted; no scoring weights supplied | [source](../brief/sources/2026-11-06-task.txt), [requirements](../brief/requirements.md) |
-| Deliverables, 2026-11-06 | verified against supplied text | Passport and artifacts by 10 November, 23:59; updated passport, 5–8 slides, speech up to 5 minutes and roadmap for 13 November | [submission rules](../brief/PLATFORM.md) |
-| AI, 2026-11-06 | verified against supplied text | AI use and validation must be shown; AI-created materials must be attached | [R12 and R18](../brief/requirements.md) |
-| Presentation excerpts, 2026-11-06 | implemented; copy verified | A2_citations.md copied from Downloads; passport length, artifact details and four unweighted expert criteria recorded; original slides not checked | [excerpts](../docs/A2_citations.md), [requirements](../brief/requirements.md) |
-| Opening transcript, 2026-11-06 | implemented; copy verified | User-described opening speech copied unchanged from Desktop; audio not checked | [transcript](../docs/исаева.txt), [source record](../brief/sources/README.md) |
-| Data acquisition, 2026-11-06 | implemented; verified | All 38 source rows accounted: 14 downloaded, 12 partial, 9 blocked, GAR deferred for disk, Open-Meteo needs parameters, OSM excluded by user; 185 local files, about 391 MiB | [catalog](../datasets/README.md), [coverage](../datasets/COVERAGE.md), [manifest](../datasets/manifest.json) |
-| Data inventory | implemented | Original source table preserved; acquisition results and actual source limitations are recorded in datasets/; official organizer catalog link still absent | [inventory](../docs/istochniki_dannyh.md) |
-| Git, 2026-11-06 | verified | Publication branch chore/project-research based on existing origin/main 5c81182; origin GoatWhistle/casechamp; all nonignored work prepared for publication, dataset raw/derived local | `git remote -v`, `git ls-remote --symref origin HEAD` |
-| EDA, 2026-11-06 | implemented; verified | Computed city accessibility/scenario, municipal cohorts, regional bus intensities and geometric airport distances. City sample covers 52.59% of source census population; 2024 municipal paired cohort 1455. Earlier candidates; now economic-connectivity direction takes priority | [analysis](../work/eda/README.md), [checks](../work/eda/validate.py) |
-| Economic direction, 2026-11-06 | user requested; framework proposed | GRP, development, criticality and traffic are the priority; economic inputs cover 85 regions in 2023; additional Kuzbass traffic 45 records found, period/5 inconsistencies require validation | [concept](../work/research/economic-connectivity.md), [traffic](../datasets/additional/traffic-counts-kuzbass/README.md) |
-| Product choices | pending | Goal, territories, formula, scenarios and AI role are undecided | [questions](open-questions.md) |
+| Topic | Status | Fact and evidence |
+|---|---|---|
+| Workflow | verified | Only main / origin/main after integration; baseline SHA 81b6524. User explicitly requires work on main. |
+| Task alignment | audited, incomplete | R01–R18 mapped; no requirement labelled stand-verified in this audit. [Audit and priorities](../work/audits/project-alignment/2026-11-09.md). |
+| Original PDFs | read | [Case A2](../brief/sources/2026-11-09/case-a2.pdf), [transport briefing](../brief/sources/2026-11-09/transport-connectivity.pdf). Index, comparisons and recalculated transport changes are the core output; a web app or LLM inside the product is not required. |
+| Atlas API | verified in process with real files | 82 regions, 155412 settlements, 997 links; Tuva 7 links. [Evidence](../work/audits/project-alignment/evidence.md). |
+| Index | code only; missing in app | etl/indices.py exists; data/ absent; indices.json empty; API status=missing. Current frontend metric selector has no Hansen. |
+| Scientific risks | code-reviewed | Seasonal OSM edges not removed from common graph; wait cap makes 1/2/3 weekly departures equal; Palma counterexample fails; district-centre proxy is not hospital access. See audit. |
+| Scenarios | partial | EDA contains one hypothetical Kostroma–Obninsk change under a different formula. Summer/winter calculations do not by themselves prove a preferred improvement for the final pilot. |
+| Validation | scoped | Merge frontend verify: 372 tests. Backend unit rerun in audit: 106 passed. Full ETL, all-source verification and current browser path not checked. EDA validation blocked by missing ignored raw ZIP. |
+| Submission | unverified | No team passport, final slide deck, roadmap or submission receipt found here. Root speech.md is a briefing transcript. |
+| Deadline | conflicting sources | Supplied general rules say 10 Nov 23:59; preserved SESSION report says organizer reply 23:39. Timezone and exact primary message require verification; defense 13 Nov. |
 
 ## Pointers
 
-- [Session](SESSION.md)
+- [Session and protected instructions](SESSION.md)
 - [Open questions](open-questions.md)
-- [Organizer materials](../brief/README.md)
-- [Working artifacts](../work/README.md)
+- [Requirements](../brief/requirements.md)
 - [Product documentation](../docs/README.md)
+- [Prior EDA](../work/eda/README.md), [integration](../work/integration/2026-11-09.md)
+
+Next priority: settle one target decision/pilot; restore inputs; fix seasonal routing and waiting;
+calculate baseline and transport interventions; expose results; package submission and AI evidence.
+
+Implementation plan: [work/project-plan.md](../work/project-plan.md). User selected two levels, interactive pilot calculation and explicit assumptions for incomplete data.
+
+Implementation started: [progress](../work/implementation-progress.md). Settlements and intercity source Parquet restored; national download/extraction ongoing. Model controls pass (13 local tests), full recalculation pending. Deadline primary message preserved in brief/QA.md.

@@ -1,6 +1,6 @@
 # Session state
 
-Updated: 2026-11-08, Europe/Samara
+Updated: 2026-11-09, Europe/Moscow
 
 ## Explicit user instructions
 
@@ -175,7 +175,7 @@ User instruction (verbatim):
 
 > зайди в контекст проекта /Users/kaifarikman/Downloads/2\ кейс.pdf /Users/kaifarikman/Downloads/2_Транспортная\ связность.pdf вот тут тебе ТЗ. посмотри что лежит в каждой из веток. нужно это все дело корректно смерджить
 
-Branch: chore/integrate-branches; pre-merge HEAD 06b33e5. All remote tips integrated; report: work/integration/2026-11-09.md. Frontend verify passed (372 tests); backend Ruff/mypy and 106 tests passed. EDA validation blocked by absent ignored raw archive. Protected instructions exceed SESSION budget. Next: restore research raw inputs, verify full stand and scenario coverage against supplied PDFs. No remote publication performed.
+Integration details and prior checks: work/integration/2026-11-09.md. Publication completed; current state below.
 
 - 2026-11-09: Rechecked Telegram chat through message 270. Organizer's 8 Nov reply says deadline 10 Nov 23:39, conflicting with original 23:59; timezone unconfirmed. Downloaded original A2 PDF and presentation to Telegram MCP media cache; A2 matches supplied task. Site mai-way.ru inaccessible through web tool; submission form not found in chat at last sync. Current branch `chore/integrate-branches`, HEAD `1f2abda`. Next: verify submission form and deadline with organizers; preserve active instructions. Context budget exceeds targets due to protected instructions.
 
@@ -186,3 +186,21 @@ User instruction (verbatim):
 > тогда запушь это дело в мейн щас, тупо туда влей и остальные ветки на remote и local удали. все будем делать в мейне
 
 Work directly on main from now on. Integration revision: 1f2abda; main will be fast-forwarded to the resulting commit. Publish main before removing merged local and remote branches. The direct-main prohibition in the pre-push hook is removed by explicit user instruction; other checks remain. Existing context update from the parallel session is preserved. Product gaps and verification limits remain recorded above.
+
+## Alignment audit, 2026-11-09
+
+Active user goal (verbatim):
+
+> цель - понять, корректно мы все делаем или нет. у тебя есть ТЗ. осознай что мы сдлеали, что нет, где минусы, где плюсы и что осталось. какие риски по проекту
+
+Current branch main, HEAD 81b6524f5724032bc707b2433eca6713594607ce; integration push and branch deletion completed. Earlier future-tense publication notes above are historical. Audit: work/audits/project-alignment/2026-11-09.md; checks: evidence.md alongside it. All R01–R18 assessed, strengths/risks and ordered remaining work recorded. API with real exports verified; backend 106 unit tests passed again. Main gaps: index absent and not displayed by current frontend; no final intervention comparison; seasonal graph and waiting assumptions need correction; Palma counterexample reproduced. No product code changed in this audit. No full ETL/browser run; source data absent. Next: agree pilot decision, restore calculations, fix model, connect results and prepare submission. Protected instructions intentionally exceed SESSION target.
+
+## Implementation goal, 2026-11-09
+
+Active user instruction (verbatim):
+
+> твоя цель - выполнить все то, что я тебе описал в этом плане. не подведи. тут важный проект. всегда поступай по рекомендации брат. файл - work/project-plan.md , работой
+
+Execute work/project-plan.md on main, including ETL/API/UI; this supersedes the earlier frontend-only scope. No mobile checks. Preserve root HTML outside commits. Full goal remains active.
+
+Progress and failed checks: work/implementation-progress.md. Root uv uses Python 3.12. Model controls: 13 tests pass, including Palma, 84/f waiting and seasonal routing. Settlements/intercity restored; national OSM and BDMO restoration running. National results and pilot not yet verified. Telegram deadline source preserved in brief/QA.md. Next: finish restoration/manifests, national graph/calculation, pilot API/UI, submission materials. Live process handles recorded in the implementation log; revalidate before resuming jobs.
