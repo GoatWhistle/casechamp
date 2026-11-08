@@ -1,0 +1,68 @@
+{
+  "results": [
+    {
+      "name": "home",
+      "url": "http://127.0.0.1:5177/",
+      "overflow": false,
+      "headings": [
+        "Связи, которых нетна дорожной карте"
+      ],
+      "axe": []
+    },
+    {
+      "name": "regions",
+      "url": "http://127.0.0.1:5177/regions?season=winter",
+      "overflow": false,
+      "headings": [
+        "Регионы"
+      ],
+      "axe": []
+    },
+    {
+      "name": "map",
+      "url": "http://127.0.0.1:5177/map?season=winter",
+      "overflow": false,
+      "headings": [
+        "Карта связей"
+      ],
+      "axe": []
+    },
+    {
+      "name": "sources",
+      "url": "http://127.0.0.1:5177/sources",
+      "overflow": false,
+      "headings": [
+        "Источники"
+      ],
+      "axe": []
+    },
+    {
+      "name": "method",
+      "url": "http://127.0.0.1:5177/method",
+      "overflow": false,
+      "headings": [
+        "Как считается доступность"
+      ],
+      "axe": []
+    },
+    {
+      "name": "region",
+      "url": "http://127.0.0.1:5177/regions/71800000?season=winter",
+      "overflow": false,
+      "headings": [
+        "Ханты-Мансийский автономный округ"
+      ],
+      "axe": []
+    },
+    {
+      "name": "calendar",
+      "url": "http://127.0.0.1:5177/regions/71800000?season=winter&section=winter-calendar",
+      "overflow": false,
+      "headings": [
+        "Ханты-Мансийский автономный округ"
+      ],
+      "axe": []
+    }
+  ],
+  "errors": []
+}

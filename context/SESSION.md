@@ -79,30 +79,71 @@ The rest of that user message is preserved verbatim in `brief/sources/2026-11-06
 
 > твой план уже реализовали закомить изменения не включая в комит хтмл файлы в корне проекта и после комита пуша проверь можно ли еще лаги убрать их уже меньше стало но все равно при увелечении ументшении лаги есть
 
+2026-11-08:
+
+> Resume this session with:
+> claude --resume b50b925b-d840-4b2d-9ed2-b7d8029382b1 вот сессия старая клода доделай этот хтмл файл щас плохо . надпись плексус хуйня она страшная из-за шрифта  и цветов которые отличаются от дизайн системы не отходи от нее . также анимация с картой очень долная используя все скилы подумай какую другую анимацию можно сделать тчобы она было не долгаи и какую сделать анимацию построения надписи
+
+> ты можешь анимацию отрисовки надписи оставить как была раньше . чтобы буквы красиво появлялись
+
+2026-11-08:
+
+> прорисовка букв очень лагает . и просто анимация говно зачем месяца эти и прочее подумай абстрагируясь какую можно красивую анимацю сделать на главную страницу
+
+This latest request supersedes the earlier letter-drawing and seasonal-home design preferences.
+
+2026-11-08:
+
+> как это работает кнопку убери . можешь чуть украсить как надпись появляется и эту анимацию справо как то украисить подумай и переплетения нечеткие и не понятно зачем нужно это
+
+2026-11-08:
+
+> пусть шарики все вермя катаются
+
+> и добавь на фон чтото а то много пустоты белой . фон может какой то с картой может нимацию с картой где много путей ъуй пойми какой и там наш сервис все делает понтяным
+
+> проверь чтобы совпдала с дизайн системой которая в корне проекта
+
+These requests authorize continuous decorative signals and establish root design-system.html as the home prototype's visual source of truth.
+
+2026-11-08:
+
+> карта каличная очень бледная и кривая может еще чтото на фон поставить подумай хорошо пожалуйста
+
+This supersedes the geographic background; preserve continuous balls and root design-system.html as the visual source.
+
+2026-11-08:
+
+> куда эти линии уходят непонятно . сделай чтобы не было в пустоту
+
+2026-11-08:
+
+> эти круги вылазеют за экран ну просто пиздец еще давай какой то фон ты не можешь сделать на фон карту чтобы она полностью помещалась и чтобы маршруты по этой карте шли через наш этот икс
+
+This latest request restores a complete contained map and supersedes the geometric circles.
+
+
+2026-11-08, prototype and integration instructions:
+
+> сделай обновленный хтмл в корень проекта макет где будут реализованы все предложения клода
+
+> в будущем я скажу тебе что ты итогвые две хтмл взял как образец и реализовал в проекте в ветке фронтенд и потмо сделал комиты и  пуши только убери чтобы в комитах хтмл созданные в корне не было . но не удаляй . пока просто план закрепи у себя когда сесси закончат я скажу делай
+
+2026-11-08, integration authorization:
+
+> все хтмльки готовы начинай работу токо не делай проверки под мобильные устройства
+
+> не добавляй ничего не бек если  . оставь токо то что есть
+
+These instructions supersede the wait: integrate the final root prototypes, commit and push on feat/frontend. Do not run mobile checks or change the backend. Keep every root HTML on disk and outside commits.
+
 ## Current state
 
-- Updated 2026-11-08. Branch `feat/frontend`; commits and pushes only as andreysk0304, no trailers (user permission 2026-11-08).
-- Product Plexus, mark "Градация" (`docs/brand/`, `frontend/src/shared/ui/brand/`). Design system `work/design/design-system.html`.
-- Backend: read-only atlas API v1 over `DATA_DIR`, 104 unit tests. Hansen index export empty; UI says so.
-- Frontend: all screens on real API, both audits (`work/audits/`) fixed except P2 antimeridian seam on Chukotka and keyboard focus of map regions (documented decision). `npm run verify` green, 347 tests.
-- Home page: user picked «Сплетение» (others deleted); prototype `spletenie.html` in repo root, sources and data caveats in `work/design/home/`. Not ported to `frontend/src`; `/` still opens the map.
-- README rewritten: assets from `cd frontend && npm run readme` (content in `docs/readme/readme.json`), hero shots `npm run readme:hero` with the app running. Old data README moved to `docs/data-pipeline.md`.
-
-## Map repair, 2026-11-08
-
-- Continued session `393d291b-93d0-462e-8a29-4e5109354f6c`. First repair and its limits: `work/map-performance/README.md`; follow-up for remaining lag, pan lock and Arkhangelsk: `work/map-performance/followup.md`.
-- Repairs committed and pushed as eight commits `41c1037..377e1e8` on `feat/frontend` (identity Ivan Gerasimov from git config); root HTML files excluded.
-- Zoom-lag follow-up (uncommitted on top of `377e1e8`): compositor-only gestures via `data-map-stage`, detail only at commit and only in viewport. Evidence: `work/map-performance/compositor.md`. Trackpad raster 6.0 s to 0.07 s at CPU x4; verify 353 tests and 13/13 e2e green; stand 8080 rebuilt.
-- Fixed home-scale pan bounds. Focus uses largest polygon by area, not Arctic-island bounds or stale detail queries. Coordinates unchanged. Stale panel data now waits for matching ID.
-- SVG CSS transforms batched to rAF; low detail during gestures, hidden off-screen shapes, Path2D hit testing, separate hover overlay, no selection waves; interruptible 260 ms flight. Canvas experiments were slower and removed.
-- Native wheel/pinch, memoized panels, immediate top navigation, table document scroll and optional API `path_low` remain. API export docs: `docs/api.md`.
-- Frontend verify: 347 tests, rules, TypeScript, lint and build passed. All 13 browser tests passed on preview and rebuilt stand 8080. 12 visual/axe cases at 375/1440 clean. Backend unchanged this follow-up; earlier Ruff/mypy and 104 unit tests passed; integration folder empty (exit 5). PostCSS warning remains.
-- Corrected stress probe excludes tracing startup/teardown. CPU6/DPR2: hover p95 33.4→16.8 ms; wheel p95 unchanged 16.8 ms. Raster worker time increased; no general FPS or hardware-wide claim. Physical Safari/user device unverified.
-- Frontend rebuilt and healthy on 8080; API 8001 unchanged. Final 13 browser tests passed (21.2 s).
-- Original Chukotka antimeridian seam and missing index export remain outside this repair.
-
-## How to continue
-
-1. Commit/push the zoom-lag follow-up only if requested. Another session was editing `work/design/home/` concurrently (deleted prototypes, new `hero.js`); those changes are not ours.
-2. Local containers use UI 8080/API 8001. Temporary Compose config for this repair: `/tmp/plexus-map-compose.yml`; root Compose file remains absent after the user's earlier deletion request.
-3. Open product items outside this repair: antimeridian seam and index export from DuckDB.
+- Branch `feat/frontend`, implementation commit `96cd7b7` (base `a445fa8`). Approved root `index.html` and `tabs-updated.html` are integrated into native frontend components. API/backend unchanged; root HTML and other prototype-session changes excluded from implementation commit.
+- Implemented: animated home at `/`, working atlas at `/map`, region compositions and seasonal comparison, source topic tabs, region profile/calendar, illustrative Hansen matrix. Existing settlement/financial screens retained through profile disclosure.
+- Verification: 369 unit tests plus rules/typecheck/lint/build passed. Desktop widths 1280/1440/1920 only; seven screens at 1440 axe0. 17 desktop e2e passed; 21 final captures complete. Evidence/limits: `work/audits/prototype-integration/`; decisions: `docs/design-decisions.md`.
+- Fixed during checks: table scroll trapping; stale season links on immediate navigation; delayed route focus interrupting search. DOM RouterProvider supports synchronous season updates.
+- Unavailable API content deliberately omitted: MChS observations and source PDF URLs. Calendar distinguishes report date from unknown closure; regional index remains missing honestly.
+- Prior saved state says commits/pushes only as `andreysk0304`. This machine has Git author Ivan Gerasimov <ivandivan2909@gmail.com> and authenticated GitHub `ivanGMAI`; preserve configured human author per current AGENTS. Resolve publication account before push.
+- Earlier details and exact session pointers: `work/audits/prototype-integration/session-before.md`; map performance: `work/map-performance/compositor.md`; prototype evidence: `work/design/home/README.md`, `work/design/tabs-update/README.md`.
+- Pre-existing DESIGN.md/PRODUCT.md placeholders and Chukotka seam remain outside this transfer. Protected instruction overflow retained.
