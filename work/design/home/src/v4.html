@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plexus | Табло</title>
+<style>
+{{BASE_CSS}}
+.v4 {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(32px, 4vw, 56px);
+  min-height: var(--viewport);
+  padding: clamp(40px, 5vw, 72px) var(--gutter) 56px;
+}
+
+.v4 .top {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 32px clamp(32px, 4vw, 72px);
+}
+
+.v4 .tiles {
+  --tile: clamp(44px, 7.2vw, 118px);
+  display: flex;
+  gap: calc(var(--tile) * 0.07);
+}
+
+.flap {
+  position: relative;
+  width: var(--tile);
+  height: calc(var(--tile) * 1.34);
+  perspective: calc(var(--tile) * 4);
+  font-size: calc(var(--tile) * 0.96);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.flap.small {
+  --tile: 26px;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.flap .half {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  overflow: hidden;
+  background: var(--c, var(--ink));
+  backface-visibility: hidden;
+}
+
+.flap.small .half {
+  background: var(--paper-3);
+}
+
+.flap .up {
+  top: 0;
+  border-radius: calc(var(--tile) * 0.09) calc(var(--tile) * 0.09) 0 0;
+  transform-origin: 50% 100%;
+}
+
+.flap .down {
+  bottom: 0;
+  border-radius: 0 0 calc(var(--tile) * 0.09) calc(var(--tile) * 0.09);
+  transform-origin: 50% 0;
+}
+
+.flap .down::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: max(1px, calc(var(--tile) * 0.016));
+  background: rgb(14 16 18 / 0.2);
+  z-index: 1;
+}
+
+.flap .half b {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 200%;
+  display: grid;
+  place-items: center;
+  font-weight: inherit;
+  line-height: 1;
+  padding-bottom: 0.12em;
+}
+
+.flap .up b {
+  top: 0;
+}
+
+.flap .down b {
+  bottom: 0;
+}
+
+.v4 .side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.v4 .h1 {
+  max-width: 22ch;
+}
+
+.v4 .board {
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+.v4 .board-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding: 18px 24px;
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.v4 h2 {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.2;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+.v4 table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.v4 th {
+  padding: 12px 24px;
+  color: var(--ink-3);
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+.v4 td {
+  padding: 14px 24px;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--line);
+}
+
+.v4 tr:last-child td {
+  border-bottom: 0;
+}
+
+.v4 .kind {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+}
+
+.v4 .chip {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex: none;
+  border-radius: 7px;
+  background: var(--tone);
+  color: #fff;
+}
+
+.v4 .chip .ico {
+  width: 20px;
+  height: 20px;
+}
+
+.v4 .route {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.v4 .route .ico {
+  width: 16px;
+  height: 16px;
+  color: var(--ink-3);
+}
+
+.v4 .region {
+  color: var(--ink-3);
+  font-size: 14px;
+}
+
+.v4 .freq {
+  display: flex;
+  gap: 2px;
+}
+
+.v4 .sep {
+  align-self: flex-end;
+  padding: 0 2px;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.v4 .none {
+  color: var(--ink-3);
+}
+
+.v4 .note {
+  padding: 14px 24px;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 63.99rem) {
+  .v4 .top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .v4 .tiles {
+    --tile: min(118px, calc((100vw - var(--gutter) * 2) / 6.4));
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .v4 thead {
+    display: none;
+  }
+
+  .v4 tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 6px 16px;
+    padding: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .v4 tr:last-child {
+    border-bottom: 0;
+  }
+
+  .v4 td {
+    padding: 0;
+    border: 0;
+  }
+
+  .v4 td:nth-child(n + 2) {
+    grid-column: 1 / -1;
+  }
+
+  .v4 td:nth-child(4) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .v4 td:nth-child(n + 3)::before {
+    content: attr(data-label) ": ";
+    color: var(--ink-3);
+  }
+
+  .v4 td:nth-child(4)::before {
+    content: attr(data-label);
+  }
+
+  .v4 .board-head,
+  .v4 .note {
+    padding-inline: 16px;
+  }
+
+  .v4 .lead {
+    font-size: 17px;
+  }
+}
+</style>
+</head>
+<body>
+<header class="hdr"></header>
+<main class="v4">
+  <section class="top">
+    <div class="tiles" role="img" aria-label="Plexus"></div>
+    <div class="side">
+      <h1 class="h1">Какие сёла держатся на авиарейсах, зимниках и переправах</h1>
+      <p class="lead">Расписание, которого нет в дорожном графе: <span class="num">997</span> ручных связей в <span class="num">82</span> регионах, с сезоном, частотой и источником.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#" data-icon="map">Открыть карту</a>
+        <a class="btn btn-quiet" href="#" data-icon="book">Методика</a>
+      </div>
+    </div>
+  </section>
+  <section class="board" aria-labelledby="board-title">
+    <div class="board-head">
+      <h2 id="board-title">По одной связи каждого вида</h2>
+      <p class="fine">Данные атласа на 8 ноября 2026 года</p>
+    </div>
+    <table>
+      <thead><tr><th>Связь</th><th>Маршрут</th><th>Транспорт</th><th>Рейсов в неделю</th><th>Сезон</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <p class="fine note">Если источник не называет частоту, в атласе остаётся «нет данных», а не ноль.</p>
+  </section>
+</main>
+<script>
+{{BASE_JS}}
+const ROWS = [
+  { mode: "air", from: "Кызыл", to: "Кунгуртуг", region: "Тыва", vehicle: "Ми-8 и Ан-2", freq: "2", season: "Круглый год" },
+  { mode: "river", from: "Енисейск", to: "Анциферово", region: "Красноярский край", vehicle: "Скоростное судно", freq: "5,8", season: "С июня по октябрь" },
+  { mode: "winter_road", from: "Черемушки", to: "Тюлюпта", region: "Красноярский край", vehicle: null, freq: null, season: "Зимой" },
+  { mode: "ferry", from: "Лысково", to: "Макарьево", region: "Нижегородская область", vehicle: "Грузопассажирский паром", freq: "35", season: "Летом" },
+  { mode: "ice_crossing", from: "Ордынское", to: "Нижнекаменка", region: "Новосибирская область", vehicle: "Автотранспорт", freq: null, season: "Зимой" },
+  { mode: "pontoon_bridge", from: "Нарьян-Мар", to: "Красное", region: "Ненецкий автономный округ", vehicle: "Автотранспорт", freq: null, season: "Круглый год" },
+]
+const NAME = "plexus"
+const LETTERS = "абвгдеёжзиклмнопрстуфхцчшщэюяabcdefghklmnoprstuvxyz"
+const DIGITS = "0123456789"
+const NONE = '<span class="none">нет данных</span>'
+
+function flap(cls = "") {
+  const node = document.createElement("div")
+  node.className = `flap ${cls}`.trim()
+  node.innerHTML = '<div class="half up"><b></b></div><div class="half down"><b></b></div><div class="half up leaf"><b></b></div><div class="half down leaf"><b></b></div>'
+  const [up, down, leafUp, leafDown] = node.children
+  return { node, up, down, leafUp, leafDown }
+}
+
+function paint(half, ch, color) {
+  half.firstChild.textContent = ch
+  if (color) half.style.setProperty("--c", color)
+}
+
+function buildTiles() {
+  const box = document.querySelector(".v4 .tiles")
+  return [...NAME].map((ch, i) => {
+    const f = flap()
+    f.final = ch
+    f.color = `var(--m-${["air", "river", "winter", "ferry", "ice", "pontoon"][i]})`
+    box.appendChild(f.node)
+    return f
+  })
+}
+
+function buildRows() {
+  const body = document.querySelector(".v4 tbody")
+  const flaps = []
+  for (const r of ROWS) {
+    const m = MODES.find((x) => x.key === r.mode)
+    const tr = document.createElement("tr")
+    tr.dataset.mode = r.mode
+    tr.innerHTML = `
+      <td><span class="kind"><span class="chip">${modeIcon(r.mode)}</span>${m.label}</span></td>
+      <td><span class="route">${r.from}${lucide("arrow")}${r.to}</span><span class="region">${r.region}</span></td>
+      <td data-label="Транспорт">${r.vehicle ?? NONE}</td>
+      <td data-label="Рейсов в неделю"><span class="freq" aria-label="${r.freq ?? "нет данных"}"></span></td>
+      <td data-label="Сезон">${r.season}</td>`
+    const freq = tr.querySelector(".freq")
+    if (r.freq === null) freq.innerHTML = NONE
+    else {
+      for (const ch of r.freq) {
+        if (ch === ",") {
+          freq.insertAdjacentHTML("beforeend", '<span class="sep">,</span>')
+          continue
+        }
+        const f = flap("small")
+        f.final = ch
+        freq.appendChild(f.node)
+        flaps.push(f)
+      }
+    }
+    body.appendChild(tr)
+  }
+  return flaps
+}
+
+let run = 0
+
+function settle(f, color) {
+  for (const h of [f.up, f.down, f.leafUp, f.leafDown]) paint(h, f.final, color)
+  f.leafUp.style.visibility = "hidden"
+  f.leafDown.style.visibility = "hidden"
+}
+
+async function spin(f, flips, pool, colors, token) {
+  const out = ease("--ease-out")
+  let cur = { ch: " ", color: colors ? colors(0) : null }
+  settle({ ...f, final: " " }, cur.color)
+  for (let k = 1; k <= flips; k++) {
+    if (token !== run) return
+    const last = k === flips
+    const next = { ch: last ? f.final : pool[Math.floor(Math.random() * pool.length)], color: colors ? (last ? f.color : colors(k)) : null }
+    paint(f.up, next.ch, next.color)
+    paint(f.down, cur.ch, cur.color)
+    paint(f.leafUp, cur.ch, cur.color)
+    paint(f.leafDown, next.ch, next.color)
+    f.leafUp.style.visibility = "visible"
+    f.leafDown.style.visibility = "visible"
+    const span = last ? 150 : 110
+    await f.leafUp.animate([{ transform: "rotateX(0deg)" }, { transform: "rotateX(-90deg)" }], { duration: span * 0.45, easing: "linear", fill: "both" }).finished.catch(() => {})
+    if (token !== run) return
+    await f.leafDown.animate([{ transform: "rotateX(90deg)" }, { transform: "rotateX(0deg)" }], { duration: span * 0.55, easing: out, fill: "both" }).finished.catch(() => {})
+    paint(f.down, next.ch, next.color)
+    cur = next
+  }
+  settle(f, f.color)
+}
+
+mountIcons()
+mountHeader()
+const tiles = buildTiles()
+const digits = buildRows()
+const TONES = ["--m-air", "--m-river", "--m-winter", "--m-ferry", "--m-ice", "--m-pontoon"].map((v) => `var(${v})`)
+
+function play() {
+  run += 1
+  const token = run
+  cancelAll(document.querySelector(".v4"))
+  if (reduced.matches) {
+    tiles.forEach((f) => settle(f, f.color))
+    digits.forEach((f) => settle(f, null))
+    document.querySelector(".v4 .tiles").animate([{ opacity: 0 }, { opacity: 1 }], { duration: 160, easing: ease("--ease-out") })
+    return
+  }
+  tiles.forEach((f, i) => {
+    setTimeout(() => spin(f, 5 + i * 2, LETTERS, (k) => TONES[(i + k * 5) % 6], token), i * 40)
+  })
+  digits.forEach((f, i) => {
+    setTimeout(() => spin(f, 6 + (i % 3), DIGITS, null, token), 700 + i * 90)
+  })
+}
+
+whenReady(play)
+mountReview("{{SLUG}}", play)
+</script>
+</body>
+</html>
