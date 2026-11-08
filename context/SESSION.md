@@ -69,22 +69,14 @@ The rest of that user message is preserved verbatim in `brief/sources/2026-11-06
 
 ## Current state
 
-- Branch `feat/frontend` created locally from `origin/case-a2-transport-graph` (no common history with `main`). Nothing committed; user owns git.
-- Case A2 data work lives in `etl/`, `data_manual/`, `docs/indices.md`: Hansen market access for 155k settlements, scenarios road/summer/winter. `frontend/atlas/` is the teammates' Next/shadcn prototype on static JSON; kept as reference, excluded from Biome.
-- Copied into the working tree: `skills/`, `.claude/`, `.agents/`, root and frontend agent files and the template `frontend/` from `main`; `brief/` and `context/` from `chore/project-research`. `core.symlinks=true` set locally so skill links are real symlinks.
-- Template frontend reduced to RU only and one light theme: EN dictionaries, locale and theme switches, `shared/theme`, dark tokens and the boot script removed; check `theme-parity` replaced by `single-theme`. Rules docs updated. Placeholder mark extracted to `docs/brand/symbol.svg`.
-- Earlier research (economic connectivity, EDA, traffic) is on `chore/project-research` under `work/research/`, `work/eda/`.
+- Updated 2026-11-08. Branch `feat/frontend`, last pushed commit 2de6229. Commits and pushes go only as andreysk0304, no trailers (user permission 2026-11-08).
+- Product name Plexus, mark "Градация" (three isochrone rings, `docs/brand/`, `frontend/src/shared/ui/brand/`). Design system: `work/design/design-system.html`, Mapbox light, radii 2–8 px.
+- Backend: read-only atlas API v1 over `DATA_DIR` (default `frontend/atlas/public`), contract `work/api-contract.md`, 103 unit tests. Hansen index export is empty, UI shows "Расчёт не подключён".
+- Frontend: map, regions, region, seasons, method, sources, 404 screens on real API; `npm run verify` green at 2de6229.
+- Decisions in `docs/design-decisions.md`; `.env.example` added.
 
 ## How to continue
 
-Name chosen by the user 2026-11-08: Plexus (English names only). Logo direction: concept 9 "Изохроны" (rings around the wordmark) from `work/brand/plexus.html`; refinement page `work/brand/isochron.html` (build: `ONEST_DIR=<fontsource onest files> python work/brand/build_iso.py`). Waiting for the user to pick a variation and parameters. Then, per user: port the mark into the design system (`work/design/`, `frontend/` tokens, `docs/brand/`), the interface (header, tab, loader), social cards and icons via `site-identity`. Visual style: Mapbox light, small radii (2–8 px), RU only, one light theme.
-
-## Pitfalls already hit
-
-- `git restore --source=main -- frontend` deletes `frontend/atlas`; it was restored from HEAD. Restore single paths only.
-- `presentation/` is absent, so brand scripts read the mark from `docs/brand/symbol.svg`.
-- `public/indices.json` of the atlas is empty: regional DuckDB results are not in git.
-
-## Red checks
-
-None. 2026-11-07: `cd frontend && npm run verify` green (36 rules, 280 tests, build); `npm run e2e` 1 passed; shots 375/1440 live and error viewed.
+1. Read `work/audits/design-audit.md` and `work/audits/a11y-edge-audit.md`, fix P0/P1, verify, screenshots 375/1440.
+2. Then README with the wordmark-only header (user request 2026-11-08), skill `readme`.
+3. Hooks need `python3`: prepend a shim dir to PATH on Windows.
