@@ -14,7 +14,7 @@ Data source: `frontend/atlas/public/` (`atlas.json`, `additional.json`, `additio
 | --- | --- |
 | `GET /health` | `{status:"ok"}` (template) |
 | `GET /overview` | `{regions, settlements, population, links, links_by_mode: {mode: n}, links_by_season: {summer, winter, all, unknown}, companies, revenue_rub, index: IndexStatus}` |
-| `GET /geo/regions` | `{view_box: "x y w h", regions: [{id, name, path}], missing: [{id, name}]}` |
+| `GET /geo/regions` | `{view_box: "x y w h", regions: [{id, name, path, path_low: string|null}], missing: [{id, name}]}` |
 | `GET /regions?season=` | `[RegionSummary]` sorted by name |
 | `GET /regions/{id}?season=` | `RegionDetail` |
 | `GET /regions/{id}/links?season=&mode=` | `[Link]` |
