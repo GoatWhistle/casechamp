@@ -1,0 +1,209 @@
+{
+  "date": "2026-11-08T10:20:31.112Z",
+  "base": "http://127.0.0.1:4173",
+  "browser": "156.0.8078.4",
+  "viewport": "1440x900",
+  "dpr": 2,
+  "cases": [
+    {
+      "name": "wheel 12 ticks",
+      "frameP95": 16.700000000000273,
+      "framesOver50": 0,
+      "longTasks": [],
+      "svgCommits": 12,
+      "scrollY": 0,
+      "innerScroll": [],
+      "timings": {
+        "RasterTask": 364.5519999999999,
+        "UpdateLayoutTree": 4.528,
+        "Layout": 26.444999999999997,
+        "Paint": 6.726999999999999
+      }
+    },
+    {
+      "name": "drag 30 moves",
+      "frameP95": 16.700000000000728,
+      "framesOver50": 0,
+      "longTasks": [],
+      "svgCommits": 30,
+      "scrollY": 0,
+      "innerScroll": [],
+      "timings": {
+        "UpdateLayoutTree": 9.697,
+        "Layout": 10.785,
+        "Paint": 1.015,
+        "RasterTask": 343.29800000000034
+      }
+    },
+    {
+      "name": "hover 60 moves",
+      "frameP95": 16.799999999999272,
+      "framesOver50": 0,
+      "longTasks": [],
+      "svgCommits": 0,
+      "scrollY": 0,
+      "innerScroll": [],
+      "timings": {
+        "UpdateLayoutTree": 48.837,
+        "Layout": 51.279999999999994,
+        "Paint": 7.610999999999999,
+        "RasterTask": 334.7259999999999
+      }
+    },
+    {
+      "name": "selected wheel 12 ticks",
+      "frameP95": 16.799999999999727,
+      "framesOver50": 0,
+      "longTasks": [],
+      "svgCommits": 12,
+      "scrollY": 0,
+      "innerScroll": [],
+      "timings": {
+        "UpdateLayoutTree": 4.177,
+        "Layout": 28.965000000000003,
+        "Paint": 6.468,
+        "RasterTask": 451.6410000000003
+      }
+    },
+    {
+      "name": "scroll /regions",
+      "frameP95": 16.700000000000273,
+      "framesOver50": 0,
+      "longTasks": [],
+      "svgCommits": 0,
+      "scrollY": 0,
+      "innerScroll": [
+        [
+          "_area_8z573_1 _both_8z573_24 _frame_1sydb_1 _surface_zfdc8_1 _surface_18vpc_81 _scroller_19dvi_20",
+          2400
+        ]
+      ],
+      "timings": {
+        "UpdateLayoutTree": 3.9479999999999995,
+        "Paint": 13.117999999999997,
+        "RasterTask": 55.92199999999998
+      }
+    },
+    {
+      "name": "scroll /seasons",
+      "frameP95": 16.700000000000273,
+      "framesOver50": 0,
+      "longTasks": [],
+      "svgCommits": 0,
+      "scrollY": 360,
+      "innerScroll": [],
+      "timings": {
+        "RasterTask": 10.232
+      }
+    },
+    {
+      "name": "scroll /method",
+      "frameP95": 16.700000000000273,
+      "framesOver50": 0,
+      "longTasks": [],
+      "svgCommits": 0,
+      "scrollY": 204,
+      "innerScroll": [],
+      "timings": {}
+    },
+    {
+      "name": "scroll /sources",
+      "frameP95": 16.700000000000273,
+      "framesOver50": 0,
+      "longTasks": [],
+      "svgCommits": 0,
+      "scrollY": 0,
+      "innerScroll": [],
+      "timings": {}
+    },
+    {
+      "name": "scroll /regions/04000000",
+      "frameP95": 16.700000000000728,
+      "framesOver50": 0,
+      "longTasks": [],
+      "svgCommits": 0,
+      "scrollY": 2400,
+      "innerScroll": [],
+      "timings": {
+        "RasterTask": 36.96700000000002,
+        "Paint": 6.1419999999999995
+      }
+    },
+    {
+      "name": "navigation /regions",
+      "frameP95": 100,
+      "framesOver50": 6,
+      "longTasks": [],
+      "svgCommits": 0,
+      "scrollY": 0,
+      "innerScroll": [],
+      "timings": {
+        "Paint": 20.708000000000002,
+        "UpdateLayoutTree": 51.677,
+        "RasterTask": 94.27800000000003,
+        "Layout": 11.296000000000001
+      }
+    },
+    {
+      "name": "navigation /seasons",
+      "frameP95": 83.40000000000009,
+      "framesOver50": 6,
+      "longTasks": [],
+      "svgCommits": 0,
+      "scrollY": 0,
+      "innerScroll": [],
+      "timings": {
+        "UpdateLayoutTree": 32.788,
+        "RasterTask": 33.025,
+        "Paint": 10.912,
+        "Layout": 8.173
+      }
+    },
+    {
+      "name": "navigation /method",
+      "frameP95": 100,
+      "framesOver50": 16,
+      "longTasks": [],
+      "svgCommits": 0,
+      "scrollY": 0,
+      "innerScroll": [],
+      "timings": {
+        "UpdateLayoutTree": 25.872,
+        "RasterTask": 28.304000000000002,
+        "Paint": 8.803,
+        "Layout": 10.693000000000001
+      }
+    },
+    {
+      "name": "navigation /sources",
+      "frameP95": 100,
+      "framesOver50": 21,
+      "longTasks": [],
+      "svgCommits": 0,
+      "scrollY": 0,
+      "innerScroll": [],
+      "timings": {
+        "UpdateLayoutTree": 19.18,
+        "Layout": 6.244,
+        "Paint": 6.409,
+        "RasterTask": 22.688
+      }
+    },
+    {
+      "name": "navigation /",
+      "frameP95": 83.30000000000018,
+      "framesOver50": 6,
+      "longTasks": [],
+      "svgCommits": 0,
+      "scrollY": 0,
+      "innerScroll": [],
+      "timings": {
+        "UpdateLayoutTree": 27.375,
+        "RasterTask": 73.43400000000003,
+        "Paint": 7.1579999999999995,
+        "Layout": 9.009
+      }
+    }
+  ],
+  "prevented": false
+}

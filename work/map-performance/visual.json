@@ -1,0 +1,86 @@
+[
+  {
+    "width": 375,
+    "path": "/",
+    "violations": [],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 375,
+    "path": "/?region=04000000",
+    "violations": [],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 375,
+    "path": "/regions",
+    "violations": [],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 375,
+    "path": "/seasons",
+    "violations": [],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 375,
+    "path": "/method",
+    "violations": [],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 375,
+    "path": "/sources",
+    "violations": [],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "path": "/",
+    "violations": [],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "path": "/?region=04000000",
+    "violations": [],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "path": "/regions",
+    "violations": [],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "path": "/seasons",
+    "violations": [],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "path": "/method",
+    "violations": [],
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "width": 1440,
+    "path": "/sources",
+    "violations": [],
+    "overflow": false,
+    "errors": []
+  }
+]

@@ -1,6 +1,6 @@
 # Session state
 
-Updated: 2026-11-07, Europe/Moscow
+Updated: 2026-11-08, Europe/Samara
 
 ## Explicit user instructions
 
@@ -67,16 +67,39 @@ The rest of that user message is preserved verbatim in `brief/sources/2026-11-06
 
 
 
+2026-11-08:
+
+> посмтри сессию клода в папке где фиксился зум и карта и доделай по его лпану все
+
+> зум исправлен но все равно лагает . также архангельскую область куда то в пизду унесло на карта . и я не могу теперь эту карту двигать . исправь
+
+> и все еще лагает очень
+
+> Тормозит при любом действии
+
 ## Current state
 
 - Updated 2026-11-08. Branch `feat/frontend`; commits and pushes only as andreysk0304, no trailers (user permission 2026-11-08).
 - Product Plexus, mark "Градация" (`docs/brand/`, `frontend/src/shared/ui/brand/`). Design system `work/design/design-system.html`.
-- Backend: read-only atlas API v1 over `DATA_DIR`, 103 unit tests. Hansen index export empty; UI says so.
-- Frontend: all screens on real API, both audits (`work/audits/`) fixed except P2 antimeridian seam on Chukotka and keyboard focus of map regions (documented decision). `npm run verify` green, 333 tests.
+- Backend: read-only atlas API v1 over `DATA_DIR`, 104 unit tests. Hansen index export empty; UI says so.
+- Frontend: all screens on real API, both audits (`work/audits/`) fixed except P2 antimeridian seam on Chukotka and keyboard focus of map regions (documented decision). `npm run verify` green, 347 tests.
+- Home page: four HTML prototypes with a name animation in `work/design/home/` (README there); user has not picked one yet, `/` still opens the map.
 - README rewritten: assets from `cd frontend && npm run readme` (content in `docs/readme/readme.json`), hero shots `npm run readme:hero` with the app running. Old data README moved to `docs/data-pipeline.md`.
+
+## Map repair, 2026-11-08
+
+- Continued session `393d291b-93d0-462e-8a29-4e5109354f6c`. First repair and its limits: `work/map-performance/README.md`; follow-up for remaining lag, pan lock and Arkhangelsk: `work/map-performance/followup.md`.
+- Branch `feat/frontend`, HEAD `5e21c352168292fe16075aa489bcda4a905594be`; changes uncommitted. No push requested for this continuation.
+- Fixed home-scale pan bounds. Focus uses largest polygon by area, not Arctic-island bounds or stale detail queries. Coordinates unchanged. Stale panel data now waits for matching ID.
+- SVG CSS transforms batched to rAF; low detail during gestures, hidden off-screen shapes, Path2D hit testing, separate hover overlay, no selection waves; interruptible 260 ms flight. Canvas experiments were slower and removed.
+- Native wheel/pinch, memoized panels, immediate top navigation, table document scroll and optional API `path_low` remain. API export docs: `docs/api.md`.
+- Frontend verify: 347 tests, rules, TypeScript, lint and build passed. All 13 browser tests passed on preview and rebuilt stand 8080. 12 visual/axe cases at 375/1440 clean. Backend unchanged this follow-up; earlier Ruff/mypy and 104 unit tests passed; integration folder empty (exit 5). PostCSS warning remains.
+- Corrected stress probe excludes tracing startup/teardown. CPU6/DPR2: hover p95 33.4→16.8 ms; wheel p95 unchanged 16.8 ms. Raster worker time increased; no general FPS or hardware-wide claim. Physical Safari/user device unverified.
+- Frontend rebuilt and healthy on 8080; API 8001 unchanged. Final 13 browser tests passed (21.2 s).
+- Original Chukotka antimeridian seam and missing index export remain outside this repair.
 
 ## How to continue
 
-1. Look at the README on GitHub in light and dark (mermaid renders only there).
-2. Open items: antimeridian seam, Compose file (Docker was not running, so not added), index export from DuckDB.
-3. Hooks need `python3`: prepend a shim dir to PATH on Windows.
+1. Review map repairs and evidence in `work/map-performance/`; commit/push only if requested.
+2. Local containers use UI 8080/API 8001. Temporary Compose config for this repair: `/tmp/plexus-map-compose.yml`; root Compose file remains absent after the user's earlier deletion request.
+3. Open product items outside this repair: antimeridian seam and index export from DuckDB.
