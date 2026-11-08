@@ -77,19 +77,22 @@ The rest of that user message is preserved verbatim in `brief/sources/2026-11-06
 
 > Тормозит при любом действии
 
+> твой план уже реализовали закомить изменения не включая в комит хтмл файлы в корне проекта и после комита пуша проверь можно ли еще лаги убрать их уже меньше стало но все равно при увелечении ументшении лаги есть
+
 ## Current state
 
 - Updated 2026-11-08. Branch `feat/frontend`; commits and pushes only as andreysk0304, no trailers (user permission 2026-11-08).
 - Product Plexus, mark "Градация" (`docs/brand/`, `frontend/src/shared/ui/brand/`). Design system `work/design/design-system.html`.
 - Backend: read-only atlas API v1 over `DATA_DIR`, 104 unit tests. Hansen index export empty; UI says so.
 - Frontend: all screens on real API, both audits (`work/audits/`) fixed except P2 antimeridian seam on Chukotka and keyboard focus of map regions (documented decision). `npm run verify` green, 347 tests.
-- Home page: four HTML prototypes with a name animation in `work/design/home/` (README there); user has not picked one yet, `/` still opens the map.
+- Home page: user picked «Сплетение» (others deleted); prototype `spletenie.html` in repo root, sources and data caveats in `work/design/home/`. Not ported to `frontend/src`; `/` still opens the map.
 - README rewritten: assets from `cd frontend && npm run readme` (content in `docs/readme/readme.json`), hero shots `npm run readme:hero` with the app running. Old data README moved to `docs/data-pipeline.md`.
 
 ## Map repair, 2026-11-08
 
 - Continued session `393d291b-93d0-462e-8a29-4e5109354f6c`. First repair and its limits: `work/map-performance/README.md`; follow-up for remaining lag, pan lock and Arkhangelsk: `work/map-performance/followup.md`.
-- Branch `feat/frontend`, HEAD `5e21c352168292fe16075aa489bcda4a905594be`; changes uncommitted. No push requested for this continuation.
+- Repairs committed and pushed as eight commits `41c1037..377e1e8` on `feat/frontend` (identity Ivan Gerasimov from git config); root HTML files excluded.
+- Zoom-lag follow-up (uncommitted on top of `377e1e8`): compositor-only gestures via `data-map-stage`, detail only at commit and only in viewport. Evidence: `work/map-performance/compositor.md`. Trackpad raster 6.0 s to 0.07 s at CPU x4; verify 353 tests and 13/13 e2e green; stand 8080 rebuilt.
 - Fixed home-scale pan bounds. Focus uses largest polygon by area, not Arctic-island bounds or stale detail queries. Coordinates unchanged. Stale panel data now waits for matching ID.
 - SVG CSS transforms batched to rAF; low detail during gestures, hidden off-screen shapes, Path2D hit testing, separate hover overlay, no selection waves; interruptible 260 ms flight. Canvas experiments were slower and removed.
 - Native wheel/pinch, memoized panels, immediate top navigation, table document scroll and optional API `path_low` remain. API export docs: `docs/api.md`.
@@ -100,6 +103,6 @@ The rest of that user message is preserved verbatim in `brief/sources/2026-11-06
 
 ## How to continue
 
-1. Review map repairs and evidence in `work/map-performance/`; commit/push only if requested.
+1. Commit/push the zoom-lag follow-up only if requested. Another session was editing `work/design/home/` concurrently (deleted prototypes, new `hero.js`); those changes are not ours.
 2. Local containers use UI 8080/API 8001. Temporary Compose config for this repair: `/tmp/plexus-map-compose.yml`; root Compose file remains absent after the user's earlier deletion request.
 3. Open product items outside this repair: antimeridian seam and index export from DuckDB.
