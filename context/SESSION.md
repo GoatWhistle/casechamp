@@ -69,14 +69,14 @@ The rest of that user message is preserved verbatim in `brief/sources/2026-11-06
 
 ## Current state
 
-- Updated 2026-11-08. Branch `feat/frontend`, last pushed commit 2de6229. Commits and pushes go only as andreysk0304, no trailers (user permission 2026-11-08).
-- Product name Plexus, mark "Градация" (three isochrone rings, `docs/brand/`, `frontend/src/shared/ui/brand/`). Design system: `work/design/design-system.html`, Mapbox light, radii 2–8 px.
-- Backend: read-only atlas API v1 over `DATA_DIR` (default `frontend/atlas/public`), contract `work/api-contract.md`, 103 unit tests. Hansen index export is empty, UI shows "Расчёт не подключён".
-- Frontend: map, regions, region, seasons, method, sources, 404 screens on real API; `npm run verify` green at 2de6229.
-- Decisions in `docs/design-decisions.md`; `.env.example` added.
+- Updated 2026-11-08. Branch `feat/frontend`; commits and pushes only as andreysk0304, no trailers (user permission 2026-11-08).
+- Product Plexus, mark "Градация" (`docs/brand/`, `frontend/src/shared/ui/brand/`). Design system `work/design/design-system.html`.
+- Backend: read-only atlas API v1 over `DATA_DIR`, 103 unit tests. Hansen index export empty; UI says so.
+- Frontend: all screens on real API, both audits (`work/audits/`) fixed except P2 antimeridian seam on Chukotka and keyboard focus of map regions (documented decision). `npm run verify` green, 333 tests.
+- README rewritten: assets from `cd frontend && npm run readme` (content in `docs/readme/readme.json`), hero shots `npm run readme:hero` with the app running. Old data README moved to `docs/data-pipeline.md`.
 
 ## How to continue
 
-1. Read `work/audits/design-audit.md` and `work/audits/a11y-edge-audit.md`, fix P0/P1, verify, screenshots 375/1440.
-2. Then README with the wordmark-only header (user request 2026-11-08), skill `readme`.
+1. Look at the README on GitHub in light and dark (mermaid renders only there).
+2. Open items: antimeridian seam, Compose file (Docker was not running, so not added), index export from DuckDB.
 3. Hooks need `python3`: prepend a shim dir to PATH on Windows.
