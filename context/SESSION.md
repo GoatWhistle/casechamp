@@ -189,3 +189,11 @@ This supersedes the temporary commit/push hold. Commit the accumulated frontend 
 - Publication in progress: stage frontend feedback, design decisions, context and review evidence only; leave unrelated prototype-session files and setup executable-bit changes local. Preserve all four root HTML files. Existing verification remains green (372 unit tests, 21 desktop e2e). Push the feedback commit together with `96cd7b7` and `ca97c39` to origin/feat/frontend.
 
 - 2026-11-08 evening, HEAD `0fea833` pushed: `/` has no header; one wordmark with rings; map of real link endpoints from new `GET /api/v1/links` with a hub tour (lines to stations, one-shot ripples, label shows only the place name). 404 and failure words use outside-only rings from `work/brand/export_iso_text.py`; failure page is centered without buttons. `/map` ripples the selected region after the camera settles. Next: user review of the landing tour, 375 px check of `/`.
+
+## Integration 2026-11-09
+
+User instruction (verbatim):
+
+> зайди в контекст проекта /Users/kaifarikman/Downloads/2\ кейс.pdf /Users/kaifarikman/Downloads/2_Транспортная\ связность.pdf вот тут тебе ТЗ. посмотри что лежит в каждой из веток. нужно это все дело корректно смерджить
+
+Branch: chore/integrate-branches; pre-merge HEAD 06b33e5. All remote tips integrated; report: work/integration/2026-11-09.md. Frontend verify passed (372 tests); backend Ruff/mypy and 106 tests passed. EDA validation blocked by absent ignored raw archive. Protected instructions exceed SESSION budget. Next: restore research raw inputs, verify full stand and scenario coverage against supplied PDFs. No remote publication performed.
