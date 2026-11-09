@@ -235,17 +235,28 @@ User request: «прочти тз хакатона». Read TASK, requirements, Q
 
 > запушь в новую ветку
 
-Branch feat/regional-datasets, based on 77436c8. Publish current catalog and scripts to origin/feat/regional-datasets. Raw data stays ignored locally. JSON parsing and Python syntax checks passed; no product code changes. Next: verify remote branch after push.
+Branch feat/regional-datasets, based on 77436c8. Publish current catalog and scripts to origin/feat/regional-datasets. Raw data stays ignored locally.  
 
 ## OSM continuation, 2026-11-09
 
 > frontend/claude-trans.txt продолжи че там делали, но без тестов
 
-OSM build/Biome passed; tests skipped.
+
 
 > коммит и выкатывай на стенд case.vm
 
 > ssh main.home-1.serv
 
-case.vm: devbox:8080, API :8077; no reboot supervision.
-Fixed missing MapLibre worker; build/Biome passed, browser map visible. No tests.
+
+
+> запусти субагентов и дособери
+
+Collection: main work/regional-collection/.
+
+> подключай к стенду
+
+case.vm: 12391 links; Hansen unchanged. Build/API passed; no tests.
+
+> давай запушим это
+
+Push feat/map-first-ui to goat; CSV included, transcripts/raw excluded.
