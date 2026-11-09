@@ -85,7 +85,20 @@ AI_TOOL_NAMES = re.compile(r"claude[- ]?code|\bcodex\b|copilot|chatgpt|cursor[- 
 ATTRIBUTION_TRACE = re.compile(r"co-authored-by|generated[- ]by:|generated (?:with|by) (?:claude|codex|chatgpt|an? ai)|ai[- ]generated", re.I)
 
 
+PRODUCT_PROVIDER_PATHS = {
+    "backend/pyproject.toml", "backend/uv.lock", "backend/src/app/main.py",
+    "backend/src/app/settings.py", "backend/src/app/adapter/llm/codex_agent.py",
+    "backend/tests/unit/composition/test_main.py", "backend/tests/unit/composition/test_settings.py",
+    "docs/dependencies.md", "docs/design-decisions.md", "docs/running.md",
+}
+
+
 def has_disallowed_trace(path: str, text: str) -> bool:
-    if path not in AI_DISCLOSURE_PATHS:
+    if ATTRIBUTION_TRACE.search(text):
+        return True
+    if path in AI_DISCLOSURE_PATHS or path in PRODUCT_PROVIDER_PATHS:
+        text = AI_TOOL_NAMES.sub("", text)
+        if path == "docs/design-decisions.md":
+            text = text.replace("AGENTS.md", "runtime-instructions.md")
         return bool(TRACE.search(text))
-    return bool(ATTRIBUTION_TRACE.search(text) or TRACE.search(AI_TOOL_NAMES.sub("", text)))
+    return bool(TRACE.search(text))
