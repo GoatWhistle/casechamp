@@ -72,3 +72,20 @@ SOURCE_RENAMES = {
     "frontend/scripts/checks/files.ts": {".impeccable": ".design-cache"},
     "frontend/tests/scripts/checks/engine.test.ts": {".impeccable": ".design-cache"},
 }
+
+AI_DISCLOSURE_PATHS = {
+    "docs/ai-register.md",
+    "docs/submission/passport.md",
+    "docs/submission/passport.html",
+    "presentation/src/slides/06-checks.html",
+    "docs/submission/plexus-deck.html",
+    "docs/submission/ai-materials.md",
+}
+AI_TOOL_NAMES = re.compile(r"claude[- ]?code|\bcodex\b|copilot|chatgpt|cursor[- ]?(?:ai|agent)", re.I)
+ATTRIBUTION_TRACE = re.compile(r"co-authored-by|generated[- ]by:|generated (?:with|by) (?:claude|codex|chatgpt|an? ai)|ai[- ]generated", re.I)
+
+
+def has_disallowed_trace(path: str, text: str) -> bool:
+    if path not in AI_DISCLOSURE_PATHS:
+        return bool(TRACE.search(text))
+    return bool(ATTRIBUTION_TRACE.search(text) or TRACE.search(AI_TOOL_NAMES.sub("", text)))

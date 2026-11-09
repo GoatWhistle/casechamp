@@ -6,7 +6,7 @@ import tempfile
 from pathlib import Path
 
 from cleanup_io import is_glob, run
-from cleanup_rules import AGENT_DIRS, AGENT_FILES, AGENT_GLOBS, AGENT_PERSON, TRACE, TRAILER
+from cleanup_rules import AGENT_DIRS, AGENT_FILES, AGENT_GLOBS, AGENT_PERSON, TRACE, TRAILER, has_disallowed_trace
 
 LEGACY_PATHS = ["docs/screens", "docs/audits", "docs/research", "presentation/QA.md", "presentation/evidence.md"]
 
@@ -60,7 +60,7 @@ def verify_blobs(root: Path) -> int:
             text = raw.decode("utf-8")
         except UnicodeDecodeError:
             continue
-        if TRACE.search(text):
+        if has_disallowed_trace(objects.get(oid.decode(), ""), text):
             hits.append(f"{oid.decode()[:12]} {objects.get(oid.decode(), '')}")
     if hits:
         print("\n!! traces in historical content:\n   " + "\n   ".join(hits[:20]))

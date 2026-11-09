@@ -41,7 +41,11 @@ report=
 while IFS=$'\t' read -r file line text; do
   inside=$(git show ":$file" | awk -v t="$line" '
     /<!-- scrub:start -->/{s=1} NR==t{print s; exit} /<!-- scrub:end -->/{s=0}')
-  [[ $inside == 1 ]] || report+="$file:$line: $text"$'\n'
+  if [[ $inside != 1 ]]; then
+    if ! printf '%s' "$text" | python3 -c 'import sys; sys.path.insert(0, sys.argv[1]); from cleanup_rules import has_disallowed_trace; raise SystemExit(1 if has_disallowed_trace(sys.argv[2], sys.stdin.read()) else 0)' "$root/.claude/scripts" "$file"; then
+      report+="$file:$line: $text"$'\n'
+    fi
+  fi
 done <<<"$hits"
 
 if [[ -n $report ]]; then

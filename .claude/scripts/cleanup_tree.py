@@ -5,7 +5,7 @@ from pathlib import Path
 
 from cleanup_io import inside, is_glob, read_text, validate_paths, walk, write_text
 from cleanup_markdown import resolve, transform
-from cleanup_rules import AGENT_FILES, AGENT_GLOBS, LINK, STYLE, STYLE_LISTS, TRACE
+from cleanup_rules import AGENT_FILES, AGENT_GLOBS, LINK, STYLE, STYLE_LISTS, has_disallowed_trace
 
 
 def find_targets(root: Path, extra: list[str]) -> list[str]:
@@ -77,7 +77,7 @@ def scan(root: Path) -> tuple[list[str], list[str], list[str]]:
         if text is None:
             continue
         for no, line in enumerate(text.splitlines(), 1):
-            if TRACE.search(line):
+            if has_disallowed_trace(rel, line):
                 traces.append(f"{rel}:{no}: {line.strip()[:120]}")
         if (
             rel.endswith((".md", ".html", ".json"))
