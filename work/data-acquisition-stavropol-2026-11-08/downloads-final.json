@@ -1,0 +1,32 @@
+[
+  {
+    "filename": "predgorny-bus-registry-2024.pdf",
+    "url": "https://pmosk.ru/wp-content/uploads/1068.pdf",
+    "kind": "municipal_bus_registry_archive",
+    "retrieved_at": "2026-11-08T18:21:06.172134+00:00",
+    "http_status": 200,
+    "final_url": "https://pmosk.ru/wp-content/uploads/1068.pdf",
+    "content_type": "application/pdf",
+    "tls_verification": true,
+    "client": "system curl HTTP1.1",
+    "status": "downloaded",
+    "path": "data/additional/stavropol/raw/predgorny-bus-registry-2024.pdf",
+    "bytes": 381836,
+    "sha256": "c93da42e24643c2c1fd39e065b9a464e65af5fa8eec6ad8fb583cbf828709adc"
+  },
+  {
+    "filename": "transport-activity.html",
+    "url": "https://dorogisk.ru/activity/transport/",
+    "kind": "ministry_transport_current_navigation",
+    "retrieved_at": "2026-11-08T18:21:06.172440+00:00",
+    "http_status": 200,
+    "final_url": "https://dorogisk.ru/activity/transport/",
+    "content_type": "text/html; charset=UTF-8",
+    "tls_verification": true,
+    "client": "system curl HTTP1.1",
+    "status": "downloaded",
+    "path": "data/additional/stavropol/raw/transport-activity.html",
+    "bytes": 48473,
+    "sha256": "420d3c7fb0c1e7dbf6b1edfb6d45f75b670618ef0b8863879dc882de0962eafd"
+  }
+]
