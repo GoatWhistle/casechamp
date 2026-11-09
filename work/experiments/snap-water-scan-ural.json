@@ -1,0 +1,413 @@
+{
+  "source": "ural.osm.pbf",
+  "candidate_segments": 1950,
+  "water_ways_processed": 86222,
+  "matches": [
+    {
+      "point_id": "71811415106",
+      "region": "Ханты-Мансийский автономный округ — Югра",
+      "population": 82,
+      "snap_km": 3.1265495384727124,
+      "start_lon_lat": [
+        65.459278,
+        63.72257
+      ],
+      "anchor_lon_lat": [
+        65.5217164,
+        63.7174363
+      ],
+      "ways": [
+        {
+          "id": 372735432,
+          "waterway": "river",
+          "name": null,
+          "tunnel": null,
+          "intermittent": "yes"
+        }
+      ]
+    },
+    {
+      "point_id": "71642460106",
+      "region": "Тюменская область",
+      "population": 62,
+      "snap_km": 2.4593282719104597,
+      "start_lon_lat": [
+        67.442921,
+        58.248582
+      ],
+      "anchor_lon_lat": [
+        67.4360615,
+        58.2704029
+      ],
+      "ways": [
+        {
+          "id": 204197665,
+          "waterway": "river",
+          "name": "Лайма",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "71938000121",
+      "region": "Ямало-Ненецкий автономный округ",
+      "population": 54,
+      "snap_km": 4.7518531980275,
+      "start_lon_lat": [
+        68.807722,
+        66.808892
+      ],
+      "anchor_lon_lat": [
+        68.854353,
+        66.770311
+      ],
+      "ways": [
+        {
+          "id": 917053843,
+          "waterway": "river",
+          "name": "Обь",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "71648435106",
+      "region": "Тюменская область",
+      "population": 10,
+      "snap_km": 2.0859762451706008,
+      "start_lon_lat": [
+        68.907958,
+        59.37542
+      ],
+      "anchor_lon_lat": [
+        68.9443932,
+        59.3726988
+      ],
+      "ways": [
+        {
+          "id": 27631689,
+          "waterway": "river",
+          "name": "Иртыш",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "71829000102",
+      "region": "Ханты-Мансийский автономный округ — Югра",
+      "population": 10,
+      "snap_km": 2.24796882749018,
+      "start_lon_lat": [
+        70.476582,
+        61.197007
+      ],
+      "anchor_lon_lat": [
+        70.5044038,
+        61.2121434
+      ],
+      "ways": [
+        {
+          "id": 25956950,
+          "waterway": "river",
+          "name": "протока Большая Салымская",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "65710000306",
+      "region": "Свердловская область",
+      "population": 8,
+      "snap_km": 2.030682754851735,
+      "start_lon_lat": [
+        62.148532,
+        59.64689
+      ],
+      "anchor_lon_lat": [
+        62.1124076,
+        59.6463644
+      ],
+      "ways": [
+        {
+          "id": 27920898,
+          "waterway": "river",
+          "name": "Лозьва",
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 44047732,
+          "waterway": "river",
+          "name": "Лозьва",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "65710000131",
+      "region": "Свердловская область",
+      "population": 3,
+      "snap_km": 4.004560386950616,
+      "start_lon_lat": [
+        62.071675,
+        59.731361
+      ],
+      "anchor_lon_lat": [
+        62.0601797,
+        59.6958168
+      ],
+      "ways": [
+        {
+          "id": 44047732,
+          "waterway": "river",
+          "name": "Лозьва",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "65645450151",
+      "region": "Свердловская область",
+      "population": 2,
+      "snap_km": 3.350506914037093,
+      "start_lon_lat": [
+        63.988655,
+        58.936319
+      ],
+      "anchor_lon_lat": [
+        63.9563942,
+        58.9112067
+      ],
+      "ways": [
+        {
+          "id": 67028047,
+          "waterway": "river",
+          "name": "Тавда",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "37518000236",
+      "region": "Курганская область",
+      "population": 1,
+      "snap_km": 1.424403652623925,
+      "start_lon_lat": [
+        66.37694,
+        55.51636
+      ],
+      "anchor_lon_lat": [
+        66.3563758,
+        55.5110195
+      ],
+      "ways": [
+        {
+          "id": 407776993,
+          "waterway": "river",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "65713000306",
+      "region": "Свердловская область",
+      "population": 1,
+      "snap_km": 2.5940101943771015,
+      "start_lon_lat": [
+        58.050408,
+        56.617346
+      ],
+      "anchor_lon_lat": [
+        58.0572081,
+        56.5943197
+      ],
+      "ways": [
+        {
+          "id": 28443709,
+          "waterway": "river",
+          "name": "Уфа",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "65724000356",
+      "region": "Свердловская область",
+      "population": 1,
+      "snap_km": 2.247932623077833,
+      "start_lon_lat": [
+        63.923751,
+        57.056167
+      ],
+      "anchor_lon_lat": [
+        63.8900213,
+        57.0476724
+      ],
+      "ways": [
+        {
+          "id": 118471943,
+          "waterway": "river",
+          "name": "Пышма",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "65710000126",
+      "region": "Свердловская область",
+      "population": 0,
+      "snap_km": 3.542946469825339,
+      "start_lon_lat": [
+        63.46599,
+        59.298191
+      ],
+      "anchor_lon_lat": [
+        63.4400385,
+        59.2692168
+      ],
+      "ways": [
+        {
+          "id": 67028049,
+          "waterway": "river",
+          "name": "Тавда",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "65726000111",
+      "region": "Свердловская область",
+      "population": 0,
+      "snap_km": 3.1699191816450836,
+      "start_lon_lat": [
+        63.225945,
+        58.188292
+      ],
+      "anchor_lon_lat": [
+        63.2102138,
+        58.1610179
+      ],
+      "ways": [
+        {
+          "id": 44315272,
+          "waterway": "river",
+          "name": "Тура",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "65750000106",
+      "region": "Свердловская область",
+      "population": 0,
+      "snap_km": 2.182702406878472,
+      "start_lon_lat": [
+        60.92332,
+        58.011355
+      ],
+      "anchor_lon_lat": [
+        60.9449397,
+        57.9954149
+      ],
+      "ways": [
+        {
+          "id": 112770105,
+          "waterway": "river",
+          "name": "Шайтанка",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "71926403106",
+      "region": "Ямало-Ненецкий автономный округ",
+      "population": 0,
+      "snap_km": 1.9496757873793271,
+      "start_lon_lat": [
+        64.956564,
+        65.050378
+      ],
+      "anchor_lon_lat": [
+        64.9349069,
+        65.0354136
+      ],
+      "ways": [
+        {
+          "id": 128494476,
+          "waterway": "river",
+          "name": "Малая Обь",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "71926403111",
+      "region": "Ямало-Ненецкий автономный округ",
+      "population": 0,
+      "snap_km": 3.870702754064695,
+      "start_lon_lat": [
+        65.24078,
+        64.785974
+      ],
+      "anchor_lon_lat": [
+        65.1607421,
+        64.7930091
+      ],
+      "ways": [
+        {
+          "id": 128494457,
+          "waterway": "river",
+          "name": "Малая Обь",
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 377032513,
+          "waterway": "river",
+          "name": "протока Васьремпосл",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "87710000131",
+      "region": "Республика Коми",
+      "population": 0,
+      "snap_km": 1.9311272503656016,
+      "start_lon_lat": [
+        64.059997,
+        67.048198
+      ],
+      "anchor_lon_lat": [
+        64.1042739,
+        67.0463341
+      ],
+      "ways": [
+        {
+          "id": 148379901,
+          "waterway": "river",
+          "name": "Елец",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    }
+  ],
+  "scope": "strict crossings of linear OSM waterway ways only; no denominator for PBF coverage, no confirmation of barriers or navigability"
+}

@@ -1,0 +1,35 @@
+{
+  "model_version": "tuva-frequency-v1",
+  "artifact_version": "7a33b4bf26cb382c6d765d6e30549e639e94e01c9f4aa9c17111b608f3221d54",
+  "cases": {
+    "duplicate_enabled_disabled": {
+      "status": 422,
+      "code": "validation_error"
+    },
+    "duplicate_reversed": {
+      "status": 422,
+      "code": "validation_error"
+    },
+    "duplicate_frequency": {
+      "status": 422,
+      "code": "validation_error"
+    },
+    "unknown_edge": {
+      "status": 422,
+      "code": "validation_error"
+    },
+    "derived_road": {
+      "status": 422,
+      "code": "validation_error"
+    },
+    "winter_road_frequency": {
+      "status": 422,
+      "code": "validation_error"
+    },
+    "stale_version": {
+      "status": 409,
+      "code": "stale_pilot_version"
+    }
+  },
+  "baseline_unchanged_after_invalid_requests": true
+}

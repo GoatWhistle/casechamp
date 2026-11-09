@@ -1,0 +1,13 @@
+{
+  "jobs": 120,
+  "workers": 16,
+  "cases": 8,
+  "all_equal_to_sequential": true,
+  "stale_status": 409,
+  "artifact_sha256": "dd91882a920373715289ff2981f7a08ba13510f70d8f02d14de50b2dd0b5d3a5",
+  "artifact_unchanged": true,
+  "pilot_response_unchanged": true,
+  "elapsed_s": 0.059,
+  "p95_s": 0.0077,
+  "scope": "single local uvicorn process, loopback, no proxy or external network"
+}

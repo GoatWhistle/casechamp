@@ -1,0 +1,31 @@
+{
+  "rows": [
+    {
+      "oktmo": "54618416111",
+      "settlement": "деревня Васильевка",
+      "mun_lower": "Ломовское сельское поселение",
+      "population": 0,
+      "latitude": 52.882222,
+      "longitude": 36.928333,
+      "hansen_idx": 137.41125066629314,
+      "reachable_markets": 173
+    },
+    {
+      "oktmo": "54618422101",
+      "settlement": "деревня Васильевка",
+      "mun_lower": "Нижнезалегощенское сельское поселение",
+      "population": 517,
+      "latitude": 52.794444,
+      "longitude": 36.691111,
+      "hansen_idx": 113.66598735916114,
+      "reachable_markets": 173
+    }
+  ],
+  "separation_km": 18.68577134154368,
+  "regional_population": 713374,
+  "regional_baseline": 142.7930244475973,
+  "fixed_normalization_swap_stress": 142.81023323447457,
+  "delta_index_points": 0.017208786877272297,
+  "relative_change_percent": 0.012051559902064852,
+  "method": "replace only the 517-person origin contribution with the stored index of the other coordinate, other values and normalization fixed; not a recomputation"
+}

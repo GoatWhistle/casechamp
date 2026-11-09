@@ -1,0 +1,25 @@
+{
+  "point_id": "28756000051",
+  "population": 1840,
+  "settlement": {
+    "lat": 57.20205,
+    "lon": 33.06515
+  },
+  "anchor": {
+    "lat": 57.2216587,
+    "lon": 33.0889753
+  },
+  "snap_km": 2.610046706802978,
+  "source": "central.osm.pbf",
+  "water_ways_in_bbox": 5,
+  "crossing_candidates": [
+    {
+      "osm_way_id": 906802025,
+      "waterway": "river",
+      "name": null,
+      "tunnel": null,
+      "intermittent": null
+    }
+  ],
+  "scope": "proper segment intersections only; not proof of impassability or route existence"
+}

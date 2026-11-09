@@ -1,0 +1,25 @@
+{
+  "point_id": "41609465101",
+  "population": 1088,
+  "settlement": {
+    "lat": 60.0025,
+    "lon": 32.61667
+  },
+  "anchor": {
+    "lat": 60.0093475,
+    "lon": 32.5986538
+  },
+  "snap_km": 1.2580518508487661,
+  "source": "northwestern.osm.pbf",
+  "water_ways_in_bbox": 9,
+  "crossing_candidates": [
+    {
+      "osm_way_id": 29224781,
+      "waterway": "river",
+      "name": "Сясь",
+      "tunnel": null,
+      "intermittent": null
+    }
+  ],
+  "scope": "proper segment intersections only; not proof of impassability or route existence"
+}

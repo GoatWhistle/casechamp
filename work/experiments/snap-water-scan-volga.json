@@ -1,0 +1,1254 @@
+{
+  "source": "volga.osm.pbf",
+  "candidate_segments": 1950,
+  "water_ways_processed": 182544,
+  "matches": [
+    {
+      "point_id": "80648465116",
+      "region": "Республика Башкортостан",
+      "population": 145,
+      "snap_km": 3.279600308651382,
+      "start_lon_lat": [
+        55.118614,
+        53.548148
+      ],
+      "anchor_lon_lat": [
+        55.0880049,
+        53.5713718
+      ],
+      "ways": [
+        {
+          "id": 217806202,
+          "waterway": "stream",
+          "name": "Малый Уршак",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "80648465121",
+      "region": "Республика Башкортостан",
+      "population": 65,
+      "snap_km": 3.3272332837477503,
+      "start_lon_lat": [
+        55.227838,
+        53.599526
+      ],
+      "anchor_lon_lat": [
+        55.2019893,
+        53.6252205
+      ],
+      "ways": [
+        {
+          "id": 132397170,
+          "waterway": "river",
+          "name": "Уршак",
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 180936532,
+          "waterway": "river",
+          "name": "Кушкаин",
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 217806202,
+          "waterway": "stream",
+          "name": "Малый Уршак",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "33635452146",
+      "region": "Кировская область",
+      "population": 42,
+      "snap_km": 2.4512887587286127,
+      "start_lon_lat": [
+        49.88889,
+        59.16111
+      ],
+      "anchor_lon_lat": [
+        49.931747,
+        59.1629384
+      ],
+      "ways": [
+        {
+          "id": 84033488,
+          "waterway": "river",
+          "name": "Летка",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "63604423181",
+      "region": "Саратовская область",
+      "population": 8,
+      "snap_km": 2.313496726258394,
+      "start_lon_lat": [
+        44.894806,
+        51.92742
+      ],
+      "anchor_lon_lat": [
+        44.9193893,
+        51.9416728
+      ],
+      "ways": [
+        {
+          "id": 698934973,
+          "waterway": "river",
+          "name": "Лавера",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "22546000201",
+      "region": "Нижегородская область",
+      "population": 6,
+      "snap_km": 1.0519362572467592,
+      "start_lon_lat": [
+        44.76688,
+        54.58772
+      ],
+      "anchor_lon_lat": [
+        44.7778814,
+        54.5807306
+      ],
+      "ways": [
+        {
+          "id": 276797860,
+          "waterway": "river",
+          "name": "Ирсеть",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "63630430151",
+      "region": "Саратовская область",
+      "population": 5,
+      "snap_km": 1.0125013244784313,
+      "start_lon_lat": [
+        48.125484,
+        50.774944
+      ],
+      "anchor_lon_lat": [
+        48.1300439,
+        50.7835811
+      ],
+      "ways": [
+        {
+          "id": 352337139,
+          "waterway": "river",
+          "name": "Большой Узень",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "92646412106",
+      "region": "Республика Татарстан",
+      "population": 5,
+      "snap_km": 2.6472604526178904,
+      "start_lon_lat": [
+        51.045041,
+        54.622878
+      ],
+      "anchor_lon_lat": [
+        51.0084205,
+        54.6337132
+      ],
+      "ways": [
+        {
+          "id": 884723585,
+          "waterway": "river",
+          "name": "Киклинка",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "63602401251",
+      "region": "Саратовская область",
+      "population": 2,
+      "snap_km": 1.8294497701442753,
+      "start_lon_lat": [
+        48.675834,
+        50.417135
+      ],
+      "anchor_lon_lat": [
+        48.6607808,
+        50.4037686
+      ],
+      "ways": [
+        {
+          "id": 887864828,
+          "waterway": "stream",
+          "name": "Дюра Западная",
+          "tunnel": null,
+          "intermittent": "yes"
+        }
+      ]
+    },
+    {
+      "point_id": "63630430126",
+      "region": "Саратовская область",
+      "population": 2,
+      "snap_km": 4.5950584105113075,
+      "start_lon_lat": [
+        48.133296,
+        50.832511
+      ],
+      "anchor_lon_lat": [
+        48.1656469,
+        50.7965959
+      ],
+      "ways": [
+        {
+          "id": 330810789,
+          "waterway": "river",
+          "name": "Большой Узень",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "22512000221",
+      "region": "Нижегородская область",
+      "population": 1,
+      "snap_km": 3.66693775704148,
+      "start_lon_lat": [
+        45.13554,
+        55.42618
+      ],
+      "anchor_lon_lat": [
+        45.1091809,
+        55.3967927
+      ],
+      "ways": [
+        {
+          "id": 783864139,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "22553000406",
+      "region": "Нижегородская область",
+      "population": 1,
+      "snap_km": 3.3228478339567764,
+      "start_lon_lat": [
+        47.52117,
+        57.68879
+      ],
+      "anchor_lon_lat": [
+        47.4676191,
+        57.6973845
+      ],
+      "ways": [
+        {
+          "id": 152644856,
+          "waterway": "river",
+          "name": "Ошма",
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 221324037,
+          "waterway": "river",
+          "name": "Шукшум",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "53656432131",
+      "region": "Оренбургская область",
+      "population": 1,
+      "snap_km": 4.926631922601771,
+      "start_lon_lat": [
+        54.93065,
+        53.15646
+      ],
+      "anchor_lon_lat": [
+        55.0044081,
+        53.1591201
+      ],
+      "ways": [
+        {
+          "id": 61922254,
+          "waterway": "river",
+          "name": "Дёма",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "57726000166",
+      "region": "Пермский край",
+      "population": 1,
+      "snap_km": 2.0101614450586314,
+      "start_lon_lat": [
+        57.731111,
+        58.190556
+      ],
+      "anchor_lon_lat": [
+        57.7522861,
+        58.1763369
+      ],
+      "ways": [
+        {
+          "id": 90452086,
+          "waterway": "river",
+          "name": "Лысьва",
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 129537228,
+          "waterway": "river",
+          "name": "Березовка",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "63630405141",
+      "region": "Саратовская область",
+      "population": 1,
+      "snap_km": 2.9450621612430927,
+      "start_lon_lat": [
+        48.229077,
+        50.302951
+      ],
+      "anchor_lon_lat": [
+        48.2659162,
+        50.3151147
+      ],
+      "ways": [
+        {
+          "id": 165576113,
+          "waterway": "canal",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "19614410351",
+      "region": "Вологодская область",
+      "population": 0,
+      "snap_km": 2.3328636282691333,
+      "start_lon_lat": [
+        46.80465,
+        60.62616
+      ],
+      "anchor_lon_lat": [
+        46.8266433,
+        60.6081679
+      ],
+      "ways": [
+        {
+          "id": 116736776,
+          "waterway": "river",
+          "name": "Луза",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "19630428486",
+      "region": "Вологодская область",
+      "population": 0,
+      "snap_km": 1.7473780857940726,
+      "start_lon_lat": [
+        46.65705,
+        60.00325
+      ],
+      "anchor_lon_lat": [
+        46.625644,
+        60.0026124
+      ],
+      "ways": [
+        {
+          "id": 1184327364,
+          "waterway": "river",
+          "name": "Ентала",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "22546000271",
+      "region": "Нижегородская область",
+      "population": 0,
+      "snap_km": 3.2249059666524196,
+      "start_lon_lat": [
+        44.42522,
+        54.60695
+      ],
+      "anchor_lon_lat": [
+        44.409458,
+        54.579423
+      ],
+      "ways": [
+        {
+          "id": 1244970457,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": "yes"
+        },
+        {
+          "id": 1244970670,
+          "waterway": "river",
+          "name": "Иресть",
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 1245190017,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": "yes"
+        }
+      ]
+    },
+    {
+      "point_id": "22546000406",
+      "region": "Нижегородская область",
+      "population": 0,
+      "snap_km": 2.155300031203412,
+      "start_lon_lat": [
+        44.7217,
+        54.79885
+      ],
+      "anchor_lon_lat": [
+        44.6926771,
+        54.8086414
+      ],
+      "ways": [
+        {
+          "id": 1244970677,
+          "waterway": "river",
+          "name": "Иресть",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "22619412131",
+      "region": "Нижегородская область",
+      "population": 0,
+      "snap_km": 3.239424595094677,
+      "start_lon_lat": [
+        42.45297,
+        54.96309
+      ],
+      "anchor_lon_lat": [
+        42.406902,
+        54.9753149
+      ],
+      "ways": [
+        {
+          "id": 231067699,
+          "waterway": "river",
+          "name": "Мердуш",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "22656436116",
+      "region": "Нижегородская область",
+      "population": 0,
+      "snap_km": 1.0448783555119578,
+      "start_lon_lat": [
+        46.62733,
+        57.00364
+      ],
+      "anchor_lon_lat": [
+        46.6444509,
+        57.002472
+      ],
+      "ways": [
+        {
+          "id": 493438169,
+          "waterway": "river",
+          "name": "Рутка",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "22758000701",
+      "region": "Нижегородская область",
+      "population": 0,
+      "snap_km": 1.2749512787004167,
+      "start_lon_lat": [
+        46.55601,
+        57.72834
+      ],
+      "anchor_lon_lat": [
+        46.5706645,
+        57.736722
+      ],
+      "ways": [
+        {
+          "id": 695897897,
+          "waterway": "drain",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 695907905,
+          "waterway": "river",
+          "name": "Малая Какша",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "33533000206",
+      "region": "Кировская область",
+      "population": 0,
+      "snap_km": 1.4018476438161058,
+      "start_lon_lat": [
+        47.34029,
+        56.92919
+      ],
+      "anchor_lon_lat": [
+        47.3255016,
+        56.9195048
+      ],
+      "ways": [
+        {
+          "id": 820233184,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "33533000311",
+      "region": "Кировская область",
+      "population": 0,
+      "snap_km": 1.9040777217864646,
+      "start_lon_lat": [
+        47.48821,
+        56.93168
+      ],
+      "anchor_lon_lat": [
+        47.4860752,
+        56.9145959
+      ],
+      "ways": [
+        {
+          "id": 849935326,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 849935328,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 849935329,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "33533000836",
+      "region": "Кировская область",
+      "population": 0,
+      "snap_km": 1.7167748861261733,
+      "start_lon_lat": [
+        47.28049,
+        57.09701
+      ],
+      "anchor_lon_lat": [
+        47.2942559,
+        57.0835032
+      ],
+      "ways": [
+        {
+          "id": 810654816,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "33603416131",
+      "region": "Кировская область",
+      "population": 0,
+      "snap_km": 2.0590850833615786,
+      "start_lon_lat": [
+        52.91179,
+        59.378
+      ],
+      "anchor_lon_lat": [
+        52.9152416,
+        59.3595659
+      ],
+      "ways": [
+        {
+          "id": 286516129,
+          "waterway": "river",
+          "name": "Кама",
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 1442855576,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "33619494146",
+      "region": "Кировская область",
+      "population": 0,
+      "snap_km": 2.593864692374172,
+      "start_lon_lat": [
+        48.61211,
+        58.39713
+      ],
+      "anchor_lon_lat": [
+        48.632403,
+        58.3763693
+      ],
+      "ways": [
+        {
+          "id": 75070802,
+          "waterway": "river",
+          "name": "Вятка",
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 121783684,
+          "waterway": "river",
+          "name": "Старая Вятка",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "33622101141",
+      "region": "Кировская область",
+      "population": 0,
+      "snap_km": 4.827938672344179,
+      "start_lon_lat": [
+        47.65131,
+        60.59722
+      ],
+      "anchor_lon_lat": [
+        47.7186404,
+        60.6253885
+      ],
+      "ways": [
+        {
+          "id": 476089632,
+          "waterway": "stream",
+          "name": "Россоха",
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 1190300572,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "33624101136",
+      "region": "Кировская область",
+      "population": 0,
+      "snap_km": 2.756386215350216,
+      "start_lon_lat": [
+        49.11461,
+        59.30371
+      ],
+      "anchor_lon_lat": [
+        49.1102756,
+        59.3283999
+      ],
+      "ways": [
+        {
+          "id": 211331065,
+          "waterway": "river",
+          "name": "Великая",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "33629151114",
+      "region": "Кировская область",
+      "population": 0,
+      "snap_km": 1.1657457855417026,
+      "start_lon_lat": [
+        47.64775,
+        59.69226
+      ],
+      "anchor_lon_lat": [
+        47.634476,
+        59.7003253
+      ],
+      "ways": [
+        {
+          "id": 75188636,
+          "waterway": "river",
+          "name": "Молома",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "33629434106",
+      "region": "Кировская область",
+      "population": 0,
+      "snap_km": 1.415743686300369,
+      "start_lon_lat": [
+        47.33392,
+        59.92337
+      ],
+      "anchor_lon_lat": [
+        47.3426592,
+        59.9114152
+      ],
+      "ways": [
+        {
+          "id": 75196817,
+          "waterway": "river",
+          "name": "Молома",
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 211065359,
+          "waterway": "river",
+          "name": "Молома",
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 1390899868,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "33629435136",
+      "region": "Кировская область",
+      "population": 0,
+      "snap_km": 1.0447918756269703,
+      "start_lon_lat": [
+        47.90438,
+        59.61914
+      ],
+      "anchor_lon_lat": [
+        47.890048,
+        59.6131619
+      ],
+      "ways": [
+        {
+          "id": 75188659,
+          "waterway": "river",
+          "name": "Молома",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "33635436106",
+      "region": "Кировская область",
+      "population": 0,
+      "snap_km": 1.5133653972873347,
+      "start_lon_lat": [
+        49.90544,
+        59.1611
+      ],
+      "anchor_lon_lat": [
+        49.931747,
+        59.1629384
+      ],
+      "ways": [
+        {
+          "id": 84033488,
+          "waterway": "river",
+          "name": "Летка",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "33635436126",
+      "region": "Кировская область",
+      "population": 0,
+      "snap_km": 1.8062557370396548,
+      "start_lon_lat": [
+        49.90014,
+        59.16177
+      ],
+      "anchor_lon_lat": [
+        49.931747,
+        59.1629384
+      ],
+      "ways": [
+        {
+          "id": 84033488,
+          "waterway": "river",
+          "name": "Летка",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "33635446136",
+      "region": "Кировская область",
+      "population": 0,
+      "snap_km": 1.1599731684484533,
+      "start_lon_lat": [
+        50.44848,
+        58.63197
+      ],
+      "anchor_lon_lat": [
+        50.4599788,
+        58.6405144
+      ],
+      "ways": [
+        {
+          "id": 1492876377,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "36615435141",
+      "region": "Самарская область",
+      "population": 0,
+      "snap_km": 1.0648696348860032,
+      "start_lon_lat": [
+        50.42718,
+        53.8455
+      ],
+      "anchor_lon_lat": [
+        50.4283614,
+        53.8359488
+      ],
+      "ways": [
+        {
+          "id": 351796463,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 351796465,
+          "waterway": "river",
+          "name": "Чесноковка",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "36648412121",
+      "region": "Самарская область",
+      "population": 0,
+      "snap_km": 2.1539582839450335,
+      "start_lon_lat": [
+        51.73909,
+        54.43608
+      ],
+      "anchor_lon_lat": [
+        51.728085,
+        54.4543635
+      ],
+      "ways": [
+        {
+          "id": 184471298,
+          "waterway": "river",
+          "name": "Большой Черемшан",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "56603410121",
+      "region": "Пензенская область",
+      "population": 0,
+      "snap_km": 1.184673247154556,
+      "start_lon_lat": [
+        42.98496,
+        53.276103
+      ],
+      "anchor_lon_lat": [
+        42.9692469,
+        53.2811267
+      ],
+      "ways": [
+        {
+          "id": 363074454,
+          "waterway": "river",
+          "name": "Буртас",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "56603410146",
+      "region": "Пензенская область",
+      "population": 0,
+      "snap_km": 2.5163264816658777,
+      "start_lon_lat": [
+        42.955054,
+        53.514976
+      ],
+      "anchor_lon_lat": [
+        42.9279266,
+        53.5308512
+      ],
+      "ways": [
+        {
+          "id": 803850952,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "56626407111",
+      "region": "Пензенская область",
+      "population": 0,
+      "snap_km": 1.533213672835368,
+      "start_lon_lat": [
+        45.115219,
+        53.830868
+      ],
+      "anchor_lon_lat": [
+        45.1125733,
+        53.8171682
+      ],
+      "ways": [
+        {
+          "id": 396881600,
+          "waterway": "river",
+          "name": "Пелетьма",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "57522000306",
+      "region": "Пермский край",
+      "population": 0,
+      "snap_km": 1.0611009833567067,
+      "start_lon_lat": [
+        54.879772,
+        58.643791
+      ],
+      "anchor_lon_lat": [
+        54.8946901,
+        58.6382418
+      ],
+      "ways": [
+        {
+          "id": 103068681,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "57756000186",
+      "region": "Пермский край",
+      "population": 0,
+      "snap_km": 1.6745571243657862,
+      "start_lon_lat": [
+        57.177079,
+        61.240207
+      ],
+      "anchor_lon_lat": [
+        57.2079247,
+        61.2376539
+      ],
+      "ways": [
+        {
+          "id": 38668388,
+          "waterway": "river",
+          "name": "Колва",
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 138572328,
+          "waterway": "stream",
+          "name": "Полусай",
+          "tunnel": null,
+          "intermittent": null
+        },
+        {
+          "id": 1352294728,
+          "waterway": "river",
+          "name": "Старая Речка",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "63604405181",
+      "region": "Саратовская область",
+      "population": 0,
+      "snap_km": 1.3662864772465229,
+      "start_lon_lat": [
+        45.273307,
+        51.872411
+      ],
+      "anchor_lon_lat": [
+        45.26155,
+        51.8823255
+      ],
+      "ways": [
+        {
+          "id": 314945663,
+          "waterway": "river",
+          "name": "Малый Колышлей",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "63640435136",
+      "region": "Саратовская область",
+      "population": 0,
+      "snap_km": 1.6477579046926791,
+      "start_lon_lat": [
+        43.068176,
+        51.895444
+      ],
+      "anchor_lon_lat": [
+        43.0517931,
+        51.8846108
+      ],
+      "ways": [
+        {
+          "id": 359778040,
+          "waterway": "stream",
+          "name": "Щербедина",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "73604156116",
+      "region": "Ульяновская область",
+      "population": 0,
+      "snap_km": 1.1213990114492551,
+      "start_lon_lat": [
+        46.716666,
+        53.444528
+      ],
+      "anchor_lon_lat": [
+        46.7215229,
+        53.4348669
+      ],
+      "ways": [
+        {
+          "id": 818089607,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "80602461116",
+      "region": "Республика Башкортостан",
+      "population": 0,
+      "snap_km": 1.7412540585870941,
+      "start_lon_lat": [
+        54.603424,
+        54.040159
+      ],
+      "anchor_lon_lat": [
+        54.6295376,
+        54.0433361
+      ],
+      "ways": [
+        {
+          "id": 197114338,
+          "waterway": "stream",
+          "name": "Курсак",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "80633446111",
+      "region": "Республика Башкортостан",
+      "population": 0,
+      "snap_km": 1.578908788451219,
+      "start_lon_lat": [
+        55.18099,
+        56.030091
+      ],
+      "anchor_lon_lat": [
+        55.1791827,
+        56.0159275
+      ],
+      "ways": [
+        {
+          "id": 225700187,
+          "waterway": "river",
+          "name": "Исанбайка",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "80641410116",
+      "region": "Республика Башкортостан",
+      "population": 0,
+      "snap_km": 1.9513586329411239,
+      "start_lon_lat": [
+        56.060103,
+        52.82744
+      ],
+      "anchor_lon_lat": [
+        56.0415383,
+        52.8139454
+      ],
+      "ways": [
+        {
+          "id": 28166924,
+          "waterway": "river",
+          "name": "Белая",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "87624460116",
+      "region": "Республика Коми",
+      "population": 0,
+      "snap_km": 2.249984002892466,
+      "start_lon_lat": [
+        49.211539,
+        60.63182
+      ],
+      "anchor_lon_lat": [
+        49.2094437,
+        60.6520285
+      ],
+      "ways": [
+        {
+          "id": 59286383,
+          "waterway": "river",
+          "name": "Луза",
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    },
+    {
+      "point_id": "92606475106",
+      "region": "Республика Татарстан",
+      "population": 0,
+      "snap_km": 2.2419943286166486,
+      "start_lon_lat": [
+        50.306832,
+        55.157986
+      ],
+      "anchor_lon_lat": [
+        50.2947664,
+        55.1390388
+      ],
+      "ways": [
+        {
+          "id": 1155148551,
+          "waterway": "stream",
+          "name": null,
+          "tunnel": null,
+          "intermittent": null
+        }
+      ]
+    }
+  ],
+  "scope": "strict crossings of linear OSM waterway ways only; no denominator for PBF coverage, no confirmation of barriers or navigability"
+}

@@ -181,38 +181,36 @@ User reply on passport identity fields (verbatim):
 
 > пока что забей, поставь пропуски
 
-All local work in the revised project plan is implemented and verified. Source commits remain local,
-not pushed. Pilot artifact 7a33b4bf…; national artifact 7868caee… covers 82 regions, 155412 origins,
-five scenarios and 410 regional rows. National road weighted mean=100; no monotonicity failures;
-12 independent formula checks passed after explicitly casting market arithmetic to DOUBLE.
+Delivery details, exact checks, versions, process IDs and submission blocker are preserved in work/integration/session-delivery-detail-2026-11-09.md. Source remains local; no submission authorized or performed.
 
-Checks: frontend verify 375 tests/36 guards; backend Ruff/mypy and 137 unit +6 integration=143;
-root model 21 controls; cleanup 11 controls. Four desktop Playwright scenarios pass on a fresh
-local clone and a scrubbed-history clone through Compose. No mobile checks. HTTP p95=0.001556s,
-200 sequential warmed Compose requests on Apple M4 Pro; no concurrency/network claim.
+## Domain coverage audit, 2026-11-09
 
-Seven slides, two-page passport with intentional identity blanks, two-page speech, CSV variants,
-AI register, research appendices, methods and requirements map are committed. Speech 561 words,
-estimated 269.28s; no live rehearsal. Final PDF/slide views inspected. Stand protocol:
-docs/results/stand-validation.json. Detailed checks and failures: work/implementation-progress.md.
+> зайди в домен. изучи ТЗ , требования /Users/kaifarikman/Downloads/2\ кейс.pdf /Users/kaifarikman/Downloads/2_Транспортная\ связность.pdf и посмотри что уже сейчас готово и что покрывается
 
-No heavy ETL process remains. Dev backend session31418 PID93075 on8000, frontend8080 remain;
-Compose8081 is available. Temporary clean verification projects use8082/8083; they are owned by
-this task and may be stopped. Scrubbed source copies stay under /tmp/plexus-submission-*; source
-history is unchanged. Final bundle is tmp/plexus-submission.zip, deliberately ignored by Git.
+main bad747d19493ce83736e44a2d7907488a072bec0. Report: work/audits/domain-coverage-2026-11-09.md. Both PDFs read; backend143, model21 and desktop E2E4 passed again on8081. No implementation changes. Next: field inputs, clear separation of national/pilot measures, stale brief summaries, rehearsal and submission. No full ETL rerun or fresh chat sync. SESSION exceeds target because protected user instructions remain verbatim.
 
-Remaining facts: Telegram fully synced through270 on2026-11-09 06:18UTC; form absent. Deadline
-reply says10Nov23:39, timezone unknown. R15 historical passport timing unconfirmed. No organizer
-messages or form submissions authorized/performed. Live defense and external transport checks
-remain team actions. Do not invent a submission receipt or mark the full goal achieved merely
-because the local deliverables are ready. Skills used for submission are canonical skills/submission,
-docs-writing, presentation and related defense skills; preserve required AI disclosure in public docs.
+## Validation branch workflow, 2026-11-09
 
-Completion audit continuation: full chat still through270 at06:22UTC. Eleven implementation
-hashes checked. Fixed published pilot report output (previous execution saved only under ignored
-data/); refreshed24 comparisons and report. Runtime is unchanged since the clean-stand checks.
-Corrected release2 supersedes release1 packaging; identity blanks remain intentional.
+Latest user instruction (verbatim):
 
-Blocked audit passed: form absent across three consecutive goal turns, with full syncs
-at06:18/06:22/06:27UTC through270. Stage7 needs external form/fields and submission authorization.
-Release2 archive verified; no local implementation work remains. Goal blocked, not complete.
+> давай короче все изменения которые были(все коммиты) перенесем в другую ветку, на нее переключимся и там уже пойдем работать, тестировать и пробовать
+
+Current branch feat/model-validation, HEAD bad747d19493ce83736e44a2d7907488a072bec0. All 20 local commits beyond origin/main retained; ancestry verified. Local main moved to verified remote main 81b6524 using branch reference update after switching away. Working files, ignored data and pre-existing uncommitted audits preserved. No remote changes. This supersedes the earlier main-only workflow. Continue model quality, validation and experiments on this branch; preserve outstanding transport-data limitations and submission state.
+
+## Validation experiments
+
+Details and next actions: work/integration/session-validation-detail-2026-11-09.md. 503 retry, stale-version and late-error-after-reset E2E passed; version reload resets inputs; same-version reload fixed; draft v2 built and 12 desktop E2E passed; draft ZIP predates test: work/experiments/pilot-error-recovery.md. 256 closure combinations and 768 independent route comparisons passed: work/experiments/pilot-closure-combinations.md. 336 scenarios, 972 monotonicity checks and 1008 independent shortest-path comparisons passed: work/experiments/pilot-frequency-sweep.md. Seven contradictory/invalid API cases rejected: work/experiments/pilot-api-boundary.md. Pilot empty-frequency ambiguity: work/experiments/pilot-frequency-boundaries.md. Isolated pilot browser check and limits: work/experiments/draft-stand-check.md.
+
+## Final readiness work resumed
+
+Latest user instruction (verbatim):
+
+> давай , делай
+
+Work resumed on feat/model-validation. Mandatory closeout: work/release-readiness.md. Empty-frequency explanation and version-reset notice added; frontend verify (375 unit tests) and 7 targeted browser scenarios passed. Draft v2 predates these changes. Vasilyevka evidence recorded in work/experiments/vasilevka-coordinate-check.md; raw inputs preserved, coordinate correction and graph/exports rerun remain open. Do not claim final delivery.
+
+## Publication authorized
+
+> все теперь это запушь дело всё и  скажи куда запушил
+
+Branch feat/model-validation; source HEAD c5dc29e before this state commit. Frontend verify passed (375 tests). Push target origin/feat/model-validation. Archives/data remain ignored; coordinate corrections and final delivery remain open.
