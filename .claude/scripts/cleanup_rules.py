@@ -69,6 +69,11 @@ TEXT_LIMIT = 2_000_000
 
 
 SOURCE_RENAMES = {
+    "docs/design-decisions.md": {
+        ".claude/git-hooks/pre-commit": "pre-commit hook",
+        "AGENTS.md": "runtime instruction files",
+        "CLAUDE.md": "runtime instruction files",
+    },
     "frontend/scripts/checks/files.ts": {".impeccable": ".design-cache"},
     "frontend/tests/scripts/checks/engine.test.ts": {".impeccable": ".design-cache"},
 }
@@ -98,7 +103,5 @@ def has_disallowed_trace(path: str, text: str) -> bool:
         return True
     if path in AI_DISCLOSURE_PATHS or path in PRODUCT_PROVIDER_PATHS:
         text = AI_TOOL_NAMES.sub("", text)
-        if path == "docs/design-decisions.md":
-            text = text.replace("AGENTS.md", "runtime-instructions.md")
         return bool(TRACE.search(text))
     return bool(TRACE.search(text))
