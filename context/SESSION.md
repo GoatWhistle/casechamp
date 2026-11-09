@@ -241,8 +241,11 @@ Branch feat/regional-datasets, based on 77436c8. Publish current catalog and scr
 
 > frontend/claude-trans.txt продолжи че там делали, но без тестов
 
-feat/map-first-ui: OSM build/Biome passed; tests skipped. Protected quotes exceed budget.
+OSM build/Biome passed; tests skipped.
 
 > коммит и выкатывай на стенд case.vm
 
-SSH case.vm: dev/root denied; deployment blocked on credentials. Hooks skipped: no tests requested.
+> ssh main.home-1.serv
+
+case.vm: devbox:8080, API :8077; no reboot supervision.
+Fixed missing MapLibre worker; build/Biome passed, browser map visible. No tests.
