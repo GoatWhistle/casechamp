@@ -1,8 +1,8 @@
 {
-  "sha256": "6564629e4b726ccdb553aa4ccbf72b394200aafa8517d5d5a37fa24d38df7f1a",
+  "sha256": "cf99c1eddccffbf4d74670911ef3541dbfed724f9740f1fdae519bd0489888cb",
   "duration_s": 280,
-  "words": 561,
-  "estimated_spoken_s": 269.28,
+  "words": 574,
+  "estimated_spoken_s": 275.52,
   "slides": [
     {
       "id": "problem",
@@ -17,7 +17,7 @@
     {
       "id": "method",
       "seconds": 40,
-      "words": 82
+      "words": 85
     },
     {
       "id": "russia",
@@ -27,7 +27,7 @@
     {
       "id": "pilot",
       "seconds": 55,
-      "words": 106
+      "words": 116
     },
     {
       "id": "checks",
