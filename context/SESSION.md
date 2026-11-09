@@ -220,3 +220,19 @@ Current workspace branch remains feat/transport-graph. origin/main 81b6524 conta
 Local sync verification: all 1664 pre-existing data files (4758822795 bytes) retain their SHA256 hashes. Full frontend verify passed (375 tests and build); backend Ruff/mypy and 138 unit tests passed. Existing indices and pilot exports retained unchanged from model-validation; Stavropol buses remain catalog-only additions to the fixed national calculation. Preview runs from the main workspace at port 5187 (session 8738), API 8000 (session 43661). Model tests: 21 passed. HTTP smoke checks passed for ready indices, Tuva pilot, Crimea geometry, 653 Stavropol links and downloadable bus archive. No push requested.
 
 Prior validation details: [archived history](../work/integration/local-before-sync-20261109/validation-history.md).
+
+## National dataset discovery, 2026-11-09
+
+> найди такие же датасеты для всех регионов
+
+Collection details: [archive](../work/regional-collection/session-detail.md). Existing datasets and model remain unchanged.
+
+## Brief reading, 2026-11-09
+
+User request: «прочти тз хакатона». Read TASK, requirements, QA and both original PDFs under brief/sources/2026-11-09. No implementation changes. Branch feat/transport-graph; HEAD 77436c889e14f11d0ff1e2ee5437e2fe03f5508f. Next: await user direction. Existing dataset changes preserved. Submission timezone/form remain unresolved; saved organizer deadline is 10 Nov 23:39. No product checks needed for reading.
+
+## Publication, 2026-11-09
+
+> запушь в новую ветку
+
+Branch feat/regional-datasets, based on 77436c8. Publish current catalog and scripts to origin/feat/regional-datasets. Raw data stays ignored locally. JSON parsing and Python syntax checks passed; no product code changes. Next: verify remote branch after push.
