@@ -106,3 +106,13 @@ The rest of that user message is preserved verbatim in `brief/sources/2026-11-06
 1. Commit/push the zoom-lag follow-up only if requested. Another session was editing `work/design/home/` concurrently (deleted prototypes, new `hero.js`); those changes are not ours.
 2. Local containers use UI 8080/API 8001. Temporary Compose config for this repair: `/tmp/plexus-map-compose.yml`; root Compose file remains absent after the user's earlier deletion request.
 3. Open product items outside this repair: antimeridian seam and index export from DuckDB.
+
+## Local preview on this machine
+
+2026-11-08: User requested local launch of the latest frontend. Detached worktree at `/private/tmp/casechamp-frontend-preview`, source `origin/feat/frontend`, SHA `a445fa8`. Dependencies installed with npm ci and uv sync --frozen. Frontend running on http://127.0.0.1:5187 (session 39441); API on 127.0.0.1:8000 (session 37981). Browser opened; map shows 82 regions, 155412 settlements and 997 links. Overview API verified through Vite proxy. Servers left running as requested. Main workspace and its uncommitted datasets preserved. Index export remains missing.
+
+2026-11-08: Added the missing Crimea boundary to region 35000000 from geoBoundaries UKR ADM1 (2017, OSM/Wambacher, ODbL-1.0); provenance in docs/map-crimea.md. Rebuild both geometry layers together because the shared projection frame changes. Updated API assertions for present geometry and no missing atlas regions. Changes remain local in this preview worktree.
+
+Crimea validation: 104 backend unit tests passed; Ruff and mypy passed. Live API through port 5187 returns has_geometry=true and 1019 settlements. Both geometry layers have matching source hash. API restarted as session 9286. Browser revisit blocked by macOS capture failure (-3811); visual review remains unverified.
+
+2026-11-08: User requested data refresh only, no new UI blocks. Existing region links now contain 653 Stavropol bus registry routes; existing sources contain four downloadable dataset archives. Export script scripts/refresh_stavropol.py reads source workspace. Economy/population were already current. No routing/indices or medical geocoding claimed. Backend 105 tests, Ruff/mypy; frontend verify 353 tests passed.
