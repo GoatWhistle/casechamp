@@ -1,18 +1,14 @@
 # Open questions
 
-Updated 2026-11-09 after implementation audit. Earlier questions saying the product name and
-all formulas were undecided are superseded by actual Plexus code; the final target decision is still open.
+Updated 2026-11-09. Product decisions are fixed in work/project-plan.md; they are not open questions.
 
-| ID | Question | Why it matters | Status |
-|---|---|---|---|
-| Q1 | Is the submission cutoff 10 November 23:39 or 23:59, and in which timezone? What is the defense time on 13 November? | Primary message 266 preserved verbatim in brief/QA.md; use earlier 23:39 for planning, timezone unconfirmed. | Verify primary message; no new organizer message sent in this audit. |
-| Q2 | Where is the submission form, exact passport template and receipt? | No completed team passport or receipt found in checkout. | Open |
-| Q3 | Are scoring weights or format rules published beyond the four qualitative criteria? | Avoid inventing score estimates. | No weights in inspected sources |
-| Q4 | Where is the authoritative input snapshot / DuckDB used for national results? | data/ missing, EDA raw ZIP missing; cannot reproduce published aggregate results here. | Open |
-| Q5 | Is the primary decision economic market access or seasonal access of remote residents to named centres? Which pilot and trips? | README promise and Hansen target do not yet align. Audit recommends a checked local pilot, with national map as context. | Resolved in project-plan.md: national Hansen + Tuva centre trips. |
-| Q6 | Which concrete improvements are compared, and what waiting model/seasonal closure rules apply? | Seasons alone are not a final intervention comparison. 24h cap loses frequency sensitivity. | Open |
-| Q7 | Which AI outputs and validation records go into submission? | work/ is scrubbed; evidence must survive in the final attachments. | Open |
+| ID | Question | Current evidence | Status |
+| --- | --- | --- | --- |
+| Q1 | Which timezone applies to 10 Nov 23:39, and what is the defense time? | Organizer message 266 is preserved verbatim in brief/QA.md. | Timezone and defense slot unconfirmed |
+| Q2 | Where are the submission form, official passport fields and receipt? | Full chat sync through message 270 on 9 Nov 06:18 UTC; no submission form. Message 208 is case selection only. | External form unavailable; nothing submitted |
+| Q3 | Are criterion weights or additional format limits published? | Inspected sources list four qualitative criteria, no weights. | Do not invent weights or file-size limits |
+| Q4 | Is there evidence that the idea and sources were entered into a passport on 6–8 Nov? | Repository contains earlier research, but no located timestamped passport submission. | R15 unconfirmed; cannot satisfy retroactively |
+| Q5 | Which schedules and closures are operating now? | Tuva links are historical; source URL alone is not verification. | Explicit model assumptions; external validation belongs on roadmap |
 
-Original A2 PDF explicitly permits a number or system of indicators, so a single scalar is not
-an established mandatory constraint. The transport briefing is marked 2026. Whether every historical
-transport link remains active is unverified; source URLs alone do not establish that.
+User instructed leaving team name, participant names and captain contact blank for now. Do not ask
+again for these fields. Model calculations and prepared materials do not establish a submission receipt.

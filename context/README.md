@@ -1,36 +1,31 @@
 # Project context
 
-Plexus — transport connectivity atlas for regional policy analysts, focused on settlements,
-seasonal links and access to centres/markets. Case A2, «Транспорт и территории».
-Current implementation: React/Vite frontend + read-only FastAPI over exported JSON;
-separate DuckDB/OSM calculation pipeline. Russian UI, one light theme per user instruction.
+Plexus: transport accessibility for regional policy analysts. Two levels: population-weighted
+Hansen market accessibility for 82 comparable regions, and interactive centre trips in Tuva.
+Russian UI, one light theme; no mobile checks. Work on main, small commits, preserve root HTML.
 
 ## Current facts, 2026-11-09
 
-| Topic | Status | Fact and evidence |
-|---|---|---|
-| Workflow | verified | Only main / origin/main after integration; baseline SHA 81b6524. User explicitly requires work on main. |
-| Task alignment | audited, incomplete | R01–R18 mapped; no requirement labelled stand-verified in this audit. [Audit and priorities](../work/audits/project-alignment/2026-11-09.md). |
-| Original PDFs | read | [Case A2](../brief/sources/2026-11-09/case-a2.pdf), [transport briefing](../brief/sources/2026-11-09/transport-connectivity.pdf). Index, comparisons and recalculated transport changes are the core output; a web app or LLM inside the product is not required. |
-| Atlas API | verified in process with real files | 82 regions, 155412 settlements, 997 links; Tuva 7 links. [Evidence](../work/audits/project-alignment/evidence.md). |
-| Index | code only; missing in app | etl/indices.py exists; data/ absent; indices.json empty; API status=missing. Current frontend metric selector has no Hansen. |
-| Scientific risks | code-reviewed | Seasonal OSM edges not removed from common graph; wait cap makes 1/2/3 weekly departures equal; Palma counterexample fails; district-centre proxy is not hospital access. See audit. |
-| Scenarios | partial | EDA contains one hypothetical Kostroma–Obninsk change under a different formula. Summer/winter calculations do not by themselves prove a preferred improvement for the final pilot. |
-| Validation | scoped | Merge frontend verify: 372 tests. Backend unit rerun in audit: 106 passed. Full ETL, all-source verification and current browser path not checked. EDA validation blocked by missing ignored raw ZIP. |
-| Submission | unverified | No team passport, final slide deck, roadmap or submission receipt found here. Root speech.md is a briefing transcript. |
-| Deadline | conflicting sources | Supplied general rules say 10 Nov 23:59; preserved SESSION report says organizer reply 23:39. Timezone and exact primary message require verification; defense 13 Nov. |
+| Topic | Status | Evidence |
+| --- | --- | --- |
+| Plan | active | [Full delivery plan](../work/project-plan.md), revised after correctness review. |
+| Git | local commits | HEAD f1811c0; model, API/UI, national exports, Compose, docs and defense committed locally; not pushed. |
+| Pilot | verified on local stand | 7 points, 19 edges, 3 pairs; 24 same-graph independent comparisons. [Method](../docs/pilot-method.md), [reports](../docs/results/pilot-validation.json). |
+| Pilot effects | conditional model results | Kungurtug–Kyzyl: base 18.095h; frequency 4 has zero effect; frequency 7 gives 14.243h. Historical service and OSM operability remain unverified. |
+| API/UI | verified locally | 137 unit + 6 integration =143 backend checks; frontend 375 tests/36 guards; four desktop Playwright scenarios passed on clean and scrubbed Compose checkouts. |
+| Compose | healthy | Two services, mounted read-only artifacts, no paid keys. Port 8081 runs Compose; 8000/8080 dev services remain live. |
+| Inputs | restored | Seven tabular sources, ten PBFs and extracted Parquets. PBF source timestamp 2026-11-07T21:21:36Z. data/ is ignored; manifests retain hashes. |
+| National graph | built | 6,991,438 nodes, 17,395,685 edges; 155,747 points in source. Comparable index excludes 335 partial federal-city points, leaving 155,412 in 82 regions. |
+| National index | verified and published locally | 410 rows/5 scenarios, 777060 point rows; road mean=100, zero monotonicity violations, 12 independent formulas. Artifact 7868caee. [Protocol](../docs/results/national-validation.json). |
+| Defense | rendered and inspected | Seven HTML slides, two-page passport and two-page speech PDF under docs/submission/. Speech 561 words, estimated 269s at 125 wpm; not a live rehearsal. National values refreshed; PDFs inspected, all seven slide PNGs checked. |
+| Submission | not sent | Primary deadline reply: 10 Nov 23:39; timezone unknown. Chat synced through message 270 on 9 Nov 06:18 UTC, submission form not found. Team fields intentionally blank at user request. |
 
 ## Pointers
 
-- [Session and protected instructions](SESSION.md)
-- [Open questions](open-questions.md)
-- [Requirements](../brief/requirements.md)
-- [Product documentation](../docs/README.md)
-- [Prior EDA](../work/eda/README.md), [integration](../work/integration/2026-11-09.md)
+- [Protected instructions and current session](SESSION.md)
+- [Unresolved external facts](open-questions.md)
+- [Detailed progress and process notes](../work/implementation-progress.md)
+- [Original requirements](../brief/requirements.md)
+- [Initial alignment audit](../work/audits/project-alignment/2026-11-09.md)
 
-Next priority: settle one target decision/pilot; restore inputs; fix seasonal routing and waiting;
-calculate baseline and transport interventions; expose results; package submission and AI evidence.
-
-Implementation plan: [work/project-plan.md](../work/project-plan.md). User selected two levels, interactive pilot calculation and explicit assumptions for incomplete data.
-
-Implementation started: [progress](../work/implementation-progress.md). Settlements and intercity source Parquet restored; national download/extraction ongoing. Model controls pass (13 local tests), full recalculation pending. Deadline primary message preserved in brief/QA.md.
+Next: submission form and explicit team submission authorization; live speech rehearsal and external transport validation. Local plan work is complete. Clean submission copy/history passed verification without changing main; local archive is prepared under tmp/.

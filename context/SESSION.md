@@ -1,6 +1,9 @@
 # Session state
 
-Updated: 2026-11-09, Europe/Moscow
+Updated: 2026-11-09, Europe/Moscow. Work directly on main. The current project plan supersedes
+historical frontend-only scope, publication holds and the pause. Preserve root HTML outside commits;
+no mobile checks. Earlier state and all explanatory history: work/integration/session-before-delivery.md.
+The following user quotes remain verbatim; chronology determines which instruction is current.
 
 ## Explicit user instructions
 
@@ -16,8 +19,6 @@ Use Plane Workspace Insights, its six plane-* skills, and its Plane MCP tools on
 2026-11-06:
 
 > теперь задание хакатона добавим.
-
-The rest of that user message is preserved verbatim in `brief/sources/2026-11-06-task.txt` and `brief/TASK.md`.
 
 2026-11-06:
 
@@ -65,8 +66,6 @@ The rest of that user message is preserved verbatim in `brief/sources/2026-11-06
 
 > нормальная архитектура и структура фронтедна в hack-template, мы должны использовать ее если кейсу это не мешает, только убрать от туда англ язык и тему, будем в одной теме и языке, русский язык светлая тема, с которой позжде определимся, сначала сделать надо базовую арху, чтобы позже мы щас с тобой определились с названием и крч темой вообще. пока базовая штука
 
-
-
 2026-11-08:
 
 > посмтри сессию клода в папке где фиксился зум и карта и доделай по его лпану все
@@ -90,8 +89,6 @@ The rest of that user message is preserved verbatim in `brief/sources/2026-11-06
 
 > прорисовка букв очень лагает . и просто анимация говно зачем месяца эти и прочее подумай абстрагируясь какую можно красивую анимацю сделать на главную страницу
 
-This latest request supersedes the earlier letter-drawing and seasonal-home design preferences.
-
 2026-11-08:
 
 > как это работает кнопку убери . можешь чуть украсить как надпись появляется и эту анимацию справо как то украисить подумай и переплетения нечеткие и не понятно зачем нужно это
@@ -104,13 +101,9 @@ This latest request supersedes the earlier letter-drawing and seasonal-home desi
 
 > проверь чтобы совпдала с дизайн системой которая в корне проекта
 
-These requests authorize continuous decorative signals and establish root design-system.html as the home prototype's visual source of truth.
-
 2026-11-08:
 
 > карта каличная очень бледная и кривая может еще чтото на фон поставить подумай хорошо пожалуйста
-
-This supersedes the geographic background; preserve continuous balls and root design-system.html as the visual source.
 
 2026-11-08:
 
@@ -119,8 +112,6 @@ This supersedes the geographic background; preserve continuous balls and root de
 2026-11-08:
 
 > эти круги вылазеют за экран ну просто пиздец еще давай какой то фон ты не можешь сделать на фон карту чтобы она полностью помещалась и чтобы маршруты по этой карте шли через наш этот икс
-
-This latest request restores a complete contained map and supersedes the geometric circles.
 
 
 2026-11-08, prototype and integration instructions:
@@ -135,13 +126,9 @@ This latest request restores a complete contained map and supersedes the geometr
 
 > не добавляй ничего не бек если  . оставь токо то что есть
 
-These instructions supersede the wait: integrate the final root prototypes, commit and push on feat/frontend. Do not run mobile checks or change the backend. Keep every root HTML on disk and outside commits.
-
 2026-11-08, local preview before publication:
 
 > пока не пуш залей на локалхост 8080 чтобы я протыкал
-
-Push is explicitly deferred. Prepare the local preview on port 8080 and wait for user review. The earlier publication-account question is suspended.
 
 2026-11-08, home review:
 
@@ -153,8 +140,6 @@ Push is explicitly deferred. Prepare the local preview on port 8080 and wait for
 
 > пока не делай комитов пусть все мои коменты потом сделаешь одним комитом
 
-Restore the previous large map behind the home CTA. Do not create commits or push while review continues; batch all user feedback into one later commit.
-
 2026-11-08, interaction review:
 
 > когда в источниках переключаешь вкладки на секунду на пол экрана черточка . когда в методике по квадратикам ведешь надо чтобы походу этого менялась надпись . на странице региона пролистывается непонятно как не получается проилстать до конца.  зачем когда нажимаем на регион остаются связи всей россии надо чтобы там писались связи городов региона которые щас в карточке
@@ -163,44 +148,62 @@ Restore the previous large map behind the home CTA. Do not create commits or pus
 
 > закомить и запушь все комиты
 
-This supersedes the temporary commit/push hold. Commit the accumulated frontend feedback as one change and push all local commits on feat/frontend. Preserve root HTML outside commits and the configured human Git identity.
-
 ## Current state
-
-Previous frontend work and verification history: [archive](../work/integration/session-before-main.md).
 
 ## Integration 2026-11-09
 
-User instruction (verbatim):
-
 > зайди в контекст проекта /Users/kaifarikman/Downloads/2\ кейс.pdf /Users/kaifarikman/Downloads/2_Транспортная\ связность.pdf вот тут тебе ТЗ. посмотри что лежит в каждой из веток. нужно это все дело корректно смерджить
-
-Integration details and prior checks: work/integration/2026-11-09.md. Publication completed; current state below.
-
-- 2026-11-09: Rechecked Telegram chat through message 270. Organizer's 8 Nov reply says deadline 10 Nov 23:39, conflicting with original 23:59; timezone unconfirmed. Downloaded original A2 PDF and presentation to Telegram MCP media cache; A2 matches supplied task. Site mai-way.ru inaccessible through web tool; submission form not found in chat at last sync. Current branch `chore/integrate-branches`, HEAD `1f2abda`. Next: verify submission form and deadline with organizers; preserve active instructions. Context budget exceeds targets due to protected instructions.
 
 ## Main-only workflow, 2026-11-09
 
-User instruction (verbatim):
-
 > тогда запушь это дело в мейн щас, тупо туда влей и остальные ветки на remote и local удали. все будем делать в мейне
-
-Work directly on main from now on. Integration revision: 1f2abda; main will be fast-forwarded to the resulting commit. Publish main before removing merged local and remote branches. The direct-main prohibition in the pre-push hook is removed by explicit user instruction; other checks remain. Existing context update from the parallel session is preserved. Product gaps and verification limits remain recorded above.
 
 ## Alignment audit, 2026-11-09
 
-Active user goal (verbatim):
-
 > цель - понять, корректно мы все делаем или нет. у тебя есть ТЗ. осознай что мы сдлеали, что нет, где минусы, где плюсы и что осталось. какие риски по проекту
-
-Current branch main, HEAD 81b6524f5724032bc707b2433eca6713594607ce; integration push and branch deletion completed. Earlier future-tense publication notes above are historical. Audit: work/audits/project-alignment/2026-11-09.md; checks: evidence.md alongside it. All R01–R18 assessed, strengths/risks and ordered remaining work recorded. API with real exports verified; backend 106 unit tests passed again. Main gaps: index absent and not displayed by current frontend; no final intervention comparison; seasonal graph and waiting assumptions need correction; Palma counterexample reproduced. No product code changed in this audit. No full ETL/browser run; source data absent. Next: agree pilot decision, restore calculations, fix model, connect results and prepare submission. Protected instructions intentionally exceed SESSION target.
 
 ## Implementation goal, 2026-11-09
 
-Active user instruction (verbatim):
-
 > твоя цель - выполнить все то, что я тебе описал в этом плане. не подведи. тут важный проект. всегда поступай по рекомендации брат. файл - work/project-plan.md , работой
 
-Execute work/project-plan.md on main, including ETL/API/UI; this supersedes the earlier frontend-only scope. No mobile checks. Preserve root HTML outside commits. Full goal remains active.
+## Plan review, 2026-11-09
 
-Progress and failed checks: work/implementation-progress.md. Root uv uses Python 3.12. Model controls: 13 tests pass, including Palma, 84/f waiting and seasonal routing. Settlements/intercity restored; national OSM and BDMO restoration running. National results and pilot not yet verified. Telegram deadline source preserved in brief/QA.md. Next: finish restoration/manifests, national graph/calculation, pilot API/UI, submission materials. Live process handles recorded in the implementation log; revalidate before resuming jobs.
+## Revised plan acknowledged, 2026-11-09
+
+> стой друг
+
+> исправил доку. осознай новые изменения
+
+## Current implementation, 2026-11-09
+
+Goal resumed by user; earlier pause is historical. Work on main, HEAD f1811c0 from Git.
+User reply on passport identity fields (verbatim):
+
+> пока что забей, поставь пропуски
+
+All local work in the revised project plan is implemented and verified. Source commits remain local,
+not pushed. Pilot artifact 7a33b4bf…; national artifact 7868caee… covers 82 regions, 155412 origins,
+five scenarios and 410 regional rows. National road weighted mean=100; no monotonicity failures;
+12 independent formula checks passed after explicitly casting market arithmetic to DOUBLE.
+
+Checks: frontend verify 375 tests/36 guards; backend Ruff/mypy and 137 unit +6 integration=143;
+root model 21 controls; cleanup 11 controls. Four desktop Playwright scenarios pass on a fresh
+local clone and a scrubbed-history clone through Compose. No mobile checks. HTTP p95=0.001556s,
+200 sequential warmed Compose requests on Apple M4 Pro; no concurrency/network claim.
+
+Seven slides, two-page passport with intentional identity blanks, two-page speech, CSV variants,
+AI register, research appendices, methods and requirements map are committed. Speech 561 words,
+estimated 269.28s; no live rehearsal. Final PDF/slide views inspected. Stand protocol:
+docs/results/stand-validation.json. Detailed checks and failures: work/implementation-progress.md.
+
+No heavy ETL process remains. Dev backend session31418 PID93075 on8000, frontend8080 remain;
+Compose8081 is available. Temporary clean verification projects use8082/8083; they are owned by
+this task and may be stopped. Scrubbed source copies stay under /tmp/plexus-submission-*; source
+history is unchanged. Final bundle is tmp/plexus-submission.zip, deliberately ignored by Git.
+
+Remaining facts: Telegram fully synced through270 on2026-11-09 06:18UTC; form absent. Deadline
+reply says10Nov23:39, timezone unknown. R15 historical passport timing unconfirmed. No organizer
+messages or form submissions authorized/performed. Live defense and external transport checks
+remain team actions. Do not invent a submission receipt or mark the full goal achieved merely
+because the local deliverables are ready. Skills used for submission are canonical skills/submission,
+docs-writing, presentation and related defense skills; preserve required AI disclosure in public docs.
