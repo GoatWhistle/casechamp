@@ -187,19 +187,13 @@ Delivery details, exact checks, versions, process IDs and submission blocker are
 
 > зайди в домен. изучи ТЗ , требования /Users/kaifarikman/Downloads/2\ кейс.pdf /Users/kaifarikman/Downloads/2_Транспортная\ связность.pdf и посмотри что уже сейчас готово и что покрывается
 
-main bad747d19493ce83736e44a2d7907488a072bec0. Report: work/audits/domain-coverage-2026-11-09.md. Both PDFs read; backend143, model21 and desktop E2E4 passed again on8081. No implementation changes. Next: field inputs, clear separation of national/pilot measures, stale brief summaries, rehearsal and submission. No full ETL rerun or fresh chat sync. SESSION exceeds target because protected user instructions remain verbatim.
-
 ## Validation branch workflow, 2026-11-09
 
 Latest user instruction (verbatim):
 
 > давай короче все изменения которые были(все коммиты) перенесем в другую ветку, на нее переключимся и там уже пойдем работать, тестировать и пробовать
 
-Current branch feat/model-validation, HEAD bad747d19493ce83736e44a2d7907488a072bec0. All 20 local commits beyond origin/main retained; ancestry verified. Local main moved to verified remote main 81b6524 using branch reference update after switching away. Working files, ignored data and pre-existing uncommitted audits preserved. No remote changes. This supersedes the earlier main-only workflow. Continue model quality, validation and experiments on this branch; preserve outstanding transport-data limitations and submission state.
-
 ## Validation experiments
-
-Details and next actions: work/integration/session-validation-detail-2026-11-09.md. 503 retry, stale-version and late-error-after-reset E2E passed; version reload resets inputs; same-version reload fixed; draft v2 built and 12 desktop E2E passed; draft ZIP predates test: work/experiments/pilot-error-recovery.md. 256 closure combinations and 768 independent route comparisons passed: work/experiments/pilot-closure-combinations.md. 336 scenarios, 972 monotonicity checks and 1008 independent shortest-path comparisons passed: work/experiments/pilot-frequency-sweep.md. Seven contradictory/invalid API cases rejected: work/experiments/pilot-api-boundary.md. Pilot empty-frequency ambiguity: work/experiments/pilot-frequency-boundaries.md. Isolated pilot browser check and limits: work/experiments/draft-stand-check.md.
 
 ## Final readiness work resumed
 
@@ -222,3 +216,7 @@ Latest user instructions (verbatim):
 > втащи сюда последние изменения с гита, как фронт так и feat/model-validation. Но не затри данные новые
 
 Current workspace branch remains feat/transport-graph. origin/main 81b6524 contains the latest frontend; deleted remote feat/frontend is superseded by main. origin/feat/model-validation f666d8e descends from main. Local acquired datasets are preserved by commit 66253c1; live preview integration is preserved by commit 152b06d. Full pre-sync context is archived at work/integration/local-before-sync-20261109/. Data backup and pre-merge hashes: /private/tmp/keys-champ-merge-backup-20261109/. Merge and verification in progress.
+
+Local sync verification: all 1664 pre-existing data files (4758822795 bytes) retain their SHA256 hashes. Full frontend verify passed (375 tests and build); backend Ruff/mypy and 138 unit tests passed. Existing indices and pilot exports retained unchanged from model-validation; Stavropol buses remain catalog-only additions to the fixed national calculation. Preview will run from the main workspace at port 5187, API 8000. No push requested.
+
+Prior validation details: [archived history](../work/integration/local-before-sync-20261109/validation-history.md).
