@@ -1,0 +1,79 @@
+{
+  "point_id": "28756000051",
+  "regional_normalization": "original fixed road baseline; not recalculated",
+  "method": "replace the single point contribution and coverage with zero; all other points fixed",
+  "manual_links": [
+    {
+      "season": "summer",
+      "mode": "river",
+      "count": 3
+    }
+  ],
+  "values": [
+    {
+      "season": "road",
+      "point_population": 1840,
+      "region_population": 1230171,
+      "point_hansen": 111.7848064079662,
+      "regional_baseline": 250.71175573538156,
+      "stress_point_hansen": 0.0,
+      "stress_region": 250.54455618036795,
+      "delta_index_points": -0.16719955501361827,
+      "relative_change_percent": -0.06668995417593908,
+      "coverage_baseline_percent": 99.99959355244108,
+      "coverage_stress_percent": 99.85002085075978
+    },
+    {
+      "season": "road_summer",
+      "point_population": 1840,
+      "region_population": 1230171,
+      "point_hansen": 111.7848064079662,
+      "regional_baseline": 250.71175573538156,
+      "stress_point_hansen": 0.0,
+      "stress_region": 250.54455618036795,
+      "delta_index_points": -0.16719955501361827,
+      "relative_change_percent": -0.06668995417593908,
+      "coverage_baseline_percent": 99.99959355244108,
+      "coverage_stress_percent": 99.85002085075978
+    },
+    {
+      "season": "road_winter",
+      "point_population": 1840,
+      "region_population": 1230171,
+      "point_hansen": 111.78503682810404,
+      "regional_baseline": 250.71939300524755,
+      "stress_point_hansen": 0.0,
+      "stress_region": 250.55219310558832,
+      "delta_index_points": -0.16719989965924367,
+      "relative_change_percent": -0.06668806016762499,
+      "coverage_baseline_percent": 99.99975613146465,
+      "coverage_stress_percent": 99.85018342978334
+    },
+    {
+      "season": "summer",
+      "point_population": 1840,
+      "region_population": 1230171,
+      "point_hansen": 111.78484883235826,
+      "regional_baseline": 250.71363313835315,
+      "stress_point_hansen": 0.0,
+      "stress_region": 250.54643351988423,
+      "delta_index_points": -0.16719961846892767,
+      "relative_change_percent": -0.06668948009566782,
+      "coverage_baseline_percent": 99.99959355244108,
+      "coverage_stress_percent": 99.85002085075978
+    },
+    {
+      "season": "winter",
+      "point_population": 1840,
+      "region_population": 1230171,
+      "point_hansen": 111.78503682810424,
+      "regional_baseline": 250.71939300524815,
+      "stress_point_hansen": 0.0,
+      "stress_region": 250.5521931055889,
+      "delta_index_points": -0.16719989965924398,
+      "relative_change_percent": -0.06668806016762496,
+      "coverage_baseline_percent": 99.99975613146465,
+      "coverage_stress_percent": 99.85018342978334
+    }
+  ]
+}

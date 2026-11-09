@@ -1,12 +1,11 @@
 # Session state
 
-Updated: 2026-11-08, Europe/Moscow
+Updated: 2026-11-09, Europe/Moscow. Work directly on main. The current project plan supersedes
+historical frontend-only scope, publication holds and the pause. Preserve root HTML outside commits;
+no mobile checks. Earlier state and all explanatory history: work/integration/session-before-delivery.md.
+The following user quotes remain verbatim; chronology determines which instruction is current.
 
 ## Explicit user instructions
-
-2026-11-07:
-
-> https://github.com/GoatWhistle/casechamp/tree/case-a2-transport-graph спуль сюда последнюю версию
 
 2026-11-06:
 
@@ -20,8 +19,6 @@ Use Plane Workspace Insights, its six plane-* skills, and its Plane MCP tools on
 2026-11-06:
 
 > теперь задание хакатона добавим.
-
-The rest of that user message is preserved verbatim in `brief/sources/2026-11-06-task.txt` and `brief/TASK.md`.
 
 2026-11-06:
 
@@ -61,35 +58,167 @@ The rest of that user message is preserved verbatim in `brief/sources/2026-11-06
 
 > закомить и запушь всё
 
-Latest explicit instructions (current conversation):
+2026-11-07:
 
-> там добавились данные
-> подключай
-> запушь это
-> итого что по индексам. Что мы умеем смотреть и показывать
-> какие подтемы мы закрыли
-> дополняй контекст субагентами
+> вникни в проект, создай ветку фронтенд от case-a2-transport-graph, короче попробуй понять что вообзще делаем и как и что
 
-## Current request — Stavropol acquisition, 2026-11-08
+> смотри, мы делаем фронтенд как ты понял, изучи скиллы и прочее что есть, потому что активно будем их использовать
 
-> тебе нужно выполнить задачу на 70 субагентов. Используй sol 6.1  medium
-> ой, ветка не та, зайди в https://github.com/GoatWhistle/casechamp/tree/case-a2-transport-graph
-> есть мысли где еще данных взять ?
-> собирай всё
-> иди собирай датасет для ставрополья
+> нормальная архитектура и структура фронтедна в hack-template, мы должны использовать ее если кейсу это не мешает, только убрать от туда англ язык и тему, будем в одной теме и языке, русский язык светлая тема, с которой позжде определимся, сначала сделать надо базовую арху, чтобы позже мы щас с тобой определились с названием и крч темой вообще. пока базовая штука
 
-Latest geography is Stavropol Krai. No new subagents in this regional turn. Work is local acquisition, not a new modeling or publication run.
+2026-11-08:
 
-Git verified: local `feat/transport-graph`, tracking `origin/case-a2-transport-graph`; HEAD `20beaba58b0b4458983ea267a79b92d0941662e5`. No new commit/push.
+> посмтри сессию клода в папке где фиксился зум и карта и доделай по его лпану все
 
-Package: `datasets/additional/stavropol/README.md`; bulk files under ignored `data/additional/stavropol/{raw,derived}`. Existing DB slice: 760 settlements, 28,590 RFSD companies, 17,338 matched FNS records, 1,520 light observations. New official sources: OMS 2025/2026, federal bus registry 20.10.2026, 33 historical municipal road DOCX, Predgorny bus scan 29.07.2024. Extracted 653 bus routes / 7,124 schedule rows and 161 OMS organizations / 1,165 care rows for 2026. Dates of exclusion retained; do not call every registry row an active facility. One 2025 OMS row has another region code. Pinned North Caucasus Geofabrik PBF downloaded; MD5 matched; RU-STA boundary extraction succeeded. OSM extraction completed: 95,306 ways, 4,732 POIs, 401 route relations, 1,370 restriction relations, snapshot 2026-11-07T21:21:36Z. Package checks: see `datasets/additional/stavropol/validation.json`.
+> зум исправлен но все равно лагает . также архангельскую область куда то в пизду унесло на карта . и я не могу теперь эту карту двигать . исправь
 
-Failed checks/access: Rosstat TLS timeout; current intraregional bus URL serves generic navigation; transport-plan mirror serves browser challenge. Predgorny PDF is a scan without text layer. Existing national graph/travel-time DB is absent; new data have not entered a routing graph or atlas indices. Missing current traffic counts, official service geocoding, complete local timetables. `acquire.py`, extraction scripts, metadata and validation live with the package. Detailed pre-task memory and staged download logs archived at `work/data-acquisition-stavropol-2026-11-08/`.
+> и все еще лагает очень
 
-Earlier integration remains: `etl/additional_data.py` builds 26-table additional DB and atlas aggregates. RFSD revenue in RUB; FNS income is separate; registration coordinates are not production sites. Eight source families integrated, earlier Ural/Yugra packages acquired but not modeled. `public/indices.json` remains empty and economic access requires a missing routing graph. Prior verification passed backend/Node tests, TypeScript/build and desktop flow checks. Audit: `docs/data-audit-2026-11-07.md`. Prior Sites deployment was not approved and was not published; GitHub push was completed earlier. Preserve existing unrelated collection changes.
+> Тормозит при любом действии
 
-Next: complete Stavropol extraction and validation, then join official service locations and timetables to a correctly directed, mode-specific graph before calculating accessibility. Historical road/tax lists must not establish current road closures or isolation. Full previous session details: `work/data-acquisition-stavropol-2026-11-08/session-before-stavropol.md`.
+> твой план уже реализовали закомить изменения не включая в комит хтмл файлы в корне проекта и после комита пуша проверь можно ли еще лаги убрать их уже меньше стало но все равно при увелечении ументшении лаги есть
 
-Package validation passed: 110 files / 170,008,152 bytes; source hashes, ZIP integrity, identifier/coverage checks, bus/medical relationships and OSM geometry arrays. Python compilation passed. Context budget script is absent on this branch; manual counts show SESSION below 6,000, while pre-existing README (7,983) and open questions (3,439) exceed targets and were left unchanged.
+2026-11-08:
 
-Global `git diff --check` reports existing CRLF/trailing-whitespace entries in `datasets/additional/local-files.csv` from the earlier Yugra/Ural acquisition. Scoped README check passed; existing CSV preserved.
+> Resume this session with:
+> claude --resume b50b925b-d840-4b2d-9ed2-b7d8029382b1 вот сессия старая клода доделай этот хтмл файл щас плохо . надпись плексус хуйня она страшная из-за шрифта  и цветов которые отличаются от дизайн системы не отходи от нее . также анимация с картой очень долная используя все скилы подумай какую другую анимацию можно сделать тчобы она было не долгаи и какую сделать анимацию построения надписи
+
+> ты можешь анимацию отрисовки надписи оставить как была раньше . чтобы буквы красиво появлялись
+
+2026-11-08:
+
+> прорисовка букв очень лагает . и просто анимация говно зачем месяца эти и прочее подумай абстрагируясь какую можно красивую анимацю сделать на главную страницу
+
+2026-11-08:
+
+> как это работает кнопку убери . можешь чуть украсить как надпись появляется и эту анимацию справо как то украисить подумай и переплетения нечеткие и не понятно зачем нужно это
+
+2026-11-08:
+
+> пусть шарики все вермя катаются
+
+> и добавь на фон чтото а то много пустоты белой . фон может какой то с картой может нимацию с картой где много путей ъуй пойми какой и там наш сервис все делает понтяным
+
+> проверь чтобы совпдала с дизайн системой которая в корне проекта
+
+2026-11-08:
+
+> карта каличная очень бледная и кривая может еще чтото на фон поставить подумай хорошо пожалуйста
+
+2026-11-08:
+
+> куда эти линии уходят непонятно . сделай чтобы не было в пустоту
+
+2026-11-08:
+
+> эти круги вылазеют за экран ну просто пиздец еще давай какой то фон ты не можешь сделать на фон карту чтобы она полностью помещалась и чтобы маршруты по этой карте шли через наш этот икс
+
+
+2026-11-08, prototype and integration instructions:
+
+> сделай обновленный хтмл в корень проекта макет где будут реализованы все предложения клода
+
+> в будущем я скажу тебе что ты итогвые две хтмл взял как образец и реализовал в проекте в ветке фронтенд и потмо сделал комиты и  пуши только убери чтобы в комитах хтмл созданные в корне не было . но не удаляй . пока просто план закрепи у себя когда сесси закончат я скажу делай
+
+2026-11-08, integration authorization:
+
+> все хтмльки готовы начинай работу токо не делай проверки под мобильные устройства
+
+> не добавляй ничего не бек если  . оставь токо то что есть
+
+2026-11-08, local preview before publication:
+
+> пока не пуш залей на локалхост 8080 чтобы я протыкал
+
+2026-11-08, home review:
+
+> повторить анимацию кнопку с главной страницы убери
+
+2026-11-08, map review and commit batching:
+
+> почему открыть атлас открывает какое то странное меню надо чтобы как раньеш до двух комитов отрывалась большая карта
+
+> пока не делай комитов пусть все мои коменты потом сделаешь одним комитом
+
+2026-11-08, interaction review:
+
+> когда в источниках переключаешь вкладки на секунду на пол экрана черточка . когда в методике по квадратикам ведешь надо чтобы походу этого менялась надпись . на странице региона пролистывается непонятно как не получается проилстать до конца.  зачем когда нажимаем на регион остаются связи всей россии надо чтобы там писались связи городов региона которые щас в карточке
+
+2026-11-08, publication authorization:
+
+> закомить и запушь все комиты
+
+## Current state
+
+## Integration 2026-11-09
+
+> зайди в контекст проекта /Users/kaifarikman/Downloads/2\ кейс.pdf /Users/kaifarikman/Downloads/2_Транспортная\ связность.pdf вот тут тебе ТЗ. посмотри что лежит в каждой из веток. нужно это все дело корректно смерджить
+
+## Main-only workflow, 2026-11-09
+
+> тогда запушь это дело в мейн щас, тупо туда влей и остальные ветки на remote и local удали. все будем делать в мейне
+
+## Alignment audit, 2026-11-09
+
+> цель - понять, корректно мы все делаем или нет. у тебя есть ТЗ. осознай что мы сдлеали, что нет, где минусы, где плюсы и что осталось. какие риски по проекту
+
+## Implementation goal, 2026-11-09
+
+> твоя цель - выполнить все то, что я тебе описал в этом плане. не подведи. тут важный проект. всегда поступай по рекомендации брат. файл - work/project-plan.md , работой
+
+## Plan review, 2026-11-09
+
+## Revised plan acknowledged, 2026-11-09
+
+> стой друг
+
+> исправил доку. осознай новые изменения
+
+## Current implementation, 2026-11-09
+
+Goal resumed by user; earlier pause is historical. Work on main. Release2 source SHA4915346 from Git; completion audit: work/audits/plan-completion.md.
+User reply on passport identity fields (verbatim):
+
+> пока что забей, поставь пропуски
+
+Delivery details, exact checks, versions, process IDs and submission blocker are preserved in work/integration/session-delivery-detail-2026-11-09.md. Source remains local; no submission authorized or performed.
+
+## Domain coverage audit, 2026-11-09
+
+> зайди в домен. изучи ТЗ , требования /Users/kaifarikman/Downloads/2\ кейс.pdf /Users/kaifarikman/Downloads/2_Транспортная\ связность.pdf и посмотри что уже сейчас готово и что покрывается
+
+main bad747d19493ce83736e44a2d7907488a072bec0. Report: work/audits/domain-coverage-2026-11-09.md. Both PDFs read; backend143, model21 and desktop E2E4 passed again on8081. No implementation changes. Next: field inputs, clear separation of national/pilot measures, stale brief summaries, rehearsal and submission. No full ETL rerun or fresh chat sync. SESSION exceeds target because protected user instructions remain verbatim.
+
+## Validation branch workflow, 2026-11-09
+
+Latest user instruction (verbatim):
+
+> давай короче все изменения которые были(все коммиты) перенесем в другую ветку, на нее переключимся и там уже пойдем работать, тестировать и пробовать
+
+Current branch feat/model-validation, HEAD bad747d19493ce83736e44a2d7907488a072bec0. All 20 local commits beyond origin/main retained; ancestry verified. Local main moved to verified remote main 81b6524 using branch reference update after switching away. Working files, ignored data and pre-existing uncommitted audits preserved. No remote changes. This supersedes the earlier main-only workflow. Continue model quality, validation and experiments on this branch; preserve outstanding transport-data limitations and submission state.
+
+## Validation experiments
+
+Details and next actions: work/integration/session-validation-detail-2026-11-09.md. 503 retry, stale-version and late-error-after-reset E2E passed; version reload resets inputs; same-version reload fixed; draft v2 built and 12 desktop E2E passed; draft ZIP predates test: work/experiments/pilot-error-recovery.md. 256 closure combinations and 768 independent route comparisons passed: work/experiments/pilot-closure-combinations.md. 336 scenarios, 972 monotonicity checks and 1008 independent shortest-path comparisons passed: work/experiments/pilot-frequency-sweep.md. Seven contradictory/invalid API cases rejected: work/experiments/pilot-api-boundary.md. Pilot empty-frequency ambiguity: work/experiments/pilot-frequency-boundaries.md. Isolated pilot browser check and limits: work/experiments/draft-stand-check.md.
+
+## Final readiness work resumed
+
+Latest user instruction (verbatim):
+
+> давай , делай
+
+Work resumed on feat/model-validation. Mandatory closeout: work/release-readiness.md. Empty-frequency explanation and version-reset notice added; frontend verify (375 unit tests) and 7 targeted browser scenarios passed. Draft v2 predates these changes. Vasilyevka evidence recorded in work/experiments/vasilevka-coordinate-check.md; raw inputs preserved, coordinate correction and graph/exports rerun remain open. Do not claim final delivery.
+
+## Publication authorized
+
+> все теперь это запушь дело всё и  скажи куда запушил
+
+Branch feat/model-validation; source HEAD c5dc29e before this state commit. Frontend verify passed (375 tests). Push target origin/feat/model-validation. Archives/data remain ignored; coordinate corrections and final delivery remain open.
+
+## Local synchronization, 2026-11-09
+
+Latest user instructions (verbatim):
+
+> втащи сюда последние изменения с гита, как фронт так и feat/model-validation. Но не затри данные новые
+
+Current workspace branch remains feat/transport-graph. origin/main 81b6524 contains the latest frontend; deleted remote feat/frontend is superseded by main. origin/feat/model-validation f666d8e descends from main. Local acquired datasets are preserved by commit 66253c1; live preview integration is preserved by commit 152b06d. Full pre-sync context is archived at work/integration/local-before-sync-20261109/. Data backup and pre-merge hashes: /private/tmp/keys-champ-merge-backup-20261109/. Merge and verification in progress.

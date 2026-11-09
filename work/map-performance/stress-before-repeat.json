@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-08T11:07:53.511Z",
+  "url": "http://localhost:8080",
+  "browser": "156.0.8078.4",
+  "cpu": 6,
+  "dpr": 2,
+  "cases": [
+    {
+      "name": "180 wheel events to max zoom and back",
+      "frames": 341,
+      "over50": 10,
+      "p95": 33.399999999999636,
+      "max": 766.7000000000003,
+      "times": {
+        "UpdateLayoutTree": 506.0939999999999,
+        "Layout": 324.0860000000002,
+        "FunctionCall": 759.4219999999979,
+        "Paint": 311.4189999999999,
+        "RasterTask": 520.693
+      }
+    },
+    {
+      "name": "180 drag events at selected region",
+      "frames": 359,
+      "over50": 3,
+      "p95": 16.799999999999272,
+      "max": 116.70000000000073,
+      "times": {
+        "FunctionCall": 679.4079999999967,
+        "UpdateLayoutTree": 139.95999999999998,
+        "Layout": 100.428,
+        "Paint": 34.659,
+        "RasterTask": 87.42099999999998
+      }
+    },
+    {
+      "name": "hover across region boundaries",
+      "frames": 207,
+      "over50": 16,
+      "p95": 66.60000000000218,
+      "max": 83.40000000000146,
+      "times": {
+        "FunctionCall": 887.3649999999935,
+        "UpdateLayoutTree": 429.66600000000005,
+        "Layout": 99.382,
+        "Paint": 70.97500000000001,
+        "RasterTask": 106.97399999999996
+      }
+    }
+  ]
+}

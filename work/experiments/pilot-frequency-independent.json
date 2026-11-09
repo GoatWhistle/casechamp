@@ -1,0 +1,8 @@
+{
+  "algorithm": "Floyd-Warshall on API graph with fixed 84/f waiting",
+  "artifact_version": "7a33b4bf26cb382c6d765d6e30549e639e94e01c9f4aa9c17111b608f3221d54",
+  "scenarios": 336,
+  "pair_comparisons": 1008,
+  "max_absolute_error_h": 0.0,
+  "limitation": "same stored graph and weights; no external data validation"
+}

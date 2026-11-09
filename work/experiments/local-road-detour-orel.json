@@ -1,0 +1,25 @@
+{
+  "point_id": "54618422101",
+  "pbf_extract": "central",
+  "selection": "ways having at least one vertex in bounding box expanded 0.12 degrees; entire selected way included",
+  "way_count": 178,
+  "nodes": 2455,
+  "nodes_reachable_from_nearest_local": 1496,
+  "nearest_local_ways": [
+    {
+      "way_id": 862400056,
+      "highway": "track",
+      "name": null
+    }
+  ],
+  "settlement_snap_to_local_road_km": 1.2311541752945305,
+  "national_straight_snap_km": 1.2311541752945305,
+  "nearest_local_osm_node": 8034542581,
+  "national_anchor_osm_node": 8034542581,
+  "directions_ignored": true,
+  "ferries_and_explicitly_forbidden_access_excluded": true,
+  "network_distance_km": 0.0,
+  "bridge_ways": [],
+  "seasonal_ways": [],
+  "path_segment_count": 0
+}

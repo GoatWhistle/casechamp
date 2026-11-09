@@ -1,0 +1,22 @@
+[
+  {
+    "name": "sources",
+    "overflow": false,
+    "axe": []
+  },
+  {
+    "name": "method",
+    "overflow": false,
+    "axe": []
+  },
+  {
+    "name": "selected-region",
+    "overflow": false,
+    "axe": []
+  },
+  {
+    "name": "region",
+    "overflow": false,
+    "axe": []
+  }
+]

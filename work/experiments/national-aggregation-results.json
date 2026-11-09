@@ -1,0 +1,176 @@
+{
+  "scenario_summary": {
+    "road": {
+      "settlements": 155412,
+      "no_markets": 1988,
+      "population_no_markets": 904559,
+      "zero_population_points": 24758
+    },
+    "road_summer": {
+      "settlements": 155412,
+      "no_markets": 1960,
+      "population_no_markets": 784183,
+      "zero_population_points": 24758
+    },
+    "road_winter": {
+      "settlements": 155412,
+      "no_markets": 817,
+      "population_no_markets": 221362,
+      "zero_population_points": 24758
+    },
+    "summer": {
+      "settlements": 155412,
+      "no_markets": 1274,
+      "population_no_markets": 243274,
+      "zero_population_points": 24758
+    },
+    "winter": {
+      "settlements": 155412,
+      "no_markets": 623,
+      "population_no_markets": 97828,
+      "zero_population_points": 24758
+    }
+  },
+  "regional_rows_checked": 410,
+  "max_abs_error": 9.094947017729282e-13,
+  "largest_summer_coverage_gaps": [
+    {
+      "region": "Республика Саха (Якутия)",
+      "coverage_pct": 92.97539585773025,
+      "recomputed": 5.39672380027089,
+      "covered_only": 5.8044644504970835,
+      "relative_diff_pct": 7.555336632305076,
+      "rank_all": 74,
+      "rank_covered": 74,
+      "rank_shift": 0
+    },
+    {
+      "region": "Камчатский край",
+      "coverage_pct": 93.41492261017123,
+      "recomputed": 4.34688719450347,
+      "covered_only": 4.65331134795606,
+      "relative_diff_pct": 7.049277787563835,
+      "rank_all": 76,
+      "rank_covered": 76,
+      "rank_shift": 0
+    },
+    {
+      "region": "Астраханская область",
+      "coverage_pct": 97.12188405465025,
+      "recomputed": 27.991796428985616,
+      "covered_only": 28.82130706323067,
+      "relative_diff_pct": 2.9634062120646565,
+      "rank_all": 60,
+      "rank_covered": 60,
+      "rank_shift": 0
+    },
+    {
+      "region": "Ямало-Ненецкий автономный округ",
+      "coverage_pct": 97.3979901663108,
+      "recomputed": 3.572658318706314,
+      "covered_only": 3.668102711981904,
+      "relative_diff_pct": 2.6715231281940977,
+      "rank_all": 79,
+      "rank_covered": 79,
+      "rank_shift": 0
+    },
+    {
+      "region": "Ненецкий автономный округ",
+      "coverage_pct": 98.10059371530627,
+      "recomputed": 0.5813782625735574,
+      "covered_only": 0.5926348053109153,
+      "relative_diff_pct": 1.9361822520727046,
+      "rank_all": 81,
+      "rank_covered": 81,
+      "rank_shift": 0
+    },
+    {
+      "region": "Ханты-Мансийский автономный округ — Югра",
+      "coverage_pct": 98.3861920676841,
+      "recomputed": 13.389276066696128,
+      "covered_only": 13.608897534610412,
+      "relative_diff_pct": 1.640278883042523,
+      "rank_all": 66,
+      "rank_covered": 65,
+      "rank_shift": 1
+    },
+    {
+      "region": "Томская область",
+      "coverage_pct": 98.91856895769696,
+      "recomputed": 38.75384971953444,
+      "covered_only": 39.177527665314,
+      "relative_diff_pct": 1.0932538285764126,
+      "rank_all": 51,
+      "rank_covered": 51,
+      "rank_shift": 0
+    },
+    {
+      "region": "Красноярский край",
+      "coverage_pct": 98.96974803034402,
+      "recomputed": 28.623022700661544,
+      "covered_only": 28.92098168410589,
+      "relative_diff_pct": 1.0409766521180863,
+      "rank_all": 59,
+      "rank_covered": 59,
+      "rank_shift": 0
+    }
+  ],
+  "largest_rank_shifts": [
+    {
+      "region": "Республика Алтай",
+      "coverage_pct": 99.96207164665947,
+      "rank_all": 65,
+      "rank_covered": 66,
+      "rank_shift": -1
+    },
+    {
+      "region": "Ханты-Мансийский автономный округ — Югра",
+      "coverage_pct": 98.3861920676841,
+      "rank_all": 66,
+      "rank_covered": 65,
+      "rank_shift": 1
+    },
+    {
+      "region": "Республика Хакасия",
+      "coverage_pct": 99.98466702194298,
+      "rank_all": 69,
+      "rank_covered": 69,
+      "rank_shift": 0
+    },
+    {
+      "region": "Омская область",
+      "coverage_pct": 99.73057857819946,
+      "rank_all": 54,
+      "rank_covered": 54,
+      "rank_shift": 0
+    },
+    {
+      "region": "Новосибирская область",
+      "coverage_pct": 99.99960674623263,
+      "rank_all": 34,
+      "rank_covered": 34,
+      "rank_shift": 0
+    },
+    {
+      "region": "Мурманская область",
+      "coverage_pct": 99.99685508218718,
+      "rank_all": 71,
+      "rank_covered": 71,
+      "rank_shift": 0
+    },
+    {
+      "region": "Новгородская область",
+      "coverage_pct": 100.0,
+      "rank_all": 11,
+      "rank_covered": 11,
+      "rank_shift": 0
+    },
+    {
+      "region": "Московская область",
+      "coverage_pct": 99.99779463474518,
+      "rank_all": 1,
+      "rank_covered": 1,
+      "rank_shift": 0
+    }
+  ]
+}

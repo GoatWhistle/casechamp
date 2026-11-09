@@ -1,0 +1,13 @@
+{
+  "sample_origins": 215,
+  "regions": 82,
+  "sample_rows": 1075,
+  "independent_formula_checks": 3225,
+  "normalization_checks": 1075,
+  "trip_rows": 144322,
+  "zero_route_rows": 236,
+  "sample_strategy": "largest and smallest positive-population settlement per region plus one no-market road point where present; overlapping picks deduplicated",
+  "tolerance": "Hansen rel 1e-10, abs 1e-6; normalized rel 1e-10, abs 1e-8",
+  "input": "data/casechamp.duckdb read-only",
+  "errors": []
+}

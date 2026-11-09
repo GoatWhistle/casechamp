@@ -1,38 +1,14 @@
-# Open questions and remaining work
+# Open questions
 
-Updated: 2026-11-08. No questions have been sent to organizers.
-Evidence: [audit](../docs/data-audit-2026-11-07.md), [atlas](../frontend/atlas/README.md).
-A2 excerpts remain in Git: `git show chore/project-research:docs/A2_citations.md`; the original deck was not checked.
+Updated 2026-11-09. Product decisions are fixed in work/project-plan.md; they are not open questions.
 
-## A2 coverage
+| ID | Question | Current evidence | Status |
+| --- | --- | --- | --- |
+| Q1 | Which timezone applies to 10 Nov 23:39, and what is the defense time? | Organizer message 266 is preserved verbatim in brief/QA.md. | Timezone and defense slot unconfirmed |
+| Q2 | Where are the submission form, official passport fields and receipt? | Full chat sync through message 270 on 9 Nov 06:27 UTC; no submission form. Message 208 is case selection only. | External form unavailable; nothing submitted |
+| Q3 | Are criterion weights or additional format limits published? | Inspected sources list four qualitative criteria, no weights. | Do not invent weights or file-size limits |
+| Q4 | Is there evidence that the idea and sources were entered into a passport on 6–8 Nov? | Repository contains earlier research, but no located timestamped passport submission. | R15 unconfirmed; cannot satisfy retroactively |
+| Q5 | Which schedules and closures are operating now? | Tuva links are historical; source URL alone is not verification. | Explicit model assumptions; external validation belongs on roadmap |
 
-| Subtheme | Current coverage | Completion gap |
-|---|---|---|
-| Sparse and hard-to-reach territories | Strongest, partial: local links, Yugra winter-road history/weight limits, Kamchatka flight calendar | Verified network, alternatives, affected residents and before/after accessibility |
-| Interregional | Partial: 180-city market model and index code | Restore graph/results, correct model defects, export territorial comparisons |
-| Agglomeration | Not closed: population/economic inputs available | Commuting, suburban schedules and workplace accessibility model |
-| Global | Not closed: some port/infrastructure sources available | Access to international nodes and external markets model |
-
-A2's full chain—explainable index → territorial comparison → effect of a transport proposal—is incomplete. Current economic layers and calendar scenarios do not calculate network effects. National index cards are historical summaries; regional results are absent. Yugra is an assistant-proposed pilot, not a user-approved final case.
-
-## Product choices to resolve
-
-| ID | Choice | Current position |
-|---|---|---|
-| Q5 | Beneficiary, territory, corridor and concrete intervention | User prioritizes economy, development, criticality and traffic. Yugra is a candidate supported by collected data. |
-| Q6 | Main outcome and comparison scenarios | Candidates: population/economically weighted market access, time to verified service centres, losses from a specific closure. Final proposal not selected. |
-| Q7 | Main index presentation | Excerpts request one understandable number. A main index with explanatory metrics is a working option; full original rules remain unverified. |
-
-These choices guide the final case; they do not require approval for routine inspection, model fixes or preparation already authorized by the task.
-
-## Technical backlog, not permission questions
-
-1. Restore transport DuckDB/OSM; fix seasonal edges, reverse one-way roads, mode separation, timetable validity and waiting. Distinguish missing data from confirmed lack of a path.
-2. Validate centres/market targets; fix Palma boundaries; recalculate and export territorial indices with provenance and coverage.
-3. Bind a pilot bridge/winter road to graph edges; compare baseline, closure and improvement, reporting alternate paths, time and affected population.
-4. Connect economic weights to verified travel times. Registration-address revenue is not plant output, freight volume or a forecast of GRP growth.
-5. Freight needs observations/OD demand; ROI needs costs and demand; medical access needs actual facility sites, capabilities and hours. Current district-centre proxy does not establish surgical access.
-
-## Organizer information still missing
-
-Q1: event year/timezone and defense time. Q2: official task page, passport template and submission form/rules. Q3: scoring weights and disqualification rules; four qualitative criteria are known from excerpts. Q4: official data catalog/glossary. Receipt date and local timezone do not establish event deadlines. These gaps need authoritative information, not invented assumptions.
+User instructed leaving team name, participant names and captain contact blank for now. Do not ask
+again for these fields. Model calculations and prepared materials do not establish a submission receipt.

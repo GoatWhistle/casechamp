@@ -1,0 +1,43 @@
+{
+  "sha256": "cf99c1eddccffbf4d74670911ef3541dbfed724f9740f1fdae519bd0489888cb",
+  "duration_s": 280,
+  "words": 574,
+  "estimated_spoken_s": 275.52,
+  "slides": [
+    {
+      "id": "problem",
+      "seconds": 35,
+      "words": 72
+    },
+    {
+      "id": "data",
+      "seconds": 35,
+      "words": 69
+    },
+    {
+      "id": "method",
+      "seconds": 40,
+      "words": 85
+    },
+    {
+      "id": "russia",
+      "seconds": 40,
+      "words": 78
+    },
+    {
+      "id": "pilot",
+      "seconds": 55,
+      "words": 116
+    },
+    {
+      "id": "checks",
+      "seconds": 40,
+      "words": 77
+    },
+    {
+      "id": "roadmap",
+      "seconds": 35,
+      "words": 77
+    }
+  ]
+}

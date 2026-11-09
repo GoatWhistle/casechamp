@@ -1,0 +1,337 @@
+{
+  "artifact_version": "7a33b4bf26cb382c6d765d6e30549e639e94e01c9f4aa9c17111b608f3221d54",
+  "season": "summer",
+  "pair": "kungurtug-kyzyl",
+  "cases": [
+    {
+      "road_time_multiplier": 0.75,
+      "waiting_model": "uniform_random",
+      "frequency_per_week": 2,
+      "status": "found",
+      "hours": 13.571331510246019,
+      "route": [
+        "road:summer:93643425101:93701000001"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 0.75,
+      "waiting_model": "uniform_random",
+      "frequency_per_week": 4,
+      "status": "found",
+      "hours": 13.571331510246019,
+      "route": [
+        "road:summer:93643425101:93701000001"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 0.75,
+      "waiting_model": "uniform_random",
+      "frequency_per_week": 7,
+      "status": "found",
+      "hours": 13.571331510246019,
+      "route": [
+        "road:summer:93643425101:93701000001"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 0.75,
+      "waiting_model": "none_optimistic",
+      "frequency_per_week": 2,
+      "status": "found",
+      "hours": 2.243330466895842,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 0.75,
+      "waiting_model": "none_optimistic",
+      "frequency_per_week": 4,
+      "status": "found",
+      "hours": 2.243330466895842,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 0.75,
+      "waiting_model": "none_optimistic",
+      "frequency_per_week": 7,
+      "status": "found",
+      "hours": 2.243330466895842,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.0,
+      "waiting_model": "uniform_random",
+      "frequency_per_week": 2,
+      "status": "found",
+      "hours": 18.095108680328025,
+      "route": [
+        "road:summer:93643425101:93701000001"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.0,
+      "waiting_model": "uniform_random",
+      "frequency_per_week": 4,
+      "status": "found",
+      "hours": 18.095108680328025,
+      "route": [
+        "road:summer:93643425101:93701000001"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.0,
+      "waiting_model": "uniform_random",
+      "frequency_per_week": 7,
+      "status": "found",
+      "hours": 14.243330466895841,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.0,
+      "waiting_model": "none_optimistic",
+      "frequency_per_week": 2,
+      "status": "found",
+      "hours": 2.243330466895842,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.0,
+      "waiting_model": "none_optimistic",
+      "frequency_per_week": 4,
+      "status": "found",
+      "hours": 2.243330466895842,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.0,
+      "waiting_model": "none_optimistic",
+      "frequency_per_week": 7,
+      "status": "found",
+      "hours": 2.243330466895842,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.25,
+      "waiting_model": "uniform_random",
+      "frequency_per_week": 2,
+      "status": "found",
+      "hours": 22.61888585041003,
+      "route": [
+        "road:summer:93643425101:93701000001"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.25,
+      "waiting_model": "uniform_random",
+      "frequency_per_week": 4,
+      "status": "found",
+      "hours": 22.61888585041003,
+      "route": [
+        "road:summer:93643425101:93701000001"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.25,
+      "waiting_model": "uniform_random",
+      "frequency_per_week": 7,
+      "status": "found",
+      "hours": 14.243330466895841,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.25,
+      "waiting_model": "none_optimistic",
+      "frequency_per_week": 2,
+      "status": "found",
+      "hours": 2.243330466895842,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.25,
+      "waiting_model": "none_optimistic",
+      "frequency_per_week": 4,
+      "status": "found",
+      "hours": 2.243330466895842,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.25,
+      "waiting_model": "none_optimistic",
+      "frequency_per_week": 7,
+      "status": "found",
+      "hours": 2.243330466895842,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.5,
+      "waiting_model": "uniform_random",
+      "frequency_per_week": 2,
+      "status": "found",
+      "hours": 27.142663020492037,
+      "route": [
+        "road:summer:93643425101:93701000001"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.5,
+      "waiting_model": "uniform_random",
+      "frequency_per_week": 4,
+      "status": "found",
+      "hours": 23.24333046689584,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.5,
+      "waiting_model": "uniform_random",
+      "frequency_per_week": 7,
+      "status": "found",
+      "hours": 14.243330466895841,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.5,
+      "waiting_model": "none_optimistic",
+      "frequency_per_week": 2,
+      "status": "found",
+      "hours": 2.243330466895842,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.5,
+      "waiting_model": "none_optimistic",
+      "frequency_per_week": 4,
+      "status": "found",
+      "hours": 2.243330466895842,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 1.5,
+      "waiting_model": "none_optimistic",
+      "frequency_per_week": 7,
+      "status": "found",
+      "hours": 2.243330466895842,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 2.0,
+      "waiting_model": "uniform_random",
+      "frequency_per_week": 2,
+      "status": "found",
+      "hours": 36.19021736065605,
+      "route": [
+        "road:summer:93643425101:93701000001"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 2.0,
+      "waiting_model": "uniform_random",
+      "frequency_per_week": 4,
+      "status": "found",
+      "hours": 23.24333046689584,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 2.0,
+      "waiting_model": "uniform_random",
+      "frequency_per_week": 7,
+      "status": "found",
+      "hours": 14.243330466895841,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 2.0,
+      "waiting_model": "none_optimistic",
+      "frequency_per_week": 2,
+      "status": "found",
+      "hours": 2.243330466895842,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 2.0,
+      "waiting_model": "none_optimistic",
+      "frequency_per_week": 4,
+      "status": "found",
+      "hours": 2.243330466895842,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    },
+    {
+      "road_time_multiplier": 2.0,
+      "waiting_model": "none_optimistic",
+      "frequency_per_week": 7,
+      "status": "found",
+      "hours": 2.243330466895842,
+      "route": [
+        "manual:0"
+      ],
+      "warnings": []
+    }
+  ]
+}

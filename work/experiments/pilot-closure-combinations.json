@@ -1,0 +1,6536 @@
+{
+  "artifact_version": "7a33b4bf26cb382c6d765d6e30549e639e94e01c9f4aa9c17111b608f3221d54",
+  "requests": 256,
+  "comparisons": 768,
+  "no_route": 128,
+  "found": 640,
+  "max_absolute_error_h": 0.0,
+  "results": [
+    {
+      "season": "summer",
+      "disabled": [],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2",
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2",
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2",
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2",
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2",
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "summer",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2",
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2",
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2",
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2",
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2",
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "found",
+          "error_h": 0.0
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    },
+    {
+      "season": "winter",
+      "disabled": [
+        "manual:0",
+        "manual:1",
+        "manual:2",
+        "manual:3",
+        "manual:4",
+        "manual:5",
+        "manual:6"
+      ],
+      "pairs": [
+        {
+          "pair": "kungurtug-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "toora-kyzyl",
+          "status": "found",
+          "error_h": 0.0
+        },
+        {
+          "pair": "systyg-toora",
+          "status": "no_route",
+          "error_h": null
+        }
+      ]
+    }
+  ]
+}

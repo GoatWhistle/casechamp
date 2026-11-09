@@ -1,0 +1,60 @@
+<header class="top">
+  <h1>Plexus: изохроны</h1>
+  <p>Выберите вариацию, подкрутите параметры и посмотрите знак в продукте.</p>
+</header>
+
+<main>
+  <section class="stage">
+    <div class="hero-wrap">
+      <div class="hero" id="hero" role="button" tabindex="0" aria-label="Повторить анимацию"></div>
+      <div class="hero-bar">
+        <b id="hero-title"></b>
+        <span id="params"></span>
+      </div>
+    </div>
+
+    <aside class="tuner" aria-label="Настройка">
+      <div class="ctl"><label for="c-rings">Колец <output id="c-rings-v"></output></label><input id="c-rings" type="range" min="1" max="5" step="1"></div>
+      <div class="ctl"><label for="c-step">Шаг между кольцами <output id="c-step-v"></output></label><input id="c-step" type="range" min="3" max="12" step="0.5"></div>
+      <div class="ctl"><label for="c-line">Толщина линии <output id="c-line-v"></output></label><input id="c-line" type="range" min="0.6" max="5" step="0.2"></div>
+      <div class="ctl"><label for="c-gap">Отступ от букв <output id="c-gap-v"></output></label><input id="c-gap" type="range" min="6" max="18" step="0.5"></div>
+      <div class="ctl"><label for="c-track">Трекинг <output id="c-track-v"></output></label><input id="c-track" type="range" min="-5" max="3" step="0.5"></div>
+      <div class="ctl"><span class="lbl">Цвет колец</span><div class="seg wrap" id="c-scheme"></div></div>
+      <div class="ctl"><span class="lbl">Начертание</span><div class="seg" id="c-weight"></div></div>
+      <div class="ctl"><span class="lbl">Фон</span><div class="seg" id="c-bg"></div></div>
+      <div class="ctl two">
+        <div><span class="lbl">Кольца</span><div class="seg" id="c-style"></div></div>
+        <div><span class="lbl">Внешнее кольцо</span><div class="seg" id="c-dash"></div></div>
+      </div>
+      <div class="ctl"><span class="lbl">Анимация</span><div class="seg wrap" id="c-anim"></div></div>
+      <div class="tuner-actions">
+        <button type="button" class="btn" id="replay"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20.5 4v4.5H16"/></svg>Повторить</button>
+        <button type="button" class="btn" id="reset">Сбросить к варианту</button>
+        <button type="button" class="btn primary" id="copy">Скопировать параметры</button>
+      </div>
+      <p class="copy-out" id="copy-out" aria-live="polite"></p>
+    </aside>
+  </section>
+
+  <section class="block">
+    <h2>Вариации</h2>
+    <div class="variants" id="variants"></div>
+  </section>
+
+  <section class="block">
+    <h2>Малый знак</h2>
+    <p class="hint">Для вкладки, иконки приложения и аватара. Размеры 16, 24, 32, 48 и 72 px.</p>
+    <div class="small" id="small"></div>
+  </section>
+
+  <section class="block">
+    <h2>В продукте</h2>
+    <div class="ctx-grid">
+      <figure class="frame"><figcaption>Вкладка браузера</figcaption><div class="tabbar"><div class="tab" id="ctx-tab"></div><div class="tab off">Новая вкладка</div></div></figure>
+      <figure class="frame"><figcaption>Шапка интерфейса</figcaption><div class="app-head" id="ctx-head"></div></figure>
+      <figure class="frame"><figcaption>Загрузка расчёта</figcaption><div class="loader" id="ctx-loader"></div></figure>
+      <figure class="frame wide"><figcaption>Карточка ссылки 1200 × 630</figcaption><div class="og" id="ctx-og"></div></figure>
+      <figure class="frame wide"><figcaption>Обложка презентации 16 : 9</figcaption><div class="deck" id="ctx-deck"></div></figure>
+    </div>
+  </section>
+</main>

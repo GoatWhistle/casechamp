@@ -1,0 +1,347 @@
+{
+  "scope": "all graph input settlements, including partial federal city points, not only 82-region index",
+  "summary": {
+    "total": 155747.0,
+    "unique_points": 155747.0,
+    "road_points": 155264.0,
+    "no_road_points": 483.0,
+    "no_road_population": 62424.0,
+    "missing_node": 0.0,
+    "component_mismatch": 0.0,
+    "invalid_anchor": 0.0,
+    "distance_mismatch": 0.0,
+    "max_distance_error_km": 2.3470392296331966e-12,
+    "median_km": 0.05152606417477358,
+    "p95_km": 0.2525468885312102,
+    "p99_km": 1.1821345390907254,
+    "points_over_1_km": 1950.0,
+    "population_over_1_km": 15802.0,
+    "points_over_2_km": 644.0,
+    "components": 22.0
+  },
+  "components": [
+    {
+      "comp": 1,
+      "settlements": 154899,
+      "population": 127754656.0
+    },
+    {
+      "comp": 243,
+      "settlements": 229,
+      "population": 453561.0
+    },
+    {
+      "comp": 313,
+      "settlements": 58,
+      "population": 279251.0
+    },
+    {
+      "comp": 370,
+      "settlements": 4,
+      "population": 194247.0
+    },
+    {
+      "comp": 5133,
+      "settlements": 7,
+      "population": 6874.0
+    },
+    {
+      "comp": 294,
+      "settlements": 11,
+      "population": 6044.0
+    },
+    {
+      "comp": 7787,
+      "settlements": 13,
+      "population": 5343.0
+    },
+    {
+      "comp": 448,
+      "settlements": 4,
+      "population": 5216.0
+    },
+    {
+      "comp": 7731,
+      "settlements": 6,
+      "population": 4995.0
+    },
+    {
+      "comp": 1044,
+      "settlements": 5,
+      "population": 4318.0
+    },
+    {
+      "comp": 3459,
+      "settlements": 2,
+      "population": 3800.0
+    },
+    {
+      "comp": 6039,
+      "settlements": 2,
+      "population": 3225.0
+    },
+    {
+      "comp": 8708,
+      "settlements": 2,
+      "population": 2565.0
+    },
+    {
+      "comp": 17612,
+      "settlements": 1,
+      "population": 2374.0
+    },
+    {
+      "comp": 1095,
+      "settlements": 2,
+      "population": 2302.0
+    },
+    {
+      "comp": 760,
+      "settlements": 6,
+      "population": 1729.0
+    },
+    {
+      "comp": 971,
+      "settlements": 4,
+      "population": 808.0
+    },
+    {
+      "comp": 10246,
+      "settlements": 1,
+      "population": 733.0
+    },
+    {
+      "comp": 46470,
+      "settlements": 1,
+      "population": 602.0
+    },
+    {
+      "comp": 9302,
+      "settlements": 3,
+      "population": 586.0
+    },
+    {
+      "comp": 1230,
+      "settlements": 3,
+      "population": 532.0
+    },
+    {
+      "comp": 17665,
+      "settlements": 1,
+      "population": 0.0
+    }
+  ],
+  "regions_without_road_anchor": [
+    {
+      "region": "Ямало-Ненецкий автономный округ",
+      "settlements": 25,
+      "population": 15188.0
+    },
+    {
+      "region": "Красноярский край",
+      "settlements": 66,
+      "population": 12954.0
+    },
+    {
+      "region": "Камчатский край",
+      "settlements": 15,
+      "population": 7111.0
+    },
+    {
+      "region": "Чукотский автономный округ",
+      "settlements": 17,
+      "population": 5271.0
+    },
+    {
+      "region": "Ненецкий автономный округ",
+      "settlements": 17,
+      "population": 4053.0
+    },
+    {
+      "region": "Хабаровский край",
+      "settlements": 43,
+      "population": 3301.0
+    },
+    {
+      "region": "Республика Коми",
+      "settlements": 29,
+      "population": 2174.0
+    },
+    {
+      "region": "Республика Саха (Якутия)",
+      "settlements": 29,
+      "population": 2146.0
+    },
+    {
+      "region": "Мурманская область",
+      "settlements": 15,
+      "population": 1612.0
+    },
+    {
+      "region": "Республика Дагестан",
+      "settlements": 5,
+      "population": 1399.0
+    },
+    {
+      "region": "Республика Башкортостан",
+      "settlements": 2,
+      "population": 1115.0
+    },
+    {
+      "region": "Архангельская область",
+      "settlements": 52,
+      "population": 974.0
+    },
+    {
+      "region": "Республика Тыва",
+      "settlements": 7,
+      "population": 838.0
+    },
+    {
+      "region": "Иркутская область",
+      "settlements": 21,
+      "population": 800.0
+    },
+    {
+      "region": "Республика Бурятия",
+      "settlements": 17,
+      "population": 723.0
+    },
+    {
+      "region": "Приморский край",
+      "settlements": 5,
+      "population": 497.0
+    },
+    {
+      "region": "Кемеровская область",
+      "settlements": 4,
+      "population": 443.0
+    },
+    {
+      "region": "Магаданская область",
+      "settlements": 7,
+      "population": 441.0
+    },
+    {
+      "region": "Республика Карелия",
+      "settlements": 18,
+      "population": 376.0
+    },
+    {
+      "region": "Пермский край",
+      "settlements": 2,
+      "population": 330.0
+    },
+    {
+      "region": "Забайкальский край",
+      "settlements": 10,
+      "population": 248.0
+    },
+    {
+      "region": "Томская область",
+      "settlements": 5,
+      "population": 168.0
+    },
+    {
+      "region": "Ханты-Мансийский автономный округ — Югра",
+      "settlements": 3,
+      "population": 73.0
+    },
+    {
+      "region": "Вологодская область",
+      "settlements": 17,
+      "population": 48.0
+    },
+    {
+      "region": "Ленинградская область",
+      "settlements": 4,
+      "population": 44.0
+    },
+    {
+      "region": "Тюменская область",
+      "settlements": 1,
+      "population": 43.0
+    },
+    {
+      "region": "Свердловская область",
+      "settlements": 8,
+      "population": 24.0
+    },
+    {
+      "region": "Псковская область",
+      "settlements": 13,
+      "population": 23.0
+    },
+    {
+      "region": "Саратовская область",
+      "settlements": 3,
+      "population": 3.0
+    },
+    {
+      "region": "Челябинская область",
+      "settlements": 1,
+      "population": 2.0
+    },
+    {
+      "region": "Республика Калмыкия",
+      "settlements": 1,
+      "population": 2.0
+    },
+    {
+      "region": "Рязанская область",
+      "settlements": 1,
+      "population": 0.0
+    },
+    {
+      "region": "Ярославская область",
+      "settlements": 2,
+      "population": 0.0
+    },
+    {
+      "region": "Курганская область",
+      "settlements": 1,
+      "population": 0.0
+    },
+    {
+      "region": "Калужская область",
+      "settlements": 1,
+      "population": 0.0
+    },
+    {
+      "region": "Кировская область",
+      "settlements": 1,
+      "population": 0.0
+    },
+    {
+      "region": "Самарская область",
+      "settlements": 1,
+      "population": 0.0
+    },
+    {
+      "region": "Новгородская область",
+      "settlements": 3,
+      "population": 0.0
+    },
+    {
+      "region": "Сахалинская область",
+      "settlements": 3,
+      "population": 0.0
+    },
+    {
+      "region": "Новосибирская область",
+      "settlements": 5,
+      "population": 0.0
+    },
+    {
+      "region": "Костромская область",
+      "settlements": 2,
+      "population": 0.0
+    },
+    {
+      "region": "Тверская область",
+      "settlements": 1,
+      "population": 0.0
+    }
+  ],
+  "limitation": "straight-line snap and weak connectivity do not demonstrate usable roads, seasonal connectivity or accessibility from the settlement"
+}
