@@ -176,7 +176,7 @@ Use Plane Workspace Insights, its six plane-* skills, and its Plane MCP tools on
 
 ## Current implementation, 2026-11-09
 
-Goal resumed by user; earlier pause is historical. Work on main, HEAD f1811c0 from Git.
+Goal resumed by user; earlier pause is historical. Work on main. Release1 source SHA4b37636 from Git; completion audit: work/audits/plan-completion.md.
 User reply on passport identity fields (verbatim):
 
 > пока что забей, поставь пропуски
@@ -207,3 +207,8 @@ messages or form submissions authorized/performed. Live defense and external tra
 remain team actions. Do not invent a submission receipt or mark the full goal achieved merely
 because the local deliverables are ready. Skills used for submission are canonical skills/submission,
 docs-writing, presentation and related defense skills; preserve required AI disclosure in public docs.
+
+Completion audit continuation: full chat still through270 at06:22UTC. Eleven implementation
+hashes checked. Fixed published pilot report output (previous execution saved only under ignored
+data/); refreshed24 comparisons and report. Runtime is unchanged since the clean-stand checks.
+Corrected release2 supersedes release1 packaging; identity blanks remain intentional.
