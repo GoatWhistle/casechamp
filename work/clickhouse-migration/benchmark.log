@@ -1,0 +1,7 @@
+regional_matrix rows read 475136 returned 454680 median 0.3136
+road_osm_id rows read 32768 returned 1 median 0.0166
+settlements_region rows read 2952 returned 2526 median 0.0214
+settlement_search rows read 84388 returned 140 median 0.0384
+graph_search rows read 80896 returned 20 median 0.0297
+road_reference rows read 256 returned 2 median 0.0038
+road_geometry rows read 122880 returned 1 median 0.0149

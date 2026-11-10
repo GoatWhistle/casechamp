@@ -1,0 +1,33 @@
+{
+  "nodes": {
+    "rows": 6990556,
+    "columns": [
+      "node",
+      "lat",
+      "lon"
+    ],
+    "exact": true
+  },
+  "edges": {
+    "rows": 17393384,
+    "columns": [
+      "src",
+      "dst",
+      "h",
+      "km",
+      "way_idx"
+    ],
+    "exact": true
+  },
+  "regional_matrix": {
+    "rows": 454680,
+    "exact": true,
+    "infinities": 47733
+  },
+  "airports": {
+    "exact": true,
+    "airports": 285,
+    "assignments": 195
+  },
+  "seconds": 40.470851874910295
+}

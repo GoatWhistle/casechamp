@@ -1,0 +1,13 @@
+Initialized isolated calculation database
+Starting manual
+Completed manual
+Starting access
+Traceback (most recent call last):
+  File "/Users/andreykuronskin/keys_champ/work/road-coverage/recalculate.py", line 89, in <module>
+    print('Candidate indices validated; publication still requires graph and regional comparison', flush=True)
+    ^^^^^^
+  File "/Users/andreykuronskin/keys_champ/work/road-coverage/recalculate.py", line 80, in main
+    environment['SCENARIOS'] = stage.removeprefix('access-')
+  File "/Users/andreykuronskin/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/Users/andreykuronskin/keys_champ/.venv/bin/python', 'etl/access_russia.py']' died with <Signals.SIGTERM: 15>.

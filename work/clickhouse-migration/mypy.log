@@ -1,0 +1,6 @@
+src/app/repository/clickhouse/records.py:47: error: "DataclassInstance" not callable  [operator]
+src/app/repository/clickhouse/atlas.py:41: error: Argument 1 to "fields" has incompatible type "type[T]"; expected "DataclassInstance | type[DataclassInstance]"  [arg-type]
+tests/unit/repository/clickhouse/test_road_view.py:12: error: Argument 2 of "rows" is incompatible with supertype "app.repository.clickhouse.client.ClickHouseReader"; supertype defines the argument type as "Mapping[str, str | float | int | list[int] | list[str]]"  [override]
+tests/unit/repository/clickhouse/test_road_view.py:12: note: This violates the Liskov substitution principle
+tests/unit/repository/clickhouse/test_road_view.py:12: note: See https://mypy.readthedocs.io/en/stable/common_issues.html#incompatible-overrides
+Found 3 errors in 3 files (checked 138 source files)

@@ -1,0 +1,9 @@
+
+ RUN  v5.0.3 /Users/andreykuronskin/keys_champ/frontend
+
+
+ Test Files  3 passed (3)
+      Tests  10 passed (10)
+   Start at  22:18:31
+   Duration  382ms (transform 47%, import 31%, tests 15%, worker 6%)
+

@@ -1,0 +1,815 @@
+{
+  "date": "2026-11-10T19:03:07.025Z",
+  "base": "http://127.0.0.1:5187",
+  "viewport": "1440x900",
+  "browser": "157.0.8103.50",
+  "errors": [],
+  "cases": [
+    {
+      "name": "country",
+      "events": [
+        {
+          "event": "moveend",
+          "time": 2310.7999999523163,
+          "zoom": 2.1773507185275753
+        },
+        {
+          "event": "moveend",
+          "time": 2366,
+          "zoom": 2.1773507185275753
+        },
+        {
+          "event": "addSource",
+          "time": 2395.7000000476837,
+          "id": "road-analysis-result",
+          "features": 0
+        },
+        {
+          "event": "addSource",
+          "time": 2397.5,
+          "id": "road-graph-lines",
+          "features": 0
+        },
+        {
+          "event": "addSource",
+          "time": 2398.2999999523163,
+          "id": "region-transit",
+          "features": 0
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 2818.7999999523163,
+          "id": "regions"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 2819.2999999523163,
+          "id": "road-analysis-result"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 2821.2999999523163,
+          "id": "road-graph-lines"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 2821.5,
+          "id": "region-transit"
+        },
+        {
+          "event": "setData",
+          "time": 2880.5,
+          "id": "region-transit",
+          "features": 0
+        },
+        {
+          "event": "setDataReturn",
+          "time": 2880.7000000476837,
+          "id": "region-transit",
+          "duration": 0.20000004768371582
+        },
+        {
+          "event": "addSource",
+          "time": 2881,
+          "id": "airport-points",
+          "features": 285
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 2891.2999999523163,
+          "id": "region-transit"
+        },
+        {
+          "event": "setDataDone",
+          "time": 2891.7999999523163,
+          "id": "region-transit"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 2893.899999976158,
+          "id": "region-transit"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 2904.100000023842,
+          "id": "airport-points"
+        },
+        {
+          "event": "setData",
+          "time": 4609.100000023842,
+          "id": "road-graph-lines",
+          "features": 79433
+        },
+        {
+          "event": "setDataReturn",
+          "time": 4609.200000047684,
+          "id": "road-graph-lines",
+          "duration": 0.10000002384185791
+        },
+        {
+          "event": "addSource",
+          "time": 4609.299999952316,
+          "id": "scenario-connection",
+          "features": 1
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 5413.799999952316,
+          "id": "road-graph-lines"
+        },
+        {
+          "event": "setDataDone",
+          "time": 5414.100000023842,
+          "id": "road-graph-lines"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 5469.200000047684,
+          "id": "road-graph-lines"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 5470.799999952316,
+          "id": "scenario-connection"
+        }
+      ],
+      "longTasks": [
+        {
+          "start": 717.8999999761581,
+          "duration": 139
+        },
+        {
+          "start": 2190,
+          "duration": 106
+        },
+        {
+          "start": 2296.7000000476837,
+          "duration": 70
+        },
+        {
+          "start": 4393.100000023842,
+          "duration": 117
+        },
+        {
+          "start": 4511.200000047684,
+          "duration": 421
+        }
+      ],
+      "requests": [
+        {
+          "url": "/src/shared/api/index.ts",
+          "start": 257.7000000476837,
+          "ttfb": 60.5,
+          "duration": 64.69999992847443,
+          "bytes": 909
+        },
+        {
+          "url": "/src/shared/api/client.ts",
+          "start": 342.5,
+          "ttfb": 79.79999995231628,
+          "duration": 83.79999995231628,
+          "bytes": 7355
+        },
+        {
+          "url": "/src/shared/api/query-client.ts",
+          "start": 342.60000002384186,
+          "ttfb": 79.89999997615814,
+          "duration": 84.29999995231628,
+          "bytes": 2022
+        },
+        {
+          "url": "/src/shared/api/chat-stream.ts?t=1794331181610",
+          "start": 1157.6000000238419,
+          "ttfb": 11,
+          "duration": 11.199999928474426,
+          "bytes": 8497
+        },
+        {
+          "url": "/src/shared/api/chat-analysis.ts?t=1794331165088",
+          "start": 1169.7999999523163,
+          "ttfb": 6.5,
+          "duration": 7,
+          "bytes": 4114
+        },
+        {
+          "url": "/src/shared/api/chat-artifacts.ts?t=1794324421881",
+          "start": 1169.8999999761581,
+          "ttfb": 6.899999976158142,
+          "duration": 7.899999976158142,
+          "bytes": 5549
+        },
+        {
+          "url": "/src/shared/api/chat-calculation.ts?t=1794326159365",
+          "start": 1169.8999999761581,
+          "ttfb": 7.100000023841858,
+          "duration": 8.200000047683716,
+          "bytes": 3301
+        },
+        {
+          "url": "/src/shared/api/chat-map.ts?t=1794324421882",
+          "start": 1169.8999999761581,
+          "ttfb": 7.5,
+          "duration": 9.200000047683716,
+          "bytes": 2335
+        },
+        {
+          "url": "/api/v1/overview",
+          "start": 1445.2000000476837,
+          "ttfb": -1445.2000000476837,
+          "duration": 23.59999990463257,
+          "bytes": 0
+        },
+        {
+          "url": "/api/v1/road-scenarios",
+          "start": 1447.2000000476837,
+          "ttfb": -1447.2000000476837,
+          "duration": 21.5,
+          "bytes": 0
+        },
+        {
+          "url": "/api/v1/airports",
+          "start": 1448.3999999761581,
+          "ttfb": -1448.3999999761581,
+          "duration": 20.399999976158142,
+          "bytes": 0
+        },
+        {
+          "url": "/api/v1/geo/boundaries",
+          "start": 1454,
+          "ttfb": -1454,
+          "duration": 14.799999952316284,
+          "bytes": 0
+        },
+        {
+          "url": "/api/v1/regions?season=summer&network_mode=road",
+          "start": 1455,
+          "ttfb": -1455,
+          "duration": 13.799999952316284,
+          "bytes": 0
+        },
+        {
+          "url": "/api/v1/overview",
+          "start": 1462.1000000238419,
+          "ttfb": 692.6999999284744,
+          "duration": 693.1000000238419,
+          "bytes": 1908
+        },
+        {
+          "url": "/api/v1/road-scenarios",
+          "start": 1462.8999999761581,
+          "ttfb": 566.8999999761581,
+          "duration": 567.3999999761581,
+          "bytes": 11420
+        },
+        {
+          "url": "/api/v1/airports",
+          "start": 1463.3999999761581,
+          "ttfb": 1385.8000000715256,
+          "duration": 1386.7000000476837,
+          "bytes": 73994
+        },
+        {
+          "url": "/api/v1/geo/boundaries",
+          "start": 1463.7000000476837,
+          "ttfb": 649.3999999761581,
+          "duration": 700.5999999046326,
+          "bytes": 2087262
+        },
+        {
+          "url": "/api/v1/regions?season=summer&network_mode=road",
+          "start": 1464.2000000476837,
+          "ttfb": 671,
+          "duration": 671.3999999761581,
+          "bytes": 32348
+        },
+        {
+          "url": "/api/v1/road-scenarios/f8f9b55687844896b09bca7196a74cef",
+          "start": 2066.7999999523163,
+          "ttfb": 311.60000002384186,
+          "duration": 316,
+          "bytes": 3977
+        },
+        {
+          "url": "/api/v1/road-graph?west=18.9864&south=34.1867&east=180&north=84.7233&zoom=4",
+          "start": 2400.600000023842,
+          "ttfb": 1949.6999999284744,
+          "duration": 1990.2999999523163,
+          "bytes": 16401165
+        },
+        {
+          "url": "/api/v1/road-scenarios",
+          "start": 5032.399999976158,
+          "ttfb": 13.800000071525574,
+          "duration": 14.700000047683716,
+          "bytes": 11420
+        }
+      ],
+      "roads": "79433",
+      "transit": "0"
+    },
+    {
+      "name": "regional-zoom7",
+      "events": [
+        {
+          "event": "moveend",
+          "time": 7733.899999976158,
+          "zoom": 7
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 7813.299999952316,
+          "id": "regions"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 7813.899999976158,
+          "id": "road-analysis-result"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 7964.5,
+          "id": "road-graph-lines"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 7965.100000023842,
+          "id": "region-transit"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 7967.700000047684,
+          "id": "airport-points"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 7968,
+          "id": "scenario-connection"
+        },
+        {
+          "event": "setData",
+          "time": 9924.399999976158,
+          "id": "road-graph-lines",
+          "features": 49326
+        },
+        {
+          "event": "setDataReturn",
+          "time": 9924.5,
+          "id": "road-graph-lines",
+          "duration": 0.20000004768371582
+        },
+        {
+          "event": "setData",
+          "time": 9924.600000023842,
+          "id": "scenario-connection",
+          "features": 1
+        },
+        {
+          "event": "setDataReturn",
+          "time": 9924.600000023842,
+          "id": "scenario-connection",
+          "duration": 0
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 10374.299999952316,
+          "id": "road-graph-lines"
+        },
+        {
+          "event": "setDataDone",
+          "time": 10375.200000047684,
+          "id": "road-graph-lines"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 10375.399999976158,
+          "id": "scenario-connection"
+        },
+        {
+          "event": "setDataDone",
+          "time": 10375.700000047684,
+          "id": "scenario-connection"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 10637,
+          "id": "road-graph-lines"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 10637.299999952316,
+          "id": "scenario-connection"
+        }
+      ],
+      "longTasks": [
+        {
+          "start": 7741.799999952316,
+          "duration": 60
+        },
+        {
+          "start": 9775.100000023842,
+          "duration": 72
+        },
+        {
+          "start": 9847.899999976158,
+          "duration": 281
+        }
+      ],
+      "requests": [
+        {
+          "url": "/api/v1/road-graph?west=37.6435&south=54.0748&east=43.3565&north=56.8754&zoom=8",
+          "start": 7816.5,
+          "ttfb": 1918.7999999523163,
+          "duration": 1954.3999999761581,
+          "bytes": 10909022
+        },
+        {
+          "url": "/api/v1/road-scenarios",
+          "start": 8049.200000047684,
+          "ttfb": 5.099999904632568,
+          "duration": 5.5,
+          "bytes": 11420
+        }
+      ],
+      "roads": "49326",
+      "transit": "0"
+    },
+    {
+      "name": "pan20px",
+      "events": [
+        {
+          "event": "moveend",
+          "time": 10994.899999976158,
+          "zoom": 7
+        },
+        {
+          "event": "setData",
+          "time": 11779.799999952316,
+          "id": "road-graph-lines",
+          "features": 39954
+        },
+        {
+          "event": "setDataReturn",
+          "time": 11779.799999952316,
+          "id": "road-graph-lines",
+          "duration": 0
+        },
+        {
+          "event": "setData",
+          "time": 11779.899999976158,
+          "id": "scenario-connection",
+          "features": 1
+        },
+        {
+          "event": "setDataReturn",
+          "time": 11779.899999976158,
+          "id": "scenario-connection",
+          "duration": 0
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 12027.299999952316,
+          "id": "road-graph-lines"
+        },
+        {
+          "event": "setDataDone",
+          "time": 12027.600000023842,
+          "id": "road-graph-lines"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 12029.5,
+          "id": "scenario-connection"
+        },
+        {
+          "event": "setDataDone",
+          "time": 12029.700000047684,
+          "id": "scenario-connection"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 12164.899999976158,
+          "id": "road-graph-lines"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 12165.100000023842,
+          "id": "scenario-connection"
+        }
+      ],
+      "longTasks": [
+        {
+          "start": 11733.799999952316,
+          "duration": 159
+        }
+      ],
+      "requests": [
+        {
+          "url": "/api/v1/road-graph?west=37.7534&south=54.0748&east=43.4664&north=56.8754&zoom=8",
+          "start": 11036.5,
+          "ttfb": 634.7000000476837,
+          "duration": 653.2000000476837,
+          "bytes": 8938697
+        },
+        {
+          "url": "/api/v1/road-scenarios",
+          "start": 11056.399999976158,
+          "ttfb": 6.5,
+          "duration": 7.100000023841858,
+          "bytes": 11420
+        }
+      ],
+      "roads": "39954",
+      "transit": "0"
+    },
+    {
+      "name": "komi",
+      "events": [
+        {
+          "event": "moveend",
+          "time": 1439.2000000476837,
+          "zoom": 4.458042788503884
+        },
+        {
+          "event": "moveend",
+          "time": 1504.1000000238419,
+          "zoom": 4.458042788503884
+        },
+        {
+          "event": "addSource",
+          "time": 1521.9000000953674,
+          "id": "road-analysis-result",
+          "features": 0
+        },
+        {
+          "event": "addSource",
+          "time": 1522.6000000238419,
+          "id": "road-graph-lines",
+          "features": 0
+        },
+        {
+          "event": "addSource",
+          "time": 1522.9000000953674,
+          "id": "region-transit",
+          "features": 52
+        },
+        {
+          "event": "addSource",
+          "time": 1523.2000000476837,
+          "id": "airport-points",
+          "features": 285
+        },
+        {
+          "event": "setData",
+          "time": 1747.7000000476837,
+          "id": "road-graph-lines",
+          "features": 8294
+        },
+        {
+          "event": "setDataReturn",
+          "time": 1747.8000000715256,
+          "id": "road-graph-lines",
+          "duration": 0.10000002384185791
+        },
+        {
+          "event": "addSource",
+          "time": 1747.8000000715256,
+          "id": "scenario-connection",
+          "features": 1
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 1788.2000000476837,
+          "id": "regions"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 1788.3000000715256,
+          "id": "road-analysis-result"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 1788.8000000715256,
+          "id": "region-transit"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 1789.2000000476837,
+          "id": "airport-points"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 1807.9000000953674,
+          "id": "road-graph-lines"
+        },
+        {
+          "event": "setDataDone",
+          "time": 1808.1000000238419,
+          "id": "road-graph-lines"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 1839.2000000476837,
+          "id": "road-graph-lines"
+        },
+        {
+          "event": "sourceLoaded",
+          "time": 1839.4000000953674,
+          "id": "scenario-connection"
+        }
+      ],
+      "longTasks": [
+        {
+          "start": 1206.6000000238419,
+          "duration": 229
+        },
+        {
+          "start": 1435.9000000953674,
+          "duration": 69
+        },
+        {
+          "start": 1733.2000000476837,
+          "duration": 50
+        }
+      ],
+      "requests": [
+        {
+          "url": "/src/shared/api/index.ts",
+          "start": 99.70000004768372,
+          "ttfb": 8.899999976158142,
+          "duration": 9.299999952316284,
+          "bytes": 909
+        },
+        {
+          "url": "/src/shared/api/client.ts",
+          "start": 111.10000002384186,
+          "ttfb": 14.200000047683716,
+          "duration": 17.5,
+          "bytes": 7355
+        },
+        {
+          "url": "/src/shared/api/query-client.ts",
+          "start": 111.20000004768372,
+          "ttfb": 14.200000047683716,
+          "duration": 17.5,
+          "bytes": 2022
+        },
+        {
+          "url": "/src/shared/api/chat-stream.ts?t=1794331181610",
+          "start": 720,
+          "ttfb": 6.900000095367432,
+          "duration": 7.400000095367432,
+          "bytes": 8497
+        },
+        {
+          "url": "/src/shared/api/chat-analysis.ts?t=1794331165088",
+          "start": 728.4000000953674,
+          "ttfb": 33.39999997615814,
+          "duration": 35.199999928474426,
+          "bytes": 4114
+        },
+        {
+          "url": "/src/shared/api/chat-artifacts.ts?t=1794324421881",
+          "start": 728.4000000953674,
+          "ttfb": 33.89999997615814,
+          "duration": 35.699999928474426,
+          "bytes": 5549
+        },
+        {
+          "url": "/src/shared/api/chat-calculation.ts?t=1794326159365",
+          "start": 728.4000000953674,
+          "ttfb": 34.299999952316284,
+          "duration": 35.89999997615814,
+          "bytes": 3301
+        },
+        {
+          "url": "/src/shared/api/chat-map.ts?t=1794324421882",
+          "start": 728.5,
+          "ttfb": 35.200000047683716,
+          "duration": 36.60000002384186,
+          "bytes": 2335
+        },
+        {
+          "url": "/api/v1/overview",
+          "start": 840.3000000715256,
+          "ttfb": -840.3000000715256,
+          "duration": 12.600000023841858,
+          "bytes": 0
+        },
+        {
+          "url": "/api/v1/regions/87000000?season=summer&network_mode=road",
+          "start": 841.5,
+          "ttfb": -841.5,
+          "duration": 11.400000095367432,
+          "bytes": 0
+        },
+        {
+          "url": "/api/v1/road-scenarios",
+          "start": 842.1000000238419,
+          "ttfb": -842.1000000238419,
+          "duration": 7,
+          "bytes": 0
+        },
+        {
+          "url": "/api/v1/regions/87000000/links?season=summer&include_unknown=true",
+          "start": 842.8000000715256,
+          "ttfb": -842.8000000715256,
+          "duration": 6.299999952316284,
+          "bytes": 0
+        },
+        {
+          "url": "/api/v1/airports",
+          "start": 843.4000000953674,
+          "ttfb": -843.4000000953674,
+          "duration": 5.699999928474426,
+          "bytes": 0
+        },
+        {
+          "url": "/api/v1/geo/boundaries",
+          "start": 843.9000000953674,
+          "ttfb": -843.9000000953674,
+          "duration": 5.199999928474426,
+          "bytes": 0
+        },
+        {
+          "url": "/api/v1/regions?season=summer&network_mode=road",
+          "start": 844.5,
+          "ttfb": -844.5,
+          "duration": 8.300000071525574,
+          "bytes": 0
+        },
+        {
+          "url": "/api/v1/overview",
+          "start": 846.3000000715256,
+          "ttfb": 274.6999999284744,
+          "duration": 274.7999999523163,
+          "bytes": 1908
+        },
+        {
+          "url": "/api/v1/regions/87000000?season=summer&network_mode=road",
+          "start": 846.6000000238419,
+          "ttfb": 306.60000002384186,
+          "duration": 307,
+          "bytes": 12981
+        },
+        {
+          "url": "/api/v1/road-scenarios",
+          "start": 846.9000000953674,
+          "ttfb": 265.89999997615814,
+          "duration": 266.5,
+          "bytes": 11420
+        },
+        {
+          "url": "/api/v1/regions/87000000/links?season=summer&include_unknown=true",
+          "start": 847.1000000238419,
+          "ttfb": 293.3000000715256,
+          "duration": 293.8000000715256,
+          "bytes": 263420
+        },
+        {
+          "url": "/api/v1/airports",
+          "start": 847.4000000953674,
+          "ttfb": 272.7999999523163,
+          "duration": 273.1999999284744,
+          "bytes": 73994
+        },
+        {
+          "url": "/api/v1/geo/boundaries",
+          "start": 847.6000000238419,
+          "ttfb": 286.2000000476837,
+          "duration": 291,
+          "bytes": 2087262
+        },
+        {
+          "url": "/api/v1/regions?season=summer&network_mode=road",
+          "start": 847.8000000715256,
+          "ttfb": 319.1999999284744,
+          "duration": 319.5,
+          "bytes": 32348
+        },
+        {
+          "url": "/api/v1/road-scenarios/f8f9b55687844896b09bca7196a74cef",
+          "start": 1140,
+          "ttfb": 20.40000009536743,
+          "duration": 20.700000047683716,
+          "bytes": 3977
+        },
+        {
+          "url": "/api/v1/road-graph?west=39.1896&south=56.7566&east=72.4604&north=69.5244&zoom=4",
+          "start": 1524.3000000715256,
+          "ttfb": 179.19999992847443,
+          "duration": 182.19999992847443,
+          "bytes": 1696808
+        },
+        {
+          "url": "/api/v1/road-scenarios",
+          "start": 4116.100000023842,
+          "ttfb": 15.800000071525574,
+          "duration": 16.700000047683716,
+          "bytes": 11420
+        }
+      ],
+      "roads": "8294",
+      "transit": "52"
+    }
+  ]
+}

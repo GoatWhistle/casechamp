@@ -1,0 +1,2 @@
+calculation completed 5
+{'id': 'f8f9b55687844896b09bca7196a74cef', 'compared_to': '2f580745b0f948599fc4a712a7f06253', 'status': 'completed', 'numerically_equal': True, 'seconds': 0.041935249930247664} {'segments': 29765, 'matched': 119681}

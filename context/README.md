@@ -29,3 +29,9 @@ Russian UI, one light theme; no mobile checks. Work on feat/map-first-ui, preser
 Next: route validation, sensitivity, submission and rehearsal.
 
 Workflow: feat/model-validation; source c5dc29e. Publishing local commits and validation evidence to the same remote branch. Final readiness: work/release-readiness.md.
+
+Implemented/locally verified: runtime reads use ClickHouse for atlas, graph, matrices and jobs.
+124 migrated source files (2.37GB) deleted after equality checks and no-source API restart;
+derived numerical caches retained. API8001 requires `.env.analytics`; GRAPH_DIR is cache root.
+Evidence and limits: [storage and performance](../docs/clickhouse.md).
+Branch feat/map-first-ui HEADc82ab1e; no commit/push/deploy.

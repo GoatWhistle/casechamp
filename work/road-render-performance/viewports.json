@@ -1,0 +1,23 @@
+[
+  {
+    "case": "country",
+    "seconds": 1.335,
+    "features": 79433,
+    "detail": "trunk",
+    "truncated": false
+  },
+  {
+    "case": "city",
+    "seconds": 0.185,
+    "features": 6332,
+    "detail": "all",
+    "truncated": false
+  },
+  {
+    "case": "far_east",
+    "seconds": 0.031,
+    "features": 191,
+    "detail": "secondary",
+    "truncated": false
+  }
+]

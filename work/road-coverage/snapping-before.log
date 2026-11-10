@@ -1,0 +1,21 @@
+ways=2  [peak RSS 0.2 GB]
+vertices=4  [peak RSS 0.2 GB]
+junctions=4  [peak RSS 0.2 GB]
+pass1: components=2 big=2  [peak RSS 0.2 GB]
+snapped: on_road=1/1  [peak RSS 0.2 GB]
+pass2: nodes=4 edges=4 (вершин 4, сжатие 1.0x)  [peak RSS 0.2 GB]
+points=1 on_road=1 pop_on_road=1.000  [peak RSS 0.2 GB]
+F..
+======================================================================
+FAIL: test_graph_anchors_settlement_to_road_instead_of_closer_ferry (test_road_collection.RoadCollectionTests.test_graph_anchors_settlement_to_road_instead_of_closer_ferry)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/andreykuronskin/keys_champ/tests/test_road_collection.py", line 46, in test_graph_anchors_settlement_to_road_instead_of_closer_ferry
+    self.assertEqual(nodes[points[0]['node']]['osm_node'], 3)
+AssertionError: 1 != 3
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.425s
+
+FAILED (failures=1)
+connector.osm: 3 ways -> /var/folders/cb/745p1f6n76j81rf85mbfxjhc0000gn/T/tmpmebcbwc6/out/connector.parquet

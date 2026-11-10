@@ -1,0 +1,22 @@
+{"name":"country","roads":"79433","transit":"0","longTasks":[{"start":717.8999999761581,"duration":139},{"start":2190,"duration":106},{"start":2296.7000000476837,"duration":70},{"start":4393.100000023842,"duration":117},{"start":4511.200000047684,"duration":421}],"requests":[{"url":"/api/v1/road-graph?west=18.9864&south=34.1867&east=180&north=84.7233&zoom=4","start":2400.600000023842,"ttfb":1949.6999999284744,"duration":1990.2999999523163,"bytes":16401165}]}
+{"name":"regional-zoom7","roads":"49326","transit":"0","longTasks":[{"start":7741.799999952316,"duration":60},{"start":9775.100000023842,"duration":72},{"start":9847.899999976158,"duration":281}],"requests":[{"url":"/api/v1/road-graph?west=37.6435&south=54.0748&east=43.3565&north=56.8754&zoom=8","start":7816.5,"ttfb":1918.7999999523163,"duration":1954.3999999761581,"bytes":10909022}]}
+{"name":"pan20px","roads":"39954","transit":"0","longTasks":[{"start":11733.799999952316,"duration":159}],"requests":[{"url":"/api/v1/road-graph?west=37.7534&south=54.0748&east=43.4664&north=56.8754&zoom=8","start":11036.5,"ttfb":634.7000000476837,"duration":653.2000000476837,"bytes":8938697}]}
+{"name":"komi","roads":"8294","transit":"52","longTasks":[{"start":1206.6000000238419,"duration":229},{"start":1435.9000000953674,"duration":69},{"start":1733.2000000476837,"duration":50}],"requests":[{"url":"/api/v1/regions/87000000/links?season=summer&include_unknown=true","start":842.8000000715256,"ttfb":-842.8000000715256,"duration":6.299999952316284,"bytes":0},{"url":"/api/v1/regions/87000000/links?season=summer&include_unknown=true","start":847.1000000238419,"ttfb":293.3000000715256,"duration":293.8000000715256,"bytes":263420},{"url":"/api/v1/road-graph?west=39.1896&south=56.7566&east=72.4604&north=69.5244&zoom=4","start":1524.3000000715256,"ttfb":179.19999992847443,"duration":182.19999992847443,"bytes":1696808}]}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Found 7 main-thread tasks over 100ms
+
+7 !== 0
+
+    at file:///Users/andreykuronskin/keys_champ/work/road-render-performance/browser-probe.mjs:85:8 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 7,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v25.2.1

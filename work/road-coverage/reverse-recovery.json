@@ -1,0 +1,477 @@
+{
+  "restored_ways": 57,
+  "restored_edges": 111,
+  "restored_km": 17.877536001678944,
+  "settlements_gaining_market_component": 0,
+  "population_gaining_market_component": 0,
+  "ways": [
+    {
+      "way_id": 30081830,
+      "way_idx": 3361289,
+      "km": 0.1039473212282522,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Усть-Курдюмское шоссе",
+      "segments": 1
+    },
+    {
+      "way_id": 35378083,
+      "way_idx": 3365206,
+      "km": 0.01564894416929075,
+      "nearest_settlement_region": "Республика Татарстан",
+      "name": "улица Амирхана Еники",
+      "segments": 1
+    },
+    {
+      "way_id": 38728427,
+      "way_idx": 24613,
+      "km": 0.04233572103981138,
+      "nearest_settlement_region": "Московская область",
+      "name": "Летняя аллея",
+      "segments": 1
+    },
+    {
+      "way_id": 40161079,
+      "way_idx": 27385,
+      "km": 0.02756886637083465,
+      "nearest_settlement_region": "Москва",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 48573666,
+      "way_idx": 1539273,
+      "km": 0.12545291376901135,
+      "nearest_settlement_region": "Мурманская область",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 48573702,
+      "way_idx": 1539277,
+      "km": 0.20878043211815536,
+      "nearest_settlement_region": "Мурманская область",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 67605040,
+      "way_idx": 3049405,
+      "km": 0.3038677153167774,
+      "nearest_settlement_region": "Курганская область",
+      "name": "улица Ленина",
+      "segments": 4
+    },
+    {
+      "way_id": 93385218,
+      "way_idx": 1367617,
+      "km": 0.29355048350721014,
+      "nearest_settlement_region": "Республика Дагестан",
+      "name": "улица Кирова",
+      "segments": 1
+    },
+    {
+      "way_id": 95783420,
+      "way_idx": 2022757,
+      "km": 0.21448981348140755,
+      "nearest_settlement_region": "Новосибирская область",
+      "name": "Большевистская улица",
+      "segments": 1
+    },
+    {
+      "way_id": 104848928,
+      "way_idx": 117285,
+      "km": 0.49670943307585586,
+      "nearest_settlement_region": "Брянская область",
+      "name": "улица Тараса Шевченко",
+      "segments": 1
+    },
+    {
+      "way_id": 107158577,
+      "way_idx": 3435945,
+      "km": 0.8990661242503227,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Усть-Курдюмское шоссе",
+      "segments": 1
+    },
+    {
+      "way_id": 119304661,
+      "way_idx": 1370377,
+      "km": 0.48141211228631053,
+      "nearest_settlement_region": "Республика Северная Осетия — Алания",
+      "name": "улица Бориса Лакути",
+      "segments": 2
+    },
+    {
+      "way_id": 119497683,
+      "way_idx": 3452758,
+      "km": 0.20449669497417505,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Усть-Курдюмское шоссе",
+      "segments": 2
+    },
+    {
+      "way_id": 125716557,
+      "way_idx": 1150893,
+      "km": 0.15777733328839844,
+      "nearest_settlement_region": "Хабаровский край",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 130626094,
+      "way_idx": 1596156,
+      "km": 0.2141640871064509,
+      "nearest_settlement_region": "Мурманская область",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 147841930,
+      "way_idx": 3485622,
+      "km": 0.19229449544282945,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Усть-Курдюмская улица",
+      "segments": 1
+    },
+    {
+      "way_id": 147844348,
+      "way_idx": 3485629,
+      "km": 0.28584634376297796,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Усть-Курдюмское шоссе",
+      "segments": 1
+    },
+    {
+      "way_id": 156716850,
+      "way_idx": 1375282,
+      "km": 0.8701232494105223,
+      "nearest_settlement_region": "Республика Дагестан",
+      "name": "улица Гагарина",
+      "segments": 7
+    },
+    {
+      "way_id": 160006963,
+      "way_idx": 3498951,
+      "km": 0.3265329850053384,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Усть-Курдюмская улица",
+      "segments": 1
+    },
+    {
+      "way_id": 160006964,
+      "way_idx": 3498952,
+      "km": 0.13675383598550417,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Усть-Курдюмская улица",
+      "segments": 1
+    },
+    {
+      "way_id": 163726428,
+      "way_idx": 2067915,
+      "km": 0.262144564354276,
+      "nearest_settlement_region": "Новосибирская область",
+      "name": "Садовая улица",
+      "segments": 2
+    },
+    {
+      "way_id": 176630432,
+      "way_idx": 1166562,
+      "km": 2.9018563546779963,
+      "nearest_settlement_region": "Амурская область",
+      "name": "魁星路",
+      "segments": 14
+    },
+    {
+      "way_id": 193866053,
+      "way_idx": 257611,
+      "km": 0.03935398737160474,
+      "nearest_settlement_region": "Воронежская область",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 194946498,
+      "way_idx": 3126014,
+      "km": 0.22461052139125134,
+      "nearest_settlement_region": "Челябинская область",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 199302498,
+      "way_idx": 1171849,
+      "km": 1.0176840195081698,
+      "nearest_settlement_region": "Приморский край",
+      "name": "花园路",
+      "segments": 6
+    },
+    {
+      "way_id": 214438940,
+      "way_idx": 285819,
+      "km": 0.20482686222451857,
+      "nearest_settlement_region": "Московская область",
+      "name": "Измайловский проспект",
+      "segments": 1
+    },
+    {
+      "way_id": 258239158,
+      "way_idx": 347486,
+      "km": 0.11235200843600142,
+      "nearest_settlement_region": "Брянская область",
+      "name": "улица Гагарина",
+      "segments": 1
+    },
+    {
+      "way_id": 266075032,
+      "way_idx": 1395863,
+      "km": 0.13858210970692483,
+      "nearest_settlement_region": "Республика Северная Осетия — Алания",
+      "name": "улица Бориса Лакути",
+      "segments": 1
+    },
+    {
+      "way_id": 266075034,
+      "way_idx": 1395865,
+      "km": 0.7029089907750741,
+      "nearest_settlement_region": "Республика Северная Осетия — Алания",
+      "name": "улица Бориса Лакути",
+      "segments": 8
+    },
+    {
+      "way_id": 301988155,
+      "way_idx": 3668732,
+      "km": 0.22246098426950733,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Усть-Курдюмская улица",
+      "segments": 2
+    },
+    {
+      "way_id": 325275160,
+      "way_idx": 3726937,
+      "km": 0.08200644310799358,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Усть-Курдюмская улица",
+      "segments": 1
+    },
+    {
+      "way_id": 350696336,
+      "way_idx": 1203959,
+      "km": 0.8825844176107811,
+      "nearest_settlement_region": "Амурская область",
+      "name": "电业街",
+      "segments": 5
+    },
+    {
+      "way_id": 493870343,
+      "way_idx": 2824500,
+      "km": 0.15266633270794958,
+      "nearest_settlement_region": "Краснодарский край",
+      "name": "улица Орджоникидзе",
+      "segments": 1
+    },
+    {
+      "way_id": 539070387,
+      "way_idx": 3880490,
+      "km": 0.052758722903975507,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Усть-Курдюмская улица",
+      "segments": 1
+    },
+    {
+      "way_id": 603519423,
+      "way_idx": 3912540,
+      "km": 0.1561514945439126,
+      "nearest_settlement_region": "Пермский край",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 637596625,
+      "way_idx": 670551,
+      "km": 0.17779176396519586,
+      "nearest_settlement_region": "Московская область",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 746013820,
+      "way_idx": 738921,
+      "km": 0.16833601018951383,
+      "nearest_settlement_region": "Московская область",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 775527785,
+      "way_idx": 4010188,
+      "km": 0.02808957238645645,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Усть-Курдюмское шоссе",
+      "segments": 1
+    },
+    {
+      "way_id": 1001207912,
+      "way_idx": 3306653,
+      "km": 0.15658628151219564,
+      "nearest_settlement_region": "Свердловская область",
+      "name": "Луганский проспект",
+      "segments": 3
+    },
+    {
+      "way_id": 1087738256,
+      "way_idx": 915589,
+      "km": 0.026166087932450864,
+      "nearest_settlement_region": "Московская область",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 1106647183,
+      "way_idx": 4169306,
+      "km": 0.07874103883410852,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Усть-Курдюмская улица",
+      "segments": 1
+    },
+    {
+      "way_id": 1183901858,
+      "way_idx": 4196555,
+      "km": 0.19650141293151516,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Усть-Курдюмское шоссе",
+      "segments": 1
+    },
+    {
+      "way_id": 1183901859,
+      "way_idx": 4196556,
+      "km": 0.07509819171502606,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Усть-Курдюмское шоссе",
+      "segments": 1
+    },
+    {
+      "way_id": 1189566252,
+      "way_idx": 1290817,
+      "km": 0.12136956647721223,
+      "nearest_settlement_region": "Амурская область",
+      "name": "улица Московских Строителей",
+      "segments": 1
+    },
+    {
+      "way_id": 1232153007,
+      "way_idx": 1505914,
+      "km": 0.005928927870602444,
+      "nearest_settlement_region": "Республика Дагестан",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 1232825922,
+      "way_idx": 1505941,
+      "km": 0.33379030634462936,
+      "nearest_settlement_region": "Республика Дагестан",
+      "name": "улица Гагарина",
+      "segments": 3
+    },
+    {
+      "way_id": 1265196879,
+      "way_idx": 4223774,
+      "km": 0.021056994284240394,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Телевизионная улица",
+      "segments": 1
+    },
+    {
+      "way_id": 1303668988,
+      "way_idx": 993923,
+      "km": 0.03214355279491949,
+      "nearest_settlement_region": "Московская область",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 1311803316,
+      "way_idx": 4235018,
+      "km": 0.19840211368736838,
+      "nearest_settlement_region": "Саратовская область",
+      "name": "Усть-Курдюмское шоссе",
+      "segments": 1
+    },
+    {
+      "way_id": 1331271235,
+      "way_idx": 2529726,
+      "km": 2.065328881183542,
+      "nearest_settlement_region": "Забайкальский край",
+      "name": "石基街",
+      "segments": 7
+    },
+    {
+      "way_id": 1451912923,
+      "way_idx": 1033688,
+      "km": 0.2751399042557865,
+      "nearest_settlement_region": "Рязанская область",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 1533316733,
+      "way_idx": 1311801,
+      "km": 0.026104118643778717,
+      "nearest_settlement_region": "Республика Саха (Якутия)",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 1533316734,
+      "way_idx": 1311802,
+      "km": 0.02872161327937123,
+      "nearest_settlement_region": "Республика Саха (Якутия)",
+      "name": null,
+      "segments": 1
+    },
+    {
+      "way_id": 1545346638,
+      "way_idx": 1054089,
+      "km": 0.1853323436306765,
+      "nearest_settlement_region": "Московская область",
+      "name": "улица Тимирязева",
+      "segments": 1
+    },
+    {
+      "way_id": 1545623258,
+      "way_idx": 1054218,
+      "km": 0.5434309874481993,
+      "nearest_settlement_region": "Московская область",
+      "name": null,
+      "segments": 2
+    },
+    {
+      "way_id": 1545627631,
+      "way_idx": 1054219,
+      "km": 0.24410297739553083,
+      "nearest_settlement_region": "Московская область",
+      "name": "Вторая улица",
+      "segments": 1
+    },
+    {
+      "way_id": 1545933061,
+      "way_idx": 1054341,
+      "km": 0.1356066357372502,
+      "nearest_settlement_region": "Московская область",
+      "name": null,
+      "segments": 2
+    }
+  ],
+  "excluded": [],
+  "source": {
+    "path": "data/road-refresh/reverse/reverse.osm",
+    "bytes": 105147,
+    "sha256": "d113fee985341dc48029bef47dfb27dd698715bc946780c86a329a5830435b81"
+  },
+  "output": {
+    "path": "data/road-refresh/reverse/recovered-edges.parquet",
+    "bytes": 3942,
+    "sha256": "950246c7ffde93a7db3491983e23d8765ca3739c602cd9f57bb6b75c70d5adaf"
+  },
+  "limitation": "Topology of the unfiltered legacy graph only; no seasonal index or new snapping recalculated."
+}

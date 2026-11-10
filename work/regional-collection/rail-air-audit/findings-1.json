@@ -1,0 +1,1035 @@
+[
+  {
+    "id": "01000000",
+    "name": "Алтайский край",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "timetable_found",
+      "sources": [
+        {
+          "url": "https://altayprigorod.ru/station/?station=842621",
+          "title": "Алтай-Пригород: расписание станции",
+          "evidence": "Опубликован поезд 7012/7011 Бийск — Барнаул с ежедневным курсированием; дату поездки нужно выбирать отдельно.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Бийск — Барнаул"
+      ]
+    },
+    "air": {
+      "status": "dated_timetable_found",
+      "sources": [
+        {
+          "url": "https://www.krasaviaport.ru/raspisanie/",
+          "title": "КрасАвиаПорт: расписание",
+          "evidence": "Есть рейсы Красноярск — Барнаул KV103/104 с периодами в марте–октябре 2026. Зимний календарь для даты аудита не подтвержден.",
+          "date": "2026",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Красноярск — Барнаул"
+      ]
+    }
+  },
+  {
+    "id": "12000000",
+    "name": "Астраханская область",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "timetable_found",
+      "sources": [
+        {
+          "url": "https://volgogradtransprigorod.ru/novosti-i-sobytiya/izmeneniya-v-raspisanii",
+          "title": "Волгоградтранспригород: изменения",
+          "evidence": "Указаны поезда Астрахань-1 — Астрахань-2 и ГПЗ — Кутум, изменения в сентябре и ноябре 2026. Изменение на отдельную дату не является базовым календарем.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Астрахань-1 — Астрахань-2",
+        "ГПЗ — Кутум"
+      ]
+    },
+    "air": {
+      "status": "timetable_found",
+      "sources": [
+        {
+          "url": "https://www.airportufa.ru/schedule/astrakhan/",
+          "title": "Аэропорт Уфа: Астрахань",
+          "evidence": "Публикует рейс A44058 Уфа — Астрахань с периодами в ноябре 2026 и зимой 2026/27. Дни недели нужно извлекать из исходной разметки, а не текстовой линейки всех дней.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Уфа — Астрахань"
+      ]
+    }
+  },
+  {
+    "id": "17000000",
+    "name": "Владимирская область",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_schedule_found",
+      "sources": [
+        {
+          "url": "https://vvppk.ru/passazhiram/skachat-raspisanie/",
+          "title": "ВВППК: скачать расписание",
+          "evidence": "Официальный раздел содержит отдельные расписания отправлений из Владимира и Мурома с 1 ноября (год на странице явно не указан). Прямые ссылки на файлы текстовый просмотр не извлек; нужен разбор HTML. Конкретные линии пока не выгружены.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "unresolved_reconstruction",
+      "sources": [
+        {
+          "url": "https://aerodrome-semyazino.ru/",
+          "title": "Аэродром Семязино",
+          "evidence": "Аэроклуб сообщает о переносе парашютных прыжков из-за реконструкции Семязино. Это не подтверждение ни наличия, ни отсутствия регулярных авиарейсов.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "20000000",
+    "name": "Воронежская область",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://ppkch-ru.1gb.ru/page/297",
+          "title": "ППК Черноземье: схемы движения",
+          "evidence": "Официальная страница схем отдельно указывает Воронежскую и Липецкую области, раздел находится в модерации. Это источник для дальнейшей выгрузки, не проверенное расписание.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "suspension_reported_dated",
+      "sources": [
+        {
+          "url": "https://old.favt.gov.ru/novosti-novosti?id=18652",
+          "title": "Росавиация: субсидии временно закрытым аэропортам",
+          "evidence": "Воронеж, Липецк и Симферополь перечислены среди временно закрытых аэропортов по состоянию сообщения от 27.05.2026. Не импортировать старые расписания как действующие; режим на конкретную дату перепроверить.",
+          "date": "2026-05-27",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "24000000",
+    "name": "Ивановская область",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_schedule_found",
+      "sources": [
+        {
+          "url": "https://sevppk.ru/passengers/schedule/",
+          "title": "СППК: расписание",
+          "evidence": "Официальный раздел направляет к расписанию РЖД. На главной оператор указывает Ярославскую, Костромскую, Ивановскую области в зоне перевозок. Маршруты и календарь необходимо выгрузить.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "opened_page"
+        },
+        {
+          "url": "https://sevppk.ru/",
+          "title": "СППК: зона работы",
+          "evidence": "На странице перечислены обслуживаемые регионы: в том числе Ярославская, Ивановская и Костромская области.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "timetable_found",
+      "sources": [
+        {
+          "url": "https://www.ivanovoaero.ru/info/raspisanie/",
+          "title": "Аэропорт Иваново: расписание",
+          "evidence": "Опубликована таблица направлений, дней, времени и периода действия, включая РусЛайн Санкт-Петербург — Иваново. Перед импортом сохранить полный календарь.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Санкт-Петербург — Иваново"
+      ]
+    }
+  },
+  {
+    "id": "27000000",
+    "name": "Калининградская область",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_schedule_found",
+      "sources": [
+        {
+          "url": "https://www.kppk39.ru/raspisanie/",
+          "title": "КППК: расписание",
+          "evidence": "Оператор публикует раздел расписаний пригородных поездов; конкретные рейсы и календарь не выгружены.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "timetable_found",
+      "sources": [
+        {
+          "url": "https://www.rossiya-airlines.ru/flight-with-us/before_flight/timetable_flight/?DATE=&arrival_city=KGD&depart_city=SVO&direction=O",
+          "title": "Россия: Москва — Калининград",
+          "evidence": "Официальная таблица содержит FV6309 и FV6661 из Шереметьево в Калининград на 09.11.2026.",
+          "date": "2026-11-09",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Москва (Шереметьево) — Калининград"
+      ]
+    }
+  },
+  {
+    "id": "91000000",
+    "name": "Карачаево-Черкесская Республика",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "station_schedule_found",
+      "sources": [
+        {
+          "url": "https://skppk.ru/spravochnik?s=9612997",
+          "title": "СКППК: Черкесск",
+          "evidence": "Справочник оператора имеет расписание станции Черкесск на 09.10.2026; главная подтверждает восемь станций КЧР.",
+          "date": "2026-10-09",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "no_civil_airport_reported_dated",
+      "sources": [
+        {
+          "url": "https://special.favt.gov.ru/novosti-novosti/?id=18022",
+          "title": "Росавиация: будущий аэродром Архыз",
+          "evidence": "На 12.03.2026 сообщено, что у КЧР нет собственного гражданского аэропорта, проект Архыз согласован. Ближайший доступный аэропорт указан в Минеральных Водах; это другой регион.",
+          "date": "2026-03-12",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "34000000",
+    "name": "Костромская область",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_schedule_found",
+      "sources": [
+        {
+          "url": "https://sevppk.ru/passengers/schedule/",
+          "title": "СППК: расписание",
+          "evidence": "Официальный раздел направляет к расписанию РЖД. На главной оператор указывает Ярославскую, Костромскую, Ивановскую области в зоне перевозок. Маршруты и календарь необходимо выгрузить.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "opened_page"
+        },
+        {
+          "url": "https://sevppk.ru/",
+          "title": "СППК: зона работы",
+          "evidence": "На странице перечислены обслуживаемые регионы: в том числе Ярославская, Ивановская и Костромская области.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "timetable_found",
+      "sources": [
+        {
+          "url": "https://kostromaavia.ru/passengers",
+          "title": "Костромское авиапредприятие: пассажирам",
+          "evidence": "Таблица КБ17/117 и 18/118 Кострома — Санкт-Петербург на 01.08–30.12.2026, среда/пятница/воскресенье с отдельными отменами и дополнительными датами.",
+          "date": "2026-08-01/2026-12-30",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Кострома — Санкт-Петербург"
+      ]
+    }
+  },
+  {
+    "id": "37000000",
+    "name": "Курганская область",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_schedule_found",
+      "sources": [
+        {
+          "url": "https://www.svrpk.ru/schedule/",
+          "title": "Свердловская пригородная компания: расписание",
+          "evidence": "Официальный поиск расписания. FAQ прямо перечисляет Курганскую, Оренбургскую области и ХМАО среди заказчиков перевозок; конкретные маршруты не выгружены.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "opened_page"
+        },
+        {
+          "url": "https://www.svrpk.ru/for-passengers/help/faq/",
+          "title": "СПК: заказчики перевозок",
+          "evidence": "Курганская, Оренбургская области и ХМАО перечислены как регионы транспортного заказа.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "operator_schedule_found",
+      "sources": [
+        {
+          "url": "https://airkurgan.ru/%D0%BF%D0%B0%D1%81%D1%81%D0%B0%D0%B6%D0%B8%D1%80%D0%B0%D0%BC/%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%B9%D1%81%D0%BE%D0%B2.html",
+          "title": "Аэропорт Курган: расписание",
+          "evidence": "Открыт официальный раздел расписания; полная таблица не извлечена.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "42000000",
+    "name": "Липецкая область",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://ppkch-ru.1gb.ru/page/297",
+          "title": "ППК Черноземье: схемы движения",
+          "evidence": "Официальная страница схем отдельно указывает Воронежскую и Липецкую области, раздел находится в модерации. Это источник для дальнейшей выгрузки, не проверенное расписание.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "suspension_reported_dated",
+      "sources": [
+        {
+          "url": "https://old.favt.gov.ru/novosti-novosti?id=18652",
+          "title": "Росавиация: субсидии временно закрытым аэропортам",
+          "evidence": "Воронеж, Липецк и Симферополь перечислены среди временно закрытых аэропортов по состоянию сообщения от 27.05.2026. Не импортировать старые расписания как действующие; режим на конкретную дату перепроверить.",
+          "date": "2026-05-27",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "47000000",
+    "name": "Мурманская область",
+    "air_links": 8,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "dated_official_document",
+      "sources": [
+        {
+          "url": "https://olenegorsk.gov-murman.ru/spravka/raskass/poleznaya-informatsiya.pdf",
+          "title": "Оленегорск: полезная информация",
+          "evidence": "Муниципальный документ содержит расписание пассажирских поездов, включая Мурманск — Брест. Дату действия необходимо проверить; текущий календарь не подтвержден.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Мурманск — Брест"
+      ]
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "49000000",
+    "name": "Новгородская область",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_schedule_found",
+      "sources": [
+        {
+          "url": "https://hhh.ppk-piter.ru/",
+          "title": "СЗППК: расписание",
+          "evidence": "Официальный сайт оператора содержит поиск расписаний. Его официальный канал публикует направление Обухово — Великий Новгород; текущий календарь нужно выгрузить.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        },
+        {
+          "url": "https://www.t.me/s/szppk",
+          "title": "СЗППК: официальный канал",
+          "evidence": "Публикуется поезд 7005 Обухово — Великий Новгород по субботам и воскресеньям; дата публикации в поисковой выдержке не установлена.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "unresolved_future_airport",
+      "sources": [
+        {
+          "url": "https://t.me/s/favt_ru?before=6376",
+          "title": "Росавиация: Кречевицы",
+          "evidence": "Официальный канал описывает проект капитального ремонта и будущие рейсы после завершения работ. Действующее регулярное сообщение не подтверждено.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "53000000",
+    "name": "Оренбургская область",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_schedule_found",
+      "sources": [
+        {
+          "url": "https://www.svrpk.ru/schedule/",
+          "title": "Свердловская пригородная компания: расписание",
+          "evidence": "Официальный поиск расписания. FAQ прямо перечисляет Курганскую, Оренбургскую области и ХМАО среди заказчиков перевозок; конкретные маршруты не выгружены.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "opened_page"
+        },
+        {
+          "url": "https://www.svrpk.ru/for-passengers/help/faq/",
+          "title": "СПК: заказчики перевозок",
+          "evidence": "Курганская, Оренбургская области и ХМАО перечислены как регионы транспортного заказа.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "timetable_found",
+      "sources": [
+        {
+          "url": "https://ar-ren.ru/schedule/",
+          "title": "Аэропорт Оренбург: расписание",
+          "evidence": "Таблица содержит A46150 Оренбург — Минеральные Воды, даты 12/16 ноября. Доступен официальный источник сезонных рейсов.",
+          "date": "2026-11",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Оренбург — Минеральные Воды"
+      ]
+    }
+  },
+  {
+    "id": "57000000",
+    "name": "Пермский край",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_schedule_found",
+      "sources": [
+        {
+          "url": "https://ppk59.ru/",
+          "title": "Пермская пригородная компания",
+          "evidence": "Доступны расписания по станциям и раздел Пермского центрального кольца; конкретные регулярные рейсы не выгружены.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "timetable_found",
+      "sources": [
+        {
+          "url": "https://pulkovoairport.ru/passengers/destinations/flight_schedule/?city=%D0%9F%D0%B5%D1%80%D0%BC%D1%8C",
+          "title": "Пулково: Пермь",
+          "evidence": "Таблица на 10–16.11.2026 содержит DP570/FV6582 Пермь — Санкт-Петербург и обратные рейсы.",
+          "date": "2026-11-10/2026-11-16",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Пермь — Санкт-Петербург"
+      ]
+    }
+  },
+  {
+    "id": "79000000",
+    "name": "Республика Адыгея",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "dated_official_document",
+      "sources": [
+        {
+          "url": "https://disk.kuban-express-prigorod.ru/wp-content/uploads/2026/02/%D0%A4%D0%BE%D1%80%D0%BC%D0%B0-9%D0%B2-2.pdf",
+          "title": "Кубань Экспресс-Пригород: форма 9в",
+          "evidence": "Документ оператора содержит участок Белореченская — Майкоп и станции Ханская, Майкоп. Нужна дополнительная выгрузка расписания.",
+          "date": "2026-02",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Белореченская — Майкоп"
+      ]
+    },
+    "air": {
+      "status": "unresolved",
+      "sources": [],
+      "route_examples": [],
+      "note": "Поиск по официальному сайту Адыгеи и аэропорту Майкоп не дал достаточного первичного подтверждения; отсутствие сервиса не установлено."
+    }
+  },
+  {
+    "id": "81000000",
+    "name": "Республика Бурятия",
+    "air_links": 7,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://irkppk.ru/",
+          "title": "Байкальская ППК",
+          "evidence": "Найден официальный перевозчик с поиском расписания. Полный набор станций Бурятии и действующие рейсы пока не выгружены.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "85000000",
+    "name": "Республика Калмыкия",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "unresolved_regionwide",
+      "sources": [
+        {
+          "url": "https://gorod-elista.ru/files/2021-09/tom1_kniga2_analiz_sushch_polozheniya.pdf",
+          "title": "Элиста: анализ существующего положения",
+          "evidence": "Муниципальный документ 2021 года указывает приостановление железнодорожного сообщения Элисты. Нельзя распространять на всю Калмыкию: нужны транзитные станции и актуальный календарь.",
+          "date": "2021-09",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "recent_operation_reported",
+      "sources": [
+        {
+          "url": "https://www.favt.gov.ru/novosti-novosti/?id=19446",
+          "title": "Росавиация: ремонт ВПП Элисты завершен",
+          "evidence": "02.09.2026 сообщено о возобновлении работы после августовского ремонта, первом рейсе из Москвы. Полного актуального расписания нет; прямое открытие страницы завершилось таймаутом.",
+          "date": "2026-09-02",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Москва — Элиста"
+      ]
+    }
+  },
+  {
+    "id": "35000000",
+    "name": "Республика Крым",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "timetable_found",
+      "sources": [
+        {
+          "url": "https://ug-ppk.ru/timetable/",
+          "title": "ЮППК: расписание",
+          "evidence": "Опубликованы ежедневные поезда Джанкой — Феодосия, Евпатория — Симферополь и другие, с корректировками 2–13 ноября 2026.",
+          "date": "2026-11",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Джанкой — Феодосия",
+        "Евпатория — Симферополь"
+      ]
+    },
+    "air": {
+      "status": "suspension_reported_dated",
+      "sources": [
+        {
+          "url": "https://old.favt.gov.ru/novosti-novosti?id=18652",
+          "title": "Росавиация: субсидии временно закрытым аэропортам",
+          "evidence": "Воронеж, Липецк и Симферополь перечислены среди временно закрытых аэропортов по состоянию сообщения от 27.05.2026. Не импортировать старые расписания как действующие; режим на конкретную дату перепроверить.",
+          "date": "2026-05-27",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "98000000",
+    "name": "Республика Саха (Якутия)",
+    "air_links": 22,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "timetable_found",
+      "sources": [
+        {
+          "url": "https://rw-y.ru/passengers/schedule/traffic/?special=Y",
+          "title": "Железные дороги Якутии: график движения",
+          "evidence": "Доступны последовательности остановок и время для Нижнего Бестяха — Тынды и Нижнего Бестяха — Благовещенска через Томмот, Алдан, Нерюнгри. Страница без явной даты действия: перед импортом нужен календарь.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": [
+        "Нижний Бестях — Тында",
+        "Нижний Бестях — Благовещенск"
+      ]
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "93000000",
+    "name": "Республика Тыва",
+    "air_links": 5,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "historical_absence_requires_refresh",
+      "sources": [
+        {
+          "url": "https://www.mintrans.gov.ru/eye/press-center/branch-news/644",
+          "title": "Минтранс: строительство дороги в Туву",
+          "evidence": "Публикация 20.08.2018 прямо сообщает об отсутствии ж/д сообщения и проекте Курагино — Кызыл. Историческое свидетельство, не проверка состояния 2026.",
+          "date": "2018-08-20",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "61000000",
+    "name": "Рязанская область",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "official_regional_report",
+      "sources": [
+        {
+          "url": "https://mineconom.ryazan.gov.ru/upload/iblock/736/an2ctzetmzrpaijpzh0g2t9hiqg6l1ut/Otchet-2024.pdf",
+          "title": "Рязанская область: отчет за 2024",
+          "evidence": "Отчет региона называет Центральную ППК единым пригородным перевозчиком. Сайт central-ppk.ru при открытии вернул 403. Расписание не выгружено.",
+          "date": "2024",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "unresolved_no_timetable",
+      "sources": [
+        {
+          "url": "https://mineconom.ryazan.gov.ru/upload/iblock/736/an2ctzetmzrpaijpzh0g2t9hiqg6l1ut/Otchet-2024.pdf",
+          "title": "Рязанская область: отчет за 2024",
+          "evidence": "Аэродром Протасово описан как объект развития с базированием четырех компаний, выполняющих авиационные работы. Регулярные пассажирские рейсы этим не подтверждаются.",
+          "date": "2024",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "64000000",
+    "name": "Сахалинская область",
+    "air_links": 13,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_schedule_found",
+      "sources": [
+        {
+          "url": "https://pk-sakhalin.ru/passazhiram",
+          "title": "Пассажирская компания Сахалин",
+          "evidence": "Официальный раздел содержит действующее расписание в файлах и схему полигона обслуживания; файлы не выгружены.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "07000000",
+    "name": "Ставропольский край",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_schedule_found",
+      "sources": [
+        {
+          "url": "https://skppk.ru/poisk-po-raspisaniyu",
+          "title": "СКППК: поиск по расписанию",
+          "evidence": "Официальный поиск поездов; главная оператора указывает 91 станцию Ставропольского края. Не выгружены все рейсы.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "timetable_found",
+      "sources": [
+        {
+          "url": "https://www.airportufa.ru/schedule/mineralnye_vody/",
+          "title": "Аэропорт Уфа: Минеральные Воды",
+          "evidence": "Таблица содержит A46022 Уфа — Минеральные Воды с периодом 10–29.11.2026 и другие рейсы. Это подтвержденный источник для Ставропольского края.",
+          "date": "2026-11",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Уфа — Минеральные Воды"
+      ]
+    }
+  },
+  {
+    "id": "69000000",
+    "name": "Томская область",
+    "air_links": 24,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_schedule_found",
+      "sources": [
+        {
+          "url": "https://kuzbass-prigorod.ru/schedule.html",
+          "title": "Кузбасс-пригород: расписание",
+          "evidence": "Поиск включает станции Томской области и Томск-1; указано обновление справочника 03.07.2026. Конкретный календарь не выгружен.",
+          "date": "2026-07-03",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "94000000",
+    "name": "Удмуртская Республика",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "timetable_found",
+      "sources": [
+        {
+          "url": "https://sodruzhestvoppk.ru/",
+          "title": "Содружество: изменения расписания",
+          "evidence": "Оператор публикует изменение поездов Ижевск — Сайгатка и Вятские Поляны — Ижевск на 4–5 ноября 2026; это подтверждает источник, но не постоянный календарь.",
+          "date": "2026-11",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Ижевск — Сайгатка",
+        "Вятские Поляны — Ижевск"
+      ]
+    },
+    "air": {
+      "status": "dated_timetable_found",
+      "sources": [
+        {
+          "url": "https://www.izhavia.su/onlayn-servisy/raspisanie-reysov?airport_from_id=0&airport_to_id=0&partner_id=12&utf8=%E2%9C%93",
+          "title": "Ижавиа: расписание",
+          "evidence": "Найден официальный ИЖ925 Ижевск — Санкт-Петербург, период 01.06–24.10.2026. Требуется зимний календарь.",
+          "date": "2026-06-01/2026-10-24",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Ижевск — Санкт-Петербург"
+      ]
+    }
+  },
+  {
+    "id": "71800000",
+    "name": "Ханты-Мансийский автономный округ",
+    "air_links": 43,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_schedule_found",
+      "sources": [
+        {
+          "url": "https://www.svrpk.ru/schedule/",
+          "title": "Свердловская пригородная компания: расписание",
+          "evidence": "Официальный поиск расписания. FAQ прямо перечисляет Курганскую, Оренбургскую области и ХМАО среди заказчиков перевозок; конкретные маршруты не выгружены.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "opened_page"
+        },
+        {
+          "url": "https://www.svrpk.ru/for-passengers/help/faq/",
+          "title": "СПК: заказчики перевозок",
+          "evidence": "Курганская, Оренбургская области и ХМАО перечислены как регионы транспортного заказа.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "97000000",
+    "name": "Чувашская Республика",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "timetable_found",
+      "sources": [
+        {
+          "url": "https://sodruzhestvoppk.ru/novosti/izmeneniya-v-raspisanii",
+          "title": "Содружество: Канаш — Чебоксары",
+          "evidence": "Сообщение от 20.10.2026 о временном расписании поезда 6506 Канаш — Чебоксары с 21 октября по 1 ноября. Для импорта нужен основной календарь.",
+          "date": "2026-10-20",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Канаш — Чебоксары"
+      ]
+    },
+    "air": {
+      "status": "operator_schedule_found",
+      "sources": [
+        {
+          "url": "https://aerocheb.ru/passazhiram/raspisanie_/",
+          "title": "Аэропорт Чебоксары: расписание",
+          "evidence": "Официальная страница планируемого расписания рейсов; полные строки и периоды еще не извлечены.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    }
+  },
+  {
+    "id": "78000000",
+    "name": "Ярославская область",
+    "air_links": 0,
+    "rail_links": 0,
+    "access_date": "2026-11-10",
+    "scope": "missing atlas links; model OD coverage is audited separately",
+    "rail": {
+      "status": "operator_schedule_found",
+      "sources": [
+        {
+          "url": "https://sevppk.ru/passengers/schedule/",
+          "title": "СППК: расписание",
+          "evidence": "Официальный раздел направляет к расписанию РЖД. На главной оператор указывает Ярославскую, Костромскую, Ивановскую области в зоне перевозок. Маршруты и календарь необходимо выгрузить.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "opened_page"
+        },
+        {
+          "url": "https://sevppk.ru/",
+          "title": "СППК: зона работы",
+          "evidence": "На странице перечислены обслуживаемые регионы: в том числе Ярославская, Ивановская и Костромская области.",
+          "date": null,
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    },
+    "air": {
+      "status": "timetable_found",
+      "sources": [
+        {
+          "url": "https://www.uvtaero.ru/raspisanie",
+          "title": "ЮВТ Аэро: расписание",
+          "evidence": "В таблице есть направление Ярославль, рейсы RT549/550 на 05.10–28.12.2026 по понедельникам. Базовый аэропорт строки необходимо сохранить при извлечении, поэтому пару пока не задаем.",
+          "date": "2026-10-05/2026-12-28",
+          "access_date": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": []
+    }
+  }
+]

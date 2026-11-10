@@ -1,0 +1,658 @@
+[
+  {
+    "id": "01000000",
+    "name": "Алтайский край",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 501,
+    "model_air_outgoing_pairs": 35
+  },
+  {
+    "id": "10000000",
+    "name": "Амурская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 11,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 43
+  },
+  {
+    "id": "11000000",
+    "name": "Архангельская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 23,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 60
+  },
+  {
+    "id": "12000000",
+    "name": "Астраханская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 31
+  },
+  {
+    "id": "14000000",
+    "name": "Белгородская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "15000000",
+    "name": "Брянская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "17000000",
+    "name": "Владимирская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 501,
+    "model_air_outgoing_pairs": 9
+  },
+  {
+    "id": "18000000",
+    "name": "Волгоградская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 501,
+    "model_air_outgoing_pairs": 68
+  },
+  {
+    "id": "19000000",
+    "name": "Вологодская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 2,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 58
+  },
+  {
+    "id": "20000000",
+    "name": "Воронежская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "99000000",
+    "name": "Еврейская автономная область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 1,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "76000000",
+    "name": "Забайкальский край",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 12,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 50
+  },
+  {
+    "id": "24000000",
+    "name": "Ивановская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 9
+  },
+  {
+    "id": "25000000",
+    "name": "Иркутская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 23,
+    "model_rail_outgoing_pairs": 501,
+    "model_air_outgoing_pairs": 131
+  },
+  {
+    "id": "83000000",
+    "name": "Кабардино-Балкарская Республика",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 26
+  },
+  {
+    "id": "27000000",
+    "name": "Калининградская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 60
+  },
+  {
+    "id": "29000000",
+    "name": "Калужская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 55
+  },
+  {
+    "id": "30000000",
+    "name": "Камчатский край",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 46,
+    "model_rail_outgoing_pairs": 0,
+    "model_air_outgoing_pairs": 36
+  },
+  {
+    "id": "91000000",
+    "name": "Карачаево-Черкесская Республика",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "32000000",
+    "name": "Кемеровская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 3,
+    "model_rail_outgoing_pairs": 501,
+    "model_air_outgoing_pairs": 99
+  },
+  {
+    "id": "33000000",
+    "name": "Кировская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 31
+  },
+  {
+    "id": "34000000",
+    "name": "Костромская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 7
+  },
+  {
+    "id": "03000000",
+    "name": "Краснодарский край",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 668,
+    "model_air_outgoing_pairs": 164
+  },
+  {
+    "id": "04000000",
+    "name": "Красноярский край",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 33,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 116
+  },
+  {
+    "id": "37000000",
+    "name": "Курганская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 26
+  },
+  {
+    "id": "38000000",
+    "name": "Курская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "41000000",
+    "name": "Ленинградская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 116
+  },
+  {
+    "id": "42000000",
+    "name": "Липецкая область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "44000000",
+    "name": "Магаданская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 12,
+    "model_rail_outgoing_pairs": 0,
+    "model_air_outgoing_pairs": 38
+  },
+  {
+    "id": "46000000",
+    "name": "Московская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 3507,
+    "model_air_outgoing_pairs": 2011
+  },
+  {
+    "id": "47000000",
+    "name": "Мурманская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 8,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 33
+  },
+  {
+    "id": "11800000",
+    "name": "Ненецкий АО",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 61,
+    "model_rail_outgoing_pairs": 0,
+    "model_air_outgoing_pairs": 39
+  },
+  {
+    "id": "22000000",
+    "name": "Нижегородская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 501,
+    "model_air_outgoing_pairs": 86
+  },
+  {
+    "id": "49000000",
+    "name": "Новгородская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "50000000",
+    "name": "Новосибирская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 176
+  },
+  {
+    "id": "52000000",
+    "name": "Омская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 1,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 50
+  },
+  {
+    "id": "53000000",
+    "name": "Оренбургская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 60
+  },
+  {
+    "id": "54000000",
+    "name": "Орловская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "56000000",
+    "name": "Пензенская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 29
+  },
+  {
+    "id": "57000000",
+    "name": "Пермский край",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 46
+  },
+  {
+    "id": "05000000",
+    "name": "Приморский край",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 28,
+    "model_rail_outgoing_pairs": 668,
+    "model_air_outgoing_pairs": 129
+  },
+  {
+    "id": "58000000",
+    "name": "Псковская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 24
+  },
+  {
+    "id": "79000000",
+    "name": "Республика Адыгея",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "84000000",
+    "name": "Республика Алтай",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 2,
+    "model_rail_outgoing_pairs": 0,
+    "model_air_outgoing_pairs": 44
+  },
+  {
+    "id": "80000000",
+    "name": "Республика Башкортостан",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 835,
+    "model_air_outgoing_pairs": 84
+  },
+  {
+    "id": "81000000",
+    "name": "Республика Бурятия",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 7,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 51
+  },
+  {
+    "id": "82000000",
+    "name": "Республика Дагестан",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 668,
+    "model_air_outgoing_pairs": 163
+  },
+  {
+    "id": "26000000",
+    "name": "Республика Ингушетия",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 42
+  },
+  {
+    "id": "85000000",
+    "name": "Республика Калмыкия",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 20
+  },
+  {
+    "id": "86000000",
+    "name": "Республика Карелия",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 1,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 37
+  },
+  {
+    "id": "87000000",
+    "name": "Республика Коми",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 48,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 32
+  },
+  {
+    "id": "35000000",
+    "name": "Республика Крым",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 501,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "88000000",
+    "name": "Республика Марий Эл",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 35
+  },
+  {
+    "id": "89000000",
+    "name": "Республика Мордовия",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 27
+  },
+  {
+    "id": "98000000",
+    "name": "Республика Саха (Якутия)",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 22,
+    "model_rail_outgoing_pairs": 0,
+    "model_air_outgoing_pairs": 47
+  },
+  {
+    "id": "90000000",
+    "name": "Республика Северная Осетия",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 21
+  },
+  {
+    "id": "92000000",
+    "name": "Республика Татарстан",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 668,
+    "model_air_outgoing_pairs": 191
+  },
+  {
+    "id": "93000000",
+    "name": "Республика Тыва",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 5,
+    "model_rail_outgoing_pairs": 0,
+    "model_air_outgoing_pairs": 26
+  },
+  {
+    "id": "95000000",
+    "name": "Республика Хакасия",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 1,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 34
+  },
+  {
+    "id": "60000000",
+    "name": "Ростовская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 1169,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "61000000",
+    "name": "Рязанская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "36000000",
+    "name": "Самарская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 501,
+    "model_air_outgoing_pairs": 108
+  },
+  {
+    "id": "63000000",
+    "name": "Саратовская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 501,
+    "model_air_outgoing_pairs": 70
+  },
+  {
+    "id": "64000000",
+    "name": "Сахалинская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 13,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 36
+  },
+  {
+    "id": "65000000",
+    "name": "Свердловская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 668,
+    "model_air_outgoing_pairs": 174
+  },
+  {
+    "id": "66000000",
+    "name": "Смоленская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "07000000",
+    "name": "Ставропольский край",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 1002,
+    "model_air_outgoing_pairs": 315
+  },
+  {
+    "id": "68000000",
+    "name": "Тамбовская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 21
+  },
+  {
+    "id": "28000000",
+    "name": "Тверская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "69000000",
+    "name": "Томская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 24,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 78
+  },
+  {
+    "id": "70000000",
+    "name": "Тульская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 0
+  },
+  {
+    "id": "71000000",
+    "name": "Тюменская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 8,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 85
+  },
+  {
+    "id": "94000000",
+    "name": "Удмуртская Республика",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 37
+  },
+  {
+    "id": "73000000",
+    "name": "Ульяновская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 31
+  },
+  {
+    "id": "08000000",
+    "name": "Хабаровский край",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 38,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 50
+  },
+  {
+    "id": "71800000",
+    "name": "Ханты-Мансийский автономный округ",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 43,
+    "model_rail_outgoing_pairs": 501,
+    "model_air_outgoing_pairs": 224
+  },
+  {
+    "id": "75000000",
+    "name": "Челябинская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 835,
+    "model_air_outgoing_pairs": 113
+  },
+  {
+    "id": "96000000",
+    "name": "Чеченская Республика",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 167,
+    "model_air_outgoing_pairs": 29
+  },
+  {
+    "id": "97000000",
+    "name": "Чувашская Республика",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 70
+  },
+  {
+    "id": "77000000",
+    "name": "Чукотский АО",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 50,
+    "model_rail_outgoing_pairs": 0,
+    "model_air_outgoing_pairs": 26
+  },
+  {
+    "id": "71900000",
+    "name": "ЯНАО",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 62,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 123
+  },
+  {
+    "id": "78000000",
+    "name": "Ярославская область",
+    "atlas_rail_links": 0,
+    "atlas_air_links": 0,
+    "model_rail_outgoing_pairs": 334,
+    "model_air_outgoing_pairs": 7
+  }
+]

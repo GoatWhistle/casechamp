@@ -1,0 +1,105 @@
+INFO:     Started server process [23857]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8004 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56233 - "GET /api/v1/health HTTP/1.1" 200 OK
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56533 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56544 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56559 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56581 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56612 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56634 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56668 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56698 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56713 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56719 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56739 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56742 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56748 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56769 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56774 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56783 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56798 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56803 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56815 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56828 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56852 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56856 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56864 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56886 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56906 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56917 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56927 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56948 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56984 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:56998 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:57016 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:57020 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:57029 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:57041 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/overview' detail='Analytical storage is unavailable'
+INFO:     127.0.0.1:56532 - "GET /api/v1/overview HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/geo/boundaries' detail='Analytical storage is unavailable'
+INFO:     127.0.0.1:56535 - "GET /api/v1/geo/boundaries HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/regions' detail='Analytical storage is unavailable'
+INFO:     127.0.0.1:56536 - "GET /api/v1/regions?season=summer&network_mode=road HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/airports' detail='Analytical storage is unavailable'
+INFO:     127.0.0.1:56534 - "GET /api/v1/airports HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:57049 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/overview' detail='Analytical storage is unavailable'
+INFO:     127.0.0.1:57065 - "GET /api/v1/overview HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/regions' detail='Analytical storage is unavailable'
+INFO:     127.0.0.1:57067 - "GET /api/v1/regions?season=summer&network_mode=road HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/geo/boundaries' detail='Analytical storage is unavailable'
+INFO:     127.0.0.1:57066 - "GET /api/v1/geo/boundaries HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/overview' detail='Analytical storage is unavailable'
+INFO:     127.0.0.1:57080 - "GET /api/v1/overview HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/regions' detail='Analytical storage is unavailable'
+INFO:     127.0.0.1:57081 - "GET /api/v1/regions?season=summer&network_mode=road HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/geo/boundaries' detail='Analytical storage is unavailable'
+INFO:     127.0.0.1:57082 - "GET /api/v1/geo/boundaries HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:57087 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:57100 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:57109 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:57136 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable
+domain_failure code='data_unavailable' path='/api/v1/road-scenarios' detail='GRAPH_DIR is not configured'
+INFO:     127.0.0.1:57151 - "GET /api/v1/road-scenarios HTTP/1.1" 503 Service Unavailable

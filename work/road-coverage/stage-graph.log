@@ -1,0 +1,22 @@
+plexus_refresh_graph."nodes": 11463176 rows
+plexus_refresh_graph."edges": 28667472 rows
+plexus_refresh_graph."points": 155747 rows
+Traceback (most recent call last):
+  File "/Users/andreykuronskin/keys_champ/work/road-coverage/stage_data.py", line 120, in <module>
+    main()
+  File "/Users/andreykuronskin/keys_champ/work/road-coverage/stage_data.py", line 98, in main
+    with duckdb.connect(str(DEST / 'casechamp.duckdb') if args.part == 'calculation' else ':memory:', read_only=args.part == 'calculation') as con:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andreykuronskin/keys_champ/work/road-coverage/stage_data.py", line 107, in main
+    state['tables'][name] = stage(client, con, database, name, query)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andreykuronskin/keys_champ/work/road-coverage/stage_data.py", line 41, in stage
+    count = stream(client, connection, loading, query)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andreykuronskin/keys_champ/work/road-coverage/stage_data.py", line 27, in stream
+    client.request(f'INSERT INTO {target} FORMAT ArrowStream', buffer.getvalue().to_pybytes())
+  File "/Users/andreykuronskin/keys_champ/etl/analytics/client.py", line 38, in request
+    raise RuntimeError(
+RuntimeError: ClickHouse HTTP 500: std::exception. Code: 1001, type: std::__1::filesystem::filesystem_error, e.what() = filesystem error: in create_directories: Input/output error ["/var/lib/clickhouse/store/646/646f6362-9bcb-4f6f-9412-01e8648e4514/tmp_insert_all_20_20_0"]
+Cannot print extra info for Poco::Exception (version 25.6.13.41 (official build))
+

@@ -1,0 +1,27 @@
+{
+  "regions": 82,
+  "total_links": 46487,
+  "links_by_mode": {
+    "rail": 27559,
+    "bus": 11201,
+    "air": 7125,
+    "river": 306,
+    "winter_road": 78,
+    "ferry": 99,
+    "ice_crossing": 84,
+    "pontoon_bridge": 35
+  },
+  "vladimir_modes": {
+    "pontoon_bridge": 1,
+    "bus": 76,
+    "air": 9,
+    "rail": 501
+  },
+  "yakutia_rail": 2,
+  "vladimir_models": 510,
+  "source_catalog_ids": [
+    "network-model",
+    "network-uvt",
+    "network-yakutia"
+  ]
+}

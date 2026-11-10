@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/Users/andreykuronskin/keys_champ/work/road-coverage/stage_data.py", line 120, in <module>
+    main()
+  File "/Users/andreykuronskin/keys_champ/work/road-coverage/stage_data.py", line 97, in main
+    client.request('CREATE DATABASE IF NOT EXISTS ' + PREFIX + database)
+  File "/Users/andreykuronskin/keys_champ/etl/analytics/client.py", line 35, in request
+    response = connection.getresponse()
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andreykuronskin/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/http/client.py", line 1430, in getresponse
+    response.begin()
+  File "/Users/andreykuronskin/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/http/client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/Users/andreykuronskin/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/http/client.py", line 300, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response

@@ -1,0 +1,3 @@
+northwestern: downloading https://download.geofabrik.de/russia/northwestern-fed-district-261109.osm.pbf
+curl: (18) transfer closed with 228687457 bytes remaining to read
+northwestern-fed-district: FAILED Command '['curl', '-fsSL', '--retry', '4', '--retry-delay', '3', '--connect-timeout', '30', '--max-time', '2400', '--continue-at', '-', '-o', '/Users/andreykuronskin/keys_champ/data/road-refresh/raw/northwestern.osm.part', 'https://download.geofabrik.de/russia/northwestern-fed-district-261109.osm.pbf']' returned non-zero exit status 18.

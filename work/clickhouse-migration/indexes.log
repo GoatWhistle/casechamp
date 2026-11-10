@@ -1,0 +1,11 @@
+locations
+region_points
+ALTER TABLE plexus_graph.ways ADD PROJECTION IF NOT EXISTS by_osm_id (SELECT way_id,way_idx ORDER BY way_id)
+ALTER TABLE plexus_graph.ways MATERIALIZE PROJECTION by_osm_id SETTINGS mutations_sync=1
+ALTER TABLE plexus_graph.points ADD PROJECTION IF NOT EXISTS by_point (SELECT point_id,node,snap_km ORDER BY point_id)
+ALTER TABLE plexus_graph.points MATERIALIZE PROJECTION by_point SETTINGS mutations_sync=1
+ALTER TABLE plexus_graph.locations ADD INDEX IF NOT EXISTS place_name lowerUTF8(ifNull(settlement,'')) TYPE ngrambf_v1(3,8192,3,0) GRANULARITY 1
+ALTER TABLE plexus_graph.locations MATERIALIZE INDEX place_name SETTINGS mutations_sync=1
+ALTER TABLE plexus_atlas.atlas_settlements ADD COLUMN IF NOT EXISTS name_key String MATERIALIZED lowerUTF8(replaceAll(name,'ё','е'))
+ALTER TABLE plexus_atlas.atlas_settlements ADD INDEX IF NOT EXISTS place_name name_key TYPE ngrambf_v1(3,8192,3,0) GRANULARITY 1
+ALTER TABLE plexus_atlas.atlas_settlements MATERIALIZE INDEX place_name SETTINGS mutations_sync=1

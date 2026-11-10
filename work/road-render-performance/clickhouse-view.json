@@ -1,0 +1,26 @@
+[
+  {
+    "seconds": 0.5572526250034571,
+    "features": 29765,
+    "vertices": 94980,
+    "ways": 29765,
+    "bytes": 6773525,
+    "matched": 119681
+  },
+  {
+    "seconds": 0.4800388329895213,
+    "features": 29765,
+    "vertices": 94980,
+    "ways": 29765,
+    "bytes": 6773525,
+    "matched": 119681
+  },
+  {
+    "seconds": 0.6110179999377578,
+    "features": 29765,
+    "vertices": 94980,
+    "ways": 29765,
+    "bytes": 6773525,
+    "matched": 119681
+  }
+]

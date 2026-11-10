@@ -1,0 +1,20 @@
+{
+  "new_base_reachable_points": 18,
+  "new_base_reachable_population": 26958,
+  "omsk_examples": [
+    {
+      "point_id": "52603151051",
+      "object_name": "пгт Большеречье рп",
+      "candidate_snap_km": 0.048200703505671155,
+      "candidate_hours_to_omsk": 3.3644895934880252
+    },
+    {
+      "point_id": "52657432101",
+      "object_name": "село Усть-Ишим",
+      "candidate_snap_km": 0.041407552768819696,
+      "candidate_hours_to_omsk": 7.991347004725386
+    }
+  ],
+  "filter": "Exclude legacy is_ferry and is_seasonal; undirected national road model",
+  "limitation": "Model path, not field verification; not a published Hansen recalculation."
+}

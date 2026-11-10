@@ -1,0 +1,965 @@
+[
+  {
+    "id": "11000000",
+    "name": "Архангельская область",
+    "atlas_air_links": 23,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://sevppk.ru/",
+          "title": "Северная ППК",
+          "evidence": "Перевозчик перечисляет Архангельскую, Вологодскую области и Коми в зоне работы; раздел расписаний https://sevppk.ru/passengers/schedule/.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "15000000",
+    "name": "Брянская область",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "official_service_evidence",
+      "sources": [
+        {
+          "url": "https://provincial.bryanskobl.ru/news/2026/07/23/16718",
+          "title": "Правительство Брянской области: транспортное сотрудничество",
+          "evidence": "Правительство сообщает о новых двухэтажных вагонах поездов Москва — Брянск и Санкт-Петербург — Брянск — Белгород; это подтверждение сообщения, не полное расписание.",
+          "date": "2026-07-23",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        },
+        {
+          "url": "https://central-ppk.ru/",
+          "title": "ЦППК",
+          "evidence": "Сайт предполагаемого оператора вернул HTTP 403. Региональное расписание первоисточником в этой проверке не извлечено.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "failed_open"
+        }
+      ],
+      "route_examples": [
+        "Москва — Брянск",
+        "Санкт-Петербург — Брянск — Белгород"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "airport_closed_dated",
+      "sources": [
+        {
+          "url": "https://special.favt.gov.ru/novosti-novosti/?id=18652",
+          "title": "Росавиация: субсидии закрытым аэропортам",
+          "evidence": "В перечне временно закрытых аэропортов указан Брянск. Дата индексирования не заменяет свежую проверку возобновления.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "19000000",
+    "name": "Вологодская область",
+    "atlas_air_links": 2,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://sevppk.ru/",
+          "title": "Северная ППК",
+          "evidence": "Перевозчик перечисляет Архангельскую, Вологодскую области и Коми в зоне работы; раздел расписаний https://sevppk.ru/passengers/schedule/.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "76000000",
+    "name": "Забайкальский край",
+    "atlas_air_links": 12,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://www.zppk.ru/passazhiram/raspisanie/",
+          "title": "Забайкальская ППК: расписание",
+          "evidence": "Официальная страница указывает график с 15 декабря 2024 и предлагает РЖД Пассажирам; обновление полного графика требует проверки.",
+          "date": "2024-12-15",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "83000000",
+    "name": "Кабардино-Балкарская Республика",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "historical_service_evidence",
+      "sources": [
+        {
+          "url": "https://skppk.ru/novosti/prigorodnoe-zheleznodorozhnoe-soobschenie-vosstanovili-v-kabardino-balkarii",
+          "title": "СКППК: восстановление сообщения в КБР",
+          "evidence": "В 2021 возобновлено движение Минеральные Воды — Беслан через КБР. Текущее расписание требует запроса https://skppk.ru/poisk-po-raspisaniyu.",
+          "date": "2021",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Минеральные Воды — Беслан (2021)"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "published_schedule_found",
+      "sources": [
+        {
+          "url": "https://www.uvtaero.ru/raspisanie",
+          "title": "ЮВТ Аэро: расписание",
+          "evidence": "Оператор публикует маршрут, номера рейсов, дни недели и периоды действия осень–зима 2026.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": [
+        "Казань — Нальчик"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "30000000",
+    "name": "Камчатский край",
+    "atlas_air_links": 46,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "no_rail_infrastructure_dated",
+      "sources": [
+        {
+          "url": "https://rlw.gov.ru/storage/document/document_file/2024-11/15/pasport-kamcatskij-kraj-15.11.pdf",
+          "title": "Росжелдор: паспорт Камчатского края",
+          "evidence": "Паспорт прямо сообщает отсутствие железных дорог по состоянию на 2024 год.",
+          "date": "2024-11-15",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "33000000",
+    "name": "Кировская область",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://vvppk.ru/passazhiram/skachat-raspisanie/?bitrix_include_areas=Y",
+          "title": "Волго-Вятская ППК: скачать расписание",
+          "evidence": "Есть отдельные загрузки расписаний с отправлением из Кирова и Нижнего Новгорода.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "published_schedule_found",
+      "sources": [
+        {
+          "url": "https://www.uvtaero.ru/raspisanie",
+          "title": "ЮВТ Аэро: расписание",
+          "evidence": "Оператор публикует маршрут, номера рейсов, дни недели и периоды действия осень–зима 2026.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": [
+        "Казань — Киров"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "04000000",
+    "name": "Красноярский край",
+    "atlas_air_links": 33,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://kraspg.ru/r",
+          "title": "Краспригород: расписание",
+          "evidence": "Оператор предоставляет поиск и скачивание действующего расписания, без оконных и праздничных изменений.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "41000000",
+    "name": "Ленинградская область",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://ppk-piter.ru/",
+          "title": "Северо-Западная ППК",
+          "evidence": "Доступен официальный сайт с расписанием; тарифная страница явно включает Псковскую область https://ticket.ppk-piter.ru/passenger/tiket/abon/. Для полного графика нужны направления и дата.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "regional_attribution_needs_review",
+      "sources": [
+        {
+          "url": "https://www.mintrans.gov.ru/transport_of_russian/3/59",
+          "title": "Минтранс РФ: Ленинградская область",
+          "evidence": "Найден официальный транспортный профиль. Регулярное расписание аэропорта внутри области не получено; Пулково нельзя автоматически считать аэропортом области, требуется правило агрегации Санкт-Петербурга.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "46000000",
+    "name": "Московская область",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://mtppk.ru/",
+          "title": "Московско-Тверская ППК",
+          "evidence": "Табло показывает Москва — Тверь, Москва — Подсолнечная, изменения на участке Клин — Подсолнечная 9–30 ноября 2026.",
+          "date": "2026-11-06",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Москва — Тверь",
+        "Москва — Подсолнечная"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "airport_source_found",
+      "sources": [
+        {
+          "url": "https://svo.su/",
+          "title": "Международный аэропорт Шереметьево",
+          "evidence": "Официальная страница после редиректа svo.aero указывает адрес Московская область, Химки. Динамическое табло не извлечено; это источник для импорта, не полная выгрузка рейсов.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "22000000",
+    "name": "Нижегородская область",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://vvppk.ru/passazhiram/skachat-raspisanie/?bitrix_include_areas=Y",
+          "title": "Волго-Вятская ППК: скачать расписание",
+          "evidence": "Есть отдельные загрузки расписаний с отправлением из Кирова и Нижнего Новгорода.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "published_schedule_found",
+      "sources": [
+        {
+          "url": "https://www.uvtaero.ru/raspisanie",
+          "title": "ЮВТ Аэро: расписание",
+          "evidence": "Оператор публикует маршрут, номера рейсов, дни недели и периоды действия осень–зима 2026.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": [
+        "Казань — Нижний Новгород"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "52000000",
+    "name": "Омская область",
+    "atlas_air_links": 1,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "official_service_evidence",
+      "sources": [
+        {
+          "url": "https://xn--80apdbblmbgrh.xn--p1ai/press-center/archive/10-i-13-noyabrya-vremenno-izmenitsya-raspisanie-prigorodnykh-poezdov-/",
+          "title": "Администрация Омского района",
+          "evidence": "Муниципалитет публикует сообщение Омск-пригород об изменениях поездов 10 и 13 ноября 2026. Сайт оператора https://omsk-prigorod.ru/ вернул timeout.",
+          "date": "2026-11-09",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "56000000",
+    "name": "Пензенская область",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://www.t.me/s/bppc_ufa?before=3351",
+          "title": "Башкортостанская ППК: официальный канал",
+          "evidence": "Канал оператора перечисляет Башкортостан, Мордовию и Пензенскую область; сообщает о дополнительной паре Пенза-1 — Саранск с 1 августа 2026. Сайт bppc.ru недоступен через инструмент.",
+          "date": "2026-08-01",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Пенза-1 — Саранск (для Пензы/Мордовии; не маршрут Башкортостана)"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "published_service_found",
+      "sources": [
+        {
+          "url": "https://azimuth.ru/ru/news/aviakompaniya-azimut-vozobnovlyaet-polety-v-kirov-penzu-ivanovo-magnitogorsk-i-v-goroda-uzbekistana",
+          "title": "Азимут: возобновление рейсов",
+          "evidence": "Перевозчик сообщает рейсы Минеральные Воды — Пенза с 16 октября 2026 по пятницам и вторникам.",
+          "date": "2026-10-16",
+          "accessed_at": "2026-11-10",
+          "access_level": "opened_page"
+        },
+        {
+          "url": "https://airport58.ru/",
+          "title": "Аэропорт Пенза",
+          "evidence": "Официальный сайт аэропорта вернул HTTP 502; первичное расписание этой проверкой не извлечено.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "failed_open"
+        }
+      ],
+      "route_examples": [
+        "Минеральные Воды — Пенза"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "58000000",
+    "name": "Псковская область",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://ppk-piter.ru/",
+          "title": "Северо-Западная ППК",
+          "evidence": "Доступен официальный сайт с расписанием; тарифная страница явно включает Псковскую область https://ticket.ppk-piter.ru/passenger/tiket/abon/. Для полного графика нужны направления и дата.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "published_service_found",
+      "sources": [
+        {
+          "url": "https://azimuth.ru/ru/news/aviakompaniya-azimut-otkryla-prodazhu-aviabiletov-na-osenne-zimniy-period-2026-2027",
+          "title": "Азимут: осенне-зимние рейсы 2026–2027",
+          "evidence": "Опубликованы рейсы А47037/А47038 и А47137/А47138 Москва — Псков в программе с вылетами с 25 октября 2026. Точный график следует извлечь из расписания.",
+          "date": "2026-06-16",
+          "accessed_at": "2026-11-10",
+          "access_level": "opened_page"
+        },
+        {
+          "url": "https://azimuth.ru/uploads/ckeditor/attachments/496/vash_azimut_60.pdf",
+          "title": "Журнал перевозчика Азимут",
+          "evidence": "Перевозчик публиковал продажу Сочи — Псков на лето 2023. Текущее расписание на сайте https://azimuth.aero/timetable требует отдельного извлечения.",
+          "date": "2023",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Москва — Псков (сезон 2026–2027)"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "80000000",
+    "name": "Республика Башкортостан",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://www.t.me/s/bppc_ufa?before=3351",
+          "title": "Башкортостанская ППК: официальный канал",
+          "evidence": "Канал оператора перечисляет Башкортостан, Мордовию и Пензенскую область; сообщает о дополнительной паре Пенза-1 — Саранск с 1 августа 2026. Сайт bppc.ru недоступен через инструмент.",
+          "date": "2026-08-01",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "published_schedule_found",
+      "sources": [
+        {
+          "url": "https://www.airportufa.ru/schedule/",
+          "title": "Аэропорт Уфа: сезонное расписание",
+          "evidence": "Официальный каталог направлений содержит внутренние и международные направления, включая Астрахань, Екатеринбург и Жуковский.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Уфа — Астрахань",
+        "Уфа — Екатеринбург",
+        "Уфа — Жуковский"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "26000000",
+    "name": "Республика Ингушетия",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "historical_service_evidence",
+      "sources": [
+        {
+          "url": "https://mtseing.ru/zh-d-transport",
+          "title": "Министерство промышленности Ингушетии: ж/д транспорт",
+          "evidence": "Официальный раздел описывает поезд Назрань — Москва с 2013 года; актуальный график не указан.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Назрань — Москва (текущий график не проверен)"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "published_schedule_found",
+      "sources": [
+        {
+          "url": "https://www.uvtaero.ru/raspisanie",
+          "title": "ЮВТ Аэро: расписание",
+          "evidence": "Оператор публикует маршрут, номера рейсов, дни недели и периоды действия осень–зима 2026.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": [
+        "Казань — Магас"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "87000000",
+    "name": "Республика Коми",
+    "atlas_air_links": 48,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://sevppk.ru/",
+          "title": "Северная ППК",
+          "evidence": "Перевозчик перечисляет Архангельскую, Вологодскую области и Коми в зоне работы; раздел расписаний https://sevppk.ru/passengers/schedule/.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "89000000",
+    "name": "Республика Мордовия",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://www.t.me/s/bppc_ufa?before=3351",
+          "title": "Башкортостанская ППК: официальный канал",
+          "evidence": "Канал оператора перечисляет Башкортостан, Мордовию и Пензенскую область; сообщает о дополнительной паре Пенза-1 — Саранск с 1 августа 2026. Сайт bppc.ru недоступен через инструмент.",
+          "date": "2026-08-01",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Пенза-1 — Саранск (для Пензы/Мордовии; не маршрут Башкортостана)"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "published_schedule_found",
+      "sources": [
+        {
+          "url": "https://www.uvtaero.ru/raspisanie",
+          "title": "ЮВТ Аэро: расписание",
+          "evidence": "Оператор публикует маршрут, номера рейсов, дни недели и периоды действия осень–зима 2026.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": [
+        "Казань — Саранск"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "92000000",
+    "name": "Республика Татарстан",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://sodruzhestvoppk.ru/",
+          "title": "ППК Содружество",
+          "evidence": "Официальное расписание и новость 9 ноября 2026 об остановке Каратун у поезда Казань — Бурундуки.",
+          "date": "2026-11-09",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Казань — Бурундуки"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "published_schedule_found",
+      "sources": [
+        {
+          "url": "https://www.uvtaero.ru/raspisanie",
+          "title": "ЮВТ Аэро: расписание",
+          "evidence": "Оператор публикует маршрут, номера рейсов, дни недели и периоды действия осень–зима 2026.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": [
+        "Казань — Грозный"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "60000000",
+    "name": "Ростовская область",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://skppk.ru/images/content/gorod-elekt/citysuburban062026.pdf",
+          "title": "СКППК: городская электричка Ростова",
+          "evidence": "Табличное расписание со станциями и днями курсирования с 15 июня 2026.",
+          "date": "2026-06-15",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "airport_closed",
+      "sources": [
+        {
+          "url": "https://ar-rov.ru/",
+          "title": "Аэропорт Платов",
+          "evidence": "Главная официального сайта сообщает, что аэропорт временно не принимает и не выпускает воздушные суда до особого распоряжения.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "63000000",
+    "name": "Саратовская область",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://sarppk.ru/",
+          "title": "Саратовская ППК",
+          "evidence": "Оператор публикует изменения Аткарск — Анисовка на 1–30 ноября 2026; доступен раздел Расписание.",
+          "date": "2026-11",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Аткарск — Анисовка"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "airport_source_found",
+      "sources": [
+        {
+          "url": "https://ar-gsv.ru/",
+          "title": "Аэропорт Гагарин",
+          "evidence": "Сайт содержит сезонное расписание и новость о зимнем расписании от 21 октября 2026.",
+          "date": "2026-10-21",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "66000000",
+    "name": "Смоленская область",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "official_service_evidence",
+      "sources": [
+        {
+          "url": "https://mintrans.gov.ru/eye/press-center/news/12516",
+          "title": "Минтранс РФ: Смоленск — Орша/Витебск",
+          "evidence": "Открыта продажа на трансграничные пригородные поезда, описаны составы и пересадки.",
+          "date": "2026-03-24",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Смоленск — Орша",
+        "Смоленск — Витебск"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "planned_service_not_operating_evidence",
+      "sources": [
+        {
+          "url": "https://www.admin-smolensk.ru/novosti/news/aeroport-smolensk-severnyj-gotovitsya-k-masshtabnoj-rekonstrukcii/",
+          "title": "Правительство Смоленской области",
+          "evidence": "Обновленный Смоленск-Северный планируют открыть в 2029; регулярные рейсы описаны как будущие. Не полный реестр всех аэродромов области.",
+          "date": "2026-08-05",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "28000000",
+    "name": "Тверская область",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://mtppk.ru/",
+          "title": "Московско-Тверская ППК",
+          "evidence": "Табло показывает Москва — Тверь, Москва — Подсолнечная, изменения на участке Клин — Подсолнечная 9–30 ноября 2026.",
+          "date": "2026-11-06",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Москва — Тверь",
+        "Москва — Подсолнечная"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "unresolved",
+      "sources": [],
+      "route_examples": [],
+      "note": "Первичного подтверждения наличия или отсутствия регулярного авиасообщения не найдено. Требуется запрос региональному транспортному ведомству."
+    }
+  },
+  {
+    "id": "71000000",
+    "name": "Тюменская область",
+    "atlas_air_links": 8,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://www.svrpk.ru/for-passengers/help/faq/",
+          "title": "Свердловская пригородная компания",
+          "evidence": "Официальный FAQ указывает Тюменскую область и источники действующего расписания svrpk.ru и РЖД.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "08000000",
+    "name": "Хабаровский край",
+    "atlas_air_links": 38,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "operator_source_found",
+      "sources": [
+        {
+          "url": "https://expresspk.ru/information/1382",
+          "title": "Экспресс Приморья: скачать расписание",
+          "evidence": "Доступна загрузка расписания Хабаровского края и ЕАО; отдельные сообщения изменений на сайте оператора.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "96000000",
+    "name": "Чеченская Республика",
+    "atlas_air_links": 0,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "official_service_evidence_current_timetable_unresolved",
+      "sources": [
+        {
+          "url": "https://grozmer.ru/events/isa-hadzhimuradov-vstretilsja-s-zamestit.html",
+          "title": "Мэрия Грозного: встреча с СКЖД",
+          "evidence": "Мэрия описывает действующий объездной путь Грозный — Гудермес — Ищерская — Минеральные Воды; отсутствие прямой ветки до Назрани не означает отсутствие железнодорожного сообщения. Дата публикации не установлена, полное расписание не получено.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        },
+        {
+          "url": "https://ingushetia.ru/news/ingushetiya_chechnya_i_rzhd_provedut_sovmestnoe_obsledovanie_zheleznodorozhnykh_uchastkov_nazran_sle/",
+          "title": "Правительство Ингушетии: обследование линии",
+          "evidence": "Источник описывает восстановление линии Назрань — Грозный как проект, а не работающий маршрут. Это не доказательство отсутствия других поездов Чечни. Текущее расписание первоисточником не получено.",
+          "date": "2024",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        },
+        {
+          "url": "https://mtischr.ru/index.php?Itemid=120&catid=1%3Alatest-news&id=1188%3A-l-r-&option=com_content&view=article",
+          "title": "Минтранс Чечни: поезд Москва — Грозный",
+          "evidence": "Ведомство описывает обновление вагонов поезда №381/382 Москва — Грозный. Историческое подтверждение.",
+          "date": "2016-11-22",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Москва — Грозный (исторический источник 2016; текущий график не получен)"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "published_schedule_found",
+      "sources": [
+        {
+          "url": "https://www.uvtaero.ru/raspisanie",
+          "title": "ЮВТ Аэро: расписание",
+          "evidence": "Оператор публикует маршрут, номера рейсов, дни недели и периоды действия осень–зима 2026.",
+          "date": null,
+          "accessed_at": "2026-11-10",
+          "access_level": "opened_page"
+        }
+      ],
+      "route_examples": [
+        "Грозный — Казань"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  },
+  {
+    "id": "71900000",
+    "name": "ЯНАО",
+    "atlas_air_links": 62,
+    "atlas_rail_links": 0,
+    "rail": {
+      "status": "historical_service_evidence",
+      "sources": [
+        {
+          "url": "https://arctic.gov.ru/digest/?date_start=2023-06-19+00%3A00&download=true",
+          "title": "Арктический портал: дайджест",
+          "evidence": "Дайджест от 19 июня 2023 сообщает о запуске Лабытнанги — Санкт-Петербург. Не достаточен для текущего графика.",
+          "date": "2023-06-19",
+          "accessed_at": "2026-11-10",
+          "access_level": "search_snippet"
+        }
+      ],
+      "route_examples": [
+        "Лабытнанги — Санкт-Петербург (2023)"
+      ],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    },
+    "air": {
+      "status": "already_in_atlas",
+      "sources": [],
+      "route_examples": [],
+      "note": "Source discovery, not a full timetable extraction or proof of completeness."
+    }
+  }
+]

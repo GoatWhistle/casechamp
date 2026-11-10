@@ -1,0 +1,11 @@
+{'table': 'plexus_atlas.atlas_regions', 'rows': 82}
+{'table': 'plexus_atlas.atlas_points', 'rows': 7682}
+{'table': 'plexus_atlas.atlas_links', 'rows': 46487}
+{'table': 'plexus_atlas.atlas_economy', 'rows': 82}
+{'table': 'plexus_atlas.atlas_sources', 'rows': 16}
+{'table': 'plexus_atlas.atlas_winter_roads', 'rows': 18}
+{'table': 'plexus_atlas.atlas_indices', 'rows': 246}
+{'table': 'plexus_atlas.atlas_boundaries', 'rows': 84}
+{'table': 'plexus_atlas.atlas_shapes', 'rows': 84}
+{'table': 'plexus_atlas.atlas_airports', 'rows': 285}
+[{'table': 'plexus_atlas.atlas_settlements', 'rows': 155412}, {'table': 'plexus_atlas.atlas_metadata', 'rows': 6}]

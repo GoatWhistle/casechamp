@@ -1,0 +1,26 @@
+[
+  {
+    "database": "plexus_additional",
+    "tables": "26",
+    "rows": "9916306",
+    "bytes": "410337304"
+  },
+  {
+    "database": "plexus_atlas",
+    "tables": "1",
+    "rows": "94",
+    "bytes": "14406891"
+  },
+  {
+    "database": "plexus_casechamp",
+    "tables": "20",
+    "rows": "86532846",
+    "bytes": "738851768"
+  },
+  {
+    "database": "plexus_graph",
+    "tables": "5",
+    "rows": "33146357",
+    "bytes": "932514767"
+  }
+]

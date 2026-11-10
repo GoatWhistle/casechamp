@@ -1,0 +1,8 @@
+{
+  "ferry_only_anchor_points": 62,
+  "population": 31560,
+  "regions": 20,
+  "road_candidate_within_5km": 59,
+  "candidate_population": 31488,
+  "limitation": "Nearest existing graph node, not all original OSM vertices. is_seasonal is legacy metadata; candidate is not yet a published route."
+}

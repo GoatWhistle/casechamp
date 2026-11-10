@@ -1,0 +1,22 @@
+{"name":"country","roads":"79433","transit":"0","longTasks":[{"start":899,"duration":159},{"start":2176,"duration":51},{"start":3316.5999999046326,"duration":51},{"start":3606,"duration":145},{"start":3751.899999976158,"duration":85},{"start":7350.599999904633,"duration":166},{"start":7576.399999976158,"duration":187},{"start":7786.399999976158,"duration":234},{"start":8057.699999928474,"duration":496},{"start":9910.799999952316,"duration":387}],"requests":[]}
+{"name":"regional-zoom7","roads":"79433","transit":"0","longTasks":[],"requests":[]}
+{"name":"pan20px","roads":"79433","transit":"0","longTasks":[{"start":16543.299999952316,"duration":69}],"requests":[]}
+{"name":"komi","roads":"33491","transit":"52","longTasks":[{"start":3797.1999999284744,"duration":151},{"start":9203.399999976158,"duration":412},{"start":9616.099999904633,"duration":108},{"start":9767.299999952316,"duration":142},{"start":14217.399999976158,"duration":93},{"start":14311.099999904633,"duration":276},{"start":15042.099999904633,"duration":179}],"requests":[{"url":"/api/v1/regions/87000000/links?season=summer&include_unknown=true","start":7629,"ttfb":-7629,"duration":14.799999952316284,"bytes":0},{"url":"/api/v1/regions/87000000/links?season=summer&include_unknown=true","start":7638.899999976158,"ttfb":828.8999999761581,"duration":832.8999999761581,"bytes":263420}]}
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Found 13 main-thread tasks over 100ms
+
+13 !== 0
+
+    at file:///Users/andreykuronskin/keys_champ/work/road-render-performance/browser-probe.mjs:85:8 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 13,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v25.2.1

@@ -234,97 +234,79 @@ Use Plane Workspace Insights, its six plane-* skills, and its Plane MCP tools on
 
 > здесь имеется ввиду локально актуализируй и добавь данные
 
-## Current state
+2026-11-10, road rendering and storage:
 
-## Local synchronization, 2026-11-09
+> мы можем как то переписать упрощеннее рендер графаов свяжей дорог? чтобы оно быстрее рендерилось. А не как щас долго
+> и очень пролагивает когда нажимаешь на регион
+> продолжай
+> можешь все датасеты свести к постгре чтобы быстрее искать или кликхаусу, смотря что будет быстрее здесь
 
+2026-11-10, road graph completeness:
 
+> Дособирай данные по графу дорог там, где ещё их нет. А то очень плохо терять индекс из за неналичия дорог!
 
+> проверь все регионы
 
+> да, в кликхаус заносятся и сносятся
 
-Prior validation details: [archived history](../work/integration/local-before-sync-20261109/validation-history.md).
+> Да, удалить временные OSM-файлы
 
-## National dataset discovery, 2026-11-09
-
-
-
-Collection details: [archive](../work/regional-collection/session-detail.md). Existing datasets and model remain unchanged.
-
-## Brief reading, 2026-11-09
+### User instructions retained from earlier status entries
 
 User request: «прочти тз хакатона».
 
-## OSM continuation, 2026-11-09
-
-
-
-
-
-
-
-
-
-
-
-
-
-Collection: main work/regional-collection/.
-
-
-
-case.vm: 12391 links; Hansen unchanged. Build/API passed; no tests.
-
-
-
-Push feat/map-first-ui to goat; CSV included, transcripts/raw excluded.
-
-## Map toolbar refinement, 2026-11-10
-
 User: «поправь наслоения и уменьши этот островок»; «Ответы основаны на данных атласа убери это».
-Branch feat/map-first-ui, HEAD 63fb9cb. Toolbar and hint edits complete; 361 tests/build pass.
-Details: [verification](../work/toolbar-refinement.md).
-
-## Prepared graph deltas, 2026-11-10
-
-
-
-
-
-
-
-
-Superseded implementation details: [archive](../work/integration/session-before-delta-closeout-20261110.md).
-
-## Automatic road analysis implementation, 2026-11-10
 
 User: «Implement the plan.» Details and verification: work/road-analysis-implementation.md.
 
-
-## Remote integration, 2026-11-10
-
-
-
-
-
-
-
-Local rail/air integration complete: feat/map-first-ui c397ca6. API8001/UI5187 updated. 33957 model +139 timetable records. Evidence/limits/next: work/regional-collection/rail-air-audit/implementation.md.
-
-
-## Inline calculation visual, 2026-11-10
-
 User: «доправь визуал тогда расчета, чтобы он прям в чате рисовался с анимашкой и зум был того где мы делаемся».
-Implemented corridor calculation stream event, inline geometry/progress/result for both regions,
-automatic one-time camera fit and keyboard/reduced-motion refocus. Backend8001 restarted idle;
-frontend5187 HMR. Old chat messages need a new turn. No paid model call/commit/push.
-Checks and screenshot scope: work/screens/map-chat.md. Branch feat/map-first-ui HEADc397ca6.
-
-
-Current: feat/map-first-ui HEADc397ca6. Inline calculation visual implemented; local8001/5187 updated. Verification: work/screens/map-chat.md. Preserved details: work/integration/session-before-chat-visual-closeout.md.
-Remote fetched to ee9494a; local HEADc397ca6 unchanged, no merge. Six new commits reviewed: work/remote-review-20261110.md.
-
-Earlier instruction chronology and state: [archive](../work/integration/session-before-network-local-20261110.md).
 
 User: «делай и закинь в последний коммит». Integrated settlement picker and effect table with national graph, not remote endpoint-only approximation. Real UI12min connection completed with1275affected origins/top30rows. Backend176tests and frontendverify pass. Amend requested for latest local commit; no force-push. Details: work/scenario-form-integration.md.
 
-Amend completed locally (pre-author-refresh SHA1c72ca1); no push. Working product is committed, rail-air audit notes remain untracked. Graph form/result verified; provider documentation adjusted to satisfy pre-commit rules. Branch feat/map-first-ui; current commit hash is available from git log -1. Next: user review on localhost5187.
+User asks how incomplete roads affect the index (Komi example). Reviewed docs/indices.md, docs/limitations.md and etl/indices.py; no model changes. Current model cannot distinguish missing edges from real disconnection; coverage is reachability, not source completeness. Recommend explicit uncertainty and source validation before interpreting rankings/scenario gains. Komi completeness not audited. Branch feat/map-first-ui HEAD c82ab1e. Next if requested: audit Komi calculation graph versus rendered layer. Context budget exceeds SESSION target due to protected instructions; retained verbatim.
+
+User: «посмотри на фронтенде, почему долго отрисовываются свзяи и граф дорог, как можно оптимизироваться ? может рисовать не сразу всё, а поступательно ?»
+
+2026-11-10, complete database migration:
+
+> теперь все данные лежат в кликхаус или мы все еще занимаемся маразмом и ходим в дак дб ?
+> перетащи их в бд удали файлы исходные потом. Джсоны для скорости распарси в таблицы
+> продумай индексы чтобы ускорить выводы все
+
+2026-11-10, publication authorization:
+
+> скомить все изменения и запушь их. Обязательно опубликуй данные
+
+> Подтверждаю загрузку этих данных
+
+
+### Additional retained instructions
+
+> и добавь чаты, новые старые, аккуратно только как то
+> напиши в отчете по чистой архитектуре. Что там есть умный ии агент. ЧТо там граф огромный
+> и сделай в маркдаве
+> прочти Шаблон паспорта проекта.docx и сделай такой но по нашему проекту. Задавай вопросы. Тут мы должны описывать только то что есть уже. НЕЛЬЗЯ ПИСАТЬ ЧТО МЫ ХОТИМ ДАЛЬШЕ
+> Пиши туда Инструменты промышленной разработки. Python, Фреймворки для анализа данных, Матан, Алгоритмы и структуры данных. Основы сетевых технологий.
+> Не было, это зачем? дай контекста и снова вопрос задай
+> Оставь пустым, я докину ссылку на деплой
+> Да, проверяли через интерфейс
+> подними щас локальную версию в полном составе который щас есть и не трогай
+> как убрать если я другой чат открыл уже. Плюс надо удалять чат уметь
+> что не так
+
+## Current state
+
+Branch feat/map-first-ui, starting HEAD c82ab1e9b28c2c590e2ab82914f118ebeeb3c7f7.
+User authorized all changes committed/pushed and explicitly approved six dataset databases
+in release data-clickhouse-20261110 at GoatWhistle/casechamp. History/secrets excluded.
+Root HTML remains excluded. Prior complete status, checks and pitfalls:
+[publication archive](../work/publication/session-before-publication.md).
+
+Export uses Native+gzip, schema/count/SHA-256 manifest. Remote branch has seven commits
+to merge without rewriting history. Frontend verify passes (411 tests); backend Ruff/mypy
+and 163 unit tests pass after preserving completed jobs on storage timeout. Integration pending.
+
+Road refresh remains unfinished: staging graph built, five-scenario recalculation running.
+Do not replace active tables or claim the staging graph has validated indices. Recovery:
+[road coverage](../work/road-coverage/README.md). Local UI/API remain running.
+Protected user instructions exceed SESSION target and are retained verbatim.

@@ -1,0 +1,70 @@
+{
+  "api": [
+    {
+      "path": "overview",
+      "equal": true,
+      "seconds": 1.413165665930137
+    },
+    {
+      "path": "regions?season=winter",
+      "equal": true,
+      "seconds": 0.1403724579140544
+    },
+    {
+      "path": "regions?season=summer",
+      "equal": true,
+      "seconds": 0.03860366600565612
+    },
+    {
+      "path": "geo/regions",
+      "equal": true,
+      "seconds": 0.011869957903400064
+    },
+    {
+      "path": "geo/boundaries",
+      "equal": true,
+      "seconds": 0.31383662507869303
+    },
+    {
+      "path": "sources",
+      "equal": true,
+      "seconds": 0.03466554207261652
+    },
+    {
+      "path": "airports",
+      "equal": true,
+      "seconds": 0.51983087498229
+    },
+    {
+      "path": "regions/17000000?season=winter",
+      "equal": true,
+      "seconds": 0.028653791989199817
+    },
+    {
+      "path": "regions/17000000/links?season=winter&include_unknown=true",
+      "equal": true,
+      "seconds": 0.04565516603179276
+    },
+    {
+      "path": "regions/17000000/settlements?sort=population&order=desc&limit=25&offset=0",
+      "equal": true,
+      "seconds": 0.02663337509147823
+    },
+    {
+      "path": "search?q=Владимир",
+      "equal": true,
+      "seconds": 0.03243850008584559
+    }
+  ],
+  "calculation": {
+    "id": "f8f9b55687844896b09bca7196a74cef",
+    "compared_to": "2f580745b0f948599fc4a712a7f06253",
+    "status": "completed",
+    "numerically_equal": true,
+    "seconds": 0.041935249930247664
+  },
+  "road_view": {
+    "segments": 29765,
+    "matched": 119681
+  }
+}

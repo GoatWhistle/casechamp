@@ -1,0 +1,58 @@
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, northwestern, siberian, south, ural, volga
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, northwestern, siberian, south, ural, volga
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, northwestern, siberian, south, ural, volga
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, northwestern, siberian, south, ural, volga
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, northwestern, siberian, south, ural, volga
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, northwestern, siberian, south, ural, volga
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, northwestern, siberian, south, ural, volga
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, northwestern, siberian, south, ural, volga
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural, volga
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural, volga
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural, volga
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural, volga
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural, volga
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural, volga
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural
+Awaiting verified sources: central, crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural
+Awaiting verified sources: crimean, far-eastern, kaliningrad, north-caucasus, siberian, south, ural
+Awaiting verified sources: crimean, far-eastern, kaliningrad, north-caucasus, siberian, ural
+Awaiting verified sources: crimean, far-eastern, kaliningrad, siberian, ural
+Awaiting verified sources: crimean, far-eastern, kaliningrad, siberian, ural
+Awaiting verified sources: crimean, far-eastern, kaliningrad, siberian, ural
+Awaiting verified sources: crimean, far-eastern, kaliningrad, siberian, ural
+Awaiting verified sources: crimean, far-eastern, kaliningrad, siberian, ural
+Awaiting verified sources: crimean, far-eastern, kaliningrad, siberian, ural
+Awaiting verified sources: crimean, far-eastern, kaliningrad, siberian
+Awaiting verified sources: crimean, far-eastern, kaliningrad, siberian
+Awaiting verified sources: crimean, far-eastern, kaliningrad, siberian
+Awaiting verified sources: crimean, far-eastern, kaliningrad
+Awaiting verified sources: crimean, far-eastern, kaliningrad
+Awaiting verified sources: crimean, kaliningrad
+ways=6869793  [peak RSS 3.5 GB]
+vertices=76718230  [peak RSS 4.1 GB]
+junctions=21334678  [peak RSS 4.1 GB]
+pass1: components=36901 big=50  [peak RSS 4.1 GB]
+snapped: on_road=155293/155747  [peak RSS 4.1 GB]
+pass2: nodes=11463176 edges=28667472 (вершин 76718230, сжатие 6.7x)  [peak RSS 4.1 GB]
+points=155747 on_road=155293 pop_on_road=1.000  [peak RSS 4.1 GB]
+{
+  "nodes": 11463176,
+  "ways": 6869793,
+  "edges": 28667472,
+  "points": 155747,
+  "attached_points": 155293,
+  "unbound_points": 454,
+  "unbound_population": 48265,
+  "reverse_ways": 84,
+  "ferry_only_anchors": 0,
+  "edgeless_ways": 0,
+  "limitation": "Structural graph checks; do not establish field road completeness."
+}
+{"nodes": 11463176, "edges": 28667472, "points": 155747, "ways": 6869793}
