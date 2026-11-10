@@ -5,7 +5,7 @@ from typing import Protocol
 from app.domain.errors import DataUnavailable, InvalidQuery, RegionNotFound
 from app.domain.road_economics import MoneyAssumptions, MoneyEffect
 from app.usecase.interface import AtlasRepository
-from app.usecase.transport_links import LinkChange, TransportLink, validate_links
+from app.usecase.transport_links import LinkChange, PlaceName, TransportLink, validate_links
 
 
 @dataclass(frozen=True)
@@ -112,6 +112,7 @@ class RoadGraphPort(Protocol):
     def transport_links(
         self, network: str, scenario: str, place: str, mode: str | None
     ) -> list[TransportLink]: ...
+    def place_names(self, ids: list[str]) -> list[PlaceName]: ...
     def submit_addition(
         self, region_id: str, region: str, addition: RoadAddition, money: MoneyAssumptions | None
     ) -> RoadJob: ...
@@ -165,6 +166,11 @@ class RoadGraph:
         if not 2 <= len(place.strip()) <= 100:
             raise InvalidQuery("Укажите город, населённый пункт или регион")
         return self.engine.transport_links(network, scenario, place.strip(), mode)
+
+    def place_names(self, ids: list[str]) -> list[PlaceName]:
+        if not 1 <= len(ids) <= 60:
+            raise InvalidQuery("Укажите от 1 до 60 ID населённых пунктов")
+        return self.engine.place_names(sorted(set(ids)))
 
     def submit(
         self,

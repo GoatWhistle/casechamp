@@ -31,6 +31,7 @@
   "delta": "Изменение индекса",
   "number": "{{value, number(minimumFractionDigits: 2; maximumFractionDigits: 4)}}",
   "evidence": "Население: {{population, number}}. Населённых пунктов: {{settlements, number}}. Рёбер сценария: {{edges, number}}. Время: {{seconds, number(maximumFractionDigits: 3)}} с. Нормировка базы сохранена.",
+  "evidenceLinks": "Население: {{population, number}}. Населённых пунктов: {{settlements, number}}. Изменённых связей: {{links, number}}. Время: {{seconds, number(maximumFractionDigits: 3)}} с. Нормировка базы сохранена.",
   "change": "OSM {{id}}: множитель скорости {{factor, number}}",
   "mapKey": "Оранжевые линии: дорожный граф. Синяя линия: граница региона. Фиолетовый пунктир: предлагаемая связь. Серые дороги: фоновая карта OSM, которая может отличаться от снимка графа.",
   "addHint": "Новую связь можно задать в чате: назовите два места и время проезда. Агент найдёт узлы графа и запустит быстрый сценарий добавления.",

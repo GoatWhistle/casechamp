@@ -15,6 +15,13 @@ class LinkChange:
 
 
 @dataclass(frozen=True)
+class PlaceName:
+    point_id: str
+    name: str
+    region: str
+
+
+@dataclass(frozen=True)
 class TransportLink:
     network: str
     mode: str

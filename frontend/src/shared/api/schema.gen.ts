@@ -412,6 +412,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/road-graph/places": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Place Names */
+        get: operations["place_names_api_v1_road_graph_places_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/road-scenarios": {
         parameters: {
             query?: never;
@@ -1213,6 +1230,15 @@ export interface components {
             /** Revenue Rub */
             revenue_rub: number | null;
             index: components["schemas"]["IndexStatusResponse"];
+        };
+        /** PlaceName */
+        PlaceName: {
+            /** Point Id */
+            point_id: string;
+            /** Name */
+            name: string;
+            /** Region */
+            region: string;
         };
         /** RegionDetailResponse */
         RegionDetailResponse: {
@@ -2721,6 +2747,37 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["TransportLink"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    place_names_api_v1_road_graph_places_get: {
+        parameters: {
+            query: {
+                ids: string[];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PlaceName"][];
                 };
             };
             /** @description Validation Error */

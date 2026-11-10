@@ -38,15 +38,19 @@ export function RoadResult({ roads }: { readonly roads: RoadGraphState }) {
           </div>
           <Stat label={t("graph:delta")} value={t("graph:number", { value: result.delta })} />
           <p className={styles.note}>
-            {t("graph:evidence", {
-              population: result.population,
-              settlements: result.settlements,
-              seconds: result.elapsed_seconds,
-              edges: result.changed_edges,
-            })}
+            {t(
+              job.changes.length || !job.links?.length ? "graph:evidence" : "graph:evidenceLinks",
+              {
+                population: result.population,
+                settlements: result.settlements,
+                seconds: result.elapsed_seconds,
+                edges: result.changed_edges,
+                links: job.links?.length ?? 0,
+              },
+            )}
           </p>
           <SettlementEffects result={result} />
-          <RoadMoney job={job} />
+          {job.addition || job.money_assumptions || result.money ? <RoadMoney job={job} /> : null}
         </>
       ) : null}
     </Card>

@@ -1,6 +1,6 @@
-from typing import Literal
+from typing import Annotated, Literal
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Query
 from pydantic import BaseModel, Field
 
 from app.domain.road_economics import MoneyAssumptions
@@ -12,7 +12,7 @@ from app.usecase.road_graph import (
     RoadJob,
     RoadView,
 )
-from app.usecase.transport_links import LinkChange, TransportLink
+from app.usecase.transport_links import LinkChange, PlaceName, TransportLink
 
 
 class RoadChangeInput(BaseModel):
@@ -71,6 +71,10 @@ def build_road_graph_router(graph: RoadGraph) -> APIRouter:
         mode: str | None = None,
     ) -> list[TransportLink]:
         return graph.transport_links(network, scenario, place, mode)
+
+    @router.get("/road-graph/places", response_model=list[PlaceName])
+    def place_names(ids: Annotated[list[str], Query()]) -> list[PlaceName]:
+        return graph.place_names(ids)
 
     @router.get("/road-scenarios", response_model=list[RoadJob])
     def recent() -> list[RoadJob]:

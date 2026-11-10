@@ -23,6 +23,7 @@ QUERIES: dict[GraphQuery, str] = {
     "references": "SELECT way_idx,way_id,name,ref,km FROM plexus_graph.ways WHERE hasAny(arrayMap(x -> trimBoth(x), splitByChar(';', ifNull(ref,''))), {references:Array(String)})",
     "road_reference": "SELECT DISTINCT ref FROM plexus_graph.road_lookup WHERE lookup IN {names:Array(String)}",
     "market_places": "SELECT DISTINCT oktmo_from,city_from,region_from,lon_from,lat_from FROM plexus_casechamp.stg_intercity WHERE replaceAll(lowerUTF8(ifNull(city_from,'')),'ё','е') LIKE {pattern:String}",
+    "place_names": "SELECT point_id,settlement,region FROM plexus_graph.locations WHERE point_id IN {ids:Array(String)} ORDER BY point_id",
     "settlement_regions": "SELECT region,lon,lat FROM plexus_graph.locations WHERE lon IS NOT NULL AND lat IS NOT NULL AND region IS NOT NULL",
     "corridor_places": "SELECT point_id,settlement,region,lon,lat FROM plexus_graph.locations WHERE replaceAll(lowerUTF8(ifNull(settlement,'')),'ё','е') LIKE {pattern:String}",
     "corridor_edges": "SELECT src,dst,way_idx FROM plexus_graph.edges WHERE way_idx IN {ids:Array(Int64)}",

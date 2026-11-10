@@ -3,6 +3,7 @@ from typing import Any, Literal, Protocol
 GraphQuery = Literal[
     "locations",
     "market_places",
+    "place_names",
     "settlement_regions",
     "region_name",
     "ways",

@@ -83,7 +83,7 @@ function PendingLinks({
   readonly onToggle: (link: LinkChangeInput) => void
 }) {
   const { t } = useTranslation()
-  const names = useLinkNames(pending, scenario)
+  const names = useLinkNames(pending)
   return (
     <div className={styles.pending}>
       <p>{t("graph:links.pending", { count: pending.length })}</p>

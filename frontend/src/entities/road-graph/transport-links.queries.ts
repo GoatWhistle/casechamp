@@ -1,4 +1,4 @@
-import { useQueries, useQuery } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 import { api, unwrap } from "@/shared/api/client"
 import type { LinkChange, LinkNetwork, ScenarioNetwork } from "@/shared/api/road-graph"
 import type { LinkNames } from "./link-change-text"
@@ -34,24 +34,21 @@ export function useTransportLinks(search: TransportLinkSearch | null) {
   })
 }
 
-export function useLinkNames(links: readonly LinkChange[], scenario: string): LinkNames {
-  const season: ScenarioNetwork = scenario === "summer" || scenario === "winter" ? scenario : "road"
-  const sources = [
-    ...new Set(links.filter((link) => link.network === "local").map((link) => link.source)),
-  ]
-  const results = useQueries({
-    queries: sources.map((place) => ({
-      queryKey: ["transport-links", { network: "local", place, scenario: season }],
-      staleTime: Number.POSITIVE_INFINITY,
-      queryFn: ({ signal }: { signal: AbortSignal }) =>
-        fetchLinks({ network: "local", place, scenario: season }, signal),
-    })),
+export function useLinkNames(links: readonly LinkChange[]): LinkNames {
+  const ids = [
+    ...new Set(
+      links
+        .filter((link) => link.network === "local")
+        .flatMap((link) => [link.source, link.target])
+        .filter((id) => id !== "*"),
+    ),
+  ].sort()
+  const query = useQuery({
+    queryKey: ["road-graph-places", ids],
+    enabled: ids.length > 0,
+    staleTime: Number.POSITIVE_INFINITY,
+    queryFn: ({ signal }) =>
+      unwrap(api.GET("/api/v1/road-graph/places", { signal, params: { query: { ids } } })),
   })
-  const names = new Map<string, string>()
-  for (const result of results)
-    for (const row of result.data ?? []) {
-      names.set(row.source, row.source_name)
-      names.set(row.target, row.target_name)
-    }
-  return names
+  return new Map((query.data ?? []).map((place) => [place.point_id, place.name]))
 }

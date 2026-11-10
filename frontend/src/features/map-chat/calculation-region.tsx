@@ -19,9 +19,7 @@ export function CalculationRegion({
   return (
     <div className={styles.region}>
       <strong>{job?.region ?? name}</strong>
-      {job ? (
-        <LinkChanges links={job.links} scenario={job.scenario} className={styles.note} />
-      ) : null}
+      {job ? <LinkChanges links={job.links} className={styles.note} /> : null}
       <Swap swapKey={state}>
         {query.isError ? (
           <Banner

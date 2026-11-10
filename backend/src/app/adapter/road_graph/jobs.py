@@ -25,7 +25,7 @@ from app.usecase.road_graph import (
     RoadView,
 )
 from app.usecase.road_job_store import RoadJobStore
-from app.usecase.transport_links import LinkChange, TransportLink
+from app.usecase.transport_links import LinkChange, PlaceName, TransportLink
 
 
 class RoadJobs:
@@ -136,6 +136,12 @@ class RoadJobs:
             return intercity_links(self.routing.networks(scenario)[0], place, mode)
         rows = self.data.read("manual_named", {"season": scenario}) if scenario != "road" else []
         return local_links(rows, place, mode)
+
+    def place_names(self, ids: list[str]) -> list[PlaceName]:
+        return [
+            PlaceName(str(p), str(n or p), str(r or ""))
+            for p, n, r in self.data.read("place_names", {"ids": ids})
+        ]
 
     def recent(self) -> list[RoadJob]:
         with self.lock:

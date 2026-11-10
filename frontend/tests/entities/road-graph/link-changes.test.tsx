@@ -68,19 +68,11 @@ describe("link change copy", () => {
     )
   })
 
-  it("renders a links-only job without a road count and resolves settlement names", async () => {
+  it("renders a links-only job without a road count and resolves names of both settlements", async () => {
     get.mockResolvedValue({
       data: [
-        {
-          network: "local",
-          mode: "ferry",
-          source: "98614486101",
-          source_name: "Khoro",
-          target: "98626101001",
-          target_name: "Nyurba",
-          hours: 30.8,
-          region: "Sakha",
-        },
+        { point_id: "98614486101", name: "Khoro", region: "Sakha" },
+        { point_id: "98626101001", name: "Nyurba", region: "Sakha" },
       ],
       response: new Response(null, { status: 200 }),
     })
@@ -116,10 +108,9 @@ describe("link change copy", () => {
     ).toBeTruthy()
     const roadCount = graph.jobSpec.split(",")[1]?.split(":")[0]?.trim() ?? graph.jobSpec
     expect(document.body.textContent).not.toContain(roadCount)
-    expect(get.mock.calls[0]?.[1]?.params.query).toMatchObject({
-      network: "local",
-      place: "98614486101",
-      scenario: "summer",
+    expect(get.mock.calls[0]?.[0]).toBe("/api/v1/road-graph/places")
+    expect(get.mock.calls[0]?.[1]?.params.query).toEqual({
+      ids: ["98614486101", "98626101001"],
     })
     client.clear()
   })

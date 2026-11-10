@@ -5,16 +5,14 @@ import { useLinkNames } from "./transport-links.queries"
 
 export function LinkChanges({
   links,
-  scenario,
   className,
 }: {
   readonly links: readonly LinkChange[] | undefined
-  readonly scenario: string
   readonly className?: string | undefined
 }) {
   const { t } = useTranslation()
   const rows = links ?? []
-  const names = useLinkNames(rows, scenario)
+  const names = useLinkNames(rows)
   if (!rows.length) return null
   return (
     <ul className={className} aria-label={t("graph:links.title")}>

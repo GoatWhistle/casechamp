@@ -39,7 +39,7 @@ export function RoadJobSpec({ job }: { readonly job: RoadJob }) {
           <p className={styles.note}>
             {t("graph:links.jobSpec", { scenario, count: links.length })}
           </p>
-          <LinkChanges links={links} scenario={job.scenario} className={styles.changes} />
+          <LinkChanges links={links} className={styles.changes} />
         </>
       ) : null}
     </>

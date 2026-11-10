@@ -10,7 +10,7 @@ from app.controller.road_graph.router import build_road_graph_router
 from app.usecase.dto import RegionRecord
 from app.usecase.interface import AtlasRepository
 from app.usecase.road_graph import RoadGraph, RoadGraphPort, RoadJob
-from app.usecase.transport_links import LinkChange, TransportLink
+from app.usecase.transport_links import LinkChange, PlaceName, TransportLink
 
 
 def client(port: Mock) -> TestClient:
@@ -62,3 +62,13 @@ def test_transport_link_listing_passes_filters() -> None:
         assert response.status_code == 200
         assert response.json()[0]["hours"] == 3.5
         port.transport_links.assert_called_once_with("intercity", "road", "Сургут", "air")
+
+
+def test_place_names_resolve_point_ids() -> None:
+    port = Mock(spec=RoadGraphPort)
+    port.place_names.return_value = [PlaceName("98614486101", "село Хоро", "Якутия")]
+    with client(port) as http:
+        response = http.get("/road-graph/places", params=[("ids", "98614486101"), ("ids", "98614486101")])
+        assert response.status_code == 200
+        assert response.json()[0]["name"] == "село Хоро"
+        port.place_names.assert_called_once_with(["98614486101"])
