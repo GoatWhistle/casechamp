@@ -72,9 +72,18 @@ DuckDB и Parquet одного снимка data-20261107. Без настрой
 
 - `GET /api/v1/road-graph?west=&south=&east=&north=&zoom=`: сокращённые рёбра в окне,
   идентификаторы OSM ways, классы и скорости; LOD только для отображения.
-- `POST /api/v1/road-scenarios`: `{region_id, scenario, changes:[{way_id,speed_factor}]}`.
+- `POST /api/v1/road-scenarios`: `{region_id, scenario, changes:[{way_id,speed_factor}], links:[...]}`.
   Сценарии `road`, `summer`, `winter`; множитель0 закрывает дорогу,1 оставляет,1.2 увеличивает
   скорость на20%. Изменяется весь OSM way, максимум50 объектов. Возвращается job, не прогноз.
+  `links` (до 30) удаляет или добавляет связи: `{action: add|remove, network: intercity|local,
+  mode, source, target, hours?}`. `intercity` — ж/д (`rail`) и авиа (`air`) между 180 рыночными
+  городами, концы — названия городов, `target="*"` при удалении убирает все связи вида у города.
+  `local` — сезонные `air`, `river`, `ferry`, `winter_road`, `ice_crossing`, `pontoon_bridge`
+  между населёнными пунктами (ID точек), есть только в `summer`/`winter`. Добавление требует
+  `hours` в (0,72]. Удаление отсутствующей связи отклоняется422. Нужны `changes` или `links`.
+- `GET /api/v1/transport-links?network=&place=&scenario=&mode=`: существующие связи снимка
+  для выбора концов; межгородские часы — время в пути без пересадки (+1 ч ж/д, +2,5 ч авиа
+  добавляет модель), местные — с учётом ожидания.
 - `GET /api/v1/road-scenarios`: последние20 расчётов, в том числе запущенные агентом.
 - `GET /api/v1/road-scenarios/{job_id}`: статус, прогресс, проверенные до/после, изменение,
   население, нормировка, число рёбер и измеренное время.
