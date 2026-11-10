@@ -20,7 +20,7 @@ def test_tool_failure_retains_diagnostic_context() -> None:
             raise UnexpectedModelBehavior("Tool retry limit reached") from cause
 
     gateway = CodexResponsesGateway.__new__(CodexResponsesGateway)
-    gateway._lock = asyncio.Lock()
+    gateway._slots = asyncio.Semaphore(3)
     gateway._codex = Mock()
     gateway._codex.account = AsyncMock(return_value=SimpleNamespace(account=object()))
     request = ChatRequest("Bridge closure", (), ChatContext(None, Season.SUMMER, NetworkMode.ROAD, "hansen"))
@@ -43,3 +43,48 @@ def test_tool_failure_retains_diagnostic_context() -> None:
     assert details["error_type"] == "UnexpectedModelBehavior"
     assert details["reason"] == "No named road connects the requested endpoints"
     provider.client.close.assert_awaited_once()
+
+
+def queued_gateway() -> CodexResponsesGateway:
+    gateway = CodexResponsesGateway.__new__(CodexResponsesGateway)
+    gateway._slots = asyncio.Semaphore(1)
+    gateway._codex = Mock()
+    gateway._codex.account = AsyncMock(return_value=SimpleNamespace(account=None))
+    return gateway
+
+
+def test_concurrent_question_waits_in_queue_instead_of_failing() -> None:
+    gateway = queued_gateway()
+    request = ChatRequest("Q", (), ChatContext(None, Season.SUMMER, NetworkMode.ROAD, "hansen"))
+
+    async def scenario() -> list[str]:
+        await gateway._slots.acquire()
+        codes: list[str] = []
+
+        async def consume() -> None:
+            async for event in gateway.stream(request):
+                codes.append(event.code)
+
+        task = asyncio.create_task(consume())
+        while not codes:
+            await asyncio.sleep(0)
+        gateway._slots.release()
+        await task
+        return codes
+
+    codes = asyncio.run(scenario())
+    assert codes[:2] == ["queued", "connecting"]
+    assert "chat_busy" not in codes
+    assert not gateway._slots.locked()
+
+
+def test_long_queue_times_out_as_busy() -> None:
+    gateway = queued_gateway()
+    request = ChatRequest("Q", (), ChatContext(None, Season.SUMMER, NetworkMode.ROAD, "hansen"))
+
+    async def scenario() -> list[str]:
+        await gateway._slots.acquire()
+        return [event.code async for event in gateway.stream(request)]
+
+    with patch("app.adapter.chat.gateway.QUEUE_SECONDS", 0.01):
+        assert asyncio.run(scenario()) == ["queued", "chat_busy"]

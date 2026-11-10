@@ -4,7 +4,7 @@ import type { ChatEntry } from "./use-map-chat"
 export function applyChatEvent(row: ChatEntry, event: ChatStreamEvent): ChatEntry {
   switch (event.type) {
     case "status":
-      return event.code && event.code !== "connecting"
+      return event.code && event.code !== "connecting" && event.code !== "queued"
         ? { ...row, steps: [...new Set([...row.steps, event.code])] }
         : row
     case "delta":

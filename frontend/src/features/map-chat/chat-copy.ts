@@ -14,6 +14,7 @@ const ERRORS: Readonly<Record<string, MessageKey>> = {
 }
 const STATUSES: Readonly<Record<string, MessageKey>> = {
   idle: "chat:status.idle",
+  queued: "chat:status.queued",
   connecting: "chat:status.connecting",
   writing: "chat:status.writing",
   done: "chat:status.done",

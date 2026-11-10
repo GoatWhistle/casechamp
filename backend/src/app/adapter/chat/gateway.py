@@ -38,6 +38,8 @@ from app.domain.errors import DomainError
 from app.usecase.chat import ChatEvent, ChatRequest
 
 MODEL = "gpt-6.1-sol"
+CONCURRENT_ANSWERS = 3
+QUEUE_SECONDS = 120
 INSTRUCTIONS = """You are Plexus, a transport accessibility analyst. Answer in Russian.
 Use the atlas tools for numerical and geographic claims. Never invent data or tool results.
 The map context identifies the currently selected region, season, network mode and metric.
@@ -119,16 +121,20 @@ class CodexResponsesGateway:
     def __init__(self, tools: AtlasTools) -> None:
         self._tools = tools
         self._codex = AsyncCodex()
-        self._lock = asyncio.Lock()
+        self._slots = asyncio.Semaphore(CONCURRENT_ANSWERS)
 
     async def close(self) -> None:
         await self._codex.close()
 
     async def stream(self, request: ChatRequest) -> AsyncGenerator[ChatEvent, None]:
-        if self._lock.locked():
+        if self._slots.locked():
+            yield ChatEvent("status", code="queued")
+        try:
+            await asyncio.wait_for(self._slots.acquire(), QUEUE_SECONDS)
+        except TimeoutError:
             yield ChatEvent("error", code="chat_busy")
             return
-        async with self._lock:
+        try:
             yield ChatEvent("status", code="connecting")
             stage = "account"
             try:
@@ -160,6 +166,8 @@ class CodexResponsesGateway:
                 yield chat_failure(error, "chat_connection_error", stage)
             except (CodexError, OSError, ValueError, UnexpectedModelBehavior, DomainError) as error:
                 yield chat_failure(error, "chat_provider_error", stage)
+        finally:
+            self._slots.release()
 
     async def _run(
         self, request: ChatRequest, provider: OpenAICodexProvider
