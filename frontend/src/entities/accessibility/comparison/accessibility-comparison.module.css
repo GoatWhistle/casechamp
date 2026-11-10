@@ -1,0 +1,15 @@
+.comparison {
+  display: grid;
+  gap: var(--space-16);
+}
+
+.explanation {
+  color: var(--text-secondary);
+  font-size: var(--font-size-body-sm);
+}
+
+.provenance {
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+  overflow-wrap: anywhere;
+}

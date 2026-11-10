@@ -11,6 +11,7 @@ from app.adapter.log.stdlib import StdlibLogger
 from app.adapter.road_analysis.jobs import AnalysisJobs
 from app.adapter.road_corridor.resolver import CorridorResolver
 from app.adapter.road_graph.jobs import RoadJobs
+from app.controller.atlas.accessibility import build_accessibility_router
 from app.controller.atlas.airports import build_airports_router
 from app.controller.atlas.catalog import build_catalog_router
 from app.controller.atlas.regions import build_regions_router
@@ -22,6 +23,7 @@ from app.controller.road_graph.router import build_road_graph_router
 from app.controller.router import build_api_router
 from app.controller.scenarios.router import build_scenarios_router
 from app.controller.scenarios.sensitivity import build_sensitivity_router
+from app.repository.clickhouse.accessibility import ClickHouseAccessibilityRepository
 from app.repository.clickhouse.airports import ClickHouseAirportRepository
 from app.repository.clickhouse.atlas import ClickHouseAtlasRepository
 from app.repository.clickhouse.client import ClickHouseReader
@@ -30,6 +32,7 @@ from app.repository.clickhouse.road_view import ClickHouseRoadView
 from app.repository.clickhouse.scenario import ClickHouseScenarioRepository
 from app.repository.clickhouse.state import ClickHouseAnalysisStore, ClickHouseRoadJobStore
 from app.settings import Settings, load_settings
+from app.usecase.accessibility import AccessibilityQueries
 from app.usecase.airports import AirportQueries
 from app.usecase.chat import Chat
 from app.usecase.interface import AtlasRepository
@@ -116,6 +119,7 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
         build_api_router(
             *build_atlas_routers(atlas),
             build_airports_router(AirportQueries(ClickHouseAirportRepository(atlas), atlas)),
+            build_accessibility_router(AccessibilityQueries(ClickHouseAccessibilityRepository(reader), atlas)),
             build_scenarios_router(scenarios),
             build_sensitivity_router(sensitivity),
             build_chat_router(Chat(gateway, analysis)),

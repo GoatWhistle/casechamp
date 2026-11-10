@@ -5,6 +5,7 @@ from pydantic_ai import Agent, ModelRetry, RunContext
 
 from app.adapter.chat.analysis_tools import AnalysisTools
 from app.adapter.chat.artifacts import ChatRun
+from app.adapter.chat.bridge_tools import BridgeTools
 from app.adapter.chat.corridor_tools import CorridorTools
 from app.adapter.chat.road_tools import RoadTools
 from app.domain.errors import DomainError
@@ -31,6 +32,7 @@ class CalculationTools:
     def register(self, agent: Agent[ChatRun, str]) -> None:
         if self._corridors:
             CorridorTools(self._corridors).register(agent)
+            BridgeTools(self._corridors).register(agent)
         if self._analysis:
             AnalysisTools(self._analysis).register(agent)
         if self._roads:
@@ -50,6 +52,13 @@ class CalculationTools:
     def calculation_capabilities(self, ctx: RunContext[ChatRun]) -> str:
         return json.dumps(
             {
+                "bridge_closures": {
+                    "available": self._corridors is not None and self._roads is not None,
+                    "search": "find_road_bridges",
+                    "calculate": "close_road_bridges",
+                    "multiple_bridges": "combined_scenario",
+                    "regions": "search_settlement_regions",
+                },
                 "named_road_corridors": {
                     "available": self._corridors is not None and self._roads is not None,
                     "directions": "both",

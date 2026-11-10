@@ -1,0 +1,30 @@
+{
+  "status": "found",
+  "near": "Саратов",
+  "radius_km": 10,
+  "grouping": "connected_bridge_parts_and_parallel_endpoints_within_80m",
+  "length_method": "sum_of_whole_way_lengths_including_parallel_carriageways",
+  "candidates": [
+    {
+      "bridge_id": "45fcae264443489e9440e15f9621b6c8",
+      "name": "Саратовский мост",
+      "distance_km": 2.024,
+      "length_km": 2.802,
+      "way_ids": [
+        203336910
+      ],
+      "regions": [
+        {
+          "id": "63000000",
+          "name": "Саратовская область"
+        }
+      ],
+      "bounds": [
+        46.0625802,
+        51.5056802,
+        46.0780016,
+        51.5289823
+      ]
+    }
+  ]
+}

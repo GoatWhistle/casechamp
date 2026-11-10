@@ -1,0 +1,28 @@
+{
+  "id": "a65a94bb2d9f43afbdd94a546a7157c8",
+  "region_id": "63000000",
+  "region": "Саратовская область",
+  "scenario": "road",
+  "changes": [
+    {
+      "way_id": 27262951,
+      "speed_factor": 0.0
+    },
+    {
+      "way_id": 122013785,
+      "speed_factor": 0.0
+    },
+    {
+      "way_id": 203336910,
+      "speed_factor": 0.0
+    }
+  ],
+  "status": "running",
+  "completed": 180,
+  "total": 360,
+  "version": "data-20261107",
+  "result": null,
+  "error": null,
+  "addition": null,
+  "money_assumptions": null
+}

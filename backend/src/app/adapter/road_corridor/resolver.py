@@ -6,10 +6,11 @@ import numpy as np
 from scipy.sparse.csgraph import connected_components
 
 from app.adapter.road_corridor.blocks import corridor_pairs
+from app.adapter.road_corridor.bridges import find_bridges
 from app.adapter.road_graph.jobs import RoadJobs
 from app.adapter.road_graph.routing import minimum_csr
 from app.domain.errors import InvalidQuery
-from app.usecase.road_corridor import CorridorRegion, RoadCorridor
+from app.usecase.road_corridor import BridgeCandidate, CorridorRegion, RoadCorridor
 from app.usecase.road_graph import RoadChange, RoadJob
 
 
@@ -25,7 +26,10 @@ class CorridorResolver:
 
     def resolve(self, road_name: str, origin: str, destination: str) -> RoadCorridor:
         data = self.roads.data
-        matches = {str(r[0]) for r in data.read("road_reference", {"name": normalized(road_name)})}
+        matches = {
+            str(r[0]) for r in data.read("road_reference", {"name": normalized(road_name)})
+            if r[0] is not None and str(r[0]).strip()
+        }
         if len(matches) != 1:
             raise InvalidQuery(
                 "Road reference is ambiguous or missing: " + ", ".join(sorted(matches)[:8])
@@ -35,6 +39,8 @@ class CorridorResolver:
         endpoints = []
         for query in (origin, destination):
             locations = data.read("corridor_places", {"query": query})
+            if not locations:
+                raise InvalidQuery("Settlement not found: " + query)
             if len(locations) != 1:
                 raise InvalidQuery(
                     "Settlement is ambiguous: "
@@ -115,3 +121,29 @@ class CorridorResolver:
             self.roads.submit(region.id, region.name, "road", changes, queue=True)
             for region in corridor.regions
         ]
+
+    def bridges(self, near: str, radius_km: float, name: str) -> list[BridgeCandidate]:
+        candidates = find_bridges(self.roads.data, near, radius_km, name)
+        with self.lock:
+            self.resolved.update({c.corridor.id: c.corridor for c in candidates})
+        return candidates
+
+    def combine_bridges(self, bridge_ids: list[str]) -> RoadCorridor:
+        bridges = [self.get(key) for key in bridge_ids]
+        if any(b.scope != "osm_bridge_ways_both_directions" for b in bridges):
+            raise InvalidQuery("Only bridge candidates returned by find_road_bridges can be closed")
+        ways = sorted({way for bridge in bridges for way in bridge.way_ids})
+        lengths = self.roads.data.read("bridge_lengths", {"ids": ways})
+        if {int(r[0]) for r in lengths} != set(ways):
+            raise InvalidQuery("Selected bridge ways are missing from the current graph")
+        regions = {region.id: region for bridge in bridges for region in bridge.regions}
+        lines = {tuple(tuple(xy) for xy in line): line for b in bridges for line in b.lines}
+        combined = RoadCorridor(
+            uuid4().hex, "; ".join(dict.fromkeys(b.road_ref for b in bridges)),
+            bridges[0].origin, bridges[-1].destination, ways,
+            sum(float(r[1] or 0) for r in lengths), 0, 0,
+            list(regions.values()), list(lines.values()), "combined_osm_bridge_closures_both_directions",
+        )
+        with self.lock:
+            self.resolved[combined.id] = combined
+        return combined

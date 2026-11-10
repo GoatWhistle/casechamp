@@ -1,3 +1,4 @@
+import { AccessibilityComparison } from "@/entities/accessibility"
 import { MiniMap, type RegionDetail, SeasonControl, useRegions } from "@/entities/region"
 import { useSeason } from "@/shared/hooks/use-season"
 import { useTranslation } from "@/shared/i18n"
@@ -24,6 +25,7 @@ export function LinksWorkspace({ regionId, data, isUgra }: LinksWorkspaceProps) 
     <div className={styles.workspace}>
       <div className={styles.main}>
         <IndexCard region={data} regions={regions.data ?? []} />
+        <AccessibilityComparison regionId={regionId} />
         <Card as="section" title={t("profile:seasons")} actions={<SeasonControl />}>
           <p className={styles.note}>
             {t("profile:counts", {

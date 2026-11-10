@@ -770,6 +770,80 @@
         }
       }
     },
+    "/api/v1/regions/{region_id}/accessibility": {
+      "get": {
+        "tags": [
+          "accessibility"
+        ],
+        "summary": "Compare",
+        "operationId": "compare_api_v1_regions__region_id__accessibility_get",
+        "parameters": [
+          {
+            "name": "region_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Region Id"
+            }
+          },
+          {
+            "name": "half_life",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 8,
+              "minimum": 2,
+              "default": 2,
+              "title": "Half Life"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccessibilityComparison"
+                }
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Not Found"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Unprocessable Content"
+          },
+          "503": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "description": "Service Unavailable"
+          }
+        }
+      }
+    },
     "/api/v1/scenarios": {
       "get": {
         "tags": [
@@ -1566,6 +1640,184 @@
   },
   "components": {
     "schemas": {
+      "AccessibilityComparison": {
+        "properties": {
+          "region_id": {
+            "type": "string",
+            "title": "Region Id"
+          },
+          "source_current": {
+            "type": "boolean",
+            "title": "Source Current"
+          },
+          "run": {
+            "$ref": "#/components/schemas/AccessibilityRun"
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/AccessibilityRow"
+            },
+            "type": "array",
+            "title": "Rows"
+          },
+          "frequencies": {
+            "items": {
+              "$ref": "#/components/schemas/FrequencyCoverage"
+            },
+            "type": "array",
+            "title": "Frequencies"
+          }
+        },
+        "type": "object",
+        "required": [
+          "region_id",
+          "source_current",
+          "run",
+          "rows",
+          "frequencies"
+        ],
+        "title": "AccessibilityComparison"
+      },
+      "AccessibilityRow": {
+        "properties": {
+          "season": {
+            "type": "string",
+            "title": "Season"
+          },
+          "half_life": {
+            "type": "integer",
+            "title": "Half Life"
+          },
+          "previous": {
+            "type": "number",
+            "title": "Previous"
+          },
+          "potential": {
+            "type": "number",
+            "title": "Potential"
+          },
+          "delta": {
+            "type": "number",
+            "title": "Delta"
+          },
+          "without_air": {
+            "type": "number",
+            "title": "Without Air"
+          },
+          "without_rail": {
+            "type": "number",
+            "title": "Without Rail"
+          },
+          "without_water": {
+            "type": "number",
+            "title": "Without Water"
+          },
+          "population": {
+            "type": "integer",
+            "title": "Population"
+          },
+          "population_coverage": {
+            "type": "number",
+            "title": "Population Coverage"
+          },
+          "scheduled_index": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scheduled Index"
+          }
+        },
+        "type": "object",
+        "required": [
+          "season",
+          "half_life",
+          "previous",
+          "potential",
+          "delta",
+          "without_air",
+          "without_rail",
+          "without_water",
+          "population",
+          "population_coverage"
+        ],
+        "title": "AccessibilityRow"
+      },
+      "AccessibilityRun": {
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "model_version": {
+            "type": "string",
+            "title": "Model Version"
+          },
+          "source_model": {
+            "type": "string",
+            "title": "Source Model"
+          },
+          "source_artifact": {
+            "type": "string",
+            "title": "Source Artifact"
+          },
+          "normalization": {
+            "type": "number",
+            "title": "Normalization"
+          },
+          "normalization_kind": {
+            "type": "string",
+            "title": "Normalization Kind"
+          },
+          "regions": {
+            "type": "integer",
+            "title": "Regions"
+          },
+          "markets": {
+            "type": "integer",
+            "title": "Markets"
+          },
+          "point_count": {
+            "type": "integer",
+            "title": "Point Count"
+          },
+          "frequency_status": {
+            "type": "string",
+            "title": "Frequency Status"
+          },
+          "assumptions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Assumptions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "run_id",
+          "created_at",
+          "model_version",
+          "source_model",
+          "source_artifact",
+          "normalization",
+          "normalization_kind",
+          "regions",
+          "markets",
+          "point_count",
+          "frequency_status",
+          "assumptions"
+        ],
+        "title": "AccessibilityRun"
+      },
       "Airport": {
         "properties": {
           "id": {
@@ -2540,6 +2792,39 @@
           "message"
         ],
         "title": "ErrorResponse"
+      },
+      "FrequencyCoverage": {
+        "properties": {
+          "season": {
+            "type": "string",
+            "title": "Season"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "known": {
+            "type": "integer",
+            "title": "Known"
+          }
+        },
+        "type": "object",
+        "required": [
+          "season",
+          "mode",
+          "source",
+          "total",
+          "known"
+        ],
+        "title": "FrequencyCoverage"
       },
       "GeoBoundariesResponse": {
         "properties": {

@@ -1,4 +1,5 @@
 import type { Locale } from "./locale"
+import ruAccessibility from "./locales/ru/accessibility.json"
 import ruAnalysis from "./locales/ru/analysis.json"
 import ruAtlas from "./locales/ru/atlas.json"
 import ruCalendar from "./locales/ru/calendar.json"
@@ -19,9 +20,10 @@ import ruSeasons from "./locales/ru/seasons.json"
 import ruSources from "./locales/ru/sources.json"
 
 export const NAMESPACES = [
-  "analysis",
   "common",
   "errors",
+  "accessibility",
+  "analysis",
   "atlas",
   "calendar",
   "chat",
@@ -44,9 +46,10 @@ export type Namespace = (typeof NAMESPACES)[number]
 export const DEFAULT_NAMESPACE: Namespace = "common"
 
 const ru = {
-  analysis: ruAnalysis,
   common: ruCommon,
   errors: ruErrors,
+  accessibility: ruAccessibility,
+  analysis: ruAnalysis,
   atlas: ruAtlas,
   calendar: ruCalendar,
   chat: ruChat,

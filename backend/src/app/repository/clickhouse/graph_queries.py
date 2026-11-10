@@ -1,6 +1,8 @@
 from app.usecase.graph_snapshot import GraphQuery
 
 QUERIES: dict[GraphQuery, str] = {
+    "bridge_lengths": "SELECT way_id,km FROM plexus_graph.ways WHERE is_bridge AND way_id IN {ids:Array(Int64)}",
+    "bridge_parts": "SELECT l.way_id,w.name,w.ref,w.highway,w.km,l.source_node,l.target_node,l.coordinates FROM plexus_graph.road_lines l INNER JOIN plexus_graph.ways w ON w.way_id=l.way_id WHERE w.is_bridge AND l.way_id IN (SELECT way_id FROM plexus_graph.road_lines WHERE min_lon<={east:Float64} AND max_lon>={west:Float64} AND min_lat<={north:Float64} AND max_lat>={south:Float64}) ORDER BY l.way_id,l.source_node,l.target_node LIMIT 2001",
     "locations": "SELECT point_id,settlement,region,node,lon,lat,snap_km FROM plexus_graph.locations WHERE lowerUTF8(ifNull(settlement,'')) LIKE {pattern:String} AND ({region:String}='' OR region={region:String}) ORDER BY population DESC NULLS LAST LIMIT 20",
     "region_name": "SELECT region FROM plexus_graph.region_codes WHERE oktmo={region_id:String}",
     "ways": "SELECT way_idx,way_id,name,ref,highway,speed_kmh FROM plexus_graph.ways WHERE way_idx IN {ids:Array(Int64)}",
@@ -19,7 +21,7 @@ QUERIES: dict[GraphQuery, str] = {
     "terminal_nodes": "SELECT DISTINCT node FROM (SELECT node FROM plexus_graph.points WHERE node>=0 UNION ALL SELECT node FROM plexus_casechamp.market_cities) ORDER BY node",
     "references": "SELECT way_idx,way_id,name,ref,km FROM plexus_graph.ways WHERE ref={reference:String}",
     "road_reference": "SELECT DISTINCT ref FROM plexus_graph.road_lookup WHERE lookup={name:String}",
-    "corridor_places": "SELECT point_id,settlement,region,lon,lat FROM plexus_graph.locations WHERE lowerUTF8(ifNull(settlement,'')) LIKE {pattern:String}",
+    "corridor_places": "SELECT point_id,settlement,region,lon,lat FROM plexus_graph.locations WHERE replaceAll(lowerUTF8(ifNull(settlement,'')),'ё','е') LIKE {pattern:String}",
     "corridor_edges": "SELECT src,dst,way_idx FROM plexus_graph.edges WHERE way_idx IN {ids:Array(Int64)}",
     "corridor_nodes": "SELECT node,lon,lat FROM plexus_graph.nodes WHERE node IN {ids:Array(Int64)} ORDER BY node",
     "region_codes": "SELECT oktmo,region FROM plexus_graph.region_codes WHERE region IN {regions:Array(String)}",

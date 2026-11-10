@@ -23,6 +23,8 @@ const STATUSES: Readonly<Record<string, MessageKey>> = {
   calculation_capabilities: "chat:status.calculations",
   accessibility_sensitivity: "chat:status.sensitivity",
   read_road_graph: "chat:status.graph",
+  find_road_bridges: "chat:status.graph",
+  close_road_bridges: "chat:status.routes",
   recalculate_road_index: "chat:status.routes",
   control_map: "chat:status.map",
   show_chart: "chat:status.chart",

@@ -36,3 +36,14 @@ mutable state is within the budget. No historical entry was discarded from the a
 
 Pending: finish export, verify full remote asset manifest, publish release with restore
 instructions, commit publication artifacts, update final context and push.
+
+## Final working-tree checks
+
+At 20:49 UTC: Ruff/mypy pass (165 source files), 195 backend unit tests pass; frontend
+verify passes with 415 tests. Integration: 41 pass, 2 fail in test_accessibility_storage.py
+because plexus_accessibility.runs does not exist yet. The separate potential calculation
+is still running; do not synthesize data or hide these acceptance failures. The release
+exports only the six explicitly approved dataset databases and preserves the active model.
+All current code changes are being captured, including completed corridor fixes and the
+new comparison UI with its honest unavailable-data state. New comparison data are not
+part of the six-database snapshot.

@@ -28,6 +28,8 @@ GraphQuery = Literal[
     "regions",
     "model_version",
     "manual_v2",
+    "bridge_parts",
+    "bridge_lengths",
 ]
 type GraphParameters = dict[str, str | int | float | list[int] | list[str]]
 

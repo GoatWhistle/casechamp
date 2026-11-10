@@ -4,7 +4,7 @@ from dataclasses import asdict
 from pydantic_ai import Agent, ModelRetry, RunContext
 
 from app.adapter.chat.artifacts import ChatRun
-from app.domain.errors import DomainError
+from app.domain.errors import DomainError, InvalidQuery
 from app.usecase.chat import ChatEvent
 from app.usecase.road_corridor import CorridorCalculation, RoadCorridors
 
@@ -34,6 +34,11 @@ class CorridorTools:
             result["way_count"] = len(corridor.way_ids)
             result["length_method"] = "sum_of_whole_way_lengths_including_parallel_carriageways"
             return json.dumps(result, ensure_ascii=False)
+        except InvalidQuery as error:
+            return json.dumps(
+                {"status": "unresolved", "code": error.code, "message": error.message},
+                ensure_ascii=False,
+            )
         except DomainError as error:
             raise ModelRetry(error.message) from error
 

@@ -296,17 +296,58 @@ User: «посмотри на фронтенде, почему долго отр
 
 ## Current state
 
-Branch feat/map-first-ui, starting HEAD c82ab1e9b28c2c590e2ab82914f118ebeeb3c7f7.
+Branch feat/map-first-ui, HEAD 46e7b1ab2c23417e070a64306a176cbcce419fc6.
 User authorized all changes committed/pushed and explicitly approved six dataset databases
 in release data-clickhouse-20261110 at GoatWhistle/casechamp. History/secrets excluded.
 Root HTML remains excluded. Prior complete status, checks and pitfalls:
 [publication archive](../work/publication/session-before-publication.md).
 
-Export uses Native+gzip, schema/count/SHA-256 manifest. Remote branch has seven commits
-to merge without rewriting history. Frontend verify passes (411 tests); backend Ruff/mypy
-and 163 unit tests pass after preserving completed jobs on storage timeout. Integration pending.
+Publication checkpoint 46e7b1a: source and merge pushed to origin/feat/map-first-ui.
+Data export continues with Native+gzip, schema/count/SHA-256 manifest; 72/84 tables
+verified. Final current-tree checks: Ruff/mypy, 195 backend unit and 415 frontend tests
+pass; integration 41 pass, 2 fail because new plexus_accessibility.runs is not yet created.
+That separate calculation remains in progress; six approved release databases exclude it.
+Evidence and limitations: [publication](../work/publication/README.md).
 
 Road refresh remains unfinished: staging graph built, five-scenario recalculation running.
 Do not replace active tables or claim the staging graph has validated indices. Recovery:
 [road coverage](../work/road-coverage/README.md). Local UI/API remain running.
 Protected user instructions exceed SESSION target and are retained verbatim.
+
+Bridge tools now select actual tagged geometry and close multiple bridges together.
+Saratov+Pristannoe:3ways, real job a65a94bb2d9f43afbdd94a546a7157c8 running142/360;
+no numerical result yet. API8001 PID50312/session54927; do not interrupt the job.
+195 unit tests, Ruff/mypy and frontendverify415 pass;41integration pass,2unrelated
+accessibility-storage failures. No paid LLM replay. Selection/browser evidence,
+pending idle reload and next actions: [bridge selection](../work/bridge-selection/README.md).
+Concurrent work preserved; no commit/push by this task. Prior failure:
+[bridge chat failure](../work/bridge-chat-failure.md).
+
+
+2026-11-10, potential accessibility authorization:
+
+> делай
+
+Active potential-index comparison: [implementation/recovery](../work/accessibility-model/README.md).
+Summer complete; winter calculation running in calculation-resumed.log on pinned source d974f339a31d03fd.
+Next: finish calculation, API/storage integration tests, desktop E2E1440/1920 and evidence.
+
+
+## Single-file passport, 2026-11-10
+
+> что ещё крутого и важного доавбить, посмотри как индекс поменялся распиши в чем его суть что и как показывает.
+> оформи максимально красиво, можно табличкой приросты. Убери слопные длинные тире, стрелки, точки с запятой
+> делай
+> оставь В ОДНОМ ФАЙЛЕЕЕЕ БОЛЬШЕ НЕЛЬЗЯ!
+
+Only root `Паспорт проекта Plexus.md` is the report. Removed generated DOCX and this
+turn's extra evidence artifacts from the repository. Do not recreate a DOCX or split
+explanations into another deliverable. Original organizer template remains intact.
+Expanded index interpretation, five checked scenarios, transit/population effects,
+conditional time valuation and implemented planned-trip method with incomplete-result
+status. No future roadmap. Four tables, all nine sections, local links and punctuation
+checked. Current branch feat/map-first-ui HEAD46e7b1a; no commit/push in this task.
+Saved-job evidence retained under /private/tmp/plexus-passport/superseded-runtime-evidence.json.
+Current map verified as hansen-release-20261107. Do not label partial planned-model
+checkpoints as published results. Protected quotations retained verbatim.
+Final read-only accessibility requests timed out after8s; earlier HTTP503 and no completed report were observed. No API restart, calculation or model call was performed.

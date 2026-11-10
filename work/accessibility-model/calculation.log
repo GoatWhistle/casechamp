@@ -1,0 +1,93 @@
+Calculating summer without=full
+markets=8/180 seconds=5.2
+markets=16/180 seconds=10.5
+markets=24/180 seconds=16.9
+markets=32/180 seconds=24.7
+markets=40/180 seconds=31.9
+markets=48/180 seconds=38.6
+markets=56/180 seconds=45.2
+markets=64/180 seconds=53.1
+markets=72/180 seconds=59.3
+markets=80/180 seconds=64.4
+markets=88/180 seconds=69.9
+markets=96/180 seconds=76.2
+markets=104/180 seconds=82.4
+markets=112/180 seconds=87.2
+markets=120/180 seconds=91.6
+markets=128/180 seconds=96.0
+markets=136/180 seconds=101.3
+markets=144/180 seconds=107.7
+markets=152/180 seconds=115.3
+markets=160/180 seconds=129.2
+markets=168/180 seconds=137.0
+markets=176/180 seconds=142.4
+markets=180/180 seconds=145.0
+Calculating summer without=air
+markets=8/180 seconds=4.2
+markets=16/180 seconds=10.2
+markets=24/180 seconds=16.0
+markets=32/180 seconds=21.4
+markets=40/180 seconds=27.1
+markets=48/180 seconds=32.7
+markets=56/180 seconds=37.8
+markets=64/180 seconds=42.8
+markets=72/180 seconds=48.9
+markets=80/180 seconds=54.1
+markets=88/180 seconds=59.3
+markets=96/180 seconds=64.4
+markets=104/180 seconds=70.7
+markets=112/180 seconds=76.4
+markets=120/180 seconds=81.4
+markets=128/180 seconds=87.2
+markets=136/180 seconds=92.9
+markets=144/180 seconds=98.5
+markets=152/180 seconds=105.5
+markets=160/180 seconds=112.7
+markets=168/180 seconds=118.8
+markets=176/180 seconds=124.7
+markets=180/180 seconds=126.4
+Calculating summer without=water
+markets=8/180 seconds=8.2
+markets=16/180 seconds=15.5
+markets=24/180 seconds=24.9
+markets=32/180 seconds=31.8
+markets=40/180 seconds=39.0
+markets=48/180 seconds=45.5
+markets=56/180 seconds=51.2
+markets=64/180 seconds=57.6
+markets=72/180 seconds=64.4
+markets=80/180 seconds=70.3
+markets=88/180 seconds=75.9
+markets=96/180 seconds=81.7
+markets=104/180 seconds=87.6
+markets=112/180 seconds=91.7
+markets=120/180 seconds=97.2
+markets=128/180 seconds=102.5
+markets=136/180 seconds=107.8
+markets=144/180 seconds=113.0
+markets=152/180 seconds=119.4
+markets=160/180 seconds=125.6
+markets=168/180 seconds=132.5
+markets=176/180 seconds=139.1
+markets=180/180 seconds=142.3
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/andreykuronskin/keys_champ/etl/accessibility/calculate.py", line 87, in <module>
+    main()
+  File "/Users/andreykuronskin/keys_champ/etl/accessibility/calculate.py", line 55, in main
+    previous = source.previous(season)
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andreykuronskin/keys_champ/etl/accessibility/source.py", line 77, in previous
+    sums = self.frame(
+           ^^^^^^^^^^^
+  File "/Users/andreykuronskin/keys_champ/etl/accessibility/source.py", line 68, in frame
+    return ipc.open_stream(io.BytesIO(self.client.request(sql + ' FORMAT ArrowStream'))).read_all().to_pandas()
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andreykuronskin/keys_champ/etl/accessibility/snapshot.py", line 20, in request
+    return super().request(sql, body, size)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/andreykuronskin/keys_champ/etl/analytics/client.py", line 38, in request
+    raise RuntimeError(
+RuntimeError: ClickHouse HTTP 500: Code: 241. DB::Exception: (total) memory limit exceeded: would use 2.33 GiB (attempt to allocate chunk of 0.00 B bytes), current RSS: 1.03 GiB, maximum: 2.33 GiB. OvercommitTracker decision: Query was selected to stop by OvercommitTracker: While executing AggregatingTransform. (MEMORY_LIMIT_EXCEEDED) (version 25.6.13.41 (official build))
+
