@@ -11,6 +11,7 @@ from app.adapter.road_graph.data import GraphData
 from app.adapter.road_graph.delta import DeltaCalculation
 from app.adapter.road_graph.delta_base import DeltaBase
 from app.adapter.road_graph.routing import GraphRouting
+from app.adapter.road_graph.shortest_paths import ShortestPaths
 from app.domain.errors import DataUnavailable, InvalidQuery
 from app.domain.road_economics import MoneyAssumptions
 from app.usecase.graph_snapshot import GraphSnapshot
@@ -26,11 +27,14 @@ from app.usecase.road_job_store import RoadJobStore
 
 
 class RoadJobs:
-    def __init__(self, root: Path, snapshot: GraphSnapshot, store: RoadJobStore) -> None:
+    def __init__(
+        self, root: Path, snapshot: GraphSnapshot, store: RoadJobStore, workers: int = 1
+    ) -> None:
         self.data = GraphData(root, snapshot)
-        self.routing = GraphRouting(self.data)
+        self.paths = ShortestPaths(workers)
+        self.routing = GraphRouting(self.data, self.paths)
         self.cache = BaselineCache(root, snapshot.revision)
-        self.delta = DeltaCalculation(DeltaBase(self.data))
+        self.delta = DeltaCalculation(DeltaBase(self.data, self.paths))
         self.delta.base.prepare()
         self.pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix="road-calculation")
         self.lock = Lock()
@@ -222,3 +226,4 @@ class RoadJobs:
         for stop in self.stops.values():
             stop.set()
         self.pool.shutdown(wait=False, cancel_futures=True)
+        self.paths.close()

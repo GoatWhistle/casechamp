@@ -69,7 +69,12 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
     )
     atlas = ClickHouseAtlasRepository(reader)
     road_jobs = (
-        RoadJobs(config.graph_dir, ClickHouseGraphSnapshot(reader), ClickHouseRoadJobStore(reader))
+        RoadJobs(
+            config.graph_dir,
+            ClickHouseGraphSnapshot(reader),
+            ClickHouseRoadJobStore(reader),
+            config.road_workers,
+        )
         if config.graph_dir
         else None
     )

@@ -7,6 +7,7 @@ import pytest
 
 from app.adapter.road_graph.data import GraphData
 from app.adapter.road_graph.routing import GraphRouting
+from app.adapter.road_graph.shortest_paths import ShortestPaths
 from app.usecase.graph_snapshot import GraphParameters, GraphQuery
 from app.usecase.road_graph import RoadChange
 
@@ -62,3 +63,15 @@ def test_closure_recomputes_alternative_route(routing: GraphRouting) -> None:
 def test_identity_change_preserves_index(routing: GraphRouting) -> None:
     value, _, _, _, _ = routing.calculate("region", "road", [RoadChange(101, 1)], lambda _: None)
     assert value == pytest.approx(50)
+
+
+def test_process_pool_routing_matches_sequential(tmp_path: Path, routing: GraphRouting) -> None:
+    paths = ShortestPaths(2)
+    try:
+        parallel = GraphRouting(GraphData(tmp_path, Snapshot()), paths)
+        for changes in ([], [RoadChange(101, 2.0)], [RoadChange(101, 0)]):
+            assert parallel.calculate("region", "road", changes, lambda _: None) == (
+                routing.calculate("region", "road", changes, lambda _: None)
+            )
+    finally:
+        paths.close()

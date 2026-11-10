@@ -10,12 +10,14 @@ from app.adapter.road_graph.data import GraphData
 from app.adapter.road_graph.delta_model import DeltaRegion, access_times
 from app.adapter.road_graph.delta_store import DeltaStore
 from app.adapter.road_graph.routing import minimum_csr
+from app.adapter.road_graph.shortest_paths import ShortestPaths
 from app.domain.errors import InvalidQuery
 
 
 class DeltaBase:
-    def __init__(self, data: GraphData) -> None:
+    def __init__(self, data: GraphData, paths: ShortestPaths | None = None) -> None:
         self.data = data
+        self.paths = paths or ShortestPaths()
         self.graph: Any = None
         self.distances: OrderedDict[int, Any] = OrderedDict()
         self.store = DeltaStore(data.root, data.revision)
@@ -95,12 +97,17 @@ class DeltaBase:
             represented.add(city_ids[point])
         market_nodes = np.array([c[2] for c in cities], dtype=np.int32)
         market_snaps = np.array([c[3] for c in cities], dtype=np.float64)
-        for i in set(range(len(cities))) - represented:
-            city_roads[i] = (
-                self.distances_from(int(market_nodes[i]))[market_nodes]
-                + market_snaps[i]
-                + market_snaps
+        missing = sorted(set(range(len(cities))) - represented)
+        if missing:
+            searched = self.paths.distances(
+                self.graph,
+                market_nodes[missing],
+                market_nodes,
+                np.inf if self.data.modern_model else 72.0,
+                lambda _: None,
             )
+            for row, i in enumerate(missing):
+                city_roads[i] = searched[row] + market_snaps[i] + market_snaps
         trunk = np.full_like(city_roads, np.inf)
         for a, b, mode, hours in trunk_rows:
             trunk[ci[a], ci[b]] = min(

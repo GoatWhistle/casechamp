@@ -10,6 +10,7 @@ class Settings:
     clickhouse_url: str = "http://127.0.0.1:18123"
     clickhouse_user: str = "plexus"
     clickhouse_password: str = ""
+    road_workers: int = 1
 
 
 def load_settings(env: Mapping[str, str]) -> Settings:
@@ -19,4 +20,5 @@ def load_settings(env: Mapping[str, str]) -> Settings:
         clickhouse_url=env.get("CLICKHOUSE_URL") or "http://127.0.0.1:18123",
         clickhouse_user=env.get("CLICKHOUSE_USER", "plexus"),
         clickhouse_password=env.get("CLICKHOUSE_PASSWORD", ""),
+        road_workers=int(env.get("ROAD_WORKERS", "1")),
     )

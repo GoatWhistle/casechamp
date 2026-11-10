@@ -3,26 +3,39 @@ from typing import Any
 
 import numpy as np
 from scipy.sparse import csr_matrix
-from scipy.sparse.csgraph import dijkstra, floyd_warshall
+from scipy.sparse.csgraph import floyd_warshall
 
 from app.adapter.road_graph.data import GraphData
+from app.adapter.road_graph.shortest_paths import ShortestPaths
 from app.domain.road_analysis import SettlementAccess
 from app.usecase.road_graph import RoadAddition, RoadChange
 
 
 def minimum_csr(src: Any, dst: Any, weights: Any, count: int) -> Any:
-    a, b = np.concatenate([src, dst]), np.concatenate([dst, src])
+    a = np.concatenate([src, dst]).astype(np.int64)
+    b = np.concatenate([dst, src]).astype(np.int64)
+    keys = a * count + b
     w = np.concatenate([weights, weights])
-    order = np.lexsort((w, b, a))
-    a, b, w = a[order], b[order], w[order]
-    keep = np.ones(len(a), dtype=bool)
-    keep[1:] = (a[1:] != a[:-1]) | (b[1:] != b[:-1])
-    return csr_matrix((w[keep].astype(np.float64), (a[keep], b[keep])), shape=(count, count))
+    order = np.argsort(keys, kind="stable")
+    keys = keys[order]
+    if len(keys):
+        starts = np.flatnonzero(np.r_[True, keys[1:] != keys[:-1]])
+        values = np.minimum.reduceat(w[order], starts).astype(np.float64)
+        keys = keys[starts]
+    else:
+        values = np.empty(0, dtype=np.float64)
+    rows = keys // count
+    indptr = np.zeros(count + 1, dtype=np.int64)
+    np.cumsum(np.bincount(rows, minlength=count), out=indptr[1:])
+    return csr_matrix(
+        (values, (keys % count).astype(np.int32), indptr.astype(np.int32)), shape=(count, count)
+    )
 
 
 class GraphRouting:
-    def __init__(self, data: GraphData) -> None:
+    def __init__(self, data: GraphData, paths: ShortestPaths | None = None) -> None:
         self.data = data
+        self.paths = paths or ShortestPaths()
 
     def calculate(
         self,
@@ -118,13 +131,19 @@ class GraphRouting:
                 p for p, _ in origins if p in lookup and lookup[p][0] >= 0
             )
         }
-        for j, node in enumerate(city_nodes):
-            distances = dijkstra(graph, directed=True, indices=int(node), limit=np.inf if modern else 72.0)
-            road[:, j] = distances[nodes].astype(np.float32) + snaps + city_snaps[j]
+        searched = self.paths.distances(
+            graph,
+            city_nodes,
+            np.concatenate([nodes, city_nodes]),
+            np.inf if modern else 72.0,
+            progress,
+        )
+        for j in range(len(city_nodes)):
+            distances = searched[j]
+            road[:, j] = distances[: len(nodes)].astype(np.float32) + snaps + city_snaps[j]
             if modern and len(cities[j]) > 4 and cities[j][4] in origin_rows:
                 road[origin_rows[cities[j][4]], j] = 0.0
-            city_road[j] = distances[city_nodes] + city_snaps[j] + city_snaps
-            progress(j + 1)
+            city_road[j] = distances[len(nodes) :] + city_snaps[j] + city_snaps
         ci = {c[0]: j for j, c in enumerate(cities)}
         for source, target, mode, hours in trunk:
             a, b = ci[source], ci[target]
