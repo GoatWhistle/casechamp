@@ -5,6 +5,7 @@ import {
   type ChatEntry,
   type ChatInput,
   chatSessionBusy,
+  createChatId,
   useChatSessions,
   useChatStream,
 } from "@/entities/chat"
@@ -46,7 +47,7 @@ export function useMapChat(context: ChatContext, onMapCommand: MapCommandHandler
     const abort = new AbortController()
     controllers.current.set(sessionId, abort)
     requests.current.set(sessionId, body)
-    const id = crypto.randomUUID()
+    const id = createChatId()
     update(sessionId, (current) => ({
       ...current,
       draft: "",
@@ -55,7 +56,7 @@ export function useMapChat(context: ChatContext, onMapCommand: MapCommandHandler
       messages: [
         ...previous,
         {
-          id: crypto.randomUUID(),
+          id: createChatId(),
           role: "user",
           content: body.prompt,
           complete: true,

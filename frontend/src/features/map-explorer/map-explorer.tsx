@@ -1,6 +1,6 @@
 import { type ReactNode, useCallback, useState } from "react"
 import { useLocation } from "react-router"
-import { type MapControls, OsmMap } from "@/entities/region"
+import { boundaryName, type MapControls, modelRegionId, OsmMap } from "@/entities/region"
 import { type RoadGraphState, useRoadGraph } from "@/entities/road-graph"
 import type { ChatMapCommand, MapCommandHandler } from "@/shared/api/chat-map"
 import type { ChatContext } from "@/shared/api/chat-stream"
@@ -49,13 +49,15 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
   const f = useFormatters()
   const { metric, season, selectedId, setMetric, setSeason, select, searchFor } =
     useExplorerParams()
-  const { links, airports, transit, modelCount, showModels, setShowModels } = useSelectedTransit(
-    selectedId,
-    season,
-  )
   const { hoveredId, cardRef, point, onHover } = useMapHover()
   const { geo, regions, overview, byId, valueAt, scale, missing, failed, retry } = useMapData(
     metric,
+    season,
+  )
+  const modelId = modelRegionId(selectedId, regions.data)
+  const selectedName = boundaryName(selectedId, geo.data?.regions)
+  const { links, airports, transit, modelCount, showModels, setShowModels } = useSelectedTransit(
+    modelId,
     season,
   )
 
@@ -113,6 +115,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
         metric={metric}
         season={season}
         selectedId={selectedId}
+        selectedName={selectedName}
         searchFor={searchFor}
         onClear={clear}
       />
@@ -159,7 +162,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
               <RoadLegend roads={roads} />
               <AirportLegend catalog={airports.data} failed={airports.isError} />
               <TransitLegend
-                selectedId={selectedId}
+                selectedId={modelId}
                 loading={links.isPending}
                 failed={links.isError}
                 missing={transit.missing}
@@ -187,7 +190,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
         ? renderPanel(
             panel,
             {
-              region_id: selectedId,
+              region_id: modelId,
               season,
               network_mode: networkMode,
               metric,

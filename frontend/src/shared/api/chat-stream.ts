@@ -2,7 +2,7 @@ import { isChatAnalysis } from "./chat-analysis"
 import { isChatChart, isChatTable } from "./chat-artifacts"
 import { isChatCalculation } from "./chat-calculation"
 import { isChatMapCommand } from "./chat-map"
-import { ApiError, api, codeOf } from "./client"
+import { ApiError, api, codeOf, SERVER_UNAVAILABLE, UNEXPECTED } from "./client"
 import type { components } from "./schema.gen"
 
 export type ChatInput = components["schemas"]["ChatInput"]
@@ -15,6 +15,14 @@ const ARTIFACTS: Record<string, (value: unknown) => boolean> = {
   map: isChatMapCommand,
   calculation: isChatCalculation,
   analysis: isChatAnalysis,
+}
+
+function httpErrorCode(status: number, body: unknown): string {
+  const code = codeOf(body)
+  if (code !== UNEXPECTED && code !== SERVER_UNAVAILABLE) return code
+  if (status === 429) return "chat_limit"
+  if (status >= 500 || code === SERVER_UNAVAILABLE) return "chat_connection_error"
+  return code
 }
 
 function parseEvent(line: string): ChatStreamEvent {
@@ -57,7 +65,7 @@ export async function streamChat(
     signal,
     parseAs: "stream",
   })
-  if (!response.ok) throw new ApiError(response.status, codeOf(error))
+  if (!response.ok) throw new ApiError(response.status, httpErrorCode(response.status, error))
   if (!data) throw new ApiError(502, "chat_stream_error")
   const reader = data.getReader()
   const decoder = new TextDecoder()

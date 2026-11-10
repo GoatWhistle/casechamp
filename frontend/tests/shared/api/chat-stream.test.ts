@@ -64,4 +64,20 @@ describe("chat stream", () => {
       streamChat({ prompt: "Hello" }, new AbortController().signal, () => undefined),
     ).rejects.toMatchObject({ code: "chat_auth_required" })
   })
+
+  it.each([
+    [429, "<html>Too Many Requests</html>", "chat_limit"],
+    [502, "<html>Bad Gateway</html>", "chat_connection_error"],
+    [503, { code: "server_unavailable" }, "chat_connection_error"],
+    [504, "", "chat_connection_error"],
+    [403, { code: "chat_local_only" }, "chat_local_only"],
+  ])(
+    "maps an HTTP %i response without NDJSON to a known chat code",
+    async (status, error, code) => {
+      post.mockResolvedValue({ error, response: new Response(null, { status }) })
+      await expect(
+        streamChat({ prompt: "Hello" }, new AbortController().signal, () => undefined),
+      ).rejects.toMatchObject({ code })
+    },
+  )
 })

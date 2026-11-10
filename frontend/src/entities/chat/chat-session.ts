@@ -2,6 +2,7 @@ import type { ChatChart, ChatTable } from "@/shared/api/chat-artifacts"
 import type { ChatCalculation } from "@/shared/api/chat-calculation"
 import type { ChatMapCommand } from "@/shared/api/chat-map"
 import type { AnalysisJob } from "@/shared/api/road-analysis"
+import { createChatId } from "./chat-id"
 
 export interface AnalysisCommentary {
   readonly revision: string
@@ -39,7 +40,7 @@ export function createChatSession(): ChatSession {
   const now = Date.now()
   return {
     version: 1,
-    id: crypto.randomUUID(),
+    id: createChatId(),
     createdAt: now,
     updatedAt: now,
     messages: [],

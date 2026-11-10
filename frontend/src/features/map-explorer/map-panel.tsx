@@ -4,6 +4,7 @@ import { RegionLinks } from "@/entities/link"
 import type { IndexStatus } from "@/entities/reference"
 import {
   IndexCoverage,
+  modelRegionId,
   type Overview,
   type RegionSummary,
   type Season,
@@ -23,6 +24,7 @@ export interface MapPanelProps {
   readonly metric: MetricKey
   readonly season: Season
   readonly selectedId: string | null
+  readonly selectedName?: string | null | undefined
   readonly searchFor: (id: string) => string
   readonly onClear: () => void
 }
@@ -123,17 +125,42 @@ function SelectedRegion({ id, season, onClose }: SelectedProps) {
   )
 }
 
+function OutsideRegion({
+  name,
+  count,
+  onClose,
+}: {
+  readonly name: string
+  readonly count: number
+  readonly onClose: () => void
+}) {
+  const { t } = useTranslation()
+  return (
+    <Card
+      as="section"
+      title={name}
+      actions={<CloseButton label={t("map:selected.close")} onClick={onClose} />}
+      className={`${styles.flat} ${styles.selected}`}
+    >
+      <Banner tone="info" title={t("map:selected.outsideModel", { name, count })} />
+      <p>{t("map:selected.outsideModelNote")}</p>
+    </Card>
+  )
+}
+
 export const MapPanel = memo(function MapPanel({
   overview,
   regions,
   metric,
   season,
-  selectedId,
+  selectedId: requestedId,
+  selectedName,
   searchFor,
   onClear,
 }: MapPanelProps) {
   const { t } = useTranslation()
   const f = useFormatters()
+  const selectedId = modelRegionId(requestedId, regions)
   const selected = useRegion(selectedId ?? "", season)
   return (
     <aside className={styles.panel}>
@@ -144,6 +171,12 @@ export const MapPanel = memo(function MapPanel({
         <div className={styles.content}>
           {selectedId ? (
             <SelectedRegion id={selectedId} season={season} onClose={onClear} />
+          ) : requestedId ? (
+            <OutsideRegion
+              name={selectedName ?? requestedId}
+              count={regions.length}
+              onClose={onClear}
+            />
           ) : (
             <Card as="section" title={t("map:overview.title")} className={styles.flat}>
               <div className={styles.stats}>
