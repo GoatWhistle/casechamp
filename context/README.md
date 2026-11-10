@@ -1,8 +1,8 @@
 # Project context
 
-Plexus: transport accessibility for regional policy analysts. Two levels: population-weighted
-Hansen market accessibility for 82 comparable regions, and interactive centre trips in Tuva.
-Russian UI, one light theme; no mobile checks. Work on feat/model-validation, small commits, preserve root HTML.
+Plexus: transport accessibility for regional policy analysts. Population-weighted
+Hansen market accessibility and network scenarios for all 82 atlas regions.
+Russian UI, one light theme; no mobile checks. Work on feat/map-first-ui, preserve uncommitted work, preserve root HTML.
 
 ## Current facts, 2026-11-09
 
@@ -10,8 +10,6 @@ Russian UI, one light theme; no mobile checks. Work on feat/model-validation, sm
 | --- | --- | --- |
 | Plan | blocked on external submission | [Full delivery plan](../work/project-plan.md), revised after correctness review. |
 | Git | local commits | Release2 source4915346; model, API/UI, national exports, Compose, docs and defense committed locally; not pushed. |
-| Pilot | verified on local stand | 7 points, 19 edges, 3 pairs; 24 same-graph independent comparisons. [Method](../docs/pilot-method.md), [reports](../docs/results/pilot-validation.json). |
-| Pilot effects | conditional | Kungurtug–Kyzyl 18.095h at 2/4 flights, 14.243h at 7; operability unverified. |
 | API/UI | verified locally | Backend 143, frontend 375 tests; four desktop E2E scenarios passed. |
 | Compose | previously verified | Two services; see stand protocol. |
 | Inputs | restored | Seven tabular sources, ten PBFs; manifests retain hashes. |

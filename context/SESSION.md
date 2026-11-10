@@ -1,10 +1,5 @@
 # Session state
 
-Updated: 2026-11-09, Europe/Moscow. Work directly on main. The current project plan supersedes
-historical frontend-only scope, publication holds and the pause. Preserve root HTML outside commits;
-no mobile checks. Earlier state and all explanatory history: work/integration/session-before-delivery.md.
-The following user quotes remain verbatim; chronology determines which instruction is current.
-
 ## Explicit user instructions
 
 2026-11-06:
@@ -148,130 +143,188 @@ Use Plane Workspace Insights, its six plane-* skills, and its Plane MCP tools on
 
 > закомить и запушь все комиты
 
-## Current state
+2026-11-10:
 
-## Integration 2026-11-09
+> Давай используя pydantic ai v2, сделай мини агента и чат справа от карты, в который можно писать промпт. Пиши сразу стрим. Нужен шлюз с codex agents sdk в responses api амодели, юзай gpt 6.1 sol. Используй мою авторизацию
+
+> так, фронт чатика спизди примерно от сюда https://github.com/GoatWhistle/rwb
+
+> нормализацию с тех чатов тоже стырь. Графики, таблички, пункты
+
+> (H_i=\sum_j M_j f(c_{ij})), где (M_j) — размер рынка в пункте назначения, (c_{ij}) — затраты на поездку, а (f) уменьшает вклад это тоже надо нормализовать. Давай дальше управление картой и крутые зумы сделаем
+
+> дай возможность пересчитывать. Если мы вытащим все графы в постгрю, станет же лучше работать ? и на ходу сможем считать всё ?
+
+> запуль сюда данные графа из гита посмтоир сам где валяется
+
+2026-11-10, rail/air source research:
+
+> ищи субагентами по ВСЕМ РЕГИОНам. ГДЕ НЕТУ ЩАС ЖД И АВИА
+
+
+### Additional user instructions carried forward
 
 > зайди в контекст проекта /Users/kaifarikman/Downloads/2\ кейс.pdf /Users/kaifarikman/Downloads/2_Транспортная\ связность.pdf вот тут тебе ТЗ. посмотри что лежит в каждой из веток. нужно это все дело корректно смерджить
 
-## Main-only workflow, 2026-11-09
-
 > тогда запушь это дело в мейн щас, тупо туда влей и остальные ветки на remote и local удали. все будем делать в мейне
-
-## Alignment audit, 2026-11-09
 
 > цель - понять, корректно мы все делаем или нет. у тебя есть ТЗ. осознай что мы сдлеали, что нет, где минусы, где плюсы и что осталось. какие риски по проекту
 
-## Implementation goal, 2026-11-09
-
 > твоя цель - выполнить все то, что я тебе описал в этом плане. не подведи. тут важный проект. всегда поступай по рекомендации брат. файл - work/project-plan.md , работой
-
-## Plan review, 2026-11-09
-
-## Revised plan acknowledged, 2026-11-09
 
 > стой друг
 
 > исправил доку. осознай новые изменения
 
-## Current implementation, 2026-11-09
-
-Goal resumed by user; earlier pause is historical. Work on main. Release2 source SHA4915346 from Git; completion audit: work/audits/plan-completion.md.
-User reply on passport identity fields (verbatim):
-
 > пока что забей, поставь пропуски
-
-Delivery details, exact checks, versions, process IDs and submission blocker are preserved in work/integration/session-delivery-detail-2026-11-09.md. Source remains local; no submission authorized or performed.
-
-## Domain coverage audit, 2026-11-09
 
 > зайди в домен. изучи ТЗ , требования /Users/kaifarikman/Downloads/2\ кейс.pdf /Users/kaifarikman/Downloads/2_Транспортная\ связность.pdf и посмотри что уже сейчас готово и что покрывается
 
-## Validation branch workflow, 2026-11-09
-
-Latest user instruction (verbatim):
-
 > давай короче все изменения которые были(все коммиты) перенесем в другую ветку, на нее переключимся и там уже пойдем работать, тестировать и пробовать
-
-## Validation experiments
-
-## Final readiness work resumed
-
-Latest user instruction (verbatim):
 
 > давай , делай
 
-Resumed on feat/model-validation; closeout work/release-readiness.md; coordinate correction and graph/exports rerun remain open. Do not claim final delivery. Detail: [archive](../work/integration/session-archive-20261110.md).
-
-## Publication authorized
-
 > все теперь это запушь дело всё и  скажи куда запушил
-
-Pushed to origin/feat/model-validation from c5dc29e. Detail: [archive](../work/integration/session-archive-20261110.md).
-
-## Local synchronization, 2026-11-09
-
-Latest user instructions (verbatim):
 
 > втащи сюда последние изменения с гита, как фронт так и feat/model-validation. Но не затри данные новые
 
-Merged in f8d6078; tree clean; all 1664 pre-existing data files verified by SHA256. Full detail, checks and pre-sync state: [archive](../work/integration/session-archive-20261110.md), [pre-sync context](../work/integration/local-before-sync-20261109/).
-
-## National dataset discovery, 2026-11-09
-
 > найди такие же датасеты для всех регионов
-
-Collection details: [archive](../work/regional-collection/session-detail.md). Existing datasets and model remain unchanged.
-
-## Brief reading, 2026-11-09
-
-User request: «прочти тз хакатона». Read TASK, requirements, QA, both PDFs (brief/sources/2026-11-09); no implementation changes; HEAD 77436c8. Deadline saved: 10 Nov 23:39, timezone unresolved. Detail: [archive](../work/integration/session-archive-20261110.md).
-
-## Publication, 2026-11-09
 
 > запушь в новую ветку
 
-Branch feat/regional-datasets, based on 77436c8. Publish current catalog and scripts to origin/feat/regional-datasets. Raw data stays ignored locally.  
-
-## OSM continuation, 2026-11-09
-
 > frontend/claude-trans.txt продолжи че там делали, но без тестов
-
-
 
 > коммит и выкатывай на стенд case.vm
 
 > ssh main.home-1.serv
 
-
-
 > запусти субагентов и дособери
-
-Collection: main work/regional-collection/.
 
 > подключай к стенду
 
-case.vm: 12391 links; Hansen unchanged. Build/API passed; no tests.
-
 > давай запушим это
 
-Push feat/map-first-ui to goat; CSV included, transcripts/raw excluded.
+> спуль ее и затри то что мы меняли
 
-## Data artifacts published, 2026-11-10
+> тут всё еще есть пилот тывы ? мы должны всё уже поддерживать. Предложи сценарии в которых агента можно использовать
+
+> сделай чтобы на локалке и граф отрисовывался и чтобы инструмент сранвения был и пересчета индекса. ВОозможно какие то вопросы по графц
+
+> не надо, юзай только эти данные, не костыль
+
+> ПОДКЛЮЧАЙ СУКА
+
+> а почему при приблежение у нас пропадают связи графа ? + что за расчёт ? перерасчет при добавление чего то ? мы можем уже добавить через агента тул ( желатлеьно чтобы перерасчет шёл только diff ом, чтобы моментально ) и выводить там какой то эффект на индекс и эффект денежный условно
+
+> и почему вот есть серым дорога, но граф синий не всю ее покрывает ? это как раз общественный транспорт ? или что это
+
+> давай посчитаем заранее и будем держать всё и только дифы быстро считать
+
+> смрежи с тем что в ветке удалённой лежит
 
 > В этой копии есть готовые индексы, но отсутствуют data/graph_ru/ u data/casechamp duckdb с расчётным графом и матрицей времён. Где лежат эти артефакты или как подключиться к серверу с ними? это надо запушить в гит
 
-Artifacts are in main checkout data/, symlinked into this worktree; published as GitHub release data-20261107 with SHA-256; docs/data-pipeline.md pointer bbfa108 pushed to goat/feat/map-first-ui. One DuckDB writer at a time. Detail: [archive](../work/integration/session-archive-20261110.md).
-
-## New-route features, 2026-11-10
-
 > делай оба
 
-Both features done and committed locally up to 47451f9 (not pushed). Backend: pilot
-`additions`, scenario endpoints /api/v1/scenarios(+/evaluate); 171 unit tests, ruff, mypy green.
-np_city_times rebuilt (road/summer/winter, one process per scenario); matrices exported to
-data/scenario_ru, closure 0.0000h, max diff vs published indices.json 0.6% (artifact e1a2c25b).
-Frontend: pilot route-adder and /scenarios page; npm run verify green; HTTP smoke passed.
-Remaining: push on request; stand case.vm needs data/scenario_ru upload and SCENARIO_DIR;
-no visual browser pass of the two new screens yet.
-Full detail: [archive](../work/integration/session-archive-20261110.md).
+> удали следы этого ограничения про тыву вообще везде
+
+2026-11-10, local transport data update:
+
+> ну добавляй блять на прод их
+
+> здесь имеется ввиду локально актуализируй и добавь данные
+
+## Current state
+
+## Local synchronization, 2026-11-09
+
+
+
+
+
+Prior validation details: [archived history](../work/integration/local-before-sync-20261109/validation-history.md).
+
+## National dataset discovery, 2026-11-09
+
+
+
+Collection details: [archive](../work/regional-collection/session-detail.md). Existing datasets and model remain unchanged.
+
+## Brief reading, 2026-11-09
+
+User request: «прочти тз хакатона».
+
+## OSM continuation, 2026-11-09
+
+
+
+
+
+
+
+
+
+
+
+
+
+Collection: main work/regional-collection/.
+
+
+
+case.vm: 12391 links; Hansen unchanged. Build/API passed; no tests.
+
+
+
+Push feat/map-first-ui to goat; CSV included, transcripts/raw excluded.
+
+## Map toolbar refinement, 2026-11-10
+
+User: «поправь наслоения и уменьши этот островок»; «Ответы основаны на данных атласа убери это».
+Branch feat/map-first-ui, HEAD 63fb9cb. Toolbar and hint edits complete; 361 tests/build pass.
+Details: [verification](../work/toolbar-refinement.md).
+
+## Prepared graph deltas, 2026-11-10
+
+
+
+
+
+
+
+
+Superseded implementation details: [archive](../work/integration/session-before-delta-closeout-20261110.md).
+
+## Automatic road analysis implementation, 2026-11-10
+
+User: «Implement the plan.» Details and verification: work/road-analysis-implementation.md.
+
+
+## Remote integration, 2026-11-10
+
+
+
+
+
+
+
+Local rail/air integration complete: feat/map-first-ui c397ca6. API8001/UI5187 updated. 33957 model +139 timetable records. Evidence/limits/next: work/regional-collection/rail-air-audit/implementation.md.
+
+
+## Inline calculation visual, 2026-11-10
+
+User: «доправь визуал тогда расчета, чтобы он прям в чате рисовался с анимашкой и зум был того где мы делаемся».
+Implemented corridor calculation stream event, inline geometry/progress/result for both regions,
+automatic one-time camera fit and keyboard/reduced-motion refocus. Backend8001 restarted idle;
+frontend5187 HMR. Old chat messages need a new turn. No paid model call/commit/push.
+Checks and screenshot scope: work/screens/map-chat.md. Branch feat/map-first-ui HEADc397ca6.
+
+
+Current: feat/map-first-ui HEADc397ca6. Inline calculation visual implemented; local8001/5187 updated. Verification: work/screens/map-chat.md. Preserved details: work/integration/session-before-chat-visual-closeout.md.
+Remote fetched to ee9494a; local HEADc397ca6 unchanged, no merge. Six new commits reviewed: work/remote-review-20261110.md.
+
+Earlier instruction chronology and state: [archive](../work/integration/session-before-network-local-20261110.md).
+
+User: «делай и закинь в последний коммит». Integrated settlement picker and effect table with national graph, not remote endpoint-only approximation. Real UI12min connection completed with1275affected origins/top30rows. Backend176tests and frontendverify pass. Amend requested for latest local commit; no force-push. Details: work/scenario-form-integration.md.
+
+Amend completed locally (pre-author-refresh SHA1c72ca1); no push. Working product is committed, rail-air audit notes remain untracked. Graph form/result verified; provider documentation adjusted to satisfy pre-commit rules. Branch feat/map-first-ui; current commit hash is available from git log -1. Next: user review on localhost5187.
