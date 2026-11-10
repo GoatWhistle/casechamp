@@ -1,41 +1,49 @@
-import re
 from threading import Lock
+from typing import Any
 from uuid import uuid4
 
 import numpy as np
 from scipy.sparse.csgraph import connected_components
 
-from app.adapter.road_corridor.blocks import corridor_pairs
+from app.adapter.road_corridor.band import band_pairs
 from app.adapter.road_corridor.bridges import find_bridges
+from app.adapter.road_corridor.gaps import gap_pairs
 from app.adapter.road_graph.jobs import RoadJobs
 from app.adapter.road_graph.routing import minimum_csr
 from app.domain.errors import InvalidQuery
+from app.domain.road_references import lookup_keys, reference_parts, shared_reference
 from app.usecase.road_corridor import BridgeCandidate, CorridorRegion, RoadCorridor
 from app.usecase.road_graph import RoadChange, RoadJob
 
-
-def normalized(value: str) -> str:
-    return re.sub(r"[^a-zа-яё0-9]", "", value.casefold())
+GAP_KM = 15.0
+BAND_KM = 0.5
+REACH_KM = 20.0
+MARKET_REACH_KM = 40.0
 
 
 class CorridorResolver:
     def __init__(self, roads: RoadJobs) -> None:
         self.roads = roads
         self.resolved: dict[str, RoadCorridor] = {}
+        self.settlements: tuple[list[str], Any] | None = None
         self.lock = Lock()
 
     def resolve(self, road_name: str, origin: str, destination: str) -> RoadCorridor:
         data = self.roads.data
-        matches = {
-            str(r[0]) for r in data.read("road_reference", {"name": normalized(road_name)})
+        references = {
+            str(r[0]) for r in data.read("road_reference", {"names": lookup_keys(road_name)})
             if r[0] is not None and str(r[0]).strip()
         }
-        if len(matches) != 1:
+        variants = shared_reference(references, road_name)
+        if not variants:
             raise InvalidQuery(
-                "Road reference is ambiguous or missing: " + ", ".join(sorted(matches)[:8])
+                "Road reference is ambiguous or missing: " + ", ".join(sorted(references)[:8])
             )
-        reference = next(iter(matches))
-        selected = {int(r[0]): r for r in data.read("references", {"reference": reference})}
+        selected = {int(r[0]): r for r in data.read("references", {"references": variants})}
+        reference = max(
+            variants,
+            key=lambda v: (sum(v in reference_parts(str(r[3] or "")) for r in selected.values()), v),
+        )
         endpoints = []
         for query in (origin, destination):
             locations = data.read("corridor_places", {"query": query})
@@ -52,7 +60,6 @@ class CorridorResolver:
         edge_rows = data.read("corridor_edges", {"ids": list(selected)})
         node_ids = sorted({int(n) for a, b, _ in edge_rows for n in (a, b)})
         node_rows = data.read("corridor_nodes", {"ids": node_ids})
-        region_rows = data.read("region_codes", {"regions": [str(p[2]) for p in endpoints]})
         coordinates = {int(n): (float(x), float(y)) for n, x, y in node_rows}
         xy = np.array([(x, y) for _, x, y in node_rows])
         distances = []
@@ -61,22 +68,41 @@ class CorridorResolver:
             distances.append(
                 np.hypot((xy[:, 0] - x) * np.cos(np.radians(y)), xy[:, 1] - y) * 111.195
             )
+        markets = {str(c[0]) for c in data.read("cities")}
+        reach = [MARKET_REACH_KM if str(p[1]) in markets else REACH_KM for p in endpoints]
         ids = np.array([n for n, _, _ in node_rows])
         starts = np.searchsorted(ids, [a for a, _, _ in edge_rows])
         ends = np.searchsorted(ids, [b for _, b, _ in edge_rows])
         graph = minimum_csr(starts, ends, np.ones(len(starts)), len(ids))
         component_count, labels = connected_components(graph)
+        pairs = [(int(a), int(b)) for a, b, _ in edge_rows]
+        spans = any(
+            min(distances[0][labels == c]) <= reach[0] and min(distances[1][labels == c]) <= reach[1]
+            for c in range(component_count)
+        )
+        virtual: set[tuple[int, int]] = set()
+        if not spans:
+            gaps = gap_pairs(ids, xy, labels, pairs, GAP_KM)
+            virtual = {(min(a, b), max(a, b)) for a, b in gaps}
+            pairs += gaps
+            joined = minimum_csr(
+                np.searchsorted(ids, [a for a, _ in pairs]),
+                np.searchsorted(ids, [b for _, b in pairs]),
+                np.ones(len(pairs)),
+                len(ids),
+            )
+            component_count, labels = connected_components(joined)
         corridor: set[tuple[int, int]] = set()
         attachments = []
-        pairs = [(int(a), int(b)) for a, b, _ in edge_rows]
         for component in range(component_count):
             positions = np.flatnonzero(labels == component)
             a = int(positions[np.argmin(distances[0][positions])])
             b = int(positions[np.argmin(distances[1][positions])])
-            if a == b or max(distances[0][a], distances[1][b]) > 20:
+            if a == b or distances[0][a] > reach[0] or distances[1][b] > reach[1]:
                 continue
-            corridor.update(corridor_pairs(pairs, int(ids[a]), int(ids[b])))
+            corridor.update(band_pairs(ids, xy, pairs, a, b, BAND_KM))
             attachments.append((float(distances[0][a]), float(distances[1][b])))
+        corridor -= virtual
         offsets = [max((pair[i] for pair in attachments), default=0.0) for i in range(2)]
         if not corridor:
             raise InvalidQuery(
@@ -87,6 +113,11 @@ class CorridorResolver:
             for a, b, w in edge_rows
             if (min(int(a), int(b)), max(int(a), int(b))) in corridor
         }
+        corridor_nodes = sorted({node for pair in corridor for node in pair})
+        names = [str(p[2]) for p in endpoints] + self.crossed_regions(
+            np.array([coordinates[n] for n in corridor_nodes])
+        )
+        region_rows = data.read("region_codes", {"regions": list(dict.fromkeys(names))})
         full_pairs = {
             (min(int(a), int(b)), max(int(a), int(b)))
             for a, b, w in edge_rows
@@ -114,12 +145,37 @@ class CorridorResolver:
                 raise InvalidQuery("Resolve the named road corridor before closing it")
             return self.resolved[corridor_id]
 
-    def close(self, corridor_id: str) -> list[RoadJob]:
-        corridor = self.get(corridor_id)
-        changes = [RoadChange(way, 0) for way in corridor.way_ids]
+    def crossed_regions(self, points: Any) -> list[str]:
+        if not len(points):
+            return []
+        if self.settlements is None:
+            rows = self.roads.data.read("settlement_regions")
+            self.settlements = (
+                [str(r[0]) for r in rows],
+                np.array([(float(r[1]), float(r[2])) for r in rows]),
+            )
+        names, xy = self.settlements
+        sample = points[np.linspace(0, len(points) - 1, min(len(points), 400)).astype(int)]
+        scale = np.cos(np.radians(sample[:, 1]))[:, None]
+        counts: dict[str, int] = {}
+        for start in range(0, len(sample), 50):
+            block = sample[start : start + 50]
+            dx = (xy[None, :, 0] - block[:, None, 0]) * scale[start : start + 50]
+            dy = xy[None, :, 1] - block[:, None, 1]
+            for index in np.argmin(dx * dx + dy * dy, axis=1):
+                counts[names[int(index)]] = counts.get(names[int(index)], 0) + 1
+        return [name for name, count in sorted(counts.items(), key=lambda c: -c[1]) if count >= 3]
+
+    def close(self, corridor_ids: list[str]) -> list[RoadJob]:
+        corridors = [self.get(key) for key in corridor_ids]
+        changes = [
+            RoadChange(way, 0)
+            for way in sorted({way for corridor in corridors for way in corridor.way_ids})
+        ]
+        regions = {region.id: region for corridor in corridors for region in corridor.regions}
         return [
             self.roads.submit(region.id, region.name, "road", changes, queue=True)
-            for region in corridor.regions
+            for region in regions.values()
         ]
 
     def bridges(self, near: str, radius_km: float, name: str) -> list[BridgeCandidate]:

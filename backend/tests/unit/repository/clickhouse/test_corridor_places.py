@@ -33,3 +33,20 @@ def test_corridor_search_resolves_exact_names_and_region_qualifiers(
     rows = ClickHouseGraphSnapshot(reader).read("corridor_places", {"query": query})
     assert [row[0] for row in rows] == expected
     assert "," not in reader.arrow.call_args.args[1]["pattern"]
+
+
+def test_market_city_is_preferred_over_villages_with_the_same_name() -> None:
+    reader = Mock()
+    reader.rows.return_value = [{"value": "test"}]
+    reader.arrow.side_effect = [
+        pa.table({
+            "point_id": ["1", "2"], "settlement": ["деревня Москва", "деревня Москва"],
+            "region": ["Кировская область", "Тверская область"], "lon": [1., 2.], "lat": [1., 2.],
+        }),
+        pa.table({
+            "oktmo_from": ["45000000000"], "city_from": ["Москва"], "region_from": ["Москва"],
+            "lon_from": [37.6], "lat_from": [55.7],
+        }),
+    ]
+    rows = ClickHouseGraphSnapshot(reader).read("corridor_places", {"query": "Москва"})
+    assert [row[0] for row in rows] == ["45000000000"]

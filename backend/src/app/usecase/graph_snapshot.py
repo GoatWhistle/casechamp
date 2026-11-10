@@ -2,6 +2,8 @@ from typing import Any, Literal, Protocol
 
 GraphQuery = Literal[
     "locations",
+    "market_places",
+    "settlement_regions",
     "region_name",
     "ways",
     "way_indices",

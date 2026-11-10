@@ -30,14 +30,14 @@ def test_closure_emits_geometry_and_both_jobs_without_waiting_for_results() -> N
     context.deps = run
     pending = run.pending
     tools = CorridorTools(RoadCorridors(engine))
-    tools.close_road_corridor(context, "corridor")
+    tools.close_road_corridor(context, ["corridor"])
     assert len(pending) == 1
     event = pending[0]
     assert event.type == "calculation"
     assert event.calculation is not None
     assert event.calculation.corridor.lines == corridor.lines
     assert event.calculation.job_ids == ["1", "2"]
-    engine.close.assert_called_once_with("corridor")
+    engine.close.assert_called_once_with(["corridor"])
 
 
 def test_ambiguous_settlement_returns_actionable_result_without_exhausting_retries() -> None:

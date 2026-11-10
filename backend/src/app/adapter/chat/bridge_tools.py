@@ -71,7 +71,7 @@ class BridgeTools:
     def close_road_bridges(self, ctx: RunContext[ChatRun], bridge_ids: list[str]) -> str:
         try:
             corridor = self.corridors.combine_bridges(bridge_ids)
-            jobs = self.corridors.close(corridor.id)
+            jobs = self.corridors.close([corridor.id])
             ctx.deps.pending.append(ChatEvent(
                 "calculation", calculation=CorridorCalculation(corridor, [job.id for job in jobs]),
             ))

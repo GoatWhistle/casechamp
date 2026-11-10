@@ -43,7 +43,7 @@ class BridgeCandidate:
 class CorridorPort(Protocol):
     def get(self, corridor_id: str) -> RoadCorridor: ...
     def resolve(self, road_name: str, origin: str, destination: str) -> RoadCorridor: ...
-    def close(self, corridor_id: str) -> list[RoadJob]: ...
+    def close(self, corridor_ids: list[str]) -> list[RoadJob]: ...
     def bridges(self, near: str, radius_km: float, name: str) -> list[BridgeCandidate]: ...
     def combine_bridges(self, bridge_ids: list[str]) -> RoadCorridor: ...
 
@@ -64,10 +64,31 @@ class RoadCorridors:
             raise DataUnavailable("GRAPH_DIR is not configured")
         return self.engine.get(corridor_id)
 
-    def close(self, corridor_id: str) -> list[RoadJob]:
+    def close(self, corridor_ids: list[str]) -> list[RoadJob]:
         if self.engine is None:
             raise DataUnavailable("GRAPH_DIR is not configured")
-        return self.engine.close(corridor_id)
+        if not 1 <= len(corridor_ids) <= 10 or len(set(corridor_ids)) != len(corridor_ids):
+            raise InvalidQuery("Select between 1 and 10 distinct resolved corridor IDs")
+        return self.engine.close(corridor_ids)
+
+    def combined(self, corridor_ids: list[str]) -> RoadCorridor:
+        corridors = [self.get(key) for key in corridor_ids]
+        if len(corridors) == 1:
+            return corridors[0]
+        regions = {r.id: r for c in corridors for r in c.regions}
+        return RoadCorridor(
+            "+".join(c.id for c in corridors),
+            "; ".join(dict.fromkeys(c.road_ref for c in corridors)),
+            corridors[0].origin,
+            corridors[-1].destination,
+            sorted({w for c in corridors for w in c.way_ids}),
+            sum(c.length_km for c in corridors),
+            max(c.origin_attachment_km for c in corridors),
+            max(c.destination_attachment_km for c in corridors),
+            list(regions.values()),
+            [line for c in corridors for line in c.lines],
+            "combined_named_road_corridors_both_directions",
+        )
 
     def bridges(self, near: str, radius_km: float = 20, name: str = "") -> list[BridgeCandidate]:
         if self.engine is None:
