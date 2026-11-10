@@ -201,13 +201,13 @@ Latest user instruction (verbatim):
 
 > давай , делай
 
-Work resumed on feat/model-validation. Mandatory closeout: work/release-readiness.md. Empty-frequency explanation and version-reset notice added; frontend verify (375 unit tests) and 7 targeted browser scenarios passed. Draft v2 predates these changes. Vasilyevka evidence recorded in work/experiments/vasilevka-coordinate-check.md; raw inputs preserved, coordinate correction and graph/exports rerun remain open. Do not claim final delivery.
+Resumed on feat/model-validation; closeout work/release-readiness.md; coordinate correction and graph/exports rerun remain open. Do not claim final delivery. Detail: [archive](../work/integration/session-archive-20261110.md).
 
 ## Publication authorized
 
 > все теперь это запушь дело всё и  скажи куда запушил
 
-Branch feat/model-validation; source HEAD c5dc29e before this state commit. Frontend verify passed (375 tests). Push target origin/feat/model-validation. Archives/data remain ignored; coordinate corrections and final delivery remain open.
+Pushed to origin/feat/model-validation from c5dc29e. Detail: [archive](../work/integration/session-archive-20261110.md).
 
 ## Local synchronization, 2026-11-09
 
@@ -215,11 +215,7 @@ Latest user instructions (verbatim):
 
 > втащи сюда последние изменения с гита, как фронт так и feat/model-validation. Но не затри данные новые
 
-Current workspace branch remains feat/transport-graph. origin/main 81b6524 contains the latest frontend; deleted remote feat/frontend is superseded by main. origin/feat/model-validation f666d8e descends from main. Local acquired datasets are preserved by commit 66253c1; live preview integration is preserved by commit 152b06d. Full pre-sync context is archived at work/integration/local-before-sync-20261109/. Data backup and pre-merge hashes: /private/tmp/keys-champ-merge-backup-20261109/. Merged in f8d6078; working tree verified clean.
-
-Local sync verification: all 1664 pre-existing data files (4758822795 bytes) retain their SHA256 hashes. Full frontend verify passed (375 tests and build); backend Ruff/mypy and 138 unit tests passed. Existing indices and pilot exports retained unchanged from model-validation; Stavropol buses remain catalog-only additions to the fixed national calculation. Preview runs from the main workspace at port 5187 (session 8738), API 8000 (session 43661). Model tests: 21 passed. HTTP smoke checks passed for ready indices, Tuva pilot, Crimea geometry, 653 Stavropol links and downloadable bus archive. No push requested.
-
-Prior validation details: [archived history](../work/integration/local-before-sync-20261109/validation-history.md).
+Merged in f8d6078; tree clean; all 1664 pre-existing data files verified by SHA256. Full detail, checks and pre-sync state: [archive](../work/integration/session-archive-20261110.md), [pre-sync context](../work/integration/local-before-sync-20261109/).
 
 ## National dataset discovery, 2026-11-09
 
@@ -229,7 +225,7 @@ Collection details: [archive](../work/regional-collection/session-detail.md). Ex
 
 ## Brief reading, 2026-11-09
 
-User request: «прочти тз хакатона». Read TASK, requirements, QA and both original PDFs under brief/sources/2026-11-09. No implementation changes. Branch feat/transport-graph; HEAD 77436c889e14f11d0ff1e2ee5437e2fe03f5508f. Next: await user direction. Existing dataset changes preserved. Submission timezone/form remain unresolved; saved organizer deadline is 10 Nov 23:39. No product checks needed for reading.
+User request: «прочти тз хакатона». Read TASK, requirements, QA, both PDFs (brief/sources/2026-11-09); no implementation changes; HEAD 77436c8. Deadline saved: 10 Nov 23:39, timezone unresolved. Detail: [archive](../work/integration/session-archive-20261110.md).
 
 ## Publication, 2026-11-09
 
@@ -260,3 +256,22 @@ case.vm: 12391 links; Hansen unchanged. Build/API passed; no tests.
 > давай запушим это
 
 Push feat/map-first-ui to goat; CSV included, transcripts/raw excluded.
+
+## Data artifacts published, 2026-11-10
+
+> В этой копии есть готовые индексы, но отсутствуют data/graph_ru/ u data/casechamp duckdb с расчётным графом и матрицей времён. Где лежат эти артефакты или как подключиться к серверу с ними? это надо запушить в гит
+
+Artifacts are in main checkout data/, symlinked into this worktree; published as GitHub release data-20261107 with SHA-256; docs/data-pipeline.md pointer bbfa108 pushed to goat/feat/map-first-ui. One DuckDB writer at a time. Detail: [archive](../work/integration/session-archive-20261110.md).
+
+## New-route features, 2026-11-10
+
+> делай оба
+
+Both features done and committed locally up to 47451f9 (not pushed). Backend: pilot
+`additions`, scenario endpoints /api/v1/scenarios(+/evaluate); 171 unit tests, ruff, mypy green.
+np_city_times rebuilt (road/summer/winter, one process per scenario); matrices exported to
+data/scenario_ru, closure 0.0000h, max diff vs published indices.json 0.6% (artifact e1a2c25b).
+Frontend: pilot route-adder and /scenarios page; npm run verify green; HTTP smoke passed.
+Remaining: push on request; stand case.vm needs data/scenario_ru upload and SCENARIO_DIR;
+no visual browser pass of the two new screens yet.
+Full detail: [archive](../work/integration/session-archive-20261110.md).
