@@ -6,6 +6,7 @@ from time import perf_counter
 import numpy as np
 from scipy.sparse.csgraph import dijkstra
 
+MAX_WORKERS = 48
 _STATE = None
 
 
@@ -26,8 +27,8 @@ def market_distances(graph, city_nodes, point_nodes, workers=None):
     points = np.empty((count, len(point_nodes)), dtype=np.float32)
     cities = np.empty((count, count), dtype=np.float64)
     workers = int(os.environ.get('ACCESS_WORKERS', '1')) if workers is None else workers
-    if not 1 <= workers <= 4:
-        raise ValueError('ACCESS_WORKERS must be between 1 and 4')
+    if not 1 <= workers <= MAX_WORKERS:
+        raise ValueError(f'Worker count must be between 1 and {MAX_WORKERS}')
     started = perf_counter()
     if workers == 1:
         initialize(graph, city_nodes, point_nodes)

@@ -11,11 +11,19 @@ from accessibility.report import assemble, frequencies, regional_values
 from accessibility.source import Source
 from accessibility.storage import publish
 from app.domain.accessibility import MODEL_VERSION
+from market_distances import MAX_WORKERS
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--workers", type=int, choices=range(1, 5), default=2)
+    parser.add_argument(
+        "--workers",
+        type=int,
+        choices=range(1, MAX_WORKERS + 1),
+        default=2,
+        metavar=f"1..{MAX_WORKERS}",
+        help="Number of routing worker processes (default: 2)",
+    )
     parser.add_argument("--source-revision")
     parser.add_argument("--cache", type=Path, default=Path("data/accessibility-cache"))
     args = parser.parse_args()

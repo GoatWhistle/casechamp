@@ -333,3 +333,16 @@ Bridge selection: [verification](../work/bridge-selection/README.md). Passport: 
 Markdown and its explicitly requested PDF export; no DOCX. Keep user edits intact.
 Prior status and all details: [closeout archive](../work/publication/session-at-closeout.md).
 Protected user instructions exceed SESSION target and are retained verbatim.
+
+## Configurable routing workers, 2026-11-11
+
+> ну крч сделай чтобы до 20 воркеров могло быть и я мог задать это значение
+> крч 48 потоков. Максимум
+
+Implemented range1..48 via shared MAX_WORKERS in etl/market_distances.py and
+accessibility.calculate --workers. Defaults unchanged: CLI2, shared function/env1.
+Workers are processes; only market searches run in parallel. Documentation updated.
+Verified existing routing test, real48-process tiny-graph equality to serial, env48,
+CLI/function rejection of0/49, CLIhelp, Ruff for changed CLI and git diff --check.
+No national48-worker benchmark or new full calculation launched; no pending code work.
+Branch feat/map-first-ui HEAD2cca3b9d2a96274df474670c8e108722aa059b40; no commit/push.
