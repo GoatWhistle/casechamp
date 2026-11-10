@@ -1,0 +1,275 @@
+{
+  "verified_at": "2026-11-10T20:55:07.056084+00:00",
+  "run": {
+    "run_id": "78aac55e5bae432d99ea8be0600a584a",
+    "created_at": "2026-11-10T20:54:18.811072+00:00",
+    "model_version": "hansen-planned-v1",
+    "source_model": "hansen-release-20261107",
+    "source_artifact": "data-20261107",
+    "graph_revision": "[[\"casechamp.duckdb\", 1223700480, 1794314040488599643], [\"edges.parquet\", 368279977, 1794039336000000000], [\"nodes.parquet\", 180769332, 1794039313000000000], [\"points.parquet\", 6587005, 1794039339000000000], [\"ways.parquet\", 83529268, 1794039338000000000]]",
+    "source_revision": "d974f339a31d03fd025e606b5161195c02379448b1a1c19f259c50dab2f94131",
+    "normalization": 7897244.511691931,
+    "normalization_kind": "legacy_multimodal_road",
+    "regions": 82,
+    "markets": 180,
+    "point_count": 155412,
+    "frequency_status": "incomplete",
+    "assumptions": [
+      "planned_departures_no_schedule_wait",
+      "terminal_and_access_time_retained",
+      "unknown_frequency_not_imputed",
+      "ferry_boarding_half_hour",
+      "legacy_graph_seasonality_unchanged",
+      "half_life_4_8_sensitivity_only",
+      "mode_removal_effects_not_additive",
+      "new_map_timetables_not_in_calculation",
+      "not_gdp_or_passenger_flow",
+      "legacy_matrix_72h_cutoff_removed"
+    ]
+  },
+  "checks": {
+    "rows": 492,
+    "unique_keys": 492,
+    "finite_values": true,
+    "population_coverage_in_range": true,
+    "mode_removal_monotonicity_violations": 0,
+    "max_previous_index_absolute_error": {
+      "summer": 2.1771863032427063e-06,
+      "winter": 2.1726207819483534e-06
+    }
+  },
+  "baseline_82_region_population_weighted_mean": 99.12730233031768,
+  "summaries": [
+    {
+      "half_life": 2,
+      "season": "summer",
+      "regions": 82,
+      "population": 128053288,
+      "weighted": {
+        "previous": 99.12819981360231,
+        "potential": 99.28581606036953,
+        "delta": 0.15761624676721425,
+        "without_air": 38.434680781257775,
+        "without_rail": 99.26499283249207,
+        "without_water": 99.2520524458624,
+        "population_coverage": 0.999637674278227
+      },
+      "mode_loss": {
+        "air": 60.85113527911175,
+        "rail": 0.020823227877457384,
+        "water": 0.03376361450712295
+      },
+      "min_delta": -0.43859301671869844,
+      "max_delta": 8.113042774023043,
+      "decreasing_regions_over_0_005": 21
+    },
+    {
+      "half_life": 2,
+      "season": "winter",
+      "regions": 82,
+      "population": 128053288,
+      "weighted": {
+        "previous": 99.13622281570053,
+        "potential": 99.3566481775015,
+        "delta": 0.2204253618009809,
+        "without_air": 38.44093588929001,
+        "without_rail": 99.33585811088791,
+        "without_water": 99.331063584872,
+        "population_coverage": 0.999713517703661
+      },
+      "mode_loss": {
+        "air": 60.91571228821149,
+        "rail": 0.020790066613585623,
+        "water": 0.025584592629499525
+      },
+      "min_delta": -0.4386457835882993,
+      "max_delta": 8.113951752935662,
+      "decreasing_regions_over_0_005": 17
+    },
+    {
+      "half_life": 4,
+      "season": "summer",
+      "regions": 82,
+      "population": 128053288,
+      "weighted": {
+        "previous": 266.98539182477543,
+        "potential": 267.7247510302953,
+        "delta": 0.7393592055198034,
+        "without_air": 87.94283306019007,
+        "without_rail": 267.68741033314933,
+        "without_water": 267.59789126729976,
+        "population_coverage": 0.999637674278227
+      },
+      "mode_loss": {
+        "air": 179.7819179701052,
+        "rail": 0.03734069714596444,
+        "water": 0.12685976299553658
+      },
+      "min_delta": -0.8079363380804807,
+      "max_delta": 32.97541395772171,
+      "decreasing_regions_over_0_005": 24
+    },
+    {
+      "half_life": 4,
+      "season": "winter",
+      "regions": 82,
+      "population": 128053288,
+      "weighted": {
+        "previous": 267.003543798641,
+        "potential": 267.91159052428145,
+        "delta": 0.9080467256404745,
+        "without_air": 87.95456092205411,
+        "without_rail": 267.87429027862385,
+        "without_water": 267.81332267137327,
+        "population_coverage": 0.999713517703661
+      },
+      "mode_loss": {
+        "air": 179.95702960222735,
+        "rail": 0.03730024565760459,
+        "water": 0.09826785290817952
+      },
+      "min_delta": -0.8080030651294692,
+      "max_delta": 32.595641552679275,
+      "decreasing_regions_over_0_005": 20
+    },
+    {
+      "half_life": 8,
+      "season": "summer",
+      "regions": 82,
+      "population": 128053288,
+      "weighted": {
+        "previous": 488.49473499615414,
+        "potential": 490.00842326370207,
+        "delta": 1.5136882675479453,
+        "without_air": 191.5807550655302,
+        "without_rail": 489.9706727180495,
+        "without_water": 489.7207066819887,
+        "population_coverage": 0.999637674278227
+      },
+      "mode_loss": {
+        "air": 298.4276681981719,
+        "rail": 0.037750545652556866,
+        "water": 0.28771658171336867
+      },
+      "min_delta": -0.8302551110762693,
+      "max_delta": 118.5784087097978,
+      "decreasing_regions_over_0_005": 23
+    },
+    {
+      "half_life": 8,
+      "season": "winter",
+      "regions": 82,
+      "population": 128053288,
+      "weighted": {
+        "previous": 488.52538762350576,
+        "potential": 490.2886138662872,
+        "delta": 1.7632262427814418,
+        "without_air": 191.59765851519754,
+        "without_rail": 490.25089815937184,
+        "without_water": 490.07387866806044,
+        "population_coverage": 0.999713517703661
+      },
+      "mode_loss": {
+        "air": 298.69095535108966,
+        "rail": 0.03771570691537818,
+        "water": 0.21473519822677645
+      },
+      "min_delta": -0.83029268936167,
+      "max_delta": 117.41851813981978,
+      "decreasing_regions_over_0_005": 19
+    }
+  ],
+  "frequencies": [
+    {
+      "season": "summer",
+      "mode": "air",
+      "source": "local",
+      "total": 323,
+      "known": 213
+    },
+    {
+      "season": "summer",
+      "mode": "air",
+      "source": "trunk",
+      "total": 6618,
+      "known": 0
+    },
+    {
+      "season": "summer",
+      "mode": "ferry",
+      "source": "local",
+      "total": 63,
+      "known": 8
+    },
+    {
+      "season": "summer",
+      "mode": "ferry",
+      "source": "osm",
+      "total": 1043,
+      "known": 0
+    },
+    {
+      "season": "summer",
+      "mode": "rail",
+      "source": "trunk",
+      "total": 28056,
+      "known": 0
+    },
+    {
+      "season": "summer",
+      "mode": "river",
+      "source": "local",
+      "total": 257,
+      "known": 150
+    },
+    {
+      "season": "winter",
+      "mode": "air",
+      "source": "local",
+      "total": 397,
+      "known": 252
+    },
+    {
+      "season": "winter",
+      "mode": "air",
+      "source": "trunk",
+      "total": 6618,
+      "known": 0
+    },
+    {
+      "season": "winter",
+      "mode": "ferry",
+      "source": "local",
+      "total": 9,
+      "known": 1
+    },
+    {
+      "season": "winter",
+      "mode": "ferry",
+      "source": "osm",
+      "total": 1043,
+      "known": 0
+    },
+    {
+      "season": "winter",
+      "mode": "rail",
+      "source": "trunk",
+      "total": 28056,
+      "known": 0
+    },
+    {
+      "season": "winter",
+      "mode": "river",
+      "source": "local",
+      "total": 5,
+      "known": 2
+    }
+  ],
+  "limitations": [
+    "Planned departures omit schedule waiting; no exact timetable index.",
+    "Retained 20261107 graph, not the later road refresh.",
+    "Trunk matrix pairs do not establish direct service.",
+    "Mode-removal effects are not additive.",
+    "Half-lives 4 and 8 are sensitivity choices, not calibrated behavior."
+  ]
+}

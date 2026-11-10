@@ -34,8 +34,12 @@ Context compaction: the former state is preserved in session-before-publication.
 quotes remain verbatim in context/SESSION.md. Its protected section exceeds 6000 characters;
 mutable state is within the budget. No historical entry was discarded from the archive.
 
-Pending: finish export, verify full remote asset manifest, publish release with restore
-instructions, commit publication artifacts, update final context and push.
+Final release: https://github.com/GoatWhistle/casechamp/releases/tag/data-clickhouse-20261110
+87 tables, seven databases, 184,716,898 table rows (not unique entities), 2,757,503,413 bytes.
+All GitHub asset sizes and SHA-256 match. The combined manifest and SHA256SUMS accompany
+the data; a copy is in docs/results/clickhouse-release-manifest.json. Root passport PDF
+and all current concurrent changes are included in the closeout commit. Road refresh remains
+staging. No deployment or activation of the unfinished refreshed graph occurred.
 
 ## Final working-tree checks
 
@@ -47,3 +51,13 @@ exports only the six explicitly approved dataset databases and preserves the act
 All current code changes are being captured, including completed corridor fixes and the
 new comparison UI with its honest unavailable-data state. New comparison data are not
 part of the six-database snapshot.
+
+## Resolved checks and additional data
+
+At 20:57 UTC both previously failing integration tests passed on rerun after the potential
+calculation finished. The parallel full integration log records 43 passes. The user explicitly
+approved adding plexus_accessibility.runs, results and frequencies to the same release.
+Three extra tables (1, 492 and 12 rows) are uploaded with verified SHA-256. On 11 November
+Moscow time, five downloaded tables were restored to isolated scratch databases and compared
+row-for-row: all 587 rows equal, including an empty scenario catalog. Scratch databases were
+removed; no active data were changed. Evidence: restore-verification.json.

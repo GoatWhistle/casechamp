@@ -1,0 +1,6 @@
+{
+  "source": "data/accessibility-cache/d974f339a31d03fd-032b6f1148e03f6a",
+  "target": "data/accessibility-cache/d974f339a31d03fd-89f63bfec7ab3821",
+  "reason": "Only Ruff formatting, import ordering, UTC alias and equivalent dictionary construction changed after process start. Routing, aggregation, inputs and parameters unchanged. All 492 persisted results validated. Completed report stays with original computation provenance.",
+  "run_id": "78aac55e5bae432d99ea8be0600a584a"
+}

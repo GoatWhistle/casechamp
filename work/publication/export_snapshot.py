@@ -37,10 +37,16 @@ DATABASES = (
     "plexus_graph",
     "plexus_refresh_graph",
     "plexus_scenario",
+    "plexus_accessibility",
 )
+accessibility_only = "--accessibility-only" in sys.argv
+if accessibility_only:
+    DATABASES = ("plexus_accessibility",)
 DEST.mkdir(parents=True, exist_ok=True)
 c = ClickHouse()
-manifest_path = DEST / "manifest.json"
+manifest_path = DEST / (
+    "accessibility-manifest.json" if accessibility_only else "manifest.json"
+)
 manifest = (
     json.loads(manifest_path.read_text())
     if manifest_path.exists()
@@ -58,6 +64,12 @@ tables = c.rows(
     + str(DATABASES)
     + " ORDER BY database,name"
 )
+tables = [
+    table
+    for table in tables
+    if table["database"] != "plexus_accessibility"
+    or table["name"] in {"runs", "results", "frequencies"}
+]
 lock = Lock()
 completed_tables = {table["table"] for table in manifest["tables"]}
 
@@ -125,7 +137,8 @@ with ThreadPoolExecutor(max_workers=2) as pool:
 
 manifest["completed_at"] = datetime.now(timezone.utc).isoformat()
 manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
-github(["release", "upload", TAG, str(manifest_path), "-R", REPO, "--clobber"])
+if not accessibility_only:
+    github(["release", "upload", TAG, str(manifest_path), "-R", REPO, "--clobber"])
 print(
     "COMPLETE",
     len(manifest["tables"]),

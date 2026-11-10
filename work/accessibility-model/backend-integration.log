@@ -1,0 +1,18 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0
+rootdir: /Users/andreykuronskin/keys_champ/backend
+configfile: pyproject.toml
+plugins: xdist-3.8.0, anyio-4.15.1
+collected 43 items
+
+tests/integration/test_accessibility_storage.py ..                       [  4%]
+tests/integration/test_airports.py .                                     [  6%]
+tests/integration/test_atlas_routes.py ....................              [ 53%]
+tests/integration/test_bridge_selection.py .                             [ 55%]
+tests/integration/test_clickhouse_graph.py ....                          [ 65%]
+tests/integration/test_imported_geometry.py .....                        [ 76%]
+tests/integration/test_national_export.py .....                          [ 88%]
+tests/integration/test_network_links.py ....                             [ 97%]
+tests/integration/test_storage_sensitivity.py .                          [100%]
+
+============================= 43 passed in 28.71s ==============================

@@ -1,0 +1,30 @@
+{
+  "checks": [
+    {
+      "table": "plexus_additional.dim_region",
+      "rows": 82,
+      "equal": true
+    },
+    {
+      "table": "plexus_scenario.catalog",
+      "rows": 0,
+      "equal": true
+    },
+    {
+      "table": "plexus_accessibility.frequencies",
+      "rows": 12,
+      "equal": true
+    },
+    {
+      "table": "plexus_accessibility.results",
+      "rows": 492,
+      "equal": true
+    },
+    {
+      "table": "plexus_accessibility.runs",
+      "rows": 1,
+      "equal": true
+    }
+  ],
+  "full_restore": false
+}

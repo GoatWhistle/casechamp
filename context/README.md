@@ -34,4 +34,6 @@ Implemented/locally verified: runtime reads use ClickHouse for atlas, graph, mat
 124 migrated source files (2.37GB) deleted after equality checks and no-source API restart;
 derived numerical caches retained. API8001 requires `.env.analytics`; GRAPH_DIR is cache root.
 Evidence and limits: [storage and performance](../docs/clickhouse.md).
-Branch feat/map-first-ui HEADc82ab1e; no commit/push/deploy.
+Source and data published to feat/map-first-ui and release data-clickhouse-20261110.
+87 tables/2.76GB verified; restore instructions: [ClickHouse](../docs/clickhouse.md).
+Final checks and source checkpoint: [SESSION](SESSION.md). No deployment performed.

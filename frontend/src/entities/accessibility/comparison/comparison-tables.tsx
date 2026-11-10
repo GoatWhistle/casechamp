@@ -86,7 +86,7 @@ export function ComparisonTables({ data }: ComparisonTablesProps) {
   return (
     <>
       <DataTable
-        caption={t("accessibility:title")}
+        caption={t("accessibility:comparison")}
         columns={comparison}
         rows={data.rows}
         rowKey={(row) => row.season}

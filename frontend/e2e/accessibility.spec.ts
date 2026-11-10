@@ -1,15 +1,17 @@
 import AxeBuilder from "@axe-core/playwright"
 import { expect, test } from "@playwright/test"
-import ru from "../src/shared/i18n/locales/ru/accessibility.json"
+import ru from "../src/shared/i18n/locales/ru/accessibility.json" with { type: "json" }
 
 for (const width of [1440, 1920]) {
   test(`regional accessibility comparison at ${width}px`, async ({ page }) => {
-    await page.setViewportSize({ width, height: 1100 })
+    await page.setViewportSize({ width, height: 1500 })
     const errors: string[] = []
     page.on("pageerror", (error) => errors.push(error.message))
     await page.goto("/regions/18000000?season=summer")
-    const panel = page.getByRole("region", { name: ru.title })
-    await expect(panel.getByRole("table", { name: ru.title })).toBeVisible()
+    const panel = page
+      .getByRole("region", { name: ru.title })
+      .filter({ has: page.getByRole("heading", { name: ru.title }) })
+    await expect(panel.getByRole("table", { name: ru.comparison })).toBeVisible()
     await expect(panel.getByText(ru.scheduleMissing)).toBeVisible()
     const changed = page.waitForResponse(
       (response) => response.url().includes("accessibility?half_life=8") && response.ok(),

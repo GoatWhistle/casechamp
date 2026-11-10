@@ -9,6 +9,35 @@ from urllib.parse import urlencode
 from client import ClickHouse
 
 
+def insert_native(client: ClickHouse, name: str, path: Path) -> None:
+    connection_type = (
+        http.client.HTTPSConnection
+        if client.url.scheme == "https"
+        else http.client.HTTPConnection
+    )
+    connection = connection_type(client.url.hostname, client.url.port, timeout=1800)
+    try:
+        with path.open("rb") as stream:
+            connection.request(
+                "POST",
+                "/?" + urlencode({"query": f"INSERT INTO {name} FORMAT Native"}),
+                body=stream,
+                headers={
+                    **client.headers,
+                    "Content-Encoding": "gzip",
+                    "Content-Length": str(path.stat().st_size),
+                },
+            )
+            response = connection.getresponse()
+            message = response.read()
+            if response.status != 200:
+                raise RuntimeError(
+                    f"Restore failed for {name}: {message.decode()[:1000]}"
+                )
+    finally:
+        connection.close()
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("directory", type=Path)
@@ -48,32 +77,8 @@ def main() -> None:
         client.request(f"CREATE DATABASE IF NOT EXISTS {database}")
         client.request(table["schema"].replace(table["table"], name, 1))
         path = args.directory / table["asset"]
-        connection_type = (
-            http.client.HTTPSConnection
-            if client.url.scheme == "https"
-            else http.client.HTTPConnection
-        )
-        connection = connection_type(client.url.hostname, client.url.port, timeout=1800)
-        try:
-            with path.open("rb") as stream:
-                connection.request(
-                    "POST",
-                    "/?" + urlencode({"query": f"INSERT INTO {name} FORMAT Native"}),
-                    body=stream,
-                    headers={
-                        **client.headers,
-                        "Content-Encoding": "gzip",
-                        "Content-Length": str(path.stat().st_size),
-                    },
-                )
-                response = connection.getresponse()
-                message = response.read()
-                if response.status != 200:
-                    raise RuntimeError(
-                        f"Restore failed for {name}: {message.decode()[:1000]}"
-                    )
-        finally:
-            connection.close()
+        if table["rows"]:
+            insert_native(client, name, path)
         actual = int(client.rows(f"SELECT count() AS n FROM {name}")[0]["n"])
         if actual != table["rows"]:
             raise SystemExit(
