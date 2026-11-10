@@ -1,6 +1,7 @@
 from typing import Any, Literal
 
 from app.domain.errors import DataUnavailable
+from app.domain.region_names import canonical_region
 from app.domain.settlement_names import (
     matching_places,
     normalized_place,
@@ -21,6 +22,7 @@ class ClickHouseGraphSnapshot:
         if len(rows) != 1:
             raise DataUnavailable("Graph snapshot metadata is missing; import the dataset")
         self._revision = str(rows[0]["value"])
+        self._regions: list[str] | None = None
 
     @property
     def revision(self) -> str:
@@ -38,6 +40,7 @@ class ClickHouseGraphSnapshot:
         if query in ("locations", "corridor_places"):
             needle = str(parameters.pop("query")).lower()
             if query == "corridor_places":
+                needle = self._qualified(needle)
                 place_query = needle
                 needle = settlement_name(settlement_query(needle)[0])
             parameters["pattern"] = (
@@ -47,6 +50,15 @@ class ClickHouseGraphSnapshot:
         if query == "corridor_places":
             return self._places(rows, place_query, parameters)
         return rows
+
+    def _qualified(self, query: str) -> str:
+        name, _, region = query.partition(",")
+        if not region.strip():
+            return query
+        if self._regions is None:
+            self._regions = [str(r[0]) for r in self._rows("region_list", {})]
+        canonical = canonical_region(region, self._regions)
+        return f"{name}, {canonical}" if canonical else query
 
     def _rows(self, query: GraphQuery, parameters: GraphParameters) -> list[tuple[Any, ...]]:
         table = self.reader.arrow(QUERIES[query], parameters)

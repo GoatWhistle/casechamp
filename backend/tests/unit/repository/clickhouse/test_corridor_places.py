@@ -50,3 +50,18 @@ def test_market_city_is_preferred_over_villages_with_the_same_name() -> None:
     ]
     rows = ClickHouseGraphSnapshot(reader).read("corridor_places", {"query": "Москва"})
     assert [row[0] for row in rows] == ["45000000000"]
+
+
+def test_colloquial_region_qualifier_is_mapped_to_graph_region() -> None:
+    reader = Mock()
+    reader.rows.return_value = [{"value": "test"}]
+    reader.arrow.side_effect = [
+        pa.table({"region": ["Республика Саха (Якутия)", "Республика Тыва"]}),
+        pa.table({
+            "point_id": ["1", "2"], "settlement": ["г. Нюрба", "г. Нюрба"],
+            "region": ["Республика Саха (Якутия)", "Другой край"], "lon": [1., 2.], "lat": [1., 2.],
+        }),
+        pa.table({"oktmo_from": [], "city_from": [], "region_from": [], "lon_from": [], "lat_from": []}),
+    ]
+    rows = ClickHouseGraphSnapshot(reader).read("corridor_places", {"query": "Нюрба, Якутия"})
+    assert [row[0] for row in rows] == ["1"]

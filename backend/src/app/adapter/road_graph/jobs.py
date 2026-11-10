@@ -10,9 +10,9 @@ from app.adapter.road_graph.baselines import BaselineCache
 from app.adapter.road_graph.data import GraphData
 from app.adapter.road_graph.delta import DeltaCalculation
 from app.adapter.road_graph.delta_base import DeltaBase
-from app.adapter.road_graph.links import intercity_links, local_links
 from app.adapter.road_graph.routing import GraphRouting
 from app.adapter.road_graph.shortest_paths import ShortestPaths
+from app.adapter.road_graph.transport_catalog import TransportCatalog
 from app.domain.errors import DataUnavailable, InvalidQuery
 from app.domain.road_economics import MoneyAssumptions
 from app.usecase.graph_snapshot import GraphSnapshot
@@ -35,6 +35,7 @@ class RoadJobs:
         self.data = GraphData(root, snapshot)
         self.paths = ShortestPaths(workers)
         self.routing = GraphRouting(self.data, self.paths)
+        self.catalog = TransportCatalog(self.data, self.routing)
         self.cache = BaselineCache(root, snapshot.revision)
         self.delta = DeltaCalculation(DeltaBase(self.data, self.paths))
         self.delta.base.prepare()
@@ -132,16 +133,10 @@ class RoadJobs:
     def transport_links(
         self, network: str, scenario: str, place: str, mode: str | None
     ) -> list[TransportLink]:
-        if network == "intercity":
-            return intercity_links(self.routing.networks(scenario)[0], place, mode)
-        rows = self.data.read("manual_named", {"season": scenario}) if scenario != "road" else []
-        return local_links(rows, place, mode)
+        return self.catalog.links(network, scenario, place, mode)
 
     def place_names(self, ids: list[str]) -> list[PlaceName]:
-        return [
-            PlaceName(str(p), str(n or p), str(r or ""))
-            for p, n, r in self.data.read("place_names", {"ids": ids})
-        ]
+        return self.catalog.place_names(ids)
 
     def recent(self) -> list[RoadJob]:
         with self.lock:

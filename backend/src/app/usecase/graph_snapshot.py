@@ -4,6 +4,7 @@ GraphQuery = Literal[
     "locations",
     "market_places",
     "place_names",
+    "region_list",
     "settlement_regions",
     "region_name",
     "ways",
