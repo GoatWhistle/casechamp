@@ -12,6 +12,13 @@ export interface RoadRenderView extends RoadView {
 export type GraphLocation = components["schemas"]["GraphLocation"]
 export type ConnectionInput = components["schemas"]["RoadAdditionInput"]
 export type RoadJob = components["schemas"]["RoadJob"]
+export type RoadScenarioInput = components["schemas"]["RoadScenarioInput"]
+export type LinkChange = components["schemas"]["LinkChange"]
+export type LinkChangeInput = components["schemas"]["LinkChangeInput"]
+export type TransportLink = components["schemas"]["TransportLink"]
+export type LinkNetwork = LinkChangeInput["network"]
+export type LinkMode = LinkChangeInput["mode"]
+export type ScenarioNetwork = RoadScenarioInput["scenario"]
 export type RoadBounds = readonly [number, number, number, number, number]
 
 export interface RoadLayerProps {

@@ -39,3 +39,47 @@
   color: var(--text-secondary);
   font-size: var(--font-size-body-sm);
 }
+
+.linkForm {
+  display: grid;
+  gap: var(--space-12);
+  min-inline-size: 0;
+  border: 0;
+  padding: 0;
+}
+
+.linkForm legend {
+  font-weight: var(--weight-semibold);
+  margin-block-end: var(--space-8);
+}
+
+.linkSearch {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: var(--space-8);
+}
+
+.linkList {
+  display: grid;
+  gap: var(--space-8);
+  padding: 0;
+  list-style: none;
+}
+
+.pending {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.pendingRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  font-size: var(--font-size-body-sm);
+}
+
+.linkScroll {
+  max-block-size: 320px;
+}

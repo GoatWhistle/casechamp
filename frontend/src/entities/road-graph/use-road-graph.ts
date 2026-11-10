@@ -8,6 +8,7 @@ import type {
   RoadBounds,
   RoadJob,
   RoadRenderView,
+  RoadScenarioInput,
   RoadSegment,
 } from "@/shared/api/road-graph"
 import { loadRoadView } from "./load-road-view"
@@ -69,11 +70,7 @@ export function useRoadGraph() {
       ["queued", "running"].includes(query.state.data?.status ?? "queued") ? 1500 : false,
   })
   const submit = useMutation({
-    mutationFn: (body: {
-      region_id: string
-      scenario: "road" | "summer" | "winter"
-      changes: { way_id: number; speed_factor: number }[]
-    }) => unwrap(api.POST("/api/v1/road-scenarios", { body })),
+    mutationFn: (body: RoadScenarioInput) => unwrap(api.POST("/api/v1/road-scenarios", { body })),
     onSuccess: (job) => {
       setShowJobOverlay(true)
       setSelectedJobId(job.id)

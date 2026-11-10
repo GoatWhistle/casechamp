@@ -395,6 +395,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/transport-links": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Transport Links */
+        get: operations["transport_links_api_v1_transport_links_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/road-scenarios": {
         parameters: {
             query?: never;
@@ -1011,6 +1028,45 @@ export interface components {
             /** Components */
             components: components["schemas"]["IndexComponentResponse"][];
         };
+        /** LinkChange */
+        LinkChange: {
+            /** Action */
+            action: string;
+            /** Network */
+            network: string;
+            /** Mode */
+            mode: string;
+            /** Source */
+            source: string;
+            /** Target */
+            target: string;
+            /** Hours */
+            hours?: number | null;
+        };
+        /** LinkChangeInput */
+        LinkChangeInput: {
+            /**
+             * Action
+             * @enum {string}
+             */
+            action: "add" | "remove";
+            /**
+             * Network
+             * @enum {string}
+             */
+            network: "intercity" | "local";
+            /**
+             * Mode
+             * @enum {string}
+             */
+            mode: "rail" | "air" | "river" | "ferry" | "winter_road" | "ice_crossing" | "pontoon_bridge";
+            /** Source */
+            source: string;
+            /** Target */
+            target: string;
+            /** Hours */
+            hours?: number | null;
+        };
         /** LinkResponse */
         LinkResponse: {
             /**
@@ -1355,6 +1411,8 @@ export interface components {
             error?: string | null;
             addition?: components["schemas"]["RoadAddition"] | null;
             money_assumptions?: components["schemas"]["MoneyAssumptions"] | null;
+            /** Links */
+            links?: components["schemas"]["LinkChange"][];
         };
         /** RoadResult */
         RoadResult: {
@@ -1398,7 +1456,9 @@ export interface components {
              */
             scenario: "road" | "summer" | "winter";
             /** Changes */
-            changes: components["schemas"]["RoadChangeInput"][];
+            changes?: components["schemas"]["RoadChangeInput"][];
+            /** Links */
+            links?: components["schemas"]["LinkChangeInput"][];
         };
         /** RoadSegment */
         RoadSegment: {
@@ -1686,6 +1746,25 @@ export interface components {
             /** Rows */
             rows: number | null;
         };
+        /** TransportLink */
+        TransportLink: {
+            /** Network */
+            network: string;
+            /** Mode */
+            mode: string;
+            /** Source */
+            source: string;
+            /** Source Name */
+            source_name: string;
+            /** Target */
+            target: string;
+            /** Target Name */
+            target_name: string;
+            /** Hours */
+            hours: number;
+            /** Region */
+            region?: string | null;
+        };
         /** TrunkLinkRequest */
         TrunkLinkRequest: {
             /** From Id */
@@ -1889,7 +1968,7 @@ export interface operations {
                     "application/json": components["schemas"]["SearchResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2017,7 +2096,7 @@ export interface operations {
                     "application/json": components["schemas"]["RegionSummaryResponse"][];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2069,7 +2148,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2122,7 +2201,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2177,7 +2256,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2255,7 +2334,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2326,7 +2405,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2364,7 +2443,7 @@ export interface operations {
                     "application/json": components["schemas"]["ScenarioCatalogResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2415,7 +2494,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2608,6 +2687,40 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["RoadJob"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    transport_links_api_v1_transport_links_get: {
+        parameters: {
+            query: {
+                network: "intercity" | "local";
+                place: string;
+                scenario?: "road" | "summer" | "winter";
+                mode?: string | null;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TransportLink"][];
                 };
             };
             /** @description Validation Error */

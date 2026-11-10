@@ -1,12 +1,15 @@
 import { useState } from "react"
 import type { RoadGraphState } from "@/entities/road-graph"
 import type { ChatContext } from "@/shared/api/chat-stream"
+import type { LinkChangeInput } from "@/shared/api/road-graph"
 import { useTranslation } from "@/shared/i18n"
 import { Banner, Button, ScrollArea, Segmented, Select, TextField } from "@/shared/ui"
+import { LinkEditor } from "./link-editor"
 import { RoadConnection } from "./road-connection"
 import { RoadResult } from "./road-result"
 import styles from "./road-scenario.module.css"
 import { RoadSelection } from "./road-selection"
+import { rejectionMessage, scenarioPayload } from "./scenario-payload"
 
 export interface RoadScenarioProps {
   readonly roads: RoadGraphState
@@ -18,6 +21,7 @@ export function RoadScenario({ roads, context }: RoadScenarioProps) {
   const [mode, setMode] = useState<"road" | "connection">("road")
   const [factor, setFactor] = useState("1.2")
   const [scenario, setScenario] = useState<"road" | "summer" | "winter">("road")
+  const [links, setLinks] = useState<readonly LinkChangeInput[]>([])
   const speed = Number(factor.replace(",", "."))
   const valid = factor.trim() !== "" && Number.isFinite(speed) && speed >= 0 && speed <= 3
   const job = roads.job
@@ -26,6 +30,13 @@ export function RoadScenario({ roads, context }: RoadScenarioProps) {
     roads.submit.isPending ||
     job?.status === "running" ||
     job?.status === "queued"
+  const payload = scenarioPayload({
+    regionId: context.region_id,
+    scenario,
+    wayIds: roads.selected.map((road) => road.way_id),
+    speed: valid ? speed : null,
+    links,
+  })
   return (
     <ScrollArea className={styles.panel} label={t("graph:title")}>
       <Segmented
@@ -60,25 +71,19 @@ export function RoadScenario({ roads, context }: RoadScenarioProps) {
             hint={t("graph:factorHint")}
             error={valid ? undefined : t("graph:factorError")}
           />
+          <LinkEditor scenario={scenario} pending={links} onPending={setLinks} />
           {!context.region_id ? <p>{t("graph:pickRegion")}</p> : null}
           <Button
-            disabled={!context.region_id || !roads.selected.length || !valid || busy}
+            disabled={payload === null || busy}
             onClick={() => {
-              if (context.region_id)
-                roads.submit.mutate({
-                  region_id: context.region_id,
-                  scenario,
-                  changes: roads.selected.map((r) => ({ way_id: r.way_id, speed_factor: speed })),
-                })
+              if (payload) roads.submit.mutate(payload)
             }}
           >
             {t("graph:calculate")}
           </Button>
         </>
       )}
-      {roads.submit.isError || roads.statusError || roads.cancel.isError ? (
-        <Banner tone="danger" title={t("graph:requestError")} />
-      ) : null}
+      <ScenarioError roads={roads} />
       {roads.jobs.length > 1 ? (
         <Select
           label={t("graph:history")}
@@ -90,4 +95,14 @@ export function RoadScenario({ roads, context }: RoadScenarioProps) {
       <RoadResult roads={roads} />
     </ScrollArea>
   )
+}
+
+function ScenarioError({ roads }: { readonly roads: RoadGraphState }) {
+  const { t } = useTranslation()
+  const rejection = rejectionMessage(roads.submit.error)
+  if (rejection)
+    return <Banner tone="danger" title={t("graph:links.rejected")} description={rejection} />
+  if (roads.submit.isError || roads.statusError || roads.cancel.isError)
+    return <Banner tone="danger" title={t("graph:requestError")} />
+  return null
 }

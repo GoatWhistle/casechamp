@@ -72,5 +72,69 @@
     "effectHint": "Показаны до 30 пунктов выбранного региона с наибольшим ростом индекса, включая транзитный эффект. Всего улучшений: {{count, number}}.",
     "point": "ОКТМО пункта"
   },
-  "clearMap": "Убрать выделение с карты"
+  "clearMap": "Убрать выделение с карты",
+  "links": {
+    "jobSpec": "{{scenario}}, изменений связей: {{count, number}}",
+    "add": {
+      "rail": "Добавлен поезд: {{source}} и {{target}}, {{hours, number(maximumFractionDigits: 1)}} ч",
+      "air": "Добавлен авиарейс: {{source}} и {{target}}, {{hours, number(maximumFractionDigits: 1)}} ч",
+      "river": "Добавлен речной рейс: {{source}} и {{target}}, {{hours, number(maximumFractionDigits: 1)}} ч",
+      "ferry": "Добавлен паром: {{source}} и {{target}}, {{hours, number(maximumFractionDigits: 1)}} ч",
+      "winter_road": "Добавлен зимник: {{source}} и {{target}}, {{hours, number(maximumFractionDigits: 1)}} ч",
+      "ice_crossing": "Добавлена ледовая переправа: {{source}} и {{target}}, {{hours, number(maximumFractionDigits: 1)}} ч",
+      "pontoon_bridge": "Добавлен понтонный мост: {{source}} и {{target}}, {{hours, number(maximumFractionDigits: 1)}} ч",
+      "other": "Добавлена связь «{{mode}}»: {{source}} и {{target}}, {{hours, number(maximumFractionDigits: 1)}} ч"
+    },
+    "remove": {
+      "rail": "Удалён поезд: {{source}} и {{target}}",
+      "air": "Удалён авиарейс: {{source}} и {{target}}",
+      "river": "Удалён речной рейс: {{source}} и {{target}}",
+      "ferry": "Удалён паром: {{source}} и {{target}}",
+      "winter_road": "Удалён зимник: {{source}} и {{target}}",
+      "ice_crossing": "Удалена ледовая переправа: {{source}} и {{target}}",
+      "pontoon_bridge": "Удалён понтонный мост: {{source}} и {{target}}",
+      "other": "Удалена связь «{{mode}}»: {{source}} и {{target}}"
+    },
+    "removeAll": {
+      "rail": "Удалены все поезда: {{source}}",
+      "air": "Удалены все авиарейсы: {{source}}",
+      "other": "Удалены все связи «{{mode}}»: {{source}}"
+    },
+    "mode": {
+      "rail": "Поезд",
+      "air": "Авиарейс",
+      "river": "Речной рейс",
+      "ferry": "Паром",
+      "winter_road": "Зимник",
+      "ice_crossing": "Ледовая переправа",
+      "pontoon_bridge": "Понтонный мост"
+    },
+    "existing": "{{mode}}: {{source}} и {{target}}, {{hours, number(maximumFractionDigits: 1)}} ч",
+    "title": "Изменения транспортных связей",
+    "hint": "Межгородские ж/д и авиасвязи соединяют 180 городов-рынков, время указано в пути; модель добавляет пересадку 1 ч для поезда и 2,5 ч для самолёта. Местные сезонные связи есть только в летней и зимней сети.",
+    "network": "Сеть связей",
+    "intercity": "Межгородские ж/д и авиа",
+    "local": "Местные сезонные",
+    "localNeedsSeason": "Местные связи входят только в летнюю и зимнюю сеть. Выберите сеть расчёта «Летние связи» или «Зимние связи».",
+    "place": "Город, населённый пункт или регион",
+    "search": "Показать связи",
+    "found": "Найдено связей: {{count, number}}",
+    "empty": "Для «{{place}}» связей в этой сети не найдено",
+    "loadError": "Не удалось загрузить связи",
+    "removeToggle": "Включите переключатель у связи, чтобы удалить её в сценарии.",
+    "closeAirports": "Закрыть все авиарейсы города: {{city}}",
+    "addTitle": "Добавить связь",
+    "addMode": "Вид связи",
+    "from": "Город отправления",
+    "to": "Город назначения",
+    "hours": "Время в пути, часы",
+    "hoursError": "Введите время больше 0 и не более 72 часов",
+    "sameCity": "Укажите два разных города",
+    "addButton": "Добавить в сценарий",
+    "pending": "Изменения связей в сценарии: {{count, number}} из 30",
+    "limit": "В одном сценарии не больше 30 изменений связей",
+    "rejected": "Сервер отклонил сценарий",
+    "unqueue": "Убрать из сценария",
+    "existingList": "Найденные связи"
+  }
 }

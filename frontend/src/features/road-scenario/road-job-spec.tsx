@@ -1,3 +1,4 @@
+import { LinkChanges } from "@/entities/road-graph"
 import type { RoadJob } from "@/shared/api/road-graph"
 import { useTranslation } from "@/shared/i18n"
 import { Disclosure } from "@/shared/ui"
@@ -15,23 +16,32 @@ export function RoadJobSpec({ job }: { readonly job: RoadJob }) {
         })}
       </p>
     )
+  const scenario = t(scenarioLabel(job.scenario))
+  const links = job.links ?? []
   return (
     <>
-      <p className={styles.note}>
-        {t("graph:jobSpec", {
-          scenario: t(scenarioLabel(job.scenario)),
-          count: job.changes.length,
-        })}
-      </p>
-      <Disclosure title={t("graph:changedRoads")} defaultOpen={job.changes.length <= 5}>
-        <ul className={styles.changes}>
-          {job.changes.map((change) => (
-            <li key={change.way_id}>
-              {t("graph:change", { id: change.way_id, factor: change.speed_factor })}
-            </li>
-          ))}
-        </ul>
-      </Disclosure>
+      {job.changes.length || !links.length ? (
+        <p className={styles.note}>{t("graph:jobSpec", { scenario, count: job.changes.length })}</p>
+      ) : null}
+      {job.changes.length ? (
+        <Disclosure title={t("graph:changedRoads")} defaultOpen={job.changes.length <= 5}>
+          <ul className={styles.changes}>
+            {job.changes.map((change) => (
+              <li key={change.way_id}>
+                {t("graph:change", { id: change.way_id, factor: change.speed_factor })}
+              </li>
+            ))}
+          </ul>
+        </Disclosure>
+      ) : null}
+      {links.length ? (
+        <>
+          <p className={styles.note}>
+            {t("graph:links.jobSpec", { scenario, count: links.length })}
+          </p>
+          <LinkChanges links={links} scenario={job.scenario} className={styles.changes} />
+        </>
+      ) : null}
     </>
   )
 }

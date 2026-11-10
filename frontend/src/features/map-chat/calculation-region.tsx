@@ -1,4 +1,5 @@
 import type { UseQueryResult } from "@tanstack/react-query"
+import { LinkChanges } from "@/entities/road-graph"
 import type { RoadJob } from "@/shared/api/road-graph"
 import { useTranslation } from "@/shared/i18n"
 import { Swap } from "@/shared/motion"
@@ -18,6 +19,9 @@ export function CalculationRegion({
   return (
     <div className={styles.region}>
       <strong>{job?.region ?? name}</strong>
+      {job ? (
+        <LinkChanges links={job.links} scenario={job.scenario} className={styles.note} />
+      ) : null}
       <Swap swapKey={state}>
         {query.isError ? (
           <Banner
