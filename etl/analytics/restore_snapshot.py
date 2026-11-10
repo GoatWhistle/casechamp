@@ -77,7 +77,7 @@ def main() -> None:
         client.request(f"CREATE DATABASE IF NOT EXISTS {database}")
         client.request(table["schema"].replace(table["table"], name, 1))
         path = args.directory / table["asset"]
-        if table["rows"]:
+        if table["rows"] and not table["schema"].startswith("CREATE VIEW"):
             insert_native(client, name, path)
         actual = int(client.rows(f"SELECT count() AS n FROM {name}")[0]["n"])
         if actual != table["rows"]:
