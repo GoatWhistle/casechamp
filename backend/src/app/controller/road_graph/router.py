@@ -12,6 +12,7 @@ from app.usecase.road_graph import (
     RoadJob,
     RoadView,
 )
+from app.usecase.transport_links import LinkChange, TransportLink
 
 
 class RoadChangeInput(BaseModel):
@@ -19,10 +20,20 @@ class RoadChangeInput(BaseModel):
     speed_factor: float = Field(ge=0, le=3)
 
 
+class LinkChangeInput(BaseModel):
+    action: Literal["add", "remove"]
+    network: Literal["intercity", "local"]
+    mode: Literal["rail", "air", "river", "ferry", "winter_road", "ice_crossing", "pontoon_bridge"]
+    source: str = Field(min_length=1, max_length=100)
+    target: str = Field(min_length=1, max_length=100)
+    hours: float | None = Field(default=None, gt=0, le=72)
+
+
 class RoadScenarioInput(BaseModel):
     region_id: str = Field(min_length=1, max_length=64)
     scenario: Literal["road", "summer", "winter"] = "road"
-    changes: list[RoadChangeInput] = Field(min_length=1, max_length=50)
+    changes: list[RoadChangeInput] = Field(default_factory=list, max_length=50)
+    links: list[LinkChangeInput] = Field(default_factory=list, max_length=30)
 
 
 class RoadAdditionInput(BaseModel):
@@ -52,6 +63,15 @@ def build_road_graph_router(graph: RoadGraph) -> APIRouter:
             body.money,
         )
 
+    @router.get("/transport-links", response_model=list[TransportLink])
+    def transport_links(
+        network: Literal["intercity", "local"],
+        place: str,
+        scenario: Literal["road", "summer", "winter"] = "road",
+        mode: str | None = None,
+    ) -> list[TransportLink]:
+        return graph.transport_links(network, scenario, place, mode)
+
     @router.get("/road-scenarios", response_model=list[RoadJob])
     def recent() -> list[RoadJob]:
         return graph.recent()
@@ -62,6 +82,7 @@ def build_road_graph_router(graph: RoadGraph) -> APIRouter:
             body.region_id,
             body.scenario,
             [RoadChange(c.way_id, c.speed_factor) for c in body.changes],
+            [LinkChange(**link.model_dump()) for link in body.links],
         )
 
     @router.get("/road-scenarios/{job_id}", response_model=RoadJob)

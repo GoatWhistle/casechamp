@@ -11,7 +11,8 @@ QUERIES: dict[GraphQuery, str] = {
     "origins": "SELECT point_id,population FROM plexus_casechamp.idx_np WHERE season={season:String} AND region={region:String} ORDER BY point_id",
     "cities": "SELECT city,node,snap_h,population,oktmo FROM plexus_casechamp.market_cities ORDER BY city",
     "trunk": "SELECT city_from,city_to,transport_type,distance_hr FROM plexus_casechamp.stg_intercity WHERE transport_type IN ('rail','air') AND distance_hr IS NOT NULL",
-    "manual": "SELECT from_id,to_id,h FROM plexus_casechamp.manual_links_ru WHERE season={season:String}",
+    "manual": "SELECT from_id,to_id,h,mode FROM plexus_casechamp.manual_links_ru WHERE season={season:String}",
+    "manual_named": "SELECT m.from_id,f.settlement,m.to_id,t.settlement,m.mode,m.h,coalesce(f.region,t.region) FROM plexus_casechamp.manual_links_ru m LEFT JOIN plexus_graph.locations f ON f.point_id=m.from_id LEFT JOIN plexus_graph.locations t ON t.point_id=m.to_id WHERE m.season={season:String} ORDER BY m.from_id,m.to_id,m.mode",
     "normalization": "SELECT avg(share) FROM (SELECT hansen_2h/hansen_idx*100 AS share FROM plexus_casechamp.idx_np WHERE season='road' AND hansen_idx>0 ORDER BY point_id)",
     "expected": "SELECT hansen_idx FROM plexus_casechamp.idx_region WHERE region={region:String} AND season={season:String}",
     "delta_points": "SELECT point_id,population,node,snap_km/15 FROM plexus_graph.region_points WHERE season='road' AND region={region:String} ORDER BY point_id",
@@ -31,7 +32,7 @@ QUERIES: dict[GraphQuery, str] = {
     "impact_places": "SELECT point_id,settlement,lon,lat FROM plexus_graph.locations WHERE region={region:String}",
     "regions": "SELECT region FROM plexus_casechamp.idx_region WHERE season='road' ORDER BY region",
     "model_version": "SELECT value FROM plexus_atlas.atlas_metadata WHERE key='model_version'",
-    "manual_v2": "SELECT from_id,to_id,h FROM plexus_casechamp.manual_links_ru WHERE season={season:String} AND ({road_only:UInt8}=0 OR mode IN ('winter_road','ice_crossing','pontoon_bridge')) AND ({season:String}!='summer' OR mode NOT IN ('winter_road','ice_crossing'))",
+    "manual_v2": "SELECT from_id,to_id,h,mode FROM plexus_casechamp.manual_links_ru WHERE season={season:String} AND ({road_only:UInt8}=0 OR mode IN ('winter_road','ice_crossing','pontoon_bridge')) AND ({season:String}!='summer' OR mode NOT IN ('winter_road','ice_crossing'))",
 }
 ARRAYS = {
     "edges": "SELECT src,dst,h,km,way_idx FROM plexus_graph.edges ORDER BY way_idx,src,dst",

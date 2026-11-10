@@ -1,4 +1,5 @@
 from pydantic_ai import ModelRetry
+from pydantic_ai.messages import FunctionToolResultEvent, RetryPromptPart
 
 from app.adapter.log.stdlib import StdlibLogger
 from app.domain.errors import DomainError
@@ -24,3 +25,12 @@ def chat_failure(error: BaseException, code: str, stage: str) -> ChatEvent:
         status_code=status if isinstance(status, int) else None,
     )
     return ChatEvent("error", code=code)
+
+
+def tool_outcome(event: FunctionToolResultEvent) -> None:
+    part = event.part
+    content = str(getattr(part, "content", ""))
+    if isinstance(part, RetryPromptPart) or '"status": "unresolved"' in content:
+        StdlibLogger("chat").warning(
+            "chat_tool_rejected", tool=part.tool_name, reason=content[:500]
+        )

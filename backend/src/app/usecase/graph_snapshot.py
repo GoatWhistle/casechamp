@@ -12,6 +12,7 @@ GraphQuery = Literal[
     "cities",
     "trunk",
     "manual",
+    "manual_named",
     "normalization",
     "expected",
     "delta_points",

@@ -32,7 +32,7 @@ from pydantic_ai.providers.openai_codex import OpenAICodexProvider
 from pydantic_ai.usage import UsageLimits
 
 from app.adapter.chat.artifacts import ChatRun
-from app.adapter.chat.failure import chat_failure
+from app.adapter.chat.failure import chat_failure, tool_outcome
 from app.adapter.chat.tools import AtlasTools
 from app.domain.errors import DomainError
 from app.usecase.chat import ChatEvent, ChatRequest
@@ -71,8 +71,15 @@ refer to an analysis panel or ask the user to open another page or request resul
 While pending, briefly describe the ongoing check; the table will display actual results.
 For a named highway closure between two named settlements, call resolve_road_corridor over the
 complete graph, then close_road_corridor. Default to full closure in both directions, other roads
-unchanged, and compute BOTH endpoint regions. Do not ask the user to repeat these obvious defaults
-or choose one region. The selected map region never overrides explicitly named locations.
+unchanged, and compute every atlas region the corridor touches. Do not ask the user to repeat these
+obvious defaults or choose one region. The selected map region never overrides explicitly named
+locations. Moscow and Saint Petersburg are valid corridor endpoints (market cities) but not atlas
+regions. For several highways closed together resolve each, then pass ALL corridor_ids to ONE
+close_road_corridor call. Road references are normalized (M-10 = М10 = М-10).
+For rail or air changes use find_transport_links, then recalculate_transport_links: intercity
+rail/air between market cities live in the road baseline; local air/river/ferry/winter links exist
+in summer/winter. Removing all air links of a city with target '*' models an airport closure.
+Adding a link needs explicit hours from the user or a clearly labelled assumption.
 Only ask when resolution reports concrete ambiguity or missing data. Name those specific choices.
 An unresolved corridor is a normal tool result. Read its message, use a listed qualified settlement
 name such as 'г. Энгельс, Саратовская область' when context identifies it, or ask one specific question.
@@ -179,7 +186,7 @@ class CodexResponsesGateway:
             prompt,
             deps=run,
             message_history=history,
-            usage_limits=UsageLimits(request_limit=8, tool_calls_limit=12),
+            usage_limits=UsageLimits(request_limit=16, tool_calls_limit=24),
         ) as events:
             async for event in events:
                 if isinstance(event, PartStartEvent) and isinstance(event.part, TextPart):
@@ -189,6 +196,7 @@ class CodexResponsesGateway:
                 elif isinstance(event, FunctionToolCallEvent):
                     yield ChatEvent("status", code=event.part.tool_name)
                 elif isinstance(event, FunctionToolResultEvent):
+                    tool_outcome(event)
                     while run.pending:
                         yield run.pending.pop(0)
         yield ChatEvent("done")

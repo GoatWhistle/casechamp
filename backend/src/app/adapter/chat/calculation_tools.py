@@ -8,6 +8,7 @@ from app.adapter.chat.artifacts import ChatRun
 from app.adapter.chat.bridge_tools import BridgeTools
 from app.adapter.chat.corridor_tools import CorridorTools
 from app.adapter.chat.road_tools import RoadTools
+from app.adapter.chat.transport_tools import TransportTools
 from app.domain.errors import DomainError
 from app.usecase.chat_artifacts import ChatCell, ChatColumn, ChatTable
 from app.usecase.road_analysis import RoadAnalysis
@@ -37,6 +38,7 @@ class CalculationTools:
             AnalysisTools(self._analysis).register(agent)
         if self._roads:
             RoadTools(self._roads).register(agent)
+            TransportTools(self._roads).register(agent)
         agent.tool(
             sequential=True,
             description="List executable calculation capabilities for all atlas regions. Always check before promising a scenario. Check national_road_edits availability; uniform-time sensitivity is NOT a project forecast.",
@@ -62,7 +64,8 @@ class CalculationTools:
                 "named_road_corridors": {
                     "available": self._corridors is not None and self._roads is not None,
                     "directions": "both",
-                    "regions": "both_endpoints",
+                    "regions": "endpoint_and_crossed_atlas_regions",
+                    "joint_closure": "close_road_corridor with all corridor_ids",
                 },
                 "automatic_road_analysis": {
                     "available": self._analysis is not None and self._roads is not None,
@@ -77,6 +80,14 @@ class CalculationTools:
                     "available": self._roads is not None,
                     "version": "data-20261107",
                     "model": "snapshot includes road and intercity rail/air",
+                },
+                "transport_links": {
+                    "available": self._roads is not None,
+                    "find": "find_transport_links",
+                    "calculate": "recalculate_transport_links",
+                    "intercity": "remove or add rail/air between 180 market cities",
+                    "local": "remove or add seasonal air/river/ferry/winter links (summer, winter)",
+                    "regions": "up to 6 atlas regions per call",
                 },
                 "new_connections": {
                     "available": self._roads is not None,

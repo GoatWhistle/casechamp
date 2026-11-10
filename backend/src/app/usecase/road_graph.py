@@ -5,6 +5,7 @@ from typing import Protocol
 from app.domain.errors import DataUnavailable, InvalidQuery, RegionNotFound
 from app.domain.road_economics import MoneyAssumptions, MoneyEffect
 from app.usecase.interface import AtlasRepository
+from app.usecase.transport_links import LinkChange, TransportLink, validate_links
 
 
 @dataclass(frozen=True)
@@ -92,14 +93,25 @@ class RoadJob:
     error: str | None = None
     addition: RoadAddition | None = None
     money_assumptions: MoneyAssumptions | None = None
+    links: list[LinkChange] = field(default_factory=list)
 
 
 class RoadGraphPort(Protocol):
     def locations(self, query: str, region_id: str | None) -> list[GraphLocation]: ...
     def view(self, bounds: tuple[float, float, float, float], zoom: float) -> RoadView: ...
     def submit(
-        self, region_id: str, region: str, scenario: str, changes: list[RoadChange]
+        self,
+        region_id: str,
+        region: str,
+        scenario: str,
+        changes: list[RoadChange],
+        links: list[LinkChange] | None = None,
+        *,
+        queue: bool = False,
     ) -> RoadJob: ...
+    def transport_links(
+        self, network: str, scenario: str, place: str, mode: str | None
+    ) -> list[TransportLink]: ...
     def submit_addition(
         self, region_id: str, region: str, addition: RoadAddition, money: MoneyAssumptions | None
     ) -> RoadJob: ...
@@ -145,9 +157,30 @@ class RoadGraph:
         source = self.view_source if self.view_source is not None else self.engine
         return source.view((west, south, east, north), zoom)
 
-    def submit(self, region_id: str, scenario: str, changes: list[RoadChange]) -> RoadJob:
-        if scenario not in {"road", "summer", "winter"} or not 1 <= len(changes) <= 50:
+    def transport_links(
+        self, network: str, scenario: str, place: str, mode: str | None = None
+    ) -> list[TransportLink]:
+        if network not in {"intercity", "local"} or scenario not in {"road", "summer", "winter"}:
+            raise InvalidQuery("Network must be intercity or local; scenario road, summer or winter")
+        if not 2 <= len(place.strip()) <= 100:
+            raise InvalidQuery("Specify a city, settlement or region name")
+        return self.engine.transport_links(network, scenario, place.strip(), mode)
+
+    def submit(
+        self,
+        region_id: str,
+        scenario: str,
+        changes: list[RoadChange],
+        links: list[LinkChange] | None = None,
+        *,
+        queue: bool = False,
+    ) -> RoadJob:
+        links = links or []
+        if scenario not in {"road", "summer", "winter"} or len(changes) > 50 or len(links) > 30:
             raise InvalidQuery()
+        if not changes and not links:
+            raise InvalidQuery("Specify road changes or transport link changes")
+        validate_links(links)
         if len({c.way_id for c in changes}) != len(changes):
             raise InvalidQuery("Duplicate road identifiers")
         if any(
@@ -158,7 +191,7 @@ class RoadGraph:
         region = next((r for r in self.atlas.regions() if r.id == region_id), None)
         if region is None:
             raise RegionNotFound()
-        return self.engine.submit(region_id, region.name, scenario, changes)
+        return self.engine.submit(region_id, region.name, scenario, changes, links, queue=queue)
 
     def add_connection(
         self, region_id: str, addition: RoadAddition, money: MoneyAssumptions | None = None

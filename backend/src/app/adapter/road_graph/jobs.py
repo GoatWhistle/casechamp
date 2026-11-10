@@ -10,6 +10,7 @@ from app.adapter.road_graph.baselines import BaselineCache
 from app.adapter.road_graph.data import GraphData
 from app.adapter.road_graph.delta import DeltaCalculation
 from app.adapter.road_graph.delta_base import DeltaBase
+from app.adapter.road_graph.links import intercity_links, local_links
 from app.adapter.road_graph.routing import GraphRouting
 from app.adapter.road_graph.shortest_paths import ShortestPaths
 from app.domain.errors import DataUnavailable, InvalidQuery
@@ -24,6 +25,7 @@ from app.usecase.road_graph import (
     RoadView,
 )
 from app.usecase.road_job_store import RoadJobStore
+from app.usecase.transport_links import LinkChange, TransportLink
 
 
 class RoadJobs:
@@ -58,20 +60,24 @@ class RoadJobs:
         region: str,
         scenario: str,
         changes: list[RoadChange],
+        links: list[LinkChange] | None = None,
         *,
         queue: bool = False,
     ) -> RoadJob:
         self.data.region_name(region_id)
         self.data.indices_for([c.way_id for c in changes])
+        links = self.routing.prepare_links(scenario, links or [])
+        key = (region_id, scenario, changes, links)
         with self.lock:
             for job in self.jobs.values():
                 if job.status in {"queued", "running"}:
-                    if (job.region_id, job.scenario, job.changes) == (region_id, scenario, changes):
+                    if (job.region_id, job.scenario, job.changes, job.links) == key:
                         return job
                     if not queue:
                         raise InvalidQuery("A calculation is already running; wait or cancel it")
             job = RoadJob(
-                uuid4().hex, region_id, region, scenario, changes, "queued", 0, 360, self.data.version
+                uuid4().hex, region_id, region, scenario, changes, "queued", 0, 360,
+                self.data.version, links=links,
             )
             self.store.save(job)
             self.jobs[job.id] = job
@@ -122,6 +128,14 @@ class RoadJobs:
             self.stops[job.id] = Event()
         self.pool.submit(self.run, job)
         return job
+
+    def transport_links(
+        self, network: str, scenario: str, place: str, mode: str | None
+    ) -> list[TransportLink]:
+        if network == "intercity":
+            return intercity_links(self.routing.networks(scenario)[0], place, mode)
+        rows = self.data.read("manual_named", {"season": scenario}) if scenario != "road" else []
+        return local_links(rows, place, mode)
 
     def recent(self) -> list[RoadJob]:
         with self.lock:
@@ -195,7 +209,7 @@ class RoadJobs:
             progress(0)
             before = self.baselines[key]
             after, population, settlements, changed, norm = self.routing.calculate(
-                region, job.scenario, job.changes, progress
+                region, job.scenario, job.changes, progress, links=job.links
             )
             result = RoadResult(
                 before,

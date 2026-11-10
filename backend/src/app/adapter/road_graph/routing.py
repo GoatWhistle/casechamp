@@ -6,9 +6,17 @@ from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import floyd_warshall
 
 from app.adapter.road_graph.data import GraphData
+from app.adapter.road_graph.links import (
+    apply_manual,
+    apply_trunk,
+    canonical_links,
+    missing_removals,
+)
 from app.adapter.road_graph.shortest_paths import ShortestPaths
+from app.domain.errors import InvalidQuery
 from app.domain.road_analysis import SettlementAccess
 from app.usecase.road_graph import RoadAddition, RoadChange
+from app.usecase.transport_links import LinkChange
 
 
 def minimum_csr(src: Any, dst: Any, weights: Any, count: int) -> Any:
@@ -44,22 +52,14 @@ class GraphRouting:
         changes: list[RoadChange],
         progress: Callable[[int], None],
         addition: RoadAddition | None = None,
+        links: list[LinkChange] | None = None,
     ) -> tuple[float, int, int, int, float]:
-        result, _ = self.calculate_details(region, scenario, changes, progress, addition)
+        result, _ = self.calculate_details(region, scenario, changes, progress, addition, links)
         return result
 
-    def calculate_details(
-        self,
-        region: str,
-        scenario: str,
-        changes: list[RoadChange],
-        progress: Callable[[int], None],
-        addition: RoadAddition | None = None,
-    ) -> tuple[tuple[float, int, int, int, float], tuple[SettlementAccess, ...]]:
-        self.data.load()
-        points = self.data.read("points")
-        origins = self.data.read("origins", {"season": scenario, "region": region})
-        cities = self.data.read("cities")
+    def networks(
+        self, scenario: str, links: list[LinkChange] | None = None
+    ) -> tuple[list[tuple[Any, ...]], list[tuple[Any, ...]]]:
         modern = self.data.modern_model
         trunk = [] if modern and scenario.startswith("road") else self.data.read("trunk")
         manual = []
@@ -69,6 +69,51 @@ class GraphRouting:
                 {"season": scenario.removeprefix("road_"),
                  "road_only": int(scenario.startswith("road_"))},
             )
+        if not links:
+            return trunk, manual
+        return apply_trunk(trunk, links), apply_manual(manual, links)
+
+    def prepare_links(self, scenario: str, links: list[LinkChange]) -> list[LinkChange]:
+        if not links:
+            return []
+        links = canonical_links(links, [str(c[0]) for c in self.data.read("cities")])
+        intercity = any(link.network == "intercity" for link in links)
+        if intercity and self.data.modern_model and scenario.startswith("road"):
+            raise InvalidQuery("This model has no intercity rail/air in road scenarios")
+        points = {str(p[0]) for p in self.data.read("points")}
+        unknown = [
+            end for link in links if link.network == "local"
+            for end in (link.source, link.target) if end != "*" and end not in points
+        ]
+        if unknown:
+            raise InvalidQuery(
+                "Local links use settlement point IDs from find_transport_links or "
+                "find_graph_locations; unknown: " + ", ".join(unknown[:5])
+            )
+        missing = missing_removals(*self.networks(scenario), links)
+        if missing:
+            raise InvalidQuery(
+                "Links to remove are absent in this scenario: "
+                + "; ".join(f"{m.mode} {m.source}–{m.target}" for m in missing)
+                + ". Use find_transport_links; local links exist only in summer/winter"
+            )
+        return links
+
+    def calculate_details(
+        self,
+        region: str,
+        scenario: str,
+        changes: list[RoadChange],
+        progress: Callable[[int], None],
+        addition: RoadAddition | None = None,
+        links: list[LinkChange] | None = None,
+    ) -> tuple[tuple[float, int, int, int, float], tuple[SettlementAccess, ...]]:
+        self.data.load()
+        points = self.data.read("points")
+        origins = self.data.read("origins", {"season": scenario, "region": region})
+        cities = self.data.read("cities")
+        modern = self.data.modern_model
+        trunk, manual = self.networks(scenario, links)
         norm_rows = self.data.read("normalization")
         if not norm_rows or norm_rows[0][0] is None:
             raise ValueError("Missing normalization")
@@ -81,13 +126,13 @@ class GraphRouting:
                     count = int(city[1]) + 1
                 if len(city) > 4 and city[4] in lookup and city[1] >= len(self.data.nodes["lat"]):
                     lookup[city[4]] = [int(city[1]), 0.0]
-        for a, b, _ in manual:
+        for a, b, *_ in manual:
             for point in (a, b):
                 if point in lookup and lookup[point][0] < 0:
                     lookup[point] = [count, 0.0]
                     count += 1
         ms, md, mw = [], [], []
-        for a, b, h in manual:
+        for a, b, h, *_ in manual:
             if a in lookup and b in lookup:
                 left, right = lookup[a], lookup[b]
                 ms.append(left[0])

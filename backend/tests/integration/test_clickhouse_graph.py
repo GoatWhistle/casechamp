@@ -14,7 +14,13 @@ def test_graph_parameters_preserve_search_literals_and_numeric_identifiers() -> 
     points = source.read("locations", {"query": "Владимир", "region": region})
     assert any(p[1] == "г. Владимир" for p in points)
     assert source.read("locations", {"query": "%' OR 1=1 --", "region": ""}) == []
-    assert source.read("road_reference", {"name": "м7"})
+    references = {r[0] for r in source.read("road_reference", {"names": ["m10", "м10"]})}
+    assert {"М-10", "М10"} <= references
+    ways = source.read("references", {"references": ["М-10"]})
+    assert any(";" in str(w[3]) for w in ways)
+    assert source.read("corridor_places", {"query": "Москва"})[0][1] == "Москва"
+    assert len(source.read("trunk")) > 30000
+    assert {r[3] for r in source.read("manual", {"season": "summer"})} >= {"air", "ferry"}
 
 
 def test_arrow_keeps_unreachable_matrix_values_infinite() -> None:
