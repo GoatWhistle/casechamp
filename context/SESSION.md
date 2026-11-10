@@ -272,6 +272,8 @@ Both features done and committed locally up to 47451f9 (not pushed). Backend: pi
 np_city_times rebuilt (road/summer/winter, one process per scenario); matrices exported to
 data/scenario_ru, closure 0.0000h, max diff vs published indices.json 0.6% (artifact e1a2c25b).
 Frontend: pilot route-adder and /scenarios page; npm run verify green; HTTP smoke passed.
+Scenario links now accept any settlement (OKTMO id via /search): endpoint-only semantics,
+settlements impact block in response; artifact 1e0c5444 with point_id.npy.
 Pushed to goat/feat/map-first-ui (f90639a). Stand case.vm needs data/scenario_ru and SCENARIO_DIR;
 no visual browser pass of the two new screens yet.
 Full detail: [archive](../work/integration/session-archive-20261110.md).
