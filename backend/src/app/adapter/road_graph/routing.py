@@ -79,7 +79,7 @@ class GraphRouting:
         links = canonical_links(links, [str(c[0]) for c in self.data.read("cities")])
         intercity = any(link.network == "intercity" for link in links)
         if intercity and self.data.modern_model and scenario.startswith("road"):
-            raise InvalidQuery("This model has no intercity rail/air in road scenarios")
+            raise InvalidQuery("В этой модели нет межгородских ж/д и авиасвязей в дорожном сценарии")
         points = {str(p[0]) for p in self.data.read("points")}
         unknown = [
             end for link in links if link.network == "local"
@@ -87,15 +87,15 @@ class GraphRouting:
         ]
         if unknown:
             raise InvalidQuery(
-                "Local links use settlement point IDs from find_transport_links or "
-                "find_graph_locations; unknown: " + ", ".join(unknown[:5])
+                "Местные связи задаются ID населённых пунктов из find_transport_links или "
+                "find_graph_locations; не найдены: " + ", ".join(unknown[:5])
             )
         missing = missing_removals(*self.networks(scenario), links)
         if missing:
             raise InvalidQuery(
-                "Links to remove are absent in this scenario: "
+                "Удаляемых связей нет в этом сценарии: "
                 + "; ".join(f"{m.mode} {m.source}–{m.target}" for m in missing)
-                + ". Use find_transport_links; local links exist only in summer/winter"
+                + ". Проверьте find_transport_links; местные связи есть только летом и зимой"
             )
         return links
 

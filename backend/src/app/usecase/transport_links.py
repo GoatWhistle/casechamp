@@ -34,13 +34,13 @@ def validate_links(links: list[LinkChange]) -> None:
     for link in links:
         modes = INTERCITY_MODES if link.network == "intercity" else LOCAL_MODES
         if link.action not in {"add", "remove"} or link.network not in {"intercity", "local"}:
-            raise InvalidQuery("Link action must be add or remove; network intercity or local")
+            raise InvalidQuery("Действие связи: add или remove; сеть: intercity или local")
         if link.mode not in modes:
-            raise InvalidQuery(f"Mode for {link.network} links must be one of: {', '.join(sorted(modes))}")
+            raise InvalidQuery(f"Вид связи для сети {link.network}: {', '.join(sorted(modes))}")
         if not link.source.strip() or not link.target.strip() or link.source == link.target:
-            raise InvalidQuery("Specify two distinct link endpoints")
+            raise InvalidQuery("Укажите два разных конца связи")
         if link.action == "add" and (
             link.target == "*" or link.hours is None or not isfinite(link.hours)
             or not 0 < link.hours <= 72
         ):
-            raise InvalidQuery("A new link needs a concrete target and hours in (0,72]")
+            raise InvalidQuery("Новой связи нужны конкретный второй конец и время в пределах (0, 72] ч")

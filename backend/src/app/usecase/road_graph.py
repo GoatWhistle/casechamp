@@ -161,9 +161,9 @@ class RoadGraph:
         self, network: str, scenario: str, place: str, mode: str | None = None
     ) -> list[TransportLink]:
         if network not in {"intercity", "local"} or scenario not in {"road", "summer", "winter"}:
-            raise InvalidQuery("Network must be intercity or local; scenario road, summer or winter")
+            raise InvalidQuery("Сеть: intercity или local; сценарий: road, summer или winter")
         if not 2 <= len(place.strip()) <= 100:
-            raise InvalidQuery("Specify a city, settlement or region name")
+            raise InvalidQuery("Укажите город, населённый пункт или регион")
         return self.engine.transport_links(network, scenario, place.strip(), mode)
 
     def submit(
@@ -179,7 +179,7 @@ class RoadGraph:
         if scenario not in {"road", "summer", "winter"} or len(changes) > 50 or len(links) > 30:
             raise InvalidQuery()
         if not changes and not links:
-            raise InvalidQuery("Specify road changes or transport link changes")
+            raise InvalidQuery("Укажите изменения дорог или связей")
         validate_links(links)
         if len({c.way_id for c in changes}) != len(changes):
             raise InvalidQuery("Duplicate road identifiers")

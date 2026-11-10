@@ -28,7 +28,7 @@ def canonical_links(links: list[LinkChange], cities: list[str]) -> list[LinkChan
                 ends.append(names[settlement_name(value)])
             else:
                 raise InvalidQuery(
-                    f"Intercity links connect the 180 market cities; unknown city: {value}"
+                    f"Межгородские связи соединяют 180 рыночных городов; город не найден: {value}"
                 )
         result.append(LinkChange(link.action, link.network, link.mode, ends[0], ends[1], link.hours))
     return result
