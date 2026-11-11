@@ -30,15 +30,7 @@
 
 .tab[aria-selected="true"] {
   color: var(--text-primary);
-}
-
-.indicator {
-  position: absolute;
-  inset-block-end: 0;
-  inset-inline: 0;
   border-block-end: var(--space-2) solid var(--border-selected);
-  clip-path: inset(0 100% 0 0);
-  pointer-events: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
