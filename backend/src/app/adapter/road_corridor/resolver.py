@@ -31,7 +31,8 @@ class CorridorResolver:
     def resolve(self, road_name: str, origin: str, destination: str) -> RoadCorridor:
         data = self.roads.data
         references = {
-            str(r[0]) for r in data.read("road_reference", {"names": lookup_keys(road_name)})
+            str(r[0])
+            for r in data.read("road_reference", {"names": lookup_keys(road_name)})
             if r[0] is not None and str(r[0]).strip()
         }
         variants = shared_reference(references, road_name)
@@ -42,7 +43,10 @@ class CorridorResolver:
         selected = {int(r[0]): r for r in data.read("references", {"references": variants})}
         reference = max(
             variants,
-            key=lambda v: (sum(v in reference_parts(str(r[3] or "")) for r in selected.values()), v),
+            key=lambda v: (
+                sum(v in reference_parts(str(r[3] or "")) for r in selected.values()),
+                v,
+            ),
         )
         endpoints = []
         for query in (origin, destination):
@@ -77,7 +81,8 @@ class CorridorResolver:
         component_count, labels = connected_components(graph)
         pairs = [(int(a), int(b)) for a, b, _ in edge_rows]
         spans = any(
-            min(distances[0][labels == c]) <= reach[0] and min(distances[1][labels == c]) <= reach[1]
+            min(distances[0][labels == c]) <= reach[0]
+            and min(distances[1][labels == c]) <= reach[1]
             for c in range(component_count)
         )
         virtual: set[tuple[int, int]] = set()
@@ -195,10 +200,17 @@ class CorridorResolver:
         regions = {region.id: region for bridge in bridges for region in bridge.regions}
         lines = {tuple(tuple(xy) for xy in line): line for b in bridges for line in b.lines}
         combined = RoadCorridor(
-            uuid4().hex, "; ".join(dict.fromkeys(b.road_ref for b in bridges)),
-            bridges[0].origin, bridges[-1].destination, ways,
-            sum(float(r[1] or 0) for r in lengths), 0, 0,
-            list(regions.values()), list(lines.values()), "combined_osm_bridge_closures_both_directions",
+            uuid4().hex,
+            "; ".join(dict.fromkeys(b.road_ref for b in bridges)),
+            bridges[0].origin,
+            bridges[-1].destination,
+            ways,
+            sum(float(r[1] or 0) for r in lengths),
+            0,
+            0,
+            list(regions.values()),
+            list(lines.values()),
+            "combined_osm_bridge_closures_both_directions",
         )
         with self.lock:
             self.resolved[combined.id] = combined

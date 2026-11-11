@@ -135,4 +135,3 @@ class CalculationTools:
         return json.dumps(
             {"result": asdict(result), "table": json.loads(table)}, ensure_ascii=False
         )
-

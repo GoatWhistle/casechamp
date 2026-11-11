@@ -30,7 +30,11 @@ def test_link_only_scenario_is_accepted_and_returned() -> None:
     )
     with client(port) as http:
         removal = {
-            "action": "remove", "network": "intercity", "mode": "air", "source": "Сургут", "target": "*"
+            "action": "remove",
+            "network": "intercity",
+            "mode": "air",
+            "source": "Сургут",
+            "target": "*",
         }
         body: dict[str, object] = {"region_id": "71000000", "links": [removal]}
         response = http.post("/road-scenarios", json=body)
@@ -45,9 +49,21 @@ def test_link_only_scenario_is_accepted_and_returned() -> None:
 def test_new_link_without_hours_is_rejected() -> None:
     port = Mock(spec=RoadGraphPort)
     with client(port) as http:
-        response = http.post("/road-scenarios", json={"region_id": "71000000", "links": [
-            {"action": "add", "network": "intercity", "mode": "rail", "source": "Москва", "target": "Тверь"}
-        ]})
+        response = http.post(
+            "/road-scenarios",
+            json={
+                "region_id": "71000000",
+                "links": [
+                    {
+                        "action": "add",
+                        "network": "intercity",
+                        "mode": "rail",
+                        "source": "Москва",
+                        "target": "Тверь",
+                    }
+                ],
+            },
+        )
         assert response.status_code == 422
         port.submit.assert_not_called()
 
@@ -58,7 +74,9 @@ def test_transport_link_listing_passes_filters() -> None:
         TransportLink("intercity", "air", "Сургут", "Сургут", "Москва", "Москва", 3.5)
     ]
     with client(port) as http:
-        response = http.get("/transport-links", params={"network": "intercity", "place": "Сургут", "mode": "air"})
+        response = http.get(
+            "/transport-links", params={"network": "intercity", "place": "Сургут", "mode": "air"}
+        )
         assert response.status_code == 200
         assert response.json()[0]["hours"] == 3.5
         port.transport_links.assert_called_once_with("intercity", "road", "Сургут", "air")
@@ -68,7 +86,9 @@ def test_place_names_resolve_point_ids() -> None:
     port = Mock(spec=RoadGraphPort)
     port.place_names.return_value = [PlaceName("98614486101", "село Хоро", "Якутия")]
     with client(port) as http:
-        response = http.get("/road-graph/places", params=[("ids", "98614486101"), ("ids", "98614486101")])
+        response = http.get(
+            "/road-graph/places", params=[("ids", "98614486101"), ("ids", "98614486101")]
+        )
         assert response.status_code == 200
         assert response.json()[0]["name"] == "село Хоро"
         port.place_names.assert_called_once_with(["98614486101"])

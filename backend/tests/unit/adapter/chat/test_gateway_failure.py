@@ -23,7 +23,9 @@ def test_tool_failure_retains_diagnostic_context() -> None:
     gateway._slots = asyncio.Semaphore(3)
     gateway._codex = Mock()
     gateway._codex.account = AsyncMock(return_value=SimpleNamespace(account=object()))
-    request = ChatRequest("Bridge closure", (), ChatContext(None, Season.SUMMER, NetworkMode.ROAD, "hansen"))
+    request = ChatRequest(
+        "Bridge closure", (), ChatContext(None, Season.SUMMER, NetworkMode.ROAD, "hansen")
+    )
     provider = Mock()
     provider.client.close = AsyncMock()
 

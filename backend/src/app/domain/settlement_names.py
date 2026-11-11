@@ -22,8 +22,7 @@ def settlement_query(value: str) -> tuple[str, str]:
 def matching_places(places: list[tuple[str, str]], query: str) -> list[int]:
     name, region = settlement_query(query)
     candidates = [
-        i for i, (_, area) in enumerate(places)
-        if not region or normalized_place(area) == region
+        i for i, (_, area) in enumerate(places) if not region or normalized_place(area) == region
     ]
     exact = [i for i in candidates if normalized_place(places[i][0]) == name]
     if exact:

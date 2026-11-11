@@ -57,4 +57,6 @@ class AnalysisTools:
 
     def _display(self, ctx: RunContext[ChatRun], job: AnalysisJob) -> str:
         ctx.deps.pending.append(ChatEvent("analysis", analysis=job))
-        return json.dumps({"analysis": asdict(job), "display": "inline_chat_ranking"}, ensure_ascii=False)
+        return json.dumps(
+            {"analysis": asdict(job), "display": "inline_chat_ranking"}, ensure_ascii=False
+        )

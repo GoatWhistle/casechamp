@@ -38,14 +38,18 @@ class AccessibilitySensitivity:
     def __init__(self, repository: AtlasRepository) -> None:
         self._repository = repository
 
-    def evaluate(
-        self, region_id: str, season: Season, network: NetworkMode
-    ) -> SensitivityResult:
+    def evaluate(self, region_id: str, season: Season, network: NetworkMode) -> SensitivityResult:
         if not any(region.id == region_id for region in self._repository.regions()):
             raise RegionNotFound()
         scenario = resolved_scenario(self._repository.indices(), season, network)
-        row = next((item for item in self._repository.indices()
-                    if item.region_id == region_id and item.scenario == scenario), None)
+        row = next(
+            (
+                item
+                for item in self._repository.indices()
+                if item.region_id == region_id and item.scenario == scenario
+            ),
+            None,
+        )
         if row is None or row.hansen is None or row.hansen_2h is None:
             raise DataUnavailable("Regional sensitivity export is missing")
         if not all(math.isfinite(value) and value > 0 for value in (row.hansen_2h, row.hansen)):
@@ -55,7 +59,9 @@ class AccessibilitySensitivity:
             if raw is None or not math.isfinite(raw) or raw < 0:
                 raise DataUnavailable("Finite half-life sensitivity sums are required")
             value = row.hansen * raw / row.hansen_2h
-            points.append(SensitivityPoint(multiplier, value, value - row.hansen,
-                                           value / row.hansen - 1))
-        return SensitivityResult(region_id, scenario, row.model_version, row.artifact_version,
-                                 row.hansen, tuple(points))
+            points.append(
+                SensitivityPoint(multiplier, value, value - row.hansen, value / row.hansen - 1)
+            )
+        return SensitivityResult(
+            region_id, scenario, row.model_version, row.artifact_version, row.hansen, tuple(points)
+        )

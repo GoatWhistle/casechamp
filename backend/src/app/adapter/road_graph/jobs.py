@@ -77,8 +77,16 @@ class RoadJobs:
                     if not queue:
                         raise InvalidQuery("A calculation is already running; wait or cancel it")
             job = RoadJob(
-                uuid4().hex, region_id, region, scenario, changes, "queued", 0, 360,
-                self.data.version, links=links,
+                uuid4().hex,
+                region_id,
+                region,
+                scenario,
+                changes,
+                "queued",
+                0,
+                360,
+                self.data.version,
+                links=links,
             )
             self.store.save(job)
             self.jobs[job.id] = job

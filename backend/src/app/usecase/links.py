@@ -59,9 +59,7 @@ def _endpoint(point_id: str, name: str, points: dict[str, PointRecord]) -> Endpo
     point = points.get(point_id)
     if point is None:
         return Endpoint(id=point_id, name=name, x=None, y=None)
-    return Endpoint(
-        id=point_id, name=name, x=point.x, y=point.y, lat=point.lat, lon=point.lon
-    )
+    return Endpoint(id=point_id, name=name, x=point.x, y=point.y, lat=point.lat, lon=point.lon)
 
 
 def _span_km(link: LinkRecord, points: dict[str, PointRecord]) -> float | None:
@@ -97,7 +95,10 @@ class LinkQueries:
         self._repository = repository
 
     def region_links(
-        self, region_id: str, season: Season, mode: Mode | None = None,
+        self,
+        region_id: str,
+        season: Season,
+        mode: Mode | None = None,
         include_unknown: bool = False,
     ) -> list[LinkView]:
         if region_id not in {region.id for region in self._repository.regions()}:

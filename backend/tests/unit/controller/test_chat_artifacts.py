@@ -12,8 +12,13 @@ from app.usecase.chat_artifacts import ChatColumn, ChatTable
 def test_chart_reuses_table_values_and_rejects_unknown_columns() -> None:
     run = ChatRun(ChatContext(None, Season.SUMMER, NetworkMode.ROAD, "hansen"))
     table = ChatTable(
-        "", "regions", (ChatColumn("name"), ChatColumn("hansen", "number")),
-        ({"id": "one", "name": "One", "hansen": 2.5},), 1, False, "/api/v1/regions",
+        "",
+        "regions",
+        (ChatColumn("name"), ChatColumn("hansen", "number")),
+        ({"id": "one", "name": "One", "hansen": 2.5},),
+        1,
+        False,
+        "/api/v1/regions",
     )
     stored = json.loads(run.table(table))
     run.chart(stored["id"], "name", "hansen")

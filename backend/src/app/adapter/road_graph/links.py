@@ -30,14 +30,17 @@ def canonical_links(links: list[LinkChange], cities: list[str]) -> list[LinkChan
                 raise InvalidQuery(
                     f"Межгородские связи соединяют 180 рыночных городов; город не найден: {value}"
                 )
-        result.append(LinkChange(link.action, link.network, link.mode, ends[0], ends[1], link.hours))
+        result.append(
+            LinkChange(link.action, link.network, link.mode, ends[0], ends[1], link.hours)
+        )
     return result
 
 
 def apply_trunk(rows: list[tuple[Any, ...]], links: list[LinkChange]) -> list[tuple[Any, ...]]:
     changes = [link for link in links if link.network == "intercity"]
     kept = [
-        row for row in rows
+        row
+        for row in rows
         if not any(
             link.action == "remove" and link.mode == row[2] and touches(link, row[0], row[1])
             for link in changes
@@ -55,7 +58,8 @@ def apply_trunk(rows: list[tuple[Any, ...]], links: list[LinkChange]) -> list[tu
 def apply_manual(rows: list[tuple[Any, ...]], links: list[LinkChange]) -> list[tuple[Any, ...]]:
     changes = [link for link in links if link.network == "local"]
     kept = [
-        row for row in rows
+        row
+        for row in rows
         if not any(
             link.action == "remove" and link.mode == row[3] and touches(link, row[0], row[1])
             for link in changes
@@ -99,9 +103,7 @@ def intercity_links(
     return sorted(seen.values(), key=lambda link: (link.mode, link.hours))[:60]
 
 
-def local_links(
-    rows: list[tuple[Any, ...]], place: str, mode: str | None
-) -> list[TransportLink]:
+def local_links(rows: list[tuple[Any, ...]], place: str, mode: str | None) -> list[TransportLink]:
     wanted = normalized_place(place)
     result = []
     for a, a_name, b, b_name, kind, hours, region in rows:
@@ -110,12 +112,21 @@ def local_links(
         if mode and kind != mode:
             continue
         if not (
-            wanted in (str(a), str(b)) or wanted == region_name
+            wanted in (str(a), str(b))
+            or wanted == region_name
             or any(settlement_name(wanted) == settlement_name(n) for n in names)
         ):
             continue
-        result.append(TransportLink(
-            "local", kind, str(a), str(a_name or a), str(b), str(b_name or b), float(hours),
-            str(region) if region else None,
-        ))
+        result.append(
+            TransportLink(
+                "local",
+                kind,
+                str(a),
+                str(a_name or a),
+                str(b),
+                str(b_name or b),
+                float(hours),
+                str(region) if region else None,
+            )
+        )
     return result[:80]

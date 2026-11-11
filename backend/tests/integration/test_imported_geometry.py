@@ -28,7 +28,9 @@ def atlas(imported_sources: Path) -> JsonAtlasRepository:
     return JsonAtlasRepository(imported_sources)
 
 
-def test_projection_reproduces_every_exported_region_vertex(atlas: JsonAtlasRepository, imported_sources: Path) -> None:
+def test_projection_reproduces_every_exported_region_vertex(
+    atlas: JsonAtlasRepository, imported_sources: Path
+) -> None:
     boundaries = json.loads((imported_sources / "geo/regions.json").read_text(encoding="utf-8"))
     paths = {shape.name: shape.path for shape in atlas.geo().shapes}
     frame = atlas.frame()
@@ -62,7 +64,9 @@ def test_boundaries_join_ids_and_normalize_longitudes(atlas: JsonAtlasRepository
         min_lon, min_lat, max_lon, max_lat = shape.bounds
         assert 10 < min_lon <= max_lon < 200
         assert 40 < min_lat <= max_lat < 85
-        assert all(point[0] >= 0 for polygon in shape.polygons for ring in polygon for point in ring)
+        assert all(
+            point[0] >= 0 for polygon in shape.polygons for ring in polygon for point in ring
+        )
 
 
 def test_real_links_keep_unknown_values_null(atlas: JsonAtlasRepository) -> None:
@@ -82,4 +86,3 @@ def test_overview_geometry_covers_every_region_with_fewer_vertices(
     full = sum(shape.path.count("L") for shape in shapes)
     overview = sum((shape.path_low or "").count("L") for shape in shapes)
     assert overview < full / 2
-

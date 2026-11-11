@@ -58,7 +58,9 @@ def write_artifact(target: Path) -> None:
 @pytest.fixture
 def client(tmp_path: Path) -> TestClient:
     write_artifact(tmp_path / "scenario")
-    return TestClient(create_app(Settings(), scenario_repository=FilesScenarioRepository(tmp_path / "scenario")))
+    return TestClient(
+        create_app(Settings(), scenario_repository=FilesScenarioRepository(tmp_path / "scenario"))
+    )
 
 
 def test_catalog_lists_cities_and_versions(client: TestClient) -> None:
@@ -126,7 +128,9 @@ def test_stale_versions_unknown_city_and_bad_requests(client: TestClient) -> Non
 
 
 def test_missing_artifact_fails_honestly(tmp_path: Path) -> None:
-    client = TestClient(create_app(Settings(), scenario_repository=FilesScenarioRepository(tmp_path / "empty")))
+    client = TestClient(
+        create_app(Settings(), scenario_repository=FilesScenarioRepository(tmp_path / "empty"))
+    )
     response = client.get("/api/v1/scenarios")
     assert response.status_code == 503
     assert response.json()["code"] == "data_unavailable"

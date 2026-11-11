@@ -47,7 +47,11 @@ def validate_links(links: list[LinkChange]) -> None:
         if not link.source.strip() or not link.target.strip() or link.source == link.target:
             raise InvalidQuery("Укажите два разных конца связи")
         if link.action == "add" and (
-            link.target == "*" or link.hours is None or not isfinite(link.hours)
+            link.target == "*"
+            or link.hours is None
+            or not isfinite(link.hours)
             or not 0 < link.hours <= 72
         ):
-            raise InvalidQuery("Новой связи нужны конкретный второй конец и время в пределах (0, 72] ч")
+            raise InvalidQuery(
+                "Новой связи нужны конкретный второй конец и время в пределах (0, 72] ч"
+            )

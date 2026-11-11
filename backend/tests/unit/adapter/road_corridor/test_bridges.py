@@ -14,7 +14,9 @@ from app.usecase.road_graph import RoadJob
 
 
 def part(way: int, source: int, target: int, lat: float, ref: str = "R-1") -> BridgePart:
-    return BridgePart(way, "Bridge", ref, "primary", 1.0, source, target, [[40., lat], [40.02, lat]])
+    return BridgePart(
+        way, "Bridge", ref, "primary", 1.0, source, target, [[40.0, lat], [40.02, lat]]
+    )
 
 
 def test_bridge_grouping_includes_parallel_decks_and_excludes_nearby_unrelated_bridge() -> None:
@@ -29,25 +31,29 @@ def test_connected_fragments_group_but_distant_bridge_on_same_road_stays_separat
 
 
 def test_distance_uses_bridge_span_instead_of_only_endpoints() -> None:
-    assert distance_to_line_km([40.01, 50.], [[40., 50.], [40.02, 50.]]) == pytest.approx(0)
-    assert distance_to_line_km([40., 50.001], [[40., 50.], [40.02, 50.]]) == pytest.approx(.111195)
+    assert distance_to_line_km([40.01, 50.0], [[40.0, 50.0], [40.02, 50.0]]) == pytest.approx(0)
+    assert distance_to_line_km([40.0, 50.001], [[40.0, 50.0], [40.02, 50.0]]) == pytest.approx(
+        0.111195
+    )
 
 
 def test_search_and_combined_closure_emit_one_job_with_both_decks_and_no_other_roads() -> None:
     roads = Mock()
     rows = [
-        (1, "Direct bridge", "R-1", "primary", 1., 10, 11, [[40., 50.], [40.02, 50.]]),
-        (2, "Bypass", "R-2", "trunk", 2., 20, 21, [[40., 50.01], [40.02, 50.01]]),
-        (3, "Bypass", "R-2", "trunk", 2., 30, 31, [[40., 50.0101], [40.02, 50.0101]]),
-        (4, "Unrelated bridge", "R-3", "primary", 1., 40, 41, [[40., 50.02], [40.02, 50.02]]),
+        (1, "Direct bridge", "R-1", "primary", 1.0, 10, 11, [[40.0, 50.0], [40.02, 50.0]]),
+        (2, "Bypass", "R-2", "trunk", 2.0, 20, 21, [[40.0, 50.01], [40.02, 50.01]]),
+        (3, "Bypass", "R-2", "trunk", 2.0, 30, 31, [[40.0, 50.0101], [40.02, 50.0101]]),
+        (4, "Unrelated bridge", "R-3", "primary", 1.0, 40, 41, [[40.0, 50.02], [40.02, 50.02]]),
     ]
     roads.data.read.side_effect = lambda query, params: {
-        "corridor_places": [("1", "Town", "Region", 40., 50.)],
+        "corridor_places": [("1", "Town", "Region", 40.0, 50.0)],
         "bridge_parts": rows,
         "region_codes": [("region", "Region")],
-        "bridge_lengths": [(1, 1.), (2, 2.), (3, 2.)],
+        "bridge_lengths": [(1, 1.0), (2, 2.0), (3, 2.0)],
     }[query]
-    roads.submit.return_value = RoadJob("job", "region", "Region", "road", [], "queued", 0, 360, "test")
+    roads.submit.return_value = RoadJob(
+        "job", "region", "Region", "road", [], "queued", 0, 360, "test"
+    )
     tools = BridgeTools(RoadCorridors(CorridorResolver(roads)))
     ctx = Mock()
     ctx.deps = ChatRun(ChatContext(None, Season.SUMMER, NetworkMode.ROAD, "hansen"))
@@ -62,7 +68,7 @@ def test_search_and_combined_closure_emit_one_job_with_both_decks_and_no_other_r
     event = ctx.deps.pending[0]
     assert event.calculation.job_ids == ["job"]
     assert len(event.calculation.corridor.lines) == 3
-    assert event.calculation.corridor.length_km == 5.
+    assert event.calculation.corridor.length_km == 5.0
 
 
 @pytest.mark.parametrize("ids", [[], ["unknown"], ["duplicate", "duplicate"]])

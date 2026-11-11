@@ -21,9 +21,7 @@ def test_overview_reports_dataset_totals(client: TestClient) -> None:
 
     assert (body["regions"], body["settlements"], body["links"]) == (82, 155412, 46487)
     assert sum(body["links_by_mode"].values()) == 46487
-    assert body["links_by_season"] == {
-        "summer": 490, "winter": 332, "all": 6823, "unknown": 38842
-    }
+    assert body["links_by_season"] == {"summer": 490, "winter": 332, "all": 6823, "unknown": 38842}
     assert body["index"]["status"] == "ready"
 
 

@@ -51,7 +51,9 @@ def test_absent_removal_is_reported() -> None:
 
 
 def test_intercity_names_are_canonical_market_cities() -> None:
-    links = canonical_links([LinkChange("add", "intercity", "rail", "г. Москва", "тверь", 1.0)], ["Москва", "Тверь"])
+    links = canonical_links(
+        [LinkChange("add", "intercity", "rail", "г. Москва", "тверь", 1.0)], ["Москва", "Тверь"]
+    )
     assert (links[0].source, links[0].target) == ("Москва", "Тверь")
     with pytest.raises(InvalidQuery):
         canonical_links([LinkChange("remove", "intercity", "air", "Деревня", "*")], ["Москва"])
@@ -60,7 +62,8 @@ def test_intercity_names_are_canonical_market_cities() -> None:
 def test_listing_deduplicates_directions_and_filters_mode() -> None:
     links = intercity_links(TRUNK, "Сургут", "air")
     assert [(l.source, l.target, l.hours) for l in links] == [
-        ("Сургут", "Тюмень", 1.2), ("Москва", "Сургут", 3.5)
+        ("Сургут", "Тюмень", 1.2),
+        ("Москва", "Сургут", 3.5),
     ]
     rows = [("1", "село Хоро", "2", "г. Нюрба", "ferry", 30.0, "Якутия")]
     assert local_links(rows, "Нюрба", None)[0].target_name == "г. Нюрба"

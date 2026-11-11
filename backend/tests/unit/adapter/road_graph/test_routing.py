@@ -17,23 +17,32 @@ class Snapshot:
 
     def arrays(self, name: Literal["edges", "nodes", "ranks", "seasons"]) -> dict[str, Any]:
         if name == "edges":
-            return {"src":np.array([0,1,0,0]), "dst":np.array([1,2,1,2]),
-                    "h":np.array([1,1,3,5],dtype=np.float32), "km":np.array([10,10,30,50]),
-                    "way_idx":np.array([0,1,2,3])}
+            return {
+                "src": np.array([0, 1, 0, 0]),
+                "dst": np.array([1, 2, 1, 2]),
+                "h": np.array([1, 1, 3, 5], dtype=np.float32),
+                "km": np.array([10, 10, 30, 50]),
+                "way_idx": np.array([0, 1, 2, 3]),
+            }
         if name == "nodes":
-            return {"lat":np.array([0.,0.,0.]), "lon":np.array([0.,1.,2.])}
-        return {"rank":np.array([2,2,2,2])}
+            return {"lat": np.array([0.0, 0.0, 0.0]), "lon": np.array([0.0, 1.0, 2.0])}
+        return {"rank": np.array([2, 2, 2, 2])}
 
-    def read(self, query: GraphQuery, parameters: GraphParameters | None = None) -> list[tuple[Any,...]]:
-        rows: dict[GraphQuery,list[tuple[Any,...]]] = {
+    def read(
+        self, query: GraphQuery, parameters: GraphParameters | None = None
+    ) -> list[tuple[Any, ...]]:
+        rows: dict[GraphQuery, list[tuple[Any, ...]]] = {
             "model_version": [],
-            "points": [("origin",0,0.)], "origins": [("origin",10)],
-            "cities": [("market",2,0.,100)], "trunk": [], "normalization": [(100.,)],
+            "points": [("origin", 0, 0.0)],
+            "origins": [("origin", 10)],
+            "cities": [("market", 2, 0.0, 100)],
+            "trunk": [],
+            "normalization": [(100.0,)],
         }
         if query == "way_indices":
             assert parameters is not None
             ids = cast(list[int], parameters["ids"])
-            return [(way,way-100) for way in ids]
+            return [(way, way - 100) for way in ids]
         return rows[query]
 
 

@@ -23,13 +23,20 @@ def test_corridor_search_resolves_exact_names_and_region_qualifiers(
 ) -> None:
     reader = Mock()
     reader.rows.return_value = [{"value": "test"}]
-    reader.arrow.return_value = pa.table({
-        "point_id": ["1", "2", "3", "4"],
-        "settlement": ["село Саратовка", "г. Саратов", "посёлок Энгельс", "г. Энгельс"],
-        "region": ["Алтайский край", "Саратовская область", "Оренбургская область", "Саратовская область"],
-        "lon": [46., 46., 46., 46.],
-        "lat": [51., 51., 51., 51.],
-    })
+    reader.arrow.return_value = pa.table(
+        {
+            "point_id": ["1", "2", "3", "4"],
+            "settlement": ["село Саратовка", "г. Саратов", "посёлок Энгельс", "г. Энгельс"],
+            "region": [
+                "Алтайский край",
+                "Саратовская область",
+                "Оренбургская область",
+                "Саратовская область",
+            ],
+            "lon": [46.0, 46.0, 46.0, 46.0],
+            "lat": [51.0, 51.0, 51.0, 51.0],
+        }
+    )
     rows = ClickHouseGraphSnapshot(reader).read("corridor_places", {"query": query})
     assert [row[0] for row in rows] == expected
     assert "," not in reader.arrow.call_args.args[1]["pattern"]
@@ -39,14 +46,24 @@ def test_market_city_is_preferred_over_villages_with_the_same_name() -> None:
     reader = Mock()
     reader.rows.return_value = [{"value": "test"}]
     reader.arrow.side_effect = [
-        pa.table({
-            "point_id": ["1", "2"], "settlement": ["деревня Москва", "деревня Москва"],
-            "region": ["Кировская область", "Тверская область"], "lon": [1., 2.], "lat": [1., 2.],
-        }),
-        pa.table({
-            "oktmo_from": ["45000000000"], "city_from": ["Москва"], "region_from": ["Москва"],
-            "lon_from": [37.6], "lat_from": [55.7],
-        }),
+        pa.table(
+            {
+                "point_id": ["1", "2"],
+                "settlement": ["деревня Москва", "деревня Москва"],
+                "region": ["Кировская область", "Тверская область"],
+                "lon": [1.0, 2.0],
+                "lat": [1.0, 2.0],
+            }
+        ),
+        pa.table(
+            {
+                "oktmo_from": ["45000000000"],
+                "city_from": ["Москва"],
+                "region_from": ["Москва"],
+                "lon_from": [37.6],
+                "lat_from": [55.7],
+            }
+        ),
     ]
     rows = ClickHouseGraphSnapshot(reader).read("corridor_places", {"query": "Москва"})
     assert [row[0] for row in rows] == ["45000000000"]
@@ -57,11 +74,18 @@ def test_colloquial_region_qualifier_is_mapped_to_graph_region() -> None:
     reader.rows.return_value = [{"value": "test"}]
     reader.arrow.side_effect = [
         pa.table({"region": ["Республика Саха (Якутия)", "Республика Тыва"]}),
-        pa.table({
-            "point_id": ["1", "2"], "settlement": ["г. Нюрба", "г. Нюрба"],
-            "region": ["Республика Саха (Якутия)", "Другой край"], "lon": [1., 2.], "lat": [1., 2.],
-        }),
-        pa.table({"oktmo_from": [], "city_from": [], "region_from": [], "lon_from": [], "lat_from": []}),
+        pa.table(
+            {
+                "point_id": ["1", "2"],
+                "settlement": ["г. Нюрба", "г. Нюрба"],
+                "region": ["Республика Саха (Якутия)", "Другой край"],
+                "lon": [1.0, 2.0],
+                "lat": [1.0, 2.0],
+            }
+        ),
+        pa.table(
+            {"oktmo_from": [], "city_from": [], "region_from": [], "lon_from": [], "lat_from": []}
+        ),
     ]
     rows = ClickHouseGraphSnapshot(reader).read("corridor_places", {"query": "Нюрба, Якутия"})
     assert [row[0] for row in rows] == ["1"]

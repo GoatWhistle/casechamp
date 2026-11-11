@@ -16,12 +16,20 @@ class FileAirportRepository:
             lat, lon = number(row, "latitude"), number(row, "longitude")
             if lat is None or lon is None or not -90 <= lat <= 90 or not -180 <= lon <= 180:
                 raise DataUnavailable("Airport coordinates are invalid")
-            airports.append(Airport(
-                text(row, "id") or "", text(row, "name") or "", text(row, "municipality") or "",
-                text(row, "iata") or "", lat, lon, row.get("scheduled") is True,
-                text(row, "kind") or "",
-            ))
+            airports.append(
+                Airport(
+                    text(row, "id") or "",
+                    text(row, "name") or "",
+                    text(row, "municipality") or "",
+                    text(row, "iata") or "",
+                    lat,
+                    lon,
+                    row.get("scheduled") is True,
+                    text(row, "kind") or "",
+                )
+            )
         if not airports:
             raise DataUnavailable("Airport catalog is empty")
-        return AirportCatalog(airports, [], text(document, "source_url") or "",
-                              text(document, "retrieved_at") or "")
+        return AirportCatalog(
+            airports, [], text(document, "source_url") or "", text(document, "retrieved_at") or ""
+        )

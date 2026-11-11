@@ -23,7 +23,9 @@ def test_vladimir_rail_models_have_coordinates_and_unknown_frequency(client: Tes
     assert all(link["freq_per_week"] is None and not link["freq_assumed"] for link in links)
     assert all(link[end]["lat"] is not None for link in links for end in ("from", "to"))
     assert all(link[end]["lon"] is not None for link in links for end in ("from", "to"))
-    assert all(link["source_url"] == "https://tochno.st/datasets/intercity_connectivity" for link in links)
+    assert all(
+        link["source_url"] == "https://tochno.st/datasets/intercity_connectivity" for link in links
+    )
 
 
 def test_yakutia_real_chains_keep_unknown_calendar(client: TestClient) -> None:
@@ -39,13 +41,21 @@ def test_yakutia_real_chains_keep_unknown_calendar(client: TestClient) -> None:
     assert len(included) == 2
 
 
-def test_airline_import_keeps_known_frequency_without_conflicting_flights(client: TestClient) -> None:
-    links = client.get("/api/v1/regions/92000000/links?mode=air&season=winter&include_unknown=true").json()
-    scheduled = [link for link in links if link["source_url"] == "https://www.uvtaero.ru/raspisanie"]
+def test_airline_import_keeps_known_frequency_without_conflicting_flights(
+    client: TestClient,
+) -> None:
+    links = client.get(
+        "/api/v1/regions/92000000/links?mode=air&season=winter&include_unknown=true"
+    ).json()
+    scheduled = [
+        link for link in links if link["source_url"] == "https://www.uvtaero.ru/raspisanie"
+    ]
     assert scheduled
     assert all(not link["is_model"] and not link["freq_assumed"] for link in scheduled)
     assert all(0 < link["freq_per_week"] <= 7 for link in scheduled)
-    assert not any("RT535" in link["freq_note"] or "RT536" in link["freq_note"] for link in scheduled)
+    assert not any(
+        "RT535" in link["freq_note"] or "RT536" in link["freq_note"] for link in scheduled
+    )
     assert len({link["id"] for link in scheduled}) == len(scheduled)
 
 

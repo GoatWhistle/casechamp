@@ -60,7 +60,9 @@ def build_atlas_routers(repository: AtlasRepository) -> list[APIRouter]:
     ]
 
 
-def create_app(settings: Settings | None = None, *, scenario_repository: ScenarioRepository | None = None) -> FastAPI:
+def create_app(
+    settings: Settings | None = None, *, scenario_repository: ScenarioRepository | None = None
+) -> FastAPI:
     config = settings or load_settings(os.environ)
     reader = ClickHouseReader(
         config.clickhouse_url or "http://127.0.0.1:18123",
@@ -124,7 +126,9 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
         build_api_router(
             *build_atlas_routers(atlas),
             build_airports_router(AirportQueries(ClickHouseAirportRepository(atlas), atlas)),
-            build_accessibility_router(AccessibilityQueries(ClickHouseAccessibilityRepository(reader), atlas)),
+            build_accessibility_router(
+                AccessibilityQueries(ClickHouseAccessibilityRepository(reader), atlas)
+            ),
             build_scenarios_router(scenarios),
             build_sensitivity_router(sensitivity),
             build_chat_router(Chat(gateway, analysis)),

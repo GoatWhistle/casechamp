@@ -55,7 +55,9 @@ class DeltaBase:
             raise InvalidQuery("Unknown graph node")
         if node not in self.distances:
             self.distances[node] = dijkstra(
-                self.graph, directed=True, indices=node,
+                self.graph,
+                directed=True,
+                indices=node,
                 limit=np.inf if self.data.modern_model else 72.0,
             )
             while len(self.distances) > 8:

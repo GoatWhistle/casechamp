@@ -45,12 +45,14 @@ class CorridorTools:
     def close_road_corridor(self, ctx: RunContext[ChatRun], corridor_ids: list[str]) -> str:
         try:
             jobs = self.corridors.close(corridor_ids)
-            ctx.deps.pending.append(ChatEvent(
-                "calculation",
-                calculation=CorridorCalculation(
-                    self.corridors.combined(corridor_ids), [j.id for j in jobs]
-                ),
-            ))
+            ctx.deps.pending.append(
+                ChatEvent(
+                    "calculation",
+                    calculation=CorridorCalculation(
+                        self.corridors.combined(corridor_ids), [j.id for j in jobs]
+                    ),
+                )
+            )
             return json.dumps(
                 [
                     {

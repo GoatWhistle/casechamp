@@ -66,7 +66,9 @@ def test_settlement_effects_include_transit_origins() -> None:
     base.data = SimpleNamespace(modern_model=False)
     base.region.return_value = region
     base.terminal.side_effect = lambda node, _: terminals[node]
-    result = DeltaCalculation(base).calculate("region", RoadAddition(0, 2, 1.0), None, lambda _: None)
+    result = DeltaCalculation(base).calculate(
+        "region", RoadAddition(0, 2, 1.0), None, lambda _: None
+    )
     effects = {item.point_id: item for item in result.settlement_effects}
     assert set(effects) == {"endpoint-a", "neighbor"}
     assert effects["neighbor"].after == pytest.approx(100 * np.exp(-np.log(2) / 2 * 3))

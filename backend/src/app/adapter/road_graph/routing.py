@@ -68,8 +68,10 @@ class GraphRouting:
         if scenario != "road":
             manual = self.data.read(
                 "manual_v2" if modern else "manual",
-                {"season": scenario.removeprefix("road_"),
-                 "road_only": int(scenario.startswith("road_"))},
+                {
+                    "season": scenario.removeprefix("road_"),
+                    "road_only": int(scenario.startswith("road_")),
+                },
             )
         if not links:
             return trunk, manual
@@ -81,11 +83,16 @@ class GraphRouting:
         links = canonical_links(links, [str(c[0]) for c in self.data.read("cities")])
         intercity = any(link.network == "intercity" for link in links)
         if intercity and self.data.modern_model and scenario.startswith("road"):
-            raise InvalidQuery("В этой модели нет межгородских ж/д и авиасвязей в дорожном сценарии")
+            raise InvalidQuery(
+                "В этой модели нет межгородских ж/д и авиасвязей в дорожном сценарии"
+            )
         points = {str(p[0]) for p in self.data.read("points")}
         unknown = [
-            end for link in links if link.network == "local"
-            for end in (link.source, link.target) if end != "*" and end not in points
+            end
+            for link in links
+            if link.network == "local"
+            for end in (link.source, link.target)
+            if end != "*" and end not in points
         ]
         if unknown:
             raise InvalidQuery(
@@ -173,13 +180,14 @@ class GraphRouting:
         road = np.empty((len(on), len(cities)), dtype=np.float32)
         city_road = np.empty((len(cities), len(cities)))
         origin_rows = {
-            point: i for i, point in enumerate(
-                p for p, _ in origins if p in lookup and lookup[p][0] >= 0
-            )
+            point: i
+            for i, point in enumerate(p for p, _ in origins if p in lookup and lookup[p][0] >= 0)
         }
-        targets = np.unique(np.concatenate([
-            np.array([v[0] for v in lookup.values() if v[0] >= 0], dtype=np.int64), city_nodes
-        ]))
+        targets = np.unique(
+            np.concatenate(
+                [np.array([v[0] for v in lookup.values() if v[0] >= 0], dtype=np.int64), city_nodes]
+            )
+        )
         key = None if addition else (scenario, tuple(changes), tuple(links or ()))
         every = self.searches.get(key)
         if every is None:

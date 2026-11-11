@@ -16,15 +16,24 @@ def test_sensitivity_matches_independent_od_recalculation(monkeypatch: pytest.Mo
     normalization = 1234.0
 
     def raw(scale: float) -> float:
-        return sum(weight * sum(mass * 2 ** (-scale * time / 2)
-                                for time, mass in zip(row, markets, strict=True))
-                   for row, weight in zip(times, origins, strict=True)) / sum(origins)
+        return sum(
+            weight
+            * sum(mass * 2 ** (-scale * time / 2) for time, mass in zip(row, markets, strict=True))
+            for row, weight in zip(times, origins, strict=True)
+        ) / sum(origins)
 
-    index = IndexRecord("18000000", "road_summer", raw(1) / normalization * 100,
-                        hansen_1h=raw(2), hansen_2h=raw(1), hansen_4h=raw(0.5))
+    index = IndexRecord(
+        "18000000",
+        "road_summer",
+        raw(1) / normalization * 100,
+        hansen_1h=raw(2),
+        hansen_2h=raw(1),
+        hansen_4h=raw(0.5),
+    )
     monkeypatch.setattr(repository, "indices", lambda: [index])
-    result = AccessibilitySensitivity(repository).evaluate("18000000", Season.SUMMER,
-                                                           NetworkMode.ROAD)
+    result = AccessibilitySensitivity(repository).evaluate(
+        "18000000", Season.SUMMER, NetworkMode.ROAD
+    )
     for point in result.points:
         assert math.isclose(point.hansen, raw(point.time_multiplier) / normalization * 100)
     assert not result.graph_recomputed

@@ -30,14 +30,6 @@ def inside(point: tuple[float, float], ring: list[tuple[float, float]]) -> bool:
     return hit
 
 
-
-
-
-
-
-
-
-
 def test_boundaries_from_fixture_carry_mainland_bounds(tmp_path: Path) -> None:
     write_dataset(tmp_path)
     repository = JsonAtlasRepository(tmp_path)
@@ -45,9 +37,9 @@ def test_boundaries_from_fixture_carry_mainland_bounds(tmp_path: Path) -> None:
     shape = repository.boundaries()[0]
     assert (shape.id, shape.name) == ("R1", "A")
     assert shape.bounds == (60.0, 50.0, 70.0, 60.0)
-    assert shape.polygons == [[[(60.0, 50.0), (70.0, 50.0), (70.0, 60.0), (60.0, 60.0), (60.0, 50.0)]]]
-
-
+    assert shape.polygons == [
+        [[(60.0, 50.0), (70.0, 50.0), (70.0, 60.0), (60.0, 60.0), (60.0, 50.0)]]
+    ]
 
 
 def test_settlements_are_projected_and_cached(tmp_path: Path) -> None:

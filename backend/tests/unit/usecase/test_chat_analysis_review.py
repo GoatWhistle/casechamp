@@ -30,7 +30,13 @@ def review_request() -> ChatRequest:
 def analysis_job() -> AnalysisJob:
     road = Candidate(100, "Road A", 4, 1, 0, False)
     return AnalysisJob(
-        "job", "16", "Region", "improvement", 20, "snapshot", status="paused",
+        "job",
+        "16",
+        "Region",
+        "improvement",
+        20,
+        "snapshot",
+        status="paused",
         results=[VerifiedRoad(road, 100, 100.2, 0.2, 500, 0, 1)],
     )
 

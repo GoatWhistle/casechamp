@@ -49,11 +49,17 @@ class AirportQueries:
         catalog = self.repository.catalog()
         eligible = [airport for airport in catalog.airports if airport.scheduled]
         point_ids = {
-            point_id for link in self.atlas.links() if link.mode is Mode.AIR
+            point_id
+            for link in self.atlas.links()
+            if link.mode is Mode.AIR
             for point_id in (link.from_id, link.to_id)
         }
-        model_ids = {point_id for link in self.atlas.links() if link.mode is Mode.AIR and link.is_model
-                     for point_id in (link.from_id, link.to_id)}
+        model_ids = {
+            point_id
+            for link in self.atlas.links()
+            if link.mode is Mode.AIR and link.is_model
+            for point_id in (link.from_id, link.to_id)
+        }
         assignments = []
         for point in self.atlas.points().values():
             if point.id not in point_ids or not eligible:
@@ -63,8 +69,11 @@ class AirportQueries:
                 airport = named[0]
                 distance = airport_distance(point, airport.latitude, airport.longitude)
                 if distance <= 100:
-                    assignments.append(AirportAssignment(point.id, airport.id, distance,
-                                                         "unique_municipality_within_100km"))
+                    assignments.append(
+                        AirportAssignment(
+                            point.id, airport.id, distance, "unique_municipality_within_100km"
+                        )
+                    )
                     continue
             if point.id not in model_ids:
                 continue
@@ -73,4 +82,6 @@ class AirportQueries:
             )
             if distance <= 150:
                 assignments.append(AirportAssignment(point.id, airport_id, distance))
-        return AirportCatalog(catalog.airports, assignments, catalog.source_url, catalog.retrieved_at)
+        return AirportCatalog(
+            catalog.airports, assignments, catalog.source_url, catalog.retrieved_at
+        )

@@ -15,4 +15,8 @@ def settings() -> Settings:
 
 def atlas_repository() -> ClickHouseAtlasRepository:
     config = settings()
-    return ClickHouseAtlasRepository(ClickHouseReader(config.clickhouse_url or "", config.clickhouse_user, config.clickhouse_password))
+    return ClickHouseAtlasRepository(
+        ClickHouseReader(
+            config.clickhouse_url or "", config.clickhouse_user, config.clickhouse_password
+        )
+    )

@@ -53,6 +53,8 @@ def test_saved_analysis_details_remain_readable() -> None:
 
 
 def test_indexed_search_normalization_matches_domain_for_every_name() -> None:
-    rows = atlas_repository().reader.rows("SELECT name,name_key FROM plexus_atlas.atlas_settlements", {})
+    rows = atlas_repository().reader.rows(
+        "SELECT name,name_key FROM plexus_atlas.atlas_settlements", {}
+    )
     assert len(rows) == 155412
     assert all(normalize_name(row["name"]) == row["name_key"] for row in rows)

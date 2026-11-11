@@ -25,9 +25,16 @@ def shared_reference(references: set[str], requested: str) -> list[str]:
     direct = sorted(part for part in parts if reference_key(part) == wanted)
     if direct:
         return direct
-    common = set.intersection(
-        *({reference_key(part) for part in reference_parts(reference)} for reference in references)
-    ) if references else set()
+    common = (
+        set.intersection(
+            *(
+                {reference_key(part) for part in reference_parts(reference)}
+                for reference in references
+            )
+        )
+        if references
+        else set()
+    )
     if len(common) == 1:
         key = next(iter(common))
         return sorted(part for part in parts if reference_key(part) == key)

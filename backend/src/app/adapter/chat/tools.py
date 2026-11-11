@@ -41,26 +41,32 @@ class AtlasTools:
     def register(self, agent: Agent[ChatRun, str]) -> None:
         MapTools(self._regions).register(agent)
         self._calculations.register(agent)
-        agent.tool(sequential=True, description="List all regions with indices, coverage and data versions.")(
-            self.list_regions
-        )
-        agent.tool(sequential=True, description="Read regional transport links with sources and frequencies.")(
-            self.region_links
-        )
-        agent.tool(sequential=True, description="Read largest regional settlements or filter them by name.")(
-            self.region_settlements
-        )
+        agent.tool(
+            sequential=True,
+            description="List all regions with indices, coverage and data versions.",
+        )(self.list_regions)
+        agent.tool(
+            sequential=True,
+            description="Read regional transport links with sources and frequencies.",
+        )(self.region_links)
+        agent.tool(
+            sequential=True, description="Read largest regional settlements or filter them by name."
+        )(self.region_settlements)
         agent.tool(sequential=True, description="Find region and settlement identifiers by name.")(
             self.search_places
         )
-        agent.tool(sequential=True, description="Read atlas sources and data periods.")(self.sources)
-        agent.tool(sequential=True, 
+        agent.tool(sequential=True, description="Read atlas sources and data periods.")(
+            self.sources
+        )
+        agent.tool(
+            sequential=True,
             description="Compute a sorted regional comparison table from atlas data. "
-            "Use for rankings and comparisons. Empty region_ids selects all regions."
+            "Use for rankings and comparisons. Empty region_ids selects all regions.",
         )(self.compare_regions)
-        agent.tool(sequential=True, 
+        agent.tool(
+            sequential=True,
             description="Display a bar chart from an existing table_id and its columns. "
-            "Never supply invented numbers; use compare_regions or region_settlements first."
+            "Never supply invented numbers; use compare_regions or region_settlements first.",
         )(self.show_chart)
 
     def list_regions(self, ctx: RunContext[ChatRun]) -> str:

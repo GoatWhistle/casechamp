@@ -6,9 +6,13 @@ from app.usecase.sensitivity import AccessibilitySensitivity, SensitivityResult
 
 
 def build_sensitivity_router(sensitivity: AccessibilitySensitivity) -> APIRouter:
-    router = APIRouter(tags=["scenarios"], responses={
-        404: {"model": ErrorResponse}, 503: {"model": ErrorResponse},
-    })
+    router = APIRouter(
+        tags=["scenarios"],
+        responses={
+            404: {"model": ErrorResponse},
+            503: {"model": ErrorResponse},
+        },
+    )
 
     @router.get("/regions/{region_id}/sensitivity", response_model=SensitivityResult)
     def evaluate(

@@ -26,7 +26,8 @@ class ChatMap:
         if not 1 <= len(ids) <= 30:
             raise ValueError("Focus requires between 1 and 30 regions")
         available = {
-            row.id for row in self._regions.summaries(Season.SUMMER, NetworkMode.ROAD)
+            row.id
+            for row in self._regions.summaries(Season.SUMMER, NetworkMode.ROAD)
             if row.has_geometry
         }
         if set(ids) - available:
