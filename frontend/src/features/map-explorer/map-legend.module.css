@@ -80,7 +80,13 @@
 .symbols {
   composes: bareList from "../../shared/styles/compose.module.css";
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(
+      auto-fit,
+      minmax(
+        min(100%, max(calc((100% - var(--space-12)) / 2), calc(var(--font-size-caption) * 10))),
+        1fr
+      )
+    );
   gap: var(--space-4) var(--space-12);
 }
 

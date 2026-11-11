@@ -369,3 +369,23 @@ Chat auth remains connected through ignored local override, no model prompts sen
 Separate /scenarios still lacks plexus_scenario data. Details and evidence:
 work/screens/map-controls-fix.md, /tmp/casechamp-ui-fix/. No remaining work on these two fixes.
 Protected instruction history exceeds SESSION target and is preserved verbatim.
+
+## Diagonal legend sizing, 2026-11-11
+
+> надо чтобы можно было по диагонали двигать эту панельку
+
+> Растягивать панель за угол
+
+> и сужать
+
+The clarification means resizing width and height together, including shrinking. Free panel
+movement was discarded before committing. Same branch feat/map-first-ui; pre-commit Git
+checkpoint87c2398bf2c35ff66401c3f11199c2ecd90f0bf5. Commit as Andrey; no push.
+Upper-right handle grows up/right and shrinks down/left, keeping the lower-left anchor fixed.
+Minimum240x160; max width480 and height limited by viewport. Body scrolls when short; both
+dimensions persist. Arrows/Shift resize, Home/double-click reset, Escape cancels a drag.
+Six browser tests pass after correcting fractional-height expectations; desktop1440/1920
+visuals and legend axe pass. Full frontend verification passes:435tests, rules, types, lint,
+build. Final frontend image is deployed on8080; the running image matches the build and
+production browser checks confirm the corner handle, growth and shrinking. Backend and data
+unchanged. Details: work/screens/map-controls-fix.md.

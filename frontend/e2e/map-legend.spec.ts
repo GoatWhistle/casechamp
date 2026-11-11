@@ -79,4 +79,130 @@ test("legend remains operable with reduced motion and blocked storage", async ({
   await resize.focus()
   await page.keyboard.press("End")
   await expect(resize).toHaveAttribute("aria-valuenow", "480")
+  const corner = page.getByRole("button", { name: map.legend.resizeBoth })
+  const before = await legend.boundingBox()
+  if (!before) throw new Error("Legend is missing")
+  await corner.focus()
+  await page.keyboard.press("ArrowUp")
+  await expect
+    .poll(async () => (await legend.boundingBox())?.height)
+    .toBe(Math.round(before.height) + 16)
+})
+
+test("legend grows and shrinks diagonally while its lower-left corner stays fixed", async ({
+  page,
+}) => {
+  await page.goto("/")
+  const legend = page.getByRole("figure", { name: data.metric.hansen, exact: true })
+  const corner = page.getByRole("button", { name: map.legend.resizeBoth })
+  await expect(legend).toBeVisible()
+  const before = await legend.boundingBox()
+  const handle = await corner.boundingBox()
+  if (!before || !handle) throw new Error("Legend resize control is missing")
+  await page.mouse.move(handle.x + handle.width / 2, handle.y + handle.height / 2)
+  await page.mouse.down()
+  await page.mouse.move(handle.x + handle.width / 2 + 100, handle.y + handle.height / 2 - 120, {
+    steps: 8,
+  })
+  await page.mouse.up()
+  await expect.poll(async () => (await legend.boundingBox())?.width).toBe(420)
+  await expect
+    .poll(async () => (await legend.boundingBox())?.height)
+    .toBe(Math.round(before.height) + 120)
+  await expect.poll(async () => (await legend.boundingBox())?.x).toBe(before.x)
+  await expect
+    .poll(async () => {
+      const box = await legend.boundingBox()
+      return box ? box.y + box.height : null
+    })
+    .toBe(before.y + before.height)
+  const grownHandle = await corner.boundingBox()
+  if (!grownHandle) throw new Error("Legend resize control is missing")
+  await page.mouse.move(
+    grownHandle.x + grownHandle.width / 2,
+    grownHandle.y + grownHandle.height / 2,
+  )
+  await page.mouse.down()
+  await page.mouse.move(
+    grownHandle.x + grownHandle.width / 2 - 180,
+    grownHandle.y + grownHandle.height / 2 + 250,
+    { steps: 8 },
+  )
+  await page.mouse.up()
+  await expect.poll(async () => (await legend.boundingBox())?.width).toBe(240)
+  await expect.poll(async () => (await legend.boundingBox())?.height).toBe(160)
+  const scrollable = () =>
+    legend.evaluate((element) =>
+      [...element.querySelectorAll("div")].some(
+        (node) =>
+          getComputedStyle(node).overflowY === "auto" && node.scrollHeight > node.clientHeight,
+      ),
+    )
+  await expect.poll(scrollable).toBe(true)
+  await page.getByRole("button", { name: map.legend.collapse }).click()
+  await expect(legend).toHaveCount(0)
+  await page.reload()
+  await page.getByRole("button", { name: map.legend.open }).press("Enter")
+  await expect.poll(async () => (await legend.boundingBox())?.width).toBe(240)
+  await expect.poll(async () => (await legend.boundingBox())?.height).toBe(160)
+})
+
+test("legend corner supports keyboard resizing, cancellation and automatic size reset", async ({
+  page,
+}) => {
+  await page.goto("/")
+  const legend = page.getByRole("figure", { name: data.metric.hansen, exact: true })
+  const corner = page.getByRole("button", { name: map.legend.resizeBoth })
+  await expect(legend).toBeVisible()
+  const before = await legend.boundingBox()
+  const handle = await corner.boundingBox()
+  if (!before || !handle) throw new Error("Legend resize control is missing")
+  await page.mouse.move(handle.x + handle.width / 2, handle.y + handle.height / 2)
+  await page.mouse.down()
+  await page.mouse.move(handle.x + handle.width / 2 + 100, handle.y + handle.height / 2 - 100, {
+    steps: 5,
+  })
+  await expect
+    .poll(async () => (await legend.boundingBox())?.height)
+    .toBe(Math.round(before.height) + 100)
+  await page.keyboard.press("Escape")
+  await page.mouse.up()
+  await expect.poll(async () => (await legend.boundingBox())?.height).toBe(before.height)
+  await expect.poll(async () => (await legend.boundingBox())?.width).toBe(before.width)
+  await corner.focus()
+  await page.keyboard.press("ArrowRight")
+  await page.keyboard.press("Shift+ArrowUp")
+  await expect.poll(async () => (await legend.boundingBox())?.width).toBe(before.width + 16)
+  await expect
+    .poll(async () => (await legend.boundingBox())?.height)
+    .toBe(Math.round(before.height) + 64)
+  await page.keyboard.press("ArrowDown")
+  await expect
+    .poll(async () => (await legend.boundingBox())?.height)
+    .toBe(Math.round(before.height) + 48)
+  await page.keyboard.press("Home")
+  await expect.poll(async () => (await legend.boundingBox())?.width).toBe(before.width)
+  await expect.poll(async () => (await legend.boundingBox())?.height).toBe(before.height)
+})
+
+test("legend corner clamps dimensions to the viewport and resets on double click", async ({
+  page,
+}) => {
+  await page.goto("/")
+  const legend = page.getByRole("figure", { name: data.metric.hansen, exact: true })
+  const corner = page.getByRole("button", { name: map.legend.resizeBoth })
+  await expect(legend).toBeVisible()
+  const handle = await corner.boundingBox()
+  if (!handle) throw new Error("Legend resize control is missing")
+  await page.mouse.move(handle.x + handle.width / 2, handle.y + handle.height / 2)
+  await page.mouse.down()
+  await page.mouse.move(1400, 0, { steps: 8 })
+  await page.mouse.up()
+  await expect.poll(async () => (await legend.boundingBox())?.width).toBe(480)
+  await page.setViewportSize({ width: 1200, height: 720 })
+  await expect.poll(async () => (await legend.boundingBox())?.height).toBe(528)
+  await expect.poll(async () => (await legend.boundingBox())?.y).toBeGreaterThan(64)
+  await corner.dblclick()
+  await expect.poll(async () => (await legend.boundingBox())?.width).toBe(320)
+  await expect.poll(async () => (await legend.boundingBox())?.height).toBeLessThan(400)
 })

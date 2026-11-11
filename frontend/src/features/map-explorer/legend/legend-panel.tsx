@@ -12,6 +12,7 @@ import { useTranslation } from "@/shared/i18n"
 import { usePresence } from "@/shared/motion"
 import { Button, PanelResizer, ScrollArea, Tooltip } from "@/shared/ui"
 import styles from "./legend-panel.module.css"
+import { useLegendResize } from "./use-legend-resize"
 
 const COLLAPSED_KEY = "plexus.map-legend-collapsed"
 const WIDTH_KEY = "plexus.map-legend-width"
@@ -33,6 +34,7 @@ export function LegendPanel({ title, children }: LegendPanelProps) {
   const { t } = useTranslation()
   const id = useId()
   const host = useRef<HTMLDivElement>(null)
+  const panel = useRef<HTMLElement>(null)
   const trigger = useRef<HTMLButtonElement>(null)
   const collapse = useRef<HTMLButtonElement>(null)
   const restoreFocus = useRef(false)
@@ -45,6 +47,7 @@ export function LegendPanel({ title, children }: LegendPanelProps) {
     maxToken: "--legend-max-width",
     maxShare: 1,
   })
+  const resize = useLegendResize(panel, size)
 
   const toggle = (event: MouseEvent<HTMLButtonElement>) => {
     restoreFocus.current = true
@@ -89,8 +92,10 @@ export function LegendPanel({ title, children }: LegendPanelProps) {
       ) : null}
       {presence.mounted ? (
         <figure
+          ref={panel}
           id={id}
           className={styles.panel}
+          style={{ blockSize: resize.height }}
           aria-label={title}
           inert={!open}
           data-state={presence.state}
@@ -108,6 +113,17 @@ export function LegendPanel({ title, children }: LegendPanelProps) {
                 aria-expanded={open}
                 aria-controls={id}
                 onClick={toggle}
+              >
+                {null}
+              </Button>
+            </Tooltip>
+            <Tooltip content={t("map:legend.resizeHint")}>
+              <Button
+                className={styles.corner}
+                variant="ghost"
+                icon="resize-diagonal"
+                aria-label={t("map:legend.resizeBoth")}
+                {...resize.handlers}
               >
                 {null}
               </Button>

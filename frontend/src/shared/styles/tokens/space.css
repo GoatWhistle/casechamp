@@ -59,6 +59,8 @@
   --legend-width: 240px;
   --legend-default-width: 320px;
   --legend-max-width: 480px;
+  --legend-min-height: 160px;
+  --legend-max-height: calc(100dvh - var(--header-height) - var(--space-64) * 2);
   --formula-art: 320px;
   --sheet-width: 440px;
   --listbox-max-height: 320px;
