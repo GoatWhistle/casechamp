@@ -101,9 +101,7 @@ describe("link change copy", () => {
         fill(graph.links.remove.ferry, { source: "Khoro", target: "Nyurba" }),
       ),
     ).toBeTruthy()
-    expect(
-      screen.getByText(graph.summary.links_one.replace("{{count, number}}", "1")),
-    ).toBeTruthy()
+    expect(screen.getByText(graph.summary.links_one.replace("{{count, number}}", "1"))).toBeTruthy()
     expect(screen.getByText(graph.summer)).toBeTruthy()
     const roadCount = graph.summary.roads_one.split(",")[1]?.split("{{")[0]?.trim() ?? ""
     expect(document.body.textContent).not.toContain(roadCount)
