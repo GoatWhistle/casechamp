@@ -349,25 +349,7 @@ The separate /scenarios laboratory still lacks its plexus_scenario matrices.
 
 > исправляй в этой же ветке и комиты от лица андрея сейчас в вкладке источники я переходя по вкладкам тыкая туда там полоса на всю панель расширяется также доступность рынков на карте вот эта залупка маленькая надо чтобы ее можно было сужать расширять или вобще свернуть пусть она в кружок сворачивается с каким то символом котоырй по логике продукта подходит подумай какой сделать или омжет какой то общепринятиый
 
-Latest request authorizes commits on feat/map-first-ui as Andrey, superseding the earlier
-no-commit instruction; no push requested. Author/committer use command-scoped
-andreysk0304 <andreysk0304@yandex.ru>, matching recent history; global identity unchanged.
-Pre-commit checkpoint from Git: 1401e3b3333503a247b2d6bdbcd94c1e7224210b. Tab fix f3426cf,
-flight-test repair 7174c73 and formatting 1401e3b are committed; legend changes accompany
-this note. No user work was discarded during this task.
-
-Tabs now draw the selected border without a full-width animated indicator. Legend resizes
-240–480px (default320), collapses into a48px Layers2 button, saves width/state and restores
-focus. Shared splitter retains right-sidebar direction. Keyboard and reduced motion work.
-Full npm run verify passes:36rules, types, lint,435tests/64files, production build. Four
-Chromium cases pass; desktop1440/1920 visual checks and interrupted toggles pass; legend axe
-has zero violations, no page errors. Initial splitter hit-area overlap was fixed and rerun.
-No mobile checks per standing instruction. Existing chunk-size warning remains.
-
-Only frontend rebuilt through Compose on8080; backend and ClickHouse remain healthy.
-Chat auth remains connected through ignored local override, no model prompts sent.
-Separate /scenarios still lacks plexus_scenario data. Details and evidence:
-work/screens/map-controls-fix.md, /tmp/casechamp-ui-fix/. No remaining work on these two fixes.
+Completed implementation and checks: [map controls record](../work/screens/map-controls-fix.md).
 Protected instruction history exceeds SESSION target and is preserved verbatim.
 
 ## Diagonal legend sizing, 2026-11-11
@@ -377,18 +359,6 @@ Protected instruction history exceeds SESSION target and is preserved verbatim.
 > Растягивать панель за угол
 
 > и сужать
-
-The clarification means resizing width and height together, including shrinking. Free panel
-movement was discarded before committing. Same branch feat/map-first-ui; pre-commit Git
-checkpoint87c2398bf2c35ff66401c3f11199c2ecd90f0bf5. Commit as Andrey; no push.
-Upper-right handle grows up/right and shrinks down/left, keeping the lower-left anchor fixed.
-Minimum240x160; max width480 and height limited by viewport. Body scrolls when short; both
-dimensions persist. Arrows/Shift resize, Home/double-click reset, Escape cancels a drag.
-Six browser tests pass after correcting fractional-height expectations; desktop1440/1920
-visuals and legend axe pass. Full frontend verification passes:435tests, rules, types, lint,
-build. Final frontend image is deployed on8080; the running image matches the build and
-production browser checks confirm the corner handle, growth and shrinking. Backend and data
-unchanged. Details: work/screens/map-controls-fix.md.
 
 ## Legend border interaction, 2026-11-11
 
@@ -401,3 +371,51 @@ explicit request, accessible labels retained. Full frontend verification and six
 pass; desktop1440/1920 visual checks and legend axe pass. Updated frontend is deployed on8080;
 production checks confirm edge resizing, missing arrow button/tooltips and working collapse.
 All three services healthy. Commit as Andrey; no push. Evidence: work/screens/map-controls-fix.md.
+
+## Frontend publication
+
+> запуш
+
+The six verified map-control commits were published as Andrey through4218fbf7a3b4d02052a6843fb28bfdf846b907d1.
+
+> а там что пушится паралельно
+
+The read-only check found no divergence, local Git process or GitHub Actions run.
+
+## Complete the map chat, 2026-11-11
+
+> посмотри ласт сессию клода доделай что он сделал и если код фронта готов залей его на 8000
+
+> просто любой другой порт выбери
+
+> Нужно восстановить авторизацию провайдера на сервере, затем повторить запрос. мне так в чате ответили
+
+> сделай чтобы заголовки чатов писались исходя из того что пишется в чате ну типо как в гпт чтобы было также
+
+> убери надпись ответ готов также щас сообщения от нейронки щас не выделены просто как по полотну настрато можешь их в какую то рамочку сделать но чтоыб не сильно глаза портило .
+
+> вкладка действия тоже нахуй не нужна убери и источники данные тоже . просто пусть это будет когда вот человек уже поулчил ответ и будет быстрое нажатие сообщений покажи источники и тогда этот ответ приходил
+
+> как все что я написал в чате доделаешь и проверишь запушь закомить от лица андрея
+
+Unified map chat and auth fix are published as Andrey in5aa8d1b/0612343 on feat/map-first-ui.
+Runtime8080 is healthy;8000 belongs to MASP/modus. Details and limitations:
+[chat workflow](../work/screens/chat-workflow.md).
+Protected user instructions exceed the SESSION target and remain verbatim.
+
+> смотри щас я когда источники попросил заголовок стал про источникик пусть он один раз делается и все .
+
+> также я не могу чат листать вверх когда я попросил источник у чата
+
+> еще пока я чат листая постоянно появляются белая пустота в нем . это не надо испрвь
+
+Final source checkpoint af825ca2b84e9a7d174bdb051c2fc2f385b93c82 on feat/map-first-ui,2026-11-12.
+Title fix088c141 and scroll/paint fixaf825ca are committed as Andrey. Titles are initial-question
+only; manual upward scrolling interrupts following; long answers have no blur/transform.
+Frontend verify427 tests, backend Ruff/mypy and257 tests pass; five map E2E cases pass.
+The deployed8080 build passes the long-source-answer browser check: stable title, stable reading
+position, Home/End behavior and three inspected scroll positions without gaps. No live model
+test prompts were sent. Code work is complete; publication target is origin/feat/map-first-ui.
+Preserve command-scoped author/committer andreysk0304 <andreysk0304@yandex.ru>.
+Limitations: full road rendering at1920 exceeded45s; /scenarios matrices remain unavailable.
+Evidence, negative checks and runtime details are in the chat workflow record.
