@@ -16,6 +16,9 @@
 .help {
   display: inline-flex;
   flex-shrink: 0;
+  block-size: 1lh;
+  align-items: center;
+  overflow: visible;
 }
 
 .value {

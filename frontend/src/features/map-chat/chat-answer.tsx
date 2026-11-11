@@ -7,6 +7,7 @@ import { ChatAnalysisCard } from "./analysis/chat-analysis-card"
 import { ChatArtifacts } from "./chat-artifacts"
 import { ChatCalculationCard } from "./chat-calculation-card"
 import { chatStatusKey } from "./chat-copy"
+import { ChatScenarioCard } from "./chat-scenario-card"
 import { presentMessage } from "./message-presentation"
 import type { ChatEntry } from "./use-map-chat"
 
@@ -54,6 +55,9 @@ export function ChatAnswer({
               autoFocus={autoFocus}
               onShow={onCalculation}
             />
+          ))}
+          {message.scenarios?.map((scenario) => (
+            <ChatScenarioCard key={scenario.job_ids.join("|")} scenario={scenario} />
           ))}
           {message.analyses?.map((analysis) => (
             <ChatAnalysisCard

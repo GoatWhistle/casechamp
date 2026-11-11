@@ -12,3 +12,8 @@
   flex-wrap: wrap;
   gap: var(--space-8);
 }
+.chip {
+  display: flex;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}

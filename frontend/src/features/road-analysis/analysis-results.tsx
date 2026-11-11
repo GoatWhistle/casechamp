@@ -18,13 +18,8 @@ export function AnalysisResults({
   const job = analysis.job
   if (!job) return null
   return (
-    <>
-      <strong>{job.region}</strong>
-      <p>
-        {t(job.mode === "criticality" ? "analysis:closureSpec" : "analysis:improvementSpec", {
-          percent: job.percent,
-        })}
-      </p>
+    <section className={styles.results} aria-label={job.region}>
+      <strong className={styles.region}>{job.region}</strong>
       <AnalysisProgress
         job={job}
         busy={analysis.busy}
@@ -61,6 +56,6 @@ export function AnalysisResults({
         />
       ) : null}
       <p className={styles.note}>{t("analysis:modelLimit")}</p>
-    </>
+    </section>
   )
 }

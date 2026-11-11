@@ -47,6 +47,7 @@ export const OsmMap = memo(function OsmMap({
     command,
     onSelect,
     onHover,
+    label,
   })
   const zoom = useMemo(() => controls(map.controls), [controls, map.controls])
   return (

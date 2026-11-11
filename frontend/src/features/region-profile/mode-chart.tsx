@@ -1,6 +1,6 @@
 import type { RegionDetail } from "@/entities/region"
 import { useFormatters, useTranslation } from "@/shared/i18n"
-import { Icon, PairedBars } from "@/shared/ui"
+import { EmptyState, Icon, PairedBars } from "@/shared/ui"
 import { TransportIcon } from "@/shared/ui/brand"
 import styles from "./mode-chart.module.css"
 
@@ -11,9 +11,13 @@ export interface ModeChartProps {
 export function ModeChart({ rows }: ModeChartProps) {
   const { t } = useTranslation()
   const f = useFormatters()
+  if (rows.every((mode) => mode.summer === 0 && mode.winter === 0))
+    return <EmptyState icon="link" title={t("profile:noModes")} />
   return (
     <PairedBars
       label={t("atlas:composition")}
+      nameMain={t("data:season.summer")}
+      nameAlt={t("data:season.winter")}
       legendMain={
         <>
           <Icon name="sun" size="sm" />

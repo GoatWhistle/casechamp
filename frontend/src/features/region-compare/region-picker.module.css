@@ -1,12 +1,14 @@
 .picker {
   display: flex;
+  flex: 1 1 auto;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: start;
+  min-inline-size: 0;
   gap: var(--space-12);
 }
 
 .field {
-  flex: 1 1 auto;
+  flex: 1 1 var(--field-max-width);
   min-inline-size: min(100%, var(--term-min));
   max-inline-size: var(--field-max-width);
 }
@@ -16,12 +18,17 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-8);
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  padding-block: calc((var(--control-height) - var(--control-height-compact)) / 2);
 }
 
 .chipSlot {
   display: inline-flex;
   align-items: center;
   gap: var(--space-8);
+  min-inline-size: 0;
+  max-inline-size: 100%;
 }
 
 .chipSlot::before {

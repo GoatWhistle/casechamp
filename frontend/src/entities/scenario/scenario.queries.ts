@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query"
-import { api, type components, unwrap } from "@/shared/api"
+import { api, type components, isApiError, shouldRetry, unwrap } from "@/shared/api"
 
 export type ScenarioCatalog = components["schemas"]["ScenarioCatalogResponse"]
 export type MarketCity = components["schemas"]["MarketCityResponse"]
@@ -10,11 +10,18 @@ export type ScenarioRegionImpact = components["schemas"]["RegionImpactResponse"]
 export type ScenarioSeason = ScenarioRequest["season"]
 export type ScenarioMode = ScenarioLink["mode"]
 
+const SCENARIO_DATA_MISSING = "data_unavailable"
+
+export function isScenarioDataMissing(error: unknown): boolean {
+  return isApiError(error) && error.code === SCENARIO_DATA_MISSING
+}
+
 export function useScenarioCatalog() {
   return useQuery({
     queryKey: ["scenario-catalog"],
     queryFn: ({ signal }) => unwrap(api.GET("/api/v1/scenarios", { signal })),
     staleTime: Number.POSITIVE_INFINITY,
+    retry: (count, error) => !isScenarioDataMissing(error) && shouldRetry(count, error),
   })
 }
 

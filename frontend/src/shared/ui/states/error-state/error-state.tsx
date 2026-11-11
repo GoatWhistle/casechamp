@@ -10,6 +10,7 @@ export interface ErrorStateProps {
   readonly description?: ReactNode | undefined
   readonly onRetry?: (() => void) | undefined
   readonly retryPending?: boolean | undefined
+  readonly action?: ReactNode
   readonly className?: string | undefined
 }
 
@@ -18,6 +19,7 @@ export function ErrorState({
   description,
   onRetry,
   retryPending = false,
+  action,
   className,
 }: ErrorStateProps) {
   const { t } = useTranslation()
@@ -26,17 +28,21 @@ export function ErrorState({
       <Icon name="alert" size="lg" className={styles.icon} />
       <p className={styles.title}>{title}</p>
       {description === undefined ? null : <p className={styles.description}>{description}</p>}
-      {onRetry === undefined ? null : (
-        <Button
-          variant="secondary"
-          size="compact"
-          icon="retry"
-          pending={retryPending}
-          onClick={onRetry}
-          className={styles.retry}
-        >
-          {t("common:action.retry")}
-        </Button>
+      {onRetry === undefined && action === undefined ? null : (
+        <div className={styles.actions}>
+          {onRetry === undefined ? null : (
+            <Button
+              variant="secondary"
+              size="compact"
+              icon="retry"
+              pending={retryPending}
+              onClick={onRetry}
+            >
+              {t("common:action.retry")}
+            </Button>
+          )}
+          {action}
+        </div>
       )}
     </div>
   )

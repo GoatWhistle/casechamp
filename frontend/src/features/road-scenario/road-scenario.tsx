@@ -1,99 +1,111 @@
-import { useState } from "react"
-import type { RoadGraphState } from "@/entities/road-graph"
+import { useEffect, useRef } from "react"
+import { type RoadGraphState, type ScenarioView, useScenarioView } from "@/entities/road-graph"
 import type { ChatContext } from "@/shared/api/chat-stream"
-import type { LinkChangeInput } from "@/shared/api/road-graph"
-import { useTranslation } from "@/shared/i18n"
-import { Banner, Button, ScrollArea, Segmented, Select, TextField } from "@/shared/ui"
+import { type MessageKey, useTranslation } from "@/shared/i18n"
+import { Swap } from "@/shared/motion"
+import { Banner, PanelView, ViewHeader } from "@/shared/ui"
 import { LinkEditor } from "./link-editor"
 import { RoadConnection } from "./road-connection"
-import { RoadResult } from "./road-result"
 import styles from "./road-scenario.module.css"
 import { RoadSelection } from "./road-selection"
-import { rejectionMessage, scenarioPayload } from "./scenario-payload"
+import { ScenarioFooter } from "./scenario-footer"
+import { ScenarioHome } from "./scenario-home"
+import { rejectionMessage } from "./scenario-payload"
+import { ScenarioResult } from "./scenario-result"
+import { SpeedPicker } from "./speed-picker"
+import { useScenarioDraft } from "./use-scenario-draft"
 
 export interface RoadScenarioProps {
   readonly roads: RoadGraphState
   readonly context: ChatContext
 }
 
+const TITLE: Readonly<Record<ScenarioView, MessageKey>> = {
+  home: "graph:tab",
+  roads: "graph:home.roads",
+  links: "graph:home.links",
+  connection: "graph:tools.connection",
+  result: "graph:result.title",
+  criticality: "graph:tools.criticality",
+  improvement: "graph:tools.improvement",
+}
+
 export function RoadScenario({ roads, context }: RoadScenarioProps) {
   const { t } = useTranslation()
-  const [mode, setMode] = useState<"road" | "connection">("road")
-  const [factor, setFactor] = useState("1.2")
-  const [scenario, setScenario] = useState<"road" | "summer" | "winter">("road")
-  const [links, setLinks] = useState<readonly LinkChangeInput[]>([])
-  const speed = Number(factor.replace(",", "."))
-  const valid = factor.trim() !== "" && Number.isFinite(speed) && speed >= 0 && speed <= 3
-  const job = roads.job
-  const busy =
-    roads.addConnection.isPending ||
-    roads.submit.isPending ||
-    job?.status === "running" ||
-    job?.status === "queued"
-  const payload = scenarioPayload({
-    regionId: context.region_id,
-    scenario,
-    wayIds: roads.selected.map((road) => road.way_id),
-    speed: valid ? speed : null,
-    links,
-  })
-  return (
-    <ScrollArea className={styles.panel} label={t("graph:title")}>
-      <Segmented
-        label={t("graph:connection.mode")}
-        value={mode}
-        onChange={setMode}
-        options={[
-          { value: "road", label: t("graph:connection.editRoad") },
-          { value: "connection", label: t("graph:connection.newLink") },
-        ]}
+  const { view, setView } = useScenarioView()
+  const regionId = context.region_id ?? null
+  const draft = useScenarioDraft(roads, regionId)
+  const count = roads.selected.length
+  const seen = useRef(count)
+  useEffect(() => {
+    if (count > seen.current && view === "home") setView("roads")
+    seen.current = count
+  }, [count, view, setView])
+  const header =
+    view === "home" ? undefined : (
+      <ViewHeader
+        title={t(TITLE[view])}
+        backLabel={t("graph:back")}
+        onBack={() => setView("home")}
       />
-      {mode === "connection" ? (
-        <RoadConnection roads={roads} regionId={context.region_id ?? null} />
-      ) : (
-        <>
-          <RoadSelection roads={roads} />
-          <Select
-            label={t("graph:scenario")}
-            value={scenario}
-            onChange={setScenario}
-            options={[
-              { value: "road", label: t("graph:base") },
-              { value: "summer", label: t("graph:summer") },
-              { value: "winter", label: t("graph:winter") },
-            ]}
-          />
-          <TextField
-            label={t("graph:factor")}
-            value={factor}
-            onChange={(event) => setFactor(event.target.value)}
-            inputMode="decimal"
-            hint={t("graph:factorHint")}
-            error={valid ? undefined : t("graph:factorError")}
-          />
-          <LinkEditor scenario={scenario} pending={links} onPending={setLinks} />
-          {!context.region_id ? <p>{t("graph:pickRegion")}</p> : null}
-          <Button
-            disabled={payload === null || busy}
-            onClick={() => {
-              if (payload) roads.submit.mutate(payload)
-            }}
-          >
-            {t("graph:calculate")}
-          </Button>
-        </>
-      )}
-      <ScenarioError roads={roads} />
-      {roads.jobs.length > 1 ? (
-        <Select
-          label={t("graph:history")}
-          value={job?.id ?? ""}
-          onChange={roads.selectJob}
-          options={roads.jobs.map((saved) => ({ value: saved.id, label: saved.region }))}
+    )
+  const footer = (
+    <ScenarioFooter
+      parts={draft.parts}
+      blocker={draft.blocker}
+      pending={roads.submit.isPending}
+      label={t("graph:calculate")}
+      onRun={() => {
+        if (draft.payload)
+          roads.submit.mutate(draft.payload, { onSuccess: () => setView("result") })
+      }}
+    />
+  )
+  return (
+    <Swap swapKey={view} as="div" className={styles.stage}>
+      {view === "connection" ? (
+        <RoadConnection
+          roads={roads}
+          regionId={regionId}
+          busy={draft.busy}
+          header={header}
+          onDone={() => setView("result")}
         />
-      ) : null}
-      <RoadResult roads={roads} />
-    </ScrollArea>
+      ) : (
+        <PanelView
+          label={t(TITLE[view])}
+          header={header}
+          footer={view === "result" ? undefined : footer}
+        >
+          {view === "roads" ? (
+            <>
+              <RoadSelection roads={roads} />
+              <SpeedPicker
+                value={roads.draft.speed}
+                onChange={(speed) => roads.editDraft({ speed })}
+              />
+            </>
+          ) : view === "links" ? (
+            <LinkEditor roads={roads} />
+          ) : view === "result" ? (
+            <ScenarioResult roads={roads} />
+          ) : (
+            <ScenarioHome
+              roads={roads}
+              context={context}
+              roadParts={draft.roadParts}
+              linkParts={draft.linkParts}
+              onView={setView}
+              onOpenJob={(id) => {
+                roads.selectJob(id)
+                setView("result")
+              }}
+            />
+          )}
+          <ScenarioError roads={roads} />
+        </PanelView>
+      )}
+    </Swap>
   )
 }
 

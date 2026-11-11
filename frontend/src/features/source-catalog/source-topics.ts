@@ -1,13 +1,18 @@
 import type { IconName } from "@/shared/ui"
-export const TOPICS = ["network", "territory", "economy", "seasons"] as const
+
+export const TOPICS = ["network", "territory", "economy", "seasons", "other"] as const
 export type SourceTopic = (typeof TOPICS)[number]
+export type SourceUsage = "atlas" | "settlements" | "economy" | "calendar"
+
 export const TOPIC_ICONS: Record<SourceTopic, IconName> = {
-  network: "route",
+  network: "link",
   territory: "locate",
   economy: "building",
-  seasons: "snowflake",
+  seasons: "calendar",
+  other: "database",
 }
-const GROUPS: Record<string, SourceTopic> = {
+
+const GROUPS: Readonly<Record<string, SourceTopic>> = {
   "atlas-links": "network",
   "transport-operations": "network",
   "northern-delivery": "network",
@@ -20,13 +25,20 @@ const GROUPS: Record<string, SourceTopic> = {
   "seasonal-ugra": "seasons",
   "seasonal-closures": "seasons",
 }
-export function sourceTopic(id: string): SourceTopic {
-  return GROUPS[id] ?? "network"
+
+const USAGE: Readonly<Record<string, SourceUsage>> = {
+  "atlas-links": "atlas",
+  "region-geometry": "atlas",
+  "atlas-settlements": "settlements",
+  rfsd: "economy",
+  "fns-revexp": "economy",
+  "seasonal-ugra": "calendar",
 }
-export function sourceUsage(id: string) {
-  if (id === "atlas-links" || id === "region-geometry") return "atlas"
-  if (id === "atlas-settlements") return "settlements"
-  if (id === "rfsd" || id === "fns-revexp") return "economy"
-  if (id === "seasonal-ugra") return "calendar"
-  return "catalog"
+
+export function sourceTopic(id: string): SourceTopic {
+  return GROUPS[id] ?? "other"
+}
+
+export function sourceUsage(id: string): SourceUsage | undefined {
+  return USAGE[id]
 }

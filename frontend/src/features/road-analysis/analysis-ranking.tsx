@@ -37,6 +37,7 @@ export function AnalysisRanking({ job, selectedWay, onSelect }: AnalysisRankingP
       </p>
       {job.mode === "criticality" ? (
         <Segmented
+          className={styles.toggle}
           label={t("analysis:ranking")}
           value={ranking}
           onChange={(value) => {

@@ -4,6 +4,7 @@ import type { ComparisonData } from "@/entities/accessibility/accessibility.quer
 import { ComparisonTables } from "@/entities/accessibility/comparison/comparison-tables"
 import { LocaleProvider } from "@/shared/i18n"
 import ru from "@/shared/i18n/locales/ru/accessibility.json"
+import common from "@/shared/i18n/locales/ru/common.json"
 
 const data: ComparisonData = {
   region_id: "18000000",
@@ -62,8 +63,8 @@ describe("accessibility comparison", () => {
     )
     expect(result.container.querySelectorAll("[data-no-value]")).toHaveLength(1)
     expect(screen.getByText("-0,03")).toBeDefined()
-    expect(screen.getByText(ru.scheduleMissing)).toBeDefined()
-    expect(screen.getByText(ru.effectsHint)).toBeDefined()
+    expect(screen.getAllByText(ru.effects).length).toBeGreaterThan(0)
+    expect(screen.getAllByRole("button", { name: common.ui.hint })).toHaveLength(3)
     expect(screen.getAllByRole("table")).toHaveLength(3)
   })
 })

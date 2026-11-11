@@ -14,11 +14,13 @@ export function calendarPosition(year: number, date: string) {
 }
 export function calendarMonths(year: number) {
   const format = new Intl.DateTimeFormat(INTL_LOCALE, { month: "long", timeZone: "UTC" })
+  const short = new Intl.DateTimeFormat(INTL_LOCALE, { month: "short", timeZone: "UTC" })
   return Array.from({ length: 6 }, (_, i) => {
     const date = new Date(Date.UTC(year - 1, 10 + i, 1))
     return {
       key: i,
       label: format.format(date),
+      short: short.format(date),
       at: calendarPosition(year, date.toISOString().slice(0, 10)),
     }
   })

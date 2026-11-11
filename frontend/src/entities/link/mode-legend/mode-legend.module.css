@@ -1,0 +1,31 @@
+.legend {
+  composes: bareList from "../../../shared/styles/compose.module.css";
+  display: grid;
+  column-gap: var(--space-24);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-8);
+  min-block-size: var(--control-height-compact);
+  border-block-end: var(--hairline) solid var(--border-subtle);
+  font-size: var(--font-size-body-sm);
+}
+
+.name {
+  composes: truncate from "../../../shared/styles/compose.module.css";
+  color: var(--text-secondary);
+}
+
+.count {
+  font-weight: var(--weight-semibold);
+  font-variant-numeric: var(--font-numeric);
+}
+
+@container side-panel (min-width: 30rem) {
+  .legend {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

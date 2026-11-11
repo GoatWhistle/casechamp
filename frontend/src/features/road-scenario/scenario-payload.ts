@@ -9,6 +9,7 @@ import type {
 import type { MessageKey } from "@/shared/i18n"
 
 export const LINK_LIMIT = 30
+export const SPEED_MAX = 300
 const MODES: readonly LinkMode[] = [
   "rail",
   "air",
@@ -65,6 +66,13 @@ export function toggleLink(
   if (pending.some((item) => linkKey(item) === key))
     return pending.filter((item) => linkKey(item) !== key)
   return pending.length < LINK_LIMIT ? [...pending, link] : pending
+}
+
+export function speedFactor(value: string): number | null {
+  const text = value.trim()
+  if (!/^\d+([.,]\d+)?$/.test(text)) return null
+  const percent = Number(text.replace(",", "."))
+  return percent <= SPEED_MAX ? percent / 100 : null
 }
 
 export function needsSeason(links: readonly LinkChangeInput[], scenario: ScenarioNetwork) {

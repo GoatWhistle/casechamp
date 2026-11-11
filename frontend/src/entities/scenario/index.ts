@@ -1,4 +1,5 @@
 export {
+  isScenarioDataMissing,
   type MarketCity,
   type ScenarioCatalog,
   type ScenarioLink,

@@ -1,0 +1,71 @@
+.recent {
+  display: grid;
+  gap: var(--space-4);
+  inline-size: min(100%, 26rem);
+  text-align: start;
+}
+
+.heading {
+  composes: mutedLabel from "../../../shared/styles/compose.module.css";
+  padding-inline: var(--space-12);
+}
+
+.list {
+  composes: bareList from "../../../shared/styles/compose.module.css";
+  display: grid;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  border-block-end: var(--hairline) solid var(--border-subtle);
+}
+
+.item {
+  flex: 1;
+  min-inline-size: 0;
+  justify-items: stretch;
+  padding-inline: var(--space-12);
+  font-weight: var(--weight-regular);
+}
+
+.item > span,
+.item > span > span {
+  inline-size: 100%;
+}
+
+.item > span > span {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-12);
+}
+
+.name {
+  composes: truncate from "../../../shared/styles/compose.module.css";
+  min-inline-size: 0;
+}
+
+.meta {
+  composes: captionMuted from "../../../shared/styles/compose.module.css";
+  flex: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.delete {
+  color: var(--text-danger);
+}
+
+.more {
+  justify-self: start;
+}
+
+.row {
+  animation: var(--motion-swap-in);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .row:not(:hover, :focus-within) .delete {
+    opacity: 0;
+  }
+}

@@ -1,50 +1,62 @@
+import { useId } from "react"
 import type { RoadJob } from "@/shared/api/road-graph"
 import { useTranslation } from "@/shared/i18n"
-import { Stat } from "@/shared/ui"
+import { Disclosure, HelpTip, Stat } from "@/shared/ui"
 import styles from "./road-scenario.module.css"
 
 export function RoadMoney({ job }: { readonly job: RoadJob }) {
   const { t } = useTranslation()
+  const titleId = useId()
   const money = job.result?.money
-  if (!money)
-    return (
-      <p className={styles.note}>
-        {t(job.money_assumptions ? "graph:moneyUnavailable" : "graph:moneyPrompt")}
-      </p>
-    )
-  const a = money.assumptions
   return (
-    <div className={styles.result}>
-      <p className={styles.note}>{t("graph:moneyMethod")}</p>
-      <Stat
-        label={t("graph:moneyGross")}
-        value={t("graph:rubles", { value: money.annual_gross_rub })}
-      />
-      <Stat
-        label={t("graph:moneyNet")}
-        value={t("graph:rubles", { value: money.annual_net_rub })}
-      />
-      <p className={styles.note}>
-        {t("graph:moneyFlow", {
-          origin: a.origin_point_id,
-          target: a.market_city,
-          trips: a.trips_per_year,
-          rate: a.rub_per_hour,
-          hours: money.hours_saved_per_trip,
-        })}
-      </p>
-      <p className={styles.note}>
-        {t("graph:moneyCosts", {
-          capital: a.capital_cost_rub,
-          operating: a.annual_operating_cost_rub,
-        })}
-      </p>
-      {money.simple_payback_years !== null && money.simple_payback_years !== undefined ? (
-        <Stat
-          label={t("graph:payback")}
-          value={t("graph:years", { value: money.simple_payback_years })}
-        />
-      ) : null}
-    </div>
+    <section className={styles.section} aria-labelledby={titleId}>
+      <div className={styles.sectionHead}>
+        <p id={titleId} className={styles.sectionTitle}>
+          {t("graph:money.title")}
+        </p>
+        <HelpTip content={t("graph:moneyMethod")} label={t("common:ui.hint")} />
+      </div>
+      {money ? (
+        <>
+          <div className={styles.pair}>
+            <Stat
+              label={t("graph:moneyGross")}
+              value={t("graph:rubles", { value: money.annual_gross_rub })}
+            />
+            <Stat
+              label={t("graph:moneyNet")}
+              value={t("graph:rubles", { value: money.annual_net_rub })}
+            />
+            {money.simple_payback_years !== null && money.simple_payback_years !== undefined ? (
+              <Stat
+                label={t("graph:payback")}
+                value={t("graph:years", { value: money.simple_payback_years })}
+              />
+            ) : null}
+          </div>
+          <Disclosure title={t("graph:money.assumptions")}>
+            <p className={styles.hint}>
+              {t("graph:moneyFlow", {
+                origin: money.assumptions.origin_point_id,
+                target: money.assumptions.market_city,
+                trips: money.assumptions.trips_per_year,
+                rate: money.assumptions.rub_per_hour,
+                hours: money.hours_saved_per_trip,
+              })}
+            </p>
+            <p className={styles.hint}>
+              {t("graph:moneyCosts", {
+                capital: money.assumptions.capital_cost_rub,
+                operating: money.assumptions.annual_operating_cost_rub,
+              })}
+            </p>
+          </Disclosure>
+        </>
+      ) : (
+        <p className={styles.hint}>
+          {t(job.money_assumptions ? "graph:moneyUnavailable" : "graph:moneyPrompt")}
+        </p>
+      )}
+    </section>
   )
 }

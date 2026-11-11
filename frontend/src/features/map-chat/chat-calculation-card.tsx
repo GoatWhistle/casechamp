@@ -1,10 +1,8 @@
-import { useQueries } from "@tanstack/react-query"
 import { useEffect, useMemo, useRef } from "react"
+import { ScenarioOutcome, useRoadJobs } from "@/entities/road-graph"
 import type { CalculationHandler, ChatCalculation } from "@/shared/api/chat-calculation"
-import { api, unwrap } from "@/shared/api/client"
 import { useTranslation } from "@/shared/i18n"
 import { Button } from "@/shared/ui"
-import { CalculationRegion } from "./calculation-region"
 import styles from "./chat-calculation.module.css"
 import { corridorPaths } from "./corridor-paths"
 
@@ -26,19 +24,7 @@ export function ChatCalculationCard({
     shown.current = true
     onShow(calculation)
   }, [calculation, onShow, autoFocus])
-  const jobs = useQueries({
-    queries: calculation.job_ids.map((id) => ({
-      queryKey: ["road-scenario", id],
-      queryFn: ({ signal }: { signal: AbortSignal }) =>
-        unwrap(
-          api.GET("/api/v1/road-scenarios/{job_id}", { signal, params: { path: { job_id: id } } }),
-        ),
-      refetchInterval: (query: { state: { data: { status: string } | undefined } }) =>
-        ["completed", "cancelled", "failed"].includes(query.state.data?.status ?? "")
-          ? false
-          : 1500,
-    })),
-  })
+  const jobs = useRoadJobs(calculation.job_ids)
   const paths = useMemo(
     () => [...new Set(corridorPaths(calculation.corridor.lines))],
     [calculation.corridor.lines],
@@ -86,10 +72,10 @@ export function ChatCalculationCard({
         {t("chat:calculation.show")}
       </Button>
       {jobs.map((query, index) => (
-        <CalculationRegion
+        <ScenarioOutcome
           key={calculation.job_ids[index]}
           query={query}
-          name={calculation.corridor.regions[index]?.name}
+          fallbackName={calculation.corridor.regions[index]?.name}
         />
       ))}
       <p className={styles.note}>{t("chat:calculation.limit")}</p>

@@ -37,19 +37,11 @@ export function applyChatEvent(row: ChatEntry, event: ChatStreamEvent): ChatEntr
           }
         : row
     case "calculation":
-      return event.calculation
-        ? {
-            ...row,
-            calculations: [
-              ...(row.calculations ?? []).filter(
-                (item) => item.corridor.id !== event.calculation?.corridor.id,
-              ),
-              event.calculation,
-            ],
-          }
-        : row
+      return applyCalculation(row, event)
     case "analysis":
       return applyAnalysis(row, event)
+    case "scenario":
+      return applyScenario(row, event)
     case "done":
       return { ...row, complete: true }
     default:
@@ -77,4 +69,20 @@ function applyAnalysis(row: ChatEntry, event: ChatStreamEvent): ChatEntry {
       event.analysis,
     ],
   }
+}
+
+function applyCalculation(row: ChatEntry, event: ChatStreamEvent): ChatEntry {
+  const calculation = event.calculation
+  if (!calculation) return row
+  return {
+    ...row,
+    calculations: [
+      ...(row.calculations ?? []).filter((item) => item.corridor.id !== calculation.corridor.id),
+      calculation,
+    ],
+  }
+}
+
+function applyScenario(row: ChatEntry, event: ChatStreamEvent): ChatEntry {
+  return event.scenario ? { ...row, scenarios: [...(row.scenarios ?? []), event.scenario] } : row
 }

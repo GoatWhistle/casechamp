@@ -1,8 +1,15 @@
 .calculation {
   display: grid;
-  gap: var(--space-4);
-  padding-block: var(--space-4);
+  gap: var(--space-8);
+  padding-block: var(--space-8);
   animation: var(--motion-fade-in);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-weight: var(--weight-semibold);
 }
 .endpoints {
   display: flex;
@@ -25,23 +32,6 @@
 .pulse {
   stroke-width: 7;
   animation: var(--motion-shimmer);
-}
-.region {
-  display: grid;
-  gap: var(--space-2);
-  padding-block: var(--space-4);
-  border-top: 1px solid var(--border-default);
-}
-.numbers {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-4);
-  font-variant-numeric: tabular-nums;
-}
-.numbers dd {
-  margin: 0;
-  font-size: var(--font-size-heading);
-  font-weight: var(--weight-semibold);
 }
 .note {
   font-size: var(--font-size-body-sm);

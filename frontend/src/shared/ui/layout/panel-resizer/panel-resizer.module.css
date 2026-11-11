@@ -1,0 +1,34 @@
+.resizer {
+  position: absolute;
+  inset-block: 0;
+  z-index: var(--layer-raised);
+  display: grid;
+  place-items: center;
+  inline-size: var(--resizer-hit);
+  cursor: col-resize;
+  touch-action: none;
+}
+
+.resizer::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  inset-inline: calc((var(--resizer-hit) - var(--target-min)) / 2);
+}
+
+.grip {
+  inline-size: var(--iso-line-strong);
+  block-size: 100%;
+  background-color: transparent;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .resizer:hover .grip {
+    background-color: var(--border-accent);
+  }
+}
+
+.resizer:focus-visible .grip,
+.resizer:active .grip {
+  background-color: var(--border-accent);
+}

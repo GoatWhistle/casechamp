@@ -42,10 +42,12 @@ export function useAirportLayer(
         type: "circle",
         source: AIRPORT_LAYER,
         paint: {
-          "circle-radius": ["interpolate", ["linear"], ["zoom"], 2, 3, 8, 6],
+          "circle-radius": ["interpolate", ["linear"], ["zoom"], 3, 2.5, 6, 3.5, 10, 6],
           "circle-color": style.getPropertyValue("--mode-air").trim(),
+          "circle-opacity": ["interpolate", ["linear"], ["zoom"], 3, 0.8, 7, 1],
           "circle-stroke-color": style.getPropertyValue("--surface-base").trim(),
-          "circle-stroke-width": 2,
+          "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 3, 1, 8, 1.5],
+          "circle-stroke-opacity": ["interpolate", ["linear"], ["zoom"], 3, 0.7, 7, 1],
         },
       })
     } else (map.getSource(AIRPORT_LAYER) as GeoJSONSource).setData(data)

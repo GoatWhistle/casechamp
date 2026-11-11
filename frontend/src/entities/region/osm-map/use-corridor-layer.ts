@@ -3,8 +3,10 @@ import type { GeoJSONSource, Map as LibreMap } from "maplibre-gl"
 import { type RefObject, useEffect, useRef } from "react"
 import type { CorridorOverlay } from "@/shared/api/chat-calculation"
 import { motionMs, useReducedMotion } from "@/shared/motion"
+import { addRoute, raiseRoute, removeRoute, revealRoute } from "./line-reveal"
 
 const SOURCE = "road-corridor-closure"
+const WIDTH = 4
 
 export function useCorridorLayer(
   engine: RefObject<LibreMap | null>,
@@ -32,22 +34,14 @@ export function useCorridorLayer(
         },
       ],
     }
+    const color = getComputedStyle(map.getContainer()).getPropertyValue("--status-danger").trim()
+    const fresh = map.getContainer().dataset.corridorId !== overlay.calculation.corridor.id
     if (!map.getSource(SOURCE)) {
-      map.addSource(SOURCE, { type: "geojson", data })
-      map.addLayer({
-        id: SOURCE,
-        type: "line",
-        source: SOURCE,
-        paint: {
-          "line-color": getComputedStyle(map.getContainer())
-            .getPropertyValue("--status-danger")
-            .trim(),
-          "line-width": 6,
-          "line-dasharray": [2, 1],
-        },
-      })
+      map.addSource(SOURCE, { type: "geojson", data, lineMetrics: true })
+      addRoute(map, { id: SOURCE, source: SOURCE, color, width: WIDTH })
     } else (map.getSource(SOURCE) as GeoJSONSource).setData(data)
-    map.moveLayer(SOURCE)
+    raiseRoute(map, SOURCE)
+    if (fresh) revealRoute(map, { id: SOURCE, color })
     map.getContainer().dataset.corridorId = overlay.calculation.corridor.id
     if (focused.current === overlay.focus || !lines.length) return
     focused.current = overlay.focus
@@ -63,14 +57,14 @@ export function useCorridorLayer(
       {
         padding: 96,
         maxZoom: 12,
-        duration: reduced || overlay.instant ? 0 : motionMs("--dur-panel"),
+        duration: reduced || overlay.instant ? 0 : motionMs("--dur-map"),
       },
     )
   }, [engine, overlay, ready, reduced])
 }
 
 function clearCorridor(map: LibreMap) {
-  if (map.getLayer(SOURCE)) map.removeLayer(SOURCE)
+  removeRoute(map, SOURCE)
   if (map.getSource(SOURCE)) map.removeSource(SOURCE)
   delete map.getContainer().dataset.corridorId
 }

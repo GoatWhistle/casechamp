@@ -21,6 +21,20 @@
   }
 }
 
+.floating {
+  border-color: var(--border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-raised);
+  font-weight: var(--weight-medium);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .floating:hover:not(:disabled) {
+    border-color: var(--border-default);
+    background-color: var(--surface-raised-hover);
+  }
+}
+
 .trigger:disabled {
   background-color: var(--action-disabled);
   color: var(--text-disabled);

@@ -91,6 +91,18 @@
   box-shadow: var(--shadow-raised);
 }
 
+.captionMuted {
+  color: var(--text-muted);
+  font-size: var(--font-size-caption);
+  font-weight: var(--weight-regular);
+}
+
+.mutedLabel {
+  color: var(--text-muted);
+  font-size: var(--font-size-label);
+  font-weight: var(--weight-medium);
+}
+
 .leadText {
   max-inline-size: var(--prose-measure);
   color: var(--text-secondary);
@@ -144,6 +156,7 @@
 }
 
 .sidePanel {
+  container: side-panel / inline-size;
   min-inline-size: 0;
   min-block-size: 0;
   background-color: var(--surface-raised);

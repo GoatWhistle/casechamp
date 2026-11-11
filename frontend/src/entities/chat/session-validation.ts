@@ -2,6 +2,7 @@ import { isChatAnalysis } from "@/shared/api/chat-analysis"
 import { isChatChart, isChatTable } from "@/shared/api/chat-artifacts"
 import { isChatCalculation } from "@/shared/api/chat-calculation"
 import { isChatMapCommand } from "@/shared/api/chat-map"
+import { isChatScenario } from "@/shared/api/chat-scenario"
 import type { AnalysisCommentary, ChatEntry, ChatSession } from "./chat-session"
 
 const record = (value: unknown): value is Record<string, unknown> =>
@@ -31,7 +32,8 @@ function isEntry(value: unknown): value is ChatEntry {
     array(value.mapCommands, isChatMapCommand)
   const calculations =
     optionalArray(value.analyses, isChatAnalysis) &&
-    optionalArray(value.calculations, isChatCalculation)
+    optionalArray(value.calculations, isChatCalculation) &&
+    optionalArray(value.scenarios, isChatScenario)
   const commentaries =
     value.commentaries === undefined ||
     (record(value.commentaries) && Object.values(value.commentaries).every(isAnalysisCommentary))

@@ -1,6 +1,29 @@
+import type { ReactNode } from "react"
 import { useFormatters, useTranslation } from "@/shared/i18n"
-import { Banner, DataTable, type DataTableColumn, NoValue } from "@/shared/ui"
+import { DataTable, type DataTableColumn, HelpTip, NoValue } from "@/shared/ui"
 import type { ComparisonData, ComparisonRow } from "../accessibility.queries"
+import styles from "./accessibility-comparison.module.css"
+
+interface TableBlockProps {
+  readonly heading: string
+  readonly help: string
+  readonly children: ReactNode
+}
+
+function TableBlock({ heading, help, children }: TableBlockProps) {
+  const { t } = useTranslation()
+  return (
+    <div className={styles.block}>
+      <span className={styles.blockTitle} aria-hidden="true">
+        {heading}
+      </span>
+      <span className={styles.blockHint}>
+        <HelpTip content={help} label={t("common:ui.hint")} />
+      </span>
+      {children}
+    </div>
+  )
+}
 
 export interface ComparisonTablesProps {
   readonly data: ComparisonData
@@ -85,29 +108,30 @@ export function ComparisonTables({ data }: ComparisonTablesProps) {
   ]
   return (
     <>
-      <DataTable
-        caption={t("accessibility:comparison")}
-        columns={comparison}
-        rows={data.rows}
-        rowKey={(row) => row.season}
-      />
-      <Banner tone="info" title={t("accessibility:scheduleMissing")} />
-      <p>{t("accessibility:effects")}</p>
-      <DataTable
-        caption={t("accessibility:effects")}
-        columns={effects}
-        rows={data.rows}
-        rowKey={(row) => row.season}
-      />
-      <p>{t("accessibility:effectsHint")}</p>
-      <p>{t("accessibility:frequency")}</p>
-      <DataTable
-        caption={t("accessibility:frequency")}
-        columns={frequencyColumns}
-        rows={data.rows}
-        rowKey={(row) => row.season}
-      />
-      <p>{t("accessibility:frequencyHint")}</p>
+      <TableBlock heading={t("accessibility:comparison")} help={t("accessibility:scheduleMissing")}>
+        <DataTable
+          caption={t("accessibility:comparison")}
+          columns={comparison}
+          rows={data.rows}
+          rowKey={(row) => row.season}
+        />
+      </TableBlock>
+      <TableBlock heading={t("accessibility:effects")} help={t("accessibility:effectsHint")}>
+        <DataTable
+          caption={t("accessibility:effects")}
+          columns={effects}
+          rows={data.rows}
+          rowKey={(row) => row.season}
+        />
+      </TableBlock>
+      <TableBlock heading={t("accessibility:frequency")} help={t("accessibility:frequencyHint")}>
+        <DataTable
+          caption={t("accessibility:frequency")}
+          columns={frequencyColumns}
+          rows={data.rows}
+          rowKey={(row) => row.season}
+        />
+      </TableBlock>
     </>
   )
 }

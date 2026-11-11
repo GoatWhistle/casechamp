@@ -35,6 +35,9 @@ export interface ComboboxProps {
   readonly hideLabel?: boolean
   readonly minLength?: number
   readonly align?: PopoverAlign
+  readonly hint?: string | undefined
+  readonly disabled?: boolean
+  readonly clearOnSelect?: boolean
   readonly className?: string | undefined
 }
 
@@ -57,6 +60,9 @@ export function Combobox({
   hideLabel = false,
   minLength = 1,
   align = "start",
+  hint,
+  disabled = false,
+  clearOnSelect = false,
   className,
 }: ComboboxProps) {
   const { t } = useTranslation()
@@ -91,7 +97,7 @@ export function Combobox({
   }
 
   const pick = (item: ComboboxItem) => {
-    setQuery(item.label)
+    setQuery(clearOnSelect ? "" : item.label)
     setOpen(false)
     setActiveKey(null)
     onSelect(item)
@@ -147,6 +153,8 @@ export function Combobox({
         boxRef={boxRef}
         value={query}
         placeholder={placeholder}
+        hint={hint}
+        disabled={disabled}
         autoComplete="off"
         role="combobox"
         aria-autocomplete="list"

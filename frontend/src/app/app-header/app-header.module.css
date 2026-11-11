@@ -36,6 +36,7 @@
 
 .link {
   composes: controlText from "../../shared/styles/compose.module.css";
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: var(--space-8);
@@ -57,6 +58,16 @@
   color: var(--text-primary);
 }
 
+.active::after {
+  content: "";
+  position: absolute;
+  inset-inline: var(--space-12);
+  inset-block-end: 0;
+  block-size: var(--space-2);
+  border-radius: var(--radius-pill);
+  background-color: var(--border-selected);
+}
+
 .search {
   flex: 1 1 var(--field-max-width);
   display: flex;
@@ -71,24 +82,36 @@
   }
 }
 
-@media (max-width: 64rem) {
-  .label {
-    display: none;
+@media (width < 64rem) {
+  .header {
+    flex-wrap: wrap;
+    padding-block: var(--space-8);
+  }
+
+  .search {
+    flex-basis: 100%;
+  }
+
+  .search > * {
+    flex: 1 1 auto;
   }
 }
 
 @media (width < 48rem) {
-  .header {
-    flex-wrap: wrap;
-    padding-block: var(--space-8);
+  .label {
+    display: none;
   }
 
   .nav {
     margin-inline-start: auto;
   }
 
-  .search {
-    flex-basis: 100%;
+  .link {
+    padding-inline: var(--space-12);
+  }
+
+  .active::after {
+    inset-inline: var(--space-8);
   }
 }
 

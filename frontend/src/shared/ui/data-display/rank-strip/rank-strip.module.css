@@ -1,7 +1,19 @@
 .strip {
+  container-type: inline-size;
   display: grid;
   gap: var(--space-8);
   margin: 0;
+}
+
+.current {
+  justify-self: start;
+  inline-size: max-content;
+  font-size: var(--font-size-heading);
+  font-weight: var(--weight-bold);
+  line-height: var(--line-height-heading-lg);
+  font-variant-numeric: var(--font-numeric);
+  transform: translateX(clamp(0px, calc(var(--x) * 100cqi - 50%), calc(100cqi - 100%)));
+  transition: transform var(--dur-panel) var(--ease-in-out);
 }
 
 .track {
@@ -11,28 +23,65 @@
   background-color: var(--surface-sunken);
 }
 
-.dot {
+.dot,
+.median,
+.marker {
   position: absolute;
   inset-block-start: 50%;
-  inset-inline-start: calc(var(--x) * 100%);
-  inline-size: var(--space-4);
-  block-size: var(--space-12);
   border-radius: var(--radius-pill);
-  background-color: var(--border-strong);
+}
+
+.dot,
+.median {
+  inset-inline-start: calc(var(--x) * 100%);
   transform: translate(-50%, -50%);
 }
 
+.dot {
+  inline-size: var(--space-2);
+  block-size: var(--space-12);
+  background-color: var(--border-strong);
+}
+
+.median {
+  inline-size: var(--space-2);
+  block-size: var(--space-24);
+  background-color: var(--text-muted);
+}
+
 .marker {
+  inset-inline-start: 0;
   inline-size: var(--space-8);
-  block-size: var(--space-20);
-  background-color: var(--series-1);
+  block-size: var(--space-32);
   border: var(--space-2) solid var(--surface-base);
-  box-sizing: content-box;
+  background-color: var(--series-1);
+  transform: translate(calc(var(--x) * 100cqi - 50%), -50%);
+  transition: transform var(--dur-panel) var(--ease-in-out);
 }
 
 .ends {
+  composes: captionMuted from "../../../styles/compose.module.css";
+  position: relative;
   display: flex;
   justify-content: space-between;
-  font-size: var(--font-size-caption);
-  color: var(--text-secondary);
+  gap: var(--space-8);
+  font-variant-numeric: var(--font-numeric);
+}
+
+.medianLabel {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  inline-size: max-content;
+  transform: translateX(clamp(0px, calc(var(--x) * 100cqi - 50%), calc(100cqi - 100%)));
+}
+
+@starting-style {
+  .current {
+    transform: translateX(0);
+  }
+
+  .marker {
+    transform: translate(-50%, -50%);
+  }
 }

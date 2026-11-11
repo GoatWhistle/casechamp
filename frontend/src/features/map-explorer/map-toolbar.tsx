@@ -1,15 +1,37 @@
-import { memo } from "react"
+import { memo, type ReactNode } from "react"
 import { NetworkModeControl, type Season } from "@/entities/region"
 import { useTranslation } from "@/shared/i18n"
-import { Segmented, Select, Tooltip } from "@/shared/ui"
+import { useLatched, usePresence } from "@/shared/motion"
+import { Segmented, Select } from "@/shared/ui"
 import styles from "./map-explorer.module.css"
-import { dependsOnSeason, METRICS, type MetricKey, SEASONS } from "./metric"
+import { dependsOnSeason, METRIC_ICON, METRICS, type MetricKey, SEASONS } from "./metric"
 
 export interface MapToolbarProps {
   readonly metric: MetricKey
   readonly season: Season
   readonly onMetric: (metric: MetricKey) => void
   readonly onSeason: (season: Season) => void
+}
+
+interface ToolbarSlotProps {
+  readonly open: boolean
+  readonly className?: string | undefined
+  readonly children: ReactNode
+}
+
+function ToolbarSlot({ open, className, children }: ToolbarSlotProps) {
+  const presence = usePresence(open)
+  if (!presence.mounted) return null
+  return (
+    <div
+      className={className ?? styles.slot}
+      data-state={presence.state}
+      inert={!open}
+      onAnimationEnd={presence.onAnimationEnd}
+    >
+      {children}
+    </div>
+  )
 }
 
 export const MapToolbar = memo(function MapToolbar({
@@ -20,37 +42,35 @@ export const MapToolbar = memo(function MapToolbar({
 }: MapToolbarProps) {
   const { t } = useTranslation()
   const seasonal = dependsOnSeason(metric)
-  const seasons = (
-    <Segmented
-      label={t("data:season.legend")}
-      value={season}
-      onChange={onSeason}
-      options={SEASONS.filter((key) => metric !== "hansen" || key !== "all").map((key) => ({
-        value: key,
-        label: t(`data:seasonShort.${key}`),
-      }))}
-    />
-  )
+  const seasonMetric = useLatched(metric, seasonal)
   return (
     <div className={styles.toolbar}>
       <Select
         label={t("data:metric.label")}
         hideLabel
+        variant="floating"
         value={metric}
         onChange={onMetric}
-        options={METRICS.map((key) => ({ value: key, label: t(`data:metric.${key}`) }))}
+        options={METRICS.map((key) => ({
+          value: key,
+          label: t(`data:metric.${key}`),
+          icon: METRIC_ICON[key],
+        }))}
         className={styles.metric}
       />
-      {metric === "hansen" && <NetworkModeControl hideLabel />}
-      {seasonal ? (
-        seasons
-      ) : (
-        <Tooltip content={t("map:seasonIgnored")} side="bottom">
-          <fieldset className={styles.seasonOff} disabled>
-            {seasons}
-          </fieldset>
-        </Tooltip>
-      )}
+      <ToolbarSlot open={seasonal} className={styles.seasonSlot}>
+        <Segmented
+          label={t("data:season.legend")}
+          value={season}
+          onChange={onSeason}
+          options={SEASONS.filter((key) => seasonMetric !== "hansen" || key !== "all").map(
+            (key) => ({ value: key, label: t(`data:seasonShort.${key}`) }),
+          )}
+        />
+      </ToolbarSlot>
+      <ToolbarSlot open={metric === "hansen"}>
+        <NetworkModeControl hideLabel variant="floating" />
+      </ToolbarSlot>
     </div>
   )
 })

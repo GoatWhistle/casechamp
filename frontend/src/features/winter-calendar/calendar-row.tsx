@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react"
 import type { WinterRoad } from "@/entities/reference"
 import { useFormatters, useTranslation } from "@/shared/i18n"
-import { Disclosure, NoValue } from "@/shared/ui"
+import { Disclosure, Icon, NoValue } from "@/shared/ui"
 import styles from "./calendar-row.module.css"
 import { calendarMonths, calendarPosition } from "./calendar-time"
 
@@ -10,6 +10,50 @@ interface CalendarRowProps {
   readonly previous: WinterRoad | undefined
   readonly year: number
 }
+
+const STOP_SEPARATOR = /\s+-\s+/
+
+function tickStyle(at: number): CSSProperties {
+  return { "--tick-left": `${at}%` } as CSSProperties
+}
+
+export function CalendarAxis({ year }: { readonly year: number }) {
+  const { t } = useTranslation()
+  return (
+    <div className={styles.axis}>
+      <span className={styles.axisLabel}>{t("seasons:route")}</span>
+      <div className={styles.months}>
+        {calendarMonths(year).map((m) => (
+          <span key={m.key} className={styles.month} style={tickStyle(m.at)}>
+            <span className={styles.monthLong}>{m.label}</span>
+            <span className={styles.monthShort}>{m.short}</span>
+          </span>
+        ))}
+      </div>
+      <span className={styles.axisLabel}>{t("calendar:dates")}</span>
+    </div>
+  )
+}
+
+function RouteName({ route }: { readonly route: string }) {
+  let offset = 0
+  const stops = route.split(STOP_SEPARATOR).map((stop) => {
+    const start = offset
+    offset += stop.length + 1
+    return { stop, start }
+  })
+  return (
+    <strong className={styles.route}>
+      {stops.map(({ stop, start }) => (
+        <span key={start} className={styles.stop}>
+          {start > 0 ? <Icon name="arrow-right" size="sm" className={styles.arrow} /> : null}
+          {stop}
+        </span>
+      ))}
+    </strong>
+  )
+}
+
 function Bar({
   road,
   year,
@@ -33,6 +77,7 @@ function Bar({
     />
   )
 }
+
 function Facts({ road }: { readonly road: WinterRoad }) {
   const { t } = useTranslation()
   const f = useFormatters()
@@ -61,45 +106,44 @@ function Facts({ road }: { readonly road: WinterRoad }) {
             )}
           </dd>
         </div>
-        <div>
-          <dt>{t("data:source")}</dt>
-          <dd>{road.source_file ?? <NoValue />}</dd>
-        </div>
       </dl>
     </div>
   )
 }
+
 export function CalendarRow({ road, previous, year }: CalendarRowProps) {
   const { t } = useTranslation()
   const f = useFormatters()
+  const end = road.closure_date ?? road.report_date
   return (
     <Disclosure
       className={styles.row}
       title={
         <span className={styles.summary}>
           <span className={styles.name}>
-            <strong>{road.route ?? t("seasons:route")}</strong>
+            {road.route === null ? (
+              <strong>{t("seasons:route")}</strong>
+            ) : (
+              <RouteName route={road.route} />
+            )}
             <small>
               {road.road_km === null ? <NoValue /> : t("calendar:km", { value: road.road_km })}
             </small>
           </span>
           <span className={styles.track} data-compare={!!previous} aria-hidden="true">
             {calendarMonths(year).map((m) => (
-              <i
-                key={m.key}
-                className={styles.guide}
-                style={{ "--tick-left": `${m.at}%` } as CSSProperties}
-              />
+              <i key={m.key} className={styles.guide} style={tickStyle(m.at)} />
             ))}
             <Bar road={road} year={year} />
             <Bar road={previous} year={year} previous />
           </span>
           <span className={styles.dates}>
-            <span>{road.opening_date ? f.date(road.opening_date) : t("calendar:unknown")}</span>
             <span>
-              {(road.closure_date ?? road.report_date)
-                ? f.date(road.closure_date ?? road.report_date ?? "")
-                : t("calendar:unknown")}
+              {road.opening_date ? f.date(road.opening_date) : t("calendar:unknown")}
+              <small>{t("calendar:opening_date")}</small>
+            </span>
+            <span>
+              {end ? f.date(end) : t("calendar:unknown")}
               <small>
                 {road.closure_date ? t("calendar:closure_date") : t("calendar:reportEnd")}
               </small>

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react"
+import { placeHoverCard } from "./hover-card"
 
 export function useMapHover() {
   const [hoveredId, setHoveredId] = useState<string | null>(null)
@@ -19,8 +20,7 @@ export function useMapHover() {
     if (id !== null)
       raf.current = requestAnimationFrame(() => {
         raf.current = null
-        if (cardRef.current)
-          cardRef.current.style.transform = `translate(${point.current.x}px, ${point.current.y}px)`
+        if (cardRef.current) placeHoverCard(cardRef.current, point.current.x, point.current.y)
       })
   }, [])
   return { hoveredId, cardRef, point, onHover }

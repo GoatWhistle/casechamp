@@ -2,6 +2,7 @@ import { isChatAnalysis } from "./chat-analysis"
 import { isChatChart, isChatTable } from "./chat-artifacts"
 import { isChatCalculation } from "./chat-calculation"
 import { isChatMapCommand } from "./chat-map"
+import { isChatScenario } from "./chat-scenario"
 import { ApiError, api, codeOf, SERVER_UNAVAILABLE, UNEXPECTED } from "./client"
 import type { components } from "./schema.gen"
 
@@ -15,6 +16,7 @@ const ARTIFACTS: Record<string, (value: unknown) => boolean> = {
   map: isChatMapCommand,
   calculation: isChatCalculation,
   analysis: isChatAnalysis,
+  scenario: isChatScenario,
 }
 
 function httpErrorCode(status: number, body: unknown): string {
@@ -41,6 +43,7 @@ function parseEvent(line: string): ChatStreamEvent {
       "map",
       "calculation",
       "analysis",
+      "scenario",
     ].includes(String(value.type)) ||
     !("text" in value) ||
     typeof value.text !== "string" ||

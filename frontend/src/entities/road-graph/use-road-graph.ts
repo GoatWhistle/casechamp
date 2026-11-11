@@ -5,16 +5,31 @@ import { api, unwrap } from "@/shared/api/client"
 import type { AnalysisOverlay } from "@/shared/api/road-analysis"
 import type {
   ConnectionInput,
+  LinkChangeInput,
   RoadBounds,
   RoadJob,
   RoadRenderView,
   RoadScenarioInput,
   RoadSegment,
+  ScenarioNetwork,
 } from "@/shared/api/road-graph"
 import { loadRoadView } from "./load-road-view"
 import { coversRoadViewport, roadViewport } from "./road-viewport"
 
+export interface ScenarioDraft {
+  readonly speed: string
+  readonly network: ScenarioNetwork
+  readonly links: readonly LinkChangeInput[]
+}
+
+const EMPTY_DRAFT: ScenarioDraft = { speed: "120", network: "road", links: [] }
+
 export function useRoadGraph() {
+  const [draft, setDraft] = useState<ScenarioDraft>(EMPTY_DRAFT)
+  const editDraft = useCallback(
+    (patch: Partial<ScenarioDraft>) => setDraft((current) => ({ ...current, ...patch })),
+    [],
+  )
   const [showJobOverlay, setShowJobOverlay] = useState(false)
   const [corridorOverlay, setCorridorOverlay] = useState<CorridorOverlay | null>(null)
   const showCalculation = useCallback((calculation: ChatCalculation, instant = false) => {
@@ -116,6 +131,8 @@ export function useRoadGraph() {
     setShowJobOverlay(false)
   }, [])
   return {
+    draft,
+    editDraft,
     clearOverlays,
     hasOverlay: !!corridorOverlay || !!analysisOverlay || !!selected.length || showJobOverlay,
     addition: showJobOverlay ? (status.data ?? current)?.addition : undefined,

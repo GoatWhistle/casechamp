@@ -3,9 +3,13 @@ import type { GeoJSONSource, Map as LibreMap } from "maplibre-gl"
 import { type RefObject, useEffect, useRef } from "react"
 import type { AnalysisDetail, AnalysisOverlay } from "@/shared/api/road-analysis"
 import { motionMs, useReducedMotion } from "@/shared/motion"
+import { addRoute, fadeIn, revealRoute } from "./line-reveal"
 import { REGIONS_SOURCE } from "./osm-style"
 
 const SOURCE = "road-analysis-result"
+const LINE = `${SOURCE}-line`
+const POINTS = `${SOURCE}-points`
+const WIDTH = 4
 
 export function useAnalysisLayer(
   engine: RefObject<LibreMap | null>,
@@ -19,21 +23,21 @@ export function useAnalysisLayer(
     if (!ready || !map?.getSource(REGIONS_SOURCE)) return
     const detail = overlay?.detail
     const data = analysisFeatures(detail)
+    const style = getComputedStyle(map.getContainer())
+    const color = style.getPropertyValue("--action-primary").trim()
+    const way = String(detail?.result.candidate.way_id ?? "")
+    const fresh = way !== "" && map.getContainer().dataset.analysisWay !== way
     if (!map.getSource(SOURCE)) {
-      const style = getComputedStyle(map.getContainer())
-      map.addSource(SOURCE, { type: "geojson", data })
-      map.addLayer({
-        id: `${SOURCE}-line`,
+      map.addSource(SOURCE, { type: "geojson", data, lineMetrics: true })
+      addRoute(map, {
+        id: LINE,
         source: SOURCE,
-        type: "line",
+        color,
+        width: WIDTH,
         filter: ["==", ["get", "kind"], "road"],
-        paint: {
-          "line-color": style.getPropertyValue("--action-primary").trim(),
-          "line-width": 5,
-        },
       })
       map.addLayer({
-        id: `${SOURCE}-points`,
+        id: POINTS,
         source: SOURCE,
         type: "circle",
         filter: ["==", ["get", "kind"], "settlement"],
@@ -50,7 +54,11 @@ export function useAnalysisLayer(
         },
       })
     } else (map.getSource(SOURCE) as GeoJSONSource).setData(data)
-    map.getContainer().dataset.analysisWay = String(detail?.result.candidate.way_id ?? "")
+    if (fresh) {
+      revealRoute(map, { id: LINE, color })
+      fadeIn(map, POINTS, ["circle-opacity", "circle-stroke-opacity"])
+    }
+    map.getContainer().dataset.analysisWay = way
     if (
       !overlay ||
       overlay.focus === 0 ||
@@ -69,7 +77,7 @@ export function useAnalysisLayer(
       {
         padding: 96,
         maxZoom: 12,
-        duration: reduced || overlay.instant ? 0 : motionMs("--dur-panel"),
+        duration: reduced || overlay.instant ? 0 : motionMs("--dur-map"),
       },
     )
   }, [engine, overlay, ready, reduced])

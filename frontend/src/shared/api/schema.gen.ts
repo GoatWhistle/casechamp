@@ -847,7 +847,7 @@ export interface components {
              * Type
              * @enum {string}
              */
-            type: "status" | "delta" | "done" | "error" | "table" | "chart" | "map" | "calculation" | "analysis";
+            type: "status" | "delta" | "done" | "error" | "table" | "chart" | "map" | "calculation" | "analysis" | "scenario";
             /**
              * Text
              * @default
@@ -863,6 +863,7 @@ export interface components {
             map?: components["schemas"]["ChatMapCommand"] | null;
             calculation?: components["schemas"]["CorridorCalculation"] | null;
             analysis?: components["schemas"]["AnalysisResponse"] | null;
+            scenario?: components["schemas"]["ScenarioCard"] | null;
         };
         /** ChatTable */
         ChatTable: {
@@ -1538,6 +1539,16 @@ export interface components {
             /** Y2 */
             y2: number;
         };
+        /** ScenarioCard */
+        ScenarioCard: {
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "speed" | "slowdown" | "closure" | "roads" | "connection" | "links";
+            /** Job Ids */
+            job_ids: string[];
+        };
         /** ScenarioCatalogResponse */
         ScenarioCatalogResponse: {
             /** Model Version */
@@ -1994,7 +2005,7 @@ export interface operations {
                     "application/json": components["schemas"]["SearchResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2122,7 +2133,7 @@ export interface operations {
                     "application/json": components["schemas"]["RegionSummaryResponse"][];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2174,7 +2185,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2227,7 +2238,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2282,7 +2293,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2360,7 +2371,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2431,7 +2442,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2469,7 +2480,7 @@ export interface operations {
                     "application/json": components["schemas"]["ScenarioCatalogResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2520,7 +2531,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;

@@ -1,4 +1,5 @@
 import { type RefObject, useLayoutEffect } from "react"
+import { readPixels } from "@/shared/motion"
 import styles from "./hover-card.module.css"
 
 export interface HoverCardRow {
@@ -15,11 +16,18 @@ export interface HoverCardProps {
   readonly none: string
 }
 
+export function placeHoverCard(card: HTMLDivElement, x: number, y: number) {
+  const area = card.parentElement?.getBoundingClientRect()
+  const gap = readPixels("--space-16", card)
+  card.style.transform = `translate(${x}px, ${y}px)`
+  card.dataset.flip = String(area !== undefined && x + gap + card.offsetWidth > area.right - gap)
+  card.dataset.below = String(area !== undefined && y - gap - card.offsetHeight < area.top + gap)
+}
+
 export function HoverCard({ cardRef, point, title, rows, none }: HoverCardProps) {
   useLayoutEffect(() => {
-    if (cardRef.current)
-      cardRef.current.style.transform = `translate(${point.current.x}px, ${point.current.y}px)`
-  }, [cardRef, point])
+    if (cardRef.current) placeHoverCard(cardRef.current, point.current.x, point.current.y)
+  })
   return (
     <div className={styles.hover} ref={cardRef} aria-hidden="true">
       <b className={styles.hoverTitle}>{title}</b>
