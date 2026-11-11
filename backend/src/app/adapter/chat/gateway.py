@@ -139,7 +139,7 @@ class CodexResponsesGateway:
             stage = "account"
             try:
                 async with asyncio.timeout(180):
-                    account = await self._codex.account(refresh_token=True)
+                    account = await self._codex.account(refresh_token=False)
                     if account.account is None:
                         yield ChatEvent("error", code="chat_auth_required")
                         return

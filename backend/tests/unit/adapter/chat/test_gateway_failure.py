@@ -11,6 +11,33 @@ from app.domain.transport import NetworkMode, Season
 from app.usecase.chat import ChatContext, ChatEvent, ChatRequest
 
 
+def test_saved_login_does_not_require_forced_refresh_before_answering() -> None:
+    async def account(*, refresh_token: bool = False) -> SimpleNamespace:
+        return SimpleNamespace(account=None if refresh_token else object())
+
+    async def completed_run(*args: object) -> AsyncGenerator[ChatEvent, None]:
+        yield ChatEvent("done")
+
+    gateway = CodexResponsesGateway.__new__(CodexResponsesGateway)
+    gateway._slots = asyncio.Semaphore(3)
+    gateway._codex = Mock()
+    gateway._codex.account = AsyncMock(side_effect=account)
+    request = ChatRequest("Q", (), ChatContext(None, Season.SUMMER, NetworkMode.ROAD, "hansen"))
+    provider = Mock()
+    provider.client.close = AsyncMock()
+
+    async def collect() -> list[ChatEvent]:
+        return [event async for event in gateway.stream(request)]
+
+    with (
+        patch.object(gateway, "_run", completed_run),
+        patch("app.adapter.chat.gateway.OpenAICodexProvider", return_value=provider),
+    ):
+        events = asyncio.run(collect())
+    assert events[-1].type == "done"
+    provider.client.close.assert_awaited_once()
+
+
 def test_tool_failure_retains_diagnostic_context() -> None:
     async def failed_run(*args: object) -> AsyncGenerator[ChatEvent, None]:
         yield ChatEvent("status", code="resolve_road_corridor")
