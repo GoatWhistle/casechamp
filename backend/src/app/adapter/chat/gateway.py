@@ -180,7 +180,9 @@ class CodexResponsesGateway:
     async def _run(
         self, request: ChatRequest, provider: OpenAICodexProvider
     ) -> AsyncGenerator[ChatEvent, None]:
-        needs_title = request.title_requested and request.analysis_id is None
+        needs_title = (
+            request.title_requested and request.analysis_id is None and not request.history
+        )
         agent = Agent(
             OpenAICodexModel(MODEL, provider=provider),
             deps_type=ChatRun,

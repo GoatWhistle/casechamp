@@ -44,30 +44,36 @@ afterEach(() => {
 })
 
 describe("saved chat sessions", () => {
-  it("saves a semantic title and stops requesting another title for later questions", async () => {
-    vi.mocked(streamChat).mockImplementation(async (_body, _signal, emit) => {
-      emit({ type: "title", text: "Closing roads in Vladimir", code: "" })
-      emit({ type: "delta", text: "Answer", code: "" })
-      emit({ type: "done", text: "", code: "" })
-    })
-    const chat = setup()
-    act(() => chat.result.current.send("What happens if the selected road is closed?"))
-    await waitFor(() => expect(chat.result.current.status).toBe("done"))
-    expect(vi.mocked(streamChat).mock.calls[0]?.[0].title_requested).toBe(true)
-    expect(chat.result.current.sessions.map(chatSessionTitle)).toEqual([
-      "Closing roads in Vladimir",
-    ])
-    expect(chat.result.current.messages[1]?.content).toBe("Answer")
-    act(() => chat.result.current.send("What about winter?"))
-    await waitFor(() => expect(streamChat).toHaveBeenCalledTimes(2))
-    expect(vi.mocked(streamChat).mock.calls[1]?.[0].title_requested).toBe(false)
-    chat.unmount()
-    const restored = setup()
-    expect(restored.result.current.sessions.map(chatSessionTitle)).toEqual([
-      "Closing roads in Vladimir",
-    ])
-    restored.unmount()
-  })
+  it.each([true, false])(
+    "keeps the original topic after source requests, initial title: %s",
+    async (named) => {
+      const prompt = "What happens if the selected road is closed?"
+      const title = named ? "Closing roads in Vladimir" : prompt
+      vi.mocked(streamChat).mockImplementation(async (body, _signal, emit) => {
+        if (named || body.history?.length)
+          emit({
+            type: "title",
+            text: body.history?.length ? "Sources for analysis" : title,
+            code: "",
+          })
+        emit({ type: "delta", text: "Answer", code: "" })
+        emit({ type: "done", text: "", code: "" })
+      })
+      const chat = setup()
+      act(() => chat.result.current.send(prompt))
+      await waitFor(() => expect(chat.result.current.status).toBe("done"))
+      expect(vi.mocked(streamChat).mock.calls[0]?.[0].title_requested).toBe(true)
+      expect(chat.result.current.sessions.map(chatSessionTitle)).toEqual([title])
+      expect(chat.result.current.messages[1]?.content).toBe("Answer")
+      act(() => chat.result.current.send("Show sources"))
+      await waitFor(() => expect(streamChat).toHaveBeenCalledTimes(2))
+      expect(vi.mocked(streamChat).mock.calls[1]?.[0].title_requested).toBe(false)
+      chat.unmount()
+      const restored = setup()
+      expect(restored.result.current.sessions.map(chatSessionTitle)).toEqual([title])
+      restored.unmount()
+    },
+  )
 
   it("preserves region cards on retry and excludes them from model history", async () => {
     vi.mocked(streamChat).mockRejectedValueOnce(new Error("offline")).mockResolvedValueOnce()

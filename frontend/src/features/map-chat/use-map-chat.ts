@@ -46,7 +46,10 @@ export function useMapChat(context: ChatContext, onMapCommand: MapCommandHandler
     const sessionId = session.id
     if (controllers.current.has(sessionId)) return
     const abort = new AbortController()
-    const request = { ...body, title_requested: !session.title }
+    const request = {
+      ...body,
+      title_requested: !session.title && !previous.some((message) => message.role === "user"),
+    }
     controllers.current.set(sessionId, abort)
     requests.current.set(sessionId, request)
     const id = createChatId()
@@ -89,7 +92,7 @@ export function useMapChat(context: ChatContext, onMapCommand: MapCommandHandler
             mapHandler.current(event.map)
           update(sessionId, (current) => ({
             ...current,
-            ...(event.type === "title" && !current.title
+            ...(event.type === "title" && request.title_requested && !current.title
               ? { title: event.text?.trim() ?? "" }
               : {}),
             status: streamStatus(current.status, event),
