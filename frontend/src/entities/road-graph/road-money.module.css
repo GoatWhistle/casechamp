@@ -1,0 +1,25 @@
+.money {
+  display: grid;
+  gap: var(--space-8);
+  min-inline-size: 0;
+}
+
+.title {
+  composes: mutedLabel from "../../shared/styles/compose.module.css";
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  gap: var(--space-12);
+}
+
+.details {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.hint {
+  composes: secondaryText from "../../shared/styles/compose.module.css";
+  max-inline-size: var(--prose-measure);
+}

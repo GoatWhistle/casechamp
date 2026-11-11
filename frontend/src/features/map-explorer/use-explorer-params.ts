@@ -43,10 +43,6 @@ export function useExplorerParams() {
     [update],
   )
   const select = useCallback((id: string | null) => update({ region: id }), [update])
-  const searchFor = useCallback(
-    (id: string) => `?${applyPatch(params, { region: id }).toString()}`,
-    [params],
-  )
 
-  return { metric, season, selectedId, setMetric, setSeason, select, searchFor }
+  return { metric, season, selectedId, setMetric, setSeason, select }
 }

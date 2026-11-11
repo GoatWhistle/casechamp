@@ -1,5 +1,5 @@
 import { useTranslation } from "@/shared/i18n"
-import { ErrorState, Skeleton } from "@/shared/ui"
+import { ErrorState } from "@/shared/ui"
 import { Isolines } from "@/shared/ui/brand"
 import styles from "./map-explorer.module.css"
 
@@ -24,19 +24,6 @@ export function MapPending({ failed, onRetry }: PendingProps) {
   return (
     <div className={styles.mapLoading}>
       <ErrorState title={t("errors:kind.server")} onRetry={onRetry} />
-    </div>
-  )
-}
-
-export function PanelPending({ failed, onRetry }: PendingProps) {
-  const { t } = useTranslation()
-  return (
-    <div className={styles.panelLoading}>
-      {failed ? (
-        <ErrorState title={t("errors:kind.server")} onRetry={onRetry} />
-      ) : (
-        <Skeleton lines={8} />
-      )}
     </div>
   )
 }

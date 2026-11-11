@@ -4,47 +4,10 @@
   flex-direction: column;
 }
 
-.bar {
-  display: flex;
-  align-items: center;
-  gap: var(--space-8);
-  padding: var(--space-8) var(--space-16) 0 var(--space-24);
-  border-block-end: var(--hairline) solid var(--border-subtle);
-}
-
-.tabs {
-  flex: 1;
-  min-inline-size: 0;
-}
-
-.tabs [role="tab"] {
-  font-size: var(--font-size-body);
-  font-weight: var(--weight-medium);
-}
-
 .chat {
   display: flex;
   flex: 1;
   flex-direction: column;
-  min-block-size: 0;
-}
-
-.chat:not([data-hidden]),
-.summary:not([data-hidden]) {
-  animation: var(--motion-fade-in);
-}
-
-.chat[data-hidden],
-.summary[data-hidden] {
-  flex: 0 0 0;
-  overflow: hidden;
-  content-visibility: hidden;
-}
-
-.summary {
-  display: grid;
-  flex: 1;
-  grid-template-rows: minmax(0, 1fr);
   min-block-size: 0;
 }
 
@@ -95,6 +58,10 @@
   min-inline-size: 0;
 }
 
+.contextText {
+  composes: truncate from "../../shared/styles/compose.module.css";
+}
+
 .emptyMark {
   inline-size: var(--space-64);
   margin-block-end: var(--space-8);
@@ -114,6 +81,12 @@
   justify-content: center;
   gap: var(--space-8);
   inline-size: min(100%, 30rem);
+}
+
+.regionPrompts {
+  composes: suggestions;
+  justify-content: flex-start;
+  inline-size: auto;
 }
 
 .prompt {

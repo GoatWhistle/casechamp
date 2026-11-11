@@ -8,6 +8,7 @@ import {
   createChatId,
   useChatSessions,
   useChatStream,
+  withRegionEntry,
 } from "@/entities/chat"
 import { isApiError } from "@/shared/api"
 import type { MapCommandHandler } from "@/shared/api/chat-map"
@@ -45,8 +46,9 @@ export function useMapChat(context: ChatContext, onMapCommand: MapCommandHandler
     const sessionId = session.id
     if (controllers.current.has(sessionId)) return
     const abort = new AbortController()
+    const request = { ...body, title_requested: !session.title }
     controllers.current.set(sessionId, abort)
-    requests.current.set(sessionId, body)
+    requests.current.set(sessionId, request)
     const id = createChatId()
     update(sessionId, (current) => ({
       ...current,
@@ -79,7 +81,7 @@ export function useMapChat(context: ChatContext, onMapCommand: MapCommandHandler
     }))
     try {
       await mutation.mutateAsync({
-        body,
+        body: request,
         signal: abort.signal,
         onEvent: (event) => {
           if (abort.signal.aborted) return
@@ -87,6 +89,9 @@ export function useMapChat(context: ChatContext, onMapCommand: MapCommandHandler
             mapHandler.current(event.map)
           update(sessionId, (current) => ({
             ...current,
+            ...(event.type === "title" && !current.title
+              ? { title: event.text?.trim() ?? "" }
+              : {}),
             status: streamStatus(current.status, event),
             messages: updateChatRows(current.messages, id, event),
           }))
@@ -112,9 +117,10 @@ export function useMapChat(context: ChatContext, onMapCommand: MapCommandHandler
     void run({ prompt, history: historyOf(session.messages), context }, session.messages)
   }
   const retry = () => {
-    const prompt = session.messages.at(-2)?.content
+    const index = session.messages.findLastIndex((row) => row.role === "user")
+    const prompt = session.messages[index]?.content
     if (!prompt) return
-    const previous = session.messages.slice(0, -2)
+    const previous = session.messages.filter((_, row) => row !== index && row !== index + 1)
     const body = requests.current.get(session.id) ?? {
       prompt,
       history: historyOf(previous),
@@ -132,7 +138,10 @@ export function useMapChat(context: ChatContext, onMapCommand: MapCommandHandler
       ),
     }))
   }
+  const postRegion = (region: string) =>
+    update(session.id, (current) => withRegionEntry(current, region))
   return {
+    postRegion,
     draft: session.draft,
     setDraft: (draft: string) => update(session.id, (current) => ({ ...current, draft })),
     messages: session.messages,

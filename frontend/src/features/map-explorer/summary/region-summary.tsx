@@ -13,7 +13,7 @@ export interface RegionSummaryProps {
   readonly id: string
   readonly season: Season
   readonly regions: readonly RegionRow[]
-  readonly onClose: () => void
+  readonly onClose?: (() => void) | undefined
 }
 
 function RegionPending() {
@@ -49,7 +49,9 @@ export function RegionSummary({ id, season, regions, onClose }: RegionSummaryPro
           {data.name}
         </Swap>
       }
-      actions={<CloseButton label={t("map:selected.close")} onClick={onClose} />}
+      actions={
+        onClose ? <CloseButton label={t("map:selected.close")} onClick={onClose} /> : undefined
+      }
       className={styles.region}
       data-stale={data.id !== id || undefined}
     >
@@ -74,7 +76,7 @@ export function RegionSummary({ id, season, regions, onClose }: RegionSummaryPro
 export interface OutsideRegionProps {
   readonly name: string
   readonly count: number
-  readonly onClose: () => void
+  readonly onClose?: (() => void) | undefined
 }
 
 export function OutsideRegion({ name, count, onClose }: OutsideRegionProps) {
@@ -83,7 +85,9 @@ export function OutsideRegion({ name, count, onClose }: OutsideRegionProps) {
     <Card
       as="section"
       title={<span className={styles.name}>{name}</span>}
-      actions={<CloseButton label={t("map:selected.close")} onClick={onClose} />}
+      actions={
+        onClose ? <CloseButton label={t("map:selected.close")} onClick={onClose} /> : undefined
+      }
       className={styles.region}
     >
       <div className={styles.body}>

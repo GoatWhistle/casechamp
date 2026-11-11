@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { act, renderHook, waitFor } from "@testing-library/react"
 import type { ReactNode } from "react"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
+import { chatSessionTitle } from "@/entities/chat"
 import { useMapChat } from "@/features/map-chat/use-map-chat"
 import { type ChatStreamEvent, streamChat } from "@/shared/api/chat-stream"
 
@@ -43,6 +44,52 @@ afterEach(() => {
 })
 
 describe("saved chat sessions", () => {
+  it("saves a semantic title and stops requesting another title for later questions", async () => {
+    vi.mocked(streamChat).mockImplementation(async (_body, _signal, emit) => {
+      emit({ type: "title", text: "Closing roads in Vladimir", code: "" })
+      emit({ type: "delta", text: "Answer", code: "" })
+      emit({ type: "done", text: "", code: "" })
+    })
+    const chat = setup()
+    act(() => chat.result.current.send("What happens if the selected road is closed?"))
+    await waitFor(() => expect(chat.result.current.status).toBe("done"))
+    expect(vi.mocked(streamChat).mock.calls[0]?.[0].title_requested).toBe(true)
+    expect(chat.result.current.sessions.map(chatSessionTitle)).toEqual([
+      "Closing roads in Vladimir",
+    ])
+    expect(chat.result.current.messages[1]?.content).toBe("Answer")
+    act(() => chat.result.current.send("What about winter?"))
+    await waitFor(() => expect(streamChat).toHaveBeenCalledTimes(2))
+    expect(vi.mocked(streamChat).mock.calls[1]?.[0].title_requested).toBe(false)
+    chat.unmount()
+    const restored = setup()
+    expect(restored.result.current.sessions.map(chatSessionTitle)).toEqual([
+      "Closing roads in Vladimir",
+    ])
+    restored.unmount()
+  })
+
+  it("preserves region cards on retry and excludes them from model history", async () => {
+    vi.mocked(streamChat).mockRejectedValueOnce(new Error("offline")).mockResolvedValueOnce()
+    const chat = setup()
+    act(() => chat.result.current.postRegion("17000000"))
+    act(() => chat.result.current.send("Inspect this region"))
+    await waitFor(() => expect(chat.result.current.status).toBe("error"))
+    expect(vi.mocked(streamChat).mock.calls[0]?.[0].history).toEqual([])
+    act(() => chat.result.current.postRegion("69000000"))
+    act(() => chat.result.current.retry())
+    await waitFor(() => expect(streamChat).toHaveBeenCalledTimes(2))
+    expect(vi.mocked(streamChat).mock.calls[1]?.[0].history).toEqual([])
+    expect(chat.result.current.messages.filter((entry) => entry.role === "user")).toHaveLength(1)
+    chat.unmount()
+    const restored = setup()
+    expect(restored.result.current.messages.flatMap((entry) => entry.region ?? [])).toEqual([
+      "17000000",
+      "69000000",
+    ])
+    restored.unmount()
+  })
+
   it("keeps streamed answers in their own chats and restores chats and drafts after remount", async () => {
     const pending: { emit: (event: ChatStreamEvent) => void; finish: () => void }[] = []
     vi.mocked(streamChat).mockImplementation(
@@ -61,6 +108,7 @@ describe("saved chat sessions", () => {
     act(() => first.result.current.send("Second question"))
     await act(async () => {
       pending[0]?.emit({ type: "delta", text: "First answer", code: "" })
+      pending[0]?.emit({ type: "title", text: "First topic", code: "" })
       pending[0]?.emit({
         type: "map",
         text: "",
@@ -72,6 +120,9 @@ describe("saved chat sessions", () => {
     })
     await waitFor(() => expect(pending).toHaveLength(2))
     expect(first.result.current.messages[1]?.content).toBe("")
+    expect(
+      first.result.current.sessions.find((session) => session.id === secondId)?.title,
+    ).toBeUndefined()
     expect(first.onMap).not.toHaveBeenCalled()
     await act(async () => {
       pending[1]?.emit({ type: "delta", text: "Second answer", code: "" })
@@ -80,6 +131,9 @@ describe("saved chat sessions", () => {
     })
     act(() => first.result.current.selectSession(firstId))
     expect(first.result.current.messages[1]?.content).toBe("First answer")
+    expect(first.result.current.sessions.find((session) => session.id === firstId)?.title).toBe(
+      "First topic",
+    )
     act(() => first.result.current.setDraft("Unsent follow-up"))
     first.unmount()
     const restored = setup()

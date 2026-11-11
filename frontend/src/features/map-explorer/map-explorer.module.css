@@ -23,11 +23,6 @@
   overflow: hidden;
 }
 
-.panelLoading {
-  padding: var(--space-24);
-  border-inline-start: var(--hairline) solid var(--border-subtle);
-}
-
 .mapLoading {
   position: absolute;
   inset: 0;

@@ -33,6 +33,7 @@ from pydantic_ai.usage import UsageLimits
 
 from app.adapter.chat.artifacts import ChatRun
 from app.adapter.chat.failure import chat_failure, tool_outcome
+from app.adapter.chat.title import TITLE_INSTRUCTIONS, name_chat
 from app.adapter.chat.tools import AtlasTools
 from app.domain.errors import DomainError
 from app.usecase.chat import ChatEvent, ChatRequest
@@ -43,6 +44,9 @@ QUEUE_SECONDS = 120
 INSTRUCTIONS = """You are Plexus, a transport accessibility analyst. Answer in Russian.
 Use the atlas tools for numerical and geographic claims. Never invent data or tool results.
 The map context identifies the currently selected region, season, network mode and metric.
+map_context.selected_roads lists roads the user clicked on the map: real OSM way IDs and names.
+When the user says this road, these roads or the selected roads, use exactly these way_ids in ONE
+recalculate_road_index call per region; do not search the graph again or ask for IDs.
 You can inspect all regions present in the atlas. List or search to get identifiers.
 Distinguish missing values from zero, catalog links from a routable graph, model time from observed
 travel, and economic revenue from GDP. Hansen measures potential market access, not profitability.
@@ -56,7 +60,7 @@ not a promise of door-to-door service. The source graph remains unchanged. The f
 for additions on the BASE snapshot network only; closure/degradation uses the full calculation.
 For money, require explicit OD trips per year and rubles per hour. Report conditional monetized
 travel-time savings and assumptions, never claim Hansen growth equals GDP, revenue or budget income.
-The scenario panel automatically shows these jobs. Pending jobs are not forecasts.
+Scenario cards in this chat show these jobs live. Pending jobs are not forecasts.
 The data-20261107 baseline includes intercity rail/air even though its internal scenario is road;
 summer and winter add local seasonal links. It is not the newer hansen-frequency-v2 model.
 Use calculation_capabilities before answering whether a scenario can be computed.
@@ -105,8 +109,12 @@ For rankings and comparisons use compare_regions so the UI receives a real table
 When the user asks for a chart, use show_chart with the returned table_id, x=name and a numeric y.
 Tables and charts appear as separate UI blocks. Do not duplicate all rows in Markdown prose.
 Be concise: 1-3 paragraphs or short bullet lists with meaningful conclusions.
-Keep uncertainty and limitations in the main answer. Put source URLs and technical scope in
-separate paragraphs starting with Sources: or Scope: so the UI can fold them into details.
+Keep uncertainty, assumptions and limitations in the main answer. Do not append source lists,
+technical metadata or tool logs unless the user asks for them. When asked to show sources,
+use the source tools and relevant atlas records to identify sources for the preceding answer.
+Reply with a concise annotated Markdown list of actual source links and their data periods;
+state missing provenance honestly. Present this as a normal answer without Sources: or Scope:
+prefixes. Do not start new scenario calculations just to explain sources.
 Use control_map only when the user asks to show, highlight, focus, zoom or reset the map.
 For a group or ranking, pass all region IDs in ONE focus call, not successive flights.
 Map control supports regions only, not city coordinates or route geometry. State this limit.
@@ -172,12 +180,15 @@ class CodexResponsesGateway:
     async def _run(
         self, request: ChatRequest, provider: OpenAICodexProvider
     ) -> AsyncGenerator[ChatEvent, None]:
+        needs_title = request.title_requested and request.analysis_id is None
         agent = Agent(
             OpenAICodexModel(MODEL, provider=provider),
             deps_type=ChatRun,
-            instructions=INSTRUCTIONS,
+            instructions=INSTRUCTIONS + ("\n" + TITLE_INSTRUCTIONS if needs_title else ""),
             model_settings=OpenAIResponsesModelSettings(openai_reasoning_effort="low"),
         )
+        if needs_title:
+            agent.tool(sequential=True, description="Name this conversation in Russian.")(name_chat)
         if request.analysis_id is None:
             self._tools.register(agent)
         history: list[ModelMessage] = []
@@ -202,7 +213,8 @@ class CodexResponsesGateway:
                 elif isinstance(event, PartDeltaEvent) and isinstance(event.delta, TextPartDelta):
                     yield ChatEvent("delta", text=event.delta.content_delta)
                 elif isinstance(event, FunctionToolCallEvent):
-                    yield ChatEvent("status", code=event.part.tool_name)
+                    if event.part.tool_name != "name_chat":
+                        yield ChatEvent("status", code=event.part.tool_name)
                 elif isinstance(event, FunctionToolResultEvent):
                     tool_outcome(event)
                     while run.pending:

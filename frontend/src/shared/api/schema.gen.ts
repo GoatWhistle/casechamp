@@ -810,6 +810,8 @@ export interface components {
              * @default hansen
              */
             metric: string;
+            /** Selected Roads */
+            selected_roads?: components["schemas"]["SelectedRoadInput"][];
         };
         /** ChatInput */
         ChatInput: {
@@ -820,6 +822,8 @@ export interface components {
             context?: components["schemas"]["ChatContextInput"];
             /** Analysis Id */
             analysis_id?: string | null;
+            /** Title Requested */
+            title_requested?: boolean;
         };
         /** ChatMapCommand */
         ChatMapCommand: {
@@ -847,7 +851,7 @@ export interface components {
              * Type
              * @enum {string}
              */
-            type: "status" | "delta" | "done" | "error" | "table" | "chart" | "map" | "calculation" | "analysis" | "scenario";
+            type: "status" | "delta" | "done" | "error" | "table" | "chart" | "map" | "calculation" | "analysis" | "scenario" | "title";
             /**
              * Text
              * @default
@@ -1633,6 +1637,16 @@ export interface components {
             /** Unknown */
             unknown: number;
         };
+        /** SelectedRoadInput */
+        SelectedRoadInput: {
+            /** Way Id */
+            way_id: number;
+            /**
+             * Name
+             * @default
+             */
+            name: string;
+        };
         /** SensitivityPoint */
         SensitivityPoint: {
             /** Time Multiplier */
@@ -2005,7 +2019,7 @@ export interface operations {
                     "application/json": components["schemas"]["SearchResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2133,7 +2147,7 @@ export interface operations {
                     "application/json": components["schemas"]["RegionSummaryResponse"][];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2185,7 +2199,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2238,7 +2252,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2293,7 +2307,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2371,7 +2385,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2442,7 +2456,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2480,7 +2494,7 @@ export interface operations {
                     "application/json": components["schemas"]["ScenarioCatalogResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2531,7 +2545,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Content */
+            /** @description Unprocessable Entity */
             422: {
                 headers: {
                     [name: string]: unknown;

@@ -6,12 +6,6 @@
   transition: opacity var(--dur-base) var(--ease-out);
 }
 
-.overview {
-  gap: var(--space-8);
-  border: 0;
-  padding: 0;
-}
-
 .region[data-stale] {
   opacity: var(--opacity-stale);
 }

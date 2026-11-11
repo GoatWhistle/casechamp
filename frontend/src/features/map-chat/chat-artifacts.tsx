@@ -7,9 +7,10 @@ import { ChatTable, columnKey, formatCell } from "./chat-table"
 export interface ChatArtifactsProps {
   readonly tables: readonly Table[]
   readonly charts: readonly ChatChart[]
+  readonly showSources?: boolean
 }
 
-export function ChatArtifacts({ tables, charts }: ChatArtifactsProps) {
+export function ChatArtifacts({ tables, charts, showSources = false }: ChatArtifactsProps) {
   const { t } = useTranslation()
   const f = useFormatters()
   if (!tables.length) return null
@@ -42,9 +43,11 @@ export function ChatArtifacts({ tables, charts }: ChatArtifactsProps) {
             ) : (
               <ChatTable table={table} />
             )}
-            <a className={styles.source} href={table.source} target="_blank" rel="noreferrer">
-              {t("chat:tableSource")}
-            </a>
+            {showSources ? (
+              <a className={styles.source} href={table.source} target="_blank" rel="noreferrer">
+                {t("chat:tableSource")}
+              </a>
+            ) : null}
           </Card>
         )
       })}

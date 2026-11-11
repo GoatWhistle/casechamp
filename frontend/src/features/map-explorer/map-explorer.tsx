@@ -7,28 +7,31 @@ import type { ChatContext } from "@/shared/api/chat-stream"
 import { usePanelWidth } from "@/shared/hooks"
 import { useNetworkMode } from "@/shared/hooks/use-network-mode"
 import { useFormatters, useTranslation } from "@/shared/i18n"
-import { PanelResizer } from "@/shared/ui"
-import { MapPending, PanelPending } from "./explorer-states"
+import { PanelResizer, Skeleton } from "@/shared/ui"
+import { MapPending } from "./explorer-states"
 import { HoverCard } from "./hover-card"
 import styles from "./map-explorer.module.css"
 import { LinkLayers, MapLegend } from "./map-legend"
-import { MapPanel } from "./map-panel"
 import { MapToolbar } from "./map-toolbar"
 import { MapZoom } from "./map-zoom"
 import { formatMetric, metricValue } from "./metric"
 import { OverlayReset, RoadLayer } from "./road-legend"
+import { OutsideRegion, RegionSummary } from "./summary/region-summary"
 import { useExplorerParams } from "./use-explorer-params"
 import { useMapData, useSelectedTransit } from "./use-map-data"
 import { useMapHover } from "./use-map-hover"
 
+export interface MapPanelSlot {
+  readonly regionCard: (id: string) => ReactNode
+  readonly selection: string | null
+  readonly context: ChatContext
+  readonly onMapCommand: MapCommandHandler
+  readonly roads: RoadGraphState
+  readonly onChatChange: () => void
+}
+
 export interface MapExplorerProps {
-  readonly renderPanel?: (
-    summary: ReactNode,
-    context: ChatContext,
-    onMapCommand: MapCommandHandler,
-    roads: RoadGraphState,
-    onChatChange: () => void,
-  ) => ReactNode
+  readonly renderPanel: (slot: MapPanelSlot) => ReactNode
 }
 
 const PANEL_WIDTH_KEY = "plexus.map-panel-width"
@@ -39,17 +42,12 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
   const fullscreen = useLocation().pathname === "/"
   const { t } = useTranslation()
   const f = useFormatters()
-  const { metric, season, selectedId, setMetric, setSeason, select, searchFor } =
-    useExplorerParams()
+  const { metric, season, selectedId, setMetric, setSeason, select } = useExplorerParams()
   const { hoveredId, cardRef, point, onHover } = useMapHover()
   const host = useRef<HTMLDivElement | null>(null)
   const panelWidth = usePanelWidth(host, PANEL_WIDTH_KEY)
-  const { geo, regions, overview, byId, valueAt, scale, missing, failed, retry } = useMapData(
-    metric,
-    season,
-  )
+  const { geo, regions, byId, valueAt, scale, missing, failed, retry } = useMapData(metric, season)
   const modelId = modelRegionId(selectedId, regions.data)
-  const selectedName = boundaryName(selectedId, geo.data?.regions)
   const { links, airports, transit, modelCount, showModels, setShowModels } = useSelectedTransit(
     modelId,
     season,
@@ -107,21 +105,16 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
     rail: transitModes.has("rail"),
   }
 
-  const panel =
-    overview.data && regions.data ? (
-      <MapPanel
-        overview={overview.data}
-        regions={regions.data}
-        metric={metric}
-        season={season}
-        selectedId={selectedId}
-        selectedName={selectedName}
-        searchFor={searchFor}
-        onClear={clear}
-      />
-    ) : (
-      <PanelPending failed={failed} onRetry={retry} />
-    )
+  const geoRegions = geo.data?.regions
+  const regionCard = useCallback(
+    (id: string) => {
+      if (!regions.data) return <Skeleton lines={4} />
+      const model = modelRegionId(id, regions.data)
+      if (model) return <RegionSummary id={model} season={season} regions={regions.data} />
+      return <OutsideRegion name={boundaryName(id, geoRegions) ?? id} count={regions.data.length} />
+    },
+    [regions.data, season, geoRegions],
+  )
 
   return (
     <div
@@ -192,23 +185,22 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
           />
         ) : null}
       </div>
-      {renderPanel
-        ? renderPanel(
-            panel,
-            {
-              region_id: modelId,
-              season,
-              network_mode: networkMode,
-              metric,
-            },
-            onMapCommand,
-            roads,
-            () => {
-              setMapCommand(null)
-              roads.clearOverlays()
-            },
-          )
-        : panel}
+      <p className="visually-hidden" role="status">
+        {modelId && byId.get(modelId)
+          ? t("map:selectedStatus", { name: byId.get(modelId)?.name })
+          : ""}
+      </p>
+      {renderPanel({
+        regionCard,
+        selection: selectedId,
+        context: { region_id: modelId, season, network_mode: networkMode, metric },
+        onMapCommand,
+        roads,
+        onChatChange: () => {
+          setMapCommand(null)
+          roads.clearOverlays()
+        },
+      })}
       <PanelResizer
         className={styles.resizer}
         width={panelWidth.width}

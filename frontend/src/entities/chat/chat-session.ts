@@ -18,6 +18,7 @@ export interface ChatEntry {
   readonly scenarios?: readonly ChatScenario[]
   readonly commentaries?: Readonly<Record<string, AnalysisCommentary>>
   readonly id: string
+  readonly region?: string
   readonly role: "user" | "assistant"
   readonly content: string
   readonly complete: boolean
@@ -30,6 +31,7 @@ export interface ChatEntry {
 export interface ChatSession {
   readonly version: 1
   readonly id: string
+  readonly title?: string
   readonly createdAt: number
   readonly updatedAt: number
   readonly messages: ChatEntry[]
@@ -52,7 +54,25 @@ export function createChatSession(): ChatSession {
   }
 }
 
+export function withRegionEntry(session: ChatSession, region: string): ChatSession {
+  const last = session.messages.findLast((message) => message.region !== undefined)
+  if (last?.region === region) return session
+  const entry: ChatEntry = {
+    id: createChatId(),
+    region,
+    role: "assistant",
+    content: "",
+    complete: true,
+    steps: [],
+    tables: [],
+    charts: [],
+    mapCommands: [],
+  }
+  return { ...session, messages: [...session.messages, entry] }
+}
+
 export function chatSessionTitle(session: ChatSession): string {
+  if (session.title?.trim()) return session.title.trim()
   return (session.messages.find((message) => message.role === "user")?.content ?? session.draft)
     .replace(/\s+/g, " ")
     .trim()

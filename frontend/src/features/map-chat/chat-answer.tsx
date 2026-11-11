@@ -1,40 +1,47 @@
 import type { AnalysisCommentary } from "@/entities/chat"
 import type { CalculationHandler } from "@/shared/api/chat-calculation"
 import type { MapCommandHandler } from "@/shared/api/chat-map"
+import type { AnalysisOverlay } from "@/shared/api/road-analysis"
 import { useTranslation } from "@/shared/i18n"
-import { Button, ChatMessage, Disclosure } from "@/shared/ui"
+import { Button, ChatMessage } from "@/shared/ui"
 import { ChatAnalysisCard } from "./analysis/chat-analysis-card"
 import { ChatArtifacts } from "./chat-artifacts"
 import { ChatCalculationCard } from "./chat-calculation-card"
-import { chatStatusKey } from "./chat-copy"
 import { ChatScenarioCard } from "./chat-scenario-card"
 import { presentMessage } from "./message-presentation"
 import type { ChatEntry } from "./use-map-chat"
 
 export function ChatAnswer({
   message,
+  showSources = false,
   autoFocus = false,
   onCommentary,
   onMapCommand,
   onCalculation,
+  onScenario,
+  onAnalysisOverlay,
 }: {
+  readonly showSources?: boolean
   readonly autoFocus?: boolean
   readonly onCommentary?:
     | ((messageId: string, analysisId: string, value: AnalysisCommentary) => void)
     | undefined
   readonly onCalculation?: CalculationHandler | undefined
+  readonly onScenario?: ((jobId: string) => void) | undefined
+  readonly onAnalysisOverlay?: ((overlay: AnalysisOverlay) => void) | undefined
   readonly message: ChatEntry
   readonly onMapCommand: MapCommandHandler
 }) {
   const { t } = useTranslation()
-  const presentation =
-    message.role === "assistant"
-      ? presentMessage(message.content)
-      : { text: message.content, details: "" }
+  const text =
+    message.role === "assistant" && !showSources
+      ? presentMessage(message.content).text
+      : message.content
   return (
     <ChatMessage
       speaker={message.role}
-      text={presentation.text}
+      framed={message.role === "assistant"}
+      text={text}
       label={t(`chat:roles.${message.role}`)}
       footer={
         <>
@@ -57,7 +64,11 @@ export function ChatAnswer({
             />
           ))}
           {message.scenarios?.map((scenario) => (
-            <ChatScenarioCard key={scenario.job_ids.join("|")} scenario={scenario} />
+            <ChatScenarioCard
+              key={scenario.job_ids.join("|")}
+              scenario={scenario}
+              onShow={onScenario}
+            />
           ))}
           {message.analyses?.map((analysis) => (
             <ChatAnalysisCard
@@ -65,30 +76,16 @@ export function ChatAnswer({
               analysis={analysis}
               commentary={message.commentaries?.[analysis.id]}
               onCommentary={(value) => onCommentary?.(message.id, analysis.id, value)}
+              onOverlay={onAnalysisOverlay}
             />
           ))}
-          <ChatArtifacts tables={message.tables} charts={message.charts} />
-          {presentation.details ? (
-            <Disclosure title={t("chat:details")}>
-              <ChatMessage
-                speaker="assistant"
-                text={presentation.details}
-                label={t("chat:details")}
-              />
-            </Disclosure>
-          ) : null}
+          <ChatArtifacts
+            tables={message.tables}
+            charts={message.charts}
+            showSources={showSources}
+          />
         </>
       }
-    >
-      {message.steps.length ? (
-        <Disclosure title={t("chat:steps", { count: message.steps.length })}>
-          <ol>
-            {message.steps.map((step) => (
-              <li key={step}>{t(chatStatusKey(step))}</li>
-            ))}
-          </ol>
-        </Disclosure>
-      ) : null}
-    </ChatMessage>
+    />
   )
 }

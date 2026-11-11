@@ -1,48 +1,73 @@
-import { type ReactNode, useEffect, useId, useRef, useState } from "react"
-import { useSearchParams } from "react-router"
+import { type ReactNode, useEffect, useRef } from "react"
 import { type ChatContext, chatSessionTitle } from "@/entities/chat"
 import { useRegion } from "@/entities/region"
 import type { CalculationHandler } from "@/shared/api/chat-calculation"
 import type { MapCommandHandler } from "@/shared/api/chat-map"
+import type { AnalysisOverlay } from "@/shared/api/road-analysis"
+import type { RoadSegment } from "@/shared/api/road-graph"
 import { useTranslation } from "@/shared/i18n"
 import { Swap } from "@/shared/motion"
-import { Banner, Button, ChatComposer, Icon, ScrollArea, Tabs, Tooltip } from "@/shared/ui"
+import { Banner, Button, ChatComposer, Icon, ScrollArea, Tooltip } from "@/shared/ui"
 import { ChatAnswer } from "./chat-answer"
 import { chatErrorKey, chatStatusKey } from "./chat-copy"
-import { ChatEmpty } from "./chat-empty"
+import { ChatEmpty, ChatFollowUp } from "./chat-prompts"
+import { ChatRegion } from "./chat-region"
 import styles from "./map-chat.module.css"
+import { SelectedRoads } from "./selected-roads"
 import { ChatStorageNotice } from "./sessions/chat-storage-notice"
 import { useMapChat } from "./use-map-chat"
+import { useRoadPrompt } from "./use-road-prompt"
 
 export interface MapChatProps {
   readonly onSessionChange?: (() => void) | undefined
   readonly onCalculation?: CalculationHandler | undefined
+  readonly onScenario?: ((jobId: string) => void) | undefined
+  readonly onAnalysisOverlay?: ((overlay: AnalysisOverlay) => void) | undefined
   readonly context: ChatContext
-  readonly summary: ReactNode
-  readonly scenario?: ReactNode
+  readonly selection: string | null
+  readonly regionCard: (id: string) => ReactNode
+  readonly roads: readonly RoadSegment[]
+  readonly onClearRoads: () => void
   readonly onMapCommand: MapCommandHandler
 }
 
 export function MapChat({
   context,
-  summary,
-  scenario,
+  selection,
+  regionCard,
+  roads,
+  onClearRoads,
   onMapCommand,
   onCalculation,
+  onScenario,
+  onAnalysisOverlay,
   onSessionChange,
 }: MapChatProps) {
   const { t } = useTranslation()
-  const [searchParams] = useSearchParams()
-  const [tab, setTab] = useState<"chat" | "summary" | "scenario">(initialTab(searchParams))
-  const chat = useMapChat(context, onMapCommand)
+  const chat = useMapChat(
+    { ...context, selected_roads: roads.map(({ way_id, name }) => ({ way_id, name })) },
+    onMapCommand,
+  )
+  useRoadPrompt(roads, chat.draft, chat.setDraft)
   const region = useRegion(context.region_id ?? "", context.season ?? "summer")
   const regionName = regionLabel(context.region_id, region.data, t)
   const active = chat.sessions.find((session) => session.id === chat.sessionId)
   const threadTitle = (active ? chatSessionTitle(active) : "") || t("chat:new")
-  const titleId = useId()
   const scroll = useRef<HTMLDivElement>(null)
   const follow = useRef(true)
   const tail = chat.messages.at(-1)
+  const lastRegion = chat.messages.findLast((message) => message.region !== undefined)
+  const talked = chat.messages.some((message) => message.region === undefined)
+  const postRegion = useRef(chat.postRegion)
+  postRegion.current = chat.postRegion
+  const posted = useRef<string | null | undefined>(undefined)
+  useEffect(() => {
+    if (posted.current === selection) return
+    posted.current = selection
+    if (!selection) return
+    follow.current = true
+    postRegion.current(selection)
+  }, [selection])
   useEffect(() => {
     const node = scroll.current
     if (tail === undefined || !node) return
@@ -58,7 +83,6 @@ export function MapChat({
     follow.current = true
     onSessionChange?.()
     chat.newSession()
-    setTab("chat")
   }
   const send = (prompt?: string) => {
     follow.current = true
@@ -67,49 +91,7 @@ export function MapChat({
 
   return (
     <aside className={styles.panel} aria-label={t("chat:panelLabel")}>
-      <div className={styles.bar}>
-        <Tabs
-          label={t("chat:panelLabel")}
-          value={tab}
-          onChange={setTab}
-          className={styles.tabs}
-          controls={{
-            chat: `${titleId}chat`,
-            summary: `${titleId}summary`,
-            scenario: `${titleId}scenario`,
-          }}
-          items={[
-            { value: "chat", label: t("chat:tab"), icon: "chat" },
-            { value: "summary", label: t("chat:summary"), icon: "overview" },
-            { value: "scenario", label: t("graph:tab"), icon: "whatif" },
-          ]}
-        />
-      </div>
-      <div
-        id={`${titleId}scenario`}
-        role="tabpanel"
-        aria-label={t("graph:tab")}
-        className={styles.summary}
-        data-hidden={tab !== "scenario" || undefined}
-      >
-        {scenario}
-      </div>
-      <div
-        id={`${titleId}summary`}
-        role="tabpanel"
-        aria-label={t("chat:summary")}
-        className={styles.summary}
-        data-hidden={tab !== "summary" || undefined}
-      >
-        {summary}
-      </div>
-      <div
-        id={`${titleId}chat`}
-        role="tabpanel"
-        aria-label={t("chat:tab")}
-        className={styles.chat}
-        data-hidden={tab !== "chat" || undefined}
-      >
+      <div className={styles.chat}>
         {chat.messages.length > 0 ? (
           <div className={styles.thread}>
             <p className={styles.threadTitle}>{threadTitle}</p>
@@ -152,17 +134,36 @@ export function MapChat({
                 }}
               />
             ) : null}
-            {chat.messages.map((message) => (
-              <ChatAnswer
-                key={message.id}
-                message={message}
-                onCommentary={chat.saveCommentary}
-                autoFocus={chat.busy && message.id === tail?.id}
-                onCalculation={onCalculation}
-                onMapCommand={onMapCommand}
-              />
-            ))}
-            {chat.messages.length && !chat.error ? (
+            {chat.messages.map((message, index) =>
+              message.region === undefined ? (
+                <ChatAnswer
+                  key={message.id}
+                  message={message}
+                  showSources={chat.messages[index - 1]?.content === t("chat:showSources")}
+                  onCommentary={chat.saveCommentary}
+                  autoFocus={chat.busy && message.id === tail?.id}
+                  onCalculation={onCalculation}
+                  onScenario={onScenario}
+                  onAnalysisOverlay={onAnalysisOverlay}
+                  onMapCommand={onMapCommand}
+                />
+              ) : (
+                <ChatRegion
+                  key={message.id}
+                  card={regionCard(message.region)}
+                  current={message.id === lastRegion?.id && message.region === selection}
+                  busy={chat.busy}
+                  onAsk={send}
+                />
+              ),
+            )}
+            <ChatFollowUp
+              messages={chat.messages}
+              busy={chat.busy}
+              error={chat.error}
+              onAsk={send}
+            />
+            {talked && !chat.error && chat.status !== "done" ? (
               <p role="status" className={styles.status}>
                 <Icon name={statusIcon(chat.busy, Boolean(chat.error))} size="sm" />
                 {t(chatStatusKey(chat.status))}
@@ -195,6 +196,7 @@ export function MapChat({
                   <Icon name={context.season === "winter" ? "snowflake" : "sun"} size="sm" />
                   {t(`data:season.${context.season ?? "summer"}`)}
                 </span>
+                <SelectedRoads roads={roads} onClear={onClearRoads} />
               </>
             }
             value={chat.draft}
@@ -225,8 +227,4 @@ function regionLabel(
 function statusIcon(busy: boolean, failed: boolean): "neutral" | "error" | "check" {
   if (busy) return "neutral"
   return failed ? "error" : "check"
-}
-
-function initialTab(params: URLSearchParams): "chat" | "scenario" {
-  return params.has("analysis") || params.get("panel") === "scenario" ? "scenario" : "chat"
 }

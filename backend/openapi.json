@@ -170,7 +170,7 @@
                 }
               }
             },
-            "description": "Unprocessable Content"
+            "description": "Unprocessable Entity"
           },
           "503": {
             "content": {
@@ -336,7 +336,7 @@
                 }
               }
             },
-            "description": "Unprocessable Content"
+            "description": "Unprocessable Entity"
           },
           "503": {
             "content": {
@@ -416,7 +416,7 @@
                 }
               }
             },
-            "description": "Unprocessable Content"
+            "description": "Unprocessable Entity"
           },
           "503": {
             "content": {
@@ -517,7 +517,7 @@
                 }
               }
             },
-            "description": "Unprocessable Content"
+            "description": "Unprocessable Entity"
           },
           "503": {
             "content": {
@@ -637,7 +637,7 @@
                 }
               }
             },
-            "description": "Unprocessable Content"
+            "description": "Unprocessable Entity"
           },
           "503": {
             "content": {
@@ -734,7 +734,7 @@
                 }
               }
             },
-            "description": "Unprocessable Content"
+            "description": "Unprocessable Entity"
           },
           "503": {
             "content": {
@@ -829,7 +829,7 @@
                 }
               }
             },
-            "description": "Unprocessable Content"
+            "description": "Unprocessable Entity"
           },
           "503": {
             "content": {
@@ -863,7 +863,7 @@
             }
           },
           "422": {
-            "description": "Unprocessable Content",
+            "description": "Unprocessable Entity",
             "content": {
               "application/json": {
                 "schema": {
@@ -914,7 +914,7 @@
             }
           },
           "422": {
-            "description": "Unprocessable Content",
+            "description": "Unprocessable Entity",
             "content": {
               "application/json": {
                 "schema": {
@@ -1233,6 +1233,145 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RoadJob"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transport-links": {
+      "get": {
+        "tags": [
+          "road-graph"
+        ],
+        "summary": "Transport Links",
+        "operationId": "transport_links_api_v1_transport_links_get",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "enum": [
+                "intercity",
+                "local"
+              ],
+              "type": "string",
+              "title": "Network"
+            }
+          },
+          {
+            "name": "place",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Place"
+            }
+          },
+          {
+            "name": "scenario",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "road",
+                "summer",
+                "winter"
+              ],
+              "type": "string",
+              "default": "road",
+              "title": "Scenario"
+            }
+          },
+          {
+            "name": "mode",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Mode"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TransportLink"
+                  },
+                  "title": "Response Transport Links Api V1 Transport Links Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/road-graph/places": {
+      "get": {
+        "tags": [
+          "road-graph"
+        ],
+        "summary": "Place Names",
+        "operationId": "place_names_api_v1_road_graph_places_get",
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "title": "Ids"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PlaceName"
+                  },
+                  "title": "Response Place Names Api V1 Road Graph Places Get"
                 }
               }
             }
@@ -2322,6 +2461,14 @@
             "maxLength": 64,
             "title": "Metric",
             "default": "hansen"
+          },
+          "selected_roads": {
+            "items": {
+              "$ref": "#/components/schemas/SelectedRoadInput"
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Selected Roads"
           }
         },
         "type": "object",
@@ -2359,6 +2506,10 @@
               }
             ],
             "title": "Analysis Id"
+          },
+          "title_requested": {
+            "type": "boolean",
+            "title": "Title Requested"
           }
         },
         "type": "object",
@@ -2431,7 +2582,9 @@
               "chart",
               "map",
               "calculation",
-              "analysis"
+              "analysis",
+              "scenario",
+              "title"
             ],
             "title": "Type"
           },
@@ -2489,6 +2642,16 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/AnalysisResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "scenario": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ScenarioCard"
               },
               {
                 "type": "null"
@@ -3058,6 +3221,117 @@
         ],
         "title": "IndexStatusResponse"
       },
+      "LinkChange": {
+        "properties": {
+          "action": {
+            "type": "string",
+            "title": "Action"
+          },
+          "network": {
+            "type": "string",
+            "title": "Network"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target"
+          },
+          "hours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hours"
+          }
+        },
+        "type": "object",
+        "required": [
+          "action",
+          "network",
+          "mode",
+          "source",
+          "target"
+        ],
+        "title": "LinkChange"
+      },
+      "LinkChangeInput": {
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "add",
+              "remove"
+            ],
+            "title": "Action"
+          },
+          "network": {
+            "type": "string",
+            "enum": [
+              "intercity",
+              "local"
+            ],
+            "title": "Network"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "rail",
+              "air",
+              "river",
+              "ferry",
+              "winter_road",
+              "ice_crossing",
+              "pontoon_bridge"
+            ],
+            "title": "Mode"
+          },
+          "source": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Source"
+          },
+          "target": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Target"
+          },
+          "hours": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 72.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hours"
+          }
+        },
+        "type": "object",
+        "required": [
+          "action",
+          "network",
+          "mode",
+          "source",
+          "target"
+        ],
+        "title": "LinkChangeInput"
+      },
       "LinkResponse": {
         "properties": {
           "is_model": {
@@ -3487,6 +3761,29 @@
           "index"
         ],
         "title": "OverviewResponse"
+      },
+      "PlaceName": {
+        "properties": {
+          "point_id": {
+            "type": "string",
+            "title": "Point Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "region": {
+            "type": "string",
+            "title": "Region"
+          }
+        },
+        "type": "object",
+        "required": [
+          "point_id",
+          "name",
+          "region"
+        ],
+        "title": "PlaceName"
       },
       "RegionDetailResponse": {
         "properties": {
@@ -4165,6 +4462,13 @@
                 "type": "null"
               }
             ]
+          },
+          "links": {
+            "items": {
+              "$ref": "#/components/schemas/LinkChange"
+            },
+            "type": "array",
+            "title": "Links"
           }
         },
         "type": "object",
@@ -4298,14 +4602,20 @@
             },
             "type": "array",
             "maxItems": 50,
-            "minItems": 1,
             "title": "Changes"
+          },
+          "links": {
+            "items": {
+              "$ref": "#/components/schemas/LinkChangeInput"
+            },
+            "type": "array",
+            "maxItems": 30,
+            "title": "Links"
           }
         },
         "type": "object",
         "required": [
-          "region_id",
-          "changes"
+          "region_id"
         ],
         "title": "RoadScenarioInput"
       },
@@ -4463,6 +4773,35 @@
           "y2"
         ],
         "title": "RouteResponse"
+      },
+      "ScenarioCard": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "speed",
+              "slowdown",
+              "closure",
+              "roads",
+              "connection",
+              "links"
+            ],
+            "title": "Kind"
+          },
+          "job_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Job Ids"
+          }
+        },
+        "type": "object",
+        "required": [
+          "kind",
+          "job_ids"
+        ],
+        "title": "ScenarioCard"
       },
       "ScenarioCatalogResponse": {
         "properties": {
@@ -4713,6 +5052,26 @@
           "unknown"
         ],
         "title": "SeasonCountsResponse"
+      },
+      "SelectedRoadInput": {
+        "properties": {
+          "way_id": {
+            "type": "integer",
+            "exclusiveMinimum": 0.0,
+            "title": "Way Id"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 200,
+            "title": "Name",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "way_id"
+        ],
+        "title": "SelectedRoadInput"
       },
       "SensitivityPoint": {
         "properties": {
@@ -5146,6 +5505,60 @@
           "rows"
         ],
         "title": "SourceResponse"
+      },
+      "TransportLink": {
+        "properties": {
+          "network": {
+            "type": "string",
+            "title": "Network"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "source_name": {
+            "type": "string",
+            "title": "Source Name"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target"
+          },
+          "target_name": {
+            "type": "string",
+            "title": "Target Name"
+          },
+          "hours": {
+            "type": "number",
+            "title": "Hours"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Region"
+          }
+        },
+        "type": "object",
+        "required": [
+          "network",
+          "mode",
+          "source",
+          "source_name",
+          "target",
+          "target_name",
+          "hours"
+        ],
+        "title": "TransportLink"
       },
       "TrunkLinkRequest": {
         "properties": {

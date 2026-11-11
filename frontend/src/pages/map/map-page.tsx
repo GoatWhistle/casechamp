@@ -1,7 +1,5 @@
 import { MapChat } from "@/features/map-chat"
 import { MapExplorer } from "@/features/map-explorer"
-import { AnalysisWorkspace } from "@/features/road-analysis"
-import { RoadScenario } from "@/features/road-scenario"
 import { useDocumentTitle, useTranslation } from "@/shared/i18n"
 
 export function MapPage() {
@@ -13,19 +11,17 @@ export function MapPage() {
         {t("map:title")}
       </h1>
       <MapExplorer
-        renderPanel={(summary, context, onMapCommand, roads, onChatChange) => (
+        renderPanel={({ regionCard, selection, context, onMapCommand, roads, onChatChange }) => (
           <MapChat
-            scenario={
-              <AnalysisWorkspace
-                regionId={context.region_id ?? null}
-                onOverlay={roads.setAnalysisOverlay}
-                manual={<RoadScenario roads={roads} context={context} />}
-              />
-            }
-            summary={summary}
+            regionCard={regionCard}
+            selection={selection}
             context={context}
+            roads={roads.selected}
+            onClearRoads={roads.clear}
             onMapCommand={onMapCommand}
             onCalculation={roads.showCalculation}
+            onScenario={roads.selectJob}
+            onAnalysisOverlay={roads.setAnalysisOverlay}
             onSessionChange={onChatChange}
           />
         )}

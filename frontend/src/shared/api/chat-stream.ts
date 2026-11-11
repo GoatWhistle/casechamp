@@ -44,6 +44,7 @@ function parseEvent(line: string): ChatStreamEvent {
       "calculation",
       "analysis",
       "scenario",
+      "title",
     ].includes(String(value.type)) ||
     !("text" in value) ||
     typeof value.text !== "string" ||
@@ -52,6 +53,8 @@ function parseEvent(line: string): ChatStreamEvent {
   )
     throw new ApiError(502, "chat_stream_error")
   const artifact = value as Record<string, unknown>
+  if (value.type === "title" && (!value.text.trim() || value.text.length > 80))
+    throw new ApiError(502, "chat_stream_error")
   const validate = ARTIFACTS[String(value.type)]
   if (validate && !validate(artifact[String(value.type)]))
     throw new ApiError(502, "chat_stream_error")

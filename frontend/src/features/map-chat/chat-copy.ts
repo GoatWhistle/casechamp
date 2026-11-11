@@ -17,7 +17,6 @@ const STATUSES: Readonly<Record<string, MessageKey>> = {
   queued: "chat:status.queued",
   connecting: "chat:status.connecting",
   writing: "chat:status.writing",
-  done: "chat:status.done",
   stopped: "chat:status.stopped",
   error: "chat:status.error",
   compare_regions: "chat:status.comparison",

@@ -15,6 +15,17 @@
   white-space: pre-wrap;
 }
 
+.message[data-framed] {
+  padding: var(--space-16);
+  border: var(--hairline) solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--surface-muted);
+}
+
+.message[data-framed]:empty {
+  display: none;
+}
+
 .prose {
   font-size: var(--font-size-body-sm);
   line-height: var(--line-height-body);

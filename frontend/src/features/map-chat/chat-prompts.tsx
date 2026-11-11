@@ -1,4 +1,4 @@
-import type { ChatSession } from "@/entities/chat"
+import type { ChatEntry, ChatSession } from "@/entities/chat"
 import { useTranslation } from "@/shared/i18n"
 import { Button } from "@/shared/ui"
 import { ChatMark } from "@/shared/ui/brand"
@@ -43,6 +43,38 @@ export function ChatEmpty({ sessions, activeId, onAsk, onSelect, onDelete }: Cha
         onSelect={onSelect}
         onDelete={onDelete}
       />
+    </div>
+  )
+}
+
+export function ChatFollowUp({
+  messages,
+  busy,
+  error,
+  onAsk,
+}: {
+  readonly messages: readonly ChatEntry[]
+  readonly busy: boolean
+  readonly error: string | null
+  readonly onAsk: (prompt: string) => void
+}) {
+  const { t } = useTranslation()
+  const last = messages.at(-1)
+  const prompt = t("chat:showSources")
+  if (
+    busy ||
+    error ||
+    !last?.complete ||
+    last.role !== "assistant" ||
+    last.region !== undefined ||
+    messages.at(-2)?.content === prompt
+  )
+    return null
+  return (
+    <div>
+      <Button variant="secondary" size="compact" icon="book" onClick={() => onAsk(prompt)}>
+        {prompt}
+      </Button>
     </div>
   )
 }

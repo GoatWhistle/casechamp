@@ -11,6 +11,7 @@ export function historyContent(row: ChatEntry): string {
   const context = {
     displayed_tables: row.tables.map((table) => ({
       title: table.title,
+      source: table.source,
       rows: table.rows.map(({ id, name, origin, destination }) => ({
         id,
         name,

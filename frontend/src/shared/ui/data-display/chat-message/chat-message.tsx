@@ -12,13 +12,27 @@ export interface ChatMessageProps {
   readonly speaker: "user" | "assistant"
   readonly text: string
   readonly label: string
+  readonly framed?: boolean
   readonly children?: ReactNode
   readonly footer?: ReactNode
 }
 
-export function ChatMessage({ speaker, text, label, children, footer }: ChatMessageProps) {
+export function ChatMessage({
+  speaker,
+  text,
+  label,
+  framed = false,
+  children,
+  footer,
+}: ChatMessageProps) {
   return (
-    <article className={styles.message} data-role={speaker} aria-label={label} lang="ru">
+    <article
+      className={styles.message}
+      data-role={speaker}
+      data-framed={framed || undefined}
+      aria-label={label}
+      lang="ru"
+    >
       {children}
       {text ? (
         <div className={styles.prose}>

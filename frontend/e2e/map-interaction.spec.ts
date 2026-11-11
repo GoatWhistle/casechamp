@@ -1,4 +1,5 @@
 import { expect, type Locator, test } from "@playwright/test"
+import graphMessages from "../src/shared/i18n/locales/ru/graph.json" with { type: "json" }
 import mapMessages from "../src/shared/i18n/locales/ru/map.json" with { type: "json" }
 
 const surface = "[data-map-surface]"
@@ -57,9 +58,21 @@ test("drag pans the map without selecting a region", async ({ page }) => {
 test("clicking a region selects it and the camera focuses", async ({ page }) => {
   const map = await openMap(page)
   const home = await zoomOf(map)
+  if (await page.getByRole("switch", { name: graphMessages.layer }).isChecked())
+    await page.getByText(graphMessages.layer, { exact: true }).click()
   const box = await map.boundingBox()
   if (!box) throw new Error("Map is missing")
-  await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2)
+  const x = box.x + box.width / 2
+  const y = box.y + box.height / 2
+  let offset = 0
+  await expect
+    .poll(async () => {
+      offset = 1 - offset
+      await page.mouse.move(x + offset, y)
+      return page.locator('[class*="hoverTitle"]').count()
+    })
+    .toBeGreaterThan(0)
+  await page.mouse.click(x + offset, y)
   await expect.poll(() => new URL(page.url()).searchParams.has("region")).toBe(true)
   await expect.poll(() => zoomOf(map)).toBeGreaterThan(home)
 })

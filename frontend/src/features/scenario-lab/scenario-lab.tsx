@@ -33,7 +33,7 @@ export function ScenarioLab() {
         onRetry={() => void catalog.refetch()}
         retryPending={catalog.isFetching}
         action={
-          <ButtonLink to="/?panel=scenario" variant="secondary" size="compact" icon="route">
+          <ButtonLink to="/" variant="secondary" size="compact" icon="route">
             {t("scenario:errors.openMap")}
           </ButtonLink>
         }

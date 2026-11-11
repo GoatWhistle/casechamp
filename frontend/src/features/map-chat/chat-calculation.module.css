@@ -37,3 +37,9 @@
   font-size: var(--font-size-body-sm);
   color: var(--text-secondary);
 }
+
+.job {
+  display: grid;
+  gap: var(--space-12);
+  min-inline-size: 0;
+}

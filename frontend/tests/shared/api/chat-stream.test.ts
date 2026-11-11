@@ -31,6 +31,7 @@ describe("chat stream", () => {
   it("decodes split Cyrillic bytes and multiple events", async () => {
     mockResponse(
       [
+        { type: "title", text: chatCopy.title, code: "" },
         { type: "delta", text: chatCopy.title, code: "" },
         { type: "delta", text: chatCopy.example, code: "" },
         { type: "done", text: "", code: "" },
@@ -49,6 +50,7 @@ describe("chat stream", () => {
         .join(""),
     ).toBe(chatCopy.title + chatCopy.example)
     expect(events.at(-1)?.type).toBe("done")
+    expect(events[0]?.type).toBe("title")
   })
 
   it("rejects premature EOF instead of showing a completed answer", async () => {

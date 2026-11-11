@@ -20,11 +20,18 @@ class ChatMessage:
 
 
 @dataclass(frozen=True, slots=True)
+class SelectedRoad:
+    way_id: int
+    name: str
+
+
+@dataclass(frozen=True, slots=True)
 class ChatContext:
     region_id: str | None
     season: Season
     network_mode: NetworkMode
     metric: str
+    selected_roads: tuple[SelectedRoad, ...] = ()
 
 
 @dataclass(frozen=True, slots=True)
@@ -33,6 +40,7 @@ class ChatRequest:
     history: tuple[ChatMessage, ...]
     context: ChatContext
     analysis_id: str | None = None
+    title_requested: bool = False
 
 
 @dataclass(frozen=True, slots=True)
@@ -48,6 +56,7 @@ class ChatEvent:
         "calculation",
         "analysis",
         "scenario",
+        "title",
     ]
     text: str = ""
     code: str = ""

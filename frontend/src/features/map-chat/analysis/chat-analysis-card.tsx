@@ -1,18 +1,20 @@
 import { useId } from "react"
 import { type AnalysisCommentary, useAnalysisCommentary } from "@/entities/chat"
 import { useAnalysisJob } from "@/entities/road-analysis"
-import type { AnalysisJob } from "@/shared/api/road-analysis"
+import type { AnalysisJob, AnalysisOverlay } from "@/shared/api/road-analysis"
 import { useTranslation } from "@/shared/i18n"
-import { Banner, Button, ChatMessage, Disclosure, Meter } from "@/shared/ui"
+import { Banner, Button, ChatMessage, Meter } from "@/shared/ui"
 import { chatErrorKey } from "../chat-copy"
-import { AnalysisTable } from "./analysis-table"
+import { AnalysisResults } from "./analysis-results"
 import styles from "./chat-analysis.module.css"
 
 export function ChatAnalysisCard({
   analysis,
   commentary,
   onCommentary,
+  onOverlay,
 }: {
+  readonly onOverlay?: ((overlay: AnalysisOverlay) => void) | undefined
   readonly analysis: AnalysisJob
   readonly commentary?: AnalysisCommentary | undefined
   readonly onCommentary?: ((value: AnalysisCommentary) => void) | undefined
@@ -64,21 +66,11 @@ export function ChatAnalysisCard({
           }
         />
       ) : null}
-      {job.results.length ? <AnalysisTable job={job} /> : <p>{t("analysis:noVerified")}</p>}
+      <AnalysisResults job={job} onOverlay={onOverlay} />
       {job.failures.length ? <p>{t("analysis:failures", { count: job.failures.length })}</p> : null}
       <p className={styles.note}>
         {t("analysis:bestChecked", { count: job.results.length, total: job.candidate_count })}
       </p>
-      <Disclosure title={t("chat:details")}>
-        <p>{t("analysis:baseNetwork")}</p>
-        <p>
-          {t(job.mode === "improvement" ? "analysis:improvementSpec" : "analysis:closureSpec", {
-            percent: job.percent,
-          })}
-        </p>
-        <p>{t("analysis:populationMeaning")}</p>
-        <p>{t("analysis:modelLimit")}</p>
-      </Disclosure>
       {!job.compatible ? <p>{t("analysis:incompatible")}</p> : null}
       {review.text ? (
         <ChatMessage speaker="assistant" text={review.text} label={t("chat:analysis.commentary")} />

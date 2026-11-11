@@ -39,6 +39,7 @@ function isEntry(value: unknown): value is ChatEntry {
     (record(value.commentaries) && Object.values(value.commentaries).every(isAnalysisCommentary))
   return (
     text(value.id) &&
+    (value.region === undefined || text(value.region)) &&
     ["user", "assistant"].includes(String(value.role)) &&
     text(value.content) &&
     typeof value.complete === "boolean" &&
@@ -54,6 +55,7 @@ export function isChatSession(value: unknown): value is ChatSession {
     value.version === 1 &&
     typeof value.id === "string" &&
     value.id.length > 0 &&
+    (value.title === undefined || (text(value.title) && String(value.title).length <= 80)) &&
     typeof value.createdAt === "number" &&
     Number.isFinite(new Date(value.createdAt).getTime()) &&
     typeof value.updatedAt === "number" &&

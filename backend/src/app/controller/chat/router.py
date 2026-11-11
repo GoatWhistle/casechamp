@@ -11,7 +11,7 @@ from pydantic import BaseModel, Field
 
 from app.controller.road_analysis.schemas import AnalysisResponse
 from app.domain.transport import NetworkMode, Season
-from app.usecase.chat import Chat, ChatContext, ChatMessage, ChatRequest
+from app.usecase.chat import Chat, ChatContext, ChatMessage, ChatRequest, SelectedRoad
 from app.usecase.chat_artifacts import ChatChart, ChatTable
 from app.usecase.chat_map import ChatMapCommand
 from app.usecase.chat_scenario import ScenarioCard
@@ -23,11 +23,17 @@ class ChatMessageInput(BaseModel):
     content: str = Field(min_length=1, max_length=12000)
 
 
+class SelectedRoadInput(BaseModel):
+    way_id: int = Field(gt=0)
+    name: str = Field(default="", max_length=200)
+
+
 class ChatContextInput(BaseModel):
     region_id: str | None = Field(default=None, max_length=64)
     season: Season = Season.SUMMER
     network_mode: NetworkMode = NetworkMode.ROAD
     metric: str = Field(default="hansen", max_length=64)
+    selected_roads: list[SelectedRoadInput] = Field(default_factory=list, max_length=50)
 
 
 class ChatInput(BaseModel):
@@ -35,6 +41,7 @@ class ChatInput(BaseModel):
     history: list[ChatMessageInput] = Field(default_factory=list, max_length=12)
     context: ChatContextInput = Field(default_factory=ChatContextInput)
     analysis_id: str | None = Field(default=None, min_length=1, max_length=128)
+    title_requested: bool = Field(default_factory=bool)
 
 
 class ChatStreamEvent(BaseModel):
@@ -49,6 +56,7 @@ class ChatStreamEvent(BaseModel):
         "calculation",
         "analysis",
         "scenario",
+        "title",
     ]
     text: str = ""
     code: str = ""
@@ -83,8 +91,10 @@ def build_chat_router(chat: Chat) -> APIRouter:
                 body.context.season,
                 body.context.network_mode,
                 body.context.metric,
+                tuple(SelectedRoad(road.way_id, road.name) for road in body.context.selected_roads),
             ),
             body.analysis_id,
+            body.title_requested,
         )
 
         async def events() -> AsyncIterator[str]:

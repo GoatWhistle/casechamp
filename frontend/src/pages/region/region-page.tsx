@@ -35,11 +35,7 @@ export function RegionPage() {
         regionId={regionId}
         calendar={<WinterCalendar />}
         actions={
-          <ButtonLink
-            to={`/?region=${regionId}&season=${season}&panel=scenario`}
-            variant="secondary"
-            icon="route"
-          >
+          <ButtonLink to={`/?region=${regionId}&season=${season}`} variant="secondary" icon="route">
             {t("profile:openScenario")}
           </ButtonLink>
         }

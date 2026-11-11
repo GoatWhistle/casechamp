@@ -20,9 +20,6 @@
     "models": "Модельные связи",
     "off": "сейчас не на карте"
   },
-  "overview": {
-    "title": "Россия"
-  },
   "facts": {
     "label": "Население и экономика",
     "settlements_one": "населённый пункт",
@@ -43,9 +40,6 @@
     "rank": "{{rank, number}}-е место из {{total, number}}",
     "median": "медиана {{value}}",
     "strip": "Положение региона среди {{total, number}} регионов по индексу Хансена"
-  },
-  "ranking": {
-    "showAll": "Показать все {{count, number}}"
   },
   "selected": {
     "open": "Открыть регион",
