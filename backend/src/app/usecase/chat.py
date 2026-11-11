@@ -8,6 +8,7 @@ from app.domain.errors import DomainError
 from app.domain.transport import NetworkMode, Season
 from app.usecase.chat_artifacts import ChatChart, ChatTable
 from app.usecase.chat_map import ChatMapCommand
+from app.usecase.chat_scenario import ScenarioCard
 from app.usecase.road_analysis import AnalysisJob, RoadAnalysis
 from app.usecase.road_corridor import CorridorCalculation
 
@@ -36,7 +37,18 @@ class ChatRequest:
 
 @dataclass(frozen=True, slots=True)
 class ChatEvent:
-    type: Literal["status", "delta", "done", "error", "table", "chart", "map", "calculation", "analysis"]
+    type: Literal[
+        "status",
+        "delta",
+        "done",
+        "error",
+        "table",
+        "chart",
+        "map",
+        "calculation",
+        "analysis",
+        "scenario",
+    ]
     text: str = ""
     code: str = ""
     table: ChatTable | None = None
@@ -44,6 +56,7 @@ class ChatEvent:
     map: ChatMapCommand | None = None
     calculation: CorridorCalculation | None = None
     analysis: AnalysisJob | None = None
+    scenario: ScenarioCard | None = None
 
 
 class ChatProvider(Protocol):

@@ -6,6 +6,8 @@ from pydantic_ai import Agent, ModelRetry, RunContext
 from app.adapter.chat.artifacts import ChatRun
 from app.domain.errors import DomainError
 from app.domain.road_economics import MoneyAssumptions
+from app.usecase.chat import ChatEvent
+from app.usecase.chat_scenario import ScenarioCard, road_kind
 from app.usecase.road_graph import RoadAddition, RoadChange, RoadGraph
 
 
@@ -75,11 +77,12 @@ class RoadTools:
         self, ctx: RunContext[ChatRun], region_id: str, scenario: str, changes: list[RoadChange]
     ) -> str:
         try:
-            return json.dumps(
-                asdict(self.graph.submit(region_id, scenario, changes)), ensure_ascii=False
-            )
+            job = self.graph.submit(region_id, scenario, changes)
         except DomainError as error:
             raise ModelRetry(error.message) from error
+        kind = road_kind([change.speed_factor for change in changes])
+        ctx.deps.pending.append(ChatEvent("scenario", scenario=ScenarioCard(kind, [job.id])))
+        return json.dumps(asdict(job), ensure_ascii=False)
 
     def road_calculation_status(self, ctx: RunContext[ChatRun], job_id: str) -> str:
         try:
@@ -110,6 +113,9 @@ class RoadTools:
             result = self.graph.add_connection(
                 region_id, RoadAddition(source_node, target_node, travel_hours), money
             )
-            return json.dumps(asdict(result), ensure_ascii=False)
         except DomainError as error:
             raise ModelRetry(error.message) from error
+        ctx.deps.pending.append(
+            ChatEvent("scenario", scenario=ScenarioCard("connection", [result.id]))
+        )
+        return json.dumps(asdict(result), ensure_ascii=False)

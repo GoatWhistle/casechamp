@@ -14,6 +14,7 @@ from app.domain.transport import NetworkMode, Season
 from app.usecase.chat import Chat, ChatContext, ChatMessage, ChatRequest
 from app.usecase.chat_artifacts import ChatChart, ChatTable
 from app.usecase.chat_map import ChatMapCommand
+from app.usecase.chat_scenario import ScenarioCard
 from app.usecase.road_corridor import CorridorCalculation
 
 
@@ -37,7 +38,18 @@ class ChatInput(BaseModel):
 
 
 class ChatStreamEvent(BaseModel):
-    type: Literal["status", "delta", "done", "error", "table", "chart", "map", "calculation", "analysis"]
+    type: Literal[
+        "status",
+        "delta",
+        "done",
+        "error",
+        "table",
+        "chart",
+        "map",
+        "calculation",
+        "analysis",
+        "scenario",
+    ]
     text: str = ""
     code: str = ""
     table: ChatTable | None = None
@@ -45,6 +57,7 @@ class ChatStreamEvent(BaseModel):
     map: ChatMapCommand | None = None
     calculation: CorridorCalculation | None = None
     analysis: AnalysisResponse | None = None
+    scenario: ScenarioCard | None = None
 
 
 def build_chat_router(chat: Chat) -> APIRouter:

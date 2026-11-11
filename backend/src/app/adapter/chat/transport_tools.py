@@ -5,6 +5,8 @@ from pydantic_ai import Agent, ModelRetry, RunContext
 
 from app.adapter.chat.artifacts import ChatRun
 from app.domain.errors import DomainError
+from app.usecase.chat import ChatEvent
+from app.usecase.chat_scenario import ScenarioCard
 from app.usecase.road_graph import RoadChange, RoadGraph
 from app.usecase.transport_links import LinkChange
 
@@ -73,6 +75,9 @@ class TransportTools:
                 self.graph.submit(region, scenario, road_changes or [], links, queue=True)
                 for region in region_ids
             ]
+            ctx.deps.pending.append(
+                ChatEvent("scenario", scenario=ScenarioCard("links", [job.id for job in jobs]))
+            )
             return json.dumps(
                 [
                     {
