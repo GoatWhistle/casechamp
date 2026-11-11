@@ -75,3 +75,19 @@ def test_process_pool_routing_matches_sequential(tmp_path: Path, routing: GraphR
             )
     finally:
         paths.close()
+
+
+def test_second_region_reuses_searches_of_same_scenario(routing: GraphRouting) -> None:
+    calls: list[int] = []
+    original = routing.paths.distances
+
+    def counted(*args: Any, **kwargs: Any) -> Any:
+        calls.append(1)
+        return original(*args, **kwargs)
+
+    routing.paths.distances = counted  # type: ignore[method-assign]
+    first = routing.calculate("region", "road", [RoadChange(101, 2.0)], lambda _: None)
+    second = routing.calculate("region", "road", [RoadChange(101, 2.0)], lambda _: None)
+    routing.calculate("region", "road", [RoadChange(101, 0)], lambda _: None)
+    assert first == second
+    assert len(calls) == 2

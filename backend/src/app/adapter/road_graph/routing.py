@@ -12,6 +12,7 @@ from app.adapter.road_graph.links import (
     canonical_links,
     missing_removals,
 )
+from app.adapter.road_graph.search_cache import SearchCache, changed_weights
 from app.adapter.road_graph.shortest_paths import ShortestPaths
 from app.domain.errors import InvalidQuery
 from app.domain.road_analysis import SettlementAccess
@@ -44,6 +45,7 @@ class GraphRouting:
     def __init__(self, data: GraphData, paths: ShortestPaths | None = None) -> None:
         self.data = data
         self.paths = paths or ShortestPaths()
+        self.searches = SearchCache(3)
 
     def calculate(
         self,
@@ -143,20 +145,19 @@ class GraphRouting:
             md.append(addition.target_node)
             mw.append(addition.travel_hours)
         edges = self.data.edges
-        weights = edges["h"].copy()
-        changed = 0
-        ways = self.data.indices_for([c.way_id for c in changes]) if changes else {}
-        for change in changes:
-            mask = edges["way_idx"] == ways[change.way_id]
-            changed += int(mask.sum())
-            weights[mask] = weights[mask] / change.speed_factor if change.speed_factor else np.inf
-        finite = np.isfinite(weights) & self.data.allowed_edges(scenario)
-        graph = minimum_csr(
-            np.concatenate([edges["src"][finite], ms]).astype(np.int32),
-            np.concatenate([edges["dst"][finite], md]).astype(np.int32),
-            np.concatenate([weights[finite], np.array(mw, dtype=np.float32)]),
-            count,
+        weights, changed = changed_weights(
+            edges, self.data.indices_for([c.way_id for c in changes]) if changes else {}, changes
         )
+
+        def graph() -> Any:
+            finite = np.isfinite(weights) & self.data.allowed_edges(scenario)
+            return minimum_csr(
+                np.concatenate([edges["src"][finite], ms]).astype(np.int32),
+                np.concatenate([edges["dst"][finite], md]).astype(np.int32),
+                np.concatenate([weights[finite], np.array(mw, dtype=np.float32)]),
+                count,
+            )
+
         progress(0)
         on = [
             (lookup[p][0], lookup[p][1], max(0, pop or 0))
@@ -176,13 +177,19 @@ class GraphRouting:
                 p for p, _ in origins if p in lookup and lookup[p][0] >= 0
             )
         }
-        searched = self.paths.distances(
-            graph,
-            city_nodes,
-            np.concatenate([nodes, city_nodes]),
-            np.inf if modern else 72.0,
-            progress,
-        )
+        targets = np.unique(np.concatenate([
+            np.array([v[0] for v in lookup.values() if v[0] >= 0], dtype=np.int64), city_nodes
+        ]))
+        key = None if addition else (scenario, tuple(changes), tuple(links or ()))
+        every = self.searches.get(key)
+        if every is None:
+            every = self.paths.distances(
+                graph(), city_nodes, targets, np.inf if modern else 72.0, progress
+            )
+            self.searches.put(key, every)
+        else:
+            progress(len(city_nodes))
+        searched = every[:, np.searchsorted(targets, np.concatenate([nodes, city_nodes]))]
         for j in range(len(city_nodes)):
             distances = searched[j]
             road[:, j] = distances[: len(nodes)].astype(np.float32) + snaps + city_snaps[j]
