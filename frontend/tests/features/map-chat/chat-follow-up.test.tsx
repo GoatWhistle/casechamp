@@ -80,8 +80,22 @@ it("asks for sources after completion and displays the reply with the original a
     expect(pending[1]?.body.prompt).toBe(copy.showSources)
     expect(pending[1]?.body.history?.at(-1)?.content).toContain(answer)
     expect(pending[1]?.body.history?.at(-1)?.content).toContain('"source":"/api/v1/regions"')
+    const scroll = screen.getByRole("region", { name: copy.history })
+    Object.defineProperties(scroll, {
+      scrollHeight: { configurable: true, value: 1000 },
+      clientHeight: { configurable: true, value: 400 },
+    })
     await act(async () => {
       pending[1]?.emit({ type: "delta", text: "Sources: [Atlas](/api/v1/sources)", code: "" })
+    })
+    fireEvent.wheel(scroll, { deltaY: -40 })
+    scroll.scrollTop = 560
+    fireEvent.scroll(scroll)
+    await act(async () => {
+      pending[1]?.emit({ type: "delta", text: " explains the data.", code: "" })
+    })
+    expect(scroll.scrollTop).toBe(560)
+    await act(async () => {
       pending[1]?.emit({ type: "done", text: "", code: "" })
       pending[1]?.finish()
     })

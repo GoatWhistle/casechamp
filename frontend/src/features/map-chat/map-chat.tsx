@@ -13,6 +13,7 @@ import { chatErrorKey, chatStatusKey } from "./chat-copy"
 import { ChatEmpty, ChatFollowUp } from "./chat-prompts"
 import { ChatRegion } from "./chat-region"
 import styles from "./map-chat.module.css"
+import { useChatScroll } from "./scroll/use-chat-scroll"
 import { SelectedRoads } from "./selected-roads"
 import { ChatStorageNotice } from "./sessions/chat-storage-notice"
 import { useMapChat } from "./use-map-chat"
@@ -53,9 +54,8 @@ export function MapChat({
   const regionName = regionLabel(context.region_id, region.data, t)
   const active = chat.sessions.find((session) => session.id === chat.sessionId)
   const threadTitle = (active ? chatSessionTitle(active) : "") || t("chat:new")
-  const scroll = useRef<HTMLDivElement>(null)
-  const follow = useRef(true)
   const tail = chat.messages.at(-1)
+  const { scroll, follow, scrollProps } = useChatScroll(tail)
   const lastRegion = chat.messages.findLast((message) => message.region !== undefined)
   const talked = chat.messages.some((message) => message.region === undefined)
   const postRegion = useRef(chat.postRegion)
@@ -67,18 +67,7 @@ export function MapChat({
     if (!selection) return
     follow.current = true
     postRegion.current(selection)
-  }, [selection])
-  useEffect(() => {
-    const node = scroll.current
-    if (tail === undefined || !node) return
-    const sync = () => {
-      if (follow.current) node.scrollTop = node.scrollHeight
-    }
-    sync()
-    const observer = new ResizeObserver(sync)
-    for (const child of node.children) observer.observe(child)
-    return () => observer.disconnect()
-  }, [tail])
+  }, [selection, follow])
   const startNew = () => {
     follow.current = true
     onSessionChange?.()
@@ -112,10 +101,7 @@ export function MapChat({
           ref={scroll}
           className={styles.messages}
           label={t("chat:history")}
-          onScroll={() => {
-            const node = scroll.current
-            if (node) follow.current = node.scrollHeight - node.scrollTop - node.clientHeight < 80
-          }}
+          {...scrollProps}
         >
           <Swap swapKey={chat.sessionId} as="div" className={styles.swap}>
             {chat.messages.length === 0 ? (
