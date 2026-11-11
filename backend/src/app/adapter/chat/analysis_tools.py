@@ -1,7 +1,7 @@
 import json
 from dataclasses import asdict
 
-from pydantic_ai import Agent, ModelRetry, RunContext
+from pydantic_ai import ModelRetry, RunContext
 
 from app.adapter.chat.artifacts import ChatRun
 from app.domain.errors import DomainError
@@ -12,20 +12,6 @@ from app.usecase.road_analysis import AnalysisJob, AnalysisMode, RoadAnalysis
 class AnalysisTools:
     def __init__(self, analysis: RoadAnalysis) -> None:
         self.analysis = analysis
-
-    def register(self, agent: Agent[ChatRun, str]) -> None:
-        agent.tool(
-            sequential=True,
-            description="Start automatic regional road analysis. criticality checks closures with separate accessibility loss and newly isolated population rankings; improvement checks individual ways at the same speed increase percent (default20). BASE snapshot network including existing trunk rail/air. Ten candidates per batch, exact checks may take minutes each. Emits a live ranking table in this chat with automatic commentary after completion. Never return a navigation link or refer to another panel. Never busy-poll or invent results. Ranking is best among checked roads, not global optimum or financial return.",
-        )(self.start_road_analysis)
-        agent.tool(
-            sequential=True,
-            description="Read saved road analysis progress and verified results; heuristics are candidates only. Do not treat affected population as measured traffic.",
-        )(self.read_road_analysis)
-        agent.tool(
-            sequential=True,
-            description="Continue another batch of ten road candidates, or cancel an analysis, only when the user requests this action.",
-        )(self.control_road_analysis)
 
     def start_road_analysis(
         self, ctx: RunContext[ChatRun], region_id: str, mode: AnalysisMode, percent: int = 20

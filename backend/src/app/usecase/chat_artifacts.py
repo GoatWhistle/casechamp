@@ -17,12 +17,15 @@ class ChatColumn:
 @dataclass(frozen=True, slots=True)
 class ChatTable:
     id: str
-    title: Literal["regions", "links", "settlements", "sensitivity"]
+    title: Literal[
+        "regions", "links", "settlements", "sensitivity", "connectivity", "connectivity_summary", "scenario_indices", "scenario_routes", "scenario_access"
+    ]
     columns: tuple[ChatColumn, ...]
     rows: tuple[dict[str, ChatCell], ...]
     total: int
     truncated: bool
     source: str
+    caption: str = ""
 
 
 @dataclass(frozen=True, slots=True)
@@ -31,6 +34,12 @@ class ChatChart:
     x: str
     y: str
     type: Literal["bar"] = "bar"
+
+
+@dataclass(frozen=True, slots=True)
+class ScenarioCard:
+    kind: Literal["speed", "slowdown", "closure", "roads", "connection", "links"]
+    job_ids: list[str]
 
 
 class ChatComparisons:

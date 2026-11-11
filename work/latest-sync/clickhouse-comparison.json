@@ -1,0 +1,528 @@
+{
+  "release": "data-clickhouse-20261110",
+  "tables": [
+    {
+      "table": "plexus_accessibility.frequencies",
+      "expected_rows": 12,
+      "local_rows": 12,
+      "match": true
+    },
+    {
+      "table": "plexus_accessibility.results",
+      "expected_rows": 492,
+      "local_rows": 492,
+      "match": true
+    },
+    {
+      "table": "plexus_accessibility.runs",
+      "expected_rows": 1,
+      "local_rows": 1,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.company_settlement",
+      "expected_rows": 1190422,
+      "local_rows": 1190422,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.dim_region",
+      "expected_rows": 82,
+      "local_rows": 82,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.dim_rfsd_region",
+      "expected_rows": 82,
+      "local_rows": 82,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.dim_settlement",
+      "expected_rows": 155412,
+      "local_rows": 155412,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.fact_company",
+      "expected_rows": 3143178,
+      "local_rows": 3143178,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.fact_route_season",
+      "expected_rows": 18,
+      "local_rows": 18,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.mart_np_economy",
+      "expected_rows": 155412,
+      "local_rows": 155412,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.mart_region_economy",
+      "expected_rows": 82,
+      "local_rows": 82,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.mart_region_lights",
+      "expected_rows": 164,
+      "local_rows": 164,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.mart_region_sector",
+      "expected_rows": 1678,
+      "local_rows": 1678,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_closure_events",
+      "expected_rows": 30,
+      "local_rows": 30,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_fns",
+      "expected_rows": 1809218,
+      "local_rows": 1809218,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_kap_schedule",
+      "expected_rows": 72,
+      "local_rows": 72,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_lights",
+      "expected_rows": 310824,
+      "local_rows": 310824,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_northern_dashboard",
+      "expected_rows": 3,
+      "local_rows": 3,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_northern_infrastructure",
+      "expected_rows": 64,
+      "local_rows": 64,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_northern_territories",
+      "expected_rows": 20,
+      "local_rows": 20,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_northern_volumes",
+      "expected_rows": 10,
+      "local_rows": 10,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_rfsd",
+      "expected_rows": 3143178,
+      "local_rows": 3143178,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_river_schedule",
+      "expected_rows": 4,
+      "local_rows": 4,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_traffic_belovo",
+      "expected_rows": 5560,
+      "local_rows": 5560,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_traffic_nefteyugansk",
+      "expected_rows": 55,
+      "local_rows": 55,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_traffic_serov",
+      "expected_rows": 15,
+      "local_rows": 15,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_ugra_crossings",
+      "expected_rows": 366,
+      "local_rows": 366,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_ugra_district_closures",
+      "expected_rows": 15,
+      "local_rows": 15,
+      "match": true
+    },
+    {
+      "table": "plexus_additional.stg_ugra_snapshots",
+      "expected_rows": 342,
+      "local_rows": 342,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.atlas_airports",
+      "expected_rows": 285,
+      "local_rows": 285,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.atlas_boundaries",
+      "expected_rows": 84,
+      "local_rows": 84,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.atlas_economy",
+      "expected_rows": 82,
+      "local_rows": 82,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.atlas_exported_indices",
+      "expected_rows": 410,
+      "local_rows": 410,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.atlas_indices",
+      "expected_rows": 246,
+      "local_rows": 246,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.atlas_links",
+      "expected_rows": 46487,
+      "local_rows": 46487,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.atlas_metadata",
+      "expected_rows": 6,
+      "local_rows": 6,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.atlas_points",
+      "expected_rows": 7682,
+      "local_rows": 7682,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.atlas_regions",
+      "expected_rows": 82,
+      "local_rows": 82,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.atlas_settlements",
+      "expected_rows": 155412,
+      "local_rows": 155412,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.atlas_shapes",
+      "expected_rows": 84,
+      "local_rows": 84,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.atlas_sources",
+      "expected_rows": 16,
+      "local_rows": 16,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.atlas_winter_roads",
+      "expected_rows": 18,
+      "local_rows": 18,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.documents",
+      "expected_rows": 95,
+      "local_rows": 95,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.links",
+      "expected_rows": 46487,
+      "local_rows": 46487,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.migrated_sources",
+      "expected_rows": 124,
+      "local_rows": 124,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.points",
+      "expected_rows": 7682,
+      "local_rows": 7682,
+      "match": true
+    },
+    {
+      "table": "plexus_atlas.regions",
+      "expected_rows": 82,
+      "local_rows": 82,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.idx_mo",
+      "expected_rows": 7032,
+      "local_rows": 7032,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.idx_np",
+      "expected_rows": 467241,
+      "local_rows": 467241,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.idx_np_gap",
+      "expected_rows": 155747,
+      "local_rows": 155747,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.idx_region",
+      "expected_rows": 252,
+      "local_rows": 252,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.idx_theil",
+      "expected_rows": 3,
+      "local_rows": 3,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.manual_links",
+      "expected_rows": 7,
+      "local_rows": 7,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.manual_links_ru",
+      "expected_rows": 1225,
+      "local_rows": 1225,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.manual_remote",
+      "expected_rows": 181,
+      "local_rows": 181,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.market_cities",
+      "expected_rows": 180,
+      "local_rows": 180,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.mart_mo",
+      "expected_rows": 2336,
+      "local_rows": 2336,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.mart_region",
+      "expected_rows": 82,
+      "local_rows": 82,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.np_access",
+      "expected_rows": 467241,
+      "local_rows": 467241,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.np_city_times",
+      "expected_rows": 83845118,
+      "local_rows": 83845118,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.od_multimodal",
+      "expected_rows": 87024,
+      "local_rows": 87024,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.od_road",
+      "expected_rows": 20592,
+      "local_rows": 20592,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.road_ways",
+      "expected_rows": 10872,
+      "local_rows": 10872,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.stg_bdmo",
+      "expected_rows": 1212734,
+      "local_rows": 1212734,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.stg_intercity",
+      "expected_rows": 96660,
+      "local_rows": 96660,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.stg_settlements",
+      "expected_rows": 158168,
+      "local_rows": 158168,
+      "match": true
+    },
+    {
+      "table": "plexus_casechamp.tuva_points",
+      "expected_rows": 151,
+      "local_rows": 151,
+      "match": true
+    },
+    {
+      "table": "plexus_graph.edges",
+      "expected_rows": 17393384,
+      "local_rows": 17393384,
+      "match": true
+    },
+    {
+      "table": "plexus_graph.locations",
+      "expected_rows": 155747,
+      "local_rows": 155747,
+      "match": true
+    },
+    {
+      "table": "plexus_graph.nodes",
+      "expected_rows": 6990556,
+      "local_rows": 6990556,
+      "match": true
+    },
+    {
+      "table": "plexus_graph.points",
+      "expected_rows": 155747,
+      "local_rows": 155747,
+      "match": true
+    },
+    {
+      "table": "plexus_graph.region_codes",
+      "expected_rows": 82,
+      "local_rows": 82,
+      "match": true
+    },
+    {
+      "table": "plexus_graph.region_points",
+      "expected_rows": 467241,
+      "local_rows": 467241,
+      "match": true
+    },
+    {
+      "table": "plexus_graph.road_lines",
+      "expected_rows": 4305460,
+      "local_rows": 4305460,
+      "match": true
+    },
+    {
+      "table": "plexus_graph.road_lookup",
+      "expected_rows": 194038,
+      "local_rows": 194038,
+      "match": true
+    },
+    {
+      "table": "plexus_graph.ways",
+      "expected_rows": 4301210,
+      "local_rows": 4301210,
+      "match": true
+    },
+    {
+      "table": "plexus_refresh_graph.edges",
+      "expected_rows": 28667472,
+      "local_rows": 28667472,
+      "match": true
+    },
+    {
+      "table": "plexus_refresh_graph.nodes",
+      "expected_rows": 11463176,
+      "local_rows": 11463176,
+      "match": true
+    },
+    {
+      "table": "plexus_refresh_graph.points",
+      "expected_rows": 155747,
+      "local_rows": 155747,
+      "match": true
+    },
+    {
+      "table": "plexus_refresh_graph.road_lines",
+      "expected_rows": 6882224,
+      "local_rows": 6882224,
+      "match": true
+    },
+    {
+      "table": "plexus_refresh_graph.ways",
+      "expected_rows": 6869793,
+      "local_rows": 6869793,
+      "match": true
+    },
+    {
+      "table": "plexus_scenario.catalog",
+      "expected_rows": 0,
+      "local_rows": 0,
+      "match": true
+    },
+    {
+      "table": "plexus_scenario.cities",
+      "expected_rows": 0,
+      "local_rows": 0,
+      "match": true
+    },
+    {
+      "table": "plexus_scenario.city_times",
+      "expected_rows": 0,
+      "local_rows": 0,
+      "match": true
+    },
+    {
+      "table": "plexus_scenario.points",
+      "expected_rows": 0,
+      "local_rows": 0,
+      "match": true
+    },
+    {
+      "table": "plexus_scenario.regions",
+      "expected_rows": 0,
+      "local_rows": 0,
+      "match": true
+    },
+    {
+      "table": "plexus_scenario.times",
+      "expected_rows": 0,
+      "local_rows": 0,
+      "match": true
+    }
+  ],
+  "verified_after_recovery": true
+}

@@ -1,11 +1,20 @@
-import type { CSSProperties } from "react"
 import { useState } from "react"
-import { useWinterRoads } from "@/entities/reference"
+import { useWinterRoads, type WinterRoad } from "@/entities/reference"
 import { useTranslation } from "@/shared/i18n"
 import { Card, Checkbox, EmptyState, ErrorState, Select, Skeleton } from "@/shared/ui"
-import { CalendarRow } from "./calendar-row"
-import { calendarKey, calendarMonths, calendarYears, routeRoad } from "./calendar-time"
+import { CalendarAxis, CalendarRow } from "./calendar-row"
+import { calendarKey, calendarYears, routeRoad } from "./calendar-time"
 import styles from "./winter-calendar.module.css"
+
+function previousRoad(
+  roads: readonly WinterRoad[],
+  road: WinterRoad,
+  year: number | undefined,
+): WinterRoad | undefined {
+  if (year === undefined) return undefined
+  return roads.find((r) => calendarKey(r) === calendarKey(road) && r.season_end_year === year)
+}
+
 export function WinterCalendar() {
   const { t } = useTranslation()
   const query = useWinterRoads()
@@ -19,26 +28,24 @@ export function WinterCalendar() {
   const previousYear = years.find((y) => y !== year)
   const rows = roads.filter((r) => r.season_end_year === year)
   const districts = [...new Set(rows.map((r) => r.district))]
+  const seasonLabel = (end: number) =>
+    t("calendar:year", { from: String(end - 1), to: String(end) })
   if (query.isError)
-    return <ErrorState title={t("errors:kind.server")} onRetry={() => void query.refetch()} />
+    return <ErrorState title={t("calendar:loadError")} onRetry={() => void query.refetch()} />
   if (!query.data) return <Skeleton lines={10} />
   if (!years.length) return <EmptyState icon="calendar" title={t("calendar:empty")} />
   return (
-    <section className={styles.calendar} aria-label={t("calendar:title")}>
-      <header className={styles.toolbar}>
-        <div>
-          <strong className={styles.title}>{t("calendar:title")}</strong>
-          <p>{t("calendar:routes", { count: rows.length })}</p>
-        </div>
+    <Card
+      as="section"
+      title={t("calendar:title")}
+      description={t("calendar:routes", { count: rows.length })}
+      actions={
         <div className={styles.controls}>
           <Select
             label={t("calendar:season")}
             value={String(year)}
             onChange={setChosen}
-            options={years.map((y) => ({
-              value: String(y),
-              label: t("calendar:year", { from: String(y - 1), to: String(y) }),
-            }))}
+            options={years.map((y) => ({ value: String(y), label: seasonLabel(y) }))}
           />
           {previousYear ? (
             <Checkbox
@@ -51,42 +58,26 @@ export function WinterCalendar() {
             />
           ) : null}
         </div>
-      </header>
-      <p className={styles.hint}>{t("calendar:hint")}</p>
-      <div className={styles.legend}>
-        <span>
-          {t("calendar:currentBar", {
-            year: t("calendar:year", { from: String(year - 1), to: String(year) }),
-          })}
-        </span>
-        {compare && previousYear ? (
-          <span>
-            {t("calendar:previousBar", {
-              year: t("calendar:year", {
-                from: String(previousYear - 1),
-                to: String(previousYear),
-              }),
-            })}
+      }
+    >
+      <div className={styles.key}>
+        <p>{t("calendar:hint")}</p>
+        <div className={styles.swatches}>
+          <span className={styles.swatch} data-kind="current">
+            {t("calendar:currentBar", { year: seasonLabel(year) })}
           </span>
-        ) : null}
+          {compare && previousYear ? (
+            <span className={styles.swatch} data-kind="previous">
+              {t("calendar:previousBar", { year: seasonLabel(previousYear) })}
+            </span>
+          ) : null}
+        </div>
       </div>
       <div className={styles.schedule}>
-        <div className={styles.axis}>
-          <span>{t("seasons:route")}</span>
-          <div>
-            {calendarMonths(year).map((m) => (
-              <span key={m.key} style={{ "--tick-left": `${m.at}%` } as CSSProperties}>
-                {m.label}
-              </span>
-            ))}
-          </div>
-          <span>{t("calendar:dates")}</span>
-        </div>
+        <CalendarAxis year={year} />
         {districts.map((district) => (
-          <section key={district ?? "unknown"}>
-            <Card className={styles.district} title={district ?? t("calendar:unknown")}>
-              {null}
-            </Card>
+          <section key={district ?? "unknown"} aria-label={district ?? t("calendar:unknown")}>
+            <p className={styles.district}>{district ?? t("calendar:unknown")}</p>
             {rows
               .filter((r) => r.district === district)
               .map((road) => (
@@ -94,20 +85,12 @@ export function WinterCalendar() {
                   key={calendarKey(road)}
                   road={road}
                   year={year}
-                  previous={
-                    compare
-                      ? roads.find(
-                          (r) =>
-                            calendarKey(r) === calendarKey(road) &&
-                            r.season_end_year === previousYear,
-                        )
-                      : undefined
-                  }
+                  previous={compare ? previousRoad(roads, road, previousYear) : undefined}
                 />
               ))}
           </section>
         ))}
       </div>
-    </section>
+    </Card>
   )
 }

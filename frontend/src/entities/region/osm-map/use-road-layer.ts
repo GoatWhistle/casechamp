@@ -7,12 +7,16 @@ import { roadLayers } from "./road-parts"
 import { drawRoadParts, selectRoads } from "./road-source"
 import { useAnalysisLayer } from "./use-analysis-layer"
 import { useCorridorLayer } from "./use-corridor-layer"
+import { useStressLayer } from "./use-stress-layer"
+import { useStressRegions } from "./use-stress-regions"
 
 export function useRoadLayer(
   engine: RefObject<LibreMap | null>,
   roads: RoadLayerProps | undefined,
   ready: boolean,
 ) {
+  useStressRegions(engine, ready)
+  useStressLayer(engine, ready)
   useAnalysisLayer(engine, roads?.analysis, ready)
   useCorridorLayer(engine, roads?.corridor, ready)
   const view = roads?.view
@@ -61,6 +65,11 @@ export function useRoadLayer(
     const map = engine.current
     if (!ready || !map) return
     const click = (event: MapLayerMouseEvent) => {
+      if (
+        map.getLayer("road-stress-view-points") &&
+        map.queryRenderedFeatures(event.point, { layers: ["road-stress-view-points"] }).length
+      )
+        return
       const layers = roadLayers(map)
       if (!layers.length) return
       const feature = map.queryRenderedFeatures(event.point, { layers })[0]

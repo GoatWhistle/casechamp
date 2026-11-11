@@ -1,6 +1,7 @@
 .message {
   margin-block-end: var(--space-24);
   overflow-wrap: anywhere;
+  animation: var(--motion-swap-in);
 }
 
 .message[data-role="user"] {
@@ -10,7 +11,7 @@
   padding: var(--space-12) var(--space-16);
   background: var(--action-primary);
   color: var(--action-primary-text);
-  border-radius: var(--radius-chat);
+  border-radius: var(--radius-lg);
   white-space: pre-wrap;
 }
 
@@ -53,7 +54,8 @@
 
 .prose table {
   border-collapse: collapse;
-  inline-size: 100%;
+  inline-size: max-content;
+  min-inline-size: 100%;
   font-variant-numeric: var(--font-numeric);
 }
 
@@ -61,6 +63,8 @@
   padding: var(--space-8);
   border-block-end: var(--hairline) solid var(--border-subtle);
   text-align: start;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 
 .prose th {

@@ -1,4 +1,4 @@
-import type { FormEvent } from "react"
+import type { FormEvent, ReactNode } from "react"
 import { Tooltip } from "../../overlays/tooltip/tooltip"
 import { Button } from "../../primitives/button/button"
 import styles from "./chat-composer.module.css"
@@ -13,6 +13,7 @@ export interface ChatComposerProps {
   readonly onValue: (value: string) => void
   readonly onSend: () => void
   readonly onStop: () => void
+  readonly context?: ReactNode
 }
 
 export function ChatComposer(props: ChatComposerProps) {
@@ -23,6 +24,7 @@ export function ChatComposer(props: ChatComposerProps) {
   }
   return (
     <form className={styles.composer} onSubmit={submit}>
+      {props.context === undefined ? null : <div className={styles.context}>{props.context}</div>}
       <textarea
         className={styles.input}
         aria-label={props.label}

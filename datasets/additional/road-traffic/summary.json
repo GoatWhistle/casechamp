@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-11-11",
+  "atlas_regions": 82,
+  "official_owner_source": "https://www.mintrans.gov.ru/activities",
+  "owner_checks": {
+    "page_retrieved": 38,
+    "page_unavailable": 44
+  },
+  "owner_navigation_found": 21,
+  "searches": 246,
+  "downloaded_documents": 8,
+  "normalized_observation_cells": 6770,
+  "numeric_cells": 2261,
+  "missing_cells": 4509,
+  "kuzbass_site_rows": 57,
+  "observations_by_source": {
+    "traffic-serov": 15,
+    "traffic-nefteyugansk": 55,
+    "traffic-belovo": 5560,
+    "traffic-kuzbass": 1140
+  },
+  "normalization_scope": "Historical reported measurements plus source extrema; cells are not independent counters or hourly time series; missing values retained."
+}

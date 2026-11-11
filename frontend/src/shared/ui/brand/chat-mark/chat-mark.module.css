@@ -1,0 +1,40 @@
+.mark {
+  --chat-mark-ground: var(--surface-raised);
+
+  display: block;
+  overflow: visible;
+}
+
+.band,
+.cut {
+  fill: none;
+  stroke-linejoin: round;
+}
+
+.cut {
+  stroke: var(--chat-mark-ground);
+}
+
+[data-ring="1"] > .band {
+  stroke: var(--iso-1);
+}
+
+[data-ring="2"] > .band {
+  stroke: var(--iso-2);
+}
+
+[data-ring="3"] > .band {
+  stroke: var(--iso-3);
+}
+
+.bubble {
+  fill: var(--text-primary);
+}
+
+.dot {
+  fill: var(--surface-base);
+}
+
+.pulse {
+  composes: ringPulse from "../../../styles/compose.module.css";
+}

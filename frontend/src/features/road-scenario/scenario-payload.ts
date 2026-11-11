@@ -2,6 +2,7 @@ import { isApiError } from "@/shared/api"
 import type {
   LinkChangeInput,
   LinkMode,
+  RoadChangeInput,
   RoadScenarioInput,
   ScenarioNetwork,
   TransportLink,
@@ -9,6 +10,7 @@ import type {
 import type { MessageKey } from "@/shared/i18n"
 
 export const LINK_LIMIT = 30
+export const SPEED_MAX = 300
 const MODES: readonly LinkMode[] = [
   "rail",
   "air",
@@ -67,6 +69,13 @@ export function toggleLink(
   return pending.length < LINK_LIMIT ? [...pending, link] : pending
 }
 
+export function speedFactor(value: string): number | null {
+  const text = value.trim()
+  if (!/^\d+([.,]\d+)?$/.test(text)) return null
+  const percent = Number(text.replace(",", "."))
+  return percent <= SPEED_MAX ? percent / 100 : null
+}
+
 export function needsSeason(links: readonly LinkChangeInput[], scenario: ScenarioNetwork) {
   return scenario === "road" && links.some((link) => link.network === "local")
 }
@@ -77,15 +86,22 @@ export function scenarioPayload(input: {
   readonly wayIds: readonly number[]
   readonly speed: number | null
   readonly links: readonly LinkChangeInput[]
+  readonly profile?: Omit<RoadChangeInput, "way_id" | "speed_factor"> | null
 }): RoadScenarioInput | null {
   if (!input.regionId || needsSeason(input.links, input.scenario)) return null
-  const roads = input.speed === null ? [] : input.wayIds.slice(0, 50)
+  if (input.profile === null && input.wayIds.length) return null
+  const profile = input.profile ?? undefined
+  const roads = input.speed === null && !profile ? [] : input.wayIds.slice(0, 50)
   if (!roads.length && !input.links.length) return null
-  if (input.wayIds.length && input.speed === null) return null
+  if (input.wayIds.length && input.speed === null && !profile) return null
   return {
     region_id: input.regionId,
     scenario: input.scenario,
-    changes: roads.map((way_id) => ({ way_id, speed_factor: input.speed ?? 1 })),
+    changes: roads.map((way_id) => ({
+      way_id,
+      speed_factor: profile ? 1 : (input.speed ?? 1),
+      ...profile,
+    })),
     links: input.links.slice(0, LINK_LIMIT),
   }
 }

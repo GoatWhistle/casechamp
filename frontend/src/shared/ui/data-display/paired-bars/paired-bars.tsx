@@ -16,10 +16,30 @@ export interface PairedBarsProps {
   readonly label: string
   readonly legendMain: ReactNode
   readonly legendAlt: ReactNode
+  readonly nameMain?: string | undefined
+  readonly nameAlt?: string | undefined
   readonly className?: string | undefined
 }
 
-export function PairedBars({ rows, label, legendMain, legendAlt, className }: PairedBarsProps) {
+const MIN_RATIO = 0.015
+
+function ratio(value: number, top: number): number {
+  return value <= 0 ? 0 : Math.max(MIN_RATIO, value / top)
+}
+
+function SeriesName({ name }: { readonly name: string | undefined }) {
+  return name === undefined ? null : <span className="visually-hidden">{`${name}: `}</span>
+}
+
+export function PairedBars({
+  rows,
+  label,
+  legendMain,
+  legendAlt,
+  nameMain,
+  nameAlt,
+  className,
+}: PairedBarsProps) {
   const top = Math.max(1, ...rows.flatMap((row) => [row.main, row.alt]))
   return (
     <div className={clsx(styles.chart, className)}>
@@ -39,19 +59,25 @@ export function PairedBars({ rows, label, legendMain, legendAlt, className }: Pa
               <span
                 className={styles.bar}
                 data-pair="main"
-                style={{ "--ratio": row.main / top } as CSSProperties}
+                style={{ "--ratio": ratio(row.main, top) } as CSSProperties}
                 aria-hidden="true"
               />
-              <span className={styles.trackValue}>{row.displayMain}</span>
+              <span className={styles.trackValue}>
+                <SeriesName name={nameMain} />
+                {row.displayMain}
+              </span>
             </span>
             <span className={styles.track}>
               <span
                 className={styles.bar}
                 data-pair="alt"
-                style={{ "--ratio": row.alt / top } as CSSProperties}
+                style={{ "--ratio": ratio(row.alt, top) } as CSSProperties}
                 aria-hidden="true"
               />
-              <span className={styles.trackValue}>{row.displayAlt}</span>
+              <span className={styles.trackValue}>
+                <SeriesName name={nameAlt} />
+                {row.displayAlt}
+              </span>
             </span>
           </li>
         ))}

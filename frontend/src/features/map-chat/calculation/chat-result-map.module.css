@@ -1,0 +1,9 @@
+.map {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+.action {
+  font-size: var(--font-size-caption);
+  color: var(--text-secondary);
+}

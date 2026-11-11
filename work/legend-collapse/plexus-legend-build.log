@@ -1,0 +1,11 @@
+
+> app-frontend@0.1.0 build
+> tsc --noEmit && vite build
+
+src/entities/road-stress/stress-card.tsx(45,19): error TS2322: Type '"play"' is not assignable to type '"error" | "map" | "rail" | "sort" | "filter" | "retry" | "calendar" | "chat" | "compare" | "empty" | "stop" | "route" | "home" | "search" | "list" | "link" | "alert" | "menu" | "x" | ... 25 more ... | undefined'.
+src/entities/road-stress/stress-card.tsx(89,28): error TS18048: 'job.regions' is possibly 'undefined'.
+src/entities/road-stress/stress-card.tsx(90,27): error TS18048: 'job.regions' is possibly 'undefined'.
+src/entities/road-stress/stress-card.tsx(91,31): error TS18048: 'job.regions' is possibly 'undefined'.
+src/entities/road-stress/stress-card.tsx(94,16): error TS18048: 'job.regions' is possibly 'undefined'.
+src/entities/road-stress/stress-card.tsx(96,18): error TS18048: 'job.regions' is possibly 'undefined'.
+src/entities/road-stress/stress-card.tsx(138,19): error TS2322: Type '"chevron-left"' is not assignable to type '"error" | "map" | "rail" | "sort" | "filter" | "retry" | "calendar" | "chat" | "compare" | "empty" | "stop" | "route" | "home" | "search" | "list" | "link" | "alert" | "menu" | "x" | ... 25 more ... | undefined'.

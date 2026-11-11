@@ -2,9 +2,11 @@ import json
 from dataclasses import asdict
 from pathlib import Path
 
+from app.adapter.road_graph.appraisal_restore import restore_appraisal
 from app.adapter.road_graph.data import VERSION
 from app.domain.road_economics import MoneyAssumptions, MoneyEffect
 from app.usecase.road_graph import RoadAddition, RoadChange, RoadJob, RoadResult, SettlementEffect
+from app.usecase.transport_links import LinkChange
 
 
 def restore_jobs(root: Path) -> dict[str, RoadJob]:
@@ -27,7 +29,12 @@ def restore_jobs(root: Path) -> dict[str, RoadJob]:
             row["result"]["settlement_effects"] = [
                 SettlementEffect(**effect) for effect in row["result"].get("settlement_effects", [])
             ]
+            row["result"]["road_cost_method"] = (
+                row["result"].get("road_cost_method") or "legacy_speed_v1"
+            )
             row["result"] = RoadResult(**row["result"])
+        row["links"] = [LinkChange(**link) for link in row.get("links", [])]
+        restore_appraisal(row)
         job = RoadJob(**row)
         if job.version == VERSION:
             result[job.id] = job

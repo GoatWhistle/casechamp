@@ -1,6 +1,6 @@
 import { clsx } from "clsx"
 import { type KeyboardEvent, type ReactNode, useId, useRef } from "react"
-import { useInputModality } from "../../../motion"
+import { useInputModality, useSlidingIndicator } from "../../../motion"
 import { useContentFade } from "../../../motion/use-content-fade"
 import { ScrollArea } from "../../layout/scroll-area/scroll-area"
 import { Icon, type IconName } from "../../primitives/icon/icon"
@@ -18,6 +18,7 @@ export interface TabsProps<T extends string> {
   readonly value: T
   readonly onChange: (value: T) => void
   readonly children?: ReactNode
+  readonly controls?: Readonly<Record<T, string>> | undefined
   readonly className?: string | undefined
 }
 
@@ -34,12 +35,17 @@ export function Tabs<T extends string>({
   value,
   onChange,
   children,
+  controls,
   className,
 }: TabsProps<T>) {
   const baseId = useId()
   const panelId = `${baseId}panel`
   const tabId = (item: T) => `${baseId}tab${items.findIndex((entry) => entry.value === item)}`
   const modality = useInputModality()
+  const { listRef, indicatorRef, itemRef } = useSlidingIndicator<HTMLDivElement>(value, {
+    instant: modality.instant,
+    radiusToken: "--radius-xs",
+  })
   const panelRef = useRef<HTMLDivElement>(null)
   useContentFade(panelRef, value, modality.instant)
 
@@ -59,22 +65,27 @@ export function Tabs<T extends string>({
     <div className={clsx(styles.tabs, className)}>
       <ScrollArea orientation="horizontal" className={styles.scroller}>
         <div
+          ref={listRef}
           role="tablist"
           aria-label={label}
           className={styles.list}
           onKeyDown={onKeyDown}
           onPointerDown={modality.onPointerDown}
         >
+          <span ref={indicatorRef} className={styles.indicator} aria-hidden="true" />
           {items.map((item) => {
             const selected = item.value === value
             return (
               <button
                 key={item.value}
+                ref={itemRef(item.value)}
                 id={tabId(item.value)}
                 type="button"
                 role="tab"
                 aria-selected={selected}
-                aria-controls={children === undefined ? undefined : panelId}
+                aria-controls={
+                  controls?.[item.value] ?? (children === undefined ? undefined : panelId)
+                }
                 tabIndex={selected ? 0 : -1}
                 className={styles.tab}
                 onClick={() => onChange(item.value)}

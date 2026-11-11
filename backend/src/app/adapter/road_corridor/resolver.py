@@ -7,12 +7,18 @@ from scipy.sparse.csgraph import connected_components
 
 from app.adapter.road_corridor.band import band_pairs
 from app.adapter.road_corridor.bridges import find_bridges
+from app.adapter.road_corridor.connectivity import calculate_connectivity
 from app.adapter.road_corridor.gaps import gap_pairs
+from app.adapter.road_corridor.history import read_result, recent_results, save_result
+from app.adapter.road_corridor.places import corridor_places
+from app.adapter.road_corridor.routes import resolve_route
 from app.adapter.road_graph.jobs import RoadJobs
 from app.adapter.road_graph.routing import minimum_csr
 from app.domain.errors import InvalidQuery
 from app.domain.road_references import lookup_keys, reference_parts, shared_reference
-from app.usecase.road_corridor import BridgeCandidate, CorridorRegion, RoadCorridor
+from app.domain.traffic_diversion import TrafficAssumptions
+from app.usecase.connectivity import ConnectivityMode, ConnectivityResult
+from app.usecase.road_corridor import BridgeCandidate, CorridorRegion, RoadCorridor, RoadRoute
 from app.usecase.road_graph import RoadChange, RoadJob
 
 GAP_KM = 15.0
@@ -27,6 +33,19 @@ class CorridorResolver:
         self.resolved: dict[str, RoadCorridor] = {}
         self.settlements: tuple[list[str], Any] | None = None
         self.lock = Lock()
+
+    def connectivity(
+        self, places: list[str], mode: ConnectivityMode, center: str | None,
+        closed_way_ids: list[int], traffic: TrafficAssumptions | None = None,
+    ) -> ConnectivityResult:
+        result = calculate_connectivity(self.roads, places, mode, center, closed_way_ids, traffic)
+        return save_result(self.roads.data.root, result)
+
+    def read_connectivity(self, calculation_id: str) -> str:
+        return read_result(self.roads.data.root, calculation_id)
+
+    def recent_connectivity(self) -> str:
+        return recent_results(self.roads.data.root)
 
     def resolve(self, road_name: str, origin: str, destination: str) -> RoadCorridor:
         data = self.roads.data
@@ -44,19 +63,7 @@ class CorridorResolver:
             variants,
             key=lambda v: (sum(v in reference_parts(str(r[3] or "")) for r in selected.values()), v),
         )
-        endpoints = []
-        for query in (origin, destination):
-            locations = data.read("corridor_places", {"query": query})
-            if not locations:
-                raise InvalidQuery("Settlement not found: " + query)
-            if len(locations) != 1:
-                raise InvalidQuery(
-                    "Settlement is ambiguous: "
-                    + query
-                    + ": "
-                    + ", ".join(str(p[1]) + ", " + str(p[2]) for p in locations[:8])
-                )
-            endpoints.append(locations[0])
+        endpoints = corridor_places(data, origin, destination)
         edge_rows = data.read("corridor_edges", {"ids": list(selected)})
         node_ids = sorted({int(n) for a, b, _ in edge_rows for n in (a, b)})
         node_rows = data.read("corridor_nodes", {"ids": node_ids})
@@ -145,6 +152,12 @@ class CorridorResolver:
                 raise InvalidQuery("Resolve the named road corridor before closing it")
             return self.resolved[corridor_id]
 
+    def resolve_route(self, origin: str, destination: str) -> RoadRoute:
+        route = resolve_route(self.roads, origin, destination, self.crossed_regions)
+        with self.lock:
+            self.resolved[route.corridor.id] = route.corridor
+        return route
+
     def crossed_regions(self, points: Any) -> list[str]:
         if not len(points):
             return []
@@ -167,12 +180,17 @@ class CorridorResolver:
         return [name for name, count in sorted(counts.items(), key=lambda c: -c[1]) if count >= 3]
 
     def close(self, corridor_ids: list[str]) -> list[RoadJob]:
+        return self.edit(corridor_ids, 0)
+
+    def edit(self, corridor_ids: list[str], speed_factor: float) -> list[RoadJob]:
         corridors = [self.get(key) for key in corridor_ids]
         changes = [
-            RoadChange(way, 0)
+            RoadChange(way, speed_factor)
             for way in sorted({way for corridor in corridors for way in corridor.way_ids})
         ]
         regions = {region.id: region for corridor in corridors for region in corridor.regions}
+        if not changes or not regions:
+            raise InvalidQuery("Selected corridors contain no road ways or atlas regions")
         return [
             self.roads.submit(region.id, region.name, "road", changes, queue=True)
             for region in regions.values()

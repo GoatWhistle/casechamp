@@ -1,6 +1,12 @@
 from app.usecase.graph_snapshot import GraphQuery
 
 QUERIES: dict[GraphQuery, str] = {
+    "route_points": "SELECT point_id,node,snap_km FROM plexus_graph.locations WHERE point_id IN {points:Array(String)} UNION ALL SELECT oktmo AS point_id,node,snap_h*15 AS snap_km FROM plexus_casechamp.market_cities WHERE oktmo IN {points:Array(String)} AND oktmo NOT IN (SELECT point_id FROM plexus_graph.locations WHERE point_id IN {points:Array(String)})",
+    "route_edges": "SELECT src,dst,way_idx,h FROM plexus_graph.edges WHERE src IN {ids:Array(Int64)} AND dst IN {ids:Array(Int64)}",
+    "references_by_ids": "SELECT way_idx,way_id,name,ref,km FROM plexus_graph.ways WHERE way_idx IN {ids:Array(Int64)}",
+    "road_cost_model": "SELECT value FROM plexus_atlas.atlas_metadata WHERE key='road_cost_model_version'",
+    "road_costs": "SELECT way_idx,highway,surface,lanes_total,lanes_forward,lanes_backward,oneway,posted_speed_kmh,hourly_flow_pcu,flow_verified,flow_source,flow_period,hourly_flow_scope,is_ferry,source_speed_kmh,lane_data_usable FROM plexus_graph.road_costs WHERE way_id IN {ids:Array(Int64)} ORDER BY way_idx",
+    "scenario_lines": "SELECT l.way_id,coalesce(nullIf(w.name,''),nullIf(w.ref,''),toString(l.way_id)),w.km,l.coordinates FROM plexus_graph.road_lines l INNER JOIN plexus_graph.ways w ON w.way_id=l.way_id WHERE l.way_id IN {ids:Array(Int64)} ORDER BY l.way_id,l.source_node,l.target_node",
     "bridge_lengths": "SELECT way_id,km FROM plexus_graph.ways WHERE is_bridge AND way_id IN {ids:Array(Int64)}",
     "bridge_parts": "SELECT l.way_id,w.name,w.ref,w.highway,w.km,l.source_node,l.target_node,l.coordinates FROM plexus_graph.road_lines l INNER JOIN plexus_graph.ways w ON w.way_id=l.way_id WHERE w.is_bridge AND l.way_id IN (SELECT way_id FROM plexus_graph.road_lines WHERE min_lon<={east:Float64} AND max_lon>={west:Float64} AND min_lat<={north:Float64} AND max_lat>={south:Float64}) ORDER BY l.way_id,l.source_node,l.target_node LIMIT 2001",
     "locations": "SELECT point_id,settlement,region,node,lon,lat,snap_km FROM plexus_graph.locations WHERE lowerUTF8(ifNull(settlement,'')) LIKE {pattern:String} AND ({region:String}='' OR region={region:String}) ORDER BY population DESC NULLS LAST LIMIT 20",

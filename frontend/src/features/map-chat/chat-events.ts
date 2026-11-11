@@ -40,6 +40,7 @@ export function applyChatEvent(row: ChatEntry, event: ChatStreamEvent): ChatEntr
       return event.calculation
         ? {
             ...row,
+            reviewPending: true,
             calculations: [
               ...(row.calculations ?? []).filter(
                 (item) => item.corridor.id !== event.calculation?.corridor.id,
@@ -48,8 +49,12 @@ export function applyChatEvent(row: ChatEntry, event: ChatStreamEvent): ChatEntr
             ],
           }
         : row
+    case "stress_test":
+      return applyStress(row, event)
     case "analysis":
       return applyAnalysis(row, event)
+    case "scenario":
+      return applyScenario(row, event)
     case "done":
       return { ...row, complete: true }
     default:
@@ -77,4 +82,25 @@ function applyAnalysis(row: ChatEntry, event: ChatStreamEvent): ChatEntry {
       event.analysis,
     ],
   }
+}
+
+function applyStress(row: ChatEntry, event: ChatStreamEvent): ChatEntry {
+  const job = event.stress_test
+  if (!job) return row
+  return {
+    ...row,
+    reviewPending: Boolean(
+      row.reviewPending || (!event.stress_route && ["queued", "running"].includes(job.status)),
+    ),
+    stressRoutes: event.stress_route
+      ? { ...row.stressRoutes, [job.id]: event.stress_route }
+      : (row.stressRoutes ?? {}),
+    stressTests: row.stressTests?.some((item) => item.id === job.id)
+      ? row.stressTests.map((item) => (item.id === job.id ? job : item))
+      : [...(row.stressTests ?? []), job],
+  }
+}
+
+function applyScenario(row: ChatEntry, event: ChatStreamEvent): ChatEntry {
+  return event.scenario ? { ...row, scenarios: [...(row.scenarios ?? []), event.scenario] } : row
 }

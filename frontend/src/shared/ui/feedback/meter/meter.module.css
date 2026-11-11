@@ -2,3 +2,27 @@
   inline-size: 100%;
   accent-color: var(--action-primary);
 }
+.thin {
+  inline-size: 100%;
+  block-size: var(--space-4);
+  overflow: hidden;
+  background: var(--border-subtle);
+  border-radius: var(--radius-pill);
+}
+.fill {
+  display: block;
+  block-size: 100%;
+  background: var(--action-primary);
+  transform-origin: left;
+  transform: scaleX(var(--meter-progress));
+  transition: var(--transition-transform);
+}
+.thin[data-pending="true"] .fill {
+  animation: var(--motion-ring-pulse);
+}
+@media (prefers-reduced-motion: reduce) {
+  .fill {
+    transition: none;
+    animation: none;
+  }
+}

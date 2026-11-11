@@ -12,6 +12,7 @@ from app.adapter.road_graph.links import (
     canonical_links,
     missing_removals,
 )
+from app.adapter.road_graph.road_profiles import requested_profiles
 from app.adapter.road_graph.search_cache import SearchCache, changed_weights
 from app.adapter.road_graph.shortest_paths import ShortestPaths
 from app.domain.errors import InvalidQuery
@@ -55,8 +56,11 @@ class GraphRouting:
         progress: Callable[[int], None],
         addition: RoadAddition | None = None,
         links: list[LinkChange] | None = None,
+        on_times: Callable[[list[str], list[str], Any], None] | None = None,
     ) -> tuple[float, int, int, int, float]:
-        result, _ = self.calculate_details(region, scenario, changes, progress, addition, links)
+        result, _ = self.calculate_details(
+            region, scenario, changes, progress, addition, links, on_times
+        )
         return result
 
     def networks(
@@ -68,8 +72,10 @@ class GraphRouting:
         if scenario != "road":
             manual = self.data.read(
                 "manual_v2" if modern else "manual",
-                {"season": scenario.removeprefix("road_"),
-                 "road_only": int(scenario.startswith("road_"))},
+                {
+                    "season": scenario.removeprefix("road_"),
+                    "road_only": int(scenario.startswith("road_")),
+                },
             )
         if not links:
             return trunk, manual
@@ -81,11 +87,16 @@ class GraphRouting:
         links = canonical_links(links, [str(c[0]) for c in self.data.read("cities")])
         intercity = any(link.network == "intercity" for link in links)
         if intercity and self.data.modern_model and scenario.startswith("road"):
-            raise InvalidQuery("В этой модели нет межгородских ж/д и авиасвязей в дорожном сценарии")
+            raise InvalidQuery(
+                "В этой модели нет межгородских ж/д и авиасвязей в дорожном сценарии"
+            )
         points = {str(p[0]) for p in self.data.read("points")}
         unknown = [
-            end for link in links if link.network == "local"
-            for end in (link.source, link.target) if end != "*" and end not in points
+            end
+            for link in links
+            if link.network == "local"
+            for end in (link.source, link.target)
+            if end != "*" and end not in points
         ]
         if unknown:
             raise InvalidQuery(
@@ -109,6 +120,7 @@ class GraphRouting:
         progress: Callable[[int], None],
         addition: RoadAddition | None = None,
         links: list[LinkChange] | None = None,
+        on_times: Callable[[list[str], list[str], Any], None] | None = None,
     ) -> tuple[tuple[float, int, int, int, float], tuple[SettlementAccess, ...]]:
         self.data.load()
         points = self.data.read("points")
@@ -145,8 +157,12 @@ class GraphRouting:
             md.append(addition.target_node)
             mw.append(addition.travel_hours)
         edges = self.data.edges
+        profiles = requested_profiles(self.data, changes)
         weights, changed = changed_weights(
-            edges, self.data.indices_for([c.way_id for c in changes]) if changes else {}, changes
+            edges,
+            self.data.indices_for([c.way_id for c in changes]) if changes else {},
+            changes,
+            profiles,
         )
 
         def graph() -> Any:
@@ -173,13 +189,14 @@ class GraphRouting:
         road = np.empty((len(on), len(cities)), dtype=np.float32)
         city_road = np.empty((len(cities), len(cities)))
         origin_rows = {
-            point: i for i, point in enumerate(
-                p for p, _ in origins if p in lookup and lookup[p][0] >= 0
-            )
+            point: i
+            for i, point in enumerate(p for p, _ in origins if p in lookup and lookup[p][0] >= 0)
         }
-        targets = np.unique(np.concatenate([
-            np.array([v[0] for v in lookup.values() if v[0] >= 0], dtype=np.int64), city_nodes
-        ]))
+        targets = np.unique(
+            np.concatenate(
+                [np.array([v[0] for v in lookup.values() if v[0] >= 0], dtype=np.int64), city_nodes]
+            )
+        )
         key = None if addition else (scenario, tuple(changes), tuple(links or ()))
         every = self.searches.get(key)
         if every is None:
@@ -206,10 +223,16 @@ class GraphRouting:
         transfers = floyd_warshall(city_road)
         hansen = np.zeros(len(on))
         reachable = np.zeros(len(on), dtype=bool)
+        travel = np.full((len(origins), len(cities)), np.inf) if on_times else None
+        rows = [i for i, (p, _) in enumerate(origins) if p in origin_rows]
         for j, city in enumerate(cities):
             best = np.min(road + transfers[:, j].astype(np.float32), axis=1)
+            if travel is not None:
+                travel[rows, j] = best
             reachable |= np.isfinite(best)
             hansen += city[3] * np.exp(-np.log(2) / 2 * best.astype(np.float64))
+        if on_times is not None:
+            on_times([str(p) for p, _ in origins], [str(c[0]) for c in cities], travel)
         if total_pop <= 0:
             raise ValueError("Population must be positive")
         index = float(np.dot(hansen, population) / total_pop / norm * 100)

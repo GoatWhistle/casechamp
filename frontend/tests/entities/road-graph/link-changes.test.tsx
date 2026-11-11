@@ -101,12 +101,9 @@ describe("link change copy", () => {
         fill(graph.links.remove.ferry, { source: "Khoro", target: "Nyurba" }),
       ),
     ).toBeTruthy()
-    expect(
-      screen.getByText(
-        graph.links.jobSpec.replace("{{scenario}}", graph.summer).replace("{{count, number}}", "1"),
-      ),
-    ).toBeTruthy()
-    const roadCount = graph.jobSpec.split(",")[1]?.split(":")[0]?.trim() ?? graph.jobSpec
+    expect(screen.getByText(graph.summary.links_one.replace("{{count, number}}", "1"))).toBeTruthy()
+    expect(screen.getByText(graph.summer)).toBeTruthy()
+    const roadCount = graph.summary.roads_one.split(",")[1]?.split("{{")[0]?.trim() ?? ""
     expect(document.body.textContent).not.toContain(roadCount)
     expect(get.mock.calls[0]?.[0]).toBe("/api/v1/road-graph/places")
     expect(get.mock.calls[0]?.[1]?.params.query).toEqual({

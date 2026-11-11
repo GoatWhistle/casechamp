@@ -1,0 +1,53 @@
+.swatch {
+  --swatch: var(--text-secondary);
+
+  display: inline-block;
+  flex: none;
+  background-color: var(--swatch);
+}
+
+.chip {
+  inline-size: var(--space-12);
+  block-size: var(--space-8);
+  border-radius: var(--radius-xs);
+}
+
+.fill {
+  block-size: 100%;
+}
+
+.model {
+  opacity: var(--opacity-route);
+}
+
+.swatch[data-mode="rail"] {
+  --swatch: var(--mode-rail);
+}
+
+.swatch[data-mode="bus"] {
+  --swatch: var(--mode-bus);
+}
+
+.swatch[data-mode="air"] {
+  --swatch: var(--mode-air);
+}
+
+.swatch[data-mode="river"] {
+  --swatch: var(--mode-river);
+}
+
+.swatch[data-mode="winter_road"] {
+  --swatch: var(--mode-winter);
+}
+
+.swatch[data-mode="ice_crossing"] {
+  --swatch: var(--mode-ice);
+}
+
+.swatch[data-mode="ferry"] {
+  --swatch: var(--mode-ferry);
+}
+
+.swatch[data-mode="pontoon_bridge"] {
+  --swatch: var(--mode-pontoon);
+}

@@ -8,7 +8,7 @@ import numpy as np
 
 from app.adapter.road_graph.view_geometry import road_segments
 from app.domain.errors import DataUnavailable, InvalidQuery
-from app.usecase.graph_snapshot import GraphParameters, GraphQuery, GraphSnapshot
+from app.usecase.graph_snapshot import GraphModelInfo, GraphParameters, GraphQuery, GraphSnapshot
 from app.usecase.road_graph import GraphLocation, RoadView
 
 VERSION = "data-20261107"
@@ -30,12 +30,45 @@ class GraphData:
         rows = self.read("model_version")
         return bool(rows and rows[0][0] == "hansen-frequency-v2")
 
+    @cached_property
+    def road_cost_model(self) -> str:
+        rows = self.read("road_cost_model")
+        return str(rows[0][0]) if rows else ""
+
+    def cost_profiles(self, way_ids: list[int]) -> dict[int, dict[str, Any]]:
+        if not way_ids or not self.road_cost_model:
+            return {}
+        keys = [
+            "highway",
+            "surface",
+            "lanes_total",
+            "lanes_forward",
+            "lanes_backward",
+            "oneway",
+            "posted_speed_kmh",
+            "hourly_flow_pcu",
+            "flow_verified",
+            "flow_source",
+            "flow_period",
+            "hourly_flow_scope",
+            "is_ferry",
+            "source_speed_kmh",
+            "lane_data_usable",
+        ]
+        return {
+            int(row[0]): dict(zip(keys, row[1:], strict=True))
+            for row in self.read("road_costs", {"ids": way_ids})
+        }
+
     @property
     def revision(self) -> str:
         return self.snapshot.revision if self.snapshot else "[]"
 
     @cached_property
     def version(self) -> str:
+        if self.road_cost_model:
+            fingerprint = self.revision + self.road_cost_model
+            return "road-" + hashlib.sha256(fingerprint.encode()).hexdigest()[:16]
         if not self.modern_model:
             return VERSION
         return "road-" + hashlib.sha256(self.revision.encode()).hexdigest()[:16]
@@ -69,6 +102,16 @@ class GraphData:
         if self.snapshot is None:
             raise DataUnavailable("Graph storage is not configured")
         return self.snapshot.read(query, parameters)
+
+    def model_info(self) -> GraphModelInfo:
+        rows = self.read("model_version")
+        return GraphModelInfo(
+            self.version,
+            str(rows[0][0]) if rows else "unknown",
+            self.road_cost_model or "legacy_speed_v1",
+            not self.modern_model,
+            84.0 if self.modern_model else 0.0,
+        )
 
     def locations(self, query: str, region_id: str | None) -> list[GraphLocation]:
         region = self.region_name(region_id) if region_id else ""

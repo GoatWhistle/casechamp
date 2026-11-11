@@ -15,7 +15,7 @@ export function RootError() {
   return (
     <div className={styles.shell}>
       <header className={styles.top}>
-        <Link to="/" className={styles.brand} aria-label={t("common:app.name")}>
+        <Link to="/" viewTransition className={styles.brand} aria-label={t("common:app.name")}>
           <BrandMark size="md" rings={2} decorative />
         </Link>
       </header>

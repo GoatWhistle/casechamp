@@ -36,7 +36,7 @@ def test_link_only_scenario_is_accepted_and_returned() -> None:
         response = http.post("/road-scenarios", json=body)
         assert response.status_code == 200
         assert response.json()["links"][0]["target"] == "*"
-        port.submit.assert_called_once_with("71000000", "ХМАО", "road", [], [link], queue=False)
+        port.submit.assert_called_once_with("71000000", "ХМАО", "road", [], [link], queue=False, appraisal=None)
         assert http.post("/road-scenarios", json={"region_id": "71000000"}).status_code == 422
         invalid = {"region_id": "71000000", "links": [{**removal, "mode": "bus"}]}
         assert http.post("/road-scenarios", json=invalid).status_code == 422

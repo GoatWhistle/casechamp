@@ -11,6 +11,8 @@ from app.adapter.log.stdlib import StdlibLogger
 from app.adapter.road_analysis.jobs import AnalysisJobs
 from app.adapter.road_corridor.resolver import CorridorResolver
 from app.adapter.road_graph.jobs import RoadJobs
+from app.adapter.road_graph.selection_geometry import SelectionGeometry
+from app.adapter.road_stress.jobs import StressJobs
 from app.controller.atlas.accessibility import build_accessibility_router
 from app.controller.atlas.airports import build_airports_router
 from app.controller.atlas.catalog import build_catalog_router
@@ -20,6 +22,7 @@ from app.controller.errors import ErrorHandlers
 from app.controller.road_analysis.router import build_analysis_router
 from app.controller.road_graph.compression import RoadGraphCompression
 from app.controller.road_graph.router import build_road_graph_router
+from app.controller.road_stress.router import build_stress_router
 from app.controller.router import build_api_router
 from app.controller.scenarios.router import build_scenarios_router
 from app.controller.scenarios.sensitivity import build_sensitivity_router
@@ -31,10 +34,12 @@ from app.repository.clickhouse.graph_snapshot import ClickHouseGraphSnapshot
 from app.repository.clickhouse.road_view import ClickHouseRoadView
 from app.repository.clickhouse.scenario import ClickHouseScenarioRepository
 from app.repository.clickhouse.state import ClickHouseAnalysisStore, ClickHouseRoadJobStore
+from app.repository.clickhouse.stress import ClickHouseStressStore
 from app.settings import Settings, load_settings
 from app.usecase.accessibility import AccessibilityQueries
 from app.usecase.airports import AirportQueries
 from app.usecase.chat import Chat
+from app.usecase.chat_calculation_review import CalculationReviews
 from app.usecase.interface import AtlasRepository
 from app.usecase.links import LinkQueries
 from app.usecase.overview import OverviewQuery
@@ -79,7 +84,8 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
         else None
     )
     road_view = ClickHouseRoadView(reader.url, config.clickhouse_user, config.clickhouse_password)
-    road_graph = RoadGraph(road_jobs, atlas, road_view)
+    geometry = SelectionGeometry(road_jobs.data) if road_jobs else None
+    road_graph = RoadGraph(road_jobs, atlas, road_view, geometry)
     analysis_jobs = (
         AnalysisJobs(road_jobs, ClickHouseAnalysisStore(reader))
         if road_jobs and config.graph_dir
@@ -87,6 +93,7 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
     )
     analysis = RoadAnalysis(analysis_jobs, atlas)
     corridors = RoadCorridors(CorridorResolver(road_jobs) if road_jobs else None)
+    stress = StressJobs(road_jobs, ClickHouseStressStore(reader)) if road_jobs else None
     sensitivity = AccessibilitySensitivity(atlas)
     scenarios = ScenarioQueries(scenario_repository or ClickHouseScenarioRepository(reader))
     gateway = (
@@ -98,7 +105,7 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
                 Search(atlas),
                 ReferenceQueries(atlas),
                 CalculationTools(
-                    sensitivity, road_graph if road_jobs else None, analysis, corridors
+                    sensitivity, road_graph if road_jobs else None, analysis, corridors, stress
                 ),
             )
         )
@@ -109,6 +116,8 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         yield
+        if stress is not None:
+            stress.close()
         if analysis_jobs is not None:
             analysis_jobs.close()
         if road_jobs is not None:
@@ -127,9 +136,10 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
             build_accessibility_router(AccessibilityQueries(ClickHouseAccessibilityRepository(reader), atlas)),
             build_scenarios_router(scenarios),
             build_sensitivity_router(sensitivity),
-            build_chat_router(Chat(gateway, analysis)),
+            build_chat_router(Chat(gateway, analysis, CalculationReviews(road_graph, stress, corridors))),
         )
     )
     app.include_router(build_road_graph_router(road_graph), prefix="/api/v1")
     app.include_router(build_analysis_router(analysis), prefix="/api/v1")
+    app.include_router(build_stress_router(stress), prefix="/api/v1")
     return app

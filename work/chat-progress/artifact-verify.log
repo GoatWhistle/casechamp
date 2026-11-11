@@ -1,0 +1,49 @@
+
+> app-frontend@0.1.0 verify
+> npm run rules && npm run typecheck && npm run lint && npm run test && npm run build
+
+
+> app-frontend@0.1.0 rules
+> node scripts/checks/index.ts
+
+ok   file-length (0 in baseline)
+ok   no-comments (0 in baseline)
+ok   package-size (0 in baseline)
+ok   package-subject (0 in baseline)
+ok   import-cycles (0 in baseline)
+ok   layers (0 in baseline)
+ok   raw-requests (0 in baseline)
+ok   no-mocks (0 in baseline)
+ok   page-titles (0 in baseline)
+ok   motion-libraries (0 in baseline)
+ok   ui-kits (0 in baseline)
+ok   remote-assets (0 in baseline)
+ok   icon-alias (0 in baseline)
+ok   consistency (0 in baseline)
+ok   cyrillic (0 in baseline)
+ok   jsx-text (0 in baseline)
+ok   text-separators (0 in baseline)
+ok   symbol-glyphs (0 in baseline)
+ok   no-emoji (0 in baseline)
+ok   css-literals (0 in baseline)
+ok   css-token-refs (0 in baseline)
+  css-modules: src/features/road-scenario/road-scenario.module.css has 3, allowed 0
+    imported outside its component by src/features/road-scenario/history/scenario-history.tsx
+    imported outside its component by src/features/road-scenario/history/scenario-home.tsx
+    unused class .stage
+FAIL css-modules (0 in baseline)
+ok   global-styles (0 in baseline)
+ok   css-duplicates (0 in baseline)
+ok   css-transitions (0 in baseline)
+ok   scale-tokens (0 in baseline)
+ok   token-layers (0 in baseline)
+ok   single-theme (0 in baseline)
+ok   contrast (0 in baseline)
+ok   no-side-stripe (0 in baseline)
+ok   no-gradients (0 in baseline)
+ok   page-width (0 in baseline)
+ok   touch-targets (0 in baseline)
+ok   hover-gate (0 in baseline)
+ok   motion-tokens (0 in baseline)
+ok   ts-timings (0 in baseline)
+rules: 1 checks failed

@@ -1,99 +1,98 @@
 import type { ReactNode } from "react"
-import { Link, useSearchParams } from "react-router"
+import { useSearchParams } from "react-router"
 import { useRegion } from "@/entities/region"
-import { isApiError } from "@/shared/api"
 import { useNetworkMode } from "@/shared/hooks/use-network-mode"
 import { useSeason } from "@/shared/hooks/use-season"
-import { type MessageKey, useTranslation } from "@/shared/i18n"
-import {
-  ButtonLink,
-  ErrorState,
-  Icon,
-  type IconName,
-  PageHeader,
-  Skeleton,
-  Tabs,
-} from "@/shared/ui"
+import { type MessageKey, useErrorText, useTranslation } from "@/shared/i18n"
+import { ButtonLink, ErrorState, type IconName, PageHeader, Skeleton, Tabs } from "@/shared/ui"
 import { LinksWorkspace } from "./links-workspace"
 import styles from "./region-profile.module.css"
 
 export interface RegionProfileProps {
   readonly regionId: string
   readonly calendar: ReactNode
-  readonly scenarios?: ReactNode
+  readonly settlements: ReactNode
+  readonly actions?: ReactNode
 }
 
-type Section = "links" | "scenarios" | "winter-calendar"
+type Section = "links" | "settlements" | "winter-calendar"
 
-function resolveSection(requested: string | null, isUgra: boolean, hasScenarios: boolean): Section {
+const UGRA = "71800000"
+
+function resolveSection(params: URLSearchParams, isUgra: boolean): Section {
+  const requested = params.get("section")
   if (isUgra && requested === "winter-calendar") return "winter-calendar"
-  if (hasScenarios && requested === "scenarios") return "scenarios"
+  if (requested === "settlements") return "settlements"
+  if (requested === null && params.has("settlement")) return "settlements"
   return "links"
 }
 
 function sectionItems(
   isUgra: boolean,
-  hasScenarios: boolean,
 ): readonly { value: Section; label: MessageKey; icon: IconName }[] {
   return [
-    { value: "links", label: "profile:links", icon: "route" },
-    ...(hasScenarios
-      ? ([{ value: "scenarios", label: "profile:scenarios", icon: "compare" }] as const)
-      : []),
+    { value: "links", label: "profile:links", icon: "link" },
+    { value: "settlements", label: "region:settlements.title", icon: "home" },
     ...(isUgra
       ? ([{ value: "winter-calendar", label: "profile:winter", icon: "calendar" }] as const)
       : []),
   ]
 }
 
-export function RegionProfile({ regionId, calendar, scenarios }: RegionProfileProps) {
+export function RegionProfile({ regionId, calendar, settlements, actions }: RegionProfileProps) {
   const { t } = useTranslation()
+  const errorText = useErrorText()
   const { season, seasonHref } = useSeason()
   const { networkMode } = useNetworkMode()
   const [params, setParams] = useSearchParams()
   const region = useRegion(regionId, season)
   const data = region.data
-  const isUgra = regionId === "71800000"
-  const hasScenarios = scenarios !== null && scenarios !== undefined
-  const section = resolveSection(params.get("section"), isUgra, hasScenarios)
+  const isUgra = regionId === UGRA
+  const section = resolveSection(params, isUgra)
   if (region.isError)
     return (
       <ErrorState
-        title={t(
-          isApiError(region.error) && region.error.status === 404
-            ? "region:notFound"
-            : "errors:kind.server",
-        )}
+        title={t("region:loadError")}
+        description={errorText(region.error)}
         onRetry={() => void region.refetch()}
+        retryPending={region.isFetching}
       />
     )
   if (!data || data.id !== regionId) return <Skeleton lines={12} />
   const content: Record<Section, ReactNode> = {
     links: <LinksWorkspace regionId={regionId} data={data} isUgra={isUgra} />,
-    scenarios,
+    settlements,
     "winter-calendar": calendar,
   }
   return (
     <div className={styles.profile}>
-      <Link to={seasonHref("/")} className={styles.back}>
-        <Icon name="arrow-left" size="sm" />
+      <ButtonLink
+        to={seasonHref("/")}
+        variant="ghost"
+        size="compact"
+        icon="arrow-left"
+        className={styles.back}
+      >
         {t("region:backToMap")}
-      </Link>
+      </ButtonLink>
       <PageHeader
         title={data.name}
         actions={
-          <ButtonLink
-            to={`/compare?ids=${data.id}&season=${season}&network_mode=${networkMode}`}
-            variant="secondary"
-            icon="compare"
-          >
-            {t("region:compare")}
-          </ButtonLink>
+          <>
+            {actions}
+            <ButtonLink
+              to={`/compare?ids=${data.id}&season=${season}&network_mode=${networkMode}`}
+              variant="secondary"
+              icon="compare"
+            >
+              {t("region:compare")}
+            </ButtonLink>
+          </>
         }
       />
       <Tabs
         label={t("profile:sections")}
-        items={sectionItems(isUgra, hasScenarios).map((item) => ({
+        items={sectionItems(isUgra).map((item) => ({
           ...item,
           label: t(item.label),
         }))}

@@ -1,6 +1,7 @@
 import type { Locale } from "./locale"
 import ruAccessibility from "./locales/ru/accessibility.json"
 import ruAnalysis from "./locales/ru/analysis.json"
+import ruAppraisal from "./locales/ru/appraisal.json"
 import ruAtlas from "./locales/ru/atlas.json"
 import ruCalendar from "./locales/ru/calendar.json"
 import ruChat from "./locales/ru/chat.json"
@@ -18,12 +19,14 @@ import ruRegion from "./locales/ru/region.json"
 import ruScenario from "./locales/ru/scenario.json"
 import ruSeasons from "./locales/ru/seasons.json"
 import ruSources from "./locales/ru/sources.json"
+import ruStress from "./locales/ru/stress.json"
 
 export const NAMESPACES = [
   "common",
   "errors",
   "accessibility",
   "analysis",
+  "appraisal",
   "atlas",
   "calendar",
   "chat",
@@ -39,6 +42,7 @@ export const NAMESPACES = [
   "scenario",
   "seasons",
   "sources",
+  "stress",
 ] as const
 
 export type Namespace = (typeof NAMESPACES)[number]
@@ -50,6 +54,7 @@ const ru = {
   errors: ruErrors,
   accessibility: ruAccessibility,
   analysis: ruAnalysis,
+  appraisal: ruAppraisal,
   atlas: ruAtlas,
   calendar: ruCalendar,
   chat: ruChat,
@@ -65,6 +70,7 @@ const ru = {
   scenario: ruScenario,
   seasons: ruSeasons,
   sources: ruSources,
+  stress: ruStress,
 }
 
 export type Dictionary = typeof ru

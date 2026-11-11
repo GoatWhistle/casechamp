@@ -17,6 +17,9 @@
   transform: rotate(-90deg);
 }
 .content {
+  display: grid;
+  gap: var(--space-12);
+  padding-block-start: var(--space-8);
   opacity: 1;
   clip-path: inset(0);
   transition:
@@ -27,6 +30,9 @@
   opacity: 0;
   clip-path: inset(0 0 100% 0);
   transition-duration: var(--dur-fast-exit);
+}
+.content[hidden] {
+  display: none;
 }
 .content[data-instant="true"] {
   transition: none;

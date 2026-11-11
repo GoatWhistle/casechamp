@@ -52,6 +52,8 @@
   --toast-width: 380px;
   --dialog-width: 520px;
   --map-panel-width: 400px;
+  --map-panel-max: 760px;
+  --resizer-hit: 12px;
   --map-min-height: 560px;
   --map-mobile-height: 62dvh;
   --legend-width: 240px;

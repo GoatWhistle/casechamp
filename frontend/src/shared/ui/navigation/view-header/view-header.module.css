@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-inline-size: 0;
+}
+
+.back {
+  flex: none;
+  margin-inline-start: calc((var(--control-height-compact) - var(--icon-sm)) / -2);
+}
+
+.title {
+  composes: truncate subheadingText from "../../../styles/compose.module.css";
+  flex: 1;
+  min-inline-size: 0;
+}
+
+.aside {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-8);
+}

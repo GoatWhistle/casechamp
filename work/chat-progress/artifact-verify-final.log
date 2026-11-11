@@ -1,0 +1,157 @@
+
+> app-frontend@0.1.0 verify
+> npm run rules && npm run typecheck && npm run lint && npm run test && npm run build
+
+
+> app-frontend@0.1.0 rules
+> node scripts/checks/index.ts
+
+ok   file-length (0 in baseline)
+ok   no-comments (0 in baseline)
+ok   package-size (0 in baseline)
+ok   package-subject (0 in baseline)
+ok   import-cycles (0 in baseline)
+ok   layers (0 in baseline)
+ok   raw-requests (0 in baseline)
+ok   no-mocks (0 in baseline)
+ok   page-titles (0 in baseline)
+ok   motion-libraries (0 in baseline)
+ok   ui-kits (0 in baseline)
+ok   remote-assets (0 in baseline)
+ok   icon-alias (0 in baseline)
+ok   consistency (0 in baseline)
+ok   cyrillic (0 in baseline)
+ok   jsx-text (0 in baseline)
+ok   text-separators (0 in baseline)
+ok   symbol-glyphs (0 in baseline)
+ok   no-emoji (0 in baseline)
+ok   css-literals (0 in baseline)
+ok   css-token-refs (0 in baseline)
+ok   css-modules (0 in baseline)
+ok   global-styles (0 in baseline)
+ok   css-duplicates (0 in baseline)
+ok   css-transitions (0 in baseline)
+ok   scale-tokens (0 in baseline)
+ok   token-layers (0 in baseline)
+ok   single-theme (0 in baseline)
+ok   contrast (0 in baseline)
+ok   no-side-stripe (0 in baseline)
+ok   no-gradients (0 in baseline)
+ok   page-width (0 in baseline)
+ok   touch-targets (0 in baseline)
+ok   hover-gate (0 in baseline)
+ok   motion-tokens (0 in baseline)
+ok   ts-timings (0 in baseline)
+rules: 36 checks passed
+
+> app-frontend@0.1.0 typecheck
+> tsc --noEmit
+
+
+> app-frontend@0.1.0 lint
+> biome check .
+
+e2e/chat-calculation-progress.spec.ts:29:9 lint/style/useTemplate  FIXABLE  ━━━━━━━━━━━━━━━━━━━━━━━━
+
+  i Template literals are preferred over string concatenation.
+  
+    27 │       contentType: "application/x-ndjson",
+    28 │       body:
+  > 29 │         [
+       │         ^
+  > 30 │           { type: "delta", text: interpretation, code: "" },
+  > 31 │           { type: "done", text: "", code: "" },
+  > 32 │         ]
+  > 33 │           .map((event) => JSON.stringify(event))
+  > 34 │           .join("\n") + "\n",
+       │           ^^^^^^^^^^^^^^^^^^
+    35 │     })
+    36 │   })
+  
+  i Unsafe fix: Use a template literal.
+  
+     27  27 │         contentType: "application/x-ndjson",
+     28  28 │         body:
+     29     │ - ········[
+         29 │ + ········`${[
+     30  30 │             { type: "delta", text: interpretation, code: "" },
+     31  31 │             { type: "done", text: "", code: "" },
+     32  32 │           ]
+     33  33 │             .map((event) => JSON.stringify(event))
+     34     │ - ··········.join("\n")·+·"\n",
+         34 │ + ··········.join("\n")}\n`,
+     35  35 │       })
+     36  36 │     })
+  
+
+Checked 647 files in 899ms. No fixes applied.
+Found 1 info.
+
+> app-frontend@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.3 /Users/andreykuronskin/keys_champ/frontend
+
+
+ Test Files  71 passed (71)
+      Tests  466 passed (466)
+   Start at  20:09:56
+   Duration  31.21s (environment 40%, transform 18%, import 16%, tests 16%, setup 9%)
+
+
+> app-frontend@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.4 building client environment for production...
+transforming...
+
+A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+✓ 2717 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                       2.62 kB │ gzip:   0.79 kB
+dist/assets/jetbrains-mono-vietnamese-wght-normal-Bt-aOZkq.woff2      7.50 kB
+dist/assets/road-render.worker-DAqsYq-D.js                            8.57 kB
+dist/assets/jetbrains-mono-greek-wght-normal-Bw9x6K1M.woff2           9.00 kB
+dist/assets/onest-cyrillic-ext-wght-normal-DOFToQv1.woff2            10.54 kB
+dist/assets/jetbrains-mono-cyrillic-wght-normal-D73BlboJ.woff2       12.10 kB
+dist/assets/onest-vietnamese-wght-normal-BBxOatbv.woff2              12.40 kB
+dist/assets/jetbrains-mono-latin-ext-wght-normal-DBQx-q_a.woff2      15.19 kB
+dist/assets/onest-cyrillic-wght-normal-DayYxulF.woff2                15.86 kB
+dist/assets/onest-symbols-wght-normal-DxQzqQfC.woff2                 18.16 kB
+dist/assets/onest-math-wght-normal-Bl4ZGkZl.woff2                    25.48 kB
+dist/assets/onest-latin-ext-wght-normal-QAhDxQuo.woff2               28.45 kB
+dist/assets/onest-latin-wght-normal-Dun_Rd-l.woff2                   33.76 kB
+dist/assets/jetbrains-mono-latin-wght-normal-B9CIFXIH.woff2          40.40 kB
+dist/assets/maplibre-gl-worker-DTh23QKw.js                          519.75 kB
+dist/assets/not-found-B4DBkcMC.css                                    3.33 kB │ gzip:   1.15 kB
+dist/assets/scenarios-page-BgEaXBUB.css                               4.09 kB │ gzip:   1.33 kB
+dist/assets/region-DYKdPgY0.css                                       4.15 kB │ gzip:   1.41 kB
+dist/assets/sources-page-BEwyDssF.css                                 4.39 kB │ gzip:   1.43 kB
+dist/assets/compare-page-D1K00Y3N.css                                 4.84 kB │ gzip:   1.52 kB
+dist/assets/link-ky2oF6R5.css                                         7.13 kB │ gzip:   2.00 kB
+dist/assets/region-page-8oFLj4oU.css                                  9.73 kB │ gzip:   2.46 kB
+dist/assets/map-page-BVcNHPMP.css                                    28.10 kB │ gzip:   5.66 kB
+dist/assets/index-BoJY400N.css                                       32.77 kB │ gzip:  10.43 kB
+dist/assets/ui-BUEr72nq.css                                          42.71 kB │ gzip:   7.95 kB
+dist/assets/not-found-page-57IoWpDO.js                                0.32 kB │ gzip:   0.22 kB
+dist/assets/reference-DHU4noCM.js                                     0.41 kB │ gzip:   0.24 kB
+dist/assets/not-found-DEi2Oxsy.js                                     0.71 kB │ gzip:   0.39 kB
+dist/assets/useMutation-CI01e5xc.js                                   2.34 kB │ gzip:   0.96 kB
+dist/assets/sources-page-Wm9fW-wX.js                                  3.80 kB │ gzip:   1.58 kB
+dist/assets/compare-page-DKMyU_5j.js                                  5.35 kB │ gzip:   2.23 kB
+dist/assets/link-DnnssmQ-.js                                          7.55 kB │ gzip:   2.68 kB
+dist/assets/scenarios-page-CCds67Dc.js                                9.95 kB │ gzip:   3.46 kB
+dist/assets/region-page-pNu_rzjm.js                                  20.14 kB │ gzip:   6.40 kB
+dist/assets/map-page-LmO0fB9s.js                                    139.68 kB │ gzip:  41.21 kB
+dist/assets/index-DkeCNKG3.js                                       323.33 kB │ gzip: 112.76 kB
+dist/assets/ui-AMqneFo-.js                                          780.77 kB │ gzip: 237.63 kB
+dist/assets/region-8teJzlE4.js                                    1,095.86 kB │ gzip: 299.09 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 911ms

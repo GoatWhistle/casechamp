@@ -2,17 +2,21 @@ from concurrent.futures import ThreadPoolExecutor
 from dataclasses import replace
 from pathlib import Path
 from threading import Event, Lock
-from time import monotonic
 from uuid import uuid4
 
 from app.adapter.log.stdlib import StdlibLogger
+from app.adapter.road_graph.addition import addition_job, locate_addition
+from app.adapter.road_graph.appraisal import AppraisalRouting
 from app.adapter.road_graph.baselines import BaselineCache
 from app.adapter.road_graph.data import GraphData
 from app.adapter.road_graph.delta import DeltaCalculation
 from app.adapter.road_graph.delta_base import DeltaBase
+from app.adapter.road_graph.full_calculation import FullCalculation
 from app.adapter.road_graph.routing import GraphRouting
 from app.adapter.road_graph.shortest_paths import ShortestPaths
 from app.adapter.road_graph.transport_catalog import TransportCatalog
+from app.domain.appraisal import AppraisalReport
+from app.domain.appraisal_inputs import ProjectAssumptions
 from app.domain.errors import DataUnavailable, InvalidQuery
 from app.domain.road_economics import MoneyAssumptions
 from app.usecase.graph_snapshot import GraphSnapshot
@@ -33,10 +37,11 @@ class RoadJobs:
         self, root: Path, snapshot: GraphSnapshot, store: RoadJobStore, workers: int = 1
     ) -> None:
         self.data = GraphData(root, snapshot)
+        self.metadata = self.data.model_info()
         self.paths = ShortestPaths(workers)
         self.routing = GraphRouting(self.data, self.paths)
         self.catalog = TransportCatalog(self.data, self.routing)
-        self.cache = BaselineCache(root, snapshot.revision)
+        self.cache = BaselineCache(root, snapshot.revision, self.data.road_cost_model)
         self.delta = DeltaCalculation(DeltaBase(self.data, self.paths))
         self.delta.base.prepare()
         self.pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix="road-calculation")
@@ -48,6 +53,9 @@ class RoadJobs:
         }
         self.stops = {key: Event() for key in self.jobs}
         self.baselines: dict[tuple[str, str], float] = {}
+
+    def markets(self) -> list[str]:
+        return [str(row[0]) for row in self.data.read("cities")]
 
     def locations(self, query: str, region_id: str | None) -> list[GraphLocation]:
         return self.data.locations(query, region_id)
@@ -64,21 +72,37 @@ class RoadJobs:
         links: list[LinkChange] | None = None,
         *,
         queue: bool = False,
+        appraisal: ProjectAssumptions | None = None,
     ) -> RoadJob:
         self.data.region_name(region_id)
         self.data.indices_for([c.way_id for c in changes])
         links = self.routing.prepare_links(scenario, links or [])
-        key = (region_id, scenario, changes, links)
+        key = (region_id, scenario, changes, links, appraisal)
         with self.lock:
             for job in self.jobs.values():
                 if job.status in {"queued", "running"}:
-                    if (job.region_id, job.scenario, job.changes, job.links) == key:
+                    if (
+                        job.region_id,
+                        job.scenario,
+                        job.changes,
+                        job.links,
+                        job.appraisal_assumptions,
+                    ) == key:
                         return job
                     if not queue:
                         raise InvalidQuery("A calculation is already running; wait or cancel it")
             job = RoadJob(
-                uuid4().hex, region_id, region, scenario, changes, "queued", 0, 360,
-                self.data.version, links=links,
+                uuid4().hex,
+                region_id,
+                region,
+                scenario,
+                changes,
+                "queued",
+                0,
+                360,
+                self.data.version,
+                appraisal_assumptions=appraisal,
+                links=links,
             )
             self.store.save(job)
             self.jobs[job.id] = job
@@ -87,43 +111,32 @@ class RoadJobs:
         return job
 
     def submit_addition(
-        self, region_id: str, region: str, addition: RoadAddition, money: MoneyAssumptions | None
+        self,
+        region_id: str,
+        region: str,
+        addition: RoadAddition,
+        money: MoneyAssumptions | None,
+        appraisal: ProjectAssumptions | None = None,
     ) -> RoadJob:
         self.data.region_name(region_id)
-        self.data.load()
-        nodes = (addition.source_node, addition.target_node)
-        if any(node >= len(self.data.nodes["lat"]) for node in nodes):
-            raise InvalidQuery("Unknown graph node")
-        addition = replace(
-            addition,
-            coordinates=[
-                [float(self.data.nodes["lon"][node]), float(self.data.nodes["lat"][node])]
-                for node in nodes
-            ],
-        )
+        addition = locate_addition(self.data, addition)
         with self.lock:
             for existing in self.jobs.values():
                 if existing.status in {"queued", "running"}:
-                    if (existing.region_id, existing.addition, existing.money_assumptions) == (
+                    if (
+                        existing.region_id,
+                        existing.addition,
+                        existing.money_assumptions,
+                        existing.appraisal_assumptions,
+                    ) == (
                         region_id,
                         addition,
                         money,
+                        appraisal,
                     ):
                         return existing
                     raise InvalidQuery("A calculation is already running; wait or cancel it")
-            job = RoadJob(
-                uuid4().hex,
-                region_id,
-                region,
-                "road",
-                [],
-                "queued",
-                0,
-                5,
-                self.data.version,
-                addition=addition,
-                money_assumptions=money,
-            )
+            job = addition_job(region_id, region, addition, money, appraisal, self.data.version)
             self.store.save(job)
             self.jobs[job.id] = job
             self.stops[job.id] = Event()
@@ -138,9 +151,9 @@ class RoadJobs:
     def place_names(self, ids: list[str]) -> list[PlaceName]:
         return self.catalog.place_names(ids)
 
-    def recent(self) -> list[RoadJob]:
+    def recent(self, limit: int | None = 20) -> list[RoadJob]:
         with self.lock:
-            return list(reversed(list(self.jobs.values())))[:20]
+            return list(reversed(list(self.jobs.values())))[:limit]
 
     def job(self, job_id: str) -> RoadJob:
         with self.lock:
@@ -161,10 +174,16 @@ class RoadJobs:
         completed: int,
         result: RoadResult | None = None,
         error: str | None = None,
+        appraisal_result: AppraisalReport | None = None,
     ) -> None:
         with self.lock:
             self.jobs[job_id] = replace(
-                self.jobs[job_id], status=status, completed=completed, result=result, error=error
+                self.jobs[job_id],
+                status=status,
+                completed=completed,
+                result=result,
+                error=error,
+                appraisal_result=appraisal_result,
             )
             if status in {"completed", "cancelled", "failed"}:
                 try:
@@ -176,54 +195,39 @@ class RoadJobs:
                     )
 
     def run(self, job: RoadJob) -> None:
-        started = monotonic()
-        offset = 0
-
         def progress(value: int) -> None:
             if self.stops[job.id].is_set():
                 raise InterruptedError()
-            self.update(job.id, status="running", completed=offset + value)
+            self.update(job.id, status="running", completed=value)
 
         try:
             progress(0)
             region = self.data.region_name(job.region_id)
+            appraisal = (
+                AppraisalRouting(job.appraisal_assumptions) if job.appraisal_assumptions else None
+            )
             if job.addition:
-                result = self.delta.calculate(region, job.addition, job.money_assumptions, progress)
-                self.update(job.id, status="completed", completed=5, result=result)
+                result = self.delta.calculate(
+                    region, job.addition, job.money_assumptions, progress, appraisal
+                )
+                self.update(
+                    job.id,
+                    status="completed",
+                    completed=5,
+                    result=result,
+                    appraisal_result=appraisal.result() if appraisal else None,
+                )
                 return
-            key = (region, job.scenario)
-            cached = self.cache.read(*key)
-            if cached is not None:
-                self.baselines[key] = cached
-            if key not in self.baselines:
-                before, _, _, _, _ = self.routing.calculate(region, job.scenario, [], progress)
-                rows = self.data.read("expected", {"region": region, "season": job.scenario})
-                if not rows:
-                    raise InvalidQuery("Region is missing from the calculation snapshot")
-                expected = float(rows[0][0])
-                if abs(before - expected) > max(0.0001, abs(expected) * 0.00001):
-                    self.update(job.id, status="failed", completed=180, error="baseline_mismatch")
-                    return
-                self.baselines[key] = before
-                self.cache.write(*key, before)
-            offset = 180
-            progress(0)
-            before = self.baselines[key]
-            after, population, settlements, changed, norm = self.routing.calculate(
-                region, job.scenario, job.changes, progress, links=job.links
+            result = FullCalculation(self.data, self.routing, self.cache, self.baselines).calculate(
+                job, region, progress, appraisal
             )
-            result = RoadResult(
-                before,
-                after,
-                after - before,
-                (after / before - 1) * 100 if before else None,
-                population,
-                settlements,
-                changed,
-                norm,
-                monotonic() - started,
+            self.update(
+                job.id,
+                status="completed",
+                completed=360,
+                result=result,
+                appraisal_result=appraisal.result() if appraisal else None,
             )
-            self.update(job.id, status="completed", completed=360, result=result)
         except InterruptedError:
             self.update(job.id, status="cancelled", completed=self.job(job.id).completed)
         except Exception as error:  # noqa: BLE001 - worker boundary records failure and logs the cause

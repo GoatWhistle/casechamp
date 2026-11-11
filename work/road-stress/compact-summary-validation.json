@@ -1,0 +1,68 @@
+{
+  "national": {
+    "id": "95c3a442bf544d118fac5403cf80eede",
+    "version": "road-8033092fca2cf5fa",
+    "status": "completed",
+    "stage": "completed",
+    "way_count": 714,
+    "parent_id": null,
+    "region": "",
+    "totals": {
+      "affected_points": 146522,
+      "exposed_population": 124932367,
+      "isolated_points": 96,
+      "isolated_population": 5388,
+      "max_delay_minutes": 207.30689683870878,
+      "affected_regions": 81
+    },
+    "snapshot_points": 155747,
+    "unbound_points": 483,
+    "preexisting_isolated_points": 77,
+    "completed": 180,
+    "total": 180
+  },
+  "Новгородская область": {
+    "id": "95c3a442bf544d118fac5403cf80eede",
+    "version": "road-8033092fca2cf5fa",
+    "status": "completed",
+    "stage": "completed",
+    "way_count": 714,
+    "parent_id": null,
+    "region": "Новгородская область",
+    "totals": {
+      "affected_points": 3713,
+      "exposed_population": 583386,
+      "isolated_points": 64,
+      "isolated_population": 1414,
+      "max_delay_minutes": 207.30689683870878,
+      "affected_regions": 1
+    },
+    "snapshot_points": 155747,
+    "unbound_points": 483,
+    "preexisting_isolated_points": 77,
+    "completed": 180,
+    "total": 180
+  },
+  "Тверская область": {
+    "id": "95c3a442bf544d118fac5403cf80eede",
+    "version": "road-8033092fca2cf5fa",
+    "status": "completed",
+    "stage": "completed",
+    "way_count": 714,
+    "parent_id": null,
+    "region": "Тверская область",
+    "totals": {
+      "affected_points": 8834,
+      "exposed_population": 1175557,
+      "isolated_points": 32,
+      "isolated_population": 3974,
+      "max_delay_minutes": 162.95670449675526,
+      "affected_regions": 1
+    },
+    "snapshot_points": 155747,
+    "unbound_points": 483,
+    "preexisting_isolated_points": 77,
+    "completed": 180,
+    "total": 180
+  }
+}

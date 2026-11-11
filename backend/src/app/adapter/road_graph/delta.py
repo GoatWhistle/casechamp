@@ -4,6 +4,7 @@ from typing import Any
 
 import numpy as np
 
+from app.adapter.road_graph.appraisal import AppraisalRouting
 from app.adapter.road_graph.delta_base import DeltaBase
 from app.adapter.road_graph.delta_model import access_times
 from app.domain.errors import InvalidQuery
@@ -37,6 +38,7 @@ class DeltaCalculation:
         addition: RoadAddition,
         money: MoneyAssumptions | None,
         progress: Callable[[int], None],
+        appraisal: AppraisalRouting | None = None,
     ) -> RoadResult:
         started = monotonic()
         progress(0)
@@ -50,6 +52,8 @@ class DeltaCalculation:
                 "Economic origin must belong to the selected region and target to a market"
             )
         before_times = r.baseline_times
+        if appraisal is not None:
+            appraisal.before(r.ids, r.market_names, before_times)
         before_hansen = r.baseline_hansen
         total = float(r.population.sum())
         before = r.baseline_index
@@ -65,6 +69,8 @@ class DeltaCalculation:
         city = added_edge_distances(raw_cities, ca, cb, ca, cb, addition.travel_hours, limit)
         city += r.market_snaps[:, None] + r.market_snaps
         after_times = access_times(road, city, r.trunk)
+        if appraisal is not None:
+            appraisal.after(r.ids, r.market_names, after_times)
         after_hansen = np.exp(-np.log(2) / 2 * after_times.astype(np.float64)) @ r.market_weights
         after = float(after_hansen @ r.population / total / r.normalization * 100)
         effect = None
@@ -100,4 +106,6 @@ class DeltaCalculation:
             effect,
             "single_edge_delta",
             effects,
+            road_cost_method=self.base.data.road_cost_model or "legacy_speed_v1",
+            road_cost_notes=["manual_new_connection_time"],
         )

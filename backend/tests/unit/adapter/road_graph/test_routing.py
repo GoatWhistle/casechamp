@@ -26,7 +26,7 @@ class Snapshot:
 
     def read(self, query: GraphQuery, parameters: GraphParameters | None = None) -> list[tuple[Any,...]]:
         rows: dict[GraphQuery,list[tuple[Any,...]]] = {
-            "model_version": [],
+            "model_version": [], "road_cost_model": [],
             "points": [("origin",0,0.)], "origins": [("origin",10)],
             "cities": [("market",2,0.,100)], "trunk": [], "normalization": [(100.,)],
         }

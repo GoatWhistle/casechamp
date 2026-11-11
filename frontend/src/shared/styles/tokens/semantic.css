@@ -1,4 +1,5 @@
 :root {
+  --map-ferry: var(--teal-600);
   color-scheme: light;
 
   --surface-base: var(--neutral-0);
@@ -65,9 +66,10 @@
   --map-land: var(--land-100);
   --map-land-brand: var(--blue-100);
   --map-none: var(--land-200);
-  --map-water: var(--water-200);
+  --map-water: var(--water-muted);
   --map-water-line: var(--water-400);
   --map-border: var(--neutral-0);
+  --map-road: var(--cobalt-700);
   --map-selected: var(--neutral-950);
   --map-hover: color-mix(in oklab, var(--iso-1) 26%, transparent);
 
@@ -98,4 +100,8 @@
   --mode-winter: var(--mode-winter-hue);
   --mode-ferry: var(--mode-ferry-hue);
   --mode-road: var(--mode-road-hue);
+  --mode-rail: var(--mode-rail-hue);
+  --mode-bus: var(--mode-bus-hue);
+  --mode-ice: var(--mode-ice-hue);
+  --mode-pontoon: var(--mode-pontoon-hue);
 }

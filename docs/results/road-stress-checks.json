@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-11",
+  "workers": 6,
+  "runs": [
+    {
+      "reference": "М-10",
+      "job_id": "eb1065e4819446f8ae091332cea91a35",
+      "parent_id": null,
+      "graph_version": "road-8033092fca2cf5fa",
+      "ways": 2454,
+      "closure_sha256": "9ec2865a8eccae7b4fc50c33fb87fb8585f3aef433dbc0372813c80b9c5b29f4",
+      "elapsed_seconds": 212.44453950005118,
+      "points": 155747,
+      "unbound_points": 483,
+      "preexisting_isolated_points": 77,
+      "newly_isolated_points": 169,
+      "regions": 82,
+      "affected_points": 154899,
+      "exposed_population": 127754656
+    },
+    {
+      "reference": "М-11",
+      "job_id": "2baba9e8d4c34c149af544f7701ec955",
+      "parent_id": "eb1065e4819446f8ae091332cea91a35",
+      "graph_version": "road-8033092fca2cf5fa",
+      "ways": 4070,
+      "closure_sha256": "1fa3e79ec7f92c4ce424f9314fb08a7e52fbc21507acead8b637df244ef18098",
+      "elapsed_seconds": 284.0835580830462,
+      "points": 155747,
+      "unbound_points": 483,
+      "preexisting_isolated_points": 77,
+      "newly_isolated_points": 173,
+      "regions": 82,
+      "affected_points": 154899,
+      "exposed_population": 127754656
+    },
+    {
+      "reference": "Р-257",
+      "job_id": "e293c96e6f0a4ddc90190e8e84c8166f",
+      "parent_id": null,
+      "graph_version": "road-8033092fca2cf5fa",
+      "ways": 534,
+      "closure_sha256": "ee72d8dc967f53ed071c716a86d7e65b79ccb0cf90d44b4e708eca9e1b3ae734",
+      "elapsed_seconds": 283.6494103750447,
+      "points": 155747,
+      "unbound_points": 483,
+      "preexisting_isolated_points": 77,
+      "newly_isolated_points": 98,
+      "regions": 82,
+      "affected_points": 154899,
+      "exposed_population": 127754656
+    }
+  ],
+  "route": {
+    "origin": {
+      "id": "28750000001",
+      "name": "г. Торжок",
+      "region": "Тверская область",
+      "population": 41116,
+      "node": 6977206,
+      "snap_km": 0.028941356452880592,
+      "longitude": 34.96021,
+      "latitude": 57.04135
+    },
+    "destination": {
+      "id": "49701000001",
+      "name": "г. Великий Новгород",
+      "region": "Новгородская область",
+      "population": 224286,
+      "node": 5799516,
+      "snap_km": 0.37061944079809167,
+      "longitude": 31.27542,
+      "latitude": 58.52142
+    },
+    "before": {
+      "status": "reachable",
+      "hours": 4.194344330298972,
+      "km": 337.03316845580855
+    },
+    "after": {
+      "status": "reachable",
+      "hours": 5.626092022768771,
+      "km": 429.36733999847354
+    }
+  },
+  "negative_case": {
+    "job": {
+      "id": "cd36e77bef764ca3a486b6ea6ae32980",
+      "version": "road-8033092fca2cf5fa",
+      "way_ids": [
+        4412349
+      ],
+      "parent_id": null,
+      "status": "completed",
+      "stage": "completed",
+      "completed": 180,
+      "total": 180,
+      "points": 155747,
+      "unbound_points": 483,
+      "regions": [],
+      "error": null
+    },
+    "elapsed_seconds": 248.5909402089892
+  },
+  "limits": [
+    "Single local run per scenario under concurrent load, not a latency SLA",
+    "Exposure to any model market, not road users",
+    "No paid model evaluation"
+  ]
+}

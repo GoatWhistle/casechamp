@@ -3,6 +3,7 @@ from typing import Annotated, Literal
 from fastapi import APIRouter, Query
 from pydantic import BaseModel, Field
 
+from app.domain.appraisal_inputs import ProjectAssumptions
 from app.domain.road_economics import MoneyAssumptions
 from app.usecase.road_graph import (
     GraphLocation,
@@ -17,7 +18,11 @@ from app.usecase.transport_links import LinkChange, PlaceName, TransportLink
 
 class RoadChangeInput(BaseModel):
     way_id: int = Field(ge=0)
-    speed_factor: float = Field(ge=0, le=3)
+    speed_factor: float = Field(default=1, ge=0, le=3)
+    lanes_total: int | None = Field(default=None, ge=1, le=32)
+    highway: str | None = Field(default=None, max_length=40)
+    surface: str | None = Field(default=None, max_length=40)
+    speed_kmh: float | None = Field(default=None, gt=0, le=200)
 
 
 class LinkChangeInput(BaseModel):
@@ -34,6 +39,7 @@ class RoadScenarioInput(BaseModel):
     scenario: Literal["road", "summer", "winter"] = "road"
     changes: list[RoadChangeInput] = Field(default_factory=list, max_length=50)
     links: list[LinkChangeInput] = Field(default_factory=list, max_length=30)
+    appraisal: ProjectAssumptions | None = None
 
 
 class RoadAdditionInput(BaseModel):
@@ -42,10 +48,15 @@ class RoadAdditionInput(BaseModel):
     target_node: int = Field(ge=0)
     travel_hours: float = Field(gt=0, le=72)
     money: MoneyAssumptions | None = None
+    appraisal: ProjectAssumptions | None = None
 
 
 def build_road_graph_router(graph: RoadGraph) -> APIRouter:
     router = APIRouter(tags=["road-graph"])
+
+    @router.get("/road-graph/markets", response_model=list[str])
+    def markets() -> list[str]:
+        return graph.markets()
 
     @router.get("/road-graph/locations", response_model=list[GraphLocation])
     def locations(query: str, region_id: str | None = None) -> list[GraphLocation]:
@@ -61,6 +72,7 @@ def build_road_graph_router(graph: RoadGraph) -> APIRouter:
             body.region_id,
             RoadAddition(body.source_node, body.target_node, body.travel_hours),
             body.money,
+            body.appraisal,
         )
 
     @router.get("/transport-links", response_model=list[TransportLink])
@@ -85,8 +97,9 @@ def build_road_graph_router(graph: RoadGraph) -> APIRouter:
         return graph.submit(
             body.region_id,
             body.scenario,
-            [RoadChange(c.way_id, c.speed_factor) for c in body.changes],
+            [RoadChange(**c.model_dump()) for c in body.changes],
             [LinkChange(**link.model_dump()) for link in body.links],
+            appraisal=body.appraisal,
         )
 
     @router.get("/road-scenarios/{job_id}", response_model=RoadJob)

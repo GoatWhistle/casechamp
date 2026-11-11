@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { act, fireEvent, render, screen, waitFor } from "@testing-library/react"
+import { act, fireEvent, render, screen } from "@testing-library/react"
 import { afterEach, describe, expect, it, vi } from "vitest"
 import type { AnalysisCommentary } from "@/entities/chat"
 import { ChatAnalysisCard } from "@/features/map-chat/analysis/chat-analysis-card"
@@ -81,7 +81,7 @@ afterEach(() => {
 })
 
 describe("inline road ranking", () => {
-  it("updates the table and automatically streams exactly one commentary when the batch finishes", async () => {
+  it("streams exactly one commentary without adding a template table", async () => {
     vi.mocked(streamChat).mockImplementation(async (_body, _signal, emit) => {
       emit({ type: "delta", text: "Result commentary", code: "" })
       emit({ type: "done", text: "", code: "" })
@@ -91,9 +91,7 @@ describe("inline road ranking", () => {
     expect(screen.getByRole("progressbar")).toBeTruthy()
     act(() => client.setQueryData(["road-analysis", analysis.id], completed))
     await screen.findByText("Result commentary")
-    const rows = screen.getAllByRole("row")
-    expect(rows[1]?.textContent).toContain("Road 2")
-    expect(rows[2]?.textContent).toContain("Road 1")
+    expect(screen.queryByRole("table")).toBeNull()
     expect(streamChat).toHaveBeenCalledTimes(1)
     expect(vi.mocked(streamChat).mock.calls[0]?.[0].analysis_id).toBe(analysis.id)
     act(() =>
@@ -104,11 +102,11 @@ describe("inline road ranking", () => {
     unmount()
   })
 
-  it("keeps verified rows when commentary fails and retries only the commentary", async () => {
+  it("shows an honest commentary error and retries only the commentary", async () => {
     vi.mocked(streamChat).mockRejectedValueOnce(new Error("offline"))
     const { unmount } = setup(completed)
     await screen.findByRole("button", { name: ru.retry })
-    expect(screen.getByRole("table")).toBeTruthy()
+    expect(screen.queryByRole("table")).toBeNull()
     vi.mocked(streamChat).mockImplementation(async (_body, _signal, emit) => {
       emit({ type: "delta", text: "Recovered commentary", code: "" })
       emit({ type: "done", text: "", code: "" })
@@ -121,7 +119,7 @@ describe("inline road ranking", () => {
 
   it("does not describe a failed calculation as a completed analysis", async () => {
     const { unmount } = setup({ ...completed, status: "failed" })
-    await waitFor(() => expect(screen.getByRole("table")).toBeTruthy())
+    expect(screen.queryByRole("table")).toBeNull()
     expect(streamChat).not.toHaveBeenCalled()
     unmount()
   })

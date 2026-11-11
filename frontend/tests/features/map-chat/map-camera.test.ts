@@ -1,6 +1,7 @@
-import { describe, expect, it } from "vitest"
+import type { Map as LibreMap } from "maplibre-gl"
+import { describe, expect, it, vi } from "vitest"
 import { buildBoundaryAtlas } from "@/entities/region/osm-map/boundary-geojson"
-import { regionFrame } from "@/entities/region/osm-map/map-camera"
+import { aimCamera, regionFrame, settlementCenter } from "@/entities/region/osm-map/map-camera"
 import { isChatMapCommand } from "@/shared/api/chat-map"
 
 const atlas = buildBoundaryAtlas([
@@ -20,5 +21,51 @@ describe("map commands", () => {
     expect(isChatMapCommand({ action: "focus", region_ids: ["invented"] })).toBe(false)
     expect(isChatMapCommand({ action: "reset", region_ids: ["01000000"] })).toBe(false)
     expect(isChatMapCommand({ action: "reset", region_ids: [] })).toBe(true)
+  })
+  it("validates settlement coordinates and preserves legacy commands", () => {
+    const command = {
+      action: "focus_settlement",
+      region_ids: ["01000000"],
+      settlement: { id: "one", name: "Town", region_id: "01000000", longitude: 42, latitude: 45 },
+    }
+    expect(isChatMapCommand(command)).toBe(true)
+    expect(
+      isChatMapCommand({ ...command, settlement: { ...command.settlement, latitude: 91 } }),
+    ).toBe(false)
+    expect(isChatMapCommand({ ...command, region_ids: ["02000000"] })).toBe(false)
+    expect(isChatMapCommand({ ...command, settlement: null })).toBe(false)
+  })
+  it("focuses the stored point, interrupts earlier movement and honors instant motion", () => {
+    const element = { dataset: {} }
+    const map = {
+      stop: vi.fn(),
+      setFilter: vi.fn(),
+      getContainer: () => element,
+      easeTo: vi.fn(),
+    }
+    const settlement = {
+      id: "one",
+      name: "Town",
+      region_id: "01000000",
+      longitude: 42,
+      latitude: 45,
+    }
+    aimCamera(
+      map as unknown as LibreMap,
+      atlas,
+      {
+        action: "focus_settlement",
+        region_ids: ["01000000"],
+        settlement,
+      },
+      null,
+      0,
+      0,
+    )
+    expect(map.stop).toHaveBeenCalledOnce()
+    expect(map.easeTo).toHaveBeenCalledWith(
+      expect.objectContaining({ center: [42, 45], zoom: 12, duration: 0, essential: false }),
+    )
+    expect(settlementCenter({ ...settlement, longitude: -179 })).toEqual([181, 45])
   })
 })

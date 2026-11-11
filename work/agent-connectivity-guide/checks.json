@@ -1,0 +1,16 @@
+{
+  "sample": "saved real bridge scenario",
+  "full_characters": 4232,
+  "summary_characters": 2436,
+  "character_reduction_percent": 42.4,
+  "skills": {
+    "settlement-connectivity": {
+      "before_words": 847,
+      "after_words": 330
+    },
+    "economic-assessment": {
+      "before_words": 515,
+      "after_words": 362
+    }
+  }
+}

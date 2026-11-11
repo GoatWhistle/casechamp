@@ -5,7 +5,9 @@ from typing import Any
 
 import numpy as np
 
+from app.adapter.road_graph.road_profiles import profile_changes
 from app.usecase.road_graph import RoadChange
+from app.usecase.road_profile_validation import has_profile
 
 
 class SearchCache:
@@ -34,11 +36,16 @@ class SearchCache:
 
 
 def changed_weights(
-    edges: dict[str, Any], ways: dict[int, int], changes: list[RoadChange]
+    edges: dict[str, Any],
+    ways: dict[int, int],
+    changes: list[RoadChange],
+    profiles: dict[int, dict[str, Any]] | None = None,
 ) -> tuple[Any, int]:
     weights = edges["h"].copy()
     if not changes:
         return weights, 0
+    if any(has_profile(change) for change in changes):
+        changes, _ = profile_changes(changes, ways, profiles or {})
     factors = np.ones(int(edges["way_idx"].max()) + 1, dtype=weights.dtype)
     for change in changes:
         factors[ways[change.way_id]] = change.speed_factor

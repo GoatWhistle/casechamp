@@ -1,0 +1,44 @@
+.region {
+  gap: var(--space-8);
+  border: 0;
+  padding: 0;
+  animation: var(--motion-rise-in);
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+
+.overview {
+  gap: var(--space-8);
+  border: 0;
+  padding: 0;
+}
+
+.region[data-stale] {
+  opacity: var(--opacity-stale);
+}
+
+.name {
+  font-size: var(--font-size-heading);
+  line-height: var(--line-height-heading);
+}
+
+.body {
+  display: grid;
+  gap: var(--space-20);
+  margin-block-start: var(--space-20);
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+  gap: var(--space-8);
+}
+
+.note {
+  composes: secondaryText from "../../../shared/styles/compose.module.css";
+  margin: 0;
+}
+
+.pending {
+  display: grid;
+  gap: var(--space-16);
+}

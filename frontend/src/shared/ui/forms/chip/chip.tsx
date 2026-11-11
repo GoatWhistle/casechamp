@@ -1,5 +1,6 @@
 import { clsx } from "clsx"
 import type { ReactNode } from "react"
+import { CloseButton } from "../../overlays/close-button/close-button"
 import { Icon, type IconName } from "../../primitives/icon/icon"
 import styles from "./chip.module.css"
 
@@ -33,6 +34,30 @@ export function Chip({
         <span>{children}</span>
       </span>
     </button>
+  )
+}
+
+export interface RemovableChipProps {
+  readonly removeLabel: string
+  readonly onRemove: () => void
+  readonly icon?: IconName | undefined
+  readonly className?: string | undefined
+  readonly children: ReactNode
+}
+
+export function RemovableChip({
+  removeLabel,
+  onRemove,
+  icon,
+  className,
+  children,
+}: RemovableChipProps) {
+  return (
+    <span className={clsx(styles.token, className)}>
+      {icon === undefined ? null : <Icon name={icon} size="sm" className={styles.tokenIcon} />}
+      <span className={styles.tokenLabel}>{children}</span>
+      <CloseButton label={removeLabel} onClick={onRemove} className={styles.remove} />
+    </span>
   )
 }
 

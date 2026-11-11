@@ -1,0 +1,43 @@
+{
+  "checked_at": "2026-11-11T09:24:42.132833+00:00",
+  "policy": "narrow_unknown_lanes_v1",
+  "run_id": "roadtraffic20261111v1",
+  "view": "plexus_traffic.road_attributes_effective",
+  "assumed": [
+    {
+      "oneway": "bidirectional",
+      "n": "47209",
+      "min_total": 2,
+      "max_total": 2
+    },
+    {
+      "oneway": "forward",
+      "n": "113279",
+      "min_total": 1,
+      "max_total": 1
+    },
+    {
+      "oneway": "reverse",
+      "n": "55",
+      "min_total": 1,
+      "max_total": 1
+    },
+    {
+      "oneway": "unknown",
+      "n": "6223705",
+      "min_total": 2,
+      "max_total": 2
+    }
+  ],
+  "raw_counts": {
+    "rows": "6869793",
+    "missing": "6385269",
+    "known_total": "484082"
+  },
+  "scope": "lane assumption only; raw data and observed coverage preserved; traffic and routing weights unchanged",
+  "checks": {
+    "road_traffic_tests_passed": 57,
+    "ruff_check": "passed",
+    "ruff_format": "passed"
+  }
+}

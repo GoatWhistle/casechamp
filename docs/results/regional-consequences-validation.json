@@ -1,0 +1,380 @@
+{
+  "date": "2026-11-11",
+  "branch": "feat/map-first-ui",
+  "base_sha": "cdb2c2e1108bde7ff37ab91f9d7907d05de2a897",
+  "scenario_count": 1,
+  "regions_checked": 2,
+  "results": [
+    {
+      "job_id": "95c3a442bf544d118fac5403cf80eede",
+      "graph_version": "road-8033092fca2cf5fa",
+      "way_count": 714,
+      "totals": {
+        "affected_points": 3713,
+        "exposed_population": 583386,
+        "isolated_points": 64,
+        "isolated_population": 1414,
+        "max_delay_minutes": 207.30689683870878,
+        "affected_regions": 1
+      },
+      "consequences": {
+        "region": "Новгородская область",
+        "lost_connections": 11328,
+        "settlements_losing_connections": 64,
+        "residents_losing_connections": 1414,
+        "delay_exposure": [
+          {
+            "threshold_minutes": 30,
+            "settlements": 1401,
+            "residents": 113099
+          },
+          {
+            "threshold_minutes": 60,
+            "settlements": 800,
+            "residents": 76600
+          },
+          {
+            "threshold_minutes": 120,
+            "settlements": 94,
+            "residents": 12394
+          }
+        ],
+        "nearby_access": {
+          "threshold_hours": 2,
+          "changed_connections": 271,
+          "lost_connections": 49,
+          "comparable_connections": 222,
+          "mean_before_minutes": 92.18643097902296,
+          "mean_after_minutes": 145.19345415840468,
+          "mean_added_minutes": 53.007023179381726,
+          "connections_crossing_threshold": 215,
+          "settlements_crossing_threshold": 215,
+          "residents_crossing_threshold": 16452
+        },
+        "destinations": [
+          {
+            "destination": "Великий Новгород",
+            "settlements": 1898,
+            "exposed_residents": 180527,
+            "lost_connections": 64,
+            "residents_losing_connection": 1414,
+            "nearby_exposed_residents": 27936,
+            "comparable_connections": 1834,
+            "mean_before_minutes": 193.21300068237002,
+            "mean_after_minutes": 211.93232171721334
+          },
+          {
+            "destination": "Рыбинск",
+            "settlements": 2960,
+            "exposed_residents": 539219,
+            "lost_connections": 64,
+            "residents_losing_connection": 1414,
+            "nearby_exposed_residents": 0,
+            "comparable_connections": 2896,
+            "mean_before_minutes": 552.488113184491,
+            "mean_after_minutes": 594.5548055659086
+          },
+          {
+            "destination": "Ярославль",
+            "settlements": 2944,
+            "exposed_residents": 539053,
+            "lost_connections": 64,
+            "residents_losing_connection": 1414,
+            "nearby_exposed_residents": 0,
+            "comparable_connections": 2880,
+            "mean_before_minutes": 606.9612808440603,
+            "mean_after_minutes": 634.4215729123105
+          },
+          {
+            "destination": "Кострома",
+            "settlements": 2935,
+            "exposed_residents": 538938,
+            "lost_connections": 64,
+            "residents_losing_connection": 1414,
+            "nearby_exposed_residents": 0,
+            "comparable_connections": 2871,
+            "mean_before_minutes": 679.8688546790041,
+            "mean_after_minutes": 704.7444770660876
+          },
+          {
+            "destination": "Березники",
+            "settlements": 2453,
+            "exposed_residents": 473709,
+            "lost_connections": 64,
+            "residents_losing_connection": 1414,
+            "nearby_exposed_residents": 0,
+            "comparable_connections": 2389,
+            "mean_before_minutes": 1860.0994758107079,
+            "mean_after_minutes": 1889.0354479085338
+          }
+        ],
+        "examples": [
+          {
+            "origin_id": "49614416101",
+            "origin": "деревня Зайцево",
+            "residents": 312,
+            "destination": "Великий Новгород",
+            "before_minutes": 53.549917997588636,
+            "after_minutes": null,
+            "added_minutes": null
+          },
+          {
+            "origin_id": "49608449161",
+            "origin": "деревня Ижицы",
+            "residents": 226,
+            "destination": "Великий Новгород",
+            "before_minutes": 111.94911513317493,
+            "after_minutes": null,
+            "added_minutes": null
+          },
+          {
+            "origin_id": "49614428226",
+            "origin": "деревня Локотско",
+            "residents": 141,
+            "destination": "Великий Новгород",
+            "before_minutes": 116.86086477930075,
+            "after_minutes": null,
+            "added_minutes": null
+          },
+          {
+            "origin_id": "49614151051",
+            "origin": "пгт Крестцы рп",
+            "residents": 8221,
+            "destination": "Великий Новгород",
+            "before_minutes": 83.07165070364135,
+            "after_minutes": 281.9879567193857,
+            "added_minutes": 198.91630601574434
+          },
+          {
+            "origin_id": "49630151051",
+            "origin": "пгт Парфино рп",
+            "residents": 6481,
+            "destination": "Великий Новгород",
+            "before_minutes": 109.29066894692369,
+            "after_minutes": 118.66343375222641,
+            "added_minutes": 9.372764805302722
+          },
+          {
+            "origin_id": "49630419101",
+            "origin": "посёлок Пола",
+            "residents": 1770,
+            "destination": "Великий Новгород",
+            "before_minutes": 109.65862303040922,
+            "after_minutes": 140.32747614008258,
+            "added_minutes": 30.668853109673364
+          }
+        ],
+        "method": "saved_road_closure_consequences_v1",
+        "scope": "recorded_changed_settlement_market_connections_in_selected_region",
+        "minimum_recorded_delay_minutes": 1.0
+      },
+      "elapsed_seconds": 0.18926887505222112,
+      "independent_check": {
+        "all_impacted_points_checked": 3713,
+        "passed": true
+      }
+    },
+    {
+      "job_id": "95c3a442bf544d118fac5403cf80eede",
+      "graph_version": "road-8033092fca2cf5fa",
+      "way_count": 714,
+      "totals": {
+        "affected_points": 8834,
+        "exposed_population": 1175557,
+        "isolated_points": 32,
+        "isolated_population": 3974,
+        "max_delay_minutes": 162.95670449675526,
+        "affected_regions": 1
+      },
+      "consequences": {
+        "region": "Тверская область",
+        "lost_connections": 5664,
+        "settlements_losing_connections": 32,
+        "residents_losing_connections": 3974,
+        "delay_exposure": [
+          {
+            "threshold_minutes": 30,
+            "settlements": 2605,
+            "residents": 248200
+          },
+          {
+            "threshold_minutes": 60,
+            "settlements": 291,
+            "residents": 32029
+          },
+          {
+            "threshold_minutes": 120,
+            "settlements": 22,
+            "residents": 3451
+          }
+        ],
+        "nearby_access": {
+          "threshold_hours": 2,
+          "changed_connections": 197,
+          "lost_connections": 26,
+          "comparable_connections": 171,
+          "mean_before_minutes": 98.8393264553094,
+          "mean_after_minutes": 137.70032445836063,
+          "mean_added_minutes": 38.86099800305122,
+          "connections_crossing_threshold": 142,
+          "settlements_crossing_threshold": 142,
+          "residents_crossing_threshold": 54714
+        },
+        "destinations": [
+          {
+            "destination": "Тверь",
+            "settlements": 698,
+            "exposed_residents": 118500,
+            "lost_connections": 32,
+            "residents_losing_connection": 3974,
+            "nearby_exposed_residents": 63682,
+            "comparable_connections": 666,
+            "mean_before_minutes": 147.48802808316665,
+            "mean_after_minutes": 185.97856794028525
+          },
+          {
+            "destination": "Великий Новгород",
+            "settlements": 8206,
+            "exposed_residents": 1153149,
+            "lost_connections": 32,
+            "residents_losing_connection": 3974,
+            "nearby_exposed_residents": 0,
+            "comparable_connections": 8174,
+            "mean_before_minutes": 351.6195075109905,
+            "mean_after_minutes": 367.11985566428274
+          },
+          {
+            "destination": "Санкт-Петербург",
+            "settlements": 3900,
+            "exposed_residents": 368197,
+            "lost_connections": 32,
+            "residents_losing_connection": 3974,
+            "nearby_exposed_residents": 0,
+            "comparable_connections": 3868,
+            "mean_before_minutes": 426.3661444538292,
+            "mean_after_minutes": 456.0912160988457
+          },
+          {
+            "destination": "Гатчина",
+            "settlements": 3689,
+            "exposed_residents": 365924,
+            "lost_connections": 32,
+            "residents_losing_connection": 3974,
+            "nearby_exposed_residents": 0,
+            "comparable_connections": 3657,
+            "mean_before_minutes": 423.63163914417174,
+            "mean_after_minutes": 455.2274621490719
+          },
+          {
+            "destination": "Калининград",
+            "settlements": 3643,
+            "exposed_residents": 365203,
+            "lost_connections": 32,
+            "residents_losing_connection": 3974,
+            "nearby_exposed_residents": 0,
+            "comparable_connections": 3611,
+            "mean_before_minutes": 6276.465049218692,
+            "mean_after_minutes": 6308.156868025753
+          }
+        ],
+        "examples": [
+          {
+            "origin_id": "28714000123",
+            "origin": "деревня Афимьино",
+            "residents": 746,
+            "destination": "Тверь",
+            "before_minutes": 96.78885383211309,
+            "after_minutes": null,
+            "added_minutes": null
+          },
+          {
+            "origin_id": "28654414117",
+            "origin": "деревня Будово",
+            "residents": 271,
+            "destination": "Тверь",
+            "before_minutes": 68.09363349631894,
+            "after_minutes": null,
+            "added_minutes": null
+          },
+          {
+            "origin_id": "28714000609",
+            "origin": "посёлок Приозерный",
+            "residents": 147,
+            "destination": "Тверь",
+            "before_minutes": 117.22383894142695,
+            "after_minutes": null,
+            "added_minutes": null
+          },
+          {
+            "origin_id": "28714000001",
+            "origin": "г. Вышний Волочек",
+            "residents": 45830,
+            "destination": "Тверь",
+            "before_minutes": 110.94960343994899,
+            "after_minutes": 169.52195117395604,
+            "added_minutes": 58.57234773400705
+          },
+          {
+            "origin_id": "28552000051",
+            "origin": "пгт Спирово",
+            "residents": 5194,
+            "destination": "Тверь",
+            "before_minutes": 96.7914722173009,
+            "after_minutes": 117.06279992940836,
+            "added_minutes": 20.27132771210745
+          },
+          {
+            "origin_id": "28714000607",
+            "origin": "посёлок Пригородный",
+            "residents": 1289,
+            "destination": "Тверь",
+            "before_minutes": 113.80090644961456,
+            "after_minutes": 175.5955332008307,
+            "added_minutes": 61.79462675121613
+          }
+        ],
+        "method": "saved_road_closure_consequences_v1",
+        "scope": "recorded_changed_settlement_market_connections_in_selected_region",
+        "minimum_recorded_delay_minutes": 1.0
+      },
+      "elapsed_seconds": 0.16744187497533858,
+      "independent_check": {
+        "all_impacted_points_checked": 8834,
+        "passed": true
+      }
+    }
+  ],
+  "paid_llm_calls": 0,
+  "scope": "saved fixed-weight road-only closure; no regional traffic-demand forecast",
+  "tests": {
+    "sql": "region filtering, deduplication, nested exposure thresholds, comparable mean, lost versus finite routes, null empty means",
+    "agent": "FunctionModel skill + inspect protocol; no production semantic-model call"
+  },
+  "verification": {
+    "verified_at": "2026-11-11T16:57:57.180136+00:00",
+    "backend_unit_tests": 391,
+    "backend_integration_tests": 47,
+    "frontend_tests": 464,
+    "frontend_rules": 36,
+    "ruff": "passed",
+    "mypy": "passed",
+    "api": [
+      {
+        "input": "49000000",
+        "region": "Новгородская область",
+        "elapsed_seconds": 0.212570209056139,
+        "exact_match": true
+      },
+      {
+        "input": "Тверская область",
+        "region": "Тверская область",
+        "elapsed_seconds": 0.218998207943514,
+        "exact_match": true
+      },
+      {
+        "unknown_region_status": 422
+      }
+    ],
+    "automatic_review": "exact completed closure and graph match; read-only"
+  }
+}

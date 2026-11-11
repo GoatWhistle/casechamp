@@ -27,6 +27,7 @@ export function MetricBoard({ rows }: MetricBoardProps) {
         label: (
           <Link
             to={seasonHref(`/regions/${region.id}`)}
+            viewTransition
             className={styles.regionLink}
             aria-label={t("compare:open", { name: region.name })}
           >

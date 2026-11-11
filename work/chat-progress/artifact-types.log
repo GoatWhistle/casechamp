@@ -1,0 +1,5 @@
+
+> app-frontend@0.1.0 typecheck
+> tsc --noEmit
+
+e2e/road-capacity.spec.ts(59,51): error TS2339: Property 'addRoad' does not exist on type '{ title: string; tab: string; layer: string; method: string; loadError: string; scenario: string; seasonalNetwork: string; base: string; summer: string; winter: string; factor: string; factorHint: string; ... 47 more ...; outcome: { ...; }; }'.

@@ -93,6 +93,9 @@ class FakeAtlas:
     def points(self) -> dict[str, PointRecord]:
         return {"P1": PointRecord("P1", "Ёлкино", "R1", 60.0, 100.0, 10.0, 20.0)}
 
+    def point(self, settlement_id: str) -> PointRecord | None:
+        return self.points().get(settlement_id)
+
     def links(self, region_id: str | None = None) -> list[LinkRecord]:
         return self.link_rows
 

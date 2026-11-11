@@ -11,6 +11,13 @@ export interface IndexCardProps {
   readonly regions: readonly RegionSummary[]
 }
 
+const VERSION_DATE = /(\d{4})(\d{2})(\d{2})/
+
+function versionDate(version: string | null | undefined): string | null {
+  const match = version ? VERSION_DATE.exec(version) : null
+  return match ? `${match[1]}-${match[2]}-${match[3]}` : null
+}
+
 export function IndexCard({ region, regions }: IndexCardProps) {
   const { t } = useTranslation()
   const f = useFormatters()
@@ -22,6 +29,7 @@ export function IndexCard({ region, regions }: IndexCardProps) {
     )
   const values = regions.map((row) => row.hansen).filter((value): value is number => value !== null)
   const rank = 1 + values.filter((value) => value > (region.hansen ?? 0)).length
+  const computed = versionDate(region.index_model_version)
   return (
     <Card as="section" title={t("region:index.title")}>
       <div className={styles.stats}>
@@ -48,11 +56,9 @@ export function IndexCard({ region, regions }: IndexCardProps) {
         lowLabel={t("region:index.low")}
         highLabel={t("region:index.high")}
       />
-      {region.index_model_version ? (
-        <p className={styles.model}>
-          {t("data:network.model", { version: region.index_model_version })}
-        </p>
-      ) : null}
+      {computed === null ? null : (
+        <p className={styles.model}>{t("region:index.computed", { date: f.date(computed) })}</p>
+      )}
     </Card>
   )
 }

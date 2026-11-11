@@ -6,9 +6,10 @@ from app.adapter.road_graph.data import VERSION
 
 
 class BaselineCache:
-    def __init__(self, root: Path, revision: str = "[]") -> None:
+    def __init__(self, root: Path, revision: str = "[]", road_cost_model: str = "") -> None:
         self.root = root
-        self.signature = json.loads(revision)
+        source = json.loads(revision)
+        self.signature = [source, road_cost_model] if road_cost_model else source
 
     def path(self, region: str, scenario: str) -> Path:
         key = hashlib.sha256(

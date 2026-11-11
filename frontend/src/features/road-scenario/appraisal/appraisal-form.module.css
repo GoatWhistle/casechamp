@@ -1,0 +1,17 @@
+.editor {
+  display: grid;
+  gap: var(--space-16);
+}
+.fields {
+  display: grid;
+  gap: var(--space-12);
+  padding-block: var(--space-12);
+}
+.factors {
+  display: grid;
+  gap: var(--space-12);
+  padding: var(--space-12);
+  border: var(--hairline) solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  min-inline-size: 0;
+}

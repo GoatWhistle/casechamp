@@ -25,7 +25,7 @@ export function Banner({
 }: BannerProps) {
   const role = tone === "danger" ? "alert" : "status"
   return (
-    <div className={clsx(styles.wrap, className)}>
+    <div className={className}>
       <div
         className={clsx(styles.banner, TONE_CLASS[tone])}
         role={announce ? role : undefined}

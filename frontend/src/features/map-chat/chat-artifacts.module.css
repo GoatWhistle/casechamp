@@ -2,12 +2,11 @@
   display: grid;
   gap: var(--space-16);
   margin-block-start: var(--space-16);
+  min-inline-size: 0;
 }
 
 .block {
-  display: grid;
-  gap: var(--space-16);
-  padding: var(--space-16);
+  min-inline-size: 0;
 }
 
 .source {
@@ -16,6 +15,38 @@
   text-underline-offset: var(--space-4);
 }
 
-.block th {
-  white-space: normal;
+.heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-8);
+  margin-block-end: var(--space-8);
+  font-size: var(--font-size-body-sm);
+}
+
+.heading span {
+  color: var(--text-secondary);
+}
+
+.evidence {
+  max-inline-size: 100%;
+}
+
+.name {
+  display: block;
+  min-inline-size: 10ch;
+  inline-size: 14ch;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.note {
+  margin-block-start: var(--space-8);
+  font-size: var(--font-size-caption);
+  color: var(--text-muted);
+}
+
+.evidence th,
+.evidence td {
+  padding: var(--space-8);
 }

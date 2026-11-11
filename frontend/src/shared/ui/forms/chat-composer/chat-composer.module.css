@@ -1,16 +1,28 @@
 .composer {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
-  gap: var(--space-8);
+  gap: var(--space-4) var(--space-8);
   padding: var(--space-8);
   border: var(--hairline) solid var(--border-control);
-  border-radius: var(--radius-chat);
+  border-radius: var(--radius-lg);
   background-color: var(--surface-raised);
 }
 
 .composer:focus-within {
   outline: var(--focus-ring-width) solid var(--focus-ring);
   outline-offset: var(--focus-ring-offset);
+}
+
+.context {
+  display: flex;
+  flex: 1 0 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4) var(--space-12);
+  padding: var(--space-4) var(--space-12) 0;
+  color: var(--text-muted);
+  font-size: var(--font-size-caption);
 }
 
 .input {
@@ -38,5 +50,5 @@
 
 .composer .send {
   flex: none;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
 }

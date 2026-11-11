@@ -1,0 +1,17 @@
+[
+  {
+    "input": "49000000",
+    "region": "Новгородская область",
+    "elapsed_seconds": 0.212570209056139,
+    "exact_match": true
+  },
+  {
+    "input": "Тверская область",
+    "region": "Тверская область",
+    "elapsed_seconds": 0.218998207943514,
+    "exact_match": true
+  },
+  {
+    "unknown_region_status": 422
+  }
+]

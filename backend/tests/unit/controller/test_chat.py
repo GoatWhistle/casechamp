@@ -48,7 +48,7 @@ def test_stream_keeps_context_and_history_without_credentials() -> None:
 def test_disabled_chat_reports_unavailable_without_inventing_answer() -> None:
     with client_for() as client:
         response = client.post("/api/v1/chat", json={"prompt": "Hello"})
-    assert response.json() == {"type": "error", "text": "", "code": "chat_unavailable", "table": None, "chart": None, "map": None, "calculation": None, "analysis": None}
+    assert response.json() == {"type": "error", "text": "", "code": "chat_unavailable", "table": None, "chart": None, "map": None, "calculation": None, "analysis": None, "stress_route": None, "stress_test": None, "scenario": None}
 
 
 def test_remote_origin_cannot_spend_local_subscription() -> None:
@@ -79,3 +79,15 @@ def test_blank_prompt_rejected() -> None:
     with client_for() as client:
         response = client.post("/api/v1/chat", json={"prompt": "   "})
     assert response.status_code == 422
+
+
+def test_review_route_requires_ids_and_cannot_fall_back_to_an_ordinary_turn() -> None:
+    provider = RecordingProvider()
+    with client_for(provider) as client:
+        missing = client.post("/api/v1/chat/calculation-review", json={"prompt": "Review"})
+        unavailable = client.post("/api/v1/chat/calculation-review", json={
+            "prompt": "Review", "calculation_review": {"scenario_ids": ["saved"]},
+        })
+    assert missing.status_code == 422
+    assert unavailable.json()["code"] == "chat_calculation_unavailable"
+    assert provider.requests == []

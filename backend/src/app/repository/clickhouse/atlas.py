@@ -58,6 +58,18 @@ class ClickHouseAtlasRepository:
     def points(self) -> dict[str, PointRecord]:
         return self.point_records
 
+    def point(self, settlement_id: str) -> PointRecord | None:
+        rows = self.reader.rows(
+            "SELECT id,name,region_id,lat,lon,x,y FROM ("
+            "SELECT id,name,region_id,lat,lon,x,y FROM plexus_atlas.atlas_points "
+            "WHERE id={id:String} AND lat IS NOT NULL AND lon IS NOT NULL UNION ALL "
+            "SELECT s.id,s.name,s.region_id,l.lat,l.lon,s.x,s.y "
+            "FROM plexus_atlas.atlas_settlements s INNER JOIN plexus_graph.locations l "
+            "ON l.point_id=s.id WHERE s.id={id:String} AND l.lat IS NOT NULL AND l.lon IS NOT NULL) LIMIT 1",
+            {"id": settlement_id},
+        )
+        return record(PointRecord, rows[0]) if rows else None
+
     @cached_property
     def link_records(self) -> list[LinkRecord]:
         return self.load("atlas_links", LinkRecord)

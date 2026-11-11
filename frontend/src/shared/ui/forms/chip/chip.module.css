@@ -23,3 +23,32 @@
   flex-wrap: wrap;
   gap: var(--space-8);
 }
+
+.token {
+  composes: controlText from "../../../styles/compose.module.css";
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  max-inline-size: 100%;
+  min-block-size: var(--control-height-compact);
+  padding-inline-start: var(--space-12);
+  border-radius: var(--radius-md);
+  background-color: var(--surface-raised);
+  box-shadow: var(--shadow-ring);
+  color: var(--text-primary);
+}
+
+.tokenIcon {
+  flex: none;
+  color: var(--text-secondary);
+}
+
+.tokenLabel {
+  composes: truncate from "../../../styles/compose.module.css";
+  min-inline-size: 0;
+}
+
+.remove {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}

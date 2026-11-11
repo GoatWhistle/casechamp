@@ -2,7 +2,7 @@ import shutil
 import tempfile
 from collections import OrderedDict
 from collections.abc import Callable
-from concurrent.futures import Future, ProcessPoolExecutor, as_completed
+from concurrent.futures import Future, ProcessPoolExecutor, as_completed, wait
 from multiprocessing import get_context
 from pathlib import Path
 from threading import Lock
@@ -79,6 +79,7 @@ class ShortestPaths:
             finally:
                 for future in futures:
                     future.cancel()
+                wait(futures)
         finally:
             shutil.rmtree(directory, ignore_errors=True)
         return result

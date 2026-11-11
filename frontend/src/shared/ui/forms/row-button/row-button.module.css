@@ -1,0 +1,92 @@
+.row {
+  composes: pressable from "../../../styles/compose.module.css";
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-columns: auto;
+  align-items: center;
+  column-gap: var(--space-12);
+  inline-size: calc(100% + var(--space-24));
+  min-block-size: var(--control-height);
+  margin-inline: calc(var(--space-12) * -1);
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-md);
+  text-align: start;
+  cursor: pointer;
+}
+
+.row[data-lead] {
+  grid-template-columns: var(--icon-sm) minmax(0, 1fr);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .row:hover {
+    background-color: var(--action-ghost-hover);
+  }
+}
+
+.row:active {
+  background-color: var(--action-ghost-press);
+  scale: var(--press-scale-surface);
+}
+
+.row[aria-pressed="true"],
+.row[aria-current="true"] {
+  background-color: var(--surface-accent-soft);
+}
+
+.lead {
+  display: grid;
+  color: var(--text-secondary);
+}
+
+.glyph,
+.check {
+  grid-area: 1 / 1;
+  transition: var(--transition-pop);
+}
+
+.check {
+  opacity: 0;
+  transform: scale(var(--enter-scale));
+}
+
+.row[aria-pressed="true"] .lead,
+.row[aria-current="true"] .lead {
+  color: var(--text-accent);
+}
+
+.row[aria-pressed="true"] .glyph {
+  opacity: 0;
+  transform: scale(var(--enter-scale));
+}
+
+.row[aria-pressed="true"] .check {
+  opacity: 1;
+  transform: none;
+}
+
+.text {
+  display: grid;
+  min-inline-size: 0;
+}
+
+.label {
+  composes: truncate labelText from "../../../styles/compose.module.css";
+  font-weight: var(--weight-medium);
+}
+
+.detail {
+  composes: truncate captionMuted from "../../../styles/compose.module.css";
+}
+
+.meta {
+  composes: labelText from "../../../styles/compose.module.css";
+  color: var(--text-secondary);
+  font-variant-numeric: var(--font-numeric);
+  white-space: nowrap;
+}
+
+.chevron {
+  color: var(--text-muted);
+}

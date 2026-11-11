@@ -11,7 +11,17 @@ export function isChatTable(value: unknown): value is ChatTable {
     !("id" in value) ||
     typeof value.id !== "string" ||
     !("title" in value) ||
-    !["regions", "links", "settlements", "sensitivity"].includes(String(value.title))
+    ![
+      "regions",
+      "links",
+      "settlements",
+      "sensitivity",
+      "connectivity",
+      "connectivity_summary",
+      "scenario_indices",
+      "scenario_routes",
+      "scenario_access",
+    ].includes(String(value.title))
   )
     return false
   if (
@@ -42,6 +52,7 @@ export function isChatTable(value: unknown): value is ChatTable {
             (typeof cell === "number" && Number.isFinite(cell)),
         ),
     ) &&
+    (!("caption" in value) || typeof value.caption === "string") &&
     "total" in value &&
     typeof value.total === "number" &&
     "source" in value &&

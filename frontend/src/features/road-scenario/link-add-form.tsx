@@ -1,9 +1,11 @@
-import { useState } from "react"
+import { useId, useState } from "react"
 import type { LinkChangeInput } from "@/shared/api/road-graph"
 import { useTranslation } from "@/shared/i18n"
-import { Button, Select, TextField } from "@/shared/ui"
+import { Button, Chip, TextField } from "@/shared/ui"
 import styles from "./road-scenario.module.css"
 import { additionOf } from "./scenario-payload"
+
+const MODES = ["rail", "air"] as const
 
 export function LinkAddForm({
   disabled,
@@ -13,6 +15,7 @@ export function LinkAddForm({
   readonly onAdd: (link: LinkChangeInput) => void
 }) {
   const { t } = useTranslation()
+  const titleId = useId()
   const [mode, setMode] = useState<"rail" | "air">("rail")
   const [source, setSource] = useState("")
   const [target, setTarget] = useState("")
@@ -21,37 +24,43 @@ export function LinkAddForm({
   const result = additionOf(mode, source, target, hours)
   const error = typeof result === "string" ? result : null
   return (
-    <fieldset className={styles.linkForm}>
-      <legend>{t("graph:links.addTitle")}</legend>
-      <Select
-        label={t("graph:links.addMode")}
-        value={mode}
-        onChange={setMode}
-        options={[
-          { value: "rail", label: t("graph:links.mode.rail") },
-          { value: "air", label: t("graph:links.mode.air") },
-        ]}
-      />
-      <TextField
-        label={t("graph:links.from")}
-        value={source}
-        onChange={(event) => setSource(event.target.value)}
-      />
-      <TextField
-        label={t("graph:links.to")}
-        value={target}
-        onChange={(event) => setTarget(event.target.value)}
-      />
+    <section className={styles.form} aria-labelledby={titleId}>
+      <div className={styles.sectionHead}>
+        <p id={titleId} className={styles.sectionTitle}>
+          {t("graph:links.addTitle")}
+        </p>
+      </div>
+      <fieldset className={styles.chips} aria-label={t("graph:links.addMode")}>
+        {MODES.map((item) => (
+          <Chip key={item} pressed={mode === item} onPressedChange={() => setMode(item)}>
+            {t(`graph:links.mode.${item}`)}
+          </Chip>
+        ))}
+      </fieldset>
+      <div className={styles.pair}>
+        <TextField
+          label={t("graph:links.from")}
+          value={source}
+          onChange={(event) => setSource(event.target.value)}
+        />
+        <TextField
+          label={t("graph:links.to")}
+          value={target}
+          onChange={(event) => setTarget(event.target.value)}
+        />
+      </div>
       <TextField
         label={t("graph:links.hours")}
         value={hours}
         inputMode="decimal"
+        suffix={t("graph:links.hoursUnit")}
         onChange={(event) => setHours(event.target.value)}
         error={touched && error ? t(error) : undefined}
       />
       <Button
         variant="secondary"
         icon="plus"
+        className={styles.start}
         disabled={disabled}
         onClick={() => {
           setTouched(true)
@@ -65,6 +74,6 @@ export function LinkAddForm({
       >
         {t("graph:links.addButton")}
       </Button>
-    </fieldset>
+    </section>
   )
 }

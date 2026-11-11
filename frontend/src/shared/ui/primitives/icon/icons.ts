@@ -11,7 +11,6 @@ import {
   LoaderCircle,
   type LucideProps,
   Menu,
-  MessageCircle,
   Minus,
   OctagonAlert,
   Plus,
@@ -21,6 +20,7 @@ import {
   TrainFront,
   Trash2,
   TriangleAlert,
+  Wallet,
   X,
 } from "lucide-react"
 import type { ComponentType } from "react"
@@ -30,7 +30,9 @@ import { createDesignIcon } from "./design-icon"
 export const ICONS = {
   trash: Trash2,
   rail: TrainFront,
-  chat: MessageCircle,
+  chat: createDesignIcon("chat"),
+  overview: createDesignIcon("overview"),
+  whatif: createDesignIcon("whatif"),
   stop: Square,
   alert: TriangleAlert,
   success: CircleCheck,
@@ -68,10 +70,12 @@ export const ICONS = {
   users: createDesignIcon("people"),
   building: createDesignIcon("index"),
   route: createDesignIcon("route"),
+  scenario: createDesignIcon("scenario"),
   compare: ChartColumnBig,
   help: CircleQuestionMark,
   filter: createDesignIcon("filter"),
   link: createDesignIcon("network"),
+  money: Wallet,
 } as const satisfies Record<string, ComponentType<LucideProps>>
 
 export type IconName = keyof typeof ICONS

@@ -11,6 +11,7 @@ class ViewData(GraphData):
         super().__init__(Path("."))
         self.loaded = True
         self.modern_model = False
+        self.road_cost_model = ""
         self.nodes = {"lon": np.linspace(-2, 2, count + 1), "lat": np.zeros(count + 1)}
         self.edges = {
             "src": np.arange(count),

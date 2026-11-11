@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "basis": "Synthetic validation assumptions, 2026; not observed traffic or project costs",
+  "lane_job_id": "664cbd1d3e5748c8898d816174585ab7",
+  "profile_job_id": "c286723f4acc4dfa8218ed95e882d0d6",
+  "lane_hansen_delta": 0.0,
+  "lane_annual_gross_rub": 0.0,
+  "profile_hansen_delta": 0.08405613525457056,
+  "passenger_travel": {
+    "origin_point_id": "18710000001",
+    "market_city": "Волгоград",
+    "before_hours": 0.4489995539188385,
+    "after_hours": 0.4048682451248169
+  },
+  "freight_travel": {
+    "name": "Validation road freight",
+    "before_hours": 0.44899955872300223,
+    "after_hours": 0.40486825595347353,
+    "before_km": 25.880972598768047,
+    "after_km": 25.880972598768047
+  },
+  "annual_passenger_rub": 1323939.2638206482,
+  "annual_freight_rub": 22065.65138476435
+}

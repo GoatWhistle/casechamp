@@ -1,12 +1,20 @@
 .explorer {
+  --panel-width: calc(var(--panel-size, var(--panel-committed)) * 1px);
+
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(var(--panel-min), var(--map-panel-width));
+  grid-template-columns: minmax(0, 1fr) var(--panel-width);
   block-size: calc(100dvh - var(--header-height));
   min-block-size: var(--map-min-height);
 }
 
 .explorer[data-fullscreen="true"] {
   block-size: 100dvh;
+}
+
+.resizer {
+  inset-inline-end: 0;
+  translate: calc(50% - var(--panel-width)) 0;
 }
 
 .stage {
@@ -37,36 +45,19 @@
   display: contents;
 }
 
-.seasonOff {
-  min-inline-size: 0;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  cursor: not-allowed;
-  opacity: var(--opacity-stale);
-}
-
-.seasonOff > * {
-  pointer-events: none;
-}
-
 .toolbar {
-  composes: mapFloat from "../../shared/styles/compose.module.css";
+  position: absolute;
   inset-block-start: var(--space-16);
   inset-inline-start: var(--space-16);
+  z-index: var(--layer-raised);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-8);
-  padding: var(--space-4);
-  font-size: var(--font-size-body-sm);
-  line-height: var(--line-height-body-sm);
   inset-inline-end: var(--space-16);
   inline-size: fit-content;
-}
-
-.metric {
-  min-inline-size: 0;
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body-sm);
 }
 
 .toolbar > * {
@@ -74,9 +65,32 @@
   min-inline-size: 0;
 }
 
+.metric {
+  inline-size: calc(var(--space-64) * 5.5);
+  max-inline-size: 100%;
+}
+
+.slot,
+.seasonSlot {
+  transform-origin: left center;
+  animation: var(--motion-scale-in);
+}
+
+.slot[data-state="closed"],
+.seasonSlot[data-state="closed"] {
+  pointer-events: none;
+  animation: var(--motion-scale-out);
+}
+
+.seasonSlot {
+  composes: surface from "../../shared/styles/compose.module.css";
+  padding: calc(var(--space-2) - var(--hairline));
+  box-shadow: var(--shadow-raised);
+}
+
 .zoom {
   composes: mapFloat from "../../shared/styles/compose.module.css";
-  inset-block-end: var(--space-16);
+  inset-block-end: calc(var(--space-16) + var(--space-24));
   inset-inline-end: var(--space-16);
   display: grid;
   gap: var(--space-4);
@@ -84,18 +98,9 @@
 }
 
 @media (max-width: 48rem) {
-  .toolbar {
-    flex-wrap: nowrap;
-    inline-size: auto;
-  }
-
   .metric {
-    flex: 1 1 auto;
-    min-inline-size: 0;
-  }
-
-  .toolbar > :not(.metric) {
-    flex: none;
+    flex: 1 1 100%;
+    inline-size: auto;
   }
 }
 
@@ -121,9 +126,18 @@
     max-inline-size: 100%;
   }
 
-  .explorer {
+  .explorer,
+  .explorer[data-fullscreen="true"] {
     grid-template-columns: 1fr;
     grid-template-rows: var(--map-mobile-height) auto;
     block-size: auto;
+  }
+
+  .explorer > :nth-child(2) {
+    min-block-size: 100dvh;
+  }
+
+  .resizer {
+    display: none;
   }
 }

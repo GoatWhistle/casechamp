@@ -1,0 +1,18 @@
+.summary {
+  display: grid;
+  gap: var(--space-12);
+}
+.metric {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--space-16);
+}
+.metric > span:last-child {
+  font-size: var(--font-size-body);
+  text-align: end;
+}
+.note {
+  color: var(--text-secondary);
+  font-size: var(--font-size-label);
+  line-height: var(--line-height-body);
+}

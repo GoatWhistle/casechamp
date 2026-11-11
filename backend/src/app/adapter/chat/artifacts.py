@@ -12,6 +12,7 @@ class ChatRun:
     context: ChatContext
     tables: dict[str, ChatTable] = field(default_factory=dict)
     pending: list[ChatEvent] = field(default_factory=list)
+    loaded_skills: set[str] = field(default_factory=set)
 
     def table(self, table: ChatTable) -> str:
         stored = replace(table, id=f"table_{len(self.tables) + 1}")

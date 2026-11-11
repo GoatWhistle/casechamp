@@ -1,7 +1,7 @@
 import json
 from dataclasses import asdict
 
-from pydantic_ai import Agent, RunContext
+from pydantic_ai import RunContext
 
 from app.adapter.chat.artifacts import ChatRun
 from app.domain.errors import DomainError
@@ -12,31 +12,6 @@ from app.usecase.road_corridor import CorridorCalculation, RoadCorridors
 class BridgeTools:
     def __init__(self, corridors: RoadCorridors) -> None:
         self.corridors = corridors
-
-    def register(self, agent: Agent[ChatRun, str]) -> None:
-        agent.tool(
-            sequential=True,
-            description="Find real OSM road bridges near a named settlement, optionally qualified "
-            "by region after a comma. Uses is_bridge and full stored way geometry, not road names "
-            "alone. Returns candidate IDs, labels, references, coordinates and distance. Connected "
-            "bridge fragments and matching parallel carriageways are grouped; unrelated bridges "
-            "remain separate. name optionally filters bridge name or road reference. Default "
-            "radius 20km, max50. Candidates can include overpasses; choose using returned evidence, "
-            "not proximity alone. For named bridge near a village, search that village. A place "
-            "name is not a bridge name. If there are concrete indistinguishable choices ask the "
-            "user. Never guess IDs. Regions evaluated are those of search settlements; search "
-            "from both endpoint regions for cross-region closures.",
-        )(self.find_road_bridges)
-        agent.tool(
-            sequential=True,
-            description="Close one or MORE verified bridge candidates returned by find_road_bridges "
-            "in ONE combined scenario per distinct search-settlement region. Pass all selected "
-            "bridge_ids at once, including parallel carriageways if returned separately. Closes "
-            "only bridge-tagged OSM ways in both directions; other roads remain. Emits a live "
-            "calculation card with exact geometry in chat and on map. No source data changes. "
-            "Return queued job IDs; never sum individual effects or invent results. An explicit "
-            "user request including 'both' authorizes the scenario without another confirmation.",
-        )(self.close_road_bridges)
 
     def find_road_bridges(
         self, ctx: RunContext[ChatRun], near: str, radius_km: float = 20, name: str = ""

@@ -1,5 +1,5 @@
 from collections import OrderedDict
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 from threading import Lock, RLock
 
@@ -75,6 +75,19 @@ class JsonAtlasRepository:
 
     def points(self) -> dict[str, PointRecord]:
         return self._load_atlas().points
+
+    def point(self, settlement_id: str) -> PointRecord | None:
+        existing = self.points().get(settlement_id)
+        if existing is not None:
+            return existing
+        match = next((p for p in self.settlement_names() if p.id == settlement_id), None)
+        if match is None:
+            return None
+        for row in self._region_rows(match.region_id):
+            if row.get("id") == settlement_id:
+                point = point_record(row, self.frame())
+                return replace(point, region_id=match.region_id) if point else None
+        return None
 
     def links(self, region_id: str | None = None) -> list[LinkRecord]:
         return [

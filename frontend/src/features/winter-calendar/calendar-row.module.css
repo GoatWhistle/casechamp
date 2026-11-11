@@ -1,35 +1,84 @@
+.axis,
+.summary {
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) minmax(0, 2fr) minmax(200px, 240px);
+  align-items: center;
+  gap: var(--space-20);
+}
+
+.axis {
+  padding: var(--space-12) var(--space-16) var(--space-12) var(--space-40);
+  border-block-end: var(--hairline) solid var(--border-subtle);
+  background-color: var(--surface-muted);
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+}
+
+.months {
+  position: relative;
+  block-size: calc(var(--font-size-caption) * var(--line-height-caption));
+}
+
+.month {
+  position: absolute;
+  left: var(--tick-left);
+  white-space: nowrap;
+}
+
+.monthShort {
+  display: none;
+}
+
 .row {
   padding: var(--space-12) var(--space-16);
   border-block-end: var(--hairline) solid var(--border-subtle);
 }
-.summary {
-  display: grid;
-  grid-template-columns: minmax(180px, 1fr) minmax(160px, 2fr) 240px;
-  align-items: center;
-  gap: var(--space-20);
-}
+
 .name {
   display: grid;
   gap: var(--space-4);
+  min-inline-size: 0;
   font-size: var(--font-size-body-sm);
 }
+
+.route {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--space-4);
+}
+
+.stop {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.arrow {
+  flex: none;
+  color: var(--text-muted);
+}
+
 .name small,
 .dates small {
   display: block;
   color: var(--text-secondary);
   font-size: var(--font-size-caption);
 }
+
 .track {
   position: relative;
   display: block;
   block-size: var(--space-48);
 }
+
 .guide {
   left: var(--tick-left);
   position: absolute;
   inset-block: 0;
   border-inline-start: var(--hairline) solid var(--border-subtle);
 }
+
 .bar {
   left: var(--bar-left);
   width: var(--bar-width);
@@ -39,22 +88,34 @@
   border-radius: var(--radius-sm);
   background: var(--iso-1);
 }
+
 .bar[data-previous="true"] {
   inset-block-start: var(--space-32);
-  background: var(--text-disabled);
   block-size: var(--space-8);
+  background: var(--text-disabled);
+  clip-path: inset(0);
+  transition: clip-path var(--dur-base) var(--ease-out);
 }
+
+@starting-style {
+  .bar[data-previous="true"] {
+    clip-path: inset(0 100% 0 0);
+  }
+}
+
 .bar[data-open="true"] {
   outline: var(--hairline) dashed var(--text-secondary);
   border-start-end-radius: 0;
   border-end-end-radius: 0;
 }
+
 .dates {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-12);
   font-size: var(--font-size-caption);
 }
+
 .details {
   display: flex;
   flex-wrap: wrap;
@@ -62,29 +123,59 @@
   padding: var(--space-20) var(--space-24);
   background: var(--surface-muted);
 }
+
 .facts {
-  flex: 1;
-  min-inline-size: 240px;
+  flex: 1 1 240px;
+  min-inline-size: 0;
   font-size: var(--font-size-body-sm);
 }
+
 .facts dl {
   display: grid;
   gap: var(--space-8);
   margin-block-start: var(--space-12);
 }
+
 .facts dl > div {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-12);
 }
+
 .facts dt,
 .details p {
   color: var(--text-secondary);
 }
+
 .facts dd {
   overflow-wrap: anywhere;
 }
+
 .details p {
   flex-basis: 100%;
   font-size: var(--font-size-caption);
+}
+
+@media (width < 48rem) {
+  .axis,
+  .summary {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+
+  .axisLabel {
+    display: none;
+  }
+
+  .monthLong {
+    display: none;
+  }
+
+  .monthShort {
+    display: inline;
+  }
+
+  .details {
+    padding: var(--space-16);
+  }
 }

@@ -1,7 +1,3 @@
-.wrap {
-  container-type: inline-size;
-}
-
 .banner {
   composes: surface from "../../overlays/popover/popover.module.css";
   display: grid;
@@ -10,6 +6,11 @@
   gap: var(--space-12);
   padding: var(--space-12) var(--space-16);
   color: var(--text-primary);
+  animation: var(--motion-fade-in);
+}
+
+.banner:not(:has(.description)) {
+  align-items: center;
 }
 
 :where(.banner) {
@@ -37,21 +38,14 @@
   composes: secondaryText from "../../../styles/compose.module.css";
 }
 
+.banner:has(.action) {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+}
+
 .action {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  align-self: center;
   gap: var(--space-8);
-  grid-column: 2;
-}
-
-@container (min-width: 30rem) {
-  .banner:has(.action) {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-  }
-
-  .action {
-    grid-column: auto;
-    align-self: center;
-  }
 }

@@ -1,5 +1,35 @@
 # Session state
 
+## Hackathon decision scenario proposal, 2026-11-11
+
+User requested remaining work for a compelling hackathon result, then supplied a
+consultation screenshot. [Source and exact replies](../brief/QA.md); speaker/date unknown.
+[Revised proposal and preserved user wording](../work/hackathon-decision-plan.md):
+regional access, disruption vulnerability and intervention effect; small-group scores
+are drill-down, not the main product. Define market/self contribution and comparable
+scenarios before implementation. Current edit_selection uses the open baseline.
+Proposal only; no product changes, model calls or new runtime checks.
+feat/map-first-ui HEAD cdb2c2e1108bde7ff37ab91f9d7907d05de2a897. Next if requested:
+fix metric/decision specification, then implement common experiment comparisons.
+Further user guidance: choose concrete trips before metrics; revenue is not transport
+quality, school access is an example. Exact wording and implications are preserved at
+the top of the decision plan. Keep route time/path availability explicit beside scores.
+
+## Agent capability review, 2026-11-11
+
+User: «изучи что уже умеет ии агент и что мы умеем считать».
+Reviewed working code, bundled analyst skills and numerical evidence. 93 focused tests
+passed; read-only API confirmed health, 82 regions and 180 markets. No paid model run.
+feat/map-first-ui HEAD cdb2c2e1108bde7ff37ab91f9d7907d05de2a897; product unchanged.
+[Capabilities, gaps, limits and next actions](../work/agent-capabilities-review.md).
+
+## Chat diagnostics and capital unbound fix, 2026-11-11
+
+User: «добавляй дебаг такого»; then reported Moscow–Petersburg unbound.
+Implemented; runtime, checks and results: [evidence](../work/chat-debug/README.md).
+Prior log inspection and full state: [archive](../work/chat-debug/context-before-compaction.md).
+Protected instructions exceed SESSION target; preserve them verbatim.
+
 ## Explicit user instructions
 
 2026-11-06:
@@ -310,39 +340,166 @@ Approved plexus_accessibility.runs, results and frequencies in the same GitHub r
 > оставь В ОДНОМ ФАЙЛЕЕЕЕ БОЛЬШЕ НЕЛЬЗЯ!
 > теперь отрендери это в пдф
 
-## Current state
 
-Publication complete on 2026-11-11 MSK in origin/feat/map-first-ui. Source checkpoint
-before the final publication commit: f6cfe84 (read current Git HEAD for the closeout SHA).
-All current changes, including the passport PDF and completed concurrent work, are included.
-Data release: https://github.com/GoatWhistle/casechamp/releases/tag/data-clickhouse-20261110
-87 tables across seven databases; 2,757,503,413 compressed bytes. All remote asset SHA-256
-values and sizes verified. The user separately approved three plexus_accessibility tables.
-User calculation history/system databases/secrets excluded; root HTML preserved locally.
 
-Checks: Ruff/mypy pass; 195 backend unit and 415 frontend tests pass. Integration: 41 passed
-initially; two failed while the comparison database was absent and then passed on rerun.
-The parallel full integration log confirms 43 passes. Five downloaded tables restored in
-scratch databases: all 587 rows equal, including empty catalog; scratch databases removed.
-Full clean-server restore of all data not run. Evidence: [publication](../work/publication/README.md).
-
-The new road graph is included as plexus_refresh_graph staging and is not activated.
-Continue its independent validation via [road coverage](../work/road-coverage/README.md).
-Potential comparison completed and validated: [report](../docs/potential-accessibility.md).
-Bridge selection: [verification](../work/bridge-selection/README.md). Passport: one root
-Markdown and its explicitly requested PDF export; no DOCX. Keep user edits intact.
-Prior status and all details: [closeout archive](../work/publication/session-at-closeout.md).
-Protected user instructions exceed SESSION target and are retained verbatim.
-
-## Configurable routing workers, 2026-11-11
+2026-11-11, instructions retained during capacity update:
 
 > ну крч сделай чтобы до 20 воркеров могло быть и я мог задать это значение
 > крч 48 потоков. Максимум
+> лучше синий
+> и перекрась паромные линии в другой цвет
+> мы можем пункты выше уже сделать ,
+> почему не вывели в чат это тоже как и удаление ?
+> Сервер не ответил. че с локалкой
+> забери последнюю верисю [Image #1]
+> и последнюю версию кликхауса забери
+> Да, отключи metric_log
+> Implement the plan.
+> используй субагентов
+> давай там где нет данных считать их тонкими.
+> Да, по одной полосе на направление
 
-Implemented range1..48 via shared MAX_WORKERS in etl/market_distances.py and
-accessibility.calculate --workers. Defaults unchanged: CLI2, shared function/env1.
-Workers are processes; only market searches run in parallel. Documentation updated.
-Verified existing routing test, real48-process tiny-graph equality to serial, env48,
-CLI/function rejection of0/49, CLIhelp, Ruff for changed CLI and git diff --check.
-No national48-worker benchmark or new full calculation launched; no pending code work.
-Branch feat/map-first-ui HEAD2cca3b9d2a96274df474670c8e108722aa059b40; no commit/push.
+2026-11-11, road capacity implementation:
+
+> локально это уже запущено ? индексы расчитаны ?
+> во все индексы и экономику нужно добавить учет полосности теперь. ЧТобы трасса высокоскоростная имела огромный вклад в сравнении с проселочными дорогами
+> Учитывать задержки только там, где поток подтверждён; на остальных — свободное движение
+
+2026-11-11, traffic search cancelled:
+
+> ладно давай пока без этого. Забей
+
+2026-11-11, settlement focus:
+
+> сложно добавить инструмент зума на город ещё ? а не только на регион ?
+> ну на населенный пункт
+
+2026-11-11, traffic diversion and agent tools:
+
+> ну ты моделируй так что там средняя нагрузка и мы ее переносим всю на другие дороги и что получается. При полной загрузке пропускная падает время растет. [Image #1] плюс сделай чтобы агент умел все таки пользоваться нормально инстурментами. А то просто нагалюнил и радуется
+
+2026-11-11, agent instruction refinement:
+
+> оформи это для агента красиво удобно и минималистично теперь
+
+2026-11-11, concrete regional forecasts:
+
+> [Image #1]  как мы можем добавить конкретики какой то, это пустые слова, просто какая то уебанская цифра и ллм даже обяьснить не может. Научи ее обьяснять что будет что ломает
+> в регионе это. КАкие то метрики еще ему давай и пусть прогнозирует их изменение
+
+> почему тут все равно 100500 вложенностей
+
+
+### Retained later user instructions
+
+> ну сделай чтобы он отвечал правильно. ТО что нужно
+> оформи как скиллы просто. чтоб не отуплять агента. Плюс добавь ему рук к ж и авиа если такого нет
+> почему не находит. Они же есть. Можно две дейкстры на встречу пускать до пересечения. ЧТобы находить. А то кринж какой то
+> ставрополь и александровское
+> ты не разводишь же кучу инструментов ? сводишь к единому золотому стандарту окторый закрывает всё ? чтобы не забивать модель
+> давай научим чат расширяться и сужаться, чтобы его двигать можно было, плюс закрть и открыть по иконке чатика в правом нижнем углу
+> [Image #1]  сделай сворачиваемым эту штуку
+> предложи что удалить
+> Кеши JetBrains, Chrome, pip и Go — около 6,4 ГБ
+> Да, перезапусти Docker Desktop
+> да, плюс в случае закрытия тоже пусть умеет оценивать
+> оформи теперь это всё минималистично и удобно для агента
+> тут не все регионы рисуй, а только затронутые
+> ну смотри, зачем это юзеру ? можно как то визуализировать это анимацией минималистичной и пингануть ии как закончится чтобы он интерпретацию дал в человеческий язык что будет. А тут фоном делается но визуализируется как то прогресс бар или что такое
+> но супер минималистично сделай без горожения кучи квадратов
+> это ебануто не читаемо. Сделай как то меньше квадратов лишних открываний выделений. Карту участка можно выводить ровно 1 раз за ответ. Дальше хочу чтобы как обычно в чатахъ с ии красивый структурированный текст через md форматирование
+> ну не буквально файл. Просто всмысле красивый чатик
+> и пусть карта в начале спавнится сообщения. А не снизу.
+> ну участка
+> посмотри последние коммиты фронтенда в репе и забери от туда его в нашу ветку текущую и текущую реализацию
+> прям весь фронт забрал ? там точно чат не такой
+> забирай вообще весь
+> ну смержи блять, отдаем приоритет визуалу новому. Но работоспособность нашу
+> продебажь чтоб карта меньше лагала
+> у меня прям курсор дергается на карте
+> все равно пролагивает, дебажь и оптимайзи
+> сделай чтобы чат последовательно шёл, всё как есть по факту, не надо что то выплевывать вниз и потом вверх дописывать. Это не читабельно вообще.
+> вообще тут выпал захардкоженный код, убирай
+> и так везде. Не надо хардкода и везде последовательно
+> нихуя не красиво и нихуя не понятно. плюс кнопка показать не работала. Сделай более поэтапный лоадер. Сделай процент завершения
+> хуйня
+> что с визуализацией и что с порядком
+> и что мне эти точки в обьезде то показывают
+> что продублировалось
+> Действия: 3 что блять, не должен он получать, вынеси это под капотом ему в инструмент, огромные данные должны без его участия пересчитываться
+
+## Current state
+
+[Archived completed implementation notes](../work/completed-session-notes-2026-11-11.md).
+
+[preserved state and evidence](../work/traffic-diversion/context-archive.md).
+
+## National road stress implementation, 2026-11-11
+
+User: «Implement the plan.» Approved national road-only stress testing with map/agent parity,
+compound closures, real route geometry, persistence and polished UI. See conversation plan.
+User emphasized: «и это всё удобно наглядно и красиво для юзер и через агента.»
+Implemented; [preserved runtime and evidence](../work/chat-debug/context-before-compaction.md).
+
+## Existing use-case review, 2026-11-11 (reviewed again)
+
+User: «собери мне набор юзкейсов самых вау эффектных которые уже есть в нашем решение».
+2026-11-11, disk cleanup during national stress implementation:
+
+[Preserved state and checks](../work/settlement-connectivity/session-detail.md).
+
+## M-10 index explanation, 2026-11-11
+
+User: «Не прогноз про ну вот я перекрыл. Почему так слабо индекс упал. Это же невозможно как будто. Или что он показывает то блять»
+
+[Evidence and limits](../work/road-stress/m10-index-explanation.md).
+
+## Frontend replacement, 2026-11-11
+
+
+
+User: «все что удалилось не пренеслось про рендер графа что могло сломаться кроме визуала».
+[Functional regression audit and Vite fix](../work/frontend-upstream-sync/functional-audit.md).
+
+
+[Scope, checks, schema, browser evidence and limits](../work/frontend-functional-merge/README.md).
+
+
+[Measurements, browser checks and limits](../work/map-hover-performance/README.md).
+
+
+[Profiles, tests and limits](../work/map-pan-performance/README.md).
+
+## Combined agent evidence, 2026-11-11
+
+> совмести их
+> он должен сразу инфы кучу поулчать и рассказывать крутые интересные вещи для бизнеса чтобы был вау эффект. куда просрали доступ и тд. Что замедлилось. Где какие пробки могут быть. Где перегрузы сразу. Куда можно добавить дорогу. Но при этом кратко аккуратно читабельно. Не надо всё и сразу. ТОлько важное и крутое прям чтоб вааау. Если что то надо то допросят
+> не эардкодь, просто ему донеси мою позицию. И инструменты окучь чтобы он сразу кучу инфы давал
+
+[Implementation, branch/SHA, checks, runtime and limits](../work/agent-business-brief/README.md).
+
+
+## Tool comparison tables, 2026-11-11
+
+> вынеси построение подобных таблиц за тулы чтобы не модель этот пиздец делала
+> да блять не пиши ему об этом. Пусть живет в мире где есть все данные. Это же сука хакатон
+> визуально не видно и что за стрелки опять. Сделай нормально столбцами
+
+[Implementation, checks, runtime and browser evidence](../work/table-tools/README.md).
+
+> переделай аккуратнее меньше и красивее
+
+[Compact chat actions, screenshot and checks](../work/chat-compact/README.md).
+
+> а что тут на карте и не в линию и куда ваще ведет и как понять
+
+[Named map actions, correct toolbar and browser check](../work/chat-map-actions/README.md).
+
+
+## Publication, 2026-11-11
+
+> запушь все что сделанотлокально в новую ветку
+
+New branch feat/transport-scenarios-update from cdb2c2e1108bde7ff37ab91f9d7907d05de2a897.
+Publishing all nonignored local changes, preserving excluded root HTML prototypes and secrets.
+Frontend verify and commit-hook backend unit tests run before push. Runtime restart remains separate.

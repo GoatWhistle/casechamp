@@ -12,6 +12,7 @@ export interface RoadRenderView extends RoadView {
 export type GraphLocation = components["schemas"]["GraphLocation"]
 export type ConnectionInput = components["schemas"]["RoadAdditionInput"]
 export type RoadJob = components["schemas"]["RoadJob"]
+export type RoadChangeInput = components["schemas"]["RoadChangeInput"]
 export type RoadScenarioInput = components["schemas"]["RoadScenarioInput"]
 export type LinkChange = components["schemas"]["LinkChange"]
 export type LinkChangeInput = components["schemas"]["LinkChangeInput"]

@@ -1,0 +1,19 @@
+{
+  "job": {
+    "id": "cd36e77bef764ca3a486b6ea6ae32980",
+    "version": "road-8033092fca2cf5fa",
+    "way_ids": [
+      4412349
+    ],
+    "parent_id": null,
+    "status": "completed",
+    "stage": "completed",
+    "completed": 180,
+    "total": 180,
+    "points": 155747,
+    "unbound_points": 483,
+    "regions": [],
+    "error": null
+  },
+  "elapsed_seconds": 248.5909402089892
+}

@@ -11,20 +11,24 @@ import type { AirportCatalog } from "@/shared/api/airports"
 import type { ChatMapCommand } from "@/shared/api/chat-map"
 import type { RoadLayerProps } from "@/shared/api/road-graph"
 import { motionMs, useReducedMotion } from "@/shared/motion"
-import type { BoundaryAtlas, LonLatBounds } from "./boundary-geojson"
-import { corners, focusIds, focusRegions } from "./map-camera"
+import type { BoundaryAtlas } from "./boundary-geojson"
+import { aimCamera, corners, FLAT_MAP, keepFlat, roamConstrain } from "./map-camera"
+import { bindHover } from "./map-hover"
 import { buildStyle, FILL_LAYER, REGIONS_SOURCE, readMapColors } from "./osm-style"
+import { recolorRegions, regionSteps } from "./paint/recolor"
 import { roadLayers } from "./road-parts"
 import { AIRPORT_LAYER, useAirportLayer } from "./use-airport-layer"
 import { useRoadLayer } from "./use-road-layer"
+import { useSettlementFocus } from "./use-settlement-focus"
 import { useTransitLayer } from "./use-transit-layer"
 
 setWorkerUrl(workerUrl)
 
 const HOME_PADDING = 24
+const TILE_CACHE = 1024
+const HOME_SLACK = 0.4
 const MIN_ZOOM = 1.4
 const MAX_ZOOM = 18
-const EDGE = 14
 
 export type MapStep = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
 
@@ -44,15 +48,7 @@ export interface OsmMapOptions {
   readonly selectedId: string | null
   readonly onSelect: (id: string) => void
   readonly onHover: (id: string | null, x: number, y: number) => void
-}
-
-function margin(bounds: LonLatBounds): LonLatBounds {
-  return [
-    bounds[0] - EDGE,
-    bounds[1] - EDGE / 2,
-    bounds[2] + EDGE,
-    Math.min(85, bounds[3] + EDGE / 2),
-  ]
+  readonly label: string
 }
 
 export function useOsmMap({
@@ -65,13 +61,15 @@ export function useOsmMap({
   command,
   onSelect,
   onHover,
+  label,
 }: OsmMapOptions) {
   const container = useRef<HTMLDivElement | null>(null)
   const engine = useRef<LibreMap | null>(null)
   const [styleReady, setStyleReady] = useState(false)
   useRoadLayer(engine, roads, styleReady)
   useTransitLayer(engine, transit, styleReady)
-  useAirportLayer(engine, airports, styleReady)
+  const airportHover = useAirportLayer(engine, airports, styleReady)
+  useSettlementFocus(engine, command, styleReady)
   const roadState = useRef(roads)
   roadState.current = roads
   const ready = useRef(false)
@@ -89,14 +87,15 @@ export function useOsmMap({
     [],
   )
 
+  const painted = useRef(new Map<number, number>())
+  const stopRecolor = useRef<() => void>(() => undefined)
   const paintSteps = useCallback(() => {
     const map = engine.current
     if (!map || !ready.current) return
-    for (const [regionId, feature] of state.current.atlas.featureOf)
-      map.setFeatureState(
-        { source: REGIONS_SOURCE, id: feature.id },
-        { step: state.current.stepOf(regionId) },
-      )
+    const steps = regionSteps(state.current.atlas.featureOf, state.current.stepOf)
+    stopRecolor.current()
+    const instant = state.current.reduced || painted.current.size === 0
+    stopRecolor.current = recolorRegions(map, steps, painted.current, instant)
   }, [])
 
   const setHover = useCallback((id: number | null) => {
@@ -116,16 +115,15 @@ export function useOsmMap({
       const current = state.current
       const action = current.command !== appliedCommand.current ? current.command : undefined
       appliedCommand.current = current.command
-      const travel = duration(instant, Boolean(action))
-      if (action?.action === "zoom_in" || action?.action === "zoom_out") {
-        map.stop()
-        map.zoomTo(map.getZoom() + (action.action === "zoom_in" ? 1 : -1), {
-          duration: duration(instant),
-        })
-        return
-      }
-
-      focusRegions(map, current.atlas, focusIds(action, current.selectedId), travel)
+      if (!action && current.command?.action === "focus_settlement") return
+      aimCamera(
+        map,
+        current.atlas,
+        action,
+        current.selectedId,
+        duration(instant, Boolean(action)),
+        duration(instant),
+      )
     },
     [duration],
   )
@@ -133,40 +131,33 @@ export function useOsmMap({
   useEffect(() => {
     const element = container.current
     if (!element || atlas.collection.features.length === 0) return
+    const limits = { min: MIN_ZOOM, max: MAX_ZOOM }
     const options: MapOptions = {
       container: element,
-      style: buildStyle(readMapColors(element), atlas.collection),
+      style: buildStyle(
+        readMapColors(element),
+        atlas.collection,
+        state.current.reduced ? 0 : motionMs("--dur-base", element),
+      ),
       bounds: corners(atlas.home),
       fitBoundsOptions: { padding: HOME_PADDING },
       minZoom: MIN_ZOOM,
       maxZoom: MAX_ZOOM,
-      maxBounds: corners(margin(atlas.home)),
+      transformConstrain: roamConstrain(atlas.home, limits),
       attributionControl: false,
+      ...FLAT_MAP,
+      locale: { "Map.Title": label },
       fadeDuration: state.current.reduced ? 0 : motionMs("--dur-fast", element),
+      maxTileCacheSize: TILE_CACHE,
+      refreshExpiredTiles: false,
     }
-    const map = new LibreMap(options)
+    const map = keepFlat(new LibreMap(options))
     engine.current = map
-    const resize = new ResizeObserver(() => map.resize())
+    const resize = new ResizeObserver(() => {
+      map.resize()
+      map.redraw()
+    })
     resize.observe(element)
-    const clearHover = () => {
-      setHover(null)
-      state.current.onHover(null, 0, 0)
-    }
-    const onMove = (event: MapLayerMouseEvent) => {
-      if (map.isMoving()) return
-      const id = event.features?.[0]?.id
-      const numeric = typeof id === "number" ? id : null
-      setHover(numeric)
-      const region = numeric === null ? null : (state.current.atlas.regionOf.get(numeric) ?? null)
-      if (
-        map.getLayer(AIRPORT_LAYER) &&
-        map.queryRenderedFeatures(event.point, { layers: [AIRPORT_LAYER] }).length
-      ) {
-        state.current.onHover(null, 0, 0)
-        return
-      }
-      state.current.onHover(region, event.originalEvent.clientX, event.originalEvent.clientY)
-    }
     const onClick = (event: MapLayerMouseEvent) => {
       if (
         map.getLayer(AIRPORT_LAYER) &&
@@ -200,14 +191,25 @@ export function useOsmMap({
       setStyleReady(true)
       paintSteps()
       aim(true)
+      const home = map.cameraForBounds(corners(state.current.atlas.home), { padding: HOME_PADDING })
+      if (home?.zoom !== undefined) {
+        limits.min = Math.max(MIN_ZOOM, home.zoom - HOME_SLACK)
+        map.setMinZoom(limits.min)
+      }
       markView()
     })
     map.on("moveend", markView)
-    map.on("mousemove", FILL_LAYER, onMove)
-    map.on("mouseleave", FILL_LAYER, clearHover)
-    map.on("movestart", clearHover)
+    const disposeHover = bindHover(
+      map,
+      setHover,
+      (region, x, y) => state.current.onHover(region, x, y),
+      (id) => (id === null ? null : (state.current.atlas.regionOf.get(id) ?? null)),
+      (feature) => airportHover.current(feature),
+      motionMs("--dur-instant", element),
+    )
     map.on("click", FILL_LAYER, onClick)
     return () => {
+      disposeHover()
       ready.current = false
       setStyleReady(false)
       appliedCommand.current = undefined
@@ -216,7 +218,7 @@ export function useOsmMap({
       resize.disconnect()
       map.remove()
     }
-  }, [atlas, paintSteps, aim, setHover])
+  }, [atlas, paintSteps, aim, setHover, label, airportHover])
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: Repaint when data read through the latest-state ref changes.
   useEffect(() => {

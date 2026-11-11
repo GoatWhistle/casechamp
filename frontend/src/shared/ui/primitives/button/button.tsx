@@ -3,13 +3,14 @@ import type { ButtonHTMLAttributes, MouseEvent, ReactNode, Ref } from "react"
 import { Icon, type IconName } from "../icon/icon"
 import styles from "./button.module.css"
 
-export type ButtonVariant = "primary" | "secondary" | "ghost"
+export type ButtonVariant = "primary" | "secondary" | "ghost" | "danger"
 export type ButtonSize = "regular" | "compact"
 
 export const VARIANT_CLASS: Readonly<Record<ButtonVariant, string | undefined>> = {
   primary: styles.primary,
   secondary: styles.secondary,
   ghost: styles.ghost,
+  danger: styles.danger,
 }
 
 export const SIZE_CLASS: Readonly<Record<ButtonSize, string | undefined>> = {

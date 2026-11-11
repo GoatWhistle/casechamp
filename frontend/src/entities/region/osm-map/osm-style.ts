@@ -32,10 +32,22 @@ export function selectionFilter(id: number): ExpressionSpecification {
   return ["==", ["id"], id]
 }
 
-function fillColor(fills: readonly string[]): ExpressionSpecification {
-  const step: ExpressionSpecification = ["coalesce", ["feature-state", "step"], 0]
+function stepColor(fills: readonly string[], key: string): ExpressionSpecification {
+  const step: ExpressionSpecification = ["coalesce", ["feature-state", key], 0]
   const branches = fills.slice(1).flatMap((color, index) => [index + 1, color])
   return ["match", step, ...branches, fills[0] ?? "transparent"] as ExpressionSpecification
+}
+
+function fillColor(fills: readonly string[]): ExpressionSpecification {
+  return [
+    "interpolate",
+    ["linear"],
+    ["coalesce", ["feature-state", "mix"], 1],
+    0,
+    stepColor(fills, "previous"),
+    1,
+    stepColor(fills, "step"),
+  ]
 }
 
 function fillOpacity(): ExpressionSpecification {
@@ -60,19 +72,41 @@ function fillOpacity(): ExpressionSpecification {
   ]
 }
 
+const BASEMAP = {
+  "raster-saturation": -0.3,
+  "raster-contrast": -0.15,
+  "raster-brightness-min": 0.24,
+} as const
+
+const REGION_MAX_ZOOM = 10
+const REGION_TOLERANCE = 0.6
+const REGION_BUFFER = 32
+
 export function buildStyle(
   colors: OsmMapColors,
   data: FeatureCollection<MultiPolygon>,
+  fade: number,
 ): StyleSpecification {
   return {
     version: 8,
     sources: {
       osm: { type: "raster", tiles: [__TILE_URL__], tileSize: 256, maxzoom: 19 },
-      [REGIONS_SOURCE]: { type: "geojson", data },
+      [REGIONS_SOURCE]: {
+        type: "geojson",
+        data,
+        maxzoom: REGION_MAX_ZOOM,
+        tolerance: REGION_TOLERANCE,
+        buffer: REGION_BUFFER,
+      },
     },
     layers: [
       { id: "base", type: "background", paint: { "background-color": colors.water } },
-      { id: "osm-tiles", type: "raster", source: "osm" },
+      {
+        id: "osm-tiles",
+        type: "raster",
+        source: "osm",
+        paint: { ...BASEMAP, "raster-fade-duration": fade },
+      },
       {
         id: FILL_LAYER,
         type: "fill",

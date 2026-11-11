@@ -1,4 +1,6 @@
 :root {
+  color-scheme: light;
+  --teal-600: #0f766e;
   --neutral-0: #ffffff;
   --neutral-25: #f8f9fb;
   --neutral-50: #f2f4f7;
@@ -21,6 +23,7 @@
   --blue-700: #0057bd;
   --blue-800: #004ca5;
   --iso-ring-1: #0066db;
+  --cobalt-700: #1f4fa8;
   --iso-ring-2: #5c9eea;
   --iso-ring-3: #b9d5f8;
   --iso-night-1: #5aa6ff;
@@ -36,6 +39,7 @@
   --land-100: #f3efe7;
   --land-200: #ece7dd;
   --water-200: #c4def0;
+  --water-muted: #c0d2d8;
   --water-400: #86bbe0;
   --teal-1: #eef3e2;
   --teal-2: #cfe6cf;
@@ -56,4 +60,8 @@
   --mode-winter-hue: #5b6b85;
   --mode-ferry-hue: #d0752b;
   --mode-road-hue: #8b96aa;
+  --mode-rail-hue: #39424f;
+  --mode-bus-hue: #2e9d6a;
+  --mode-ice-hue: #5fb0d3;
+  --mode-pontoon-hue: #b08a2e;
 }

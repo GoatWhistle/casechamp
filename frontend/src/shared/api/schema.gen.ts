@@ -327,6 +327,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/chat/calculation-tables": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Calculation Tables */
+        post: operations["calculation_tables_api_v1_chat_calculation_tables_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/chat": {
         parameters: {
             query?: never;
@@ -338,6 +355,40 @@ export interface paths {
         put?: never;
         /** Stream Chat */
         post: operations["stream_chat_api_v1_chat_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/chat/calculation-review": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Stream Chat */
+        post: operations["stream_chat_api_v1_chat_calculation_review_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/road-graph/markets": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Markets */
+        get: operations["markets_api_v1_road_graph_markets_get"];
+        put?: never;
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -551,6 +602,110 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/road-stress-tests": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Recent */
+        get: operations["recent_api_v1_road_stress_tests_get"];
+        put?: never;
+        /** Submit */
+        post: operations["submit_api_v1_road_stress_tests_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/road-stress-tests/{job_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get */
+        get: operations["get_api_v1_road_stress_tests__job_id__get"];
+        put?: never;
+        post?: never;
+        /** Cancel */
+        delete: operations["cancel_api_v1_road_stress_tests__job_id__delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/road-stress-tests/{job_id}/summary": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Summary */
+        get: operations["summary_api_v1_road_stress_tests__job_id__summary_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/road-stress-tests/{job_id}/impacts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Impacts */
+        get: operations["impacts_api_v1_road_stress_tests__job_id__impacts_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/road-stress-tests/{job_id}/geometry": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Geometry */
+        get: operations["geometry_api_v1_road_stress_tests__job_id__geometry_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/road-stress-tests/{job_id}/routes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Route */
+        post: operations["route_api_v1_road_stress_tests__job_id__routes_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -737,6 +892,70 @@ export interface components {
             /** Compatible */
             compatible: boolean;
         };
+        /** AppraisalReport */
+        AppraisalReport: {
+            /** Status */
+            status: string;
+            /** Travel */
+            travel: components["schemas"]["TravelChange"][];
+            /** Unresolved Passenger Flows */
+            unresolved_passenger_flows: number;
+            /** Evaluated Passenger Flows */
+            evaluated_passenger_flows: number;
+            /** Scenarios */
+            scenarios: components["schemas"]["AppraisalScenario"][];
+            /**
+             * Method
+             * @default conditional_flow_appraisal_v1
+             */
+            method: string;
+            /**
+             * Scope
+             * @default supplied_flows_only
+             */
+            scope: string;
+            /** Freight Travel */
+            freight_travel?: components["schemas"]["FreightTravelChange"][];
+            /**
+             * Unresolved Freight Flows
+             * @default 0
+             */
+            unresolved_freight_flows: number;
+            /**
+             * Freight Routing Scope
+             * @default manual_supplied_travel
+             */
+            freight_routing_scope: string;
+        };
+        /** AppraisalScenario */
+        AppraisalScenario: {
+            /** Name */
+            name: string;
+            /** Annual Passenger Hours */
+            annual_passenger_hours: number | null;
+            /** Annual Passenger Rub */
+            annual_passenger_rub: number | null;
+            /** Annual Vehicle Hours */
+            annual_vehicle_hours: number | null;
+            /** Annual Vehicle Km */
+            annual_vehicle_km: number | null;
+            /** Annual Freight Rub */
+            annual_freight_rub: number | null;
+            /** Annual Gross Rub */
+            annual_gross_rub: number | null;
+            /** Annual Net Rub */
+            annual_net_rub: number | null;
+            /** Present Benefits Rub */
+            present_benefits_rub: number | null;
+            /** Present Costs Rub */
+            present_costs_rub: number;
+            /** Net Present Value Rub */
+            net_present_value_rub: number | null;
+            /** Benefit Cost Ratio */
+            benefit_cost_ratio: number | null;
+            /** Discounted Payback Year */
+            discounted_payback_year: number | null;
+        };
         /** BoundaryShapeResponse */
         BoundaryShapeResponse: {
             /** Id */
@@ -755,6 +974,13 @@ export interface components {
                 number,
                 number
             ][][][];
+        };
+        /** CalculationReviewInput */
+        CalculationReviewInput: {
+            /** Scenario Ids */
+            scenario_ids?: string[];
+            /** Stress Ids */
+            stress_ids?: string[];
         };
         /** Candidate */
         Candidate: {
@@ -810,6 +1036,12 @@ export interface components {
              * @default hansen
              */
             metric: string;
+            /** Road Way Ids */
+            road_way_ids?: number[];
+            /** Stress Job Id */
+            stress_job_id?: string | null;
+            /** Stress Point Id */
+            stress_point_id?: string | null;
         };
         /** ChatInput */
         ChatInput: {
@@ -820,16 +1052,15 @@ export interface components {
             context?: components["schemas"]["ChatContextInput"];
             /** Analysis Id */
             analysis_id?: string | null;
+            calculation_review?: components["schemas"]["CalculationReviewInput"] | null;
         };
         /** ChatMapCommand */
         ChatMapCommand: {
-            /**
-             * Action
-             * @enum {string}
-             */
-            action: "focus" | "reset" | "zoom_in" | "zoom_out";
+            /** Action */
+            action: ("focus" | "reset" | "zoom_in" | "zoom_out") | "focus_settlement";
             /** Region Ids */
             region_ids: string[];
+            settlement?: components["schemas"]["SettlementMapTarget"] | null;
         };
         /** ChatMessageInput */
         ChatMessageInput: {
@@ -847,7 +1078,7 @@ export interface components {
              * Type
              * @enum {string}
              */
-            type: "status" | "delta" | "done" | "error" | "table" | "chart" | "map" | "calculation" | "analysis";
+            type: "status" | "delta" | "done" | "error" | "table" | "chart" | "map" | "calculation" | "analysis" | "stress_test" | "scenario";
             /**
              * Text
              * @default
@@ -860,7 +1091,10 @@ export interface components {
             code: string;
             table?: components["schemas"]["ChatTable"] | null;
             chart?: components["schemas"]["ChatChart"] | null;
+            scenario?: components["schemas"]["ScenarioCard"] | null;
             map?: components["schemas"]["ChatMapCommand"] | null;
+            stress_route?: components["schemas"]["StressRouteComparison"] | null;
+            stress_test?: components["schemas"]["StressJob"] | null;
             calculation?: components["schemas"]["CorridorCalculation"] | null;
             analysis?: components["schemas"]["AnalysisResponse"] | null;
         };
@@ -872,7 +1106,7 @@ export interface components {
              * Title
              * @enum {string}
              */
-            title: "regions" | "links" | "settlements" | "sensitivity";
+            title: "regions" | "links" | "settlements" | "sensitivity" | "connectivity" | "connectivity_summary" | "scenario_indices" | "scenario_routes" | "scenario_access";
             /** Columns */
             columns: components["schemas"]["ChatColumn"][];
             /** Rows */
@@ -885,6 +1119,11 @@ export interface components {
             truncated: boolean;
             /** Source */
             source: string;
+            /**
+             * Caption
+             * @default
+             */
+            caption: string;
         };
         /** CityPairChangeResponse */
         CityPairChangeResponse: {
@@ -902,11 +1141,30 @@ export interface components {
          * @enum {string}
          */
         Confidence: "high" | "medium" | "low";
+        /** ConnectionConsequence */
+        ConnectionConsequence: {
+            /** Origin Id */
+            origin_id: string;
+            /** Origin */
+            origin: string;
+            /** Residents */
+            residents: number;
+            /** Destination */
+            destination: string;
+            /** Before Minutes */
+            before_minutes: number;
+            /** After Minutes */
+            after_minutes: number | null;
+            /** Added Minutes */
+            added_minutes: number | null;
+        };
         /** CorridorCalculation */
         CorridorCalculation: {
             corridor: components["schemas"]["RoadCorridor"];
             /** Job Ids */
             job_ids: string[];
+            /** Changes */
+            changes?: components["schemas"]["RoadChange"][];
         };
         /** CorridorRegion */
         CorridorRegion: {
@@ -914,6 +1172,48 @@ export interface components {
             id: string;
             /** Name */
             name: string;
+        };
+        /** DelayExposure */
+        DelayExposure: {
+            /** Threshold Minutes */
+            threshold_minutes: number;
+            /** Settlements */
+            settlements: number;
+            /** Residents */
+            residents: number;
+        };
+        /** DemandScenario */
+        DemandScenario: {
+            /**
+             * Name
+             * @enum {string}
+             */
+            name: "low" | "base" | "high";
+            /** Demand Factor */
+            demand_factor: number;
+            /** Value Factor */
+            value_factor: number;
+        };
+        /** DestinationConsequence */
+        DestinationConsequence: {
+            /** Destination */
+            destination: string;
+            /** Settlements */
+            settlements: number;
+            /** Exposed Residents */
+            exposed_residents: number;
+            /** Lost Connections */
+            lost_connections: number;
+            /** Residents Losing Connection */
+            residents_losing_connection: number;
+            /** Nearby Exposed Residents */
+            nearby_exposed_residents: number;
+            /** Comparable Connections */
+            comparable_connections: number;
+            /** Mean Before Minutes */
+            mean_before_minutes: number | null;
+            /** Mean After Minutes */
+            mean_after_minutes: number | null;
         };
         /** EconomyResponse */
         EconomyResponse: {
@@ -947,6 +1247,56 @@ export interface components {
             code: string;
             /** Message */
             message: string;
+        };
+        /** FreightFlow */
+        FreightFlow: {
+            /** Name */
+            name: string;
+            /** Trips Per Year */
+            trips_per_year: number;
+            /** Before Hours */
+            before_hours: number | null;
+            /** After Hours */
+            after_hours: number | null;
+            /** Before Km */
+            before_km: number | null;
+            /** After Km */
+            after_km: number | null;
+            /** Rub Per Vehicle Hour */
+            rub_per_vehicle_hour: number;
+            /** Rub Per Km */
+            rub_per_km: number;
+            /** Source */
+            source: string;
+            /**
+             * Basis
+             * @default assumed
+             * @enum {string}
+             */
+            basis: "assumed" | "observed";
+            /**
+             * Origin Point Id
+             * @default
+             */
+            origin_point_id: string;
+            /**
+             * Market City
+             * @default
+             */
+            market_city: string;
+        };
+        /** FreightTravelChange */
+        FreightTravelChange: {
+            /** Name */
+            name: string;
+            /** Before Hours */
+            before_hours: number | null;
+            /** After Hours */
+            after_hours: number | null;
+            /** Before Km */
+            before_km: number | null;
+            /** After Km */
+            after_km: number | null;
         };
         /** FrequencyCoverage */
         FrequencyCoverage: {
@@ -1208,6 +1558,29 @@ export interface components {
              */
             method: string;
         };
+        /** NearbyAccessChange */
+        NearbyAccessChange: {
+            /** Threshold Hours */
+            threshold_hours: number;
+            /** Changed Connections */
+            changed_connections: number;
+            /** Lost Connections */
+            lost_connections: number;
+            /** Comparable Connections */
+            comparable_connections: number;
+            /** Mean Before Minutes */
+            mean_before_minutes: number | null;
+            /** Mean After Minutes */
+            mean_after_minutes: number | null;
+            /** Mean Added Minutes */
+            mean_added_minutes: number | null;
+            /** Connections Crossing Threshold */
+            connections_crossing_threshold: number;
+            /** Settlements Crossing Threshold */
+            settlements_crossing_threshold: number;
+            /** Residents Crossing Threshold */
+            residents_crossing_threshold: number;
+        };
         /**
          * NetworkMode
          * @enum {string}
@@ -1231,6 +1604,30 @@ export interface components {
             revenue_rub: number | null;
             index: components["schemas"]["IndexStatusResponse"];
         };
+        /** PassengerFlow */
+        PassengerFlow: {
+            /** Origin Point Id */
+            origin_point_id: string;
+            /** Market City */
+            market_city: string;
+            /** Trips Per Year */
+            trips_per_year: number;
+            /** Rub Per Hour */
+            rub_per_hour: number;
+            /** Source */
+            source: string;
+            /**
+             * Basis
+             * @default assumed
+             * @enum {string}
+             */
+            basis: "assumed" | "observed";
+            /**
+             * Origin Name
+             * @default
+             */
+            origin_name: string;
+        };
         /** PlaceName */
         PlaceName: {
             /** Point Id */
@@ -1239,6 +1636,27 @@ export interface components {
             name: string;
             /** Region */
             region: string;
+        };
+        /** ProjectAssumptions */
+        ProjectAssumptions: {
+            /** Passengers */
+            passengers: components["schemas"]["PassengerFlow"][];
+            /** Scenarios */
+            scenarios: components["schemas"]["DemandScenario"][];
+            /** Capital Cost Rub */
+            capital_cost_rub: number;
+            /** Annual Operating Cost Rub */
+            annual_operating_cost_rub: number;
+            /** Horizon Years */
+            horizon_years: number;
+            /** Discount Rate */
+            discount_rate: number;
+            /** Price Year */
+            price_year: number;
+            /** Cost Source */
+            cost_source: string;
+            /** Freight */
+            freight?: components["schemas"]["FreightFlow"][];
         };
         /** RegionDetailResponse */
         RegionDetailResponse: {
@@ -1347,6 +1765,39 @@ export interface components {
             /** Index Artifact Version */
             index_artifact_version?: string | null;
         };
+        /** RegionalConsequences */
+        RegionalConsequences: {
+            /** Region */
+            region: string;
+            /** Lost Connections */
+            lost_connections: number;
+            /** Settlements Losing Connections */
+            settlements_losing_connections: number;
+            /** Residents Losing Connections */
+            residents_losing_connections: number;
+            /** Delay Exposure */
+            delay_exposure: components["schemas"]["DelayExposure"][];
+            nearby_access: components["schemas"]["NearbyAccessChange"];
+            /** Destinations */
+            destinations: components["schemas"]["DestinationConsequence"][];
+            /** Examples */
+            examples: components["schemas"]["ConnectionConsequence"][];
+            /**
+             * Method
+             * @default saved_road_closure_consequences_v1
+             */
+            method: string;
+            /**
+             * Scope
+             * @default recorded_changed_settlement_market_connections_in_selected_region
+             */
+            scope: string;
+            /**
+             * Minimum Recorded Delay Minutes
+             * @default 1
+             */
+            minimum_recorded_delay_minutes: number;
+        };
         /** RoadAddition */
         RoadAddition: {
             /** Source Node */
@@ -1369,20 +1820,43 @@ export interface components {
             /** Travel Hours */
             travel_hours: number;
             money?: components["schemas"]["MoneyAssumptions"] | null;
+            appraisal?: components["schemas"]["ProjectAssumptions"] | null;
         };
         /** RoadChange */
         RoadChange: {
             /** Way Id */
             way_id: number;
-            /** Speed Factor */
+            /**
+             * Speed Factor
+             * @default 1
+             */
             speed_factor: number;
+            /** Lanes Total */
+            lanes_total?: number | null;
+            /** Highway */
+            highway?: string | null;
+            /** Surface */
+            surface?: string | null;
+            /** Speed Kmh */
+            speed_kmh?: number | null;
         };
         /** RoadChangeInput */
         RoadChangeInput: {
             /** Way Id */
             way_id: number;
-            /** Speed Factor */
+            /**
+             * Speed Factor
+             * @default 1
+             */
             speed_factor: number;
+            /** Lanes Total */
+            lanes_total?: number | null;
+            /** Highway */
+            highway?: string | null;
+            /** Surface */
+            surface?: string | null;
+            /** Speed Kmh */
+            speed_kmh?: number | null;
         };
         /** RoadCorridor */
         RoadCorridor: {
@@ -1412,6 +1886,15 @@ export interface components {
              */
             scope: string;
         };
+        /** RoadGeometry */
+        RoadGeometry: {
+            /** Names */
+            names: string[];
+            /** Length Km */
+            length_km: number;
+            /** Lines */
+            lines: number[][][];
+        };
         /** RoadJob */
         RoadJob: {
             /** Id */
@@ -1439,6 +1922,8 @@ export interface components {
             money_assumptions?: components["schemas"]["MoneyAssumptions"] | null;
             /** Links */
             links?: components["schemas"]["LinkChange"][];
+            appraisal_assumptions?: components["schemas"]["ProjectAssumptions"] | null;
+            appraisal_result?: components["schemas"]["AppraisalReport"] | null;
         };
         /** RoadResult */
         RoadResult: {
@@ -1470,6 +1955,13 @@ export interface components {
             routing_method: string;
             /** Settlement Effects */
             settlement_effects?: components["schemas"]["SettlementEffect"][];
+            /**
+             * Road Cost Method
+             * @default legacy_speed_v1
+             */
+            road_cost_method: string;
+            /** Road Cost Notes */
+            road_cost_notes?: string[];
         };
         /** RoadScenarioInput */
         RoadScenarioInput: {
@@ -1485,6 +1977,7 @@ export interface components {
             changes?: components["schemas"]["RoadChangeInput"][];
             /** Links */
             links?: components["schemas"]["LinkChangeInput"][];
+            appraisal?: components["schemas"]["ProjectAssumptions"] | null;
         };
         /** RoadSegment */
         RoadSegment: {
@@ -1537,6 +2030,16 @@ export interface components {
             x2: number;
             /** Y2 */
             y2: number;
+        };
+        /** ScenarioCard */
+        ScenarioCard: {
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "speed" | "slowdown" | "closure" | "roads" | "connection" | "links";
+            /** Job Ids */
+            job_ids: string[];
         };
         /** ScenarioCatalogResponse */
         ScenarioCatalogResponse: {
@@ -1721,6 +2224,19 @@ export interface components {
             /** Delta Index */
             delta_index: number;
         };
+        /** SettlementMapTarget */
+        SettlementMapTarget: {
+            /** Id */
+            id: string;
+            /** Name */
+            name: string;
+            /** Region Id */
+            region_id: string;
+            /** Longitude */
+            longitude: number;
+            /** Latitude */
+            latitude: number;
+        };
         /** SettlementPageResponse */
         SettlementPageResponse: {
             /** Total */
@@ -1772,6 +2288,190 @@ export interface components {
             /** Rows */
             rows: number | null;
         };
+        /** StressImpact */
+        StressImpact: {
+            point: components["schemas"]["StressPoint"];
+            /** Lost Markets */
+            lost_markets: number;
+            /** External Isolation */
+            external_isolation: boolean;
+            /** Delay Minutes */
+            delay_minutes: number;
+            /** Worst Market */
+            worst_market: string;
+            /** Markets */
+            markets?: components["schemas"]["StressMarketChange"][];
+        };
+        /** StressInput */
+        StressInput: {
+            /** Way Ids */
+            way_ids: number[];
+            /** Parent Id */
+            parent_id?: string | null;
+        };
+        /** StressJob */
+        StressJob: {
+            /** Id */
+            id: string;
+            /** Version */
+            version: string;
+            /** Way Ids */
+            way_ids: number[];
+            /** Parent Id */
+            parent_id?: string | null;
+            /**
+             * Status
+             * @default queued
+             */
+            status: string;
+            /**
+             * Stage
+             * @default preparing
+             */
+            stage: string;
+            /**
+             * Completed
+             * @default 0
+             */
+            completed: number;
+            /**
+             * Total
+             * @default 180
+             */
+            total: number;
+            /**
+             * Points
+             * @default 0
+             */
+            points: number;
+            /**
+             * Unbound Points
+             * @default 0
+             */
+            unbound_points: number;
+            /** Regions */
+            regions?: components["schemas"]["StressRegion"][];
+            /** Error */
+            error?: string | null;
+            /**
+             * Preexisting Isolated Points
+             * @default 0
+             */
+            preexisting_isolated_points: number;
+            /**
+             * Newly Isolated Points
+             * @default 0
+             */
+            newly_isolated_points: number;
+        };
+        /** StressMarketChange */
+        StressMarketChange: {
+            /** Market */
+            market: string;
+            /** Before Hours */
+            before_hours: number;
+            /** After Hours */
+            after_hours: number | null;
+        };
+        /** StressPoint */
+        StressPoint: {
+            /** Id */
+            id: string;
+            /** Name */
+            name: string;
+            /** Region */
+            region: string;
+            /** Population */
+            population: number;
+            /** Node */
+            node: number;
+            /** Snap Km */
+            snap_km: number;
+            /** Longitude */
+            longitude: number;
+            /** Latitude */
+            latitude: number;
+        };
+        /** StressRegion */
+        StressRegion: {
+            /** Name */
+            name: string;
+            /** Settlements */
+            settlements: number;
+            /** Population */
+            population: number;
+            /** Isolated Population */
+            isolated_population: number;
+        };
+        /** StressRoute */
+        StressRoute: {
+            /** Status */
+            status: string;
+            /** Hours */
+            hours: number | null;
+            /** Km */
+            km: number | null;
+            /** Coordinates */
+            coordinates: number[][];
+        };
+        /** StressRouteComparison */
+        StressRouteComparison: {
+            origin: components["schemas"]["StressPoint"];
+            destination: components["schemas"]["StressPoint"];
+            before: components["schemas"]["StressRoute"];
+            after: components["schemas"]["StressRoute"];
+        };
+        /** StressRouteInput */
+        StressRouteInput: {
+            /** Origin */
+            origin: string;
+            /** Destination */
+            destination: string;
+        };
+        /** StressSummary */
+        StressSummary: {
+            /** Id */
+            id: string;
+            /** Version */
+            version: string;
+            /** Status */
+            status: string;
+            /** Stage */
+            stage: string;
+            /** Way Count */
+            way_count: number;
+            /** Parent Id */
+            parent_id: string | null;
+            /** Region */
+            region: string;
+            totals: components["schemas"]["StressTotals"] | null;
+            /** Snapshot Points */
+            snapshot_points: number;
+            /** Unbound Points */
+            unbound_points: number;
+            /** Preexisting Isolated Points */
+            preexisting_isolated_points: number;
+            /** Completed */
+            completed: number;
+            /** Total */
+            total: number;
+            consequences?: components["schemas"]["RegionalConsequences"] | null;
+        };
+        /** StressTotals */
+        StressTotals: {
+            /** Affected Points */
+            affected_points: number;
+            /** Exposed Population */
+            exposed_population: number;
+            /** Isolated Points */
+            isolated_points: number;
+            /** Isolated Population */
+            isolated_population: number;
+            /** Max Delay Minutes */
+            max_delay_minutes: number;
+            /** Affected Regions */
+            affected_regions: number;
+        };
         /** TransportLink */
         TransportLink: {
             /** Network */
@@ -1790,6 +2490,17 @@ export interface components {
             hours: number;
             /** Region */
             region?: string | null;
+        };
+        /** TravelChange */
+        TravelChange: {
+            /** Origin Point Id */
+            origin_point_id: string;
+            /** Market City */
+            market_city: string;
+            /** Before Hours */
+            before_hours: number | null;
+            /** After Hours */
+            after_hours: number | null;
         };
         /** TrunkLinkRequest */
         TrunkLinkRequest: {
@@ -1994,7 +2705,7 @@ export interface operations {
                     "application/json": components["schemas"]["SearchResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2122,7 +2833,7 @@ export interface operations {
                     "application/json": components["schemas"]["RegionSummaryResponse"][];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2174,7 +2885,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2227,7 +2938,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2282,7 +2993,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2360,7 +3071,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2431,7 +3142,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2469,7 +3180,7 @@ export interface operations {
                     "application/json": components["schemas"]["ScenarioCatalogResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2520,7 +3231,7 @@ export interface operations {
                     "application/json": components["schemas"]["ErrorResponse"];
                 };
             };
-            /** @description Unprocessable Entity */
+            /** @description Unprocessable Content */
             422: {
                 headers: {
                     [name: string]: unknown;
@@ -2592,6 +3303,39 @@ export interface operations {
             };
         };
     };
+    calculation_tables_api_v1_chat_calculation_tables_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["CalculationReviewInput"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ChatTable"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     stream_chat_api_v1_chat_post: {
         parameters: {
             query?: never;
@@ -2622,6 +3366,59 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    stream_chat_api_v1_chat_calculation_review_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ChatInput"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ChatStreamEvent"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    markets_api_v1_road_graph_markets_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": string[];
                 };
             };
         };
@@ -3071,6 +3868,259 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["AnalysisDetail"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    recent_api_v1_road_stress_tests_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StressJob"][];
+                };
+            };
+        };
+    };
+    submit_api_v1_road_stress_tests_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["StressInput"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StressJob"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_api_v1_road_stress_tests__job_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StressJob"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    cancel_api_v1_road_stress_tests__job_id__delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StressJob"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    summary_api_v1_road_stress_tests__job_id__summary_get: {
+        parameters: {
+            query?: {
+                region?: string;
+            };
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StressSummary"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    impacts_api_v1_road_stress_tests__job_id__impacts_get: {
+        parameters: {
+            query?: {
+                region?: string;
+                offset?: number;
+                limit?: number;
+                west?: number | null;
+                south?: number | null;
+                east?: number | null;
+                north?: number | null;
+            };
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StressImpact"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    geometry_api_v1_road_stress_tests__job_id__geometry_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RoadGeometry"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    route_api_v1_road_stress_tests__job_id__routes_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["StressRouteInput"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["StressRouteComparison"];
                 };
             };
             /** @description Validation Error */

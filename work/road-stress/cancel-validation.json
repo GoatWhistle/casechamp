@@ -1,0 +1,19 @@
+{
+  "id": "b6bb054565ff4bfe9b919b2e6e8f4023",
+  "version": "road-8033092fca2cf5fa",
+  "way_ids": [
+    4412349,
+    4412351
+  ],
+  "parent_id": null,
+  "status": "cancelled",
+  "stage": "cancelled",
+  "completed": 0,
+  "total": 180,
+  "points": 0,
+  "unbound_points": 0,
+  "regions": [],
+  "error": null,
+  "preexisting_isolated_points": 0,
+  "newly_isolated_points": 0
+}

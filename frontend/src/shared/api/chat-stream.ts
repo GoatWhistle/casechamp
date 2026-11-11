@@ -2,7 +2,9 @@ import { isChatAnalysis } from "./chat-analysis"
 import { isChatChart, isChatTable } from "./chat-artifacts"
 import { isChatCalculation } from "./chat-calculation"
 import { isChatMapCommand } from "./chat-map"
+import { isChatScenario } from "./chat-scenario"
 import { ApiError, api, codeOf, SERVER_UNAVAILABLE, UNEXPECTED } from "./client"
+import { isStressJob, isStressRoute } from "./road-stress"
 import type { components } from "./schema.gen"
 
 export type ChatInput = components["schemas"]["ChatInput"]
@@ -10,11 +12,13 @@ export type ChatContext = components["schemas"]["ChatContextInput"]
 export type ChatStreamEvent = components["schemas"]["ChatStreamEvent"]
 
 const ARTIFACTS: Record<string, (value: unknown) => boolean> = {
+  stress_test: isStressJob,
   table: isChatTable,
   chart: isChatChart,
   map: isChatMapCommand,
   calculation: isChatCalculation,
   analysis: isChatAnalysis,
+  scenario: isChatScenario,
 }
 
 function httpErrorCode(status: number, body: unknown): string {
@@ -41,6 +45,8 @@ function parseEvent(line: string): ChatStreamEvent {
       "map",
       "calculation",
       "analysis",
+      "stress_test",
+      "scenario",
     ].includes(String(value.type)) ||
     !("text" in value) ||
     typeof value.text !== "string" ||
@@ -52,6 +58,8 @@ function parseEvent(line: string): ChatStreamEvent {
   const validate = ARTIFACTS[String(value.type)]
   if (validate && !validate(artifact[String(value.type)]))
     throw new ApiError(502, "chat_stream_error")
+  if (artifact.stress_route != null && !isStressRoute(artifact.stress_route))
+    throw new ApiError(502, "chat_stream_error")
   return value as ChatStreamEvent
 }
 
@@ -60,7 +68,8 @@ export async function streamChat(
   signal: AbortSignal,
   onEvent: (event: ChatStreamEvent) => void,
 ): Promise<void> {
-  const { data, response, error } = await api.POST("/api/v1/chat", {
+  const endpoint = body.calculation_review ? "/api/v1/chat/calculation-review" : "/api/v1/chat"
+  const { data, response, error } = await api.POST(endpoint, {
     body,
     signal,
     parseAs: "stream",

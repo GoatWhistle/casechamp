@@ -1,0 +1,66 @@
+.shifts {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.heading {
+  composes: mutedLabel from "../../shared/styles/compose.module.css";
+}
+
+.list {
+  composes: bareList from "../../shared/styles/compose.module.css";
+  display: grid;
+  gap: var(--space-12);
+}
+
+.row {
+  --tone: var(--text-muted);
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  row-gap: var(--space-4);
+  column-gap: var(--space-12);
+  font-size: var(--font-size-body-sm);
+  animation: var(--motion-rise-in);
+  animation-delay: calc(var(--i) * var(--stagger));
+}
+
+.row[data-tone="gain"] {
+  --tone: var(--data-gain-3);
+}
+
+.row[data-tone="loss"] {
+  --tone: var(--data-loss-3);
+}
+
+.place {
+  composes: truncate from "../../shared/styles/compose.module.css";
+  min-inline-size: 0;
+}
+
+.value {
+  color: var(--tone);
+  font-weight: var(--weight-medium);
+  font-variant-numeric: var(--font-numeric);
+}
+
+.bar {
+  composes: meterBar from "../../shared/styles/compose.module.css";
+  grid-column: 1 / -1;
+  block-size: var(--space-4);
+  background-color: var(--tone);
+  transition: transform var(--dur-panel) var(--ease-out);
+  transition-delay: calc(var(--i) * var(--stagger));
+}
+
+@starting-style {
+  .bar {
+    transform: scaleX(0);
+  }
+}
+
+.more {
+  justify-self: start;
+  margin-inline-start: calc(var(--space-8) * -1);
+}

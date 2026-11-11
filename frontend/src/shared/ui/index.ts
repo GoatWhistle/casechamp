@@ -13,12 +13,17 @@ export {
   type SortValue,
   type TableSort,
 } from "./data-display/data-table/data-table"
+export { type FactItem, FactList, type FactListProps } from "./data-display/fact-list/fact-list"
 export {
   PairedBars,
   type PairedBarsProps,
   type PairedBarsRow,
 } from "./data-display/paired-bars/paired-bars"
-export { RankStrip, type RankStripProps } from "./data-display/rank-strip/rank-strip"
+export {
+  RankStrip,
+  type RankStripMark,
+  type RankStripProps,
+} from "./data-display/rank-strip/rank-strip"
 export {
   Stat,
   type StatDelta,
@@ -59,6 +64,8 @@ export {
   type ChipGroupProps,
   type ChipOption,
   type ChipProps,
+  RemovableChip,
+  type RemovableChipProps,
 } from "./forms/chip/chip"
 export {
   Combobox,
@@ -67,24 +74,33 @@ export {
   type ComboboxProps,
 } from "./forms/combobox/combobox"
 export { NumberField, type NumberFieldProps } from "./forms/number-field/number-field"
+export { RowButton, type RowButtonProps } from "./forms/row-button/row-button"
 export {
   Segmented,
   type SegmentedDisplay,
   type SegmentedOption,
   type SegmentedProps,
 } from "./forms/segmented/segmented"
-export { Select, type SelectOption, type SelectProps } from "./forms/select/select"
+export {
+  Select,
+  type SelectOption,
+  type SelectProps,
+  type SelectVariant,
+} from "./forms/select/select"
 export { Switch, type SwitchProps } from "./forms/switch/switch"
 export { TextField, type TextFieldProps, type TextFieldType } from "./forms/text-field/text-field"
 export { Card, type CardProps } from "./layout/card/card"
 export { Disclosure } from "./layout/disclosure/disclosure"
 export { PageHeader, type PageHeaderProps } from "./layout/page-header/page-header"
+export { PanelResizer, type PanelResizerProps } from "./layout/panel-resizer/panel-resizer"
+export { PanelView, type PanelViewProps } from "./layout/panel-view/panel-view"
 export {
   ScrollArea,
   type ScrollAreaProps,
   type ScrollOrientation,
 } from "./layout/scroll-area/scroll-area"
 export { type TabItem, Tabs, type TabsProps } from "./navigation/tabs/tabs"
+export { ViewHeader, type ViewHeaderProps } from "./navigation/view-header/view-header"
 export { CloseButton, type CloseButtonProps } from "./overlays/close-button/close-button"
 export { Dialog, type DialogProps } from "./overlays/dialog/dialog"
 export { HelpTip, type HelpTipProps } from "./overlays/help-tip/help-tip"

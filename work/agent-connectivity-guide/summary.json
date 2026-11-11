@@ -1,0 +1,106 @@
+{
+  "places": [
+    {
+      "id": "07528000101",
+      "name": "село Кочубеевское",
+      "region": "Ставропольский край"
+    },
+    {
+      "id": "07724000001",
+      "name": "Невинномысск",
+      "region": "Ставропольский край"
+    }
+  ],
+  "mode": "all_pairs",
+  "center_id": null,
+  "pairs": [
+    {
+      "origin": {
+        "id": "07528000101",
+        "name": "село Кочубеевское",
+        "region": "Ставропольский край"
+      },
+      "destination": {
+        "id": "07724000001",
+        "name": "Невинномысск",
+        "region": "Ставропольский край"
+      },
+      "before": {
+        "status": "reachable",
+        "hours": 0.3304901520721803
+      },
+      "after": {
+        "status": "reachable",
+        "hours": 0.41269392504056734
+      },
+      "score_before": 89.1777017034285,
+      "score_after": 86.67290934871696,
+      "delta": -2.5047923547115403,
+      "traffic": {
+        "source_capacity_pcu_h": 3600.0,
+        "displaced_flow_pcu_h": 1800.0,
+        "assigned_flow_pcu_h": 1799.9999999999998,
+        "unserved_flow_pcu_h": 0,
+        "routes": [
+          {
+            "route": {
+              "free_hours": 0.5246669575863052,
+              "capacity_pcu_h": 1800.0,
+              "way_count": 41,
+              "assumed_lane_way_count": 18
+            },
+            "flow_pcu_h": 1538.1534338141778,
+            "background_pcu_h": 900.0,
+            "demand_capacity_ratio": 1.354529685452321,
+            "mean_hours": 0.7750653752240307,
+            "queue_at_end_pcu": 638.1534338141778,
+            "mean_queue_hours": 0.1772648427261605
+          },
+          {
+            "route": {
+              "free_hours": 0.7577721488851239,
+              "capacity_pcu_h": 1800.0,
+              "way_count": 67,
+              "assumed_lane_way_count": 27
+            },
+            "flow_pcu_h": 261.84656618582204,
+            "background_pcu_h": 900.0,
+            "demand_capacity_ratio": 0.6454703145476789,
+            "mean_hours": 0.7750653752240309,
+            "queue_at_end_pcu": 0.0,
+            "mean_queue_hours": 0.0
+          }
+        ],
+        "mean_detour_hours": 0.7750653752240307,
+        "queue_at_end_pcu": 638.1534338141778,
+        "method": "edge_disjoint_detours_fluid_queue_v1",
+        "scope": "independent_pair_representative_direction_not_regional_OD",
+        "candidate_limit": 5,
+        "corridor_before_hours": 0.027677668186879598,
+        "source_way_count": 1,
+        "assumed_source_lane_way_count": 0
+      },
+      "time_loss_pcu_hours": 1345.297872666872
+    }
+  ],
+  "score_before": 89.1777017034285,
+  "score_after": 86.67290934871696,
+  "delta": -2.5047923547115403,
+  "reachable_before": 1,
+  "reachable_after": 1,
+  "disconnected_pairs": 0,
+  "unbound_pairs": 0,
+  "graph_version": "road-8033092fca2cf5fa",
+  "model_version": "selected-settlements-diversion-v1",
+  "half_life_hours": 2,
+  "network": "baseline_roads_undirected",
+  "calculation_id": "connectivity-7fbb4413ec4c4e96aa9ec3cc9765b3b5",
+  "calculated_at": "2026-11-11T14:19:30.911900+00:00",
+  "traffic_assumptions": {
+    "utilization": 0.5,
+    "duration_hours": 1.0,
+    "capacity_per_lane_pcu_h": 1800.0
+  },
+  "detail": "summary",
+  "closed_way_count": 2
+}

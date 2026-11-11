@@ -1,0 +1,361 @@
+{
+  "date": "2026-11-11",
+  "sample": {
+    "passenger_pairs": 2,
+    "freight_flows": 1,
+    "scenarios": 3
+  },
+  "qualification": "Real graph travel times; all traffic, monetary rates and project costs are synthetic UI test assumptions. This is implementation validation, not a forecast.",
+  "independent_check": "Recomputed annual benefits, NPV and BCR using a closed-form annuity factor; all three scenarios agree to relative tolerance 1e-10.",
+  "job": {
+    "id": "05e9b2918ee342e1aa9869601458484e",
+    "region_id": "18000000",
+    "region": "Волгоградская область",
+    "scenario": "road",
+    "changes": [],
+    "status": "completed",
+    "completed": 5,
+    "total": 5,
+    "version": "data-20261107",
+    "result": {
+      "before": 93.79380288317311,
+      "after": 94.10708574558396,
+      "delta": 0.31328286241084413,
+      "relative_percent": 0.33401232574081785,
+      "population": 2500781,
+      "settlements": 1494,
+      "changed_edges": 2,
+      "normalization": 7897244.511701048,
+      "elapsed_seconds": 0.023758457973599434,
+      "affected_settlements": 1275,
+      "money": null,
+      "routing_method": "single_edge_delta",
+      "settlement_effects": [
+        {
+          "point_id": "18710000001",
+          "before": 121.17161065598349,
+          "after": 122.35372105647522,
+          "delta": 1.1821104004917402
+        },
+        {
+          "point_id": "18651408111",
+          "before": 103.23653912824413,
+          "after": 104.1132001752964,
+          "delta": 0.8766610470522668
+        },
+        {
+          "point_id": "18651404106",
+          "before": 114.96037295010545,
+          "after": 115.80015603592895,
+          "delta": 0.8397830858234945
+        },
+        {
+          "point_id": "18651408101",
+          "before": 105.17966414294563,
+          "after": 105.91529425366639,
+          "delta": 0.7356301107207633
+        },
+        {
+          "point_id": "18651408106",
+          "before": 104.14853465656589,
+          "after": 104.87628082923683,
+          "delta": 0.727746172670956
+        },
+        {
+          "point_id": "18651432101",
+          "before": 98.93628730850003,
+          "after": 99.62676232397175,
+          "delta": 0.6904750154717111
+        },
+        {
+          "point_id": "18651432106",
+          "before": 97.55219933846706,
+          "after": 98.23212158056232,
+          "delta": 0.6799222420952522
+        },
+        {
+          "point_id": "18630422111",
+          "before": 86.33134192086429,
+          "after": 86.9790209871129,
+          "delta": 0.6476790662486123
+        },
+        {
+          "point_id": "18651420116",
+          "before": 88.0100941755204,
+          "after": 88.61301364949257,
+          "delta": 0.602919473972181
+        },
+        {
+          "point_id": "18604424101",
+          "before": 85.09244989226505,
+          "after": 85.68263082360035,
+          "delta": 0.5901809313353065
+        },
+        {
+          "point_id": "18651420111",
+          "before": 85.60524436382632,
+          "after": 86.1823252530786,
+          "delta": 0.5770808892522851
+        },
+        {
+          "point_id": "18604427101",
+          "before": 82.01121111702483,
+          "after": 82.5784192918808,
+          "delta": 0.5672081748559824
+        },
+        {
+          "point_id": "18651420101",
+          "before": 84.14900721777902,
+          "after": 84.71524627510207,
+          "delta": 0.5662390573230619
+        },
+        {
+          "point_id": "18604420101",
+          "before": 78.41866675691841,
+          "after": 78.95878545764695,
+          "delta": 0.540118700728549
+        },
+        {
+          "point_id": "18651420106",
+          "before": 79.5515737760478,
+          "after": 80.08656390272111,
+          "delta": 0.5349901266733024
+        },
+        {
+          "point_id": "18630420101",
+          "before": 77.15989122952861,
+          "after": 77.6789739120515,
+          "delta": 0.5190826825228922
+        },
+        {
+          "point_id": "18604410101",
+          "before": 74.85932444210174,
+          "after": 75.37750674571568,
+          "delta": 0.5181823036139301
+        },
+        {
+          "point_id": "18604408111",
+          "before": 74.31764478285166,
+          "after": 74.8272466860851,
+          "delta": 0.5096019032334457
+        },
+        {
+          "point_id": "18604408106",
+          "before": 71.82034280945938,
+          "after": 72.31110432469475,
+          "delta": 0.49076151523538075
+        },
+        {
+          "point_id": "18630432106",
+          "before": 72.22950472019082,
+          "after": 72.71508904198768,
+          "delta": 0.48558432179685485
+        },
+        {
+          "point_id": "18604410106",
+          "before": 70.03324986633083,
+          "after": 70.5180255063138,
+          "delta": 0.4847756399829655
+        },
+        {
+          "point_id": "18604408101",
+          "before": 69.61676249878637,
+          "after": 70.09073808181604,
+          "delta": 0.4739755830296695
+        },
+        {
+          "point_id": "18604411106",
+          "before": 67.92490455476155,
+          "after": 68.38434026210652,
+          "delta": 0.45943570734496536
+        },
+        {
+          "point_id": "18630426101",
+          "before": 66.7132419079903,
+          "after": 67.16206276879338,
+          "delta": 0.4488208608030828
+        },
+        {
+          "point_id": "18604411101",
+          "before": 66.20812167298045,
+          "after": 66.65584959714919,
+          "delta": 0.4477279241687403
+        },
+        {
+          "point_id": "18604436101",
+          "before": 63.630001610127984,
+          "after": 64.06631755998504,
+          "delta": 0.43631594985704497
+        },
+        {
+          "point_id": "18604151111",
+          "before": 61.934647239319034,
+          "after": 62.34920796268848,
+          "delta": 0.41456072336944827
+        },
+        {
+          "point_id": "18604151051",
+          "before": 61.693202975379705,
+          "after": 62.10533957978793,
+          "delta": 0.4121366044082244
+        },
+        {
+          "point_id": "18604432101",
+          "before": 60.576333955991764,
+          "after": 60.98788578935716,
+          "delta": 0.41155183336539775
+        },
+        {
+          "point_id": "18604151106",
+          "before": 60.691325353302524,
+          "after": 61.09637803770793,
+          "delta": 0.4050526844054022
+        }
+      ]
+    },
+    "error": null,
+    "addition": {
+      "source_node": 1765878,
+      "target_node": 285823,
+      "travel_hours": 0.2,
+      "coordinates": [
+        [
+          44.7460496,
+          48.7982953
+        ],
+        [
+          44.5169243,
+          48.7073248
+        ]
+      ]
+    },
+    "money_assumptions": null,
+    "appraisal_assumptions": {
+      "passengers": [
+        {
+          "origin_point_id": "18710000001",
+          "market_city": "Волгоград",
+          "trips_per_year": 100000.0,
+          "rub_per_hour": 300.0,
+          "source": "Проверка интерфейса: условные поток и ставка, 2026",
+          "basis": "assumed",
+          "origin_name": "г. Волжский"
+        },
+        {
+          "origin_point_id": "18651107001",
+          "market_city": "Волгоград",
+          "trips_per_year": 20000.0,
+          "rub_per_hour": 200.0,
+          "source": "Проверка интерфейса: условные поток и ставка, 2026",
+          "basis": "assumed",
+          "origin_name": "г. Краснослободск"
+        }
+      ],
+      "scenarios": [
+        {
+          "name": "low",
+          "demand_factor": 0.5,
+          "value_factor": 0.8
+        },
+        {
+          "name": "base",
+          "demand_factor": 1.0,
+          "value_factor": 1.0
+        },
+        {
+          "name": "high",
+          "demand_factor": 1.5,
+          "value_factor": 1.2
+        }
+      ],
+      "capital_cost_rub": 120000000.0,
+      "annual_operating_cost_rub": 3000000.0,
+      "horizon_years": 20,
+      "discount_rate": 0.05,
+      "price_year": 2026,
+      "cost_source": "Условная стоимость для сквозной проверки, не смета",
+      "freight": [
+        {
+          "name": "Условные грузовые рейсы для проверки",
+          "trips_per_year": 1000.0,
+          "before_hours": 2.0,
+          "after_hours": 1.5,
+          "before_km": 100.0,
+          "after_km": 80.0,
+          "rub_per_vehicle_hour": 500.0,
+          "rub_per_km": 15.0,
+          "source": "Проверка: заданные грузовые время, пробег и затраты",
+          "basis": "assumed"
+        }
+      ]
+    },
+    "appraisal_result": {
+      "status": "calculated",
+      "travel": [
+        {
+          "origin_point_id": "18710000001",
+          "market_city": "Волгоград",
+          "before_hours": 0.4338982105255127,
+          "after_hours": 0.2037925124168396
+        },
+        {
+          "origin_point_id": "18651107001",
+          "market_city": "Волгоград",
+          "before_hours": 0.2114584743976593,
+          "after_hours": 0.2114584743976593
+        }
+      ],
+      "unresolved_passenger_flows": 0,
+      "evaluated_passenger_flows": 2,
+      "scenarios": [
+        {
+          "name": "low",
+          "annual_passenger_hours": 11505.284905433655,
+          "annual_passenger_rub": 2761268.377304077,
+          "annual_vehicle_hours": 250.0,
+          "annual_vehicle_km": 10000.0,
+          "annual_freight_rub": 220000.0,
+          "annual_gross_rub": 2981268.377304077,
+          "annual_net_rub": -18731.62269592285,
+          "present_benefits_rub": 37153193.60552625,
+          "present_costs_rub": 157386631.02761996,
+          "net_present_value_rub": -120233437.4220937,
+          "benefit_cost_ratio": 0.23606321174132128,
+          "discounted_payback_year": null
+        },
+        {
+          "name": "base",
+          "annual_passenger_hours": 23010.56981086731,
+          "annual_passenger_rub": 6903170.943260193,
+          "annual_vehicle_hours": 500.0,
+          "annual_vehicle_km": 20000.0,
+          "annual_freight_rub": 550000.0,
+          "annual_gross_rub": 7453170.943260193,
+          "annual_net_rub": 4453170.943260193,
+          "present_benefits_rub": 92882984.01381564,
+          "present_costs_rub": 157386631.02761996,
+          "net_present_value_rub": -64503647.01380432,
+          "benefit_cost_ratio": 0.5901580293533032,
+          "discounted_payback_year": null
+        },
+        {
+          "name": "high",
+          "annual_passenger_hours": 34515.854716300964,
+          "annual_passenger_rub": 12425707.697868347,
+          "annual_vehicle_hours": 750.0,
+          "annual_vehicle_km": 30000.0,
+          "annual_freight_rub": 990000.0,
+          "annual_gross_rub": 13415707.697868347,
+          "annual_net_rub": 10415707.697868347,
+          "present_benefits_rub": 167189371.22486815,
+          "present_costs_rub": 157386631.02761996,
+          "net_present_value_rub": 9802740.19724819,
+          "benefit_cost_ratio": 1.0622844528359456,
+          "discounted_payback_year": 18
+        }
+      ],
+      "method": "conditional_flow_appraisal_v1",
+      "scope": "supplied_flows_only"
+    }
+  }
+}

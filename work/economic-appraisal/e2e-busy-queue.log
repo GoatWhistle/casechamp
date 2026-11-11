@@ -1,0 +1,49 @@
+
+> app-frontend@0.1.0 e2e
+> playwright test economic-appraisal.spec.ts
+
+
+Running 1 test using 1 worker
+
+(node:78058) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 [chromium] › e2e/economic-appraisal.spec.ts:7:1 › documented multi-flow appraisal runs through the real graph and persists (3.5m)
+
+
+  1) [chromium] › e2e/economic-appraisal.spec.ts:7:1 › documented multi-flow appraisal runs through the real graph and persists 
+
+    Error: expect(locator).toBeEnabled() failed
+
+    Locator: getByRole('button', { name: 'Добавить связь и рассчитать' })
+    Expected: enabled
+    Timeout: 180000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeEnabled" getByRole('button', { name: 'Добавить связь и рассчитать' }) with timeout 180000ms
+      - waiting for getByRole('button', { name: 'Добавить связь и рассчитать' })
+        323 × locator resolved to <button disabled type="button" class="_button_1kcl2_1 _controlText_18xi0_6 _labelText_18xi0_1 _pressable_18xi0_25 _primary_1kcl2_28">…</button>
+            - unexpected value "disabled"
+
+
+      86 |   }
+      87 |   await page.getByLabel(g.connection.minutes).fill("12")
+    > 88 |   await expect(page.getByRole("button", { name: g.connection.calculate })).toBeEnabled({
+         |                                                                            ^
+      89 |     timeout: 180_000,
+      90 |   })
+      91 |   const response = page.waitForResponse(
+        at /Users/andreykuronskin/keys_champ/frontend/e2e/economic-appraisal.spec.ts:88:76
+
+    Error Context: test-results/economic-appraisal-documen-6bbd4-the-real-graph-and-persists-chromium/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/economic-appraisal-documen-6bbd4-the-real-graph-and-persists-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/economic-appraisal-documen-6bbd4-the-real-graph-and-persists-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › e2e/economic-appraisal.spec.ts:7:1 › documented multi-flow appraisal runs through the real graph and persists 

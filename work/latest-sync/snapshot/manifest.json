@@ -1,0 +1,1758 @@
+{
+  "created_at": "2026-11-10T20:13:55.178526+00:00",
+  "format": "ClickHouse Native, gzip",
+  "server_version": "25.6.13.41",
+  "release": "data-clickhouse-20261110",
+  "scope": "Six approved dataset databases plus plexus_accessibility.runs, results and frequencies. User calculation history and system databases excluded. plexus_refresh_graph is unfinished staging, not the active model.",
+  "tables": [
+    {
+      "table": "plexus_accessibility.frequencies",
+      "rows": 12,
+      "schema": "CREATE TABLE plexus_accessibility.frequencies (`run_id` String, `season` String, `mode` String, `source` String, `total` UInt32, `known` UInt32) ENGINE = MergeTree ORDER BY (run_id, season, mode, source) SETTINGS index_granularity = 8192",
+      "asset": "plexus_accessibility.frequencies.native.gz",
+      "bytes": 271,
+      "sha256": "26a7c5aff16990f22a703a96a774a83503a3ecc0567220238ed6015a25c589bd",
+      "staging": false,
+      "exported_at": "2026-11-10T21:00:36.656873+00:00",
+      "summary": {
+        "read_rows": "12",
+        "read_bytes": "1090",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "12",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "698375"
+      }
+    },
+    {
+      "table": "plexus_accessibility.results",
+      "rows": 492,
+      "schema": "CREATE TABLE plexus_accessibility.results (`run_id` String, `region_id` String, `season` String, `half_life` UInt8, `previous` Float64, `potential` Float64, `delta` Float64, `without_air` Float64, `without_rail` Float64, `without_water` Float64, `population` UInt64, `population_coverage` Float64) ENGINE = MergeTree ORDER BY (run_id, region_id, half_life, season) SETTINGS index_granularity = 8192",
+      "asset": "plexus_accessibility.results.native.gz",
+      "bytes": 20105,
+      "sha256": "d94d63fff956e03afa39df8e99694cd3788a880aac82fac5e7e87eb4cad3c34f",
+      "staging": false,
+      "exported_at": "2026-11-10T21:00:36.737154+00:00",
+      "summary": {
+        "read_rows": "492",
+        "read_bytes": "67896",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "492",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "865125"
+      }
+    },
+    {
+      "table": "plexus_accessibility.runs",
+      "rows": 1,
+      "schema": "CREATE TABLE plexus_accessibility.runs (`run_id` String, `created_at` String, `model_version` String, `source_model` String, `source_artifact` String, `graph_revision` String, `source_revision` String, `normalization` Float64, `normalization_kind` String, `regions` UInt16, `markets` UInt16, `point_count` UInt32, `frequency_status` String, `assumptions` Array(String)) ENGINE = MergeTree ORDER BY (created_at, run_id) SETTINGS index_granularity = 8192",
+      "asset": "plexus_accessibility.runs.native.gz",
+      "bytes": 729,
+      "sha256": "6a58ec04600814ae77d38dba20d5bb8f587acbbfd6a8a13703e8101c5d9e3036",
+      "staging": false,
+      "exported_at": "2026-11-10T21:00:41.920749+00:00",
+      "summary": {
+        "read_rows": "1",
+        "read_bytes": "976",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "1",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "1212917"
+      }
+    },
+    {
+      "table": "plexus_additional.company_settlement",
+      "rows": 1190422,
+      "schema": "CREATE TABLE plexus_additional.company_settlement (`firm_id` Nullable(Int64), `point_id` Nullable(String), `distance_km` Nullable(Float64)) ENGINE = MergeTree ORDER BY point_id SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.company_settlement.native.gz",
+      "bytes": 7501704,
+      "sha256": "992a7fdec384b828bfd197fbf498bcc4da9294c9235d9c5ca8a90bcab0e608bf",
+      "staging": false,
+      "exported_at": "2026-11-10T20:14:08.250301+00:00",
+      "summary": {
+        "read_rows": "49152",
+        "read_bytes": "1916928",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "1111953",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "8335625"
+      }
+    },
+    {
+      "table": "plexus_additional.dim_region",
+      "rows": 82,
+      "schema": "CREATE TABLE plexus_additional.dim_region (`id` Nullable(String), `name` Nullable(String), `population` Nullable(Int64)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.dim_region.native.gz",
+      "bytes": 1676,
+      "sha256": "1d35886d9f6941e2b80375373bf313959281b338e082c9f7323414e9a186e7e9",
+      "staging": false,
+      "exported_at": "2026-11-10T20:14:11.938637+00:00",
+      "summary": {
+        "read_rows": "82",
+        "read_bytes": "5981",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "82",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "3569042"
+      }
+    },
+    {
+      "table": "plexus_additional.dim_rfsd_region",
+      "rows": 82,
+      "schema": "CREATE TABLE plexus_additional.dim_rfsd_region (`source_region` Nullable(String), `region_id` Nullable(String)) ENGINE = MergeTree ORDER BY region_id SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.dim_rfsd_region.native.gz",
+      "bytes": 820,
+      "sha256": "1b32eb936633ee560117711f78b26e605cf60ae10f117d093e184558a20a9c5d",
+      "staging": false,
+      "exported_at": "2026-11-10T20:14:14.901543+00:00",
+      "summary": {
+        "read_rows": "82",
+        "read_bytes": "2990",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "82",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "11563459"
+      }
+    },
+    {
+      "table": "plexus_additional.dim_settlement",
+      "rows": 155412,
+      "schema": "CREATE TABLE plexus_additional.dim_settlement (`point_id` Nullable(String), `name` Nullable(String), `region_id` Nullable(String), `mun_upper` Nullable(String), `population` Nullable(Int64), `lat` Nullable(Float64), `lon` Nullable(Float64)) ENGINE = MergeTree ORDER BY (region_id, point_id) SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.dim_settlement.native.gz",
+      "bytes": 4060751,
+      "sha256": "dcb4bff82b562bcc1f938eae02bdb58e04b7db4e98cd30e0e3f22cd231732a16",
+      "staging": false,
+      "exported_at": "2026-11-10T20:14:21.568624+00:00",
+      "summary": {
+        "read_rows": "8192",
+        "read_bytes": "1452863",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "155412",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "17514542"
+      }
+    },
+    {
+      "table": "plexus_additional.fact_company",
+      "rows": 3143178,
+      "schema": "CREATE TABLE plexus_additional.fact_company (`firm_id` Nullable(Int64), `inn` Nullable(String), `source_region` Nullable(String), `region_id` Nullable(String), `okved_section` Nullable(String), `filed` Nullable(Float64), `eligible` Nullable(Float64), `imputed` Nullable(Float64), `outlier` Nullable(Float64), `geocoding_quality` Nullable(String), `lat` Nullable(Float64), `lon` Nullable(Float64), `creation_date` Nullable(String), `dissolution_date` Nullable(String), `revenue_rub` Nullable(Float64), `strict` Nullable(Bool), `fns_matched` Nullable(Bool), `income_rub` Nullable(Decimal(19, 2)), `expense_rub` Nullable(Decimal(19, 2))) ENGINE = MergeTree ORDER BY (region_id, inn) SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.fact_company.native.gz",
+      "bytes": 96129845,
+      "sha256": "a46b793b7b18406bfe9a37297b388462a980a26800c581472d96b57c42fc77ba",
+      "staging": false,
+      "exported_at": "2026-11-10T20:15:54.172760+00:00",
+      "summary": {
+        "read_rows": "16384",
+        "read_bytes": "3705934",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "1111953",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "46889500"
+      }
+    },
+    {
+      "table": "plexus_additional.fact_route_season",
+      "rows": 18,
+      "schema": "CREATE TABLE plexus_additional.fact_route_season (`source_file` Nullable(String), `pdf_page` Nullable(Int64), `report_date` Nullable(String), `season_end_year` Nullable(Int64), `district` Nullable(String), `route` Nullable(String), `road_km` Nullable(String), `opening_date` Nullable(String), `closure_date` Nullable(String), `weight_limit_tonnes` Nullable(Float64), `restriction_start_date` Nullable(String), `status` Nullable(String), `verification` Nullable(String), `route_id` Nullable(String), `region_id` Nullable(String), `elapsed_days` Nullable(Int64), `stop_ids` Nullable(String), `unresolved_stops` Nullable(String), `source_url` Nullable(String)) ENGINE = MergeTree ORDER BY region_id SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.fact_route_season.native.gz",
+      "bytes": 1498,
+      "sha256": "6bf219d19b985b1085e6a4688236198965b8ee4a81c5ac3b800dafbb65e3aca3",
+      "staging": false,
+      "exported_at": "2026-11-10T20:15:57.509540+00:00",
+      "summary": {
+        "read_rows": "18",
+        "read_bytes": "11547",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "18",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "5978667"
+      }
+    },
+    {
+      "table": "plexus_additional.mart_np_economy",
+      "rows": 155412,
+      "schema": "CREATE TABLE plexus_additional.mart_np_economy (`point_id` Nullable(String), `region_id` Nullable(String), `name` Nullable(String), `population` Nullable(Int64), `lat` Nullable(Float64), `lon` Nullable(Float64), `company_rows` Nullable(Int64), `revenue_rows` Nullable(Int64), `revenue_rub` Nullable(Float64), `market_weight_rub` Nullable(Float64), `fns_matched_rows` Nullable(Int64), `max_assignment_km` Nullable(Float64)) ENGINE = MergeTree ORDER BY (region_id, point_id) SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.mart_np_economy.native.gz",
+      "bytes": 5177580,
+      "sha256": "e2ffaf34c5662988bbcb6e3d621b8bedbddb0357aaa2af2022b0bbdbe99f658f",
+      "staging": false,
+      "exported_at": "2026-11-10T20:16:05.872337+00:00",
+      "summary": {
+        "read_rows": "8192",
+        "read_bytes": "1321823",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "155412",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "40639917"
+      }
+    },
+    {
+      "table": "plexus_additional.mart_region_economy",
+      "rows": 82,
+      "schema": "CREATE TABLE plexus_additional.mart_region_economy (`region_id` Nullable(String), `name` Nullable(String), `population` Nullable(Int64), `company_rows` Nullable(Int64), `revenue_rows` Nullable(Int64), `strict_rows` Nullable(Int64), `strict_revenue_rows` Nullable(Int64), `strict_revenue_rub` Nullable(Float64), `negative_revenue_rows` Nullable(Int64), `fns_matched_rows` Nullable(Int64), `strict_fns_income_rub` Nullable(Decimal(38, 2)), `strict_fns_rows` Nullable(Int64)) ENGINE = MergeTree ORDER BY region_id SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.mart_region_economy.native.gz",
+      "bytes": 4833,
+      "sha256": "21c2dd1bed51a2b8474f79b76f397b23c019e3dc3e006c3e85a80f1de600dca7",
+      "staging": false,
+      "exported_at": "2026-11-10T20:16:09.160809+00:00",
+      "summary": {
+        "read_rows": "82",
+        "read_bytes": "13279",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "82",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "3489750"
+      }
+    },
+    {
+      "table": "plexus_additional.mart_region_lights",
+      "rows": 164,
+      "schema": "CREATE TABLE plexus_additional.mart_region_lights (`region_id` Nullable(String), `year` Nullable(Int32), `points` Nullable(Int64), `valid_points` Nullable(Int64), `mean_raw` Nullable(Float64), `median_raw` Nullable(Float64), `zero_points` Nullable(Int64)) ENGINE = MergeTree ORDER BY region_id SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.mart_region_lights.native.gz",
+      "bytes": 2951,
+      "sha256": "19589bc3f769624ed5af203aa94195b79b986ddad862dc951078df96a92ed0c0",
+      "staging": false,
+      "exported_at": "2026-11-10T20:16:12.999305+00:00",
+      "summary": {
+        "read_rows": "164",
+        "read_bytes": "11152",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "164",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "13886375"
+      }
+    },
+    {
+      "table": "plexus_additional.mart_region_sector",
+      "rows": 1678,
+      "schema": "CREATE TABLE plexus_additional.mart_region_sector (`region_id` Nullable(String), `sector` Nullable(String), `company_rows` Nullable(Int64), `revenue_rows` Nullable(Int64), `strict_rows` Nullable(Int64), `strict_revenue_rows` Nullable(Int64), `strict_revenue_rub` Nullable(Float64)) ENGINE = MergeTree ORDER BY region_id SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.mart_region_sector.native.gz",
+      "bytes": 27775,
+      "sha256": "f99686798d58a9d3b7a097ae3a417a209e46abc73d66de6bd11c6062087295fa",
+      "staging": false,
+      "exported_at": "2026-11-10T20:16:16.108999+00:00",
+      "summary": {
+        "read_rows": "1678",
+        "read_bytes": "124508",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "1678",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "7221417"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_closure_events",
+      "rows": 30,
+      "schema": "CREATE TABLE plexus_additional.stg_closure_events (`source_id` Nullable(String), `source_host` Nullable(String), `region` Nullable(String), `scope` Nullable(String), `entity` Nullable(String), `state` Nullable(String), `event_date` Nullable(String), `value` Nullable(String), `unit` Nullable(String), `weight_limit_t` Nullable(String), `quality` Nullable(String), `note` Nullable(String), `anchor` Nullable(String), `published_at` Nullable(String), `source_url` Nullable(String), `source_sha256` Nullable(String), `source_path` Nullable(String)) ENGINE = MergeTree ORDER BY region SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_closure_events.native.gz",
+      "bytes": 3824,
+      "sha256": "2e28a06950ff02cf845bb236dd7c60cce7652c6e6f474715575c4dd4ad49520f",
+      "staging": false,
+      "exported_at": "2026-11-10T20:16:19.219937+00:00",
+      "summary": {
+        "read_rows": "30",
+        "read_bytes": "19065",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "30",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "7468792"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_fns",
+      "rows": 1809218,
+      "schema": "CREATE TABLE plexus_additional.stg_fns (`inn` Nullable(String), `organization_name` Nullable(String), `document_id` Nullable(String), `document_date` Nullable(String), `as_of_date` Nullable(String), `source_member` Nullable(String), `income_rub` Nullable(Decimal(19, 2)), `expense_rub` Nullable(Decimal(19, 2))) ENGINE = MergeTree ORDER BY inn SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_fns.native.gz",
+      "bytes": 104481444,
+      "sha256": "2fb6cc6f97c85f404666f7ce85ea3d527007dd4ad18683491c9cbd09a65830a6",
+      "staging": false,
+      "exported_at": "2026-11-10T20:19:35.272415+00:00",
+      "summary": {
+        "read_rows": "16384",
+        "read_bytes": "5586061",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "850317",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "13954750"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_kap_schedule",
+      "rows": 72,
+      "schema": "CREATE TABLE plexus_additional.stg_kap_schedule (`origin` Nullable(String), `destination` Nullable(String), `flight` Nullable(String), `departure_local` Nullable(String), `arrival_local` Nullable(String), `aircraft` Nullable(String), `weekdays_raw` Nullable(String), `validity_raw` Nullable(String), `season_start` Nullable(String), `season_end` Nullable(String), `source_table_index` Nullable(String), `source_row_index` Nullable(String), `source_url` Nullable(String), `status` Nullable(String)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_kap_schedule.native.gz",
+      "bytes": 1534,
+      "sha256": "2349f242ffc3a7ac58460e1dcac7fe928dace67226edaa8eff11d3bf8242fd71",
+      "staging": false,
+      "exported_at": "2026-11-10T20:19:38.761214+00:00",
+      "summary": {
+        "read_rows": "72",
+        "read_bytes": "27346",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "72",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "4361167"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_lights",
+      "rows": 310824,
+      "schema": "CREATE TABLE plexus_additional.stg_lights (`point_id` Nullable(String), `year` Nullable(Int32), `raw_value` Nullable(Int32), `status` Nullable(String)) ENGINE = MergeTree ORDER BY point_id SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_lights.native.gz",
+      "bytes": 943324,
+      "sha256": "a8849368ba3aefa68a963825bf4942636564b6b5401012c7c21c426b3a5b7785",
+      "staging": false,
+      "exported_at": "2026-11-10T20:19:42.927286+00:00",
+      "summary": {
+        "read_rows": "32768",
+        "read_bytes": "1507328",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "310824",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "20237708"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_northern_dashboard",
+      "rows": 3,
+      "schema": "CREATE TABLE plexus_additional.stg_northern_dashboard (`coverage` Nullable(String), `year` Nullable(String), `as_of` Nullable(String), `metric` Nullable(String), `actual_thousand_tonnes` Nullable(String), `plan_thousand_tonnes` Nullable(String), `status` Nullable(String), `source_file` Nullable(String), `note` Nullable(String)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_northern_dashboard.native.gz",
+      "bytes": 373,
+      "sha256": "aa5676168bf985c87815dcb5bab220fa54aa7f9d99fa76b9c441878433265005",
+      "staging": false,
+      "exported_at": "2026-11-10T20:19:46.031572+00:00",
+      "summary": {
+        "read_rows": "3",
+        "read_bytes": "784",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "3",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "3171333"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_northern_infrastructure",
+      "rows": 64,
+      "schema": "CREATE TABLE plexus_additional.stg_northern_infrastructure (`source_file` Nullable(String), `source_table_row` Nullable(String), `section` Nullable(String), `subsection` Nullable(String), `object_group` Nullable(String), `region` Nullable(String), `effective_revision` Nullable(String), `status` Nullable(String)) ENGINE = MergeTree ORDER BY region SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_northern_infrastructure.native.gz",
+      "bytes": 9179,
+      "sha256": "97970bcbf571d06cc153512d5ae65f673188ccac120bf201143a601d769e9d19",
+      "staging": false,
+      "exported_at": "2026-11-10T20:19:49.362755+00:00",
+      "summary": {
+        "read_rows": "64",
+        "read_bytes": "48819",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "64",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "3148792"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_northern_territories",
+      "rows": 20,
+      "schema": "CREATE TABLE plexus_additional.stg_northern_territories (`region` Nullable(String), `territory_clause` Nullable(String), `revision` Nullable(String), `source` Nullable(String), `status` Nullable(String)) ENGINE = MergeTree ORDER BY region SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_northern_territories.native.gz",
+      "bytes": 6016,
+      "sha256": "814efe5ada572e0fe60ca2a8abd7c45155761bca2af76bc0b40e62459cb048b3",
+      "staging": false,
+      "exported_at": "2026-11-10T20:19:52.625331+00:00",
+      "summary": {
+        "read_rows": "20",
+        "read_bytes": "20214",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "20",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "4269875"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_northern_volumes",
+      "rows": 10,
+      "schema": "CREATE TABLE plexus_additional.stg_northern_volumes (`source_file` Nullable(String), `publication_date` Nullable(String), `region` Nullable(String), `year` Nullable(String), `cargo` Nullable(String), `value` Nullable(String), `unit` Nullable(String), `qualifier` Nullable(String), `status` Nullable(String), `note` Nullable(String)) ENGINE = MergeTree ORDER BY region SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_northern_volumes.native.gz",
+      "bytes": 838,
+      "sha256": "95f1f85bb4d414168d82adb788c02e0c8a9016d468f181b65f9e8ac8cb4f16fc",
+      "staging": false,
+      "exported_at": "2026-11-10T20:19:55.974095+00:00",
+      "summary": {
+        "read_rows": "10",
+        "read_bytes": "3148",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "10",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "4412125"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_rfsd",
+      "rows": 3143178,
+      "schema": "CREATE TABLE plexus_additional.stg_rfsd (`firm_id` Nullable(Int64), `inn` Nullable(String), `source_region` Nullable(String), `region_id` Nullable(String), `okved_section` Nullable(String), `filed` Nullable(Float64), `eligible` Nullable(Float64), `imputed` Nullable(Float64), `outlier` Nullable(Float64), `geocoding_quality` Nullable(String), `lat` Nullable(Float64), `lon` Nullable(Float64), `creation_date` Nullable(String), `dissolution_date` Nullable(String), `revenue_rub` Nullable(Float64), `strict` Nullable(Bool)) ENGINE = MergeTree ORDER BY (region_id, inn) SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_rfsd.native.gz",
+      "bytes": 73454982,
+      "sha256": "aa91f78b060bd973ba196a75a1172902b8f10aae1c784813defd81adf972fea9",
+      "staging": false,
+      "exported_at": "2026-11-10T20:21:25.653139+00:00",
+      "summary": {
+        "read_rows": "16384",
+        "read_bytes": "3117226",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "1111953",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "71571750"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_river_schedule",
+      "rows": 4,
+      "schema": "CREATE TABLE plexus_additional.stg_river_schedule (`origin` Nullable(String), `destination` Nullable(String), `departure_local` Nullable(String), `arrival_local` Nullable(String), `weekdays` Nullable(String), `operating_periods` Nullable(String), `start_condition` Nullable(String), `route_roundtrip_km` Nullable(String), `between_stops_km` Nullable(String), `source_planned_trip_count` Nullable(String), `minimum_capacity_people` Nullable(String), `vehicle_description` Nullable(String), `status` Nullable(String), `source_url` Nullable(String), `pdf_page` Nullable(String), `printed_page` Nullable(String), `publication_date` Nullable(String)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_river_schedule.native.gz",
+      "bytes": 785,
+      "sha256": "058dd4305448d1fa74447cee227cc0506d8e41e4a7ee93d40e6d215b4f9fcfcb",
+      "staging": false,
+      "exported_at": "2026-11-10T20:21:28.811445+00:00",
+      "summary": {
+        "read_rows": "4",
+        "read_bytes": "2880",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "4",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "3900042"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_traffic_belovo",
+      "rows": 5560,
+      "schema": "CREATE TABLE plexus_additional.stg_traffic_belovo (`site_sequence` Nullable(String), `pdf_page` Nullable(String), `table` Nullable(String), `peak_period` Nullable(String), `vehicle_type` Nullable(String), `column_index` Nullable(String), `count_raw` Nullable(String), `unit` Nullable(String), `status` Nullable(String), `direction_mapping` Nullable(String), `missing_value_policy` Nullable(String)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_traffic_belovo.native.gz",
+      "bytes": 15996,
+      "sha256": "cc1a7fb84b29c3f01bec25ad01a0bbff5ff26bbe5f7597c48f23ab08ee15461c",
+      "staging": false,
+      "exported_at": "2026-11-10T20:21:32.155273+00:00",
+      "summary": {
+        "read_rows": "5560",
+        "read_bytes": "1853725",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "5560",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "4449917"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_traffic_nefteyugansk",
+      "rows": 55,
+      "schema": "CREATE TABLE plexus_additional.stg_traffic_nefteyugansk (`pdf_page` Nullable(String), `street` Nullable(String), `speed_kmh` Nullable(String), `intensity_pcu_per_hour` Nullable(String), `density_vehicles_per_km` Nullable(String), `capacity_pcu_per_hour` Nullable(String), `load_ratio` Nullable(String), `status` Nullable(String), `table` Nullable(String)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_traffic_nefteyugansk.native.gz",
+      "bytes": 1490,
+      "sha256": "691d117a3e41c6bff472573b3c015f804028fdc8ef2c6336eded83f683665871",
+      "staging": false,
+      "exported_at": "2026-11-10T20:21:35.092648+00:00",
+      "summary": {
+        "read_rows": "55",
+        "read_bytes": "11326",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "55",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "2546917"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_traffic_serov",
+      "rows": 15,
+      "schema": "CREATE TABLE plexus_additional.stg_traffic_serov (`site_id` Nullable(String), `location` Nullable(String), `intensity_pcu_per_hour` Nullable(String), `capacity_pcu_per_hour` Nullable(String), `density_reported_pcu` Nullable(String), `load_ratio` Nullable(String), `pdf_page` Nullable(String), `table` Nullable(String), `period` Nullable(String), `status` Nullable(String)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_traffic_serov.native.gz",
+      "bytes": 927,
+      "sha256": "91a6229c73ae191c0009091a972dd11899de7b9becf4f6e93dc7b45dae5b5e10",
+      "staging": false,
+      "exported_at": "2026-11-10T20:21:38.261511+00:00",
+      "summary": {
+        "read_rows": "15",
+        "read_bytes": "4127",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "15",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "2414708"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_ugra_crossings",
+      "rows": 366,
+      "schema": "CREATE TABLE plexus_additional.stg_ugra_crossings (`source_file` Nullable(String), `sheet` Nullable(String), `source_row` Nullable(String), `report_date` Nullable(String), `district` Nullable(String), `parent_route_number` Nullable(String), `parent_route` Nullable(String), `crossing` Nullable(String), `crossing_km` Nullable(String), `ice_cm` Nullable(String), `weight_limit_raw` Nullable(String), `opening_raw` Nullable(String), `restriction_raw` Nullable(String), `inheritance_policy` Nullable(String), `parent_route_opening_date` Nullable(String), `parent_route_closure_date_candidate` Nullable(String)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_ugra_crossings.native.gz",
+      "bytes": 6146,
+      "sha256": "30a4d1a63be6a059d8041908d757509bcd89a6440c95010bbfabc5721512d312",
+      "staging": false,
+      "exported_at": "2026-11-10T20:21:41.301174+00:00",
+      "summary": {
+        "read_rows": "366",
+        "read_bytes": "191253",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "366",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "2211917"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_ugra_district_closures",
+      "rows": 15,
+      "schema": "CREATE TABLE plexus_additional.stg_ugra_district_closures (`source_file` Nullable(String), `publication_date` Nullable(String), `season_end_year` Nullable(String), `district` Nullable(String), `effective_closure_date` Nullable(String), `latest_confirmed_closed_date` Nullable(String), `status` Nullable(String), `precision` Nullable(String)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_ugra_district_closures.native.gz",
+      "bytes": 568,
+      "sha256": "8161df2e297d99573cd728966840a93a136398ea722490533137069087f2c2eb",
+      "staging": false,
+      "exported_at": "2026-11-10T20:21:44.231532+00:00",
+      "summary": {
+        "read_rows": "15",
+        "read_bytes": "4223",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "15",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "1321209"
+      }
+    },
+    {
+      "table": "plexus_additional.stg_ugra_snapshots",
+      "rows": 342,
+      "schema": "CREATE TABLE plexus_additional.stg_ugra_snapshots (`source_file` Nullable(String), `sheet` Nullable(String), `source_row` Nullable(String), `report_date` Nullable(String), `district` Nullable(String), `route_number` Nullable(String), `route` Nullable(String), `road_km` Nullable(String), `crossing_km` Nullable(String), `readiness_percent` Nullable(String), `ice_cm` Nullable(String), `weight_limit_raw` Nullable(String), `condition_raw` Nullable(String), `opening_raw` Nullable(String), `opening_date` Nullable(String), `restriction_raw` Nullable(String), `closure_date_candidate` Nullable(String), `classification` Nullable(String), `date_policy` Nullable(String)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_additional.stg_ugra_snapshots.native.gz",
+      "bytes": 7412,
+      "sha256": "e03c789cfc4fdd6c47ddb82a546092b87209530b0a928830c0a98d891f0b55e2",
+      "staging": false,
+      "exported_at": "2026-11-10T20:21:47.472068+00:00",
+      "summary": {
+        "read_rows": "342",
+        "read_bytes": "233723",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "342",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "3157291"
+      }
+    },
+    {
+      "table": "plexus_atlas.atlas_airports",
+      "rows": 285,
+      "schema": "CREATE TABLE plexus_atlas.atlas_airports (`id` String, `name` String, `municipality` String, `iata` String, `latitude` Float64, `longitude` Float64, `scheduled` Bool, `kind` String, `ordinal` UInt32) ENGINE = MergeTree ORDER BY id SETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "asset": "plexus_atlas.atlas_airports.native.gz",
+      "bytes": 10959,
+      "sha256": "bed224957e170be1ad1853aac3adae879405076357a2cd8e19af9e939ac0320f",
+      "staging": false,
+      "exported_at": "2026-11-10T20:21:50.460998+00:00",
+      "summary": {
+        "read_rows": "285",
+        "read_bytes": "33060",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "285",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "852125"
+      }
+    },
+    {
+      "table": "plexus_atlas.atlas_boundaries",
+      "rows": 84,
+      "schema": "CREATE TABLE plexus_atlas.atlas_boundaries (`id` String, `name` String, `bounds` Tuple(Float64, Float64, Float64, Float64), `polygons` Array(Array(Array(Tuple(Float64, Float64)))), `ordinal` UInt32) ENGINE = MergeTree ORDER BY id SETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "asset": "plexus_atlas.atlas_boundaries.native.gz",
+      "bytes": 1142176,
+      "sha256": "f8bb1288062af753007aebc2bbcff7e7407e30f77c051075fde25a2e80d8e66d",
+      "staging": false,
+      "exported_at": "2026-11-10T20:21:54.631097+00:00",
+      "summary": {
+        "read_rows": "84",
+        "read_bytes": "1540132",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "84",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "2862416"
+      }
+    },
+    {
+      "table": "plexus_atlas.atlas_economy",
+      "rows": 82,
+      "schema": "CREATE TABLE plexus_atlas.atlas_economy (`region_id` String, `company_rows` Nullable(Int64), `strict_rows` Nullable(Int64), `strict_revenue_rub` Nullable(Float64), `fns_matched_rows` Nullable(Int64), `ordinal` UInt32) ENGINE = MergeTree ORDER BY region_id SETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "asset": "plexus_atlas.atlas_economy.native.gz",
+      "bytes": 1954,
+      "sha256": "a711ec55d33c1ea142a2e41a6d7664ef8119588976e213ccb864157935eaa1a7",
+      "staging": false,
+      "exported_at": "2026-11-10T20:21:57.781869+00:00",
+      "summary": {
+        "read_rows": "82",
+        "read_bytes": "4674",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "82",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "813708"
+      }
+    },
+    {
+      "table": "plexus_atlas.atlas_exported_indices",
+      "rows": 410,
+      "schema": "CREATE TABLE plexus_atlas.atlas_exported_indices (`region_id` String, `scenario` String, `hansen` Nullable(Float64), `covered_population` Nullable(Int64), `total_population` Nullable(Int64), `covered_settlements` Nullable(Int64), `total_settlements` Nullable(Int64), `model_version` Nullable(String), `artifact_version` Nullable(String), `hansen_1h` Nullable(Float64), `hansen_2h` Nullable(Float64), `hansen_4h` Nullable(Float64), `ordinal` UInt32) ENGINE = MergeTree ORDER BY (scenario, region_id) SETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "asset": "plexus_atlas.atlas_exported_indices.native.gz",
+      "bytes": 13092,
+      "sha256": "4c7f7dfd59ad160a0a3347c9a8561c433d1836328d412ec023a6f0f990c0eba9",
+      "staging": false,
+      "exported_at": "2026-11-10T20:22:00.561088+00:00",
+      "summary": {
+        "read_rows": "410",
+        "read_bytes": "87166",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "410",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "2275083"
+      }
+    },
+    {
+      "table": "plexus_atlas.atlas_indices",
+      "rows": 246,
+      "schema": "CREATE TABLE plexus_atlas.atlas_indices (`region_id` String, `scenario` String, `hansen` Nullable(Float64), `covered_population` Nullable(Int64), `total_population` Nullable(Int64), `covered_settlements` Nullable(Int64), `total_settlements` Nullable(Int64), `model_version` Nullable(String), `artifact_version` Nullable(String), `hansen_1h` Nullable(Float64), `hansen_2h` Nullable(Float64), `hansen_4h` Nullable(Float64), `ordinal` UInt32) ENGINE = MergeTree ORDER BY (scenario, region_id) SETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "asset": "plexus_atlas.atlas_indices.native.gz",
+      "bytes": 7772,
+      "sha256": "c62747873ff9df77ec46fdccd4e0e4570a60239d581efdbd3606aa754270579a",
+      "staging": false,
+      "exported_at": "2026-11-10T20:22:03.702769+00:00",
+      "summary": {
+        "read_rows": "246",
+        "read_bytes": "40180",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "246",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "895917"
+      }
+    },
+    {
+      "table": "plexus_atlas.atlas_links",
+      "rows": 46487,
+      "schema": "CREATE TABLE plexus_atlas.atlas_links (`id` String, `region_id` String, `mode` String, `season` Nullable(String), `from_id` String, `from_name` String, `to_id` String, `to_name` String, `km` Nullable(Float64), `freq_per_week` Nullable(Float64), `freq_note` Nullable(String), `vehicle` Nullable(String), `confidence` Nullable(String), `source_url` Nullable(String), `source_date` Nullable(String), `is_model` Bool, `ordinal` UInt32) ENGINE = MergeTree ORDER BY (region_id, mode, season, id) SETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "asset": "plexus_atlas.atlas_links.native.gz",
+      "bytes": 2594292,
+      "sha256": "d5ac53b4050f535dbdf9fe6dbb84e6d3cae456560e103926e4ac8c12d2f25fe3",
+      "staging": false,
+      "exported_at": "2026-11-10T20:22:09.102705+00:00",
+      "summary": {
+        "read_rows": "2048",
+        "read_bytes": "1584140",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "30000",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "3730583"
+      }
+    },
+    {
+      "table": "plexus_atlas.atlas_metadata",
+      "rows": 6,
+      "schema": "CREATE TABLE plexus_atlas.atlas_metadata (`key` String, `value` String, `ordinal` UInt32) ENGINE = MergeTree ORDER BY key SETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "asset": "plexus_atlas.atlas_metadata.native.gz",
+      "bytes": 503,
+      "sha256": "e7a5916c2aa7bb8d4e076d85989d12bee3ca68785caf005499de54f38f7e88b2",
+      "staging": false,
+      "exported_at": "2026-11-10T20:22:12.914342+00:00",
+      "summary": {
+        "read_rows": "6",
+        "read_bytes": "759",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "6",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "640292"
+      }
+    },
+    {
+      "table": "plexus_atlas.atlas_points",
+      "rows": 7682,
+      "schema": "CREATE TABLE plexus_atlas.atlas_points (`id` String, `name` String, `region_id` String, `lat` Float64, `lon` Float64, `x` Float64, `y` Float64, `ordinal` UInt32) ENGINE = MergeTree ORDER BY (region_id, id) SETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "asset": "plexus_atlas.atlas_points.native.gz",
+      "bytes": 261669,
+      "sha256": "154fc6a2628420ab4040d6a79c9b51f06d8d8065e04051f15ee1ad0f2e3e71cc",
+      "staging": false,
+      "exported_at": "2026-11-10T20:22:16.061572+00:00",
+      "summary": {
+        "read_rows": "5000",
+        "read_bytes": "548849",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "5000",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "2366584"
+      }
+    },
+    {
+      "table": "plexus_atlas.atlas_regions",
+      "rows": 82,
+      "schema": "CREATE TABLE plexus_atlas.atlas_regions (`id` String, `name` String, `settlements` Int64, `population` Int64, `ordinal` UInt32) ENGINE = MergeTree ORDER BY id SETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "asset": "plexus_atlas.atlas_regions.native.gz",
+      "bytes": 2086,
+      "sha256": "4ed354290dd40c272effb4654345bfb77343a3718310f7fea2e2afc869b768ec",
+      "staging": false,
+      "exported_at": "2026-11-10T20:22:19.152250+00:00",
+      "summary": {
+        "read_rows": "82",
+        "read_bytes": "6719",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "82",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "1200000"
+      }
+    },
+    {
+      "table": "plexus_atlas.atlas_settlements",
+      "rows": 155412,
+      "schema": "CREATE TABLE plexus_atlas.atlas_settlements (`id` String, `name` String, `region_id` String, `population` Nullable(Int64), `x` Nullable(Float64), `y` Nullable(Float64), `companies` Nullable(Int64), `revenue_rub` Nullable(Float64), `ordinal` UInt32, `name_key` String MATERIALIZED trimBoth(replaceRegexpAll(replaceAll(lowerUTF8(name), 'ё', 'е'), '[\\\\s\\\\p{Z}]+', ' ')), INDEX place_name name_key TYPE ngrambf_v1(3, 8192, 3, 0) GRANULARITY 1) ENGINE = MergeTree ORDER BY (region_id, id) SETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "asset": "plexus_atlas.atlas_settlements.native.gz",
+      "bytes": 3390177,
+      "sha256": "cfdb070ac395bf0c7c091cf93972a1a5e6f01570f4f91c6b50927179a7b28e4a",
+      "staging": false,
+      "exported_at": "2026-11-10T20:22:25.112384+00:00",
+      "summary": {
+        "read_rows": "27168",
+        "read_bytes": "3439688",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "85000",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "5104166"
+      }
+    },
+    {
+      "table": "plexus_atlas.atlas_shapes",
+      "rows": 84,
+      "schema": "CREATE TABLE plexus_atlas.atlas_shapes (`id` String, `name` String, `path` String, `path_low` Nullable(String), `ordinal` UInt32) ENGINE = MergeTree ORDER BY id SETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "asset": "plexus_atlas.atlas_shapes.native.gz",
+      "bytes": 468616,
+      "sha256": "e2a3c2532ebc2138346f9dda235a8c91b228d9505ce6d71eea68b194aa7ddff8",
+      "staging": false,
+      "exported_at": "2026-11-10T20:22:28.511602+00:00",
+      "summary": {
+        "read_rows": "84",
+        "read_bytes": "1370720",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "84",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "3671917"
+      }
+    },
+    {
+      "table": "plexus_atlas.atlas_sources",
+      "rows": 16,
+      "schema": "CREATE TABLE plexus_atlas.atlas_sources (`id` String, `title` String, `period` Nullable(String), `url` Nullable(String), `note` Nullable(String), `rows` Nullable(Int64), `ordinal` UInt32) ENGINE = MergeTree ORDER BY (id, ordinal) SETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "asset": "plexus_atlas.atlas_sources.native.gz",
+      "bytes": 2651,
+      "sha256": "512d7780bbc1b4e3168c8c3249e4f00a755e547f2a4afccc4d97476c8006b94f",
+      "staging": false,
+      "exported_at": "2026-11-10T20:22:31.501537+00:00",
+      "summary": {
+        "read_rows": "16",
+        "read_bytes": "5627",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "16",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "668959"
+      }
+    },
+    {
+      "table": "plexus_atlas.atlas_winter_roads",
+      "rows": 18,
+      "schema": "CREATE TABLE plexus_atlas.atlas_winter_roads (`district` Nullable(String), `route` Nullable(String), `road_km` Nullable(Float64), `opening_date` Nullable(String), `closure_date` Nullable(String), `weight_limit_tonnes` Nullable(Float64), `season_end_year` Nullable(Int64), `report_date` Nullable(String), `source_file` Nullable(String), `ordinal` UInt32) ENGINE = MergeTree ORDER BY ordinal SETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "asset": "plexus_atlas.atlas_winter_roads.native.gz",
+      "bytes": 880,
+      "sha256": "d28a8513fe443a10abedda64f1f8a2be50282f8a8ba5361ee75f7cb6bb24288b",
+      "staging": false,
+      "exported_at": "2026-11-10T20:22:34.821425+00:00",
+      "summary": {
+        "read_rows": "18",
+        "read_bytes": "4158",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "18",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "666542"
+      }
+    },
+    {
+      "table": "plexus_atlas.documents",
+      "rows": 95,
+      "schema": "CREATE TABLE plexus_atlas.documents (`path` String, `sha256` String, `body` String) ENGINE = MergeTree ORDER BY path SETTINGS index_granularity = 8192",
+      "asset": "plexus_atlas.documents.native.gz",
+      "bytes": 11099402,
+      "sha256": "9eefe55037c3faac777b5fcb63fa2135e849b9d55a7525b8624c3c42596abbb5",
+      "staging": false,
+      "exported_at": "2026-11-10T20:22:47.852418+00:00",
+      "summary": {
+        "read_rows": "2",
+        "read_bytes": "3783882",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "93",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "4823334"
+      }
+    },
+    {
+      "table": "plexus_atlas.links",
+      "rows": 46487,
+      "schema": "CREATE VIEW plexus_atlas.links (`source` String, `id` String, `record` String) AS SELECT path AS source, JSONExtractString(record, 'id') AS id, record FROM plexus_atlas.documents ARRAY JOIN JSONExtractArrayRaw(body, 'links') AS record WHERE path IN ('atlas.json', 'network-links.json')",
+      "asset": "plexus_atlas.links.native.gz",
+      "bytes": 3566933,
+      "sha256": "cc1f49d118bd58059ce813cb72f5597612dba747772111eb7e621d22c7f02290",
+      "staging": false,
+      "exported_at": "2026-11-10T20:22:55.503060+00:00",
+      "summary": {
+        "read_rows": "1",
+        "read_bytes": "12710677",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "2",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "68043375"
+      }
+    },
+    {
+      "table": "plexus_atlas.migrated_sources",
+      "rows": 124,
+      "schema": "CREATE TABLE plexus_atlas.migrated_sources (`path` String, `sha256` String, `bytes` UInt64) ENGINE = MergeTree ORDER BY path SETTINGS index_granularity = 8192",
+      "asset": "plexus_atlas.migrated_sources.native.gz",
+      "bytes": 6726,
+      "sha256": "f854d494d00a9e4194c12c9280e074064b7f98ece87902381e03e4051177f881",
+      "staging": false,
+      "exported_at": "2026-11-10T20:22:58.532325+00:00",
+      "summary": {
+        "read_rows": "124",
+        "read_bytes": "17731",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "124",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "3198708"
+      }
+    },
+    {
+      "table": "plexus_atlas.points",
+      "rows": 7682,
+      "schema": "CREATE VIEW plexus_atlas.points (`source` String, `id` String, `record` String) AS SELECT path AS source, JSONExtractString(record, 'id') AS id, record FROM plexus_atlas.documents ARRAY JOIN JSONExtractArrayRaw(body, 'points') AS record WHERE path IN ('atlas.json', 'network-links.json')",
+      "asset": "plexus_atlas.points.native.gz",
+      "bytes": 269318,
+      "sha256": "1fc7b43acdae3761e2bae303520b12291fd1766f0d9a37a2d0bdfb85984ece61",
+      "staging": false,
+      "exported_at": "2026-11-10T20:23:01.814490+00:00",
+      "summary": {
+        "read_rows": "1",
+        "read_bytes": "12710677",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "2",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "21326375"
+      }
+    },
+    {
+      "table": "plexus_atlas.regions",
+      "rows": 82,
+      "schema": "CREATE VIEW plexus_atlas.regions (`source` String, `id` String, `record` String) AS SELECT path AS source, JSONExtractString(record, 'id') AS id, record FROM plexus_atlas.documents ARRAY JOIN JSONExtractArrayRaw(body, 'regions') AS record WHERE path IN ('atlas.json', 'network-links.json')",
+      "asset": "plexus_atlas.regions.native.gz",
+      "bytes": 4842,
+      "sha256": "fa9efc7cb3979157a1f5a276b1cd9378c58e5aa3eea046bbe8b890b30279428d",
+      "staging": false,
+      "exported_at": "2026-11-10T20:23:05.152144+00:00",
+      "summary": {
+        "read_rows": "1",
+        "read_bytes": "12710677",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "2",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "18332042"
+      }
+    },
+    {
+      "table": "plexus_casechamp.idx_mo",
+      "rows": 7032,
+      "schema": "CREATE TABLE plexus_casechamp.idx_mo (`season` Nullable(String), `region` Nullable(String), `mun_upper` Nullable(String), `population` Nullable(Int128), `n_np` Nullable(Int64), `hansen_idx` Nullable(Float64), `remoteness_ca` Nullable(Float64), `aria` Nullable(Float64), `daily_access_pop` Nullable(Float64), `share_oecd_remote` Nullable(Float64), `share_city50k_over_1h` Nullable(Float64), `share_lancet_2h` Nullable(Float64), `rai` Nullable(Float64), `net_efficiency` Nullable(Float64), `share_aria_remote` Nullable(Float64), `pop_no_capital` Nullable(Int128)) ENGINE = MergeTree ORDER BY region SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.idx_mo.native.gz",
+      "bytes": 234801,
+      "sha256": "a0604b4b5e03d6d65e87a233c644da3bb2007a1ef24b0295b5cad02a493de239",
+      "staging": false,
+      "exported_at": "2026-11-10T20:23:08.393728+00:00",
+      "summary": {
+        "read_rows": "7032",
+        "read_bytes": "1859554",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "7032",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "6023417"
+      }
+    },
+    {
+      "table": "plexus_casechamp.idx_np",
+      "rows": 467241,
+      "schema": "CREATE TABLE plexus_casechamp.idx_np (`season` Nullable(String), `point_id` Nullable(String), `name` Nullable(String), `region` Nullable(String), `mun_upper` Nullable(String), `population` Nullable(Int32), `is_rural` Nullable(Bool), `is_dc` Nullable(Bool), `on_road` Nullable(Bool), `manual_only` Nullable(Bool), `no_all_season_road` Nullable(Bool), `hansen_1h` Nullable(Float64), `hansen_2h` Nullable(Float64), `hansen_4h` Nullable(Float64), `hansen_idx` Nullable(Float64), `harris` Nullable(Float64), `remoteness_ca` Nullable(Float64), `cum_pop_1h` Nullable(Float64), `cum_pop_2h` Nullable(Float64), `cum_pop_4h` Nullable(Float64), `t_city50k_road_h` Nullable(Float32), `t_city50k_best_h` Nullable(Float32), `oecd_remote` Nullable(Bool), `t_aria_a` Nullable(Float32), `t_aria_b` Nullable(Float32), `t_aria_c` Nullable(Float64), `t_aria_d` Nullable(Float64), `t_aria_e` Nullable(Float64), `aria` Nullable(Float64), `aria_class` Nullable(String), `t_district_center_h` Nullable(Float64), `lancet_2h` Nullable(Bool), `km_allseason_road` Nullable(Float64), `rai_2km` Nullable(Bool), `net_efficiency` Nullable(Float64), `t_capital_best_h` Nullable(Float64)) ENGINE = MergeTree ORDER BY (region, season, point_id) SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.idx_np.native.gz",
+      "bytes": 44919432,
+      "sha256": "8cb6d32d5ff59b17fefcbcee395ae420b41bddcd41dbf24c269e33dec973ba1b",
+      "staging": false,
+      "exported_at": "2026-11-10T20:23:52.555286+00:00",
+      "summary": {
+        "read_rows": "8192",
+        "read_bytes": "3286472",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "467241",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "63248500"
+      }
+    },
+    {
+      "table": "plexus_casechamp.idx_np_gap",
+      "rows": 155747,
+      "schema": "CREATE TABLE plexus_casechamp.idx_np_gap (`point_id` Nullable(String), `name` Nullable(String), `region` Nullable(String), `mun_upper` Nullable(String), `population` Nullable(Int32), `road` Nullable(Float64), `summer` Nullable(Float64), `winter` Nullable(Float64), `exposure_manual` Nullable(Float64), `seasonal_gap` Nullable(Float64), `better_season` Nullable(String)) ENGINE = MergeTree ORDER BY (region, point_id) SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.idx_np_gap.native.gz",
+      "bytes": 6301843,
+      "sha256": "6cabc6db91c26bf3d26ee80e924dc00b37b9b7892d422a56bd5216dd24d63c4b",
+      "staging": false,
+      "exported_at": "2026-11-10T20:24:01.364497+00:00",
+      "summary": {
+        "read_rows": "8192",
+        "read_bytes": "2006026",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "155747",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "14293166"
+      }
+    },
+    {
+      "table": "plexus_casechamp.idx_region",
+      "rows": 252,
+      "schema": "CREATE TABLE plexus_casechamp.idx_region (`season` Nullable(String), `region` Nullable(String), `population` Nullable(Int128), `n_np` Nullable(Int64), `hansen_idx` Nullable(Float64), `remoteness_ca` Nullable(Float64), `aria` Nullable(Float64), `daily_access_pop` Nullable(Float64), `share_oecd_remote` Nullable(Float64), `share_city50k_over_1h` Nullable(Float64), `share_lancet_2h` Nullable(Float64), `rai` Nullable(Float64), `net_efficiency` Nullable(Float64), `share_aria_remote` Nullable(Float64), `pop_no_capital` Nullable(Int128), `gini` Nullable(Float64), `palma` Nullable(Float64), `theil` Nullable(Float64), `access_poor_share` Nullable(Float64), `oecd_remote_region` Nullable(Bool)) ENGINE = MergeTree ORDER BY region SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.idx_region.native.gz",
+      "bytes": 16841,
+      "sha256": "da6e4421b2eeb8b694fa6756f0a90c25cd9039143d46ee6ecd0b7215019ad4d5",
+      "staging": false,
+      "exported_at": "2026-11-10T20:24:04.363829+00:00",
+      "summary": {
+        "read_rows": "252",
+        "read_bytes": "58824",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "252",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "5133208"
+      }
+    },
+    {
+      "table": "plexus_casechamp.idx_theil",
+      "rows": 3,
+      "schema": "CREATE TABLE plexus_casechamp.idx_theil (`season` Nullable(String), `theil` Nullable(Float64), `between_regions` Nullable(Float64), `within_regions` Nullable(Float64), `gini` Nullable(Float64), `palma` Nullable(Float64), `access_poor_share` Nullable(Float64)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.idx_theil.native.gz",
+      "bytes": 323,
+      "sha256": "cc7ec8dd0ff74b8b82cd8111dca421148d3677e4aa27f4bc8fc7ac48cfd8f8d1",
+      "staging": false,
+      "exported_at": "2026-11-10T20:24:07.612220+00:00",
+      "summary": {
+        "read_rows": "3",
+        "read_bytes": "208",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "3",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "1133542"
+      }
+    },
+    {
+      "table": "plexus_casechamp.manual_links",
+      "rows": 7,
+      "schema": "CREATE TABLE plexus_casechamp.manual_links (`from_id` Nullable(String), `to_id` Nullable(String), `from_name` Nullable(String), `to_name` Nullable(String), `mode` Nullable(String), `vehicle` Nullable(String), `km` Nullable(Float64), `freq_per_week` Nullable(Float64), `freq_note` Nullable(String), `season` Nullable(String), `confidence` Nullable(String), `source_url` Nullable(String), `source_date` Nullable(String)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.manual_links.native.gz",
+      "bytes": 1135,
+      "sha256": "fd9c47901ab481c7a5236631dcdeeb13b75ad80524199fe581a7b95818bd3ac9",
+      "staging": false,
+      "exported_at": "2026-11-10T20:24:11.340265+00:00",
+      "summary": {
+        "read_rows": "7",
+        "read_bytes": "2749",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "7",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "1391833"
+      }
+    },
+    {
+      "table": "plexus_casechamp.manual_links_ru",
+      "rows": 1225,
+      "schema": "CREATE TABLE plexus_casechamp.manual_links_ru (`season` Nullable(String), `region_code` Nullable(String), `from_id` Nullable(String), `to_id` Nullable(String), `mode` Nullable(String), `kind` Nullable(String), `km` Nullable(Float64), `travel_h` Nullable(Float64), `wait_h` Nullable(Float64), `h` Nullable(Float64), `freq_per_week` Nullable(Float64), `freq_assumed` Nullable(Bool), `confidence` Nullable(String), `source_url` Nullable(String)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.manual_links_ru.native.gz",
+      "bytes": 43600,
+      "sha256": "03b2434ec5e1d74bd38e9dece5528c25db7f8725d06d7e0e77ca01fc57179de8",
+      "staging": false,
+      "exported_at": "2026-11-10T20:24:14.404662+00:00",
+      "summary": {
+        "read_rows": "1225",
+        "read_bytes": "294110",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "1225",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "1824375"
+      }
+    },
+    {
+      "table": "plexus_casechamp.manual_remote",
+      "rows": 181,
+      "schema": "CREATE TABLE plexus_casechamp.manual_remote (`point_id` Nullable(String), `region_code` Nullable(String), `status` Nullable(String), `note` Nullable(String), `source_url` Nullable(String)) ENGINE = MergeTree ORDER BY point_id SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.manual_remote.native.gz",
+      "bytes": 8946,
+      "sha256": "a3536ab33aab3c6b17a4a4419f0750932c9fcce151680624db86dfeba655af46",
+      "staging": false,
+      "exported_at": "2026-11-10T20:24:17.541949+00:00",
+      "summary": {
+        "read_rows": "181",
+        "read_bytes": "94613",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "181",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "1489584"
+      }
+    },
+    {
+      "table": "plexus_casechamp.market_cities",
+      "rows": 180,
+      "schema": "CREATE TABLE plexus_casechamp.market_cities (`city` Nullable(String), `oktmo` Nullable(String), `region` Nullable(String), `is_capital` Nullable(Bool), `population` Nullable(Int64), `lat` Nullable(Float64), `lon` Nullable(Float64), `node` Nullable(Int64), `snap_h` Nullable(Float64)) ENGINE = MergeTree ORDER BY region SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.market_cities.native.gz",
+      "bytes": 9574,
+      "sha256": "1623fa39bcb2c200913c4627e700342d861745a6c490a3f066ff25dbdb11b180",
+      "staging": false,
+      "exported_at": "2026-11-10T20:24:20.472906+00:00",
+      "summary": {
+        "read_rows": "180",
+        "read_bytes": "25630",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "180",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "1496500"
+      }
+    },
+    {
+      "table": "plexus_casechamp.mart_mo",
+      "rows": 2336,
+      "schema": "CREATE TABLE plexus_casechamp.mart_mo (`oktmo` Nullable(String), `region` Nullable(String), `mo_name` Nullable(String), `population` Nullable(Int32), `n_settlements` Nullable(Int64), `n_small` Nullable(Int64), `pop_small` Nullable(Int128), `no_regular_transport_pct` Nullable(Float64), `no_regular_transport_year` Nullable(Int64), `roads_substandard_pct` Nullable(Float64), `roads_local_km` Nullable(Float64)) ENGINE = MergeTree ORDER BY region SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.mart_mo.native.gz",
+      "bytes": 81836,
+      "sha256": "5080eedb6df46357b3655d687b339dec25ed8b802b22d0ee84ff3af032489248",
+      "staging": false,
+      "exported_at": "2026-11-10T20:24:23.565424+00:00",
+      "summary": {
+        "read_rows": "2336",
+        "read_bytes": "490929",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "2336",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "3019792"
+      }
+    },
+    {
+      "table": "plexus_casechamp.mart_region",
+      "rows": 82,
+      "schema": "CREATE TABLE plexus_casechamp.mart_region (`region` Nullable(String), `population` Nullable(Int128), `pop_no_transport` Nullable(Float64), `roads_substandard_pct_w` Nullable(Float64), `n_settlements` Nullable(Int128), `n_small` Nullable(Int128), `pop_small` Nullable(Int128), `mo_with_data` Nullable(Int64), `mo_total` Nullable(Int64), `share_no_transport` Nullable(Float64), `share_small_np` Nullable(Float64), `roads_krub_2020` Nullable(Float64), `transport_krub_2020` Nullable(Float64), `total_krub_2020` Nullable(Float64), `roads_rub_per_capita_2020` Nullable(Float64), `capital` Nullable(String), `cap_road_links` Nullable(Int64), `cap_rail_links` Nullable(Int64), `cap_air_direct` Nullable(Int64)) ENGINE = MergeTree ORDER BY region SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.mart_region.native.gz",
+      "bytes": 8656,
+      "sha256": "dba5fba196c139e669722e11bf4d832b47603c9295945ed046d866a25b843ae9",
+      "staging": false,
+      "exported_at": "2026-11-10T20:24:26.535502+00:00",
+      "summary": {
+        "read_rows": "82",
+        "read_bytes": "21209",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "82",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "1685667"
+      }
+    },
+    {
+      "table": "plexus_casechamp.np_access",
+      "rows": 467241,
+      "schema": "CREATE TABLE plexus_casechamp.np_access (`season` Nullable(String), `point_id` Nullable(String), `name` Nullable(String), `region` Nullable(String), `mun_upper` Nullable(String), `population` Nullable(Int32), `is_dc` Nullable(Bool), `on_road` Nullable(Bool), `manual_only` Nullable(Bool), `snap_km` Nullable(Float64), `t_district_center_h` Nullable(Float64), `dc_is_own` Nullable(Bool), `t_capital_h` Nullable(Float64), `t_capital_best_h` Nullable(Float64), `nearest_city` Nullable(String), `t_nearest_city_h` Nullable(Float32), `t_centre_1k_h` Nullable(Float64), `t_centre_5k_h` Nullable(Float64), `t_centre_18k_h` Nullable(Float64), `no_all_season_road` Nullable(Bool)) ENGINE = MergeTree ORDER BY (region, point_id) SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.np_access.native.gz",
+      "bytes": 13547796,
+      "sha256": "bd2439297920433dd258afe85f0429d214233d06ff6286b12a6605d50b9e90cd",
+      "staging": false,
+      "exported_at": "2026-11-10T20:24:43.297630+00:00",
+      "summary": {
+        "read_rows": "8192",
+        "read_bytes": "2451296",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "467241",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "39170459"
+      }
+    },
+    {
+      "table": "plexus_casechamp.np_city_times",
+      "rows": 83845118,
+      "schema": "CREATE TABLE plexus_casechamp.np_city_times (`season` Nullable(String), `point_id` Nullable(String), `city` Nullable(String), `road_h` Nullable(Float32), `best_h` Nullable(Float32)) ENGINE = MergeTree ORDER BY (season, point_id, city) SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.np_city_times.native.gz",
+      "bytes": 611476376,
+      "sha256": "11a5178a610f06610989a9108a41888b50df54819b61df4c08da629e3cdd3d92",
+      "staging": false,
+      "exported_at": "2026-11-10T20:34:33.261433+00:00",
+      "summary": {
+        "read_rows": "24576",
+        "read_bytes": "1771240",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "32246637",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "15718917"
+      }
+    },
+    {
+      "table": "plexus_casechamp.od_multimodal",
+      "rows": 87024,
+      "schema": "CREATE TABLE plexus_casechamp.od_multimodal (`season` Nullable(String), `wait` Nullable(String), `from_id` Nullable(String), `to_id` Nullable(String), `hours` Nullable(Float64), `km` Nullable(Float64), `uses_air` Nullable(Bool), `uses_seasonal` Nullable(Bool)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.od_multimodal.native.gz",
+      "bytes": 1370770,
+      "sha256": "06f6e40a59d3783b5ddf26fecf4dc9e6f249bccaec58e62427c69f1af43e7c44",
+      "staging": false,
+      "exported_at": "2026-11-10T20:34:38.900143+00:00",
+      "summary": {
+        "read_rows": "40960",
+        "read_bytes": "3917628",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "87024",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "17749084"
+      }
+    },
+    {
+      "table": "plexus_casechamp.od_road",
+      "rows": 20592,
+      "schema": "CREATE TABLE plexus_casechamp.od_road (`from_id` Nullable(String), `to_id` Nullable(String), `road_h` Nullable(Float64), `road_km` Nullable(Float64)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.od_road.native.gz",
+      "bytes": 317427,
+      "sha256": "7f446bd7ac81a8ddb95dd71ec650c457c86ad39d204f75bf2d2a29cfdcb57ac2",
+      "staging": false,
+      "exported_at": "2026-11-10T20:34:42.229997+00:00",
+      "summary": {
+        "read_rows": "20592",
+        "read_bytes": "1236950",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "20592",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "10377250"
+      }
+    },
+    {
+      "table": "plexus_casechamp.road_ways",
+      "rows": 10872,
+      "schema": "CREATE TABLE plexus_casechamp.road_ways (`way_id` Nullable(Int64), `class` Nullable(String), `ref` Nullable(String), `name` Nullable(String), `surface` Nullable(String), `speed_kmh` Nullable(Float64), `length_km` Nullable(Float64), `is_bridge` Nullable(Bool), `is_ferry` Nullable(Bool), `is_seasonal` Nullable(Bool), `lat_mid` Nullable(Float64), `lon_mid` Nullable(Float64)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.road_ways.native.gz",
+      "bytes": 310915,
+      "sha256": "739f6d58e7eb2b10db4eb4907f7aff78c9ac99c52542e65ffe2a1780c38932ed",
+      "staging": false,
+      "exported_at": "2026-11-10T20:34:45.543710+00:00",
+      "summary": {
+        "read_rows": "10872",
+        "read_bytes": "1257089",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "10872",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "19774792"
+      }
+    },
+    {
+      "table": "plexus_casechamp.stg_bdmo",
+      "rows": 1212734,
+      "schema": "CREATE TABLE plexus_casechamp.stg_bdmo (`metric` Nullable(String), `region_name` Nullable(String), `municipality` Nullable(String), `mun_level` Nullable(String), `oktmo` Nullable(String), `year` Nullable(Int64), `value` Nullable(Float64)) ENGINE = MergeTree ORDER BY tuple() SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.stg_bdmo.native.gz",
+      "bytes": 7653751,
+      "sha256": "865c0bb2e600f32d9353ae185f3143fc96c9e7d73e215b0fb44abf586249b6a7",
+      "staging": false,
+      "exported_at": "2026-11-10T20:34:58.536706+00:00",
+      "summary": {
+        "read_rows": "16384",
+        "read_bytes": "4448795",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "1111953",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "22773916"
+      }
+    },
+    {
+      "table": "plexus_casechamp.stg_intercity",
+      "rows": 96660,
+      "schema": "CREATE TABLE plexus_casechamp.stg_intercity (`city_from` Nullable(String), `region_from` Nullable(String), `oktmo_from` Nullable(String), `is_capital_from` Nullable(Bool), `population_from` Nullable(Int64), `lat_from` Nullable(Float64), `lon_from` Nullable(Float64), `city_to` Nullable(String), `region_to` Nullable(String), `oktmo_to` Nullable(String), `is_capital_to` Nullable(Bool), `population_to` Nullable(Int64), `lat_to` Nullable(Float64), `lon_to` Nullable(Float64), `transport_type` Nullable(String), `distance_km` Nullable(Float64), `distance_hr` Nullable(Float64), `missing_reason` Nullable(String), `source` Nullable(String)) ENGINE = MergeTree ORDER BY (region_from, city_from) SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.stg_intercity.native.gz",
+      "bytes": 1238316,
+      "sha256": "dd964a755907b76796d4eb3c96c1aabd1ae56e9f683d45fd1c8d27ca93088e9c",
+      "staging": false,
+      "exported_at": "2026-11-10T20:35:03.866618+00:00",
+      "summary": {
+        "read_rows": "8192",
+        "read_bytes": "2586996",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "96660",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "18567416"
+      }
+    },
+    {
+      "table": "plexus_casechamp.stg_settlements",
+      "rows": 158168,
+      "schema": "CREATE TABLE plexus_casechamp.stg_settlements (`object_level` Nullable(String), `object_name` Nullable(String), `oktmo` Nullable(String), `region` Nullable(String), `mun_upper` Nullable(String), `mun_lower` Nullable(String), `settlement` Nullable(String), `population` Nullable(Int32), `latitude` Nullable(Float64), `longitude` Nullable(Float64)) ENGINE = MergeTree ORDER BY (region, oktmo) SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.stg_settlements.native.gz",
+      "bytes": 5977368,
+      "sha256": "df60166c19e5418f9a4de32b21cb6e884e1fc6413754e919ddbc545a9714aaa3",
+      "staging": false,
+      "exported_at": "2026-11-10T20:35:12.656171+00:00",
+      "summary": {
+        "read_rows": "8192",
+        "read_bytes": "2934613",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "158168",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "16684333"
+      }
+    },
+    {
+      "table": "plexus_casechamp.tuva_points",
+      "rows": 151,
+      "schema": "CREATE TABLE plexus_casechamp.tuva_points (`point_id` Nullable(String), `name` Nullable(String), `mun_upper` Nullable(String), `population` Nullable(Int64), `lat` Nullable(Float64), `lon` Nullable(Float64), `kind` Nullable(String), `is_district_center` Nullable(Bool), `snap_km` Nullable(Float64), `on_road` Nullable(Bool)) ENGINE = MergeTree ORDER BY point_id SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_casechamp.tuva_points.native.gz",
+      "bytes": 6774,
+      "sha256": "7fbf3f5249ab7d82c354063e19b78b596c6def6c77ac12b3bec60df083154351",
+      "staging": false,
+      "exported_at": "2026-11-10T20:35:15.799402+00:00",
+      "summary": {
+        "read_rows": "151",
+        "read_bytes": "26829",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "151",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "1416000"
+      }
+    },
+    {
+      "table": "plexus_graph.edges",
+      "rows": 17393384,
+      "schema": "CREATE TABLE plexus_graph.edges (`src` Nullable(Int32), `dst` Nullable(Int32), `h` Nullable(Float32), `km` Nullable(Float32), `way_idx` Nullable(Int32)) ENGINE = MergeTree ORDER BY (way_idx, src, dst) SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_graph.edges.native.gz",
+      "bytes": 165268111,
+      "sha256": "334cc95c72482bf8c4c2e35055bd3d09617a7dde4ad0edcc5e5537fcdfbe697a",
+      "staging": false,
+      "exported_at": "2026-11-10T20:40:39.170953+00:00",
+      "summary": {
+        "read_rows": "65536",
+        "read_bytes": "1638400",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "6671718",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "3273500"
+      }
+    },
+    {
+      "table": "plexus_graph.locations",
+      "rows": 155747,
+      "schema": "CREATE TABLE plexus_graph.locations (`point_id` Nullable(String), `settlement` Nullable(String), `region` Nullable(String), `node` Nullable(Int64), `lon` Nullable(Float64), `lat` Nullable(Float64), `snap_km` Nullable(Float64), `population` Nullable(Int32), INDEX place_name lowerUTF8(ifNull(settlement, '')) TYPE ngrambf_v1(3, 8192, 3, 0) GRANULARITY 1) ENGINE = MergeTree ORDER BY (region, point_id) SETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "asset": "plexus_graph.locations.native.gz",
+      "bytes": 5222085,
+      "sha256": "7dae69603f5d032d8f1c205b608c15aae22fa5af336889ccec63804bbbc57733",
+      "staging": false,
+      "exported_at": "2026-11-10T20:35:44.357408+00:00",
+      "summary": {
+        "read_rows": "7168",
+        "read_bytes": "1080398",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "155747",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "5207000"
+      }
+    },
+    {
+      "table": "plexus_graph.nodes",
+      "rows": 6990556,
+      "schema": "CREATE TABLE plexus_graph.nodes (`node` Nullable(Int32), `osm_node` Nullable(Int64), `lat` Nullable(Float64), `lon` Nullable(Float64), `comp` Nullable(Int32)) ENGINE = MergeTree ORDER BY node SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_graph.nodes.native.gz",
+      "bytes": 114932041,
+      "sha256": "5babb7a7ddc38f939dd248af2fc9b0e6cf0133222d7d9727b94a6d437792d669",
+      "staging": false,
+      "exported_at": "2026-11-10T20:39:43.651535+00:00",
+      "summary": {
+        "read_rows": "49152",
+        "read_bytes": "1818624",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "6671718",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "7631458"
+      }
+    },
+    {
+      "table": "plexus_graph.points",
+      "rows": 155747,
+      "schema": "CREATE TABLE plexus_graph.points (`point_id` Nullable(String), `region` Nullable(String), `lat` Nullable(Float64), `lon` Nullable(Float64), `population` Nullable(Int32), `snap_km` Nullable(Float64), `on_road` Nullable(Bool), `node` Nullable(Int64), `comp` Nullable(Int32), PROJECTION by_point (SELECT point_id, node, snap_km ORDER BY point_id)) ENGINE = MergeTree ORDER BY (region, point_id) SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_graph.points.native.gz",
+      "bytes": 4124844,
+      "sha256": "404fa8c9804168b644085a40a94a12356e42784e4565f60c73ffb78f6580988e",
+      "staging": false,
+      "exported_at": "2026-11-10T20:40:00.412022+00:00",
+      "summary": {
+        "read_rows": "8192",
+        "read_bytes": "950292",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "155747",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "28457542"
+      }
+    },
+    {
+      "table": "plexus_graph.region_codes",
+      "rows": 82,
+      "schema": "CREATE TABLE plexus_graph.region_codes (`oktmo` Nullable(String), `region` Nullable(String)) ENGINE = MergeTree ORDER BY oktmo SETTINGS allow_nullable_key = 1, index_granularity = 256",
+      "asset": "plexus_graph.region_codes.native.gz",
+      "bytes": 1164,
+      "sha256": "67626491807fa031f19f2bc526f3359d5b7781d561f17aacdae8d29a14e424bb",
+      "staging": false,
+      "exported_at": "2026-11-10T20:40:06.037378+00:00",
+      "summary": {
+        "read_rows": "82",
+        "read_bytes": "5378",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "82",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "3825708"
+      }
+    },
+    {
+      "table": "plexus_graph.region_points",
+      "rows": 467241,
+      "schema": "CREATE TABLE plexus_graph.region_points (`region` Nullable(String), `season` Nullable(String), `point_id` Nullable(String), `population` Nullable(Int32), `node` Nullable(Int64), `snap_km` Nullable(Float64)) ENGINE = MergeTree ORDER BY (region, season, point_id) SETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "asset": "plexus_graph.region_points.native.gz",
+      "bytes": 5117766,
+      "sha256": "4fd6f41d2452f348d2895dbfa244995513c5aa4d99c64999c3d96de2428768d8",
+      "staging": false,
+      "exported_at": "2026-11-10T20:40:32.180986+00:00",
+      "summary": {
+        "read_rows": "12288",
+        "read_bytes": "1265372",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "467241",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "182926167"
+      }
+    },
+    {
+      "table": "plexus_graph.road_lines",
+      "rows": 4305460,
+      "schema": "CREATE TABLE plexus_graph.road_lines (`way_id` Int64, `name` String, `highway` LowCardinality(String), `speed_kmh` Float64, `source_node` Int64, `target_node` Int64, `coordinates` Array(Array(Float64)), `rank` UInt8, `min_lon` Float64, `max_lon` Float64, `min_lat` Float64, `max_lat` Float64, `edge_count` UInt32, INDEX bounds_lon_min min_lon TYPE minmax GRANULARITY 1, INDEX bounds_lon_max max_lon TYPE minmax GRANULARITY 1, INDEX bounds_lat_min min_lat TYPE minmax GRANULARITY 1, INDEX bounds_lat_max max_lat TYPE minmax GRANULARITY 1) ENGINE = MergeTree ORDER BY (rank, floor(min_lon), floor(min_lat), way_id) SETTINGS index_granularity = 2048",
+      "asset": "plexus_graph.road_lines.native.gz",
+      "bytes": 319930743,
+      "sha256": "c52405d37d994ddc47e14daa9ca9f8a3a449b00a5836afbee15fb97e5a033ce8",
+      "staging": false,
+      "exported_at": "2026-11-10T20:50:35.835659+00:00",
+      "summary": {
+        "read_rows": "8192",
+        "read_bytes": "1326524",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "3873785",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "20879542"
+      }
+    },
+    {
+      "table": "plexus_graph.road_lookup",
+      "rows": 194038,
+      "schema": "CREATE TABLE plexus_graph.road_lookup (`lookup` String, `ref` String) ENGINE = MergeTree ORDER BY (lookup, ref) SETTINGS index_granularity = 256",
+      "asset": "plexus_graph.road_lookup.native.gz",
+      "bytes": 1275953,
+      "sha256": "475768a383471b5780046a08b15d0a6acba68389fcf999b69c93084fe34a8ad7",
+      "staging": false,
+      "exported_at": "2026-11-10T20:40:45.102157+00:00",
+      "summary": {
+        "read_rows": "65536",
+        "read_bytes": "2703220",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "194038",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "8749791"
+      }
+    },
+    {
+      "table": "plexus_graph.ways",
+      "rows": 4301210,
+      "schema": "CREATE TABLE plexus_graph.ways (`way_id` Nullable(Int64), `highway` Nullable(String), `ref` Nullable(String), `name` Nullable(String), `surface` Nullable(String), `tracktype` Nullable(String), `oneway` Nullable(String), `is_bridge` Nullable(Bool), `is_ferry` Nullable(Bool), `is_seasonal` Nullable(Bool), `way_idx` Nullable(Int32), `speed_kmh` Nullable(Float64), `km` Nullable(Float64), PROJECTION by_osm_id (SELECT way_id, way_idx ORDER BY way_id), PROJECTION by_reference (SELECT way_idx, way_id, name, ref, km ORDER BY ref)) ENGINE = MergeTree ORDER BY way_idx SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_graph.ways.native.gz",
+      "bytes": 53767063,
+      "sha256": "d9974b9f95896bf039e1e758c4cf1d4f43b270a5302e89dbac08c82fa19400e7",
+      "staging": false,
+      "exported_at": "2026-11-10T20:42:29.983932+00:00",
+      "summary": {
+        "read_rows": "16384",
+        "read_bytes": "2241964",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "1111953",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "26555208"
+      }
+    },
+    {
+      "table": "plexus_refresh_graph.edges",
+      "rows": 28667472,
+      "schema": "CREATE TABLE plexus_refresh_graph.edges (`src` Nullable(Int32), `dst` Nullable(Int32), `h` Nullable(Float32), `km` Nullable(Float32), `way_idx` Nullable(Int32)) ENGINE = MergeTree ORDER BY (way_idx, src, dst) SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_refresh_graph.edges.native.gz",
+      "bytes": 258377112,
+      "sha256": "4b87ae699e10c6cad073ccb5167cb63fc10a80af87a1c12c9bbad2f998dc8f41",
+      "staging": true,
+      "exported_at": "2026-11-10T20:50:49.292243+00:00",
+      "summary": {
+        "read_rows": "65536",
+        "read_bytes": "1638400",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "7250000",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "44656833"
+      }
+    },
+    {
+      "table": "plexus_refresh_graph.nodes",
+      "rows": 11463176,
+      "schema": "CREATE TABLE plexus_refresh_graph.nodes (`node` Nullable(Int32), `osm_node` Nullable(Int64), `lat` Nullable(Float64), `lon` Nullable(Float64), `comp` Nullable(Int32)) ENGINE = MergeTree ORDER BY node SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_refresh_graph.nodes.native.gz",
+      "bytes": 184362075,
+      "sha256": "60c13dda83de548cf7caecedebf337975689e2e29ddbb8fbdb677bbd0fcb7f2f",
+      "staging": true,
+      "exported_at": "2026-11-10T20:55:53.256932+00:00",
+      "summary": {
+        "read_rows": "49152",
+        "read_bytes": "1818624",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "7000000",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "25928000"
+      }
+    },
+    {
+      "table": "plexus_refresh_graph.points",
+      "rows": 155747,
+      "schema": "CREATE TABLE plexus_refresh_graph.points (`point_id` Nullable(String), `region` Nullable(String), `lat` Nullable(Float64), `lon` Nullable(Float64), `population` Nullable(Int32), `snap_km` Nullable(Float64), `on_road` Nullable(Bool), `node` Nullable(Int64), `comp` Nullable(Int32)) ENGINE = MergeTree ORDER BY (region, point_id) SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_refresh_graph.points.native.gz",
+      "bytes": 4154953,
+      "sha256": "2bce260b331870e5c9566c3c4e2787a138bec5fce080b2f490b7335ad171b980",
+      "staging": true,
+      "exported_at": "2026-11-10T20:50:57.675491+00:00",
+      "summary": {
+        "read_rows": "8192",
+        "read_bytes": "950292",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "155747",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "50800458"
+      }
+    },
+    {
+      "table": "plexus_refresh_graph.road_lines",
+      "rows": 6882224,
+      "schema": "CREATE TABLE plexus_refresh_graph.road_lines (`way_id` Int64, `name` String, `highway` LowCardinality(String), `speed_kmh` Float64, `source_node` Int64, `target_node` Int64, `coordinates` Array(Array(Float64)), `rank` UInt8, `min_lon` Float64, `max_lon` Float64, `min_lat` Float64, `max_lat` Float64, `edge_count` UInt32, INDEX bounds_lon_min min_lon TYPE minmax GRANULARITY 1, INDEX bounds_lon_max max_lon TYPE minmax GRANULARITY 1, INDEX bounds_lat_min min_lat TYPE minmax GRANULARITY 1, INDEX bounds_lat_max max_lat TYPE minmax GRANULARITY 1) ENGINE = MergeTree ORDER BY (rank, floor(min_lon), floor(min_lat), way_id) SETTINGS index_granularity = 2048",
+      "asset": "plexus_refresh_graph.road_lines.native.gz",
+      "bytes": 515887962,
+      "sha256": "52c9d08de6d3d474ea9a784f195190c2e528dae82bbd6ea3a61c6d301b7c7d1b",
+      "staging": true,
+      "exported_at": "2026-11-10T21:04:24.005392+00:00",
+      "summary": {
+        "read_rows": "8192",
+        "read_bytes": "1363098",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "4297874",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "50558875"
+      }
+    },
+    {
+      "table": "plexus_refresh_graph.ways",
+      "rows": 6869793,
+      "schema": "CREATE TABLE plexus_refresh_graph.ways (`way_id` Nullable(Int64), `highway` Nullable(String), `ref` Nullable(String), `name` Nullable(String), `surface` Nullable(String), `tracktype` Nullable(String), `oneway` Nullable(String), `operating_season` Nullable(String), `source_tags` Nullable(String), `is_bridge` Nullable(Bool), `is_ferry` Nullable(Bool), `is_seasonal` Nullable(Bool), `way_idx` Nullable(Int32), `speed_kmh` Nullable(Float64), `km` Nullable(Float64)) ENGINE = MergeTree ORDER BY way_idx SETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "asset": "plexus_refresh_graph.ways.native.gz",
+      "bytes": 116845332,
+      "sha256": "9e0d2c51726b9ee2ce31867a822950e556b9ec79f3dfe41567b455b6bc1537db",
+      "staging": true,
+      "exported_at": "2026-11-10T21:00:08.298555+00:00",
+      "summary": {
+        "read_rows": "16384",
+        "read_bytes": "5155375",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "1500000",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "43722334"
+      }
+    },
+    {
+      "table": "plexus_scenario.catalog",
+      "rows": 0,
+      "schema": "CREATE TABLE plexus_scenario.catalog (`model_version` String, `artifact_version` String, `seasons` Array(String), `normalization_base` Float64, `assumptions` Array(String)) ENGINE = MergeTree ORDER BY artifact_version SETTINGS index_granularity = 8192",
+      "asset": "plexus_scenario.catalog.native.gz",
+      "bytes": 51,
+      "sha256": "fae2bb1b8f8be23dc239419654613920b187d021cd6b5dd439fc7e7ad803201d",
+      "staging": false,
+      "exported_at": "2026-11-10T21:00:14.178499+00:00",
+      "summary": {
+        "read_rows": "0",
+        "read_bytes": "0",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "0",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "620042"
+      }
+    },
+    {
+      "table": "plexus_scenario.cities",
+      "rows": 0,
+      "schema": "CREATE TABLE plexus_scenario.cities (`ordinal` UInt32, `id` String, `region` String, `population` Float64, `latitude` Float64, `longitude` Float64, `is_capital` Bool) ENGINE = MergeTree ORDER BY ordinal SETTINGS index_granularity = 8192",
+      "asset": "plexus_scenario.cities.native.gz",
+      "bytes": 50,
+      "sha256": "2586c7a1edc968570c5a79c93c1d583db92fc86a74d05338a3a0e0e7cd2c134f",
+      "staging": false,
+      "exported_at": "2026-11-10T21:00:19.976237+00:00",
+      "summary": {
+        "read_rows": "0",
+        "read_bytes": "0",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "0",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "819167"
+      }
+    },
+    {
+      "table": "plexus_scenario.city_times",
+      "rows": 0,
+      "schema": "CREATE TABLE plexus_scenario.city_times (`season` String, `from_idx` UInt32, `to_idx` UInt32, `best_h` Float64) ENGINE = MergeTree ORDER BY (season, from_idx, to_idx) SETTINGS index_granularity = 8192",
+      "asset": "plexus_scenario.city_times.native.gz",
+      "bytes": 54,
+      "sha256": "087f7eb5efdd15c308cfe4d73ee8109d99b5ed128bb9b1486bc37e5223fa378b",
+      "staging": false,
+      "exported_at": "2026-11-10T21:00:25.149207+00:00",
+      "summary": {
+        "read_rows": "0",
+        "read_bytes": "0",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "0",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "410208"
+      }
+    },
+    {
+      "table": "plexus_scenario.points",
+      "rows": 0,
+      "schema": "CREATE TABLE plexus_scenario.points (`season` String, `point_idx` UInt32, `population` Float64, `region_idx` Int32) ENGINE = MergeTree ORDER BY (season, point_idx) SETTINGS index_granularity = 8192",
+      "asset": "plexus_scenario.points.native.gz",
+      "bytes": 50,
+      "sha256": "ae71c3c5c7fb7bd8c1bb49f2896d071be682bc6feca78f1f4347f582034e5dbe",
+      "staging": false,
+      "exported_at": "2026-11-10T21:00:30.446830+00:00",
+      "summary": {
+        "read_rows": "0",
+        "read_bytes": "0",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "0",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "454083"
+      }
+    },
+    {
+      "table": "plexus_scenario.regions",
+      "rows": 0,
+      "schema": "CREATE TABLE plexus_scenario.regions (`ordinal` UInt32, `region_id` String, `name` String) ENGINE = MergeTree ORDER BY ordinal SETTINGS index_granularity = 8192",
+      "asset": "plexus_scenario.regions.native.gz",
+      "bytes": 51,
+      "sha256": "aef8293c561b3fac96d07120b1c74aac2bab270dec050560e0070274be524bea",
+      "staging": false,
+      "exported_at": "2026-11-10T21:00:35.539587+00:00",
+      "summary": {
+        "read_rows": "0",
+        "read_bytes": "0",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "0",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "505042"
+      }
+    },
+    {
+      "table": "plexus_scenario.times",
+      "rows": 0,
+      "schema": "CREATE TABLE plexus_scenario.times (`season` String, `point_idx` UInt32, `city_idx` UInt32, `road_h` Float32, `best_h` Float32) ENGINE = MergeTree ORDER BY (season, point_idx, city_idx) SETTINGS index_granularity = 8192",
+      "asset": "plexus_scenario.times.native.gz",
+      "bytes": 49,
+      "sha256": "0007e309c1e0549428ffc1b198d7f446128eb7329381a3908e102da57f1fea98",
+      "staging": false,
+      "exported_at": "2026-11-10T21:00:40.919944+00:00",
+      "summary": {
+        "read_rows": "0",
+        "read_bytes": "0",
+        "written_rows": "0",
+        "written_bytes": "0",
+        "total_rows_to_read": "0",
+        "result_rows": "0",
+        "result_bytes": "0",
+        "elapsed_ns": "566333"
+      }
+    }
+  ],
+  "completed_at": "2026-11-10T21:04:24.357387+00:00",
+  "verified_at": "2026-11-10T21:05:59.939351+00:00",
+  "verification": {
+    "remote_assets": 87,
+    "sha256_match": true,
+    "restore_tables": 5,
+    "restore_rows": 587,
+    "full_restore": false
+  }
+}

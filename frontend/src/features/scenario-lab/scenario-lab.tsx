@@ -1,8 +1,17 @@
 import type { ScenarioCatalog } from "@/entities/scenario"
-import { useScenarioCatalog } from "@/entities/scenario"
+import { isScenarioDataMissing, useScenarioCatalog } from "@/entities/scenario"
 import { isApiError } from "@/shared/api"
 import { useErrorText, useTranslation } from "@/shared/i18n"
-import { Banner, Button, Card, EmptyState, ErrorState, Segmented, Skeleton } from "@/shared/ui"
+import {
+  Banner,
+  Button,
+  ButtonLink,
+  Card,
+  EmptyState,
+  ErrorState,
+  Segmented,
+  Skeleton,
+} from "@/shared/ui"
 import { ImpactResults } from "./impact-results"
 import { LinkBuilder } from "./link-builder"
 import styles from "./scenario-lab.module.css"
@@ -15,9 +24,19 @@ export function ScenarioLab() {
   if (catalog.isError)
     return (
       <ErrorState
-        title={t("scenario:errors.title")}
-        description={errorText(catalog.error)}
+        title={t("scenario:errors.catalog")}
+        description={
+          isScenarioDataMissing(catalog.error)
+            ? t("scenario:errors.catalogMissing")
+            : errorText(catalog.error)
+        }
         onRetry={() => void catalog.refetch()}
+        retryPending={catalog.isFetching}
+        action={
+          <ButtonLink to="/?panel=scenario" variant="secondary" size="compact" icon="route">
+            {t("scenario:errors.openMap")}
+          </ButtonLink>
+        }
       />
     )
   if (!catalog.data) return <Skeleton lines={10} />
@@ -100,7 +119,7 @@ function ScenarioWorkspace({ catalog, onReload }: ScenarioWorkspaceProps) {
               <EmptyState
                 title={t("scenario:empty")}
                 description={t("scenario:emptyHint")}
-                icon="route"
+                icon="scenario"
               />
             )
           )}

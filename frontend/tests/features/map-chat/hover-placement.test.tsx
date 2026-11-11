@@ -1,0 +1,30 @@
+import { expect, it, vi } from "vitest"
+import { measureHoverCard, placeHoverCard } from "@/features/map-explorer/hover-card"
+
+it("reuses measured geometry while following the pointer and refreshes it after resize", () => {
+  const parent = document.createElement("div")
+  const card = document.createElement("div")
+  parent.append(card)
+  document.body.append(parent)
+  card.style.setProperty("--space-16", "16px")
+  const bounds = vi
+    .spyOn(parent, "getBoundingClientRect")
+    .mockReturnValue(new DOMRect(0, 0, 800, 600))
+  const width = vi.fn(() => 200)
+  const height = vi.fn(() => 100)
+  Object.defineProperty(card, "offsetWidth", { get: width })
+  Object.defineProperty(card, "offsetHeight", { get: height })
+  measureHoverCard(card)
+  for (let index = 0; index < 120; index++) placeHoverCard(card, 400 + index, 300)
+  expect(bounds).toHaveBeenCalledTimes(1)
+  expect(width).toHaveBeenCalledTimes(1)
+  expect(height).toHaveBeenCalledTimes(1)
+  expect(card.style.transform).toBe("translate(519px, 300px)")
+  expect(card.dataset.flip).toBe("false")
+  bounds.mockReturnValue(new DOMRect(0, 0, 600, 600))
+  measureHoverCard(card)
+  placeHoverCard(card, 519, 300)
+  expect(card.dataset.flip).toBe("true")
+  expect(bounds).toHaveBeenCalledTimes(2)
+  parent.remove()
+})

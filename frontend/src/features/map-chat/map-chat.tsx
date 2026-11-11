@@ -1,17 +1,18 @@
 import { type ReactNode, useEffect, useId, useRef, useState } from "react"
 import { useSearchParams } from "react-router"
-import type { ChatContext } from "@/entities/chat"
+import { type ChatContext, chatSessionTitle } from "@/entities/chat"
 import { useRegion } from "@/entities/region"
 import type { CalculationHandler } from "@/shared/api/chat-calculation"
 import type { MapCommandHandler } from "@/shared/api/chat-map"
 import { useTranslation } from "@/shared/i18n"
-import { Banner, Button, ChatComposer, Icon, ScrollArea, Segmented } from "@/shared/ui"
-import { BrandMark } from "@/shared/ui/brand"
+import { Swap } from "@/shared/motion"
+import { Banner, Button, ChatComposer, Icon, ScrollArea, Tabs, Tooltip } from "@/shared/ui"
+import { ownedResults } from "./calculation/owned-results"
 import { ChatAnswer } from "./chat-answer"
 import { chatErrorKey, chatStatusKey } from "./chat-copy"
+import { ChatEmpty } from "./chat-empty"
 import styles from "./map-chat.module.css"
 import { ChatStorageNotice } from "./sessions/chat-storage-notice"
-import { ChatSwitcher } from "./sessions/chat-switcher"
 import { useMapChat } from "./use-map-chat"
 
 export interface MapChatProps {
@@ -36,11 +37,9 @@ export function MapChat({
   const [tab, setTab] = useState<"chat" | "summary" | "scenario">(initialTab(searchParams))
   const chat = useMapChat(context, onMapCommand)
   const region = useRegion(context.region_id ?? "", context.season ?? "summer")
-  const regionName = context.region_id
-    ? region.data?.id === context.region_id
-      ? region.data.name
-      : t("common:state.loading")
-    : t("chat:allRegions")
+  const regionName = regionLabel(context.region_id, region.data, t)
+  const active = chat.sessions.find((session) => session.id === chat.sessionId)
+  const threadTitle = (active ? chatSessionTitle(active) : "") || t("chat:new")
   const titleId = useId()
   const scroll = useRef<HTMLDivElement>(null)
   const follow = useRef(true)
@@ -56,60 +55,78 @@ export function MapChat({
     for (const child of node.children) observer.observe(child)
     return () => observer.disconnect()
   }, [tail])
+  const startNew = () => {
+    follow.current = true
+    onSessionChange?.()
+    chat.newSession()
+    setTab("chat")
+  }
   const send = (prompt?: string) => {
     follow.current = true
     chat.send(prompt)
   }
 
   return (
-    <aside className={styles.panel} aria-labelledby={titleId}>
-      <header className={styles.header}>
-        <div className={styles.heading}>
-          <BrandMark kind="symbol" size="sm" decorative />
-          <p id={titleId} className={styles.title}>
-            {t("chat:title")}
-          </p>
-        </div>
-        <ChatSwitcher
-          sessions={chat.sessions}
-          activeId={chat.sessionId}
-          onNew={() => {
-            follow.current = true
-            onSessionChange?.()
-            chat.newSession()
-            setTab("chat")
-          }}
-          onDelete={(id) => {
-            if (id === chat.sessionId) onSessionChange?.()
-            chat.deleteSession(id)
-          }}
-          onSelect={(id) => {
-            follow.current = true
-            if (id !== chat.sessionId) onSessionChange?.()
-            chat.selectSession(id)
-            setTab("chat")
-          }}
-        />
-      </header>
-      <div className={styles.tabs}>
-        <Segmented
+    <aside className={styles.panel} aria-label={t("chat:panelLabel")}>
+      <div className={styles.bar}>
+        <Tabs
           label={t("chat:panelLabel")}
           value={tab}
           onChange={setTab}
-          options={[
+          className={styles.tabs}
+          controls={{
+            chat: `${titleId}chat`,
+            summary: `${titleId}summary`,
+            scenario: `${titleId}scenario`,
+          }}
+          items={[
             { value: "chat", label: t("chat:tab"), icon: "chat" },
-            { value: "summary", label: t("chat:summary"), icon: "list" },
-            { value: "scenario", label: t("graph:tab") },
+            { value: "summary", label: t("chat:summary"), icon: "overview" },
+            { value: "scenario", label: t("graph:tab"), icon: "whatif" },
           ]}
         />
       </div>
-      <div className={styles.summary} hidden={tab !== "scenario"}>
+      <div
+        id={`${titleId}scenario`}
+        role="tabpanel"
+        aria-label={t("graph:tab")}
+        className={styles.summary}
+        data-hidden={tab !== "scenario" || undefined}
+      >
         {scenario}
       </div>
-      <div className={styles.summary} hidden={tab !== "summary"}>
+      <div
+        id={`${titleId}summary`}
+        role="tabpanel"
+        aria-label={t("chat:summary")}
+        className={styles.summary}
+        data-hidden={tab !== "summary" || undefined}
+      >
         {summary}
       </div>
-      <div className={styles.chat} hidden={tab !== "chat"}>
+      <div
+        id={`${titleId}chat`}
+        role="tabpanel"
+        aria-label={t("chat:tab")}
+        className={styles.chat}
+        data-hidden={tab !== "chat" || undefined}
+      >
+        {chat.messages.length > 0 ? (
+          <div className={styles.thread}>
+            <p className={styles.threadTitle}>{threadTitle}</p>
+            <Tooltip content={t("chat:new")}>
+              <Button
+                variant="ghost"
+                size="compact"
+                icon="plus"
+                aria-label={t("chat:new")}
+                onClick={startNew}
+              >
+                {null}
+              </Button>
+            </Tooltip>
+          </div>
+        ) : null}
         <ScrollArea
           ref={scroll}
           className={styles.messages}
@@ -119,43 +136,46 @@ export function MapChat({
             if (node) follow.current = node.scrollHeight - node.scrollTop - node.clientHeight < 80
           }}
         >
-          {chat.messages.length === 0 ? (
-            <div className={styles.empty}>
-              <p className={styles.intro}>
-                {t("chat:intro")} <em>{t("chat:introAccent")}</em>?
+          <Swap swapKey={chat.sessionId} as="div" className={styles.swap}>
+            {chat.messages.length === 0 ? (
+              <ChatEmpty
+                sessions={chat.sessions}
+                activeId={chat.sessionId}
+                onAsk={send}
+                onSelect={(id) => {
+                  follow.current = true
+                  if (id !== chat.sessionId) onSessionChange?.()
+                  chat.selectSession(id)
+                }}
+                onDelete={(id) => {
+                  if (id === chat.sessionId) onSessionChange?.()
+                  chat.deleteSession(id)
+                }}
+              />
+            ) : null}
+            {chat.messages.map((message, index) => (
+              <ChatAnswer
+                key={message.id}
+                message={ownedResults(chat.messages, index)}
+                onCommentary={chat.saveCommentary}
+                autoReview={message.reviewPending ?? message.id === tail?.id}
+                autoFocus={chat.busy && message.id === tail?.id}
+                onCalculation={onCalculation}
+                onMapCommand={onMapCommand}
+              />
+            ))}
+            {chat.messages.length &&
+            !chat.error &&
+            !tail?.calculations?.length &&
+            !tail?.stressTests?.length &&
+            !tail?.scenarios?.length &&
+            !tail?.analyses?.length ? (
+              <p role="status" className={styles.status}>
+                <Icon name={statusIcon(chat.busy, Boolean(chat.error))} size="sm" />
+                {t(chatStatusKey(chat.status))}
               </p>
-              <p className={styles.description}>{t("chat:description")}</p>
-              <div className={styles.suggestions}>
-                {(["example", "exampleLinks", "exampleMethod"] as const).map((key) => (
-                  <Button
-                    key={key}
-                    variant="ghost"
-                    icon="arrow-right"
-                    className={styles.suggestion}
-                    onClick={() => send(t(`chat:${key}`))}
-                  >
-                    {t(`chat:${key}`)}
-                  </Button>
-                ))}
-              </div>
-            </div>
-          ) : null}
-          {chat.messages.map((message) => (
-            <ChatAnswer
-              key={message.id}
-              message={message}
-              onCommentary={chat.saveCommentary}
-              autoFocus={chat.busy && message.id === tail?.id}
-              onCalculation={onCalculation}
-              onMapCommand={onMapCommand}
-            />
-          ))}
-          {chat.messages.length ? (
-            <p role="status" className={styles.status}>
-              <Icon name={chat.busy ? "neutral" : chat.error ? "error" : "check"} size="sm" />
-              {t(chatStatusKey(chat.status))}
-            </p>
-          ) : null}
+            ) : null}
+          </Swap>
         </ScrollArea>
         <div className={styles.footer}>
           <ChatStorageNotice issue={chat.storageIssue} onRetry={chat.retrySave} />
@@ -171,14 +191,19 @@ export function MapChat({
               }
             />
           ) : null}
-          <div className={styles.context}>
-            <Icon name="map" size="sm" />
-            <span>{regionName}</span>
-            <span className={styles.contextSeason}>
-              {t(`data:season.${context.season ?? "summer"}`)}
-            </span>
-          </div>
           <ChatComposer
+            context={
+              <>
+                <span className={styles.contextItem}>
+                  <Icon name="map" size="sm" />
+                  {regionName}
+                </span>
+                <span className={styles.contextItem}>
+                  <Icon name={context.season === "winter" ? "snowflake" : "sun"} size="sm" />
+                  {t(`data:season.${context.season ?? "summer"}`)}
+                </span>
+              </>
+            }
             value={chat.draft}
             onValue={chat.setDraft}
             pending={chat.busy}
@@ -193,6 +218,20 @@ export function MapChat({
       </div>
     </aside>
   )
+}
+
+function regionLabel(
+  id: string | null | undefined,
+  data: { readonly id: string; readonly name: string } | undefined,
+  t: ReturnType<typeof useTranslation>["t"],
+): string {
+  if (!id) return t("chat:allRegions")
+  return data?.id === id ? data.name : t("common:state.loading")
+}
+
+function statusIcon(busy: boolean, failed: boolean): "neutral" | "error" | "check" {
+  if (busy) return "neutral"
+  return failed ? "error" : "check"
 }
 
 function initialTab(params: URLSearchParams): "chat" | "scenario" {

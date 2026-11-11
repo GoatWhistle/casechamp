@@ -29,18 +29,22 @@
 }
 
 .tab[aria-selected="true"] {
-  border-block-end-color: var(--border-selected);
   color: var(--text-primary);
+}
+
+.indicator {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+  border-block-end: var(--space-2) solid var(--border-selected);
+  clip-path: inset(0 100% 0 0);
+  pointer-events: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .tab:hover {
     color: var(--text-primary);
   }
-}
-
-.tab:active {
-  scale: var(--press-scale);
 }
 
 .tab:focus-visible {

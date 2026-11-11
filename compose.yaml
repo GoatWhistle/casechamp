@@ -2,6 +2,17 @@ name: plexus-analytics
 include:
   - compose.analytics.yaml
 services:
+  stress-schema:
+    image: clickhouse/clickhouse-server:25.6-alpine
+    entrypoint: ["/bin/sh", "-c"]
+    command: ['exec clickhouse-client --host clickhouse --user plexus --password "$$CLICKHOUSE_PASSWORD" --multiquery < /migration.sql']
+    environment:
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD:?Set CLICKHOUSE_PASSWORD in .env.analytics}
+    volumes:
+      - ./infra/clickhouse/stress.sql:/migration.sql:ro
+    depends_on:
+      clickhouse:
+        condition: service_healthy
   backend:
     build:
       context: ./backend
@@ -16,6 +27,8 @@ services:
     depends_on:
       clickhouse:
         condition: service_healthy
+      stress-schema:
+        condition: service_completed_successfully
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health', timeout=3)"]
       interval: 10s

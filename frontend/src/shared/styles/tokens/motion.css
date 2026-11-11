@@ -42,12 +42,8 @@
   --delay-toast: 5000ms;
   --delay-toast-error: 10000ms;
 
-  --transition-control:
-    background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out),
-    border-color var(--dur-fast) var(--ease-out), scale var(--dur-instant) var(--ease-out);
-  --transition-control-press:
-    background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out),
-    border-color var(--dur-fast) var(--ease-out), scale var(--dur-press) var(--ease-out);
+  --transition-control: scale var(--dur-instant) var(--ease-out);
+  --transition-control-press: scale var(--dur-press) var(--ease-out);
   --transition-fade: opacity var(--dur-base) var(--ease-out);
   --transition-pop:
     opacity var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
@@ -58,7 +54,7 @@
   --motion-fade-out: kf-fade-out var(--dur-exit) var(--ease-out) both;
   --motion-scale-in: kf-scale-in var(--dur-base) var(--ease-out) both;
   --motion-scale-out: kf-scale-out var(--dur-exit) var(--ease-out) both;
-  --motion-rise-in: kf-rise-in var(--dur-slow) var(--ease-out) both;
+  --motion-rise-in: kf-rise-in var(--dur-base) var(--ease-out) both;
   --motion-swap-in: kf-swap-in var(--dur-fast) var(--ease-out) both;
   --motion-swap-out: kf-swap-out var(--dur-fast-exit) var(--ease-out) both;
   --motion-slide-in: kf-slide-in var(--dur-base) var(--ease-out) both;

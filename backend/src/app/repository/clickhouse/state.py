@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from time import time_ns
 
 from app.domain.errors import InvalidQuery
+from app.repository.clickhouse.capacity_state import restore_capacity_defaults
 from app.repository.clickhouse.client import ClickHouseReader
 from app.repository.clickhouse.records import columns, decode, encode
 from app.repository.clickhouse.writer import ClickHouseWriter
@@ -36,7 +37,9 @@ class ClickHouseRoadJobStore:
             + " FROM plexus_state.road_jobs FINAL ORDER BY updated DESC LIMIT 100",
             {},
         )
-        jobs: list[RoadJob] = [decode(RoadJob, row) for row in reversed(rows)]
+        jobs: list[RoadJob] = [
+            decode(RoadJob, restore_capacity_defaults(row)) for row in reversed(rows)
+        ]
         return {job.id: job for job in jobs}
 
     def save(self, job: RoadJob) -> None:

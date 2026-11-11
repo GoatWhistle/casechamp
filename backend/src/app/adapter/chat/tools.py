@@ -4,6 +4,14 @@ from dataclasses import asdict
 from pydantic_ai import Agent, ModelRetry, RunContext
 
 from app.adapter.chat.artifacts import ChatRun
+from app.adapter.chat.atlas_requests import (
+    AtlasQuery,
+    LinksQuery,
+    PlacesQuery,
+    ReferenceQuery,
+    RegionsQuery,
+    SettlementsQuery,
+)
 from app.adapter.chat.calculation_tools import CalculationTools
 from app.adapter.chat.map_tools import MapTools
 from app.usecase.chat_artifacts import (
@@ -39,29 +47,38 @@ class AtlasTools:
         self._references = references
 
     def register(self, agent: Agent[ChatRun, str]) -> None:
-        MapTools(self._regions).register(agent)
+        MapTools(self._regions, self._settlements).register(agent)
         self._calculations.register(agent)
-        agent.tool(sequential=True, description="List all regions with indices, coverage and data versions.")(
-            self.list_regions
-        )
-        agent.tool(sequential=True, description="Read regional transport links with sources and frequencies.")(
-            self.region_links
-        )
-        agent.tool(sequential=True, description="Read largest regional settlements or filter them by name.")(
-            self.region_settlements
-        )
-        agent.tool(sequential=True, description="Find region and settlement identifiers by name.")(
-            self.search_places
-        )
-        agent.tool(sequential=True, description="Read atlas sources and data periods.")(self.sources)
-        agent.tool(sequential=True, 
-            description="Compute a sorted regional comparison table from atlas data. "
-            "Use for rankings and comparisons. Empty region_ids selects all regions."
-        )(self.compare_regions)
-        agent.tool(sequential=True, 
-            description="Display a bar chart from an existing table_id and its columns. "
-            "Never supply invented numbers; use compare_regions or region_settlements first."
-        )(self.show_chart)
+        agent.tool(
+            sequential=True,
+            description="Read atlas evidence. Choose request.kind: places for identifiers; "
+            "regions for values (supply metric for a sorted comparison table); settlements; "
+            "links for the sourced catalog; sources; capabilities for available calculations "
+            "and active model; sensitivity for a uniform-time experiment, not a project forecast.",
+        )(self.query_atlas)
+
+    def query_atlas(self, ctx: RunContext[ChatRun], request: AtlasQuery) -> str:
+        if isinstance(request, PlacesQuery):
+            return self.search_places(ctx, request.query)
+        if isinstance(request, RegionsQuery):
+            if request.metric is not None:
+                return self.compare_regions(
+                    ctx, request.metric, request.region_ids, request.limit, request.descending
+                )
+            rows = json.loads(self.list_regions(ctx))
+            if set(request.region_ids) - {row["id"] for row in rows}:
+                raise ModelRetry("Unknown region identifiers; query places first")
+            return json.dumps(
+                [row for row in rows if not request.region_ids or row["id"] in request.region_ids],
+                ensure_ascii=False,
+            )
+        if isinstance(request, SettlementsQuery):
+            return self.region_settlements(ctx, request.region_id, request.query)
+        if isinstance(request, LinksQuery):
+            return self.region_links(ctx, request.region_id, request.offset)
+        if isinstance(request, ReferenceQuery):
+            return self.sources(ctx) if request.kind == "sources" else self._calculations.calculation_capabilities(ctx)
+        return self._calculations.accessibility_sensitivity(ctx, request.region_id)
 
     def list_regions(self, ctx: RunContext[ChatRun]) -> str:
         rows = self._regions.summaries(ctx.deps.context.season, ctx.deps.context.network_mode)

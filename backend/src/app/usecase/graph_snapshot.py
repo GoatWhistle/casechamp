@@ -1,4 +1,14 @@
+from dataclasses import dataclass
 from typing import Any, Literal, Protocol
+
+
+@dataclass(frozen=True)
+class GraphModelInfo:
+    version: str
+    index_model: str
+    road_cost_model: str
+    intercity_in_road: bool
+    intercity_wait_hours: float
 
 GraphQuery = Literal[
     "locations",
@@ -35,6 +45,12 @@ GraphQuery = Literal[
     "manual_v2",
     "bridge_parts",
     "bridge_lengths",
+    "scenario_lines",
+    "road_cost_model",
+    "road_costs",
+    "route_points",
+    "route_edges",
+    "references_by_ids",
 ]
 type GraphParameters = dict[str, str | int | float | list[int] | list[str]]
 

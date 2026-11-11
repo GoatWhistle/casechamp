@@ -3,17 +3,17 @@ from dataclasses import asdict
 
 from pydantic_ai import Agent, ModelRetry, RunContext
 
-from app.adapter.chat.analysis_tools import AnalysisTools
 from app.adapter.chat.artifacts import ChatRun
-from app.adapter.chat.bridge_tools import BridgeTools
-from app.adapter.chat.corridor_tools import CorridorTools
-from app.adapter.chat.road_tools import RoadTools
-from app.adapter.chat.transport_tools import TransportTools
+from app.adapter.chat.network_jobs import NetworkJobs
+from app.adapter.chat.network_scenarios import NetworkScenarios
+from app.adapter.chat.network_search import NetworkSearch
+from app.adapter.chat.stress_tools import StressTools
 from app.domain.errors import DomainError
 from app.usecase.chat_artifacts import ChatCell, ChatColumn, ChatTable
 from app.usecase.road_analysis import RoadAnalysis
 from app.usecase.road_corridor import RoadCorridors
 from app.usecase.road_graph import RoadGraph
+from app.usecase.road_stress import StressPort
 from app.usecase.sensitivity import AccessibilitySensitivity
 
 
@@ -24,40 +24,47 @@ class CalculationTools:
         roads: RoadGraph | None = None,
         analysis: RoadAnalysis | None = None,
         corridors: RoadCorridors | None = None,
+        stress: StressPort | None = None,
     ) -> None:
+        self._stress = stress
         self._sensitivity = sensitivity
         self._roads = roads
         self._analysis = analysis
         self._corridors = corridors
 
     def register(self, agent: Agent[ChatRun, str]) -> None:
-        if self._corridors:
-            CorridorTools(self._corridors).register(agent)
-            BridgeTools(self._corridors).register(agent)
-        if self._analysis:
-            AnalysisTools(self._analysis).register(agent)
-        if self._roads:
-            RoadTools(self._roads).register(agent)
-            TransportTools(self._roads).register(agent)
-        agent.tool(
-            sequential=True,
-            description="List executable calculation capabilities for all atlas regions. Always check before promising a scenario. Check national_road_edits availability; uniform-time sensitivity is NOT a project forecast.",
-        )(self.calculation_capabilities)
-        agent.tool(
-            sequential=True,
-            description="Evaluate regional Hansen sensitivity for uniformly "
-            "scaled ALL origin-to-market times: 0.5x, 1x, 2x. Uses existing half-life sums "
-            "with fixed baseline normalization. NOT a road-edge recalculation, no interpolation "
-            "for other percentages. Explicitly label as a hypothetical sensitivity test.",
-        )(self.accessibility_sensitivity)
+        if self._stress is not None:
+            StressTools(self._stress, self._corridors, self._roads).register(agent)
+        NetworkSearch(self._roads, self._corridors).register(agent)
+        NetworkScenarios(self._roads, self._corridors, self._analysis, self._stress).register(agent)
+        NetworkJobs(self._roads, self._analysis, self._corridors, self._stress).register(agent)
 
     def calculation_capabilities(self, ctx: RunContext[ChatRun]) -> str:
+        model = self._roads.model_info() if self._roads else None
         return json.dumps(
             {
+                "settlement_connectivity": {
+                    "available": self._corridors is not None,
+                    "calculate": "calculate_scenario(kind=connectivity)",
+                    "places": "2-12 named settlements",
+                    "modes": ["all_pairs", "to_center"],
+                    "closures": "joint resolved selection_ids with before/after rerouting",
+                    "network": "baseline roads only, undirected",
+                    "half_life_hours": 2,
+                    "traffic": "traffic={} models 50% utilization for 1 hour with lane capacities and queues",
+                    "persisted_results": "manage_calculation(kind=status, calculation_type=connectivity)",
+                    "time_cost": "manage_calculation(kind=connectivity_economics, calculation_id=...)",
+                },
+                "national_road_stress": {"available": self._stress is not None,
+                    "calculate": "calculate_scenario(kind=close_selection, assessment=impact)",
+                    "includes": "regional Hansen plus national consequences; optional places/traffic for modeled queues",
+                    "selected_ways": "stress_test_roads", "inspect": "inspect_road_stress_test",
+                    "route": "compare_stress_route", "network": "road_only_unbounded",
+                    "scope": "all_snapshot_settlements"},
                 "bridge_closures": {
                     "available": self._corridors is not None and self._roads is not None,
-                    "search": "find_road_bridges",
-                    "calculate": "close_road_bridges",
+                    "search": "find_transport(kind=bridges)",
+                    "calculate": "calculate_scenario(kind=close_selection)",
                     "multiple_bridges": "combined_scenario",
                     "regions": "search_settlement_regions",
                 },
@@ -65,7 +72,18 @@ class CalculationTools:
                     "available": self._corridors is not None and self._roads is not None,
                     "directions": "both",
                     "regions": "endpoint_and_crossed_atlas_regions",
-                    "joint_closure": "close_road_corridor with all corridor_ids",
+                    "joint_closure": "calculate_scenario(kind=close_selection) with all selection_ids",
+                    "speed_change": "calculate_scenario(kind=edit_selection, selection_ids, speed_factor)",
+                    "way_ids": "resolved internally; never enumerate corridor ways",
+                    "speed_baseline": "open base network, independent of previous closures",
+                },
+                "endpoint_road_routes": {
+                    "available": self._corridors is not None and self._roads is not None,
+                    "find": "find_transport(kind=road)",
+                    "method": "bidirectional_dijkstra",
+                    "network": "base road graph without rail/air",
+                    "road_name_required": False,
+                    "close": "calculate_scenario(kind=close_selection)",
                 },
                 "automatic_road_analysis": {
                     "available": self._analysis is not None and self._roads is not None,
@@ -78,22 +96,32 @@ class CalculationTools:
                 },
                 "national_road_edits": {
                     "available": self._roads is not None,
-                    "version": "data-20261107",
-                    "model": "snapshot includes road and intercity rail/air",
+                    "model": asdict(model) if model else None,
                 },
                 "transport_links": {
                     "available": self._roads is not None,
-                    "find": "find_transport_links",
-                    "calculate": "recalculate_transport_links",
+                    "find": "find_transport(kind=services)",
+                    "calculate": "calculate_scenario(kind=network)",
                     "intercity": "remove or add rail/air between 180 market cities",
                     "local": "remove or add seasonal air/river/ferry/winter links (summer, winter)",
                     "regions": "up to 6 atlas regions per call",
+                    "intercity_in_road": model.intercity_in_road if model else None,
+                    "one_way_or_frequency_edits": False,
+                    "economic_appraisal": "one region per call with explicit appraisal inputs",
                 },
                 "new_connections": {
                     "available": self._roads is not None,
                     "method": "single_edge_delta",
                     "network": "road",
                     "money_method": "conditional_time_savings",
+                },
+                "economic_appraisal": {
+                    "available": self._roads is not None,
+                    "method": "conditional_flow_appraisal_v1",
+                    "scope": "supplied_flows_only",
+                    "inputs": "passenger/freight flows, monetary rates and project costs with provenance",
+                    "outputs": "annual benefits, NPV, BCR, discounted public-benefit payback",
+                    "gdp_or_revenue_forecast": False,
                 },
             },
             ensure_ascii=False,

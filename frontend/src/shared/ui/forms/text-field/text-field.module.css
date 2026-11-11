@@ -30,6 +30,12 @@
   border-color: var(--status-danger);
 }
 
+.box:has(:disabled) {
+  background-color: var(--action-disabled);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+
 .icon {
   color: var(--text-muted);
 }

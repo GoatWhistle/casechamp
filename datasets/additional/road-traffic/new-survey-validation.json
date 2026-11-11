@@ -1,0 +1,46 @@
+{
+  "checked_at": "2026-11-11",
+  "new_observations": 76,
+  "observations_by_source": {
+    "traffic-obninsk": 66,
+    "traffic-birobidzhan": 10
+  },
+  "obninsk_period": "June 2025; 22 junctions; morning/interpeak/evening; exact calendar dates and clock times not given",
+  "birobidzhan_period": "not given; planning horizon is not observation date",
+  "units": "pcu/hour",
+  "qa": [
+    {
+      "file": "/Users/andreykuronskin/keys_champ/data/additional/road-traffic/qa/birobidzhan-table-5.png",
+      "sha256": "6aca8a431da20d7449d4e9dc3ec170a89300a59a6d18d2f4d6984a0889cbbe74",
+      "status": "visually_checked_2026-11-11"
+    },
+    {
+      "file": "/Users/andreykuronskin/keys_champ/data/additional/road-traffic/qa/birobidzhan-table-6-a.png",
+      "sha256": "10656ec8e20babab541e20f53727523fb4ee897516b74b29a7c9f9f39ed72b14",
+      "status": "visually_checked_2026-11-11"
+    },
+    {
+      "file": "/Users/andreykuronskin/keys_champ/data/additional/road-traffic/qa/birobidzhan-table-6-b.png",
+      "sha256": "ff96eb94f6b690718c0ed99bbac73311a07caf9b2260bc0cea362fb7625ea919",
+      "status": "visually_checked_2026-11-11"
+    },
+    {
+      "file": "/Users/andreykuronskin/keys_champ/data/additional/road-traffic/qa/obninsk-table-1-8-4.png",
+      "sha256": "96b0d2b8abd1fb47a2b55dd4e1be6a14c0bf91e1a71ef6d6d2704e164d7d132b",
+      "status": "visually_checked_2026-11-11"
+    }
+  ],
+  "source_files": [
+    {
+      "file": "obninsk-ksodd-2025.pdf",
+      "sha256": "44fac5dbb3eb3e6126ba3a3f1c82cd4d5c38a63596ec4853aaa477e579e88a8e",
+      "observations": 66
+    },
+    {
+      "file": "birobidzhan-ksodd.pdf",
+      "sha256": "6ab8501ad5abdcbca0ba1ed59e45446bd926ae02dcf03113f21b53c458c3683e",
+      "observations": 10
+    }
+  ],
+  "safety": "Junction totals remain junction totals; no automatic assignment to individual roads/directions; reported derived Obninsk fourth column excluded from observations."
+}

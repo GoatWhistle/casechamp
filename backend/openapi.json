@@ -1026,6 +1026,51 @@
         }
       }
     },
+    "/api/v1/chat/calculation-tables": {
+      "post": {
+        "tags": [
+          "chat"
+        ],
+        "summary": "Calculation Tables",
+        "operationId": "calculation_tables_api_v1_chat_calculation_tables_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CalculationReviewInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ChatTable"
+                  },
+                  "type": "array",
+                  "title": "Response Calculation Tables Api V1 Chat Calculation Tables Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/chat": {
       "post": {
         "tags": [
@@ -1061,6 +1106,72 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/chat/calculation-review": {
+      "post": {
+        "tags": [
+          "chat"
+        ],
+        "summary": "Stream Chat",
+        "operationId": "stream_chat_api_v1_chat_calculation_review_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatStreamEvent"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/road-graph/markets": {
+      "get": {
+        "tags": [
+          "road-graph"
+        ],
+        "summary": "Markets",
+        "operationId": "markets_api_v1_road_graph_markets_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array",
+                  "title": "Response Markets Api V1 Road Graph Markets Get"
                 }
               }
             }
@@ -1233,6 +1344,145 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RoadJob"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/transport-links": {
+      "get": {
+        "tags": [
+          "road-graph"
+        ],
+        "summary": "Transport Links",
+        "operationId": "transport_links_api_v1_transport_links_get",
+        "parameters": [
+          {
+            "name": "network",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "enum": [
+                "intercity",
+                "local"
+              ],
+              "type": "string",
+              "title": "Network"
+            }
+          },
+          {
+            "name": "place",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Place"
+            }
+          },
+          {
+            "name": "scenario",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "road",
+                "summer",
+                "winter"
+              ],
+              "type": "string",
+              "default": "road",
+              "title": "Scenario"
+            }
+          },
+          {
+            "name": "mode",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Mode"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TransportLink"
+                  },
+                  "title": "Response Transport Links Api V1 Transport Links Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/road-graph/places": {
+      "get": {
+        "tags": [
+          "road-graph"
+        ],
+        "summary": "Place Names",
+        "operationId": "place_names_api_v1_road_graph_places_get",
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "title": "Ids"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PlaceName"
+                  },
+                  "title": "Response Place Names Api V1 Road Graph Places Get"
                 }
               }
             }
@@ -1620,6 +1870,441 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/AnalysisDetail"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/road-stress-tests": {
+      "get": {
+        "tags": [
+          "road-stress"
+        ],
+        "summary": "Recent",
+        "operationId": "recent_api_v1_road_stress_tests_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/StressJob"
+                  },
+                  "type": "array",
+                  "title": "Response Recent Api V1 Road Stress Tests Get"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "road-stress"
+        ],
+        "summary": "Submit",
+        "operationId": "submit_api_v1_road_stress_tests_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StressInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StressJob"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/road-stress-tests/{job_id}": {
+      "get": {
+        "tags": [
+          "road-stress"
+        ],
+        "summary": "Get",
+        "operationId": "get_api_v1_road_stress_tests__job_id__get",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StressJob"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "road-stress"
+        ],
+        "summary": "Cancel",
+        "operationId": "cancel_api_v1_road_stress_tests__job_id__delete",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StressJob"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/road-stress-tests/{job_id}/summary": {
+      "get": {
+        "tags": [
+          "road-stress"
+        ],
+        "summary": "Summary",
+        "operationId": "summary_api_v1_road_stress_tests__job_id__summary_get",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
+            }
+          },
+          {
+            "name": "region",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Region"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StressSummary"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/road-stress-tests/{job_id}/impacts": {
+      "get": {
+        "tags": [
+          "road-stress"
+        ],
+        "summary": "Impacts",
+        "operationId": "impacts_api_v1_road_stress_tests__job_id__impacts_get",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
+            }
+          },
+          {
+            "name": "region",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "",
+              "title": "Region"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 200,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "west",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "West"
+            }
+          },
+          {
+            "name": "south",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "South"
+            }
+          },
+          {
+            "name": "east",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "East"
+            }
+          },
+          {
+            "name": "north",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "North"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StressImpact"
+                  },
+                  "title": "Response Impacts Api V1 Road Stress Tests  Job Id  Impacts Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/road-stress-tests/{job_id}/geometry": {
+      "get": {
+        "tags": [
+          "road-stress"
+        ],
+        "summary": "Geometry",
+        "operationId": "geometry_api_v1_road_stress_tests__job_id__geometry_get",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoadGeometry"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/road-stress-tests/{job_id}/routes": {
+      "post": {
+        "tags": [
+          "road-stress"
+        ],
+        "summary": "Route",
+        "operationId": "route_api_v1_road_stress_tests__job_id__routes_post",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StressRouteInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StressRouteComparison"
                 }
               }
             }
@@ -2141,6 +2826,222 @@
         ],
         "title": "AnalysisResponse"
       },
+      "AppraisalReport": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "travel": {
+            "items": {
+              "$ref": "#/components/schemas/TravelChange"
+            },
+            "type": "array",
+            "title": "Travel"
+          },
+          "unresolved_passenger_flows": {
+            "type": "integer",
+            "title": "Unresolved Passenger Flows"
+          },
+          "evaluated_passenger_flows": {
+            "type": "integer",
+            "title": "Evaluated Passenger Flows"
+          },
+          "scenarios": {
+            "items": {
+              "$ref": "#/components/schemas/AppraisalScenario"
+            },
+            "type": "array",
+            "title": "Scenarios"
+          },
+          "method": {
+            "type": "string",
+            "title": "Method",
+            "default": "conditional_flow_appraisal_v1"
+          },
+          "scope": {
+            "type": "string",
+            "title": "Scope",
+            "default": "supplied_flows_only"
+          },
+          "freight_travel": {
+            "items": {
+              "$ref": "#/components/schemas/FreightTravelChange"
+            },
+            "type": "array",
+            "title": "Freight Travel"
+          },
+          "unresolved_freight_flows": {
+            "type": "integer",
+            "title": "Unresolved Freight Flows",
+            "default": 0
+          },
+          "freight_routing_scope": {
+            "type": "string",
+            "title": "Freight Routing Scope",
+            "default": "manual_supplied_travel"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "travel",
+          "unresolved_passenger_flows",
+          "evaluated_passenger_flows",
+          "scenarios"
+        ],
+        "title": "AppraisalReport"
+      },
+      "AppraisalScenario": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "annual_passenger_hours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Annual Passenger Hours"
+          },
+          "annual_passenger_rub": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Annual Passenger Rub"
+          },
+          "annual_vehicle_hours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Annual Vehicle Hours"
+          },
+          "annual_vehicle_km": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Annual Vehicle Km"
+          },
+          "annual_freight_rub": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Annual Freight Rub"
+          },
+          "annual_gross_rub": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Annual Gross Rub"
+          },
+          "annual_net_rub": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Annual Net Rub"
+          },
+          "present_benefits_rub": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Present Benefits Rub"
+          },
+          "present_costs_rub": {
+            "type": "number",
+            "title": "Present Costs Rub"
+          },
+          "net_present_value_rub": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Net Present Value Rub"
+          },
+          "benefit_cost_ratio": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Benefit Cost Ratio"
+          },
+          "discounted_payback_year": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Discounted Payback Year"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "annual_passenger_hours",
+          "annual_passenger_rub",
+          "annual_vehicle_hours",
+          "annual_vehicle_km",
+          "annual_freight_rub",
+          "annual_gross_rub",
+          "annual_net_rub",
+          "present_benefits_rub",
+          "present_costs_rub",
+          "net_present_value_rub",
+          "benefit_cost_ratio",
+          "discounted_payback_year"
+        ],
+        "title": "AppraisalScenario"
+      },
       "BoundaryShapeResponse": {
         "properties": {
           "id": {
@@ -2203,6 +3104,28 @@
           "polygons"
         ],
         "title": "BoundaryShapeResponse"
+      },
+      "CalculationReviewInput": {
+        "properties": {
+          "scenario_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 12,
+            "title": "Scenario Ids"
+          },
+          "stress_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 12,
+            "title": "Stress Ids"
+          }
+        },
+        "type": "object",
+        "title": "CalculationReviewInput"
       },
       "Candidate": {
         "properties": {
@@ -2322,6 +3245,38 @@
             "maxLength": 64,
             "title": "Metric",
             "default": "hansen"
+          },
+          "road_way_ids": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "maxItems": 50,
+            "title": "Road Way Ids"
+          },
+          "stress_job_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stress Job Id"
+          },
+          "stress_point_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 128
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stress Point Id"
           }
         },
         "type": "object",
@@ -2359,6 +3314,16 @@
               }
             ],
             "title": "Analysis Id"
+          },
+          "calculation_review": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/CalculationReviewInput"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "type": "object",
@@ -2370,12 +3335,20 @@
       "ChatMapCommand": {
         "properties": {
           "action": {
-            "type": "string",
-            "enum": [
-              "focus",
-              "reset",
-              "zoom_in",
-              "zoom_out"
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "focus",
+                  "reset",
+                  "zoom_in",
+                  "zoom_out"
+                ]
+              },
+              {
+                "type": "string",
+                "const": "focus_settlement"
+              }
             ],
             "title": "Action"
           },
@@ -2385,6 +3358,16 @@
             },
             "type": "array",
             "title": "Region Ids"
+          },
+          "settlement": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SettlementMapTarget"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "type": "object",
@@ -2431,7 +3414,9 @@
               "chart",
               "map",
               "calculation",
-              "analysis"
+              "analysis",
+              "stress_test",
+              "scenario"
             ],
             "title": "Type"
           },
@@ -2465,10 +3450,40 @@
               }
             ]
           },
+          "scenario": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ScenarioCard"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "map": {
             "anyOf": [
               {
                 "$ref": "#/components/schemas/ChatMapCommand"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "stress_route": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StressRouteComparison"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "stress_test": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StressJob"
               },
               {
                 "type": "null"
@@ -2514,7 +3529,12 @@
               "regions",
               "links",
               "settlements",
-              "sensitivity"
+              "sensitivity",
+              "connectivity",
+              "connectivity_summary",
+              "scenario_indices",
+              "scenario_routes",
+              "scenario_access"
             ],
             "title": "Title"
           },
@@ -2559,6 +3579,11 @@
           "source": {
             "type": "string",
             "title": "Source"
+          },
+          "caption": {
+            "type": "string",
+            "title": "Caption",
+            "default": ""
           }
         },
         "type": "object",
@@ -2617,6 +3642,63 @@
         ],
         "title": "Confidence"
       },
+      "ConnectionConsequence": {
+        "properties": {
+          "origin_id": {
+            "type": "string",
+            "title": "Origin Id"
+          },
+          "origin": {
+            "type": "string",
+            "title": "Origin"
+          },
+          "residents": {
+            "type": "integer",
+            "title": "Residents"
+          },
+          "destination": {
+            "type": "string",
+            "title": "Destination"
+          },
+          "before_minutes": {
+            "type": "number",
+            "title": "Before Minutes"
+          },
+          "after_minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Minutes"
+          },
+          "added_minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Added Minutes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "origin_id",
+          "origin",
+          "residents",
+          "destination",
+          "before_minutes",
+          "after_minutes",
+          "added_minutes"
+        ],
+        "title": "ConnectionConsequence"
+      },
       "CorridorCalculation": {
         "properties": {
           "corridor": {
@@ -2628,6 +3710,13 @@
             },
             "type": "array",
             "title": "Job Ids"
+          },
+          "changes": {
+            "items": {
+              "$ref": "#/components/schemas/RoadChange"
+            },
+            "type": "array",
+            "title": "Changes"
           }
         },
         "type": "object",
@@ -2654,6 +3743,124 @@
           "name"
         ],
         "title": "CorridorRegion"
+      },
+      "DelayExposure": {
+        "properties": {
+          "threshold_minutes": {
+            "type": "integer",
+            "title": "Threshold Minutes"
+          },
+          "settlements": {
+            "type": "integer",
+            "title": "Settlements"
+          },
+          "residents": {
+            "type": "integer",
+            "title": "Residents"
+          }
+        },
+        "type": "object",
+        "required": [
+          "threshold_minutes",
+          "settlements",
+          "residents"
+        ],
+        "title": "DelayExposure"
+      },
+      "DemandScenario": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": [
+              "low",
+              "base",
+              "high"
+            ],
+            "title": "Name"
+          },
+          "demand_factor": {
+            "type": "number",
+            "title": "Demand Factor"
+          },
+          "value_factor": {
+            "type": "number",
+            "title": "Value Factor"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "demand_factor",
+          "value_factor"
+        ],
+        "title": "DemandScenario"
+      },
+      "DestinationConsequence": {
+        "properties": {
+          "destination": {
+            "type": "string",
+            "title": "Destination"
+          },
+          "settlements": {
+            "type": "integer",
+            "title": "Settlements"
+          },
+          "exposed_residents": {
+            "type": "integer",
+            "title": "Exposed Residents"
+          },
+          "lost_connections": {
+            "type": "integer",
+            "title": "Lost Connections"
+          },
+          "residents_losing_connection": {
+            "type": "integer",
+            "title": "Residents Losing Connection"
+          },
+          "nearby_exposed_residents": {
+            "type": "integer",
+            "title": "Nearby Exposed Residents"
+          },
+          "comparable_connections": {
+            "type": "integer",
+            "title": "Comparable Connections"
+          },
+          "mean_before_minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mean Before Minutes"
+          },
+          "mean_after_minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mean After Minutes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "destination",
+          "settlements",
+          "exposed_residents",
+          "lost_connections",
+          "residents_losing_connection",
+          "nearby_exposed_residents",
+          "comparable_connections",
+          "mean_before_minutes",
+          "mean_after_minutes"
+        ],
+        "title": "DestinationConsequence"
       },
       "EconomyResponse": {
         "properties": {
@@ -2792,6 +3999,167 @@
           "message"
         ],
         "title": "ErrorResponse"
+      },
+      "FreightFlow": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "trips_per_year": {
+            "type": "number",
+            "title": "Trips Per Year"
+          },
+          "before_hours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Before Hours"
+          },
+          "after_hours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Hours"
+          },
+          "before_km": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Before Km"
+          },
+          "after_km": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Km"
+          },
+          "rub_per_vehicle_hour": {
+            "type": "number",
+            "title": "Rub Per Vehicle Hour"
+          },
+          "rub_per_km": {
+            "type": "number",
+            "title": "Rub Per Km"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "basis": {
+            "type": "string",
+            "enum": [
+              "assumed",
+              "observed"
+            ],
+            "title": "Basis",
+            "default": "assumed"
+          },
+          "origin_point_id": {
+            "type": "string",
+            "title": "Origin Point Id",
+            "default": ""
+          },
+          "market_city": {
+            "type": "string",
+            "title": "Market City",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "trips_per_year",
+          "before_hours",
+          "after_hours",
+          "before_km",
+          "after_km",
+          "rub_per_vehicle_hour",
+          "rub_per_km",
+          "source"
+        ],
+        "title": "FreightFlow"
+      },
+      "FreightTravelChange": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "before_hours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Before Hours"
+          },
+          "after_hours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Hours"
+          },
+          "before_km": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Before Km"
+          },
+          "after_km": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Km"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "before_hours",
+          "after_hours",
+          "before_km",
+          "after_km"
+        ],
+        "title": "FreightTravelChange"
       },
       "FrequencyCoverage": {
         "properties": {
@@ -3057,6 +4425,117 @@
           "components"
         ],
         "title": "IndexStatusResponse"
+      },
+      "LinkChange": {
+        "properties": {
+          "action": {
+            "type": "string",
+            "title": "Action"
+          },
+          "network": {
+            "type": "string",
+            "title": "Network"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target"
+          },
+          "hours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hours"
+          }
+        },
+        "type": "object",
+        "required": [
+          "action",
+          "network",
+          "mode",
+          "source",
+          "target"
+        ],
+        "title": "LinkChange"
+      },
+      "LinkChangeInput": {
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "add",
+              "remove"
+            ],
+            "title": "Action"
+          },
+          "network": {
+            "type": "string",
+            "enum": [
+              "intercity",
+              "local"
+            ],
+            "title": "Network"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "rail",
+              "air",
+              "river",
+              "ferry",
+              "winter_road",
+              "ice_crossing",
+              "pontoon_bridge"
+            ],
+            "title": "Mode"
+          },
+          "source": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Source"
+          },
+          "target": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Target"
+          },
+          "hours": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 72.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hours"
+          }
+        },
+        "type": "object",
+        "required": [
+          "action",
+          "network",
+          "mode",
+          "source",
+          "target"
+        ],
+        "title": "LinkChangeInput"
       },
       "LinkResponse": {
         "properties": {
@@ -3416,6 +4895,85 @@
         ],
         "title": "MoneyEffect"
       },
+      "NearbyAccessChange": {
+        "properties": {
+          "threshold_hours": {
+            "type": "number",
+            "title": "Threshold Hours"
+          },
+          "changed_connections": {
+            "type": "integer",
+            "title": "Changed Connections"
+          },
+          "lost_connections": {
+            "type": "integer",
+            "title": "Lost Connections"
+          },
+          "comparable_connections": {
+            "type": "integer",
+            "title": "Comparable Connections"
+          },
+          "mean_before_minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mean Before Minutes"
+          },
+          "mean_after_minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mean After Minutes"
+          },
+          "mean_added_minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mean Added Minutes"
+          },
+          "connections_crossing_threshold": {
+            "type": "integer",
+            "title": "Connections Crossing Threshold"
+          },
+          "settlements_crossing_threshold": {
+            "type": "integer",
+            "title": "Settlements Crossing Threshold"
+          },
+          "residents_crossing_threshold": {
+            "type": "integer",
+            "title": "Residents Crossing Threshold"
+          }
+        },
+        "type": "object",
+        "required": [
+          "threshold_hours",
+          "changed_connections",
+          "lost_connections",
+          "comparable_connections",
+          "mean_before_minutes",
+          "mean_after_minutes",
+          "mean_added_minutes",
+          "connections_crossing_threshold",
+          "settlements_crossing_threshold",
+          "residents_crossing_threshold"
+        ],
+        "title": "NearbyAccessChange"
+      },
       "NetworkMode": {
         "type": "string",
         "enum": [
@@ -3487,6 +5045,137 @@
           "index"
         ],
         "title": "OverviewResponse"
+      },
+      "PassengerFlow": {
+        "properties": {
+          "origin_point_id": {
+            "type": "string",
+            "title": "Origin Point Id"
+          },
+          "market_city": {
+            "type": "string",
+            "title": "Market City"
+          },
+          "trips_per_year": {
+            "type": "number",
+            "title": "Trips Per Year"
+          },
+          "rub_per_hour": {
+            "type": "number",
+            "title": "Rub Per Hour"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "basis": {
+            "type": "string",
+            "enum": [
+              "assumed",
+              "observed"
+            ],
+            "title": "Basis",
+            "default": "assumed"
+          },
+          "origin_name": {
+            "type": "string",
+            "title": "Origin Name",
+            "default": ""
+          }
+        },
+        "type": "object",
+        "required": [
+          "origin_point_id",
+          "market_city",
+          "trips_per_year",
+          "rub_per_hour",
+          "source"
+        ],
+        "title": "PassengerFlow"
+      },
+      "PlaceName": {
+        "properties": {
+          "point_id": {
+            "type": "string",
+            "title": "Point Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "region": {
+            "type": "string",
+            "title": "Region"
+          }
+        },
+        "type": "object",
+        "required": [
+          "point_id",
+          "name",
+          "region"
+        ],
+        "title": "PlaceName"
+      },
+      "ProjectAssumptions": {
+        "properties": {
+          "passengers": {
+            "items": {
+              "$ref": "#/components/schemas/PassengerFlow"
+            },
+            "type": "array",
+            "title": "Passengers"
+          },
+          "scenarios": {
+            "items": {
+              "$ref": "#/components/schemas/DemandScenario"
+            },
+            "type": "array",
+            "title": "Scenarios"
+          },
+          "capital_cost_rub": {
+            "type": "number",
+            "title": "Capital Cost Rub"
+          },
+          "annual_operating_cost_rub": {
+            "type": "number",
+            "title": "Annual Operating Cost Rub"
+          },
+          "horizon_years": {
+            "type": "integer",
+            "title": "Horizon Years"
+          },
+          "discount_rate": {
+            "type": "number",
+            "title": "Discount Rate"
+          },
+          "price_year": {
+            "type": "integer",
+            "title": "Price Year"
+          },
+          "cost_source": {
+            "type": "string",
+            "title": "Cost Source"
+          },
+          "freight": {
+            "items": {
+              "$ref": "#/components/schemas/FreightFlow"
+            },
+            "type": "array",
+            "title": "Freight"
+          }
+        },
+        "type": "object",
+        "required": [
+          "passengers",
+          "scenarios",
+          "capital_cost_rub",
+          "annual_operating_cost_rub",
+          "horizon_years",
+          "discount_rate",
+          "price_year",
+          "cost_source"
+        ],
+        "title": "ProjectAssumptions"
       },
       "RegionDetailResponse": {
         "properties": {
@@ -3883,6 +5572,77 @@
         ],
         "title": "RegionSummaryResponse"
       },
+      "RegionalConsequences": {
+        "properties": {
+          "region": {
+            "type": "string",
+            "title": "Region"
+          },
+          "lost_connections": {
+            "type": "integer",
+            "title": "Lost Connections"
+          },
+          "settlements_losing_connections": {
+            "type": "integer",
+            "title": "Settlements Losing Connections"
+          },
+          "residents_losing_connections": {
+            "type": "integer",
+            "title": "Residents Losing Connections"
+          },
+          "delay_exposure": {
+            "items": {
+              "$ref": "#/components/schemas/DelayExposure"
+            },
+            "type": "array",
+            "title": "Delay Exposure"
+          },
+          "nearby_access": {
+            "$ref": "#/components/schemas/NearbyAccessChange"
+          },
+          "destinations": {
+            "items": {
+              "$ref": "#/components/schemas/DestinationConsequence"
+            },
+            "type": "array",
+            "title": "Destinations"
+          },
+          "examples": {
+            "items": {
+              "$ref": "#/components/schemas/ConnectionConsequence"
+            },
+            "type": "array",
+            "title": "Examples"
+          },
+          "method": {
+            "type": "string",
+            "title": "Method",
+            "default": "saved_road_closure_consequences_v1"
+          },
+          "scope": {
+            "type": "string",
+            "title": "Scope",
+            "default": "recorded_changed_settlement_market_connections_in_selected_region"
+          },
+          "minimum_recorded_delay_minutes": {
+            "type": "number",
+            "title": "Minimum Recorded Delay Minutes",
+            "default": 1.0
+          }
+        },
+        "type": "object",
+        "required": [
+          "region",
+          "lost_connections",
+          "settlements_losing_connections",
+          "residents_losing_connections",
+          "delay_exposure",
+          "nearby_access",
+          "destinations",
+          "examples"
+        ],
+        "title": "RegionalConsequences"
+      },
       "RoadAddition": {
         "properties": {
           "source_node": {
@@ -3956,6 +5716,16 @@
                 "type": "null"
               }
             ]
+          },
+          "appraisal": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ProjectAssumptions"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "type": "object",
@@ -3975,13 +5745,57 @@
           },
           "speed_factor": {
             "type": "number",
-            "title": "Speed Factor"
+            "title": "Speed Factor",
+            "default": 1.0
+          },
+          "lanes_total": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lanes Total"
+          },
+          "highway": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Highway"
+          },
+          "surface": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Surface"
+          },
+          "speed_kmh": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Speed Kmh"
           }
         },
         "type": "object",
         "required": [
-          "way_id",
-          "speed_factor"
+          "way_id"
         ],
         "title": "RoadChange"
       },
@@ -3996,13 +5810,63 @@
             "type": "number",
             "maximum": 3.0,
             "minimum": 0.0,
-            "title": "Speed Factor"
+            "title": "Speed Factor",
+            "default": 1
+          },
+          "lanes_total": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "maximum": 32.0,
+                "minimum": 1.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lanes Total"
+          },
+          "highway": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 40
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Highway"
+          },
+          "surface": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 40
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Surface"
+          },
+          "speed_kmh": {
+            "anyOf": [
+              {
+                "type": "number",
+                "maximum": 200.0,
+                "exclusiveMinimum": 0.0
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Speed Kmh"
           }
         },
         "type": "object",
         "required": [
-          "way_id",
-          "speed_factor"
+          "way_id"
         ],
         "title": "RoadChangeInput"
       },
@@ -4084,6 +5948,41 @@
         ],
         "title": "RoadCorridor"
       },
+      "RoadGeometry": {
+        "properties": {
+          "names": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Names"
+          },
+          "length_km": {
+            "type": "number",
+            "title": "Length Km"
+          },
+          "lines": {
+            "items": {
+              "items": {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Lines"
+          }
+        },
+        "type": "object",
+        "required": [
+          "names",
+          "length_km",
+          "lines"
+        ],
+        "title": "RoadGeometry"
+      },
       "RoadJob": {
         "properties": {
           "id": {
@@ -4160,6 +6059,33 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/MoneyAssumptions"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "links": {
+            "items": {
+              "$ref": "#/components/schemas/LinkChange"
+            },
+            "type": "array",
+            "title": "Links"
+          },
+          "appraisal_assumptions": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ProjectAssumptions"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "appraisal_result": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/AppraisalReport"
               },
               {
                 "type": "null"
@@ -4258,6 +6184,18 @@
             },
             "type": "array",
             "title": "Settlement Effects"
+          },
+          "road_cost_method": {
+            "type": "string",
+            "title": "Road Cost Method",
+            "default": "legacy_speed_v1"
+          },
+          "road_cost_notes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Road Cost Notes"
           }
         },
         "type": "object",
@@ -4298,14 +6236,30 @@
             },
             "type": "array",
             "maxItems": 50,
-            "minItems": 1,
             "title": "Changes"
+          },
+          "links": {
+            "items": {
+              "$ref": "#/components/schemas/LinkChangeInput"
+            },
+            "type": "array",
+            "maxItems": 30,
+            "title": "Links"
+          },
+          "appraisal": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ProjectAssumptions"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "type": "object",
         "required": [
-          "region_id",
-          "changes"
+          "region_id"
         ],
         "title": "RoadScenarioInput"
       },
@@ -4463,6 +6417,35 @@
           "y2"
         ],
         "title": "RouteResponse"
+      },
+      "ScenarioCard": {
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "speed",
+              "slowdown",
+              "closure",
+              "roads",
+              "connection",
+              "links"
+            ],
+            "title": "Kind"
+          },
+          "job_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Job Ids"
+          }
+        },
+        "type": "object",
+        "required": [
+          "kind",
+          "job_ids"
+        ],
+        "title": "ScenarioCard"
       },
       "ScenarioCatalogResponse": {
         "properties": {
@@ -4960,6 +6943,39 @@
         ],
         "title": "SettlementImpactResponse"
       },
+      "SettlementMapTarget": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "region_id": {
+            "type": "string",
+            "title": "Region Id"
+          },
+          "longitude": {
+            "type": "number",
+            "title": "Longitude"
+          },
+          "latitude": {
+            "type": "number",
+            "title": "Latitude"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "region_id",
+          "longitude",
+          "latitude"
+        ],
+        "title": "SettlementMapTarget"
+      },
       "SettlementPageResponse": {
         "properties": {
           "total": {
@@ -5146,6 +7162,599 @@
           "rows"
         ],
         "title": "SourceResponse"
+      },
+      "StressImpact": {
+        "properties": {
+          "point": {
+            "$ref": "#/components/schemas/StressPoint"
+          },
+          "lost_markets": {
+            "type": "integer",
+            "title": "Lost Markets"
+          },
+          "external_isolation": {
+            "type": "boolean",
+            "title": "External Isolation"
+          },
+          "delay_minutes": {
+            "type": "number",
+            "title": "Delay Minutes"
+          },
+          "worst_market": {
+            "type": "string",
+            "title": "Worst Market"
+          },
+          "markets": {
+            "items": {
+              "$ref": "#/components/schemas/StressMarketChange"
+            },
+            "type": "array",
+            "title": "Markets"
+          }
+        },
+        "type": "object",
+        "required": [
+          "point",
+          "lost_markets",
+          "external_isolation",
+          "delay_minutes",
+          "worst_market"
+        ],
+        "title": "StressImpact"
+      },
+      "StressInput": {
+        "properties": {
+          "way_ids": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "maxItems": 20000,
+            "minItems": 1,
+            "title": "Way Ids"
+          },
+          "parent_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "way_ids"
+        ],
+        "title": "StressInput"
+      },
+      "StressJob": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version"
+          },
+          "way_ids": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Way Ids"
+          },
+          "parent_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Id"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "default": "queued"
+          },
+          "stage": {
+            "type": "string",
+            "title": "Stage",
+            "default": "preparing"
+          },
+          "completed": {
+            "type": "integer",
+            "title": "Completed",
+            "default": 0
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total",
+            "default": 180
+          },
+          "points": {
+            "type": "integer",
+            "title": "Points",
+            "default": 0
+          },
+          "unbound_points": {
+            "type": "integer",
+            "title": "Unbound Points",
+            "default": 0
+          },
+          "regions": {
+            "items": {
+              "$ref": "#/components/schemas/StressRegion"
+            },
+            "type": "array",
+            "title": "Regions"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "preexisting_isolated_points": {
+            "type": "integer",
+            "title": "Preexisting Isolated Points",
+            "default": 0
+          },
+          "newly_isolated_points": {
+            "type": "integer",
+            "title": "Newly Isolated Points",
+            "default": 0
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "version",
+          "way_ids"
+        ],
+        "title": "StressJob"
+      },
+      "StressMarketChange": {
+        "properties": {
+          "market": {
+            "type": "string",
+            "title": "Market"
+          },
+          "before_hours": {
+            "type": "number",
+            "title": "Before Hours"
+          },
+          "after_hours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Hours"
+          }
+        },
+        "type": "object",
+        "required": [
+          "market",
+          "before_hours",
+          "after_hours"
+        ],
+        "title": "StressMarketChange"
+      },
+      "StressPoint": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "region": {
+            "type": "string",
+            "title": "Region"
+          },
+          "population": {
+            "type": "integer",
+            "title": "Population"
+          },
+          "node": {
+            "type": "integer",
+            "title": "Node"
+          },
+          "snap_km": {
+            "type": "number",
+            "title": "Snap Km"
+          },
+          "longitude": {
+            "type": "number",
+            "title": "Longitude"
+          },
+          "latitude": {
+            "type": "number",
+            "title": "Latitude"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "region",
+          "population",
+          "node",
+          "snap_km",
+          "longitude",
+          "latitude"
+        ],
+        "title": "StressPoint"
+      },
+      "StressRegion": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "settlements": {
+            "type": "integer",
+            "title": "Settlements"
+          },
+          "population": {
+            "type": "integer",
+            "title": "Population"
+          },
+          "isolated_population": {
+            "type": "integer",
+            "title": "Isolated Population"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "settlements",
+          "population",
+          "isolated_population"
+        ],
+        "title": "StressRegion"
+      },
+      "StressRoute": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "hours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Hours"
+          },
+          "km": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Km"
+          },
+          "coordinates": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Coordinates"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "hours",
+          "km",
+          "coordinates"
+        ],
+        "title": "StressRoute"
+      },
+      "StressRouteComparison": {
+        "properties": {
+          "origin": {
+            "$ref": "#/components/schemas/StressPoint"
+          },
+          "destination": {
+            "$ref": "#/components/schemas/StressPoint"
+          },
+          "before": {
+            "$ref": "#/components/schemas/StressRoute"
+          },
+          "after": {
+            "$ref": "#/components/schemas/StressRoute"
+          }
+        },
+        "type": "object",
+        "required": [
+          "origin",
+          "destination",
+          "before",
+          "after"
+        ],
+        "title": "StressRouteComparison"
+      },
+      "StressRouteInput": {
+        "properties": {
+          "origin": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Origin"
+          },
+          "destination": {
+            "type": "string",
+            "maxLength": 128,
+            "minLength": 1,
+            "title": "Destination"
+          }
+        },
+        "type": "object",
+        "required": [
+          "origin",
+          "destination"
+        ],
+        "title": "StressRouteInput"
+      },
+      "StressSummary": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "stage": {
+            "type": "string",
+            "title": "Stage"
+          },
+          "way_count": {
+            "type": "integer",
+            "title": "Way Count"
+          },
+          "parent_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parent Id"
+          },
+          "region": {
+            "type": "string",
+            "title": "Region"
+          },
+          "totals": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/StressTotals"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "snapshot_points": {
+            "type": "integer",
+            "title": "Snapshot Points"
+          },
+          "unbound_points": {
+            "type": "integer",
+            "title": "Unbound Points"
+          },
+          "preexisting_isolated_points": {
+            "type": "integer",
+            "title": "Preexisting Isolated Points"
+          },
+          "completed": {
+            "type": "integer",
+            "title": "Completed"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "consequences": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RegionalConsequences"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "version",
+          "status",
+          "stage",
+          "way_count",
+          "parent_id",
+          "region",
+          "totals",
+          "snapshot_points",
+          "unbound_points",
+          "preexisting_isolated_points",
+          "completed",
+          "total"
+        ],
+        "title": "StressSummary"
+      },
+      "StressTotals": {
+        "properties": {
+          "affected_points": {
+            "type": "integer",
+            "title": "Affected Points"
+          },
+          "exposed_population": {
+            "type": "integer",
+            "title": "Exposed Population"
+          },
+          "isolated_points": {
+            "type": "integer",
+            "title": "Isolated Points"
+          },
+          "isolated_population": {
+            "type": "integer",
+            "title": "Isolated Population"
+          },
+          "max_delay_minutes": {
+            "type": "number",
+            "title": "Max Delay Minutes"
+          },
+          "affected_regions": {
+            "type": "integer",
+            "title": "Affected Regions"
+          }
+        },
+        "type": "object",
+        "required": [
+          "affected_points",
+          "exposed_population",
+          "isolated_points",
+          "isolated_population",
+          "max_delay_minutes",
+          "affected_regions"
+        ],
+        "title": "StressTotals"
+      },
+      "TransportLink": {
+        "properties": {
+          "network": {
+            "type": "string",
+            "title": "Network"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "source_name": {
+            "type": "string",
+            "title": "Source Name"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target"
+          },
+          "target_name": {
+            "type": "string",
+            "title": "Target Name"
+          },
+          "hours": {
+            "type": "number",
+            "title": "Hours"
+          },
+          "region": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Region"
+          }
+        },
+        "type": "object",
+        "required": [
+          "network",
+          "mode",
+          "source",
+          "source_name",
+          "target",
+          "target_name",
+          "hours"
+        ],
+        "title": "TransportLink"
+      },
+      "TravelChange": {
+        "properties": {
+          "origin_point_id": {
+            "type": "string",
+            "title": "Origin Point Id"
+          },
+          "market_city": {
+            "type": "string",
+            "title": "Market City"
+          },
+          "before_hours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Before Hours"
+          },
+          "after_hours": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Hours"
+          }
+        },
+        "type": "object",
+        "required": [
+          "origin_point_id",
+          "market_city",
+          "before_hours",
+          "after_hours"
+        ],
+        "title": "TravelChange"
       },
       "TrunkLinkRequest": {
         "properties": {

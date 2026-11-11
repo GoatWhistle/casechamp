@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-11",
+  "base_sha": "cdb2c2e",
+  "working_tree_dirty": true,
+  "measurement": "JSON string length of tool name, description and parameters_json_schema observed by PydanticAI FunctionModel; ensure_ascii=False and standard json.dumps separators. Not token counts or latency.",
+  "before": {
+    "tool_count": 27,
+    "schema_characters": 26495
+  },
+  "after_initial": {
+    "tool_count": 2,
+    "schema_characters": 2813
+  },
+  "after_all_skills": {
+    "tool_count": 6,
+    "schema_characters": 14817
+  },
+  "initial_character_reduction_percent": 89.38290243442158,
+  "all_skills_character_reduction_percent": 44.07624080015097,
+  "verification": {
+    "backend_unit": 323,
+    "backend_integration": 45,
+    "frontend_unit": 448,
+    "ruff": "passed",
+    "mypy_files": 226,
+    "frontend_verify": "passed",
+    "live_paid_model_run": false
+  },
+  "source_hashes": {
+    "gateway.py": "58ed9ee3fcc3af3b1d10a9ddfbac608203167224a49a7e13b002ad20e8a72d39",
+    "tool_visibility.py": "d49885101b8489825d8699bd9c684818a3abdd07acb96824ac091a3b9b4a7147",
+    "tools.py": "679dd31f57b7cdb11049fdcdd6c4193e97d9ca418f1a58d1a45c4de26027c2ad",
+    "atlas_requests.py": "5d7e4edad06725f4e41a8f29ab535acf59a0eb6f9067d71d2b7d9b0e1f1eef45",
+    "transport_requests.py": "c52ef46d808e5a77e42803920a63f92bc5c4d019870a856cc39d5a6d1590c8bc",
+    "scenario_requests.py": "3306bb27eacb0a9b315ed752af26b4c808f9f45a8767e7f29d8ab9c453125275",
+    "network_search.py": "b5cb9f43f367086aa3df9f363ec05511a7cc6825fd05690fdb1ce4b5f8a69830",
+    "network_scenarios.py": "27d600133bb8e7f69eb7c7276c960a2ecb3dff0ee82a72db67ea1f294dfb49da",
+    "network_jobs.py": "c26dc5a42e5ab646e538e0846790ba3702fc61cb425eaee6fdef861f7f412fa1"
+  }
+}

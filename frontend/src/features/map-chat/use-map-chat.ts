@@ -11,17 +11,11 @@ import {
 } from "@/entities/chat"
 import { isApiError } from "@/shared/api"
 import type { MapCommandHandler } from "@/shared/api/chat-map"
+import { showStressView } from "@/shared/hooks/use-stress-view"
 import { streamStatus, updateChatRows } from "./chat-events"
-import { historyContent } from "./chat-history"
+import { historyOf } from "./chat-history"
 
 export type { ChatEntry } from "@/entities/chat"
-
-function historyOf(messages: ChatEntry[]) {
-  return messages
-    .filter((row) => row.complete && (row.content || row.analyses?.length))
-    .slice(-12)
-    .map((row) => ({ role: row.role, content: historyContent(row) }))
-}
 
 export function useMapChat(context: ChatContext, onMapCommand: MapCommandHandler) {
   const archive = useChatSessions()
@@ -83,6 +77,14 @@ export function useMapChat(context: ChatContext, onMapCommand: MapCommandHandler
         signal: abort.signal,
         onEvent: (event) => {
           if (abort.signal.aborted) return
+          if (event.type === "stress_test" && event.stress_test && activeId.current === sessionId)
+            showStressView({
+              showPoints: false,
+              jobId: event.stress_test.id,
+              impacts: [],
+              route: event.stress_route ?? null,
+              regions: event.stress_test.regions ?? [],
+            })
           if (event.type === "map" && event.map && activeId.current === sessionId)
             mapHandler.current(event.map)
           update(sessionId, (current) => ({
@@ -127,7 +129,13 @@ export function useMapChat(context: ChatContext, onMapCommand: MapCommandHandler
       ...current,
       messages: current.messages.map((row) =>
         row.id === messageId
-          ? { ...row, commentaries: { ...row.commentaries, [analysisId]: value } }
+          ? {
+              ...row,
+              ...(analysisId.startsWith("calculation:") && value.complete
+                ? { reviewPending: false }
+                : {}),
+              commentaries: { ...row.commentaries, [analysisId]: value },
+            }
           : row,
       ),
     }))

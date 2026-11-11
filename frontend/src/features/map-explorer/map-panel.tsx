@@ -1,22 +1,20 @@
-import { memo, useEffect, useId } from "react"
-import { useLocation } from "react-router"
-import { RegionLinks } from "@/entities/link"
+import { memo } from "react"
+import { ModeTotals, RegionLinks } from "@/entities/link"
 import type { IndexStatus } from "@/entities/reference"
 import {
-  IndexCoverage,
   modelRegionId,
   type Overview,
   type RegionSummary,
   type Season,
   useRegion,
 } from "@/entities/region"
-import { useNetworkMode } from "@/shared/hooks/use-network-mode"
-import { useFormatters, useTranslation } from "@/shared/i18n"
-import { Banner, ButtonLink, Card, CloseButton, ScrollArea, Skeleton, Stat } from "@/shared/ui"
-import { TransportIcon } from "@/shared/ui/brand"
+import { useTranslation } from "@/shared/i18n"
+import { Banner, ScrollArea } from "@/shared/ui"
 import styles from "./map-panel.module.css"
 import type { MetricKey } from "./metric"
 import { Ranking } from "./ranking"
+import { CountryOverview } from "./summary/country-summary"
+import { OutsideRegion, RegionSummary as RegionCard } from "./summary/region-summary"
 
 export interface MapPanelProps {
   readonly overview: Overview
@@ -35,116 +33,25 @@ function IndexBanner({ index }: { readonly index: IndexStatus }) {
   return <Banner tone="info" title={t("map:index.missing")} />
 }
 
-interface SelectedProps {
-  readonly id: string
-  readonly season: Season
-  readonly onClose: () => void
+interface CountryProps {
+  readonly overview: Overview
+  readonly regions: readonly RegionSummary[]
+  readonly metric: MetricKey
+  readonly searchFor: (id: string) => string
 }
 
-function revealRequested(state: unknown): boolean {
-  return typeof state === "object" && state !== null && "reveal" in state
-}
-
-function useReveal(cardId: string, ready: boolean, regionId: string) {
-  const location = useLocation()
-  const reveal = revealRequested(location.state)
-  useEffect(() => {
-    if (!ready || !reveal || regionId === "") return
-    const card = document.getElementById(cardId)
-    if (!card) return
-    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    card.scrollIntoView({ block: "start", behavior: still ? "auto" : "smooth" })
-    card.focus({ preventScroll: true })
-  }, [cardId, ready, reveal, regionId])
-}
-
-function SelectedRegion({ id, season, onClose }: SelectedProps) {
-  const { t } = useTranslation()
-  const f = useFormatters()
-  const cardId = useId()
-  const { networkMode } = useNetworkMode()
-  const { data } = useRegion(id, season)
-  useReveal(cardId, data !== undefined, id)
-  if (!data || data.id !== id) return <Skeleton lines={6} />
+function Country({ overview, regions, metric, searchFor }: CountryProps) {
   return (
-    <Card
-      as="section"
-      id={cardId}
-      tabIndex={-1}
-      key={data.id}
-      title={data.name}
-      actions={<CloseButton label={t("map:selected.close")} onClick={onClose} />}
-      className={`${styles.flat} ${styles.selected}`}
-    >
-      <div className={styles.stats}>
-        <Stat label={t("map:selected.settlements")} value={f.integer(data.settlements)} />
-        <Stat label={t("map:selected.population")} value={f.compact(data.population)} />
-        <Stat label={t("map:selected.links")} value={f.integer(data.links_season)} />
-        <Stat
-          label={t("map:selected.companies")}
-          value={data.companies === null ? t("map:legend.none") : f.compact(data.companies)}
-        />
-      </div>
-      {data.hansen !== null && (
-        <div className={styles.stats}>
-          <Stat label={t("data:metric.hansen")} value={f.number(data.hansen, 2)} />
-          <IndexCoverage value={data.index_population_coverage} />
-        </div>
-      )}
-      {data.index_model_version && (
-        <p>{t("data:network.model", { version: data.index_model_version })}</p>
-      )}
-      {data.links_by_mode.length > 0 ? (
-        <div>
-          <p>{t("map:connections.counts")}</p>
-          <ul className={styles.modes}>
-            {data.links_by_mode.map((row) => (
-              <li key={row.mode} className={styles.modeRow}>
-                <TransportIcon mode={row.mode} size="sm" />
-                <span>{t(`data:mode.${row.mode}`)}</span>
-                <span className={styles.modeValue}>{f.integer(row.all)}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
-      <ButtonLink
-        to={`/regions/${data.id}?season=${season}&network_mode=${networkMode}`}
-        icon="arrow-right"
-      >
-        {t("map:selected.open")}
-      </ButtonLink>
-      <ButtonLink
-        to={`/compare?ids=${data.id}&season=${season}&network_mode=${networkMode}`}
-        variant="secondary"
-        icon="compare"
-      >
-        {t("map:selected.compare")}
-      </ButtonLink>
-    </Card>
-  )
-}
-
-function OutsideRegion({
-  name,
-  count,
-  onClose,
-}: {
-  readonly name: string
-  readonly count: number
-  readonly onClose: () => void
-}) {
-  const { t } = useTranslation()
-  return (
-    <Card
-      as="section"
-      title={name}
-      actions={<CloseButton label={t("map:selected.close")} onClick={onClose} />}
-      className={`${styles.flat} ${styles.selected}`}
-    >
-      <Banner tone="info" title={t("map:selected.outsideModel", { name, count })} />
-      <p>{t("map:selected.outsideModelNote")}</p>
-    </Card>
+    <>
+      <CountryOverview overview={overview} />
+      <IndexBanner index={overview.index} />
+      <Ranking regions={regions} metric={metric} searchFor={searchFor} className={styles.section} />
+      <ModeTotals
+        totals={overview.links_by_mode}
+        total={overview.links}
+        className={styles.section}
+      />
+    </>
   )
 }
 
@@ -159,7 +66,6 @@ export const MapPanel = memo(function MapPanel({
   onClear,
 }: MapPanelProps) {
   const { t } = useTranslation()
-  const f = useFormatters()
   const selectedId = modelRegionId(requestedId, regions)
   const selected = useRegion(selectedId ?? "", season)
   return (
@@ -170,7 +76,15 @@ export const MapPanel = memo(function MapPanel({
       <ScrollArea className={styles.scroll} label={t("map:overview.title")}>
         <div className={styles.content}>
           {selectedId ? (
-            <SelectedRegion id={selectedId} season={season} onClose={onClear} />
+            <>
+              <RegionCard id={selectedId} season={season} regions={regions} onClose={onClear} />
+              <RegionLinks
+                key={selectedId}
+                regionId={selectedId}
+                season={season}
+                className={styles.section}
+              />
+            </>
           ) : requestedId ? (
             <OutsideRegion
               name={selectedName ?? requestedId}
@@ -178,30 +92,7 @@ export const MapPanel = memo(function MapPanel({
               onClose={onClear}
             />
           ) : (
-            <Card as="section" title={t("map:overview.title")} className={styles.flat}>
-              <div className={styles.stats}>
-                <Stat
-                  label={t("map:overview.settlements")}
-                  value={f.integer(overview.settlements)}
-                />
-                <Stat label={t("map:overview.population")} value={f.compact(overview.population)} />
-                <Stat label={t("map:overview.links")} value={f.integer(overview.links)} />
-                <Stat label={t("map:overview.regions")} value={f.integer(overview.regions)} />
-              </div>
-            </Card>
-          )}
-          {selectedId ? (
-            <RegionLinks
-              key={selectedId}
-              regionId={selectedId}
-              season={season}
-              className={styles.flat}
-            />
-          ) : (
-            <>
-              <IndexBanner index={overview.index} />
-              <Ranking regions={regions} metric={metric} searchFor={searchFor} />
-            </>
+            <Country overview={overview} regions={regions} metric={metric} searchFor={searchFor} />
           )}
         </div>
       </ScrollArea>

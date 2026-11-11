@@ -1,13 +1,14 @@
 import { useNetworkMode } from "@/shared/hooks/use-network-mode"
 import { useTranslation } from "@/shared/i18n"
-import { Select } from "@/shared/ui"
+import { Select, type SelectVariant } from "@/shared/ui"
 import { useOverview } from "../region.queries"
 
 interface NetworkModeControlProps {
   readonly hideLabel?: boolean
+  readonly variant?: SelectVariant
 }
 
-export function NetworkModeControl({ hideLabel = false }: NetworkModeControlProps) {
+export function NetworkModeControl({ hideLabel = false, variant }: NetworkModeControlProps) {
   const { t } = useTranslation()
   const overview = useOverview()
   const snapshot = overview.data?.index.components.some((c) => c.key === "snapshot_network")
@@ -16,6 +17,7 @@ export function NetworkModeControl({ hideLabel = false }: NetworkModeControlProp
     <Select
       label={t("data:network.label")}
       hideLabel={hideLabel}
+      {...(variant === undefined ? {} : { variant })}
       value={networkMode}
       onChange={setNetworkMode}
       options={[

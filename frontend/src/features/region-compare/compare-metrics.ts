@@ -2,12 +2,12 @@ import type { RegionSummary } from "@/entities/region"
 import type { Formatters } from "@/shared/i18n"
 
 export type CompareMetricLabel =
-  | "data:metric.hansen"
-  | "data:metric.links"
-  | "data:metric.population"
-  | "region:stats.settlements"
-  | "data:metric.companies"
-  | "data:network.coverageColumn"
+  | "compare:metrics.hansen"
+  | "compare:metrics.coverage"
+  | "compare:metrics.links"
+  | "compare:metrics.population"
+  | "compare:metrics.settlements"
+  | "compare:metrics.companies"
 
 export type CompareMetricHint =
   | "data:metricHint.hansen"
@@ -28,42 +28,42 @@ export interface CompareMetric {
 export const COMPARE_METRICS: readonly CompareMetric[] = [
   {
     key: "hansen",
-    label: "data:metric.hansen",
+    label: "compare:metrics.hansen",
     hint: "data:metricHint.hansen",
     value: (region) => region.hansen,
     format: (value, f) => f.number(value, 2),
   },
   {
     key: "coverage",
-    label: "data:network.coverageColumn",
+    label: "compare:metrics.coverage",
     hint: "data:network.coverageHint",
     value: (region) => region.index_population_coverage ?? null,
     format: (value, f) => f.percent(value, 1),
   },
   {
     key: "links",
-    label: "data:metric.links",
+    label: "compare:metrics.links",
     hint: "data:metricHint.links",
     value: (region) => region.links_season,
     format: (value, f) => f.integer(value),
   },
   {
     key: "population",
-    label: "data:metric.population",
+    label: "compare:metrics.population",
     hint: "data:metricHint.population",
     value: (region) => region.population,
     format: (value, f) => f.compact(value),
   },
   {
     key: "settlements",
-    label: "region:stats.settlements",
+    label: "compare:metrics.settlements",
     hint: "data:metricHint.settlements",
     value: (region) => region.settlements,
     format: (value, f) => f.integer(value),
   },
   {
     key: "companies",
-    label: "data:metric.companies",
+    label: "compare:metrics.companies",
     hint: "data:metricHint.companies",
     value: (region) => region.companies,
     format: (value, f) => f.compact(value),

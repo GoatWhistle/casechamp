@@ -78,3 +78,23 @@ describe("road geometry prepared outside the UI thread", () => {
     expect(JSON.parse((await view.geometry[0]?.text()) ?? '{"features":[]}').features).toEqual([])
   })
 })
+
+it("limits national-view sources without dropping geometry or slowing the first batch", async () => {
+  const segments = Array.from({ length: 40001 }, (_, index) => segment(index))
+  const view = prepareRoadView({
+    segments,
+    matched: segments.length,
+    truncated: false,
+    version: "test",
+    detail: "full",
+  })
+  expect(view.geometry.length).toBeLessThanOrEqual(6)
+  const parts = await Promise.all(view.geometry.map(async (blob) => JSON.parse(await blob.text())))
+  expect(parts[0].features).toHaveLength(2000)
+  const features = parts.flatMap((part) => part.features)
+  expect(features).toHaveLength(segments.length)
+  expect(new Set(features.map((feature) => feature.id)).size).toBe(segments.length)
+  expect(features.map((feature) => feature.properties.way_id)).toEqual(
+    segments.map((road) => road.way_id),
+  )
+})

@@ -1,0 +1,31 @@
+.card {
+  display: grid;
+  gap: var(--space-12);
+  padding: var(--space-16);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.regions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+.points {
+  composes: bareList from "@/shared/styles/compose.module.css";
+  display: grid;
+  gap: var(--space-2);
+}
+.points li {
+  display: grid;
+  gap: var(--space-8);
+  padding-block: var(--space-2);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-12);
+}

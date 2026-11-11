@@ -30,6 +30,32 @@ const calculation = {
 }
 
 describe("chat calculation", () => {
+  it.each([
+    [1.2, ru.calculation.speedIncrease.replace("{{percent, number}}", "20")],
+    [0.8, ru.calculation.speedDecrease.replace("{{percent, number}}", "20")],
+    [0, ru.calculation.title],
+  ])("labels the actual speed factor %s and shows completed results", (factor, title) => {
+    const client = new QueryClient({ defaultOptions: { queries: { staleTime: Infinity } } })
+    client.setQueryData(["road-scenario", "job"], {
+      id: "job",
+      region: "First",
+      status: "completed",
+      result: { before: 100, after: 102, delta: 2 },
+    })
+    const changed = { ...calculation, changes: [{ way_id: 7, speed_factor: factor }] }
+    const view = render(
+      <QueryClientProvider client={client}>
+        <LocaleProvider>
+          <ChatCalculationCard calculation={changed} />
+        </LocaleProvider>
+      </QueryClientProvider>,
+    )
+    expect(screen.getByRole("region", { name: title })).toBeTruthy()
+    expect(screen.getByText("102,00")).toBeTruthy()
+    expect(screen.queryByRole("progressbar")).toBeNull()
+    view.unmount()
+    client.clear()
+  })
   it("frames once and displays real progress in the message", () => {
     const client = new QueryClient({ defaultOptions: { queries: { staleTime: Infinity } } })
     client.setQueryData(["road-scenario", "job"], {

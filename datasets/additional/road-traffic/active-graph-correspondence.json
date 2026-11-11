@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-11-11T07:58:05.446294+00:00",
+  "source_release": "data-clickhouse-20261110",
+  "candidate_snapshot": "plexus_traffic_snapshot_roadtraffic20261111v1",
+  "candidate_ways": 6869793,
+  "active_ways": 4301210,
+  "shared_osm_way_ids": 4300831,
+  "candidate_only": 2568962,
+  "active_only": 379,
+  "meaning": "OSM ID correspondence only; shared IDs do not establish equal geometry, version or tags",
+  "release_manifest_sha256": "56c81a4d6c4839801668306804f0b8653cfd9ab1faa90ad9b41078410c8f290c",
+  "graph_manifest_sha256": "e7a06d518e39c0c1bf156000f34a5b10256869b4b736e4cc467c93cbf6095d43"
+}

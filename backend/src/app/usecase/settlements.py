@@ -1,10 +1,11 @@
 from collections.abc import Callable
 from dataclasses import dataclass
 from enum import StrEnum
+from math import isfinite
 
 from app.domain.errors import InvalidQuery, RegionNotFound
 from app.domain.text import normalize_name
-from app.usecase.dto import SettlementRecord
+from app.usecase.dto import PointRecord, SettlementRecord
 from app.usecase.interface import AtlasRepository
 
 MAX_PAGE = 500
@@ -61,6 +62,17 @@ def _sort_key(
 class SettlementQueries:
     def __init__(self, repository: AtlasRepository) -> None:
         self._repository = repository
+
+    def location(self, settlement_id: str) -> PointRecord:
+        point = self._repository.point(settlement_id)
+        if point is None:
+            raise InvalidQuery("Settlement coordinates are unavailable; find a known settlement ID")
+        if not (
+            isfinite(point.lon) and isfinite(point.lat)
+            and -180 <= point.lon <= 180 and -85 <= point.lat <= 85
+        ):
+            raise InvalidQuery("Settlement has invalid map coordinates")
+        return point
 
     def page(self, query: SettlementQuery) -> SettlementPage:
         if query.limit < 1 or query.limit > MAX_PAGE or query.offset < 0:

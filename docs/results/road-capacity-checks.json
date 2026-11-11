@@ -1,0 +1,66 @@
+{
+  "status": "passed",
+  "date": "2026-11-11T11:12:33.951780+00:00",
+  "source_base_sha": "cdb2c2e1108bde7ff37ab91f9d7907d05de2a897",
+  "working_tree_dirty": true,
+  "artifact_version": "adeb4170a71a6b9bbb8b5b5fe6de0a627e1e9a83b483e0328a0b172cb2964b29",
+  "backend": {
+    "ruff": "passed",
+    "mypy_files": 208,
+    "unit_tests": 300,
+    "integration_tests": 45
+  },
+  "etl": {
+    "unit_tests": 28,
+    "scratch_aggregate_integration": 1,
+    "legacy_migration_integration": 1,
+    "national_validation_checks": 28,
+    "independent_point_sample": 96,
+    "runtime_regional_baselines": 252
+  },
+  "frontend": {
+    "rules": 36,
+    "unit_tests": 448,
+    "typecheck": "passed",
+    "biome": "passed",
+    "production_build": "passed",
+    "desktop_e2e": 3,
+    "desktop_e2e_seconds": 42.0,
+    "viewports": [
+      1440,
+      1920
+    ],
+    "accessibility": "axe passed",
+    "visual_inspection": [
+      1440
+    ]
+  },
+  "local": {
+    "frontend": "http://127.0.0.1:5187",
+    "api": "http://127.0.0.1:8007",
+    "health": "passed",
+    "routing_workers": 6,
+    "legacy_jobs_preserved": 14,
+    "active_jobs": 0,
+    "migration_repeat": "already_current",
+    "activation_repeat": "completed"
+  },
+  "source_hashes": {
+    "backend/src/app/domain/road_cost.py": "f45949b39a59ebb823fbf387485fc175af609feaadd771ec93163d399170bbda",
+    "backend/src/app/domain/road_profiles.py": "0351e854f7bebca179b19d5c30bcd510fdac55ce798023e3dc783c2142a09bf1",
+    "backend/src/app/adapter/road_graph/full_calculation.py": "c06b831c6b4b2d1e217007efd600b9fa24dee6b84d7895e41f0290f74b87ae6c",
+    "backend/src/app/adapter/road_graph/freight_routes.py": "73643646682b7c8e4f3c11bd81c4195ddb5b29dc0b9b0d1f3fb3331764a4bebe",
+    "backend/src/app/adapter/road_graph/baselines.py": "143c6e8032eb0bc55362612b05494eef471ed9108bd9ed50801bc9f45fd310da",
+    "etl/road_capacity/matrices.py": "0c28468dbb8073a15c1e1c5a3cf9d08b010a1d623707dfd03769305e3f690131",
+    "etl/road_capacity/aggregate.py": "a0726aa79e97cd7cca29d7beaf679f0755da44c61987869daf4741a46e2e48f0",
+    "etl/road_capacity/weights.py": "ec38b23620f6e146641c5b85d510e571fa76dfdfb32728a91611439f569ae978"
+  },
+  "limits": [
+    "No confirmed graph hourly-flow profiles; unknown flow uses free movement.",
+    "Uniform capacity and BPR parameters are uncalibrated.",
+    "Existing undirected legacy transport routing and 72-hour road-search cutoff retained.",
+    "Routed freight does not verify truck mass, height or access restrictions.",
+    "Live monetary validation uses explicitly assumed trips, rates and project costs.",
+    "No mobile checks, paid provider checks, commit, push or remote deployment."
+  ]
+}

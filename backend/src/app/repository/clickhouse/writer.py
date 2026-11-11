@@ -12,7 +12,10 @@ class ClickHouseWriter:
         self.schemas: dict[str, Any] = {}
 
     def insert(self, table: str, row: dict[str, object]) -> None:
-        allowed = {"road_jobs", "analysis_jobs", "analysis_details"}
+        self.insert_many(table, [row])
+
+    def insert_many(self, table: str, rows: list[dict[str, object]]) -> None:
+        allowed = {"road_jobs", "analysis_jobs", "analysis_details", "stress_jobs", "stress_impacts", "stress_baseline", "stress_point_impacts"}
         if table not in allowed:
             raise ValueError("Unknown state table")
         if table not in self.schemas:
@@ -20,7 +23,7 @@ class ClickHouseWriter:
                 "SELECT * FROM plexus_state." + table + " LIMIT 0", {}
             ).schema
         body = ("INSERT INTO plexus_state." + table + " FORMAT ArrowStream\n").encode()
-        body += arrow_body(self.schemas[table], [row])
+        body += arrow_body(self.schemas[table], rows)
         request = Request(
             self.reader.url + "/?precise_float_parsing=1", data=body, headers=self.reader.headers
         )

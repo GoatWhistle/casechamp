@@ -1,0 +1,14 @@
+.standing {
+  gap: var(--space-12);
+  border: 0;
+  padding: 0;
+}
+
+.rank {
+  font-variant-numeric: var(--font-numeric);
+}
+
+.coverage {
+  composes: captionMuted from "../../../shared/styles/compose.module.css";
+  margin: 0;
+}

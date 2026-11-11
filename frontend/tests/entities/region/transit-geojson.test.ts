@@ -124,9 +124,7 @@ it("anchors model air to airport coordinates and hides unmatched models", () => 
     retrieved_at: "test",
   }
   const result = buildTransitCollection([model], "17000000", catalog)
-  expect(result.data.features[0]?.geometry.coordinates).toEqual([
-    [39, 55],
-    [42, 55],
-  ])
+  expect(result.data.features[0]?.geometry.coordinates[0]).toEqual([39, 55])
+  expect(result.data.features[0]?.geometry.coordinates.at(-1)).toEqual([42, 55])
   expect(model.from.lon).toBe(40)
 })

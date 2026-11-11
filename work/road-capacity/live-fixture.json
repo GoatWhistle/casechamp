@@ -1,0 +1,46 @@
+{
+  "region_id": "18000000",
+  "scenario": "road",
+  "origin_point_id": "18710000001",
+  "market_city": "Волгоград",
+  "way_ids": [
+    723208178,
+    724728528,
+    849724682,
+    133302676,
+    35854528
+  ],
+  "baseline_road_hours_without_snaps": 0.4452070530678611,
+  "way_details": [
+    {
+      "way_id": 35854528,
+      "name": "проспект Ленина",
+      "highway": "primary",
+      "speed_kmh": 50.0
+    },
+    {
+      "way_id": 133302676,
+      "name": "проспект Ленина",
+      "highway": "primary",
+      "speed_kmh": 60.0
+    },
+    {
+      "way_id": 723208178,
+      "name": "проспект Ленина",
+      "highway": "primary",
+      "speed_kmh": 60.0
+    },
+    {
+      "way_id": 724728528,
+      "name": "проспект Ленина",
+      "highway": "primary",
+      "speed_kmh": 60.0
+    },
+    {
+      "way_id": 849724682,
+      "name": "проспект Ленина",
+      "highway": "primary",
+      "speed_kmh": 60.0
+    }
+  ]
+}

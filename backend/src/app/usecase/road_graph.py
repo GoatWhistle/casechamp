@@ -1,102 +1,46 @@
-from dataclasses import dataclass, field
 from math import isfinite
 from typing import Protocol
 
+from app.domain.appraisal_inputs import ProjectAssumptions
+from app.domain.appraisal_validation import validate_project
 from app.domain.errors import DataUnavailable, InvalidQuery, RegionNotFound
-from app.domain.road_economics import MoneyAssumptions, MoneyEffect
+from app.domain.road_economics import MoneyAssumptions
+from app.usecase.closure_matching import matching_closure_jobs
+from app.usecase.graph_snapshot import GraphModelInfo
 from app.usecase.interface import AtlasRepository
+from app.usecase.road_geometry import RoadGeometry, RoadGeometrySource
+from app.usecase.road_profile_validation import validate_changes
+from app.usecase.road_records import (
+    GraphLocation,
+    RoadAddition,
+    RoadChange,
+    RoadJob,
+    RoadResult,
+    RoadSegment,
+    RoadView,
+    SettlementEffect,
+)
 from app.usecase.transport_links import LinkChange, PlaceName, TransportLink, validate_links
 
-
-@dataclass(frozen=True)
-class RoadSegment:
-    way_id: int
-    name: str
-    highway: str
-    speed_kmh: float
-    coordinates: list[list[float]]
-    source_node: int | None = None
-    target_node: int | None = None
-
-
-@dataclass(frozen=True)
-class GraphLocation:
-    point_id: str
-    name: str
-    region: str
-    node: int | None
-    longitude: float
-    latitude: float
-    snap_km: float
-
-
-@dataclass(frozen=True)
-class RoadView:
-    segments: list[RoadSegment]
-    matched: int
-    truncated: bool
-    version: str
-    detail: str = "all"
-
-
-@dataclass(frozen=True)
-class RoadChange:
-    way_id: int
-    speed_factor: float
-
-
-@dataclass(frozen=True)
-class RoadAddition:
-    source_node: int
-    target_node: int
-    travel_hours: float
-    coordinates: list[list[float]] | None = None
-
-
-@dataclass(frozen=True)
-class SettlementEffect:
-    point_id: str
-    before: float
-    after: float
-    delta: float
-
-
-@dataclass(frozen=True)
-class RoadResult:
-    before: float
-    after: float
-    delta: float
-    relative_percent: float | None
-    population: int
-    settlements: int
-    changed_edges: int
-    normalization: float
-    elapsed_seconds: float
-    affected_settlements: int | None = None
-    money: MoneyEffect | None = None
-    routing_method: str = "full_graph"
-    settlement_effects: list[SettlementEffect] = field(default_factory=list)
-
-
-@dataclass(frozen=True)
-class RoadJob:
-    id: str
-    region_id: str
-    region: str
-    scenario: str
-    changes: list[RoadChange]
-    status: str
-    completed: int
-    total: int
-    version: str
-    result: RoadResult | None = None
-    error: str | None = None
-    addition: RoadAddition | None = None
-    money_assumptions: MoneyAssumptions | None = None
-    links: list[LinkChange] = field(default_factory=list)
+__all__ = [
+    "GraphLocation",
+    "RoadAddition",
+    "RoadChange",
+    "RoadGraph",
+    "RoadGraphPort",
+    "RoadJob",
+    "RoadResult",
+    "RoadSegment",
+    "RoadView",
+    "RoadViewSource",
+    "SettlementEffect",
+]
 
 
 class RoadGraphPort(Protocol):
+    @property
+    def metadata(self) -> GraphModelInfo: ...
+    def markets(self) -> list[str]: ...
     def locations(self, query: str, region_id: str | None) -> list[GraphLocation]: ...
     def view(self, bounds: tuple[float, float, float, float], zoom: float) -> RoadView: ...
     def submit(
@@ -108,15 +52,21 @@ class RoadGraphPort(Protocol):
         links: list[LinkChange] | None = None,
         *,
         queue: bool = False,
+        appraisal: ProjectAssumptions | None = None,
     ) -> RoadJob: ...
     def transport_links(
         self, network: str, scenario: str, place: str, mode: str | None
     ) -> list[TransportLink]: ...
     def place_names(self, ids: list[str]) -> list[PlaceName]: ...
     def submit_addition(
-        self, region_id: str, region: str, addition: RoadAddition, money: MoneyAssumptions | None
+        self,
+        region_id: str,
+        region: str,
+        addition: RoadAddition,
+        money: MoneyAssumptions | None,
+        appraisal: ProjectAssumptions | None = None,
     ) -> RoadJob: ...
-    def recent(self) -> list[RoadJob]: ...
+    def recent(self, limit: int | None = 20) -> list[RoadJob]: ...
     def job(self, job_id: str) -> RoadJob: ...
     def cancel(self, job_id: str) -> RoadJob: ...
 
@@ -131,16 +81,24 @@ class RoadGraph:
         engine: RoadGraphPort | None,
         atlas: AtlasRepository,
         view_source: RoadViewSource | None = None,
+        geometry_source: RoadGeometrySource | None = None,
     ) -> None:
         self._engine = engine
         self.atlas = atlas
         self.view_source = view_source
+        self.geometry_source = geometry_source
 
     @property
     def engine(self) -> RoadGraphPort:
         if self._engine is None:
             raise DataUnavailable("GRAPH_DIR is not configured")
         return self._engine
+
+    def markets(self) -> list[str]:
+        return self.engine.markets()
+
+    def model_info(self) -> GraphModelInfo:
+        return self.engine.metadata
 
     def locations(self, query: str, region_id: str | None = None) -> list[GraphLocation]:
         if not 2 <= len(query.strip()) <= 100:
@@ -149,6 +107,30 @@ class RoadGraph:
 
     def recent(self) -> list[RoadJob]:
         return self.engine.recent()
+
+    def closure_jobs(self, way_ids: list[int], version: str) -> list[RoadJob]:
+        return matching_closure_jobs(self.engine.recent(limit=None), way_ids, version)
+
+    def submit_closure(self, way_ids: list[int], region_ids: list[str], version: str) -> list[RoadJob]:
+        if version != self.model_info().version:
+            raise InvalidQuery("Closure belongs to a different graph version")
+        ids = sorted(set(way_ids))
+        if not 1 <= len(ids) <= 20000:
+            raise InvalidQuery("Select between 1 and 20000 road ways")
+        regions = {r.id: r for r in self.atlas.regions()}
+        if any(key not in regions for key in region_ids):
+            raise RegionNotFound()
+        existing = {job.region_id: job for job in self.closure_jobs(ids, version)
+                    if job.status in {"queued", "running", "completed"}}
+        changes = [RoadChange(way, 0) for way in ids]
+        return [existing[key] if key in existing else self.engine.submit(
+            key, regions[key].name, "road", changes, queue=True,
+        ) for key in dict.fromkeys(region_ids)]
+
+    def geometry(self, way_ids: list[int]) -> RoadGeometry:
+        if self.geometry_source is None:
+            raise DataUnavailable("Road scenario geometry is not configured")
+        return self.geometry_source.geometry(way_ids)
 
     def view(self, west: float, south: float, east: float, north: float, zoom: float) -> RoadView:
         if not all(isfinite(v) for v in (west, south, east, north, zoom)):
@@ -180,7 +162,10 @@ class RoadGraph:
         links: list[LinkChange] | None = None,
         *,
         queue: bool = False,
+        appraisal: ProjectAssumptions | None = None,
     ) -> RoadJob:
+        if appraisal is not None:
+            validate_project(appraisal)
         links = links or []
         if scenario not in {"road", "summer", "winter"} or len(changes) > 50 or len(links) > 30:
             raise InvalidQuery()
@@ -189,19 +174,25 @@ class RoadGraph:
         validate_links(links)
         if len({c.way_id for c in changes}) != len(changes):
             raise InvalidQuery("Duplicate road identifiers")
-        if any(
-            c.way_id < 0 or not isfinite(c.speed_factor) or not 0 <= c.speed_factor <= 3
-            for c in changes
-        ):
-            raise InvalidQuery("Speed factor must be between 0 (closure) and 3")
+        validate_changes(changes)
         region = next((r for r in self.atlas.regions() if r.id == region_id), None)
         if region is None:
             raise RegionNotFound()
-        return self.engine.submit(region_id, region.name, scenario, changes, links, queue=queue)
+        return self.engine.submit(
+            region_id, region.name, scenario, changes, links, queue=queue, appraisal=appraisal
+        )
 
     def add_connection(
-        self, region_id: str, addition: RoadAddition, money: MoneyAssumptions | None = None
+        self,
+        region_id: str,
+        addition: RoadAddition,
+        money: MoneyAssumptions | None = None,
+        appraisal: ProjectAssumptions | None = None,
     ) -> RoadJob:
+        if appraisal is not None:
+            validate_project(appraisal)
+            if money is not None:
+                raise InvalidQuery("Choose either legacy money or project appraisal")
         if (
             addition.source_node < 0
             or addition.target_node < 0
@@ -223,7 +214,7 @@ class RoadGraph:
         region = next((r for r in self.atlas.regions() if r.id == region_id), None)
         if region is None:
             raise RegionNotFound()
-        return self.engine.submit_addition(region_id, region.name, addition, money)
+        return self.engine.submit_addition(region_id, region.name, addition, money, appraisal)
 
     def job(self, job_id: str) -> RoadJob:
         return self.engine.job(job_id)

@@ -1,0 +1,21 @@
+.legend {
+  position: absolute;
+  inset-block-start: calc(var(--space-64) + var(--space-24));
+  inset-inline-start: var(--space-16);
+  z-index: var(--layer-sticky);
+  padding: var(--space-16);
+  gap: var(--space-8);
+  pointer-events: auto;
+}
+.closed,
+.detour {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+.closed {
+  color: var(--status-danger);
+}
+.detour {
+  color: var(--action-primary);
+}

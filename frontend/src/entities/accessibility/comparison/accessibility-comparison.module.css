@@ -1,15 +1,37 @@
 .comparison {
   display: grid;
-  gap: var(--space-16);
+  gap: var(--space-20);
 }
 
-.explanation {
+.block {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-4) var(--space-8);
+}
+
+.block > :last-child {
+  grid-column: 1 / -1;
+}
+
+.blockTitle {
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.blockHint {
+  display: inline-flex;
+  justify-self: end;
+}
+
+.method {
   color: var(--text-secondary);
   font-size: var(--font-size-body-sm);
 }
 
-.provenance {
-  color: var(--text-secondary);
-  font-size: var(--font-size-caption);
-  overflow-wrap: anywhere;
+.methodBody {
+  display: grid;
+  gap: var(--space-8);
+  max-inline-size: var(--prose-measure);
+  padding-block: var(--space-4) var(--space-8);
 }

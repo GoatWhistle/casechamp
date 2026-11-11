@@ -1,0 +1,17 @@
+{
+  "reason": "API already marked interrupted persisted jobs cancelled during previous restart",
+  "jobs": [
+    {
+      "id": "01f0deb0ffbd4a28af9fc60af68e2046",
+      "status": "queued"
+    },
+    {
+      "id": "3377918591c4400cbe4471ffa0604ce0",
+      "status": "queued"
+    }
+  ],
+  "live_statuses": {
+    "01f0deb0ffbd4a28af9fc60af68e2046": "cancelled",
+    "3377918591c4400cbe4471ffa0604ce0": "cancelled"
+  }
+}

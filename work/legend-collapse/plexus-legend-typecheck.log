@@ -1,0 +1,16 @@
+
+> app-frontend@0.1.0 typecheck
+> tsc --noEmit
+
+src/entities/road-stress/stress-card.tsx(6,1): error TS6133: 'StressPlace' is declared but its value is never read.
+src/entities/road-stress/stress-card.tsx(45,19): error TS2322: Type '"play"' is not assignable to type '"error" | "map" | "rail" | "sort" | "filter" | "retry" | "calendar" | "chat" | "compare" | "empty" | "stop" | "route" | "home" | "search" | "list" | "link" | "alert" | "menu" | "x" | ... 25 more ... | undefined'.
+src/entities/road-stress/stress-card.tsx(91,28): error TS18048: 'job.regions' is possibly 'undefined'.
+src/entities/road-stress/stress-card.tsx(92,27): error TS18048: 'job.regions' is possibly 'undefined'.
+src/entities/road-stress/stress-card.tsx(93,31): error TS18048: 'job.regions' is possibly 'undefined'.
+src/entities/road-stress/stress-card.tsx(96,16): error TS18048: 'job.regions' is possibly 'undefined'.
+src/entities/road-stress/stress-card.tsx(98,18): error TS18048: 'job.regions' is possibly 'undefined'.
+src/entities/road-stress/stress-card.tsx(140,19): error TS2322: Type '"chevron-left"' is not assignable to type '"error" | "map" | "rail" | "sort" | "filter" | "retry" | "calendar" | "chat" | "compare" | "empty" | "stop" | "route" | "home" | "search" | "list" | "link" | "alert" | "menu" | "x" | ... 25 more ... | undefined'.
+src/entities/road-stress/stress-card.tsx(157,18): error TS2304: Cannot find name 'TextField'.
+src/entities/road-stress/stress-card.tsx(160,30): error TS7006: Parameter 'event' implicitly has an 'any' type.
+src/entities/road-stress/stress-card.tsx(162,18): error TS2304: Cannot find name 'TextField'.
+src/entities/road-stress/stress-card.tsx(165,30): error TS7006: Parameter 'event' implicitly has an 'any' type.

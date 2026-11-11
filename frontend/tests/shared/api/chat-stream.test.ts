@@ -81,3 +81,56 @@ describe("chat stream", () => {
     },
   )
 })
+
+it("accepts local artifacts and upstream scenarios in the same stream", async () => {
+  const artifacts = [
+    {
+      type: "stress_test",
+      stress_test: { id: "saved", version: "v", way_ids: [1], status: "completed", regions: [] },
+    },
+    { type: "scenario", scenario: { kind: "closure", job_ids: ["saved"] } },
+    {
+      type: "map",
+      map: {
+        action: "focus_settlement",
+        region_ids: ["18000000"],
+        settlement: {
+          id: "town",
+          name: "Town",
+          region_id: "18000000",
+          longitude: 44,
+          latitude: 48,
+        },
+      },
+    },
+    {
+      type: "table",
+      table: {
+        id: "pairs",
+        title: "connectivity",
+        columns: [{ key: "score", format: "number" }],
+        rows: [{ score: 0 }],
+        total: 1,
+        source: "model:graph",
+        truncated: false,
+      },
+    },
+    { type: "done" },
+  ].map((event) => ({ text: "", code: "", ...event }))
+  mockResponse(artifacts.map((event) => JSON.stringify(event)).join("\n"))
+  const events: ChatStreamEvent[] = []
+  await streamChat({ prompt: "Review" }, new AbortController().signal, (event) =>
+    events.push(event),
+  )
+  expect(events.map((event) => event.type)).toEqual(artifacts.map((event) => event.type))
+})
+
+it("sends calculation interpretation to the dedicated review endpoint", async () => {
+  mockResponse(JSON.stringify({ type: "done", text: "", code: "" }))
+  await streamChat(
+    { prompt: "Review", calculation_review: { scenario_ids: ["saved"], stress_ids: [] } },
+    new AbortController().signal,
+    () => undefined,
+  )
+  expect(post.mock.calls.at(-1)?.[0]).toBe("/api/v1/chat/calculation-review")
+})

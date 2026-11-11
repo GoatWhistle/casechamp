@@ -1,0 +1,42 @@
+hover {
+  metrics: {
+    queryRenderedFeatures: 181,
+    setFeatureState: 10,
+    triggerRepaint: 10
+  },
+  frames: 182,
+  p95: 16.800000000000182,
+  max: 233.29999999999973,
+  slow: 8
+}
+drag {
+  metrics: { queryRenderedFeatures: 1, triggerRepaint: 1011 },
+  frames: 526,
+  p95: 33.400000000001455,
+  max: 66.69999999999891,
+  slow: 247
+}
+cpu [
+  [ '(program) ', 12965962 ],
+  [ '(idle) ', 2950246 ],
+  [ 'exports.jsxDEV react_jsx-dev-runtime.js?v=718ccab1', 63181 ],
+  [ '(garbage collector) ', 25031 ],
+  [ 'getAllIds maplibre-gl.js?v=718ccab1', 17895 ],
+  [ 'replaceEqualDeep @tanstack_react-query.js?v=718ccab1', 17277 ],
+  [ 'readSVarint maplibre-gl.js?v=718ccab1', 15737 ],
+  [ ' ', 15198 ],
+  [ ' maplibre-gl.js?v=718ccab1', 15122 ],
+  [ 'dispatchContinuousEvent react-dom_client.js?v=718ccab1', 14806 ],
+  [ 'loadGeometry maplibre-gl.js?v=718ccab1', 12843 ],
+  [ '_render maplibre-gl.js?v=718ccab1', 12052 ],
+  [ 'set maplibre-gl.js?v=718ccab1', 11398 ],
+  [ 'update maplibre-gl.js?v=718ccab1', 9964 ],
+  [ 'prepare maplibre-gl.js?v=718ccab1', 9951 ],
+  [ 'draw maplibre-gl.js?v=718ccab1', 9024 ],
+  [ ' react-dom_client.js?v=718ccab1', 8876 ],
+  [ 'bufferData ', 8805 ],
+  [ 'getAllTiles maplibre-gl.js?v=718ccab1', 8394 ],
+  [ 'getTileById maplibre-gl.js?v=718ccab1', 8346 ],
+  [ 'renderTileClippingMasks maplibre-gl.js?v=718ccab1', 7588 ],
+  [ 'render maplibre-gl.js?v=718ccab1', 7560 ]
+]

@@ -2,6 +2,8 @@ import { isChatAnalysis } from "@/shared/api/chat-analysis"
 import { isChatChart, isChatTable } from "@/shared/api/chat-artifacts"
 import { isChatCalculation } from "@/shared/api/chat-calculation"
 import { isChatMapCommand } from "@/shared/api/chat-map"
+import { isChatScenario } from "@/shared/api/chat-scenario"
+import { isStressJob, isStressRoutes } from "@/shared/api/road-stress"
 import type { AnalysisCommentary, ChatEntry, ChatSession } from "./chat-session"
 
 const record = (value: unknown): value is Record<string, unknown> =>
@@ -15,6 +17,7 @@ const text = (value: unknown) => typeof value === "string"
 export function isAnalysisCommentary(value: unknown): value is AnalysisCommentary {
   return (
     record(value) &&
+    optionalArray(value.tables, isChatTable) &&
     text(value.revision) &&
     text(value.text) &&
     typeof value.complete === "boolean" &&
@@ -30,8 +33,11 @@ function isEntry(value: unknown): value is ChatEntry {
     array(value.charts, isChatChart) &&
     array(value.mapCommands, isChatMapCommand)
   const calculations =
+    optionalArray(value.stressTests, isStressJob) &&
+    isStressRoutes(value.stressRoutes) &&
     optionalArray(value.analyses, isChatAnalysis) &&
-    optionalArray(value.calculations, isChatCalculation)
+    optionalArray(value.calculations, isChatCalculation) &&
+    optionalArray(value.scenarios, isChatScenario)
   const commentaries =
     value.commentaries === undefined ||
     (record(value.commentaries) && Object.values(value.commentaries).every(isAnalysisCommentary))
@@ -40,6 +46,7 @@ function isEntry(value: unknown): value is ChatEntry {
     ["user", "assistant"].includes(String(value.role)) &&
     text(value.content) &&
     typeof value.complete === "boolean" &&
+    (value.reviewPending === undefined || typeof value.reviewPending === "boolean") &&
     metadata &&
     calculations &&
     commentaries

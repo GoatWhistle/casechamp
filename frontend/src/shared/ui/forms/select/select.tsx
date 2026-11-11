@@ -14,6 +14,13 @@ export interface SelectOption<T extends string> {
   readonly meta?: string | undefined
 }
 
+export type SelectVariant = "field" | "floating"
+
+const VARIANT_CLASS: Readonly<Record<SelectVariant, string | undefined>> = {
+  field: undefined,
+  floating: styles.floating,
+}
+
 export interface SelectProps<T extends string> {
   readonly label: string
   readonly options: readonly SelectOption<T>[]
@@ -23,6 +30,7 @@ export interface SelectProps<T extends string> {
   readonly placeholder?: string | undefined
   readonly disabled?: boolean
   readonly className?: string | undefined
+  readonly variant?: SelectVariant
 }
 
 const stopSpaceClick = (event: KeyboardEvent<HTMLButtonElement>) => {
@@ -38,6 +46,7 @@ export function Select<T extends string>({
   placeholder,
   disabled = false,
   className,
+  variant = "field",
 }: SelectProps<T>) {
   const { t } = useTranslation()
   const baseId = useId()
@@ -70,7 +79,7 @@ export function Select<T extends string>({
         aria-controls={controller.open ? listId : undefined}
         aria-activedescendant={active === undefined ? undefined : optionId(active.value)}
         disabled={disabled}
-        className={styles.trigger}
+        className={clsx(styles.trigger, VARIANT_CLASS[variant])}
         onClick={controller.toggle}
         onKeyDown={controller.onKeyDown}
         onKeyUp={stopSpaceClick}

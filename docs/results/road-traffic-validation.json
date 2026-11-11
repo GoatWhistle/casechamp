@@ -1,0 +1,68 @@
+{
+  "checked_at": "2026-11-11T08:20:56.692739+00:00",
+  "run_id": "roadtraffic20261111v1",
+  "destination": "http://127.0.0.1:18123",
+  "status": "completed",
+  "road_attributes": 6869793,
+  "regions": 82,
+  "source_documents": 8,
+  "observation_records": 6846,
+  "numeric_values": 2337,
+  "missing_values": 4509,
+  "regions_with_numeric_values": 5,
+  "matches": [
+    {
+      "status": "candidate",
+      "records": "57077",
+      "observations": "743"
+    },
+    {
+      "status": "unmatched",
+      "records": "6103",
+      "observations": "6103"
+    }
+  ],
+  "published_table_signatures": {
+    "coverage_parts": {
+      "city_sum": "12163251778340328273",
+      "rows": "6521052",
+      "sip_xor": "1019541605674514705"
+    },
+    "graph_matches": {
+      "city_sum": "13470856277639613258",
+      "rows": "63180",
+      "sip_xor": "1729493301137066394"
+    },
+    "regional_coverage": {
+      "city_sum": "15125335913418631368",
+      "rows": "82",
+      "sip_xor": "7011509856770349883"
+    },
+    "road_attributes": {
+      "city_sum": "78005550067008564",
+      "rows": "6869793",
+      "sip_xor": "5531628514055561124"
+    },
+    "sources": {
+      "city_sum": "2433325875679344501",
+      "rows": "8",
+      "sip_xor": "17889762860696959911"
+    },
+    "traffic_observations": {
+      "city_sum": "2049965817996948888",
+      "rows": "6846",
+      "sip_xor": "294233210350795557"
+    }
+  },
+  "core_graph_revision": "[[\"casechamp.duckdb\", 1223700480, 1794314040488599643], [\"edges.parquet\", 368279977, 1794039336000000000], [\"nodes.parquet\", 180769332, 1794039313000000000], [\"points.parquet\", 6587005, 1794039339000000000], [\"ways.parquet\", 83529268, 1794039338000000000]]",
+  "limits": [
+    "No traffic assigned to graph weights; no Hansen recalculation",
+    "Match candidates are not confirmed network flow observations",
+    "Geometries follow simplified calculation graph; separated carriageways counted separately",
+    "Historical periods, unresolved directions and empty source cells retained"
+  ],
+  "all_geometry_km": 3955190.4899280863,
+  "all_valid_lanes_share": 0.06366962390622163,
+  "major_geometry_km": 620091.9001314848,
+  "major_valid_lanes_share": 0.32323076229679815
+}

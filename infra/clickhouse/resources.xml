@@ -1,4 +1,5 @@
 <clickhouse>
+    <metric_log remove="1"/>
     <max_server_memory_usage>2500000000</max_server_memory_usage>
     <max_thread_pool_size>2000</max_thread_pool_size>
     <background_pool_size>16</background_pool_size>

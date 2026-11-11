@@ -1,10 +1,13 @@
 import type { ChatChart, ChatTable } from "@/shared/api/chat-artifacts"
 import type { ChatCalculation } from "@/shared/api/chat-calculation"
 import type { ChatMapCommand } from "@/shared/api/chat-map"
+import type { ChatScenario } from "@/shared/api/chat-scenario"
 import type { AnalysisJob } from "@/shared/api/road-analysis"
+import type { StressJob, StressRouteComparison } from "@/shared/api/road-stress"
 import { createChatId } from "./chat-id"
 
 export interface AnalysisCommentary {
+  readonly tables?: readonly ChatTable[]
   readonly revision: string
   readonly text: string
   readonly complete: boolean
@@ -12,8 +15,12 @@ export interface AnalysisCommentary {
 }
 
 export interface ChatEntry {
+  readonly reviewPending?: boolean
+  readonly stressRoutes?: Readonly<Record<string, StressRouteComparison>>
+  readonly stressTests?: readonly StressJob[]
   readonly analyses?: readonly AnalysisJob[]
   readonly calculations?: readonly ChatCalculation[]
+  readonly scenarios?: readonly ChatScenario[]
   readonly commentaries?: Readonly<Record<string, AnalysisCommentary>>
   readonly id: string
   readonly role: "user" | "assistant"

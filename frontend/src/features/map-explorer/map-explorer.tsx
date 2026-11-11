@@ -1,35 +1,25 @@
-import { type ReactNode, useCallback, useState } from "react"
+import { type CSSProperties, type ReactNode, useCallback, useRef, useState } from "react"
 import { useLocation } from "react-router"
 import { boundaryName, type MapControls, modelRegionId, OsmMap } from "@/entities/region"
 import { type RoadGraphState, useRoadGraph } from "@/entities/road-graph"
 import type { ChatMapCommand, MapCommandHandler } from "@/shared/api/chat-map"
 import type { ChatContext } from "@/shared/api/chat-stream"
+import { usePanelWidth } from "@/shared/hooks"
 import { useNetworkMode } from "@/shared/hooks/use-network-mode"
 import { useFormatters, useTranslation } from "@/shared/i18n"
-import { ErrorState, Skeleton } from "@/shared/ui"
-import { Isolines } from "@/shared/ui/brand"
-import { formatMetric } from "./format-metric"
+import { PanelResizer } from "@/shared/ui"
+import { MapPending, PanelPending } from "./explorer-states"
 import { HoverCard } from "./hover-card"
 import styles from "./map-explorer.module.css"
-import { AirportLegend, MapLegend, TransitLegend } from "./map-legend"
+import { LinkLayers, MapLegend } from "./map-legend"
 import { MapPanel } from "./map-panel"
 import { MapToolbar } from "./map-toolbar"
 import { MapZoom } from "./map-zoom"
-import { metricValue } from "./metric"
-import { RoadLegend } from "./road-legend"
+import { formatMetric, metricValue } from "./metric"
+import { OverlayReset, RoadLayer } from "./road-legend"
 import { useExplorerParams } from "./use-explorer-params"
 import { useMapData, useSelectedTransit } from "./use-map-data"
 import { useMapHover } from "./use-map-hover"
-
-function MapLoading() {
-  const { t } = useTranslation()
-  return (
-    <div className={styles.mapLoading} role="status">
-      <Isolines rings={3} motion="pulse" className={styles.loadingRings} />
-      <span className="visually-hidden">{t("common:state.loading")}</span>
-    </div>
-  )
-}
 
 export interface MapExplorerProps {
   readonly renderPanel?: (
@@ -41,6 +31,8 @@ export interface MapExplorerProps {
   ) => ReactNode
 }
 
+const PANEL_WIDTH_KEY = "plexus.map-panel-width"
+
 export function MapExplorer({ renderPanel }: MapExplorerProps) {
   const roads = useRoadGraph()
   const { networkMode } = useNetworkMode()
@@ -50,6 +42,8 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
   const { metric, season, selectedId, setMetric, setSeason, select, searchFor } =
     useExplorerParams()
   const { hoveredId, cardRef, point, onHover } = useMapHover()
+  const host = useRef<HTMLDivElement | null>(null)
+  const panelWidth = usePanelWidth(host, PANEL_WIDTH_KEY)
   const { geo, regions, overview, byId, valueAt, scale, missing, failed, retry } = useMapData(
     metric,
     season,
@@ -76,6 +70,8 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
           return
         select(command.region_ids.length === 1 ? (command.region_ids[0] ?? null) : null)
       }
+      if (command.action === "focus_settlement" && command.settlement)
+        select(command.settlement.region_id)
       if (command.action === "reset") select(null)
       setMapCommand({ ...command })
     },
@@ -88,8 +84,6 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
     (value: MapControls) => <MapZoom controls={value} onReset={clear} />,
     [clear],
   )
-
-  if (failed) return <ErrorState title={t("errors:kind.server")} onRetry={retry} />
 
   const hovered = hoveredId ? byId.get(hoveredId) : undefined
   const hoveredIndex = hovered ? hovered.hansen : null
@@ -106,6 +100,14 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
   }
   const hoverRows = metric === "hansen" ? [indexRow] : [indexRow, metricRow]
   const ready = geo.data !== undefined && regions.data !== undefined
+  const transitModes = new Set(transit.data.features.map((feature) => feature.properties?.mode))
+  const drawnSymbols = {
+    none: missing,
+    road: roads.enabled,
+    airport: (airports.data?.airports.length ?? 0) > 0,
+    air: transitModes.has("air"),
+    rail: transitModes.has("rail"),
+  }
 
   const panel =
     overview.data && regions.data ? (
@@ -120,13 +122,16 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
         onClear={clear}
       />
     ) : (
-      <div className={styles.panelLoading}>
-        <Skeleton lines={8} />
-      </div>
+      <PanelPending failed={failed} onRetry={retry} />
     )
 
   return (
-    <div className={styles.explorer} data-fullscreen={fullscreen}>
+    <div
+      ref={host}
+      className={styles.explorer}
+      data-fullscreen={fullscreen}
+      style={{ "--panel-committed": panelWidth.width } as CSSProperties}
+    >
       <div className={styles.stage}>
         {geo.data && regions.data ? (
           <OsmMap
@@ -153,26 +158,29 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
             controls={controls}
           />
         ) : (
-          <MapLoading />
+          <MapPending failed={failed} onRetry={retry} />
         )}
         <div className={styles.overlay}>
           <MapToolbar metric={metric} season={season} onMetric={setMetric} onSeason={setSeason} />
           {ready ? (
-            <MapLegend metric={metric} scale={scale} missing={missing}>
-              <RoadLegend roads={roads} />
-              <AirportLegend catalog={airports.data} failed={airports.isError} />
-              <TransitLegend
-                selectedId={modelId}
+            <MapLegend
+              metric={metric}
+              scale={scale}
+              drawn={drawnSymbols}
+              airportsFailed={airports.isError}
+            >
+              <RoadLayer roads={roads} />
+              <LinkLayers
+                selected={modelId !== null}
                 loading={links.isPending}
                 failed={links.isError}
                 missing={transit.missing}
-                modeled={modelCount > 0}
                 modelCount={modelCount}
                 showModels={showModels}
                 onModelsChange={setShowModels}
-                empty={transit.data.features.length === 0}
                 onRetry={() => void links.refetch()}
               />
+              <OverlayReset roads={roads} />
             </MapLegend>
           ) : null}
         </div>
@@ -203,6 +211,16 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
             },
           )
         : panel}
+      <PanelResizer
+        className={styles.resizer}
+        width={panelWidth.width}
+        min={panelWidth.min}
+        max={panelWidth.max}
+        label={t("map:panelResize")}
+        onPreview={panelWidth.preview}
+        onCommit={panelWidth.commit}
+        onReset={panelWidth.reset}
+      />
     </div>
   )
 }

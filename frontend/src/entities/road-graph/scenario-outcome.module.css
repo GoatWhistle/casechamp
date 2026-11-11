@@ -1,0 +1,130 @@
+.outcome {
+  display: grid;
+  gap: var(--space-12);
+  padding-block: var(--space-12);
+  border-block-start: var(--hairline) solid var(--border-subtle);
+}
+
+.outcome[data-detailed] {
+  gap: var(--space-16);
+  padding-block: 0;
+  border-block-start: 0;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+}
+
+.region {
+  composes: truncate from "../../shared/styles/compose.module.css";
+  min-inline-size: 0;
+  font-weight: var(--weight-semibold);
+}
+
+.progress,
+.result {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.outcome[data-detailed] .result {
+  gap: var(--space-20);
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  min-block-size: var(--control-height-compact);
+}
+
+.note {
+  composes: secondaryText from "../../shared/styles/compose.module.css";
+}
+
+.summary {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-4);
+}
+
+.figure {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-4) var(--space-12);
+}
+
+.delta {
+  --tone: var(--text-primary);
+
+  color: var(--tone);
+  font-size: var(--font-size-heading);
+  font-weight: var(--weight-semibold);
+  font-variant-numeric: var(--font-numeric);
+  letter-spacing: var(--tracking-tight);
+}
+
+.delta[data-tone="gain"],
+.percent[data-tone="gain"] {
+  --tone: var(--data-gain-3);
+}
+
+.delta[data-tone="loss"],
+.percent[data-tone="loss"] {
+  --tone: var(--data-loss-3);
+}
+
+.indexLabel {
+  composes: captionMuted from "../../shared/styles/compose.module.css";
+}
+
+.change {
+  composes: secondaryText from "../../shared/styles/compose.module.css";
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4) var(--space-8);
+  font-variant-numeric: var(--font-numeric);
+}
+
+.arrow {
+  color: var(--text-muted);
+}
+
+.percent {
+  --tone: var(--text-secondary);
+
+  color: var(--tone);
+  font-weight: var(--weight-medium);
+}
+
+.evidence {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));
+  gap: var(--space-12) var(--space-16);
+  margin: 0;
+  padding-block-start: var(--space-16);
+  border-block-start: var(--hairline) solid var(--border-subtle);
+}
+
+.fact {
+  display: grid;
+  gap: var(--space-2);
+  min-inline-size: 0;
+}
+
+.factLabel {
+  composes: captionMuted from "../../shared/styles/compose.module.css";
+}
+
+.factValue {
+  margin: 0;
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--weight-medium);
+  font-variant-numeric: var(--font-numeric);
+}

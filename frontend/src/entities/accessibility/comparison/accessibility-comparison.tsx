@@ -1,12 +1,40 @@
 import { useState } from "react"
-import { useTranslation } from "@/shared/i18n"
-import { Banner, Card, ErrorState, Segmented, Skeleton } from "@/shared/ui"
-import { type HalfLife, useAccessibility } from "../accessibility.queries"
+import { useFormatters, useTranslation } from "@/shared/i18n"
+import { Banner, Card, Disclosure, ErrorState, Segmented, Skeleton } from "@/shared/ui"
+import { type ComparisonData, type HalfLife, useAccessibility } from "../accessibility.queries"
 import styles from "./accessibility-comparison.module.css"
 import { ComparisonTables } from "./comparison-tables"
 
 export interface AccessibilityComparisonProps {
   readonly regionId: string
+}
+
+const ARTIFACT_DATE = /(\d{4})(\d{2})(\d{2})/
+
+function artifactDate(artifact: string): string | null {
+  const match = ARTIFACT_DATE.exec(artifact)
+  return match === null ? null : `${match[1]}-${match[2]}-${match[3]}`
+}
+
+function Method({ data }: { readonly data: ComparisonData }) {
+  const { t } = useTranslation()
+  const f = useFormatters()
+  const date = artifactDate(data.run.source_artifact)
+  return (
+    <Disclosure title={t("accessibility:method")} className={styles.method}>
+      <div className={styles.methodBody}>
+        <p>{t("accessibility:description")}</p>
+        <p>
+          {t(
+            data.run.normalization_kind === "legacy_multimodal_road"
+              ? "accessibility:legacyScale"
+              : "accessibility:roadScale",
+          )}
+        </p>
+        {date === null ? null : <p>{t("accessibility:snapshot", { date: f.date(date) })}</p>}
+      </div>
+    </Disclosure>
+  )
 }
 
 export function AccessibilityComparison({ regionId }: AccessibilityComparisonProps) {
@@ -22,6 +50,7 @@ export function AccessibilityComparison({ regionId }: AccessibilityComparisonPro
     <Card
       as="section"
       title={t("accessibility:title")}
+      description={t("accessibility:lead")}
       actions={
         <Segmented
           label={t("accessibility:halfLife")}
@@ -32,7 +61,6 @@ export function AccessibilityComparison({ regionId }: AccessibilityComparisonPro
       }
     >
       <div className={styles.comparison}>
-        <p className={styles.explanation}>{t("accessibility:description")}</p>
         {halfLife !== "2" ? <Banner tone="info" title={t("accessibility:sensitivity")} /> : null}
         {query.isError ? (
           <ErrorState title={t("accessibility:unavailable")} onRetry={() => void query.refetch()} />
@@ -42,19 +70,7 @@ export function AccessibilityComparison({ regionId }: AccessibilityComparisonPro
               <Banner tone="warning" title={t("accessibility:stale")} />
             ) : null}
             <ComparisonTables data={data} />
-            <p className={styles.provenance}>
-              {t("accessibility:source", {
-                model: data.run.model_version,
-                source: data.run.source_artifact,
-              })}
-            </p>
-            <p className={styles.provenance}>
-              {t(
-                data.run.normalization_kind === "legacy_multimodal_road"
-                  ? "accessibility:legacyScale"
-                  : "accessibility:roadScale",
-              )}
-            </p>
+            <Method data={data} />
           </>
         ) : (
           <Skeleton lines={8} />

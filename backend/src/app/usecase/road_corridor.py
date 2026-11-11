@@ -1,9 +1,11 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from math import isfinite
 from typing import Protocol
 
 from app.domain.errors import DataUnavailable, InvalidQuery
-from app.usecase.road_graph import RoadJob
+from app.domain.traffic_diversion import TrafficAssumptions
+from app.usecase.connectivity import ConnectivityMode, ConnectivityResult, validate_selection
+from app.usecase.road_graph import RoadChange, RoadJob
 
 
 @dataclass(frozen=True)
@@ -31,6 +33,14 @@ class RoadCorridor:
 class CorridorCalculation:
     corridor: RoadCorridor
     job_ids: list[str]
+    changes: list[RoadChange] = field(default_factory=list)
+
+
+@dataclass(frozen=True)
+class RoadRoute:
+    corridor: RoadCorridor
+    travel_hours: float
+    routing_method: str = "bidirectional_dijkstra"
 
 
 @dataclass(frozen=True)
@@ -41,9 +51,17 @@ class BridgeCandidate:
 
 
 class CorridorPort(Protocol):
+    def read_connectivity(self, calculation_id: str) -> str: ...
+    def recent_connectivity(self) -> str: ...
+    def connectivity(
+        self, places: list[str], mode: ConnectivityMode, center: str | None,
+        closed_way_ids: list[int], traffic: TrafficAssumptions | None = None,
+    ) -> ConnectivityResult: ...
     def get(self, corridor_id: str) -> RoadCorridor: ...
     def resolve(self, road_name: str, origin: str, destination: str) -> RoadCorridor: ...
+    def resolve_route(self, origin: str, destination: str) -> RoadRoute: ...
     def close(self, corridor_ids: list[str]) -> list[RoadJob]: ...
+    def edit(self, corridor_ids: list[str], speed_factor: float) -> list[RoadJob]: ...
     def bridges(self, near: str, radius_km: float, name: str) -> list[BridgeCandidate]: ...
     def combine_bridges(self, bridge_ids: list[str]) -> RoadCorridor: ...
 
@@ -51,6 +69,16 @@ class CorridorPort(Protocol):
 class RoadCorridors:
     def __init__(self, engine: CorridorPort | None) -> None:
         self.engine = engine
+
+    def read_connectivity(self, calculation_id: str) -> str:
+        if self.engine is None:
+            raise DataUnavailable("GRAPH_DIR is not configured")
+        return self.engine.read_connectivity(calculation_id)
+
+    def recent_connectivity(self) -> str:
+        if self.engine is None:
+            return "[]"
+        return self.engine.recent_connectivity()
 
     def resolve(self, road_name: str, origin: str, destination: str) -> RoadCorridor:
         if self.engine is None:
@@ -64,12 +92,48 @@ class RoadCorridors:
             raise DataUnavailable("GRAPH_DIR is not configured")
         return self.engine.get(corridor_id)
 
+    def connectivity(
+        self, places: list[str], mode: ConnectivityMode = "all_pairs",
+        center: str | None = None, selection_ids: list[str] | None = None,
+        traffic: TrafficAssumptions | None = None,
+    ) -> ConnectivityResult:
+        if self.engine is None:
+            raise DataUnavailable("GRAPH_DIR is not configured")
+        validate_selection(places, mode, center)
+        if traffic is not None:
+            traffic.validate()
+            if len(places) > 4:
+                raise InvalidQuery("Traffic diversion supports up to four settlements per comparison")
+        selected = selection_ids or []
+        if len(selected) > 20 or len(set(selected)) != len(selected):
+            raise InvalidQuery("Select up to 20 distinct resolved closure IDs")
+        ways = sorted({way for key in selected for way in self.get(key).way_ids})
+        if selected and not ways:
+            raise InvalidQuery("Selected closure contains no road ways")
+        return self.engine.connectivity(places, mode, center, ways, traffic)
+
+    def resolve_route(self, origin: str, destination: str) -> RoadRoute:
+        if self.engine is None:
+            raise DataUnavailable("GRAPH_DIR is not configured")
+        if any(not 2 <= len(s.strip()) <= 100 for s in (origin, destination)):
+            raise InvalidQuery("Specify two settlements")
+        return self.engine.resolve_route(origin.strip(), destination.strip())
+
     def close(self, corridor_ids: list[str]) -> list[RoadJob]:
         if self.engine is None:
             raise DataUnavailable("GRAPH_DIR is not configured")
         if not 1 <= len(corridor_ids) <= 10 or len(set(corridor_ids)) != len(corridor_ids):
             raise InvalidQuery("Select between 1 and 10 distinct resolved corridor IDs")
         return self.engine.close(corridor_ids)
+
+    def edit(self, corridor_ids: list[str], speed_factor: float) -> list[RoadJob]:
+        if self.engine is None:
+            raise DataUnavailable("GRAPH_DIR is not configured")
+        if not 1 <= len(corridor_ids) <= 10 or len(set(corridor_ids)) != len(corridor_ids):
+            raise InvalidQuery("Select between 1 and 10 distinct resolved corridor IDs")
+        if not isfinite(speed_factor) or not 0 < speed_factor <= 3:
+            raise InvalidQuery("Speed factor must be finite and in (0, 3]; use closure for zero")
+        return self.engine.edit(corridor_ids, speed_factor)
 
     def combined(self, corridor_ids: list[str]) -> RoadCorridor:
         corridors = [self.get(key) for key in corridor_ids]

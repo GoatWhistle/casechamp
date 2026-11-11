@@ -1,57 +1,19 @@
 import json
-from dataclasses import asdict
+from dataclasses import asdict, replace
 
-from pydantic_ai import Agent, ModelRetry, RunContext
+from pydantic_ai import ModelRetry, RunContext
 
 from app.adapter.chat.artifacts import ChatRun
+from app.adapter.chat.road_calculation import road_calculation
+from app.domain.appraisal_inputs import ProjectAssumptions
 from app.domain.errors import DomainError
 from app.domain.road_economics import MoneyAssumptions
-from app.usecase.road_graph import RoadAddition, RoadChange, RoadGraph
+from app.usecase.road_graph import RoadAddition, RoadChange, RoadGraph, RoadJob
 
 
 class RoadTools:
     def __init__(self, graph: RoadGraph) -> None:
         self.graph = graph
-
-    def register(self, agent: Agent[ChatRun, str]) -> None:
-        agent.tool(
-            sequential=True,
-            description="Find real settlements and graph attachment node IDs. "
-            "Use before adding a connection; never invent node IDs. A null node is unanchored.",
-        )(self.find_graph_locations)
-        agent.tool(
-            sequential=True,
-            description="Add ONE hypothetical bidirectional connection between "
-            "existing graph nodes, with user-specified travel_hours between these nodes. "
-            "Does not modify source data. Exact two-terminal road update on the snapshot BASE "
-            "network; cold graph preparation may take a minute, repeated endpoints are cached. "
-            "Not for closures, seasonal links, or multiple interacting additions. Find node "
-            "IDs with find_graph_locations/read_road_graph. Return job and poll later. "
-            "Optional money assumptions value saved time on ONE origin settlement to market "
-            "OD pair: trips_per_year, rub_per_hour, capital_cost_rub, annual_operating_cost_rub. "
-            "Ask for missing assumptions; never infer revenue/GDP from Hansen. All ruble "
-            "outputs are conditional time savings, not actual revenue or fiscal returns.",
-        )(self.add_graph_connection)
-        agent.tool(
-            sequential=True,
-            description="Read real road graph segments in a bounding box. "
-            "Returns OSM way IDs for scenario changes. Coordinates are contracted endpoints. "
-            "Use small bounds near the requested settlement; sampled view is not all roads.",
-        )(self.read_road_graph)
-        agent.tool(
-            sequential=True,
-            description="Start a real asynchronous Hansen recalculation for "
-            "an explicit user scenario. Changes use OSM way_id and speed_factor: 1 unchanged, "
-            "1.2 speed +20%, 0 closure. Entire OSM way changes, not only visible segment. "
-            "Do not invent road IDs. Snapshot road baseline also includes intercity rail/air; "
-            "summer/winter add local seasonal links. Baseline is checked against the same DB. "
-            "Return job ID and poll later; never invent final results.",
-        )(self.recalculate_road_index)
-        agent.tool(
-            sequential=True,
-            description="Read recalculation progress and actual before/after "
-            "indices; pending is not a result. Do not busy-poll during one chat turn.",
-        )(self.road_calculation_status)
 
     def read_road_graph(
         self,
@@ -72,18 +34,57 @@ class RoadTools:
             raise ModelRetry(error.message) from error
 
     def recalculate_road_index(
-        self, ctx: RunContext[ChatRun], region_id: str, scenario: str, changes: list[RoadChange]
+        self,
+        ctx: RunContext[ChatRun],
+        region_id: str,
+        scenario: str,
+        changes: list[RoadChange],
+        appraisal: ProjectAssumptions | None = None,
     ) -> str:
         try:
-            return json.dumps(
-                asdict(self.graph.submit(region_id, scenario, changes)), ensure_ascii=False
-            )
+            geometry = self.graph.geometry([change.way_id for change in changes])
+            job = self.graph.submit(region_id, scenario, changes, appraisal=appraisal)
+            ctx.deps.pending.append(road_calculation(job, geometry))
+            return job_reply(job)
         except DomainError as error:
             raise ModelRetry(error.message) from error
 
     def road_calculation_status(self, ctx: RunContext[ChatRun], job_id: str) -> str:
         try:
-            return json.dumps(asdict(self.graph.job(job_id)), ensure_ascii=False)
+            job = self.graph.job(job_id)
+            if job.changes:
+                geometry = self.graph.geometry([change.way_id for change in job.changes])
+                ctx.deps.pending.append(road_calculation(job, geometry))
+            return job_reply(job)
+        except DomainError as error:
+            raise ModelRetry(error.message) from error
+
+    def recent_road_calculations(self, ctx: RunContext[ChatRun]) -> str:
+        try:
+            return json.dumps(
+                [
+                    {
+                        "id": job.id,
+                        "region_id": job.region_id,
+                        "region": job.region,
+                        "scenario": job.scenario,
+                        "status": job.status,
+                        "changes": [
+                            {
+                                key: value
+                                for key, value in asdict(change).items()
+                                if value is not None
+                            }
+                            for change in job.changes[:20]
+                        ],
+                        "changed_ways": len(job.changes),
+                        "changes_truncated": len(job.changes) > 20,
+                        "addition": asdict(job.addition) if job.addition else None,
+                    }
+                    for job in self.graph.recent()
+                ],
+                ensure_ascii=False,
+            )
         except DomainError as error:
             raise ModelRetry(error.message) from error
 
@@ -105,11 +106,27 @@ class RoadTools:
         target_node: int,
         travel_hours: float,
         money: MoneyAssumptions | None = None,
+        appraisal: ProjectAssumptions | None = None,
     ) -> str:
         try:
             result = self.graph.add_connection(
-                region_id, RoadAddition(source_node, target_node, travel_hours), money
+                region_id, RoadAddition(source_node, target_node, travel_hours), money, appraisal
             )
             return json.dumps(asdict(result), ensure_ascii=False)
         except DomainError as error:
             raise ModelRetry(error.message) from error
+
+
+def job_reply(job: RoadJob) -> str:
+    result = (
+        replace(job.result, settlement_effects=job.result.settlement_effects[:10])
+        if job.result
+        else None
+    )
+    payload = asdict(replace(job, changes=job.changes[:20], result=result))
+    payload["changed_ways"] = len(job.changes)
+    payload["changes_truncated"] = len(job.changes) > 20
+    payload["settlement_effects_truncated"] = bool(
+        job.result and len(job.result.settlement_effects) > 10
+    )
+    return json.dumps(payload, ensure_ascii=False)
