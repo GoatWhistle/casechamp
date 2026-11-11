@@ -74,9 +74,16 @@
 }
 
 .corner.corner {
+  --button-height: var(--resizer-hit);
+  --button-surface: transparent;
+  --button-surface-hover: transparent;
+  --button-surface-press: transparent;
   --press-scale: 1;
 
-  flex: none;
+  position: absolute;
+  inset-block-start: calc(var(--resizer-hit) / -2 - var(--space-4));
+  inset-inline-end: calc(var(--resizer-hit) / -2 - var(--space-4));
+  z-index: var(--layer-raised);
   cursor: nesw-resize;
   touch-action: none;
 }

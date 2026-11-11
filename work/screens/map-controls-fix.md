@@ -80,3 +80,24 @@ Final `npm run verify` passes (435 tests, all rules, types, lint and build). The
 image is running on port 8080; its ID matches the built image. A browser check against 8080
 confirms the corner control, mouse enlargement and keyboard shrinkage. Screenshot:
 `/tmp/casechamp-ui-fix/corner-production.png`. The existing bundle-size warning remains.
+
+## Border interaction
+
+The next request removes the visible corner button and the dark collapse tooltip. Resize
+now starts from the transparent upper-right hit area or the existing right edge. The cursor
+indicates the available direction. The corner retains its accessible name, keyboard controls,
+44px hit area and screen-reader-only instructions. Its hit area is offset slightly outside the
+panel to keep the collapse button reachable. The permanent right-edge grip is removed.
+Collapse and reopening no longer show tooltips, as explicitly requested; their labels remain.
+Existing motion, persistence and size limits are unchanged.
+
+Verified: full frontend checks pass, including 435 tests. All six legend browser scenarios
+pass, with added checks for the missing arrow icon, corner cursor, edge position and absence
+of collapse/open tooltips after their former delay. A pointer placed exactly on the visible
+upper-right border resizes both dimensions. Desktop 1440/1920 visual checks pass; axe finds
+no legend violations and the browser reports no page errors. Evidence:
+`/tmp/casechamp-ui-fix/border-{verify.log,e2e.log,visual.json,*.png}`.
+
+The frontend image is deployed on port 8080. Production browser checks confirm resizing
+from the actual border, no visible arrow button or collapse tooltip, and working collapse/reopen.
+Frontend, backend and ClickHouse are healthy; only the frontend container was recreated.

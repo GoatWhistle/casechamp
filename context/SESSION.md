@@ -389,3 +389,15 @@ visuals and legend axe pass. Full frontend verification passes:435tests, rules, 
 build. Final frontend image is deployed on8080; the running image matches the build and
 production browser checks confirm the corner handle, growth and shrinking. Backend and data
 unchanged. Details: work/screens/map-controls-fix.md.
+
+## Legend border interaction, 2026-11-11
+
+> убери кнопку пусть я просто подводя к панели могу растянуть и убери черные надписи у кнопки сворачивания панели
+
+Same branch feat/map-first-ui, pre-commit Git checkpoint8e795a3292f62d113a88089dccf2cd14b7415eb3.
+The visible diagonal button is removed. Its transparent border hit area retains pointer and
+keyboard resizing; the right edge still changes width. Collapse/open tooltips are removed by
+explicit request, accessible labels retained. Full frontend verification and six browser cases
+pass; desktop1440/1920 visual checks and legend axe pass. Updated frontend is deployed on8080;
+production checks confirm edge resizing, missing arrow button/tooltips and working collapse.
+All three services healthy. Commit as Andrey; no push. Evidence: work/screens/map-controls-fix.md.
