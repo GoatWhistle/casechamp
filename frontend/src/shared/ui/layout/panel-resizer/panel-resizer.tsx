@@ -11,6 +11,9 @@ export interface PanelResizerProps {
   readonly onCommit: (width: number) => void
   readonly onReset: () => void
   readonly className?: string | undefined
+  readonly edge?: "start" | "end"
+  readonly controls?: string | undefined
+  readonly grip?: boolean
 }
 
 const STEP = 16
@@ -21,11 +24,12 @@ function keyTarget(
   width: number,
   min: number,
   max: number,
+  direction: number,
 ): number | null {
   const step = event.shiftKey ? LARGE_STEP : STEP
   const targets: Readonly<Record<string, number>> = {
-    ArrowLeft: width + step,
-    ArrowRight: width - step,
+    ArrowLeft: width - step * direction,
+    ArrowRight: width + step * direction,
     Home: min,
     End: max,
   }
@@ -48,13 +52,17 @@ export function PanelResizer({
   onCommit,
   onReset,
   className,
+  edge = "start",
+  controls,
+  grip = false,
 }: PanelResizerProps) {
   const drag = useRef<Drag | null>(null)
   const frame = useRef<number | null>(null)
   const clamp = (value: number) => Math.round(Math.min(max, Math.max(min, value)))
+  const direction = edge === "end" ? 1 : -1
 
   const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
-    if (event.button !== 0) return
+    if (event.button !== 0 || drag.current !== null) return
     event.preventDefault()
     event.currentTarget.setPointerCapture(event.pointerId)
     drag.current = { id: event.pointerId, startX: event.clientX, startWidth: width, width }
@@ -63,7 +71,7 @@ export function PanelResizer({
   const onPointerMove = (event: PointerEvent<HTMLDivElement>) => {
     const state = drag.current
     if (!state || state.id !== event.pointerId) return
-    state.width = clamp(state.startWidth + state.startX - event.clientX)
+    state.width = clamp(state.startWidth + (event.clientX - state.startX) * direction)
     if (frame.current !== null) return
     frame.current = requestAnimationFrame(() => {
       frame.current = null
@@ -81,7 +89,7 @@ export function PanelResizer({
   }
 
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    const next = keyTarget(event, width, min, max)
+    const next = keyTarget(event, width, min, max, direction)
     if (next === null) return
     event.preventDefault()
     onCommit(clamp(next))
@@ -91,10 +99,12 @@ export function PanelResizer({
     // biome-ignore lint/a11y/useSemanticElements: a focusable separator is the ARIA pattern for a resizable splitter; <hr> cannot take focus or keyboard input
     <div
       className={clsx(styles.resizer, className)}
+      data-grip={grip || undefined}
       role="separator"
       tabIndex={0}
       aria-orientation="vertical"
       aria-label={label}
+      aria-controls={controls}
       aria-valuenow={width}
       aria-valuemin={min}
       aria-valuemax={max}

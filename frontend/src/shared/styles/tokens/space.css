@@ -57,6 +57,8 @@
   --map-min-height: 560px;
   --map-mobile-height: 62dvh;
   --legend-width: 240px;
+  --legend-default-width: 320px;
+  --legend-max-width: 480px;
   --formula-art: 320px;
   --sheet-width: 440px;
   --listbox-max-height: 320px;

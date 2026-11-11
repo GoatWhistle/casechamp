@@ -310,54 +310,62 @@ Approved plexus_accessibility.runs, results and frequencies in the same GitHub r
 > оставь В ОДНОМ ФАЙЛЕЕЕЕ БОЛЬШЕ НЕЛЬЗЯ!
 > теперь отрендери это в пдф
 
-## Current state
-
-Publication complete on 2026-11-11 MSK in origin/feat/map-first-ui. Source checkpoint
-before the final publication commit: f6cfe84 (read current Git HEAD for the closeout SHA).
-All current changes, including the passport PDF and completed concurrent work, are included.
-Data release: https://github.com/GoatWhistle/casechamp/releases/tag/data-clickhouse-20261110
-87 tables across seven databases; 2,757,503,413 compressed bytes. All remote asset SHA-256
-values and sizes verified. The user separately approved three plexus_accessibility tables.
-User calculation history/system databases/secrets excluded; root HTML preserved locally.
-
-Checks: Ruff/mypy pass; 195 backend unit and 415 frontend tests pass. Integration: 41 passed
-initially; two failed while the comparison database was absent and then passed on rerun.
-The parallel full integration log confirms 43 passes. Five downloaded tables restored in
-scratch databases: all 587 rows equal, including empty catalog; scratch databases removed.
-Full clean-server restore of all data not run. Evidence: [publication](../work/publication/README.md).
-
-The new road graph is included as plexus_refresh_graph staging and is not activated.
-Continue its independent validation via [road coverage](../work/road-coverage/README.md).
-Potential comparison completed and validated: [report](../docs/potential-accessibility.md).
-Bridge selection: [verification](../work/bridge-selection/README.md). Passport: one root
-Markdown and its explicitly requested PDF export; no DOCX. Keep user edits intact.
-Prior status and all details: [closeout archive](../work/publication/session-at-closeout.md).
-Protected user instructions exceed SESSION target and are retained verbatim.
-
 ## Configurable routing workers, 2026-11-11
 
 > ну крч сделай чтобы до 20 воркеров могло быть и я мог задать это значение
 > крч 48 потоков. Максимум
-
-Implemented range1..48 via shared MAX_WORKERS in etl/market_distances.py and
-accessibility.calculate --workers. Defaults unchanged: CLI2, shared function/env1.
-Workers are processes; only market searches run in parallel. Documentation updated.
-Verified existing routing test, real48-process tiny-graph equality to serial, env48,
-CLI/function rejection of0/49, CLIhelp, Ruff for changed CLI and git diff --check.
-No national48-worker benchmark or new full calculation launched; no pending code work.
-Branch feat/map-first-ui HEAD2cca3b9d2a96274df474670c8e108722aa059b40; no commit/push.
 
 ## Map-first UI polish, 2026-11-11
 
 > в моих коммитах не должно быть меня, пушим от андрея и только от него, без контрибьюторства клода
 > разрешаю пушить от имени андрея. пушь сам, без контрибьюторства клода, короче надо прям тебе ебашить, разрешаю пушить и коммитить, конвенции всего у тебя есть
 
-Branch feat/map-first-ui at cdb2c2e; about 130 files uncommitted, not committed yet (asked the
-user to confirm a commit as andreysk0304, no answer). Local stand: ClickHouse snapshot in
-`data/releases/data-clickhouse-20261110`, backend :8001 with `GRAPH_DIR` and `CHAT_ENABLED=false`,
-vite :5187. Done: chat scenario cards (`scenario` event), resizable panel, flat map, roam limits,
-recolor, road hierarchy and cobalt `--map-road`, muted basemap, floating toolbar, flight arcs,
-route reveal, Summary tab redesign. Agents still running: Scenario tab, map legend.
-Decisions: `docs/design-decisions.md` (Боковая панель и карта). Known failures: vitest
-«reading 'config'» pre-existing; rules `css-duplicates` in the Scenario agent's in-progress CSS.
-Next: review agent results at 375/1440, run frontend and backend checks, commit on approval.
+## Latest user instructions, 2026-11-11
+
+> не пуш ничего и не комить
+
+> обнови репу полностью и удали все мои несохраненные измения и запусти последнюю ветку где фронт обновился ласт раз и подними проект обновелнный
+
+The latest reset request supersedes older instructions to preserve local edits and root HTML.
+
+## Current local runtime, 2026-11-11
+
+Compose project casechamp runs at http://localhost:8080 with existing storage and local chat
+subscription authentication. Launch command, volumes, auth wiring and prior checks are in
+[the runtime record](../work/local-runtime-2026-11-11.md). No model prompts were sent.
+The separate /scenarios laboratory still lacks its plexus_scenario matrices.
+
+## Runtime questions, 2026-11-11
+
+> чего не хватает чтобы полноценно протыкать проект
+
+> мою авторизацию это что тебе апи ключ нужен или как
+
+> я не понял в итоге что тебе скинуть чтоыб все заработало
+
+> что такое новые связи обьясни и зачем вкладка расчет новых связей
+
+## Source tabs and map legend, 2026-11-11
+
+> исправляй в этой же ветке и комиты от лица андрея сейчас в вкладке источники я переходя по вкладкам тыкая туда там полоса на всю панель расширяется также доступность рынков на карте вот эта залупка маленькая надо чтобы ее можно было сужать расширять или вобще свернуть пусть она в кружок сворачивается с каким то символом котоырй по логике продукта подходит подумай какой сделать или омжет какой то общепринятиый
+
+Latest request authorizes commits on feat/map-first-ui as Andrey, superseding the earlier
+no-commit instruction; no push requested. Author/committer use command-scoped
+andreysk0304 <andreysk0304@yandex.ru>, matching recent history; global identity unchanged.
+Pre-commit checkpoint from Git: 1401e3b3333503a247b2d6bdbcd94c1e7224210b. Tab fix f3426cf,
+flight-test repair 7174c73 and formatting 1401e3b are committed; legend changes accompany
+this note. No user work was discarded during this task.
+
+Tabs now draw the selected border without a full-width animated indicator. Legend resizes
+240–480px (default320), collapses into a48px Layers2 button, saves width/state and restores
+focus. Shared splitter retains right-sidebar direction. Keyboard and reduced motion work.
+Full npm run verify passes:36rules, types, lint,435tests/64files, production build. Four
+Chromium cases pass; desktop1440/1920 visual checks and interrupted toggles pass; legend axe
+has zero violations, no page errors. Initial splitter hit-area overlap was fixed and rerun.
+No mobile checks per standing instruction. Existing chunk-size warning remains.
+
+Only frontend rebuilt through Compose on8080; backend and ClickHouse remain healthy.
+Chat auth remains connected through ignored local override, no model prompts sent.
+Separate /scenarios still lacks plexus_scenario data. Details and evidence:
+work/screens/map-controls-fix.md, /tmp/casechamp-ui-fix/. No remaining work on these two fixes.
+Protected instruction history exceeds SESSION target and is preserved verbatim.
