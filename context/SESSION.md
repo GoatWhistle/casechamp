@@ -310,32 +310,23 @@ Approved plexus_accessibility.runs, results and frequencies in the same GitHub r
 > оставь В ОДНОМ ФАЙЛЕЕЕЕ БОЛЬШЕ НЕЛЬЗЯ!
 > теперь отрендери это в пдф
 
-## Configurable routing workers, 2026-11-11
+### Configurable routing workers, 2026-11-11
 
 > ну крч сделай чтобы до 20 воркеров могло быть и я мог задать это значение
 > крч 48 потоков. Максимум
 
-## Map-first UI polish, 2026-11-11
+### Map-first UI polish, 2026-11-11
 
 > в моих коммитах не должно быть меня, пушим от андрея и только от него, без контрибьюторства клода
 > разрешаю пушить от имени андрея. пушь сам, без контрибьюторства клода, короче надо прям тебе ебашить, разрешаю пушить и коммитить, конвенции всего у тебя есть
 
-## Latest user instructions, 2026-11-11
+### Latest user instructions, 2026-11-11
 
 > не пуш ничего и не комить
 
 > обнови репу полностью и удали все мои несохраненные измения и запусти последнюю ветку где фронт обновился ласт раз и подними проект обновелнный
 
-The latest reset request supersedes older instructions to preserve local edits and root HTML.
-
-## Current local runtime, 2026-11-11
-
-Compose project casechamp runs at http://localhost:8080 with existing storage and local chat
-subscription authentication. Launch command, volumes, auth wiring and prior checks are in
-[the runtime record](../work/local-runtime-2026-11-11.md). No model prompts were sent.
-The separate /scenarios laboratory still lacks its plexus_scenario matrices.
-
-## Runtime questions, 2026-11-11
+### Runtime questions, 2026-11-11
 
 > чего не хватает чтобы полноценно протыкать проект
 
@@ -345,14 +336,11 @@ The separate /scenarios laboratory still lacks its plexus_scenario matrices.
 
 > что такое новые связи обьясни и зачем вкладка расчет новых связей
 
-## Source tabs and map legend, 2026-11-11
+### Source tabs and map legend, 2026-11-11
 
 > исправляй в этой же ветке и комиты от лица андрея сейчас в вкладке источники я переходя по вкладкам тыкая туда там полоса на всю панель расширяется также доступность рынков на карте вот эта залупка маленькая надо чтобы ее можно было сужать расширять или вобще свернуть пусть она в кружок сворачивается с каким то символом котоырй по логике продукта подходит подумай какой сделать или омжет какой то общепринятиый
 
-Completed implementation and checks: [map controls record](../work/screens/map-controls-fix.md).
-Protected instruction history exceeds SESSION target and is preserved verbatim.
-
-## Diagonal legend sizing, 2026-11-11
+### Diagonal legend sizing, 2026-11-11
 
 > надо чтобы можно было по диагонали двигать эту панельку
 
@@ -360,29 +348,17 @@ Protected instruction history exceeds SESSION target and is preserved verbatim.
 
 > и сужать
 
-## Legend border interaction, 2026-11-11
+### Legend border interaction, 2026-11-11
 
 > убери кнопку пусть я просто подводя к панели могу растянуть и убери черные надписи у кнопки сворачивания панели
 
-Same branch feat/map-first-ui, pre-commit Git checkpoint8e795a3292f62d113a88089dccf2cd14b7415eb3.
-The visible diagonal button is removed. Its transparent border hit area retains pointer and
-keyboard resizing; the right edge still changes width. Collapse/open tooltips are removed by
-explicit request, accessible labels retained. Full frontend verification and six browser cases
-pass; desktop1440/1920 visual checks and legend axe pass. Updated frontend is deployed on8080;
-production checks confirm edge resizing, missing arrow button/tooltips and working collapse.
-All three services healthy. Commit as Andrey; no push. Evidence: work/screens/map-controls-fix.md.
-
-## Frontend publication
+### Frontend publication
 
 > запуш
 
-The six verified map-control commits were published as Andrey through4218fbf7a3b4d02052a6843fb28bfdf846b907d1.
-
 > а там что пушится паралельно
 
-The read-only check found no divergence, local Git process or GitHub Actions run.
-
-## Complete the map chat, 2026-11-11
+### Complete the map chat, 2026-11-11
 
 > посмотри ласт сессию клода доделай что он сделал и если код фронта готов залей его на 8000
 
@@ -398,24 +374,26 @@ The read-only check found no divergence, local Git process or GitHub Actions run
 
 > как все что я написал в чате доделаешь и проверишь запушь закомить от лица андрея
 
-Unified map chat and auth fix are published as Andrey in5aa8d1b/0612343 on feat/map-first-ui.
-Runtime8080 is healthy;8000 belongs to MASP/modus. Details and limitations:
-[chat workflow](../work/screens/chat-workflow.md).
-Protected user instructions exceed the SESSION target and remain verbatim.
-
 > смотри щас я когда источники попросил заголовок стал про источникик пусть он один раз делается и все .
 
 > также я не могу чат листать вверх когда я попросил источник у чата
 
 > еще пока я чат листая постоянно появляются белая пустота в нем . это не надо испрвь
 
-Final source checkpoint af825ca2b84e9a7d174bdb051c2fc2f385b93c82 on feat/map-first-ui,2026-11-12.
-Title fix088c141 and scroll/paint fixaf825ca are committed as Andrey. Titles are initial-question
-only; manual upward scrolling interrupts following; long answers have no blur/transform.
-Frontend verify427 tests, backend Ruff/mypy and257 tests pass; five map E2E cases pass.
-The deployed8080 build passes the long-source-answer browser check: stable title, stable reading
-position, Home/End behavior and three inspected scroll positions without gaps. No live model
-test prompts were sent. Code work is complete; publication target is origin/feat/map-first-ui.
-Preserve command-scoped author/committer andreysk0304 <andreysk0304@yandex.ru>.
-Limitations: full road rendering at1920 exceeded45s; /scenarios matrices remain unavailable.
-Evidence, negative checks and runtime details are in the chat workflow record.
+### Local launch on this machine, 2026-11-11
+
+> подними проект
+
+> Ветка последняя это мапс ui  чёт такое
+
+### Territorial indices research and separate plan
+
+> твоя задача поискать еще такие важные муниципальные, региональные или федеральные индексы и составить отдельный план
+
+> это то что регулируется по правовым актам, к примеру как в том примере что я скинул
+
+## Current state, 2026-11-12
+
+Branch feat/map-first-ui, HEAD 0c7cb89; local edits to context and work/ only. UI 8080/API 8000 historical runtime; preserve command-scoped author/committer andreysk0304 <andreysk0304@yandex.ru>. Older status lines: [archive](../work/session-notes-2026-11-12.md).
+
+Normative index work happens in the separate worktree /Users/savelij/projects/casechamp-normative-indices (branch docs/normative-indices-plan); its context/SESSION.md holds that state. Research: [territorial plan](../work/territorial-indices-plan.md), [medical review](../work/research/medical-accessibility.md).
