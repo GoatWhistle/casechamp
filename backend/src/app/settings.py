@@ -13,6 +13,10 @@ class Settings:
     road_workers: int = 1
     traffic_workers: int = 32
     traffic_geography: Path | None = None
+    contextual_boundaries: Path = (
+        Path(__file__).resolve().parents[3]
+        / "datasets/display-context-boundaries/contextual-regions.json"
+    )
     normative_archive: Path = (
         Path(__file__).resolve().parents[3] / "docs/results/normative-live-index-coverage.json"
     )
@@ -28,6 +32,10 @@ def load_settings(env: Mapping[str, str]) -> Settings:
         road_workers=int(env.get("ROAD_WORKERS", "1")),
         traffic_workers=min(32, max(1, int(env.get("TRAFFIC_WORKERS", "32")))),
         traffic_geography=Path(env["TRAFFIC_GEOGRAPHY"]) if env.get("TRAFFIC_GEOGRAPHY") else None,
+        contextual_boundaries=Path(env["DISPLAY_CONTEXT_BOUNDARIES"])
+        if env.get("DISPLAY_CONTEXT_BOUNDARIES")
+        else Path(__file__).resolve().parents[3]
+        / "datasets/display-context-boundaries/contextual-regions.json",
         normative_archive=Path(env["NORMATIVE_ARCHIVE"])
         if env.get("NORMATIVE_ARCHIVE")
         else Path(__file__).resolve().parents[3]

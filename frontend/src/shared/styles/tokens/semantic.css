@@ -70,19 +70,20 @@
   --map-land-brand: var(--blue-100);
   --map-none: var(--land-200);
   --map-water: var(--water-muted);
+  --map-outside: var(--canvas-100);
   --map-water-line: var(--water-400);
   --map-border: var(--neutral-0);
   --map-road: var(--cobalt-700);
   --map-selected: var(--neutral-950);
   --map-hover: color-mix(in oklab, var(--iso-1) 26%, transparent);
 
-  --data-seq-1: var(--teal-1);
-  --data-seq-2: var(--teal-2);
-  --data-seq-3: var(--teal-3);
-  --data-seq-4: var(--teal-4);
-  --data-seq-5: var(--teal-5);
-  --data-seq-6: var(--teal-6);
-  --data-seq-7: var(--teal-7);
+  --data-seq-1: var(--earth-1);
+  --data-seq-2: var(--earth-2);
+  --data-seq-3: var(--earth-3);
+  --data-seq-4: var(--earth-4);
+  --data-seq-5: var(--earth-5);
+  --data-seq-6: var(--earth-6);
+  --data-seq-7: var(--earth-7);
   --data-loss-3: var(--orange-3);
   --data-loss-2: var(--orange-2);
   --data-loss-1: var(--orange-1);

@@ -42,6 +42,7 @@ describe("map commands", () => {
       getLayer: vi.fn(),
       getSource: vi.fn(),
       setFilter: vi.fn(),
+      setFeatureState: vi.fn(),
       getContainer: () => element,
       easeTo: vi.fn(),
     }

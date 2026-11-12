@@ -7,6 +7,7 @@ from app.controller.atlas.mapping import index_response, overview_response
 from app.controller.atlas.responses import INVALID, UNAVAILABLE
 from app.controller.atlas.schemas import (
     BoundaryShapeResponse,
+    ContextualBoundaryResponse,
     GeoBoundariesResponse,
     GeoRegionsResponse,
     IndexStatusResponse,
@@ -45,7 +46,8 @@ def build_catalog_router(
     @router.get("/geo/boundaries", responses=UNAVAILABLE)
     def get_geo_boundaries() -> GeoBoundariesResponse:
         boundaries = reference.boundaries()
-        mask = reference.outside_mask(boundaries)
+        contextual = reference.contextual_boundaries()
+        mask = reference.outside_mask(boundaries, contextual)
         return GeoBoundariesResponse(
             regions=[
                 BoundaryShapeResponse(
@@ -53,6 +55,7 @@ def build_catalog_router(
                 )
                 for item in boundaries
             ],
+            contextual_regions=[ContextualBoundaryResponse(**asdict(item)) for item in contextual],
             outside_mask=OutsideMaskResponse(coordinates=mask) if mask is not None else None,
         )
 

@@ -40,3 +40,46 @@ it("covers the raster outside supplied regions while retaining region interactio
     tolerance: 0,
   })
 })
+
+it("keeps contextual outlines outside the analytical region source", () => {
+  const colors: OsmMapColors = {
+    fills: ["#eee"],
+    border: "#fff",
+    selected: "#000",
+    water: "#eee",
+    outside: "#fff",
+  }
+  const data: FeatureCollection<MultiPolygon> = { type: "FeatureCollection", features: [] }
+  const polygons = [
+    [
+      [
+        [35, 46],
+        [36, 46],
+        [36, 47],
+        [35, 47],
+        [35, 46],
+      ],
+    ],
+  ]
+  const style = buildStyle(colors, data, 0, undefined, [
+    { id: "context-one", name: "Context", bounds: [35, 46, 36, 47], polygons },
+  ])
+  expect(style.sources.regions).toMatchObject({ data })
+  expect(style.sources["contextual-regions"]).toMatchObject({
+    data: {
+      features: [
+        {
+          properties: { display_only: true },
+          geometry: { type: "MultiPolygon", coordinates: polygons },
+        },
+      ],
+    },
+  })
+  expect(style.layers.find((layer) => layer.id === "contextual-region-border")).toMatchObject({
+    type: "line",
+    source: "contextual-regions",
+  })
+  expect(style.layers.find((layer) => layer.id === "osm-tiles")).toMatchObject({
+    paint: { "raster-fade-duration": 0 },
+  })
+})

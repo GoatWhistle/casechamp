@@ -2,6 +2,7 @@ import re
 from collections.abc import Callable
 from dataclasses import dataclass, replace
 
+from app.usecase.contextual_boundaries import ContextualBoundary, ContextualBoundaryRepository
 from app.usecase.dto import BoundaryShape, RegionShape, SourceRecord, WinterRoadRecord
 from app.usecase.index_status import IndexStatus, index_status
 from app.usecase.interface import AtlasRepository
@@ -54,9 +55,11 @@ class ReferenceQueries:
         self,
         repository: AtlasRepository,
         outside_mask: Callable[[list[BoundaryShape]], MunicipalCoordinates] | None = None,
+        contextual: ContextualBoundaryRepository | None = None,
     ) -> None:
         self._repository = repository
         self._outside_mask = outside_mask
+        self._contextual = contextual
 
     def geo(self) -> GeoRegions:
         layer = self._repository.geo()
@@ -77,8 +80,16 @@ class ReferenceQueries:
             for shape in self._repository.boundaries()
         ]
 
-    def outside_mask(self, boundaries: list[BoundaryShape]) -> MunicipalCoordinates | None:
-        return self._outside_mask(boundaries) if self._outside_mask else None
+    def contextual_boundaries(self) -> list[ContextualBoundary]:
+        return self._contextual.boundaries() if self._contextual else []
+
+    def outside_mask(
+        self,
+        boundaries: list[BoundaryShape],
+        contextual: list[ContextualBoundary] | None = None,
+    ) -> MunicipalCoordinates | None:
+        shapes = [*boundaries, *[item.shape() for item in (contextual or [])]]
+        return self._outside_mask(shapes) if self._outside_mask else None
 
     def winter_roads(self) -> list[WinterRoadRecord]:
         return self._repository.winter_roads()

@@ -3,9 +3,8 @@ from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from datetime import UTC, datetime
 
-from fastapi import APIRouter, FastAPI
+from fastapi import FastAPI
 
-from app.adapter.atlas.outside_mask import AtlasOutsideMask
 from app.adapter.chat.calculation_tools import CalculationTools
 from app.adapter.chat.gateway import CodexResponsesGateway
 from app.adapter.chat.tools import AtlasTools
@@ -23,10 +22,9 @@ from app.adapter.road_graph.selection_geometry import SelectionGeometry
 from app.adapter.road_stress.jobs import StressJobs
 from app.adapter.traffic.indices import TrafficIndices
 from app.adapter.traffic.jobs import TrafficJobs
+from app.atlas_wiring import build_atlas_routers
 from app.controller.atlas.accessibility import build_accessibility_router
 from app.controller.atlas.airports import build_airports_router
-from app.controller.atlas.catalog import build_catalog_router
-from app.controller.atlas.regions import build_regions_router
 from app.controller.chat.router import build_chat_router
 from app.controller.errors import ErrorHandlers
 from app.controller.municipalities.router import build_municipality_router
@@ -68,7 +66,6 @@ from app.usecase.accessibility import AccessibilityQueries
 from app.usecase.airports import AirportQueries
 from app.usecase.chat import Chat
 from app.usecase.chat_calculation_review import CalculationReviews
-from app.usecase.interface import AtlasRepository
 from app.usecase.links import LinkQueries
 from app.usecase.municipalities import MunicipalityQueries
 from app.usecase.normative.index_map import IndexMapQueries
@@ -77,7 +74,6 @@ from app.usecase.normative.queries import NormativeQueries
 from app.usecase.normative.regional_catalog import RegionalCatalogQueries
 from app.usecase.normative.regional_measurements import RegionalMeasurements
 from app.usecase.normative.regional_view import RegionalViewQueries
-from app.usecase.overview import OverviewQuery
 from app.usecase.reference import ReferenceQueries
 from app.usecase.regions import RegionQueries
 from app.usecase.road_analysis import RoadAnalysis
@@ -87,17 +83,6 @@ from app.usecase.scenarios import ScenarioQueries, ScenarioRepository
 from app.usecase.search import Search
 from app.usecase.sensitivity import AccessibilitySensitivity
 from app.usecase.settlements import SettlementQueries
-
-
-def build_atlas_routers(repository: AtlasRepository) -> list[APIRouter]:
-    return [
-        build_catalog_router(
-            OverviewQuery(repository), ReferenceQueries(repository, AtlasOutsideMask()), Search(repository)
-        ),
-        build_regions_router(
-            RegionQueries(repository), LinkQueries(repository), SettlementQueries(repository)
-        ),
-    ]
 
 
 def create_app(settings: Settings | None = None, *, scenario_repository: ScenarioRepository | None = None) -> FastAPI:
@@ -189,7 +174,7 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
     ErrorHandlers(StdlibLogger("app")).register(app)
     app.include_router(
         build_api_router(
-            *build_atlas_routers(atlas),
+            *build_atlas_routers(atlas, config.contextual_boundaries),
             build_airports_router(AirportQueries(ClickHouseAirportRepository(atlas), atlas)),
             build_accessibility_router(AccessibilityQueries(ClickHouseAccessibilityRepository(reader), atlas)),
             build_scenarios_router(scenarios),

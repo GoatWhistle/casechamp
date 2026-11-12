@@ -25,6 +25,7 @@ FROM base
 ENV PYTHONPATH=/srv/backend/src \
     NUMBA_CACHE_DIR=/cache/numba
 COPY backend/src ./src
+COPY datasets/display-context-boundaries/contextual-regions.json /srv/datasets/display-context-boundaries/contextual-regions.json
 COPY docs/results/normative-live-index-coverage.json /srv/docs/results/normative-live-index-coverage.json
 COPY etl/synthetic_traffic /srv/etl/synthetic_traffic
 RUN mkdir -p /cache/scenario-cache /cache/scenario-results && chown -R app:app /cache

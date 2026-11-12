@@ -82,9 +82,24 @@ class OutsideMaskResponse(BaseModel):
     coordinates: list[list[list[tuple[float, float]]]]
 
 
+class ContextualBoundaryResponse(BoundaryShapeResponse):
+    source_url: str
+    observed_at: str
+    source_sha256: str
+    source_name: str
+    source_iso: str
+    source_shape_id: str
+    geometry_basis: str
+    disputed_status: str
+    display_only: Literal[True] = True
+    analytics_enabled: Literal[False] = False
+    contested: Literal[True] = True
+
+
 class GeoBoundariesResponse(BaseModel):
     regions: list[BoundaryShapeResponse]
     outside_mask: OutsideMaskResponse | None = None
+    contextual_regions: list[ContextualBoundaryResponse] = Field(default_factory=list)
 
 
 class RegionSummaryResponse(BaseModel):

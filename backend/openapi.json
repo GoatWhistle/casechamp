@@ -5657,6 +5657,127 @@
         ],
         "title": "ConnectionConsequence"
       },
+      "ContextualBoundaryResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "bounds": {
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array",
+            "maxItems": 4,
+            "minItems": 4,
+            "title": "Bounds"
+          },
+          "polygons": {
+            "items": {
+              "items": {
+                "items": {
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "type": "array",
+                  "maxItems": 2,
+                  "minItems": 2
+                },
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Polygons"
+          },
+          "source_url": {
+            "type": "string",
+            "title": "Source Url"
+          },
+          "observed_at": {
+            "type": "string",
+            "title": "Observed At"
+          },
+          "source_sha256": {
+            "type": "string",
+            "title": "Source Sha256"
+          },
+          "source_name": {
+            "type": "string",
+            "title": "Source Name"
+          },
+          "source_iso": {
+            "type": "string",
+            "title": "Source Iso"
+          },
+          "source_shape_id": {
+            "type": "string",
+            "title": "Source Shape Id"
+          },
+          "geometry_basis": {
+            "type": "string",
+            "title": "Geometry Basis"
+          },
+          "disputed_status": {
+            "type": "string",
+            "title": "Disputed Status"
+          },
+          "display_only": {
+            "type": "boolean",
+            "const": true,
+            "title": "Display Only",
+            "default": true
+          },
+          "analytics_enabled": {
+            "type": "boolean",
+            "const": false,
+            "title": "Analytics Enabled",
+            "default": false
+          },
+          "contested": {
+            "type": "boolean",
+            "const": true,
+            "title": "Contested",
+            "default": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "bounds",
+          "polygons",
+          "source_url",
+          "observed_at",
+          "source_sha256",
+          "source_name",
+          "source_iso",
+          "source_shape_id",
+          "geometry_basis",
+          "disputed_status"
+        ],
+        "title": "ContextualBoundaryResponse"
+      },
       "CorridorCalculation": {
         "properties": {
           "corridor": {
@@ -6534,6 +6655,13 @@
                 "type": "null"
               }
             ]
+          },
+          "contextual_regions": {
+            "items": {
+              "$ref": "#/components/schemas/ContextualBoundaryResponse"
+            },
+            "type": "array",
+            "title": "Contextual Regions"
           }
         },
         "type": "object",

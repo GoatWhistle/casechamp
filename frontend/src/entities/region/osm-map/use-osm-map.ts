@@ -13,7 +13,7 @@ import type { MunicipalityLayer } from "@/shared/api/municipalities"
 import type { NormativeMapLayer } from "@/shared/api/normative-map"
 import type { RoadLayerProps } from "@/shared/api/road-graph"
 import { motionMs, useReducedMotion } from "@/shared/motion"
-import type { BoundaryAtlas } from "./boundary-geojson"
+import type { BoundaryAtlas, RegionBoundary } from "./boundary-geojson"
 import { HOME_PADDING, MIN_MAP_ZOOM, resizeMapView } from "./camera/national-view"
 import { useMapControls } from "./camera/use-map-controls"
 import { aimCamera, corners, FLAT_MAP, keepFlat, roamConstrain } from "./map-camera"
@@ -38,6 +38,7 @@ const MAX_ZOOM = 18
 export type MapStep = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
 
 export interface OsmMapOptions {
+  readonly contextualRegions?: readonly RegionBoundary[] | undefined
   readonly outsideMask?: MultiPolygon | undefined
   readonly municipalities?: MunicipalityLayer | undefined
   readonly normative?: NormativeMapLayer | undefined
@@ -54,6 +55,7 @@ export interface OsmMapOptions {
 }
 
 export function useOsmMap({
+  contextualRegions,
   outsideMask,
   municipalities,
   normative,
@@ -146,6 +148,7 @@ export function useOsmMap({
         atlas.collection,
         state.current.reduced ? 0 : motionMs("--dur-base", element),
         outsideMask,
+        contextualRegions,
       ),
       bounds: corners(atlas.home),
       fitBoundsOptions: { padding: HOME_PADDING },
@@ -217,7 +220,7 @@ export function useOsmMap({
       resize.disconnect()
       map.remove()
     }
-  }, [atlas, outsideMask, paintSteps, aim, setHover, label, airportHover])
+  }, [atlas, contextualRegions, outsideMask, paintSteps, aim, setHover, label, airportHover])
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: Repaint when data read through the latest-state ref changes.
   useEffect(() => {

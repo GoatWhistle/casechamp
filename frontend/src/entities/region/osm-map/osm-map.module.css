@@ -2,7 +2,7 @@
   composes: fillBox from "../../../shared/styles/compose.module.css";
   position: relative;
   overflow: hidden;
-  background-color: var(--surface-base);
+  background-color: var(--map-outside);
 }
 
 .map {

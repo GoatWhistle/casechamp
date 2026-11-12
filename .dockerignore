@@ -12,3 +12,6 @@
 !docs/
 !docs/results/
 !docs/results/normative-live-index-coverage.json
+!datasets/
+!datasets/display-context-boundaries/
+!datasets/display-context-boundaries/contextual-regions.json

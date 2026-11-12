@@ -1,5 +1,6 @@
 import type { FeatureCollection, MultiPolygon } from "geojson"
 import type { ExpressionSpecification, StyleSpecification } from "maplibre-gl"
+import type { RegionBoundary } from "./boundary-geojson"
 
 export const REGIONS_SOURCE = "regions"
 export const FILL_LAYER = "region-fill"
@@ -11,6 +12,7 @@ export interface OsmMapColors {
   readonly fills: readonly string[]
   readonly border: string
   readonly selected: string
+  readonly contextBorder?: string
   readonly outside: string
   readonly water: string
 }
@@ -24,8 +26,9 @@ export function readMapColors(element: HTMLElement): OsmMapColors {
       ...Array.from({ length: 7 }, (_, index) => token(`--data-seq-${index + 1}`)),
     ],
     border: token("--map-border"),
-    selected: token("--iso-1"),
-    outside: token("--surface-base"),
+    selected: token("--map-selected"),
+    contextBorder: token("--text-secondary"),
+    outside: token("--map-outside"),
     water: token("--map-water"),
   }
 }
@@ -55,6 +58,8 @@ function fillColor(fills: readonly string[]): ExpressionSpecification {
 function fillOpacity(): ExpressionSpecification {
   const opacity = (value: number): ExpressionSpecification => [
     "case",
+    ["boolean", ["feature-state", "selected"], false],
+    0,
     ["boolean", ["feature-state", "hover"], false],
     value * 1.3,
     value,
@@ -74,12 +79,6 @@ function fillOpacity(): ExpressionSpecification {
   ]
 }
 
-const BASEMAP = {
-  "raster-saturation": -0.3,
-  "raster-contrast": -0.15,
-  "raster-brightness-min": 0.24,
-} as const
-
 const REGION_MAX_ZOOM = 10
 const REGION_TOLERANCE = 0.6
 const REGION_BUFFER = 32
@@ -89,6 +88,7 @@ export function buildStyle(
   data: FeatureCollection<MultiPolygon>,
   fade: number,
   outsideMask?: MultiPolygon,
+  contextualRegions: readonly RegionBoundary[] = [],
 ): StyleSpecification {
   return {
     version: 8,
@@ -104,6 +104,17 @@ export function buildStyle(
             },
           }
         : {}),
+      "contextual-regions": {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: contextualRegions.map((region) => ({
+            type: "Feature",
+            properties: { name: region.name, display_only: true },
+            geometry: { type: "MultiPolygon", coordinates: region.polygons },
+          })),
+        },
+      },
       [REGIONS_SOURCE]: {
         type: "geojson",
         data,
@@ -122,7 +133,7 @@ export function buildStyle(
         id: "osm-tiles",
         type: "raster",
         source: "osm",
-        paint: { ...BASEMAP, "raster-fade-duration": fade },
+        paint: { "raster-fade-duration": fade },
       },
       ...(outsideMask
         ? [
@@ -134,6 +145,22 @@ export function buildStyle(
             },
           ]
         : []),
+      {
+        id: "contextual-region-fill",
+        type: "fill",
+        source: "contextual-regions",
+        paint: { "fill-color": colors.fills[0] ?? colors.outside, "fill-opacity": 0.25 },
+      },
+      {
+        id: "contextual-region-border",
+        type: "line",
+        source: "contextual-regions",
+        paint: {
+          "line-color": colors.contextBorder ?? colors.border,
+          "line-width": 1.4,
+          "line-dasharray": [4, 3],
+        },
+      },
       {
         id: FILL_LAYER,
         type: "fill",

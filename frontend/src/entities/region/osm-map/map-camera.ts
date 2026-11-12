@@ -2,6 +2,7 @@ import { type Map as LibreMap, LngLat, type LngLatBoundsLike, type MapOptions } 
 import type { ChatMapCommand } from "@/shared/api/chat-map"
 import type { BoundaryAtlas, LonLatBounds } from "./boundary-geojson"
 import { fitNationalView } from "./camera/national-view"
+import { revealSelectedRegions } from "./camera/region-fill"
 import { focusRoad, updateRoadFocus } from "./camera/road-focus"
 import { NO_REGION, SELECTED_LAYER } from "./osm-style"
 
@@ -78,6 +79,7 @@ export function focusRegions(
   const frame = ids.length ? regionFrame(atlas, ids) : atlas.home
   if (!frame) return
   map.stop()
+  revealSelectedRegions(map, atlas, ids)
   const selected = ids.map((id) => atlas.featureOf.get(id)?.id ?? NO_REGION)
   map.setFilter(SELECTED_LAYER, ["in", ["id"], ["literal", selected]])
   map.getContainer().dataset.focusRegions = ids.join(",")
@@ -125,6 +127,7 @@ export function aimCamera(
   }
   if (command?.action === "focus_settlement" && command.settlement) {
     const target = command.settlement
+    revealSelectedRegions(map, atlas, [target.region_id])
     map.stop()
     map.setFilter(SELECTED_LAYER, [
       "in",

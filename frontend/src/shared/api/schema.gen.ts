@@ -1672,6 +1672,59 @@ export interface components {
             /** Added Minutes */
             added_minutes: number | null;
         };
+        /** ContextualBoundaryResponse */
+        ContextualBoundaryResponse: {
+            /** Id */
+            id: string;
+            /** Name */
+            name: string;
+            /** Bounds */
+            bounds: [
+                number,
+                number,
+                number,
+                number
+            ];
+            /** Polygons */
+            polygons: [
+                number,
+                number
+            ][][][];
+            /** Source Url */
+            source_url: string;
+            /** Observed At */
+            observed_at: string;
+            /** Source Sha256 */
+            source_sha256: string;
+            /** Source Name */
+            source_name: string;
+            /** Source Iso */
+            source_iso: string;
+            /** Source Shape Id */
+            source_shape_id: string;
+            /** Geometry Basis */
+            geometry_basis: string;
+            /** Disputed Status */
+            disputed_status: string;
+            /**
+             * Display Only
+             * @default true
+             * @constant
+             */
+            display_only: true;
+            /**
+             * Analytics Enabled
+             * @default false
+             * @constant
+             */
+            analytics_enabled: false;
+            /**
+             * Contested
+             * @default true
+             * @constant
+             */
+            contested: true;
+        };
         /** CorridorCalculation */
         CorridorCalculation: {
             corridor: components["schemas"]["RoadCorridor"];
@@ -1962,6 +2015,8 @@ export interface components {
             /** Regions */
             regions: components["schemas"]["BoundaryShapeResponse"][];
             outside_mask?: components["schemas"]["OutsideMaskResponse"] | null;
+            /** Contextual Regions */
+            contextual_regions?: components["schemas"]["ContextualBoundaryResponse"][];
         };
         /** GeoRegionsResponse */
         GeoRegionsResponse: {

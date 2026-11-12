@@ -12,6 +12,7 @@ import { useTranslation } from "@/shared/i18n"
 import styles from "./osm-map.module.css"
 
 export const AIRPORT_LAYER = "airport-points"
+export const AIRPORT_MIN_ZOOM = 5
 
 export function useAirportLayer(
   engine: RefObject<LibreMap | null>,
@@ -43,6 +44,7 @@ export function useAirportLayer(
         id: AIRPORT_LAYER,
         type: "circle",
         source: AIRPORT_LAYER,
+        minzoom: AIRPORT_MIN_ZOOM,
         paint: {
           "circle-radius": ["interpolate", ["linear"], ["zoom"], 3, 2.5, 6, 3.5, 10, 6],
           "circle-color": style.getPropertyValue("--mode-air").trim(),
@@ -80,6 +82,11 @@ export function useAirportLayer(
       popup.remove()
     }
     hover.current = (feature) => {
+      if (map.getZoom() < AIRPORT_MIN_ZOOM) {
+        hovered = null
+        hide()
+        return
+      }
       const id = feature ? String(feature.properties.id) : null
       if (id === hovered) return
       hovered = id
@@ -87,11 +94,16 @@ export function useAirportLayer(
       else hide()
     }
     const click = (event: MapLayerMouseEvent) => hover.current(event.features?.[0])
+    const zoom = () => {
+      if (map.getZoom() < AIRPORT_MIN_ZOOM) hover.current(undefined)
+    }
+    map.on("zoom", zoom)
     map.on("click", AIRPORT_LAYER, click)
     map.getContainer().dataset.airportCount = String(data.features.length)
     return () => {
       popup.remove()
       hover.current = () => undefined
+      map.off("zoom", zoom)
       map.off("click", AIRPORT_LAYER, click)
     }
   }, [engine, catalog, ready, t])

@@ -136,6 +136,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
             normative={normativeLayer}
             roads={roadMapProps(roads)}
             outsideMask={geo.data.outside_mask ?? undefined}
+            contextualRegions={geo.data.contextual_regions}
             municipalities={municipalities.layer}
             regions={geo.data.regions}
             stepOf={stepOf}
