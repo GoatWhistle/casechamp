@@ -48,6 +48,7 @@
   --panel-min: 320px;
   --term-min: 160px;
   --prose-measure: 70ch;
+  --tooltip-measure: 320px;
   --field-max-width: 480px;
   --toast-width: 380px;
   --dialog-width: 520px;

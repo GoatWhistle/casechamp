@@ -4,13 +4,15 @@
 
   z-index: var(--layer-tooltip);
   inline-size: max-content;
-  max-inline-size: var(--prose-measure);
-  padding: var(--space-4) var(--space-8);
-  border-radius: var(--radius-sm);
+  padding-block: var(--space-8);
+  padding-inline: var(--space-12);
+  border-radius: var(--radius-md);
   background-color: var(--surface-inverse);
   color: var(--text-on-inverse);
   font-size: var(--font-size-label);
-  line-height: var(--line-height-label);
+  line-height: var(--line-height-body-sm);
+  white-space: normal;
+  text-wrap: pretty;
   pointer-events: none;
   transform-origin: center var(--origin-block);
 }

@@ -76,6 +76,7 @@
   align-items: center;
   gap: var(--space-4);
   font-weight: var(--weight-medium);
+  white-space: nowrap;
 }
 
 .tone[data-tone="gain"] {
