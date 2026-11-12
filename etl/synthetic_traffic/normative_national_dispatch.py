@@ -8,6 +8,10 @@ import time
 from datetime import UTC, datetime
 from pathlib import Path
 
+from synthetic_traffic.normative_city_boundaries import (
+    municipal_boundary_counts,
+    prepare_city_boundaries,
+)
 from synthetic_traffic.normative_national_archive import archive_region
 from synthetic_traffic.normative_national_pipeline import ORDER, NationalPipeline
 
@@ -137,6 +141,9 @@ class NationalDispatch:
                 "api": self.api,
                 "source_fingerprint": fingerprint,
             }
+        self.save("preparing_city_municipal_boundaries")
+        self.state["city_boundaries"] = prepare_city_boundaries(self.repo)
+        self.state["municipal_boundary_counts"] = municipal_boundary_counts()
         regions = json.loads((self.root / "regions.json").read_text())["regions"]
         if not self.state.get("road_batch_finished"):
             self.save("calculating_national_road_measurements")
@@ -155,6 +162,15 @@ class NationalDispatch:
             if result.get("status") == "complete":
                 continue
             try:
+                if not self.state["municipal_boundary_counts"].get(identifier):
+                    result.update(
+                        {
+                            "status": "missing_municipal_geometry",
+                            "error": "No source municipal polygons imported",
+                        }
+                    )
+                    self.save("region_missing_geometry", current_region=identifier)
+                    continue
                 self.wait_calculators()
                 self.save("assembling_regional_pedestrian", current_region=identifier)
                 self.runner.guard(1024**3)

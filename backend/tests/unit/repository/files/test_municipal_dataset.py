@@ -88,6 +88,7 @@ def test_source_snapshot_and_municipal_values_survive_restart_and_resume(tmp_pat
         )
         is None
     )
+    dataset.publish_source(digest)
     manifest = export_municipal_dataset(tmp_path, tmp_path / "export.jsonl.gz")
     assert manifest["aggregates"] == 1
     assert manifest["source_snapshots"] == [digest]
@@ -118,3 +119,43 @@ def test_primary_fire_index_uses_population_weighting_not_point_share() -> None:
     assert value.value == 10
     assert value.values[0].point_share_percent == 50
     assert value.values[0].population_share_percent == 10
+
+
+def test_export_contains_only_current_published_source_per_municipal_criterion(
+    tmp_path: Path,
+) -> None:
+    dataset = JsonMunicipalDataset(tmp_path)
+    first = dataset.snapshot(source(), rows())
+    persist_aggregation(dataset, first, municipality())
+    second = dataset.snapshot(replace(source(), run_id="new-run", measured_at="2026-11-14"), rows())
+    persist_aggregation(dataset, second, municipality())
+    dataset.publish_source(second)
+    manifest = export_municipal_dataset(tmp_path, tmp_path / "export.jsonl.gz")
+    assert manifest["aggregates"] == 1
+    assert manifest["historical_versions_excluded"] == 1
+    assert manifest["source_snapshots"] == [second]
+    assert manifest["cross_municipality_sums_valid"] is False
+
+
+def test_resnapshot_repairs_missing_run_pointer_after_manifest_publication(tmp_path: Path) -> None:
+    dataset = JsonMunicipalDataset(tmp_path)
+    digest = dataset.snapshot(source(), rows())
+    for pointer in (tmp_path / "runs").glob("*.json"):
+        pointer.unlink()
+    assert dataset.find_run("07000000", "N04", "real-run", "scenario") is None
+    assert dataset.snapshot(source(), rows()) == digest
+    assert dataset.find_run("07000000", "N04", "real-run", "scenario") == digest
+
+
+def test_resnapshot_does_not_repair_pointer_for_corrupt_existing_source(tmp_path: Path) -> None:
+    dataset = JsonMunicipalDataset(tmp_path)
+    digest = dataset.snapshot(source(), rows())
+    for pointer in (tmp_path / "runs").glob("*.json"):
+        pointer.unlink()
+    manifest = tmp_path / "sources" / digest / "manifest.json"
+    record = json.loads(manifest.read_bytes())
+    record["source_sha256"] = "0" * 64
+    manifest.write_text(json.dumps(record))
+    with pytest.raises(DataUnavailable):
+        dataset.snapshot(source(), rows())
+    assert dataset.find_run("07000000", "N04", "real-run", "scenario") is None

@@ -8,6 +8,7 @@ import osmium
 from shapely import from_wkb, make_valid
 from shapely.geometry import MultiPolygon, mapping, shape
 from shapely.strtree import STRtree
+from synthetic_traffic.municipal_tags import municipal_source_confirmed
 
 
 def file_sha256(path):
@@ -19,9 +20,10 @@ def file_sha256(path):
 
 
 class MunicipalHandler(osmium.SimpleHandler):
-    def __init__(self):
+    def __init__(self, levels=(6,)):
         super().__init__()
         self.factory = osmium.geom.WKBFactory()
+        self.levels = {str(value) for value in levels}
         self.expected = {}
         self.polygons = {}
         self.invalid = []
@@ -29,7 +31,7 @@ class MunicipalHandler(osmium.SimpleHandler):
     def relation(self, relation):
         if (
             relation.tags.get("boundary") == "administrative"
-            and relation.tags.get("admin_level") == "6"
+            and relation.tags.get("admin_level") in self.levels
         ):
             self.expected[relation.id] = dict(relation.tags)
 
@@ -37,7 +39,7 @@ class MunicipalHandler(osmium.SimpleHandler):
         if (
             area.from_way()
             or area.tags.get("boundary") != "administrative"
-            or area.tags.get("admin_level") != "6"
+            or area.tags.get("admin_level") not in self.levels
         ):
             return
         try:
@@ -55,7 +57,9 @@ class MunicipalHandler(osmium.SimpleHandler):
             )
 
 
-def extract_municipal_boundaries(pbfs, regions_path, output):
+def extract_municipal_boundaries(
+    pbfs, regions_path, output, levels=(6,), region_ids=None, municipal_only=False
+):
     region_document = json.loads(Path(regions_path).read_text())
     regions = (
         region_document.get("regions", region_document)
@@ -88,8 +92,18 @@ def extract_municipal_boundaries(pbfs, regions_path, output):
             timestamp = reader.header().get("osmosis_replication_timestamp")
         if not timestamp:
             raise ValueError("PBF requires its source snapshot timestamp")
-        handler = MunicipalHandler()
-        handler.apply_file(str(pbf), locations=True, idx="flex_mem")
+        handler = MunicipalHandler(levels)
+        handler.apply_file(
+            str(pbf),
+            locations=True,
+            idx="flex_mem",
+            filters=[
+                osmium.filter.TagFilter(("boundary", "administrative")),
+                osmium.filter.TagFilter(
+                    *[("admin_level", str(value)) for value in levels]
+                ),
+            ],
+        )
         missing = sorted(set(handler.expected) - set(handler.polygons))
         sources.append(
             {
@@ -124,6 +138,10 @@ def extract_municipal_boundaries(pbfs, regions_path, output):
                     }
                 )
                 continue
+            if region_ids and regions[index]["id"] not in region_ids:
+                continue
+            if municipal_only and not municipal_source_confirmed(tags):
+                continue
             record = {
                 "type": "Feature",
                 "geometry": mapping(polygon),
@@ -131,7 +149,7 @@ def extract_municipal_boundaries(pbfs, regions_path, output):
                     "id": "osm-relation-" + str(identifier),
                     "region_id": regions[index]["id"],
                     "name": tags.get("name:ru", tags["name"]),
-                    "admin_level": 6,
+                    "admin_level": int(tags["admin_level"]),
                     "osm_relation_id": identifier,
                     "source_url": "https://www.openstreetmap.org/relation/"
                     + str(identifier),
@@ -179,7 +197,9 @@ def extract_municipal_boundaries(pbfs, regions_path, output):
     manifest = {
         "created_at": datetime.now(UTC).isoformat(),
         "status": "partial_source_coverage",
-        "method": "original_osm_assembled_admin_level_6_relations_no_invented_rings",
+        "method": "original_osm_assembled_administrative_relations_no_invented_rings",
+        "admin_levels": list(levels),
+        "municipal_only": municipal_only,
         "license": "ODbL-1.0; OpenStreetMap contributors",
         "sources": sources,
         "region_geometry_source": str(regions_path),
@@ -203,10 +223,20 @@ def main():
     parser.add_argument("--pbf", type=Path, action="append", required=True)
     parser.add_argument("--regions", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--admin-level", type=int, action="append")
+    parser.add_argument("--region-id", action="append")
+    parser.add_argument("--municipal-only", action="store_true")
     args = parser.parse_args()
     print(
         json.dumps(
-            extract_municipal_boundaries(args.pbf, args.regions, args.output),
+            extract_municipal_boundaries(
+                args.pbf,
+                args.regions,
+                args.output,
+                args.admin_level or (6,),
+                args.region_id,
+                args.municipal_only,
+            ),
             ensure_ascii=False,
             indent=2,
         )

@@ -6,10 +6,17 @@ from hashlib import sha256
 from pathlib import Path
 from tempfile import NamedTemporaryFile
 
+from app.repository.files.municipal_dataset_heads import (
+    active_municipal_sources,
+    current_boundary_snapshot,
+)
+
 
 def export_municipal_dataset(directory: Path, output: Path) -> dict[str, object]:
     output.parent.mkdir(parents=True, exist_ok=True)
     counts: Counter[str] = Counter()
+    active_sources = active_municipal_sources(directory)
+    historical_versions = 0
     sources: set[str] = set()
     boundaries: set[str] = set()
     with NamedTemporaryFile(dir=output.parent, delete=False) as temporary:
@@ -18,7 +25,13 @@ def export_municipal_dataset(directory: Path, output: Path) -> dict[str, object]
             with gzip.GzipFile(filename="", fileobj=temporary, mode="wb", mtime=0) as compressed:
                 for path in sorted((directory / "aggregates").glob("*.json")):
                     record = json.loads(path.read_bytes())
-                    if record.get("aggregation_method") != "municipal-aggregate-v3":
+                    if (
+                        record.get("aggregation_method") != "municipal-aggregate-v4"
+                        or record["source_sha256"] not in active_sources
+                        or record.get("boundary_snapshot_sha256", "")
+                        != (current_boundary_snapshot(directory, record["region_id"]) or "")
+                    ):
+                        historical_versions += 1
                         continue
                     compressed.write(
                         json.dumps(
@@ -43,6 +56,10 @@ def export_municipal_dataset(directory: Path, output: Path) -> dict[str, object]
     manifest: dict[str, object] = {
         "schema_version": "municipal-dataset-v1",
         "aggregates": sum(counts.values()),
+        "historical_versions_excluded": historical_versions,
+        "assignment_method": "independent_polygon_membership",
+        "cross_municipality_sums_valid": False,
+        "publication_scope": "current_source_per_region_criterion_stage_and_current_boundary",
         "statuses": dict(counts),
         "source_snapshots": sorted(sources),
         "boundary_snapshots": sorted(boundaries),

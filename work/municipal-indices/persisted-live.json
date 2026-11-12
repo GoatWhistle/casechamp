@@ -1,0 +1,531 @@
+{
+  "region_id": "07000000",
+  "municipality_id": "osm-relation-1030142",
+  "name": "Минераловодский муниципальный округ",
+  "season": "road",
+  "connectivity": {
+    "key": "hansen_idx",
+    "value": 115.59073202962699,
+    "status": "available",
+    "reason": null,
+    "unit": "index_points",
+    "population": 133463,
+    "measured_population": 133463,
+    "settlements": 53,
+    "measured_settlements": 53,
+    "population_coverage": 1.0
+  },
+  "region_connectivity": {
+    "key": "hansen_idx",
+    "value": 99.15142370126976,
+    "status": "available",
+    "reason": null,
+    "unit": "index_points",
+    "population": 2907593,
+    "measured_population": 2907593,
+    "settlements": 760,
+    "measured_settlements": 760,
+    "population_coverage": 1.0
+  },
+  "metrics": [
+    {
+      "key": "hansen_1h",
+      "value": 1671558.9594532328,
+      "status": "available",
+      "reason": null,
+      "unit": "weighted_population",
+      "population": 133463,
+      "measured_population": 133463,
+      "settlements": 53,
+      "measured_settlements": 53,
+      "population_coverage": 1.0
+    },
+    {
+      "key": "hansen_2h",
+      "value": 9128482.741234243,
+      "status": "available",
+      "reason": null,
+      "unit": "weighted_population",
+      "population": 133463,
+      "measured_population": 133463,
+      "settlements": 53,
+      "measured_settlements": 53,
+      "population_coverage": 1.0
+    },
+    {
+      "key": "hansen_4h",
+      "value": 24910462.7151789,
+      "status": "available",
+      "reason": null,
+      "unit": "weighted_population",
+      "population": 133463,
+      "measured_population": 133463,
+      "settlements": 53,
+      "measured_settlements": 53,
+      "population_coverage": 1.0
+    },
+    {
+      "key": "remoteness_ca",
+      "value": 0.11117116905495177,
+      "status": "available",
+      "reason": null,
+      "unit": "ratio",
+      "population": 133463,
+      "measured_population": 133463,
+      "settlements": 53,
+      "measured_settlements": 53,
+      "population_coverage": 1.0
+    },
+    {
+      "key": "aria",
+      "value": 1.4459130575757677,
+      "status": "available",
+      "reason": null,
+      "unit": "index_points",
+      "population": 133463,
+      "measured_population": 133463,
+      "settlements": 53,
+      "measured_settlements": 53,
+      "population_coverage": 1.0
+    },
+    {
+      "key": "harris",
+      "value": 11568365.91594522,
+      "status": "available",
+      "reason": null,
+      "unit": "index_points",
+      "population": 133463,
+      "measured_population": 133463,
+      "settlements": 53,
+      "measured_settlements": 53,
+      "population_coverage": 1.0
+    },
+    {
+      "key": "t_city50k_best_h",
+      "value": 0.45949026048313013,
+      "status": "available",
+      "reason": null,
+      "unit": "hours",
+      "population": 133463,
+      "measured_population": 133463,
+      "settlements": 53,
+      "measured_settlements": 53,
+      "population_coverage": 1.0
+    },
+    {
+      "key": "rai_2km",
+      "value": 0.98232531963912,
+      "status": "available",
+      "reason": null,
+      "unit": "ratio",
+      "population": 56861,
+      "measured_population": 56861,
+      "settlements": 51,
+      "measured_settlements": 51,
+      "population_coverage": 1.0
+    }
+  ],
+  "normative": [
+    {
+      "criterion_id": "N01",
+      "value": 100.0,
+      "status": "available",
+      "reason": "conditional_known_objects",
+      "basis_kind": "scenario_reference",
+      "qualification": "physical_only",
+      "legal_compliance_confirmed": false,
+      "unit": "minutes",
+      "mode": "car",
+      "thresholds": [
+        60.0
+      ],
+      "values": [
+        {
+          "threshold": 60.0,
+          "reference_points": 53,
+          "measured_points": 53,
+          "within_points": 53,
+          "unresolved_points": 0,
+          "point_share_percent": 100.0,
+          "population": null,
+          "within_population": null,
+          "population_share_percent": null
+        }
+      ],
+      "mean_travel": 8.763635009359719,
+      "measured_points": 53,
+      "reference_points": 53,
+      "facilities": 355,
+      "model_revision": "regional-road-v1",
+      "definition_sha256": "0b9ef851dd1b71cc6592e1df474d27ef8795b2357e63999a056fb9cd1b3920c4",
+      "source_urls": [
+        "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf"
+      ],
+      "origin_kind": "settlement_reference_points"
+    },
+    {
+      "criterion_id": "N02",
+      "value": 100.0,
+      "status": "available",
+      "reason": "conditional_known_objects",
+      "basis_kind": "scenario_reference",
+      "qualification": "physical_only",
+      "legal_compliance_confirmed": false,
+      "unit": "minutes",
+      "mode": "car",
+      "thresholds": [
+        120.0
+      ],
+      "values": [
+        {
+          "threshold": 120.0,
+          "reference_points": 53,
+          "measured_points": 53,
+          "within_points": 53,
+          "unresolved_points": 0,
+          "point_share_percent": 100.0,
+          "population": null,
+          "within_population": null,
+          "population_share_percent": null
+        }
+      ],
+      "mean_travel": 8.763635009359719,
+      "measured_points": 53,
+      "reference_points": 53,
+      "facilities": 355,
+      "model_revision": "regional-road-v1",
+      "definition_sha256": "193d3a75d4ddd8712b244fe4ead7c89a1d08f3004ecf5b5ba77d25c73757682c",
+      "source_urls": [
+        "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf"
+      ],
+      "origin_kind": "settlement_reference_points"
+    },
+    {
+      "criterion_id": "N03",
+      "value": 73.43083850954946,
+      "status": "available",
+      "reason": "conditional_known_objects",
+      "basis_kind": "scenario_reference",
+      "qualification": "physical_only",
+      "legal_compliance_confirmed": false,
+      "unit": "minutes",
+      "mode": "emergency_response",
+      "thresholds": [
+        10.0,
+        20.0
+      ],
+      "values": [
+        {
+          "threshold": 10.0,
+          "reference_points": 53,
+          "measured_points": 53,
+          "within_points": 8,
+          "unresolved_points": 0,
+          "point_share_percent": 15.09433962264151,
+          "population": 133463,
+          "within_population": 98003,
+          "population_share_percent": 73.43083850954946
+        },
+        {
+          "threshold": 20.0,
+          "reference_points": 53,
+          "measured_points": 53,
+          "within_points": 25,
+          "unresolved_points": 0,
+          "point_share_percent": 47.16981132075472,
+          "population": 133463,
+          "within_population": 117604,
+          "population_share_percent": 88.1173059199928
+        }
+      ],
+      "mean_travel": 20.874263007246824,
+      "measured_points": 53,
+      "reference_points": 53,
+      "facilities": 42,
+      "model_revision": "regional-fire-v1",
+      "definition_sha256": "2a1f2e73e007424499def191f911cabe76f9ae912a313449bb548c0a11d90117",
+      "source_urls": [
+        "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf"
+      ],
+      "origin_kind": "settlement_reference_points"
+    },
+    {
+      "criterion_id": "N04",
+      "value": 15.87651598676957,
+      "status": "available",
+      "reason": "conditional_known_objects",
+      "basis_kind": "scenario_reference",
+      "qualification": "physical_only",
+      "legal_compliance_confirmed": false,
+      "unit": "metres",
+      "mode": "walk",
+      "thresholds": [
+        500.0,
+        800.0,
+        1000.0
+      ],
+      "values": [
+        {
+          "threshold": 500.0,
+          "reference_points": 9977,
+          "measured_points": 9974,
+          "within_points": 1584,
+          "unresolved_points": 3,
+          "point_share_percent": 15.87651598676957,
+          "population": null,
+          "within_population": null,
+          "population_share_percent": null
+        },
+        {
+          "threshold": 800.0,
+          "reference_points": 9977,
+          "measured_points": 9974,
+          "within_points": 4431,
+          "unresolved_points": 3,
+          "point_share_percent": 44.41214794026261,
+          "population": null,
+          "within_population": null,
+          "population_share_percent": null
+        },
+        {
+          "threshold": 1000.0,
+          "reference_points": 9977,
+          "measured_points": 9974,
+          "within_points": 6059,
+          "unresolved_points": 3,
+          "point_share_percent": 60.729678259997996,
+          "population": null,
+          "within_population": null,
+          "population_share_percent": null
+        }
+      ],
+      "mean_travel": 1095.506106827589,
+      "measured_points": 9974,
+      "reference_points": 9977,
+      "facilities": 501,
+      "model_revision": "regional-walk-v2",
+      "definition_sha256": "e4804d295e2edd2b4a90ca10662c71b34a1cfb753255a29952bdbe4ba28c5836",
+      "source_urls": [
+        "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf",
+        "https://download.geofabrik.de/russia/south-fed-district-261111.osm.pbf"
+      ],
+      "origin_kind": "residential_reference_points"
+    },
+    {
+      "criterion_id": "N05",
+      "value": 94.9776342506912,
+      "status": "available",
+      "reason": "conditional_known_objects",
+      "basis_kind": "scenario_reference",
+      "qualification": "physical_only",
+      "legal_compliance_confirmed": false,
+      "unit": "minutes",
+      "mode": "car",
+      "thresholds": [
+        60.0
+      ],
+      "values": [
+        {
+          "threshold": 60.0,
+          "reference_points": 53,
+          "measured_points": 53,
+          "within_points": 44,
+          "unresolved_points": 0,
+          "point_share_percent": 83.01886792452831,
+          "population": 133463,
+          "within_population": 126760,
+          "population_share_percent": 94.9776342506912
+        }
+      ],
+      "mean_travel": 46.71199876069103,
+      "measured_points": 53,
+      "reference_points": 53,
+      "facilities": 12,
+      "model_revision": "regional-road-v1",
+      "definition_sha256": "9955c0c3dd557222a918c4f20ce6094a44033d96384d6ab28867e456ca855b8c",
+      "source_urls": [
+        "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf"
+      ],
+      "origin_kind": "settlement_reference_points"
+    },
+    {
+      "criterion_id": "N06",
+      "value": 0.0,
+      "status": "available",
+      "reason": "conditional_known_objects",
+      "basis_kind": "scenario_reference",
+      "qualification": "physical_only",
+      "legal_compliance_confirmed": false,
+      "unit": "minutes",
+      "mode": "car",
+      "thresholds": [
+        60.0
+      ],
+      "values": [
+        {
+          "threshold": 60.0,
+          "reference_points": 53,
+          "measured_points": 53,
+          "within_points": 0,
+          "unresolved_points": 0,
+          "point_share_percent": 0.0,
+          "population": 133463,
+          "within_population": 0,
+          "population_share_percent": 0.0
+        }
+      ],
+      "mean_travel": 155.8596667183983,
+      "measured_points": 53,
+      "reference_points": 53,
+      "facilities": 2,
+      "model_revision": "regional-road-v1",
+      "definition_sha256": "876f981333c0abf3b9157254dd7221800c7b060ca80b3049cc78e4090c4cce27",
+      "source_urls": [
+        "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf"
+      ],
+      "origin_kind": "settlement_reference_points"
+    },
+    {
+      "criterion_id": "N07",
+      "value": 100.0,
+      "status": "available",
+      "reason": "conditional_known_objects",
+      "basis_kind": "scenario_reference",
+      "qualification": "physical_only",
+      "legal_compliance_confirmed": false,
+      "unit": "minutes",
+      "mode": "car",
+      "thresholds": [
+        40.0,
+        60.0
+      ],
+      "values": [
+        {
+          "threshold": 40.0,
+          "reference_points": 53,
+          "measured_points": 53,
+          "within_points": 53,
+          "unresolved_points": 0,
+          "point_share_percent": 100.0,
+          "population": 133463,
+          "within_population": 133463,
+          "population_share_percent": 100.0
+        },
+        {
+          "threshold": 60.0,
+          "reference_points": 53,
+          "measured_points": 53,
+          "within_points": 53,
+          "unresolved_points": 0,
+          "point_share_percent": 100.0,
+          "population": 133463,
+          "within_population": 133463,
+          "population_share_percent": 100.0
+        }
+      ],
+      "mean_travel": 13.782450261713242,
+      "measured_points": 53,
+      "reference_points": 53,
+      "facilities": 74,
+      "model_revision": "regional-road-v1",
+      "definition_sha256": "34833b01306263dd5eadd8b1aa4589b8153c732b993bc6c0fb8fd6b4152b4c4f",
+      "source_urls": [
+        "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf"
+      ],
+      "origin_kind": "settlement_reference_points"
+    },
+    {
+      "criterion_id": "N08",
+      "value": 100.0,
+      "status": "available",
+      "reason": "conditional_known_objects",
+      "basis_kind": "scenario_reference",
+      "qualification": "physical_only",
+      "legal_compliance_confirmed": false,
+      "unit": "minutes",
+      "mode": "car",
+      "thresholds": [
+        60.0
+      ],
+      "values": [
+        {
+          "threshold": 60.0,
+          "reference_points": 53,
+          "measured_points": 53,
+          "within_points": 53,
+          "unresolved_points": 0,
+          "point_share_percent": 100.0,
+          "population": 133463,
+          "within_population": 133463,
+          "population_share_percent": 100.0
+        }
+      ],
+      "mean_travel": 21.824688316272404,
+      "measured_points": 53,
+      "reference_points": 53,
+      "facilities": 55,
+      "model_revision": "regional-road-v1",
+      "definition_sha256": "270a99909379d3f52f014b802e1aac418c6d7d47c1cc8e881837a3dd283aead7",
+      "source_urls": [
+        "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf"
+      ],
+      "origin_kind": "settlement_reference_points"
+    },
+    {
+      "criterion_id": "N09",
+      "value": 29.768467475192942,
+      "status": "available",
+      "reason": "conditional_known_objects",
+      "basis_kind": "scenario_reference",
+      "qualification": "physical_only",
+      "legal_compliance_confirmed": false,
+      "unit": "metres",
+      "mode": "walk",
+      "thresholds": [
+        500.0,
+        800.0
+      ],
+      "values": [
+        {
+          "threshold": 500.0,
+          "reference_points": 9977,
+          "measured_points": 9974,
+          "within_points": 2970,
+          "unresolved_points": 3,
+          "point_share_percent": 29.768467475192942,
+          "population": null,
+          "within_population": null,
+          "population_share_percent": null
+        },
+        {
+          "threshold": 800.0,
+          "reference_points": 9977,
+          "measured_points": 9974,
+          "within_points": 5355,
+          "unresolved_points": 3,
+          "point_share_percent": 53.67344893254485,
+          "population": null,
+          "within_population": null,
+          "population_share_percent": null
+        }
+      ],
+      "mean_travel": 956.2367751680259,
+      "measured_points": 9974,
+      "reference_points": 9977,
+      "facilities": 1913,
+      "model_revision": "regional-walk-v2",
+      "definition_sha256": "0ffd9fe62af5b37722efc4e41fbfcbe7f1c9a01bed2e60f5b04e30de2787aa34",
+      "source_urls": [
+        "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf"
+      ],
+      "origin_kind": "residential_reference_points"
+    }
+  ],
+  "method": "population_weighted_source_points_in_original_municipal_polygon_v1",
+  "model_version": null,
+  "artifact_version": "adeb4170a71a6b9bbb8b5b5fe6de0a627e1e9a83b483e0328a0b172cb2964b29",
+  "source_table": "plexus_casechamp.idx_np",
+  "computed_at": "2026-11-12T21:44:24.293201+00:00",
+  "boundary_source_url": "https://www.openstreetmap.org/relation/1030142",
+  "boundary_source_sha256": "a6db83fb55e03cc9730da9aff42730003b7d1591a38d4cf0fd15d4fe66743701"
+}

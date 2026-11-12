@@ -147,6 +147,7 @@ def run(args: argparse.Namespace) -> None:
                         boundary_snapshot_sha256=boundary_digest,
                     )
                     available += value.status == "available"
+                dataset.publish_source(digest)
                 record = {
                     "region_id": region,
                     "criterion_id": criterion,
@@ -158,8 +159,12 @@ def run(args: argparse.Namespace) -> None:
                     "resumed": len(municipalities) - len(pending),
                     "new_available": available,
                     "assignment": {
-                        "assigned": assignment.assigned,
-                        "ambiguous_excluded": assignment.ambiguous,
+                        "method": "independent_polygon_membership",
+                        "unique_covered_points": assignment.assigned,
+                        "membership_records": sum(
+                            len(items) for items in assignment.rows.values()
+                        ),
+                        "overlap_points": assignment.overlap_points,
                         "outside": assignment.outside,
                         "coordinates_missing": assignment.coordinates_missing,
                     },

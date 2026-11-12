@@ -1,6 +1,7 @@
 {
   "export": {
     "aggregates": 891,
+    "assignment_method": "independent_polygon_membership",
     "boundary_files": [
       "boundaries/405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4/boundaries.json.gz",
       "boundaries/8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991/boundaries.json.gz",
@@ -11,8 +12,11 @@
       "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
       "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4"
     ],
+    "cross_municipality_sums_valid": false,
     "export_file": "municipal-indices.jsonl.gz",
-    "export_sha256": "51d82eab2d2d7adf23f07453433696b16c668d831010cae0902c00aa4cb04120",
+    "export_sha256": "e83954c61ccd9ee66dfe9e51d2d42c6bc22c8f941d8ea836911aa04e187b72d5",
+    "historical_versions_excluded": 1459,
+    "publication_scope": "current_source_per_region_criterion_stage_and_current_boundary",
     "qualification": "per_record_source_qualification_no_regional_proxy",
     "schema_version": "municipal-dataset-v1",
     "source_snapshots": [
@@ -45,17 +49,19 @@
       "fa7929c31876dec11f964e5f9922b78ed23b4f567d2a18b02dd0f2e71b8f76f0"
     ],
     "statuses": {
-      "available": 576,
-      "unavailable": 315
+      "available": 821,
+      "unavailable": 70
     }
   },
   "records": [
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 760,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 760,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 0,
+        "unique_covered_points": 760
       },
       "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
       "computed": 33,
@@ -70,10 +76,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 760,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 760,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 0,
+        "unique_covered_points": 760
       },
       "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
       "computed": 33,
@@ -88,10 +96,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 760,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 760,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 0,
+        "unique_covered_points": 760
       },
       "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
       "computed": 33,
@@ -106,10 +116,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 88754,
         "coordinates_missing": 0,
-        "outside": 90
+        "membership_records": 88754,
+        "method": "independent_polygon_membership",
+        "outside": 90,
+        "overlap_points": 0,
+        "unique_covered_points": 88754
       },
       "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
       "computed": 33,
@@ -124,10 +136,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 760,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 760,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 0,
+        "unique_covered_points": 760
       },
       "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
       "computed": 33,
@@ -142,10 +156,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 760,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 760,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 0,
+        "unique_covered_points": 760
       },
       "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
       "computed": 33,
@@ -160,10 +176,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 760,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 760,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 0,
+        "unique_covered_points": 760
       },
       "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
       "computed": 33,
@@ -178,10 +196,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 760,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 760,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 0,
+        "unique_covered_points": 760
       },
       "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
       "computed": 33,
@@ -196,10 +216,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 88754,
         "coordinates_missing": 0,
-        "outside": 90
+        "membership_records": 88754,
+        "method": "independent_polygon_membership",
+        "outside": 90,
+        "overlap_points": 0,
+        "unique_covered_points": 88754
       },
       "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
       "computed": 33,
@@ -214,10 +236,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 1107,
         "coordinates_missing": 0,
-        "outside": 1
+        "membership_records": 1107,
+        "method": "independent_polygon_membership",
+        "outside": 1,
+        "overlap_points": 0,
+        "unique_covered_points": 1107
       },
       "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
       "computed": 31,
@@ -232,10 +256,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 1107,
         "coordinates_missing": 0,
-        "outside": 1
+        "membership_records": 1107,
+        "method": "independent_polygon_membership",
+        "outside": 1,
+        "overlap_points": 0,
+        "unique_covered_points": 1107
       },
       "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
       "computed": 31,
@@ -250,10 +276,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 1107,
         "coordinates_missing": 0,
-        "outside": 1
+        "membership_records": 1107,
+        "method": "independent_polygon_membership",
+        "outside": 1,
+        "overlap_points": 0,
+        "unique_covered_points": 1107
       },
       "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
       "computed": 31,
@@ -268,10 +296,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 106977,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 106977,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 0,
+        "unique_covered_points": 106977
       },
       "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
       "computed": 31,
@@ -286,10 +316,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 1107,
         "coordinates_missing": 0,
-        "outside": 1
+        "membership_records": 1107,
+        "method": "independent_polygon_membership",
+        "outside": 1,
+        "overlap_points": 0,
+        "unique_covered_points": 1107
       },
       "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
       "computed": 31,
@@ -304,10 +336,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 1107,
         "coordinates_missing": 0,
-        "outside": 1
+        "membership_records": 1107,
+        "method": "independent_polygon_membership",
+        "outside": 1,
+        "overlap_points": 0,
+        "unique_covered_points": 1107
       },
       "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
       "computed": 31,
@@ -322,10 +356,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 1107,
         "coordinates_missing": 0,
-        "outside": 1
+        "membership_records": 1107,
+        "method": "independent_polygon_membership",
+        "outside": 1,
+        "overlap_points": 0,
+        "unique_covered_points": 1107
       },
       "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
       "computed": 31,
@@ -340,10 +376,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 1107,
         "coordinates_missing": 0,
-        "outside": 1
+        "membership_records": 1107,
+        "method": "independent_polygon_membership",
+        "outside": 1,
+        "overlap_points": 0,
+        "unique_covered_points": 1107
       },
       "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
       "computed": 31,
@@ -358,10 +396,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 106977,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 106977,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 0,
+        "unique_covered_points": 106977
       },
       "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
       "computed": 31,
@@ -376,16 +416,18 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 1019,
-        "assigned": 0,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 2038,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 1019,
+        "unique_covered_points": 1019
       },
       "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
       "computed": 35,
       "criterion_id": "N01",
       "municipalities": 35,
-      "new_available": 0,
+      "new_available": 35,
       "region_id": "35000000",
       "resumed": 0,
       "source_run_id": "89fc61ee436f461ab2f68075b6488b3b",
@@ -394,16 +436,18 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 1019,
-        "assigned": 0,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 2038,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 1019,
+        "unique_covered_points": 1019
       },
       "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
       "computed": 35,
       "criterion_id": "N02",
       "municipalities": 35,
-      "new_available": 0,
+      "new_available": 35,
       "region_id": "35000000",
       "resumed": 0,
       "source_run_id": "68ba8ba30f7244f5ba984d978f2680b2",
@@ -412,16 +456,18 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 1019,
-        "assigned": 0,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 2038,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 1019,
+        "unique_covered_points": 1019
       },
       "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
       "computed": 35,
       "criterion_id": "N03",
       "municipalities": 35,
-      "new_available": 0,
+      "new_available": 35,
       "region_id": "35000000",
       "resumed": 0,
       "source_run_id": "dc1b17f2c6ef4912acc515925b65a4a6",
@@ -430,10 +476,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 0,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 0,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 0,
+        "unique_covered_points": 0
       },
       "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
       "computed": 35,
@@ -448,16 +496,18 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 1019,
-        "assigned": 0,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 2038,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 1019,
+        "unique_covered_points": 1019
       },
       "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
       "computed": 35,
       "criterion_id": "N05",
       "municipalities": 35,
-      "new_available": 0,
+      "new_available": 35,
       "region_id": "35000000",
       "resumed": 0,
       "source_run_id": "c8b379338733441687cd2fbe6fd301f1",
@@ -466,16 +516,18 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 1019,
-        "assigned": 0,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 2038,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 1019,
+        "unique_covered_points": 1019
       },
       "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
       "computed": 35,
       "criterion_id": "N06",
       "municipalities": 35,
-      "new_available": 0,
+      "new_available": 35,
       "region_id": "35000000",
       "resumed": 0,
       "source_run_id": "f92a10c2d8e44baeafaee127fed1f6cf",
@@ -484,16 +536,18 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 1019,
-        "assigned": 0,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 2038,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 1019,
+        "unique_covered_points": 1019
       },
       "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
       "computed": 35,
       "criterion_id": "N07",
       "municipalities": 35,
-      "new_available": 0,
+      "new_available": 35,
       "region_id": "35000000",
       "resumed": 0,
       "source_run_id": "133b2a83db1b4bd383512e304cbddf9f",
@@ -502,16 +556,18 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 1019,
-        "assigned": 0,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 2038,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 1019,
+        "unique_covered_points": 1019
       },
       "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
       "computed": 35,
       "criterion_id": "N08",
       "municipalities": 35,
-      "new_available": 0,
+      "new_available": 35,
       "region_id": "35000000",
       "resumed": 0,
       "source_run_id": "3e2df0d421f64bfdbb2930feead0006b",
@@ -520,10 +576,12 @@
     },
     {
       "assignment": {
-        "ambiguous_excluded": 0,
-        "assigned": 0,
         "coordinates_missing": 0,
-        "outside": 0
+        "membership_records": 0,
+        "method": "independent_polygon_membership",
+        "outside": 0,
+        "overlap_points": 0,
+        "unique_covered_points": 0
       },
       "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
       "computed": 35,

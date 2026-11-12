@@ -26,7 +26,7 @@ def _ring(
 class MunicipalAssignment:
     rows: dict[str, list[AccessRow]]
     assigned: int
-    ambiguous: int
+    overlap_points: int
     outside: int
     coordinates_missing: int
 
@@ -65,13 +65,12 @@ class MunicipalSpatialIndex:
         for source, target in zip(matches[0], matches[1], strict=True):
             owners.setdefault(int(source), set()).add(self.owners[int(target)])
         selected: dict[str, list[AccessRow]] = {identifier: [] for identifier in self.identifiers}
-        ambiguous = 0
+        overlap = 0
         for position, identifiers in owners.items():
-            if len(identifiers) != 1:
-                ambiguous += 1
-                continue
-            selected[next(iter(identifiers))].append(valid[position])
-        count = sum(len(values) for values in selected.values())
+            overlap += len(identifiers) > 1
+            for identifier in identifiers:
+                selected[identifier].append(valid[position])
+        count = len(owners)
         return MunicipalAssignment(
-            selected, count, ambiguous, len(valid) - count - ambiguous, len(rows) - len(valid)
+            selected, count, overlap, len(valid) - count, len(rows) - len(valid)
         )

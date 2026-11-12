@@ -22,19 +22,21 @@ def row(identifier: str, longitude: float | None, latitude: float | None = 44.5)
     return AccessRow(identifier, identifier, None, latitude, longitude, None, None, None, "unknown")
 
 
-def test_unique_owner_assignment_excludes_shared_boundaries_and_overlap() -> None:
+def test_independent_membership_preserves_overlapping_real_polygons_without_additive_claim() -> (
+    None
+):
     index = MunicipalSpatialIndex([municipality("a", 40, 41), municipality("b", 41, 42)])
     assigned = index.assign(
         [row("a", 40.5), row("b", 41.5), row("border", 41), row("out", 45), row("missing", None)]
     )
-    assert [item.id for item in assigned.rows["a"]] == ["a"]
-    assert [item.id for item in assigned.rows["b"]] == ["b"]
-    assert assigned.assigned == 2
-    assert assigned.ambiguous == 1
+    assert [item.id for item in assigned.rows["a"]] == ["a", "border"]
+    assert [item.id for item in assigned.rows["b"]] == ["b", "border"]
+    assert assigned.assigned == 3
+    assert assigned.overlap_points == 1
     assert assigned.outside == 1
     assert assigned.coordinates_missing == 1
     overlap = MunicipalSpatialIndex([municipality("a", 40, 42), municipality("b", 41, 43)])
-    assert overlap.assign([row("overlap", 41.5)]).ambiguous == 1
+    assert overlap.assign([row("overlap", 41.5)]).overlap_points == 1
 
 
 def test_actual_polygon_holes_and_dateline_copies_remain_separate() -> None:
@@ -42,4 +44,4 @@ def test_actual_polygon_holes_and_dateline_copies_remain_separate() -> None:
     index = MunicipalSpatialIndex([boundary])
     assigned = index.assign([row("wrapped", -175), row("normal", 179), row("out", 0)])
     assert assigned.assigned == 2
-    assert assigned.ambiguous == 0
+    assert assigned.overlap_points == 0

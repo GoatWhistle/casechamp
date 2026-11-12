@@ -1,5 +1,6 @@
 {
   "aggregates": 891,
+  "assignment_method": "independent_polygon_membership",
   "boundary_files": [
     "boundaries/405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4/boundaries.json.gz",
     "boundaries/8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991/boundaries.json.gz",
@@ -10,8 +11,11 @@
     "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
     "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4"
   ],
+  "cross_municipality_sums_valid": false,
   "export_file": "municipal-indices.jsonl.gz",
-  "export_sha256": "51d82eab2d2d7adf23f07453433696b16c668d831010cae0902c00aa4cb04120",
+  "export_sha256": "e83954c61ccd9ee66dfe9e51d2d42c6bc22c8f941d8ea836911aa04e187b72d5",
+  "historical_versions_excluded": 1459,
+  "publication_scope": "current_source_per_region_criterion_stage_and_current_boundary",
   "qualification": "per_record_source_qualification_no_regional_proxy",
   "schema_version": "municipal-dataset-v1",
   "source_snapshots": [
@@ -44,7 +48,7 @@
     "fa7929c31876dec11f964e5f9922b78ed23b4f567d2a18b02dd0f2e71b8f76f0"
   ],
   "statuses": {
-    "available": 576,
-    "unavailable": 315
+    "available": 821,
+    "unavailable": 70
   }
 }

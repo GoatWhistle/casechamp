@@ -1,0 +1,63 @@
+{
+  "format": "clickhouse-native-gzip-v1",
+  "created_at": "2026-11-12T21:31:27.852271+00:00",
+  "consistency": "Independent table reads; source row count and DDL checked before and after each export",
+  "tables": [
+    {
+      "table": "plexus_graph.nodes",
+      "asset": "plexus_graph__nodes.native.gz",
+      "bytes": 115312429,
+      "sha256": "e0e730235e002dfffd54d312b5bf22d20baf4e4d3acfb6a0d0dfd5ed5d865a76",
+      "rows": 6990556,
+      "schema": "CREATE TABLE plexus_graph.nodes\n(\n    `node` Nullable(Int32),\n    `osm_node` Nullable(Int64),\n    `lat` Nullable(Float64),\n    `lon` Nullable(Float64),\n    `comp` Nullable(Int32)\n)\nENGINE = MergeTree\nORDER BY node\nSETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "staging": false
+    },
+    {
+      "table": "plexus_graph.edges",
+      "asset": "plexus_graph__edges.native.gz",
+      "bytes": 166097711,
+      "sha256": "97bdd61721d7024a92c8a57823b5de6041ad937e4a9fe5a8a6b57df19b18000e",
+      "rows": 17393384,
+      "schema": "CREATE TABLE plexus_graph.edges\n(\n    `src` Nullable(Int32),\n    `dst` Nullable(Int32),\n    `h` Nullable(Float32),\n    `km` Nullable(Float32),\n    `way_idx` Nullable(Int32)\n)\nENGINE = MergeTree\nORDER BY (way_idx, src, dst)\nSETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "staging": false
+    },
+    {
+      "table": "plexus_graph.ways",
+      "asset": "plexus_graph__ways.native.gz",
+      "bytes": 59350751,
+      "sha256": "b48a2d12657914962898d4e0f52faae44db0b9c82ce48c7ea9897cd7a3ade722",
+      "rows": 4301210,
+      "schema": "CREATE TABLE plexus_graph.ways\n(\n    `way_id` Nullable(Int64),\n    `highway` Nullable(String),\n    `ref` Nullable(String),\n    `name` Nullable(String),\n    `surface` Nullable(String),\n    `tracktype` Nullable(String),\n    `oneway` Nullable(String),\n    `is_bridge` Nullable(Bool),\n    `is_ferry` Nullable(Bool),\n    `is_seasonal` Nullable(Bool),\n    `way_idx` Nullable(Int32),\n    `speed_kmh` Nullable(Float64),\n    `km` Nullable(Float64),\n    PROJECTION by_osm_id\n    (\n        SELECT\n            way_id,\n            way_idx\n        ORDER BY way_id\n    ),\n    PROJECTION by_reference\n    (\n        SELECT\n            way_idx,\n            way_id,\n            name,\n            ref,\n            km\n        ORDER BY ref\n    )\n)\nENGINE = MergeTree\nORDER BY way_idx\nSETTINGS allow_nullable_key = 1, index_granularity = 8192",
+      "staging": false
+    },
+    {
+      "table": "plexus_graph.locations",
+      "asset": "plexus_graph__locations.native.gz",
+      "bytes": 5474152,
+      "sha256": "c7fdcf42062e55f9f68c4acf83ddefbcca23dd9c5a9d9b127ebdcf574ad996a4",
+      "rows": 155747,
+      "schema": "CREATE TABLE plexus_graph.locations\n(\n    `point_id` Nullable(String),\n    `settlement` Nullable(String),\n    `region` Nullable(String),\n    `node` Nullable(Int64),\n    `lon` Nullable(Float64),\n    `lat` Nullable(Float64),\n    `snap_km` Nullable(Float64),\n    `population` Nullable(Int32),\n    INDEX place_name lowerUTF8(ifNull(settlement, '')) TYPE ngrambf_v1(3, 8192, 3, 0) GRANULARITY 1\n)\nENGINE = MergeTree\nORDER BY (region, point_id)\nSETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "staging": false
+    },
+    {
+      "table": "plexus_graph.road_costs",
+      "asset": "plexus_graph__road_costs.native.gz",
+      "bytes": 39530029,
+      "sha256": "9a5d84f40546df8555cc778b005e886c393268a15a647ac430b365fb80dd6dd2",
+      "rows": 4301210,
+      "schema": "CREATE TABLE plexus_graph.road_costs\n(\n    `way_idx` Int32,\n    `way_id` Int64,\n    `highway` String,\n    `surface` Nullable(String),\n    `lanes_total` Nullable(UInt16),\n    `lanes_forward` Nullable(UInt16),\n    `lanes_backward` Nullable(UInt16),\n    `oneway` Nullable(String),\n    `posted_speed_kmh` Nullable(Float64),\n    `hourly_flow_pcu` Nullable(Float64),\n    `flow_verified` Bool,\n    `lane_data_usable` Bool,\n    `flow_source` String,\n    `flow_period` String,\n    `hourly_flow_scope` String,\n    `is_ferry` Bool,\n    `source_speed_kmh` Nullable(Float64),\n    `effective_speed_kmh` Float64,\n    `freeflow_speed_kmh` Float64,\n    `capacity_pcu_h` Nullable(Float64),\n    `lane_basis` String,\n    `capacity_basis` String,\n    `flow_basis` String,\n    `method_version` String\n)\nENGINE = MergeTree\nORDER BY way_idx\nSETTINGS index_granularity = 8192",
+      "staging": false
+    },
+    {
+      "table": "plexus_atlas.atlas_metadata",
+      "asset": "plexus_atlas__atlas_metadata.native.gz",
+      "bytes": 855,
+      "sha256": "7ffc70215bb29e0396c4c32bc3d6f3705d31afd9c7eaf7debe04818f4f4285f9",
+      "rows": 11,
+      "schema": "CREATE TABLE plexus_atlas.atlas_metadata\n(\n    `key` String,\n    `value` String,\n    `ordinal` UInt32\n)\nENGINE = MergeTree\nORDER BY key\nSETTINGS allow_nullable_key = 1, index_granularity = 1024",
+      "staging": false
+    }
+  ],
+  "local_directory": ".local/normative-national-inputs/road-network",
+  "binary_assets_in_git": false
+}

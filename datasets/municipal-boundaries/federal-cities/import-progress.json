@@ -1,0 +1,18 @@
+[
+  {
+    "region_id": "45000000",
+    "status": "partial_source_coverage",
+    "features": 120,
+    "inserted": 0,
+    "source_sha256": "02ba9bfc791089351c352a2824b59a68282300f70f6fa4acb129d24f20016bf3",
+    "portable_geometry": "datasets/municipal-boundaries/federal-cities/moscow.manifest.json"
+  },
+  {
+    "region_id": "40000000",
+    "status": "partial_source_coverage",
+    "features": 78,
+    "inserted": 0,
+    "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+    "portable_geometry": "datasets/municipal-boundaries/federal-cities/saint-petersburg.manifest.json"
+  }
+]

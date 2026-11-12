@@ -11,6 +11,7 @@ from app.domain.errors import DataUnavailable
 from app.domain.normative.index import IndexValue
 from app.domain.normative.model import AccessRow
 from app.domain.normative.scenario_index import scenario_policy
+from app.repository.files.municipal_dataset_heads import publish_municipal_source
 from app.usecase.municipal_dataset import (
     MunicipalSnapshotSource,
     municipal_boundary_digest,
@@ -25,14 +26,10 @@ def _json(value: object) -> bytes:
 
 
 def _restore(record: dict[str, Any]) -> MunicipalNormativeValue:
-    return MunicipalNormativeValue(
-        **{
-            **record,
-            "thresholds": tuple(record["thresholds"]),
-            "values": tuple(IndexValue(**value) for value in record["values"]),
-            "source_urls": tuple(record["source_urls"]),
-        }
-    )
+    record["thresholds"] = tuple(record["thresholds"])
+    record["values"] = tuple(IndexValue(**value) for value in record["values"])
+    record["source_urls"] = tuple(record["source_urls"])
+    return MunicipalNormativeValue(**record)
 
 
 class JsonMunicipalDataset:
@@ -79,7 +76,7 @@ class JsonMunicipalDataset:
                     "compressed_sha256": sha256(content).hexdigest(),
                     "region_id": region,
                     "municipalities": len(municipalities),
-                    "assignment": "original_polygon_covers_unique_owner_shared_boundaries_excluded",
+                    "assignment": "independent_polygon_membership",
                 }
             ),
         )
@@ -99,24 +96,25 @@ class JsonMunicipalDataset:
         digest = snapshot_digest(source, rows)
         path = self._source_path(digest)
         if (path / "manifest.json").exists():
-            return digest
-        content = b"".join(
-            _json(asdict(row)) + b"\n" for row in sorted(rows, key=lambda item: item.id)
-        )
-        compressed = gzip.compress(content, mtime=0)
-        self._write(path / "measurements.jsonl.gz", compressed)
-        self._write(
-            path / "manifest.json",
-            _json(
-                {
-                    "schema_version": "municipal-dataset-v1",
-                    "source_sha256": digest,
-                    "source": asdict(source),
-                    "points": len(rows),
-                    "measurements_sha256": sha256(compressed).hexdigest(),
-                }
-            ),
-        )
+            self.rows(digest)
+        else:
+            content = b"".join(
+                _json(asdict(row)) + b"\n" for row in sorted(rows, key=lambda item: item.id)
+            )
+            compressed = gzip.compress(content, mtime=0)
+            self._write(path / "measurements.jsonl.gz", compressed)
+            self._write(
+                path / "manifest.json",
+                _json(
+                    {
+                        "schema_version": "municipal-dataset-v1",
+                        "source_sha256": digest,
+                        "source": asdict(source),
+                        "points": len(rows),
+                        "measurements_sha256": sha256(compressed).hexdigest(),
+                    }
+                ),
+            )
         run_key = sha256(
             _json((source.region_id, source.criterion_id, source.run_id, source.stage))
         ).hexdigest()
@@ -128,9 +126,16 @@ class JsonMunicipalDataset:
         path = self.directory / "runs" / (run_key + ".json")
         return json.loads(path.read_bytes())["source_sha256"] if path.exists() else None
 
+    def publish_source(self, source_sha256: str) -> None:
+        publish_municipal_source(
+            self.directory, self.source(source_sha256), source_sha256, self._write
+        )
+
     def source(self, source_sha256: str) -> MunicipalSnapshotSource:
         try:
             record = json.loads((self._source_path(source_sha256) / "manifest.json").read_bytes())
+            if record["source_sha256"] != source_sha256:
+                raise ValueError("Municipal source manifest SHA256 differs")
             return MunicipalSnapshotSource(**record["source"])
         except (OSError, ValueError, TypeError, KeyError) as error:
             raise DataUnavailable("Municipal route snapshot manifest is unavailable") from error
@@ -163,7 +168,7 @@ class JsonMunicipalDataset:
                     municipality.id,
                     municipality.source_sha256,
                     municipality.coordinates,
-                    "municipal-aggregate-v3",
+                    "municipal-aggregate-v4",
                     criterion_id,
                     scenario_policy(criterion_id).definition_sha256,
                     version,
@@ -185,7 +190,9 @@ class JsonMunicipalDataset:
         )
         identifier = self._key(municipality, value.criterion_id, source_sha256 + boundary_sha)
         payload = {
-            "aggregation_method": "municipal-aggregate-v3",
+            "aggregation_method": "municipal-aggregate-v4",
+            "assignment_method": "independent_polygon_membership",
+            "cross_municipality_sums_valid": False,
             "boundary_snapshot_sha256": boundary_sha,
             "source_sha256": source_sha256,
             "region_id": municipality.region_id,

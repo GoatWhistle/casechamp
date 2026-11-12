@@ -1,50 +1,32 @@
 # Session state
 
-## New network search, 2026-11-12
+## Municipal focus, 2026-11-13
 
-Current: imported normative code/datasets from bd32de3 and UI/brand updates bcc7301, preserved adaptive traffic search. Local normative catalogs loaded; archived scenario aggregates exposed honestly (754 numeric/756 rows). Checks/evidence/limits: work/normative-integration/README.md. Map mask and real municipal selection implemented (511 polygons/20regions, partialcoverage). Backend894/frontend549 tests pass. Integrated into main; publication pending; API8007 PID67492/UI5187.
-Branch main, source HEAD0a571bf81cdfedacceca5e000b31602d95ffd26b; local raw pilot dumps and runtime logs preserved.
-[Implementation, checks, no-speed pilot and performance limits](../work/network-development/README.md).
-Protected user instructions exceed SESSION target and remain verbatim.
+main/6860897. [Approved plan, removal, checks and remaining work](../work/research/pogosyan-municipal-focus-2026-11-13.md). Search removed locally; national baseline/diffs and municipal workflow pending.
 
+User: «посмотри в каких ветках есть изменения фронта самые свежие»; «удаленные».
+[Chat, map background, branch/SHA and checks](../work/remote-frontend-branches-2026-11-12.md).
 
-## Current audit, 2026-11-12
+[Prior integration evidence](../work/normative-integration/README.md).
+
 
 Audit fixes isolated/pushed: fix/desktop-scenario-audit, source c59121a, closeout6c5d459.
-[Current checks, runtime and next actions](../work/audits/frontend-1/session-state.md).
-[Desktop use cases and diagnosed fixes](../work/audits/frontend-1.md).
 Protected user instructions exceed SESSION budget and remain verbatim.
 
-## Chat road focus, 2026-11-12
-
 User: «добавь ему в скилл возможность зума на участок графа например».
-[Contract, checks, runtime and remaining verify limitation](../work/chat-road-focus/README.md).
-
-## Thinking dots, 2026-11-12
 
 User: «сделай лоадер прикольный из 3 точек как то перемешивающихся пока модель думает».
 Implemented/verified: [behavior, checks and screenshots](../work/screens/map-chat.md).
 
-## Chat starter examples, 2026-11-12
-
 User: «не ты просто туда вставь более крутые примеры».
-[Starter examples and checks](../work/screens/map-chat.md).
-
-## Synthetic traffic implementation, 2026-11-12
 
 User: «поищи есть ли такой датасет для всей рф посвежее. Иначе давай поудмаем как можно их эмулировать от жилых домов условно»
 User: «деладелайдддделай»; «ддделай»; «деайltkfq».
-[Implementation, source checkpoint, checks and limits](../work/synthetic-traffic/README.md).
-
-## Universal network improvement scope, 2026-11-12
 
 User: «вот нужно это всё подсвечивать».
 User: «вообще переносимость на все регионы».
-[Scope, source checkpoint and next implementation](../work/pogosyan-product-framing.md).
 
 Prior state, dates, source links and checks: [preserved session detail](../work/network-development/session-before-scope-compaction.md).
-
-## Disk inspection, 2026-11-12
 
 User: «посмотри что на компе занимает много места».
 
@@ -52,15 +34,51 @@ User: «удали тендер хак. ПОчисти докер. Удали а
 
 User: «забери размер и сворачивание легенды. Название перенеси. Позиция чтения тоже забери елси не поправлено»
 
-## Regional candidate repair, 2026-11-12
-
 User: «фикси». Fixed oversized ClickHouse candidates parameters, empty-failure copy,
-
-## Chat diagnostics and capital unbound fix, 2026-11-11
 
 User: «добавляй дебаг такого»; then reported Moscow–Petersburg unbound.
 
 ## Explicit user instructions
+
+> что мы обсуждали про метрики. При тыке на муниципальное образование нам теперь нужно его индексы показывать. Как то красиво и удобно обыграть без лишних кликов. Мб слева откуда то пусть вылазят ? или снизу или сразу пусть куда то по центру крч как считаешь правильным по ui ux но по центру мне каж странновато. нужно мочь свернуть и вернуть.
+
+> ну а индекс доступности школ медицины
+
+> мы же это и забирали с ветки
+
+> и верни потом сине зеленые цвета которые были у карты
+
+> и иъ закрась
+
+> и отрису азовское море
+
+> и тут куска нету
+
+Latest screenshot shows missing southwest Crimea/Sevastopol mask segment.
+
+> и сделай чтобы у соседних регионов только важные трассы и дороги идущие из этого региона рисовались без зума
+
+> выбери более приятные цвета. Чтоб не такое всё серое было. Контрастность нужна. Но не такая синюшная как была просто. МОжно кстати цвет убирать когда по региону нажимаешь и показывать оригинал
+
+> и потом добавь новые регионы рф ещё на карту сюда. МОжно не функицональные, но на карту добавить надо
+
+> которые донбасс лнр и тд
+
+> давай попробуем перекрасить регионы и сразу не показывать все аэропорты без зума
+
+> Давай граф рисовать только когда мы тыкнули по региону
+
+User requested removing the map season selector (Все / Лето / Зима) and Дополнительные связи metric via screenshots.
+
+> давай их. Не пиши источники. Похуй
+
+User requested removing map transport selector (screenshot: Базовая сеть / С сезонными связями).
+
+> Муниципальные границы для этого региона пока не загружены. убери и сделай отображение их
+
+> белый холст вокруг отцентруй или убери его и сделай чтобы со всех сторон от россии была пустота
+
+> равных размеров для удобства просто
 
 > давай уберем карту европы. и всех других стран кроме рф ( ну те регионы что мы подсветили ). Так же добавим возможность тыкнуть на муниципальный округ какой нить
 
@@ -570,8 +588,6 @@ User: «окей. Как мы можем эмулировать нагрузку
 
 [preserved state and evidence](../work/traffic-diversion/context-archive.md).
 
-## National road stress implementation, 2026-11-11
-
 User: «Implement the plan.» Approved national road-only stress testing with map/agent parity,
 compound closures, real route geometry, persistence and polished UI. See conversation plan.
 User emphasized: «и это всё удобно наглядно и красиво для юзер и через агента.»
@@ -584,32 +600,22 @@ User: «собери мне набор юзкейсов самых вау эфф
 
 [Preserved state and checks](../work/settlement-connectivity/session-detail.md).
 
-## M-10 index explanation, 2026-11-11
-
 User: «Не прогноз про ну вот я перекрыл. Почему так слабо индекс упал. Это же невозможно как будто. Или что он показывает то блять»
 
 [Evidence and limits](../work/road-stress/m10-index-explanation.md).
 
-## Frontend replacement, 2026-11-11
-
 User: «все что удалилось не пренеслось про рендер графа что могло сломаться кроме визуала».
-
-## Combined agent evidence, 2026-11-11
 
 > совмести их
 > он должен сразу инфы кучу поулчать и рассказывать крутые интересные вещи для бизнеса чтобы был вау эффект. куда просрали доступ и тд. Что замедлилось. Где какие пробки могут быть. Где перегрузы сразу. Куда можно добавить дорогу. Но при этом кратко аккуратно читабельно. Не надо всё и сразу. ТОлько важное и крутое прям чтоб вааау. Если что то надо то допросят
 > не эардкодь, просто ему донеси мою позицию. И инструменты окучь чтобы он сразу кучу инфы давал
 
-[Implementation, branch/SHA, checks, runtime and limits](../work/agent-business-brief/README.md).
 
-
-## Tool comparison tables, 2026-11-11
 
 > вынеси построение подобных таблиц за тулы чтобы не модель этот пиздец делала
 > да блять не пиши ему об этом. Пусть живет в мире где есть все данные. Это же сука хакатон
 > визуально не видно и что за стрелки опять. Сделай нормально столбцами
 
-[Implementation, checks, runtime and browser evidence](../work/table-tools/README.md).
 
 > переделай аккуратнее меньше и красивее
 
@@ -620,12 +626,17 @@ User: «все что удалилось не пренеслось про рен
 [Named map actions, correct toolbar and browser check](../work/chat-map-actions/README.md).
 
 
-## Publication, 2026-11-11
-
 > запушь все что сделанотлокально в новую ветку
-
-## Chat alignment, 2026-11-12
 
 User: «сделай выравнивание плз».
 User: «пусть прокручивается если справа не помещается».
 [State and checks](../work/screens/chat-recent-scroll.md).
+
+## National municipal accessibility, 2026-11-13
+
+> такие же датасеты собери. И так же посчитай для каждого муниципального и сохрани данные в датасет на случай пересчета на ходу
+
+[Execution, processes, checks and limits](../work/municipal-indices/README.md).
+
+[Prior dated section headings and full session details](../work/municipal-indices/session-before-compaction.md).
+Protected user instructions exceed the SESSION target and remain verbatim.

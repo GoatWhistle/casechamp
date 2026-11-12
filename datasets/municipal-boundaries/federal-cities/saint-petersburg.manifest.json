@@ -1,0 +1,411 @@
+{
+  "created_at": "2026-11-12T21:47:09.380563+00:00",
+  "status": "partial_source_coverage",
+  "method": "original_osm_assembled_administrative_relations_no_invented_rings",
+  "admin_levels": [
+    8
+  ],
+  "municipal_only": true,
+  "license": "ODbL-1.0; OpenStreetMap contributors",
+  "sources": [
+    {
+      "path": "/Users/andreykuronskin/keys_champ/.local/normative-national-inputs/osm/northwestern_federal_district.osm.pbf",
+      "sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "osm_timestamp": "2026-11-11T00:06:10Z",
+      "expected_relations": 630,
+      "assembled_relations": 535,
+      "incomplete_or_invalid_relations": [
+        1257015,
+        1257025,
+        1257033,
+        1257051,
+        1257069,
+        1724821,
+        2257159,
+        2257160,
+        2259189,
+        2273016,
+        2309671,
+        2485457,
+        2502573,
+        2502574,
+        2521759,
+        2521761,
+        2521762,
+        2525694,
+        2525699,
+        2525741,
+        2528664,
+        2528665,
+        2528666,
+        2654556,
+        2659684,
+        2970193,
+        3151677,
+        3613967,
+        4867516,
+        5313887,
+        5993025,
+        5993029,
+        5993030,
+        6730268,
+        6908880,
+        6910160,
+        6910161,
+        6911191,
+        6912448,
+        6945890,
+        6945891,
+        6946886,
+        6946888,
+        6954320,
+        7016655,
+        7239537,
+        7239736,
+        7239737,
+        7244588,
+        7245475,
+        7245477,
+        7245699,
+        7245700,
+        7245704,
+        7245728,
+        7471754,
+        7471951,
+        7924021,
+        8018222,
+        8018224,
+        8018227,
+        8075954,
+        8075963,
+        8075964,
+        8075966,
+        8075972,
+        9712609,
+        12849457,
+        12853003,
+        13048776,
+        13053964,
+        13053965,
+        13153391,
+        13182443,
+        16198408,
+        18497079,
+        18497081,
+        18497082,
+        18497083,
+        18498502,
+        18498503,
+        18498568,
+        18498569,
+        18498570,
+        18498577,
+        18498578,
+        18498579,
+        18499449,
+        18499450,
+        18501279,
+        18722471,
+        18728210,
+        18739142,
+        18743758,
+        18748744
+      ],
+      "invalid": []
+    }
+  ],
+  "region_geometry_source": "/Users/andreykuronskin/keys_champ/.local/normative-national-inputs/regions.json",
+  "region_geometry_sha256": "38a1c01e2e94f785b37ad426436fc57f92ee5e9d7f207437e119b6532c3f6ff7",
+  "region_attribution_topology_repaired_ids": [
+    "44000000",
+    "30000000",
+    "77000000",
+    "41000000",
+    "57000000",
+    "49000000",
+    "11000000",
+    "71900000",
+    "04000000",
+    "98000000",
+    "94000000"
+  ],
+  "features": 78,
+  "counts_by_region": {
+    "40000000": 78
+  },
+  "rejected_region_attribution": [
+    {
+      "osm_relation_id": 3339110,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.6368396806291106
+    },
+    {
+      "osm_relation_id": 1120127,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.8938516592404927
+    },
+    {
+      "osm_relation_id": 2431317,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.5336168966903341
+    },
+    {
+      "osm_relation_id": 2521758,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.0006827551870276119
+    },
+    {
+      "osm_relation_id": 1124723,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.8408235720767464
+    },
+    {
+      "osm_relation_id": 1650673,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.3074108439475642
+    },
+    {
+      "osm_relation_id": 6722342,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.0
+    },
+    {
+      "osm_relation_id": 7245697,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.0
+    },
+    {
+      "osm_relation_id": 7245698,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.0
+    },
+    {
+      "osm_relation_id": 8018226,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.028806892830374096
+    },
+    {
+      "osm_relation_id": 1650681,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.4959700419895881
+    },
+    {
+      "osm_relation_id": 1020835,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.633048906888979
+    },
+    {
+      "osm_relation_id": 1020844,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.8773907175045736
+    },
+    {
+      "osm_relation_id": 12148291,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.05157653995063256
+    },
+    {
+      "osm_relation_id": 1650682,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.7553323504961845
+    },
+    {
+      "osm_relation_id": 13182436,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.16370939997881023
+    },
+    {
+      "osm_relation_id": 13182437,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.007768428645805594
+    },
+    {
+      "osm_relation_id": 13182444,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.0252722785579344
+    },
+    {
+      "osm_relation_id": 6947036,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.04476387829094386
+    },
+    {
+      "osm_relation_id": 1116469,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.8807352918246473
+    },
+    {
+      "osm_relation_id": 1591458,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.058325105950191476
+    },
+    {
+      "osm_relation_id": 394031,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.23087694884569482
+    },
+    {
+      "osm_relation_id": 391527,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.6462904995512726
+    },
+    {
+      "osm_relation_id": 2502572,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.001196221226482862
+    },
+    {
+      "osm_relation_id": 1124718,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.8806626166544047
+    },
+    {
+      "osm_relation_id": 18751996,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.0024893982811683467
+    },
+    {
+      "osm_relation_id": 337426,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.886194406538217
+    },
+    {
+      "osm_relation_id": 1290892,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.7029579926485832
+    },
+    {
+      "osm_relation_id": 363092,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.807829413336593
+    },
+    {
+      "osm_relation_id": 8075965,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.003822886986772682
+    },
+    {
+      "osm_relation_id": 363095,
+      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "reason": "region_overlap_below_90_percent_or_name_missing",
+      "maximum_overlap_fraction": 0.8738797097505716
+    }
+  ],
+  "missing_regions": [
+    "81000000",
+    "91000000",
+    "64000000",
+    "20000000",
+    "69000000",
+    "50000000",
+    "11800000",
+    "44000000",
+    "30000000",
+    "05000000",
+    "07000000",
+    "01000000",
+    "45000000",
+    "93000000",
+    "68000000",
+    "65000000",
+    "71800000",
+    "77000000",
+    "71000000",
+    "17000000",
+    "46000000",
+    "18000000",
+    "53000000",
+    "36000000",
+    "12000000",
+    "79000000",
+    "85000000",
+    "03000000",
+    "60000000",
+    "47000000",
+    "58000000",
+    "41000000",
+    "89000000",
+    "92000000",
+    "33000000",
+    "34000000",
+    "28000000",
+    "70000000",
+    "29000000",
+    "73000000",
+    "88000000",
+    "66000000",
+    "57000000",
+    "24000000",
+    "97000000",
+    "90000000",
+    "15000000",
+    "56000000",
+    "14000000",
+    "42000000",
+    "49000000",
+    "11000000",
+    "22000000",
+    "37000000",
+    "38000000",
+    "76000000",
+    "84000000",
+    "61000000",
+    "71900000",
+    "04000000",
+    "98000000",
+    "82000000",
+    "52000000",
+    "87000000",
+    "96000000",
+    "83000000",
+    "63000000",
+    "27000000",
+    "54000000",
+    "86000000",
+    "25000000",
+    "10000000",
+    "99000000",
+    "08000000",
+    "32000000",
+    "95000000",
+    "78000000",
+    "94000000",
+    "19000000",
+    "26000000",
+    "75000000",
+    "80000000",
+    "35000000"
+  ],
+  "artifact_sha256": "c6743576804bfe4ed7cdd1a7871ee6c235b92b44f901ecf98b8db8b9a20d91ae",
+  "limitation": "OSM mapped administrative districts and urban okrugs; not verified legal municipality inventory; incomplete source relations omitted; no normative index assigned"
+}
