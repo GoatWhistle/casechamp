@@ -21,10 +21,7 @@ export interface BadgeSpec {
 
 export interface BannerSpec {
   readonly promise: string
-  readonly note: string
-  readonly scale: string
-  readonly low: string
-  readonly high: string
+  readonly accent: string
 }
 
 export interface ReadmeContent {

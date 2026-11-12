@@ -3,7 +3,7 @@ import { join, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import { chromium, type Page } from "@playwright/test"
 import { embeddedFontFaces, sansFamily } from "./brand/fonts.ts"
-import { bannerPage } from "./readme/banner.ts"
+import { bannerAlt, bannerPage } from "./readme/banner.ts"
 import { type BadgeSpec, readContent } from "./readme/content.ts"
 import {
   badgePage,
@@ -204,7 +204,7 @@ let readme = readFileSync(readmePath, "utf8")
 readme = replaceBlock(
   readme,
   "banner",
-  picture({ name: "banner", alt: `Plexus. ${BANNER.promise}`, href: undefined, shot: banner }),
+  picture({ name: "banner", alt: bannerAlt(BANNER), href: undefined, shot: banner }),
 )
 readme = replaceBlock(readme, "buttons", lines(buttons))
 readme = replaceBlock(readme, "status", lines(status))

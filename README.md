@@ -1,6 +1,6 @@
 <p align="center">
 <!-- readme:banner -->
-<picture><source media="(prefers-color-scheme: dark)" srcset="docs/readme/banner.dark.png"><img src="docs/readme/banner.light.png" width="880" height="385" alt="Plexus. Что изменится для региона, если закрыть дорогу или проложить новую связь"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="docs/readme/banner.dark.png"><img src="docs/readme/banner.light.png" width="880" height="200" alt="Plexus. Что изменится для региона, если закрыть дорогу или проложить новую связь"></picture>
 <!-- /readme:banner -->
 </p>
 
