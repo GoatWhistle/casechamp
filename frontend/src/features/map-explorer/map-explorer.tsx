@@ -34,11 +34,11 @@ export interface MapExplorerProps {
 const PANEL_WIDTH_KEY = "plexus.map-panel-width"
 
 export function MapExplorer({ renderPanel }: MapExplorerProps) {
-  const roads = useRoadGraph()
   const { networkMode } = useNetworkMode()
   const fullscreen = useLocation().pathname === "/"
   const { t } = useTranslation()
   const { metric, season, selectedId, select, searchFor } = useExplorerParams()
+  const roads = useRoadGraph(selectedId !== null)
   const { hoveredId, cardRef, point, onHover } = useMapHover()
   const host = useRef<HTMLDivElement | null>(null)
   const panelWidth = usePanelWidth(host, PANEL_WIDTH_KEY)
@@ -113,7 +113,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
   const transitModes = new Set(transit.data.features.map((feature) => feature.properties?.mode))
   const drawnSymbols = {
     none: missing,
-    road: roads.enabled,
+    road: roads.visible,
     airport: (airports.data?.airports.length ?? 0) > 0,
     air: transitModes.has("air"),
     rail: transitModes.has("rail"),

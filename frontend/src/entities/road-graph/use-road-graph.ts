@@ -22,7 +22,7 @@ export interface ScenarioDraft {
 
 const EMPTY_DRAFT: ScenarioDraft = { network: "road", links: [] }
 
-export function useRoadGraph() {
+export function useRoadGraph(regionSelected = true) {
   const [draft, setDraft] = useState<ScenarioDraft>(EMPTY_DRAFT)
   const editDraft = useCallback(
     (patch: Partial<ScenarioDraft>) => setDraft((current) => ({ ...current, ...patch })),
@@ -54,7 +54,7 @@ export function useRoadGraph() {
     staleTime: Infinity,
     gcTime: 60_000,
     structuralSharing: false,
-    enabled: enabled && bounds !== null,
+    enabled: regionSelected && enabled && bounds !== null,
     retry: false,
     queryFn: ({ signal }) => loadRoadView(bounds ?? [0, 0, 1, 1, 8], signal),
   })
@@ -135,9 +135,10 @@ export function useRoadGraph() {
     view,
     rendering,
     setRendering,
-    layerView: enabled ? (view.data ?? lastView.current) : undefined,
+    layerView: regionSelected && enabled ? (view.data ?? lastView.current) : undefined,
     selected,
     enabled,
+    visible: regionSelected && enabled,
     setEnabled,
     onBounds,
     onRoad,
