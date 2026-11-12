@@ -642,3 +642,5 @@ User: «пусть прокручивается если справа не по�
 Protected user instructions exceed the SESSION target and remain verbatim.
 
 Current municipal checkpoint: main fa89aa0;899backend/566frontend/12ETL tests pass. National processing continues; see work/municipal-indices/README.md.
+
+Main288803a publishes national object JSON; data2386/coordinator11722 continue, API8007. Latest city coverage and checkpoints: work/municipal-indices/README.md.

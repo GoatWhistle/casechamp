@@ -24,12 +24,24 @@ def prepare_city_boundaries(repo):
         pbf = root / "osm" / (source + ".osm.pbf")
         target = output / (name + ".geojson")
         manifest = target.with_suffix(".manifest.json")
-        if not manifest.exists():
+        policy = (
+            "source-confirmed-v3" if identifier == "40000000" else "source-confirmed-v2"
+        )
+        cached = json.loads(manifest.read_text()) if manifest.exists() else {}
+        if cached.get("municipal_filter_version") != policy:
             evidence = extract_municipal_boundaries(
                 [pbf], root / "regions.json", target, (8,), [identifier], True
             )
+            evidence["municipal_filter_version"] = policy
+            evidence["municipal_classification_sources"] = [
+                "https://www.gov.spb.ru/gov/self_gov/",
+                "https://gu.spb.ru/organization/organy-mestnogo-samoupravleniya/66567/",
+            ]
+            temporary = manifest.with_suffix(".json.part")
+            temporary.write_text(json.dumps(evidence, ensure_ascii=False, indent=2))
+            temporary.replace(manifest)
         else:
-            evidence = json.loads(manifest.read_text())
+            evidence = cached
         if not evidence["features"]:
             report.append(
                 {
@@ -41,10 +53,10 @@ def prepare_city_boundaries(repo):
             continue
         imported = import_files([target])
         for path in [target, manifest]:
-            target = portable / path.name
-            temporary = target.with_suffix(target.suffix + ".part")
+            portable_target = portable / path.name
+            temporary = portable_target.with_suffix(portable_target.suffix + ".part")
             shutil.copyfile(path, temporary)
-            temporary.replace(target)
+            temporary.replace(portable_target)
         report.append(
             {
                 "region_id": identifier,

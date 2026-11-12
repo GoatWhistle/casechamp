@@ -8,6 +8,7 @@ import osmium
 from shapely import from_wkb, make_valid
 from shapely.geometry import MultiPolygon, mapping, shape
 from shapely.strtree import STRtree
+from synthetic_traffic.municipal_assignment import region_assignment
 from synthetic_traffic.municipal_tags import municipal_source_confirmed
 
 
@@ -117,18 +118,10 @@ def extract_municipal_boundaries(
             }
         )
         for identifier, (polygon, tags) in handler.polygons.items():
-            overlaps = [
-                (
-                    float(
-                        polygon.intersection(region_polygons[int(index)]).area
-                        / polygon.area
-                    ),
-                    int(index),
-                )
-                for index in tree.query(polygon)
-            ]
-            fraction, index = max(overlaps, default=(0, -1))
-            if fraction < 0.90 or not tags.get("name"):
+            fraction, index, assignment = region_assignment(
+                polygon, tags, regions, region_polygons, tree, municipal_only
+            )
+            if assignment is None or not tags.get("name"):
                 rejected.append(
                     {
                         "osm_relation_id": identifier,
@@ -155,7 +148,7 @@ def extract_municipal_boundaries(
                     + str(identifier),
                     "observed_at": timestamp,
                     "source_sha256": digest,
-                    "region_assignment": "maximum_supplied_region_polygon_overlap",
+                    "region_assignment": assignment,
                     "region_overlap_fraction": fraction,
                     "bounds": list(polygon.bounds),
                     "osm_tags": tags,

@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-11-12T21:44:58.597504+00:00",
+  "created_at": "2026-11-12T21:54:02.983781+00:00",
   "status": "partial_source_coverage",
   "method": "original_osm_assembled_administrative_relations_no_invented_rings",
   "admin_levels": [
@@ -9,7 +9,7 @@
   "license": "ODbL-1.0; OpenStreetMap contributors",
   "sources": [
     {
-      "path": ".local/normative-national-inputs/osm/central_federal_district.osm.pbf",
+      "path": "/Users/andreykuronskin/keys_champ/.local/normative-national-inputs/osm/central_federal_district.osm.pbf",
       "sha256": "02ba9bfc791089351c352a2824b59a68282300f70f6fa4acb129d24f20016bf3",
       "osm_timestamp": "2026-11-11T00:07:10Z",
       "expected_relations": 1638,
@@ -117,7 +117,7 @@
       "invalid": []
     }
   ],
-  "region_geometry_source": ".local/normative-national-inputs/regions.json",
+  "region_geometry_source": "/Users/andreykuronskin/keys_champ/.local/normative-national-inputs/regions.json",
   "region_geometry_sha256": "38a1c01e2e94f785b37ad426436fc57f92ee5e9d7f207437e119b6532c3f6ff7",
   "region_attribution_topology_repaired_ids": [
     "44000000",
@@ -290,5 +290,10 @@
     "35000000"
   ],
   "artifact_sha256": "a24e28738e11f2e539e8a678027d958af458f8522ef8f43c37437cffdb8270c8",
-  "limitation": "OSM mapped administrative districts and urban okrugs; not verified legal municipality inventory; incomplete source relations omitted; no normative index assigned"
+  "limitation": "OSM mapped administrative districts and urban okrugs; not verified legal municipality inventory; incomplete source relations omitted; no normative index assigned",
+  "municipal_filter_version": "source-confirmed-v2",
+  "municipal_classification_sources": [
+    "https://www.gov.spb.ru/gov/self_gov/",
+    "https://gu.spb.ru/organization/organy-mestnogo-samoupravleniya/66567/"
+  ]
 }

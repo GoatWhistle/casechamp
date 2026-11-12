@@ -35,3 +35,5 @@ ETL тест проверяет явный профиль пожарного д�
 Контекст сжат: прошлые датированные заголовки и8ссылок перемещены в `session-before-compaction.md`, пользовательские инструкции сохранены дословно. Проверка budget проходит; защищённые инструкции превышают общий SESSIONtarget.
 
 Final checkpoint: main fa89aa0. Pre-commit after concurrent changes:899backendtests PASS; prior two failures resolved. Frontend566tests/build and ETL12tests PASS. All9national POI sources imported; national road batch and regional walking assembly continue. Full municipal national completion is not claimed.
+
+National object dataset published in main288803a:18assets,283,198source rows,15,547,224bytes; SHA256 and rowcounts verified. Portable objects cover84territories. Federalcity source polygons: Moscow120,SPb111; source-grounded city assignment preserves original polygons and90%generic spatial guard.7city tests pass. Nationalworkers2386and11722continue; API URL remains8007.

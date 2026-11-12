@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-11-12T21:47:09.380563+00:00",
+  "created_at": "2026-11-12T22:01:29.064595+00:00",
   "status": "partial_source_coverage",
   "method": "original_osm_assembled_administrative_relations_no_invented_rings",
   "admin_levels": [
@@ -129,9 +129,9 @@
     "98000000",
     "94000000"
   ],
-  "features": 78,
+  "features": 111,
   "counts_by_region": {
-    "40000000": 78
+    "40000000": 111
   },
   "rejected_region_attribution": [
     {
@@ -139,12 +139,6 @@
       "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
       "reason": "region_overlap_below_90_percent_or_name_missing",
       "maximum_overlap_fraction": 0.6368396806291106
-    },
-    {
-      "osm_relation_id": 1120127,
-      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
-      "reason": "region_overlap_below_90_percent_or_name_missing",
-      "maximum_overlap_fraction": 0.8938516592404927
     },
     {
       "osm_relation_id": 2431317,
@@ -157,12 +151,6 @@
       "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
       "reason": "region_overlap_below_90_percent_or_name_missing",
       "maximum_overlap_fraction": 0.0006827551870276119
-    },
-    {
-      "osm_relation_id": 1124723,
-      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
-      "reason": "region_overlap_below_90_percent_or_name_missing",
-      "maximum_overlap_fraction": 0.8408235720767464
     },
     {
       "osm_relation_id": 1650673,
@@ -249,12 +237,6 @@
       "maximum_overlap_fraction": 0.04476387829094386
     },
     {
-      "osm_relation_id": 1116469,
-      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
-      "reason": "region_overlap_below_90_percent_or_name_missing",
-      "maximum_overlap_fraction": 0.8807352918246473
-    },
-    {
       "osm_relation_id": 1591458,
       "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
       "reason": "region_overlap_below_90_percent_or_name_missing",
@@ -279,22 +261,10 @@
       "maximum_overlap_fraction": 0.001196221226482862
     },
     {
-      "osm_relation_id": 1124718,
-      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
-      "reason": "region_overlap_below_90_percent_or_name_missing",
-      "maximum_overlap_fraction": 0.8806626166544047
-    },
-    {
       "osm_relation_id": 18751996,
       "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
       "reason": "region_overlap_below_90_percent_or_name_missing",
       "maximum_overlap_fraction": 0.0024893982811683467
-    },
-    {
-      "osm_relation_id": 337426,
-      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
-      "reason": "region_overlap_below_90_percent_or_name_missing",
-      "maximum_overlap_fraction": 0.886194406538217
     },
     {
       "osm_relation_id": 1290892,
@@ -303,22 +273,10 @@
       "maximum_overlap_fraction": 0.7029579926485832
     },
     {
-      "osm_relation_id": 363092,
-      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
-      "reason": "region_overlap_below_90_percent_or_name_missing",
-      "maximum_overlap_fraction": 0.807829413336593
-    },
-    {
       "osm_relation_id": 8075965,
       "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
       "reason": "region_overlap_below_90_percent_or_name_missing",
       "maximum_overlap_fraction": 0.003822886986772682
-    },
-    {
-      "osm_relation_id": 363095,
-      "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
-      "reason": "region_overlap_below_90_percent_or_name_missing",
-      "maximum_overlap_fraction": 0.8738797097505716
     }
   ],
   "missing_regions": [
@@ -406,6 +364,59 @@
     "80000000",
     "35000000"
   ],
-  "artifact_sha256": "c6743576804bfe4ed7cdd1a7871ee6c235b92b44f901ecf98b8db8b9a20d91ae",
-  "limitation": "OSM mapped administrative districts and urban okrugs; not verified legal municipality inventory; incomplete source relations omitted; no normative index assigned"
+  "artifact_sha256": "1043b03d84f0f178ad577ab56cd5872ffd3690859c43b04273130679402f10c8",
+  "limitation": "OSM mapped administrative districts and urban okrugs; not verified legal municipality inventory; incomplete source relations omitted; no normative index assigned",
+  "municipal_filter_version": "source-confirmed-v3",
+  "municipal_classification_sources": [
+    "https://www.gov.spb.ru/gov/self_gov/",
+    "https://gu.spb.ru/organization/organy-mestnogo-samoupravleniya/66567/"
+  ],
+  "official_reference_count": 111,
+  "known_unimported_source_relation_ids": [],
+  "source_confirmed_city_assignments": [
+    {
+      "id": "osm-relation-1116469",
+      "name": "Песочный",
+      "region_assignment": "source_confirmed_city_assignment",
+      "region_overlap_fraction": 0.8807352918246473
+    },
+    {
+      "id": "osm-relation-1120127",
+      "name": "Смолячково",
+      "region_assignment": "source_confirmed_city_assignment",
+      "region_overlap_fraction": 0.8938516592404927
+    },
+    {
+      "id": "osm-relation-1124718",
+      "name": "округ Морской",
+      "region_assignment": "source_confirmed_city_assignment",
+      "region_overlap_fraction": 0.8806626166544047
+    },
+    {
+      "id": "osm-relation-1124723",
+      "name": "округ Остров Декабристов",
+      "region_assignment": "source_confirmed_city_assignment",
+      "region_overlap_fraction": 0.8408235720767464
+    },
+    {
+      "id": "osm-relation-337426",
+      "name": "Сапёрный",
+      "region_assignment": "source_confirmed_city_assignment",
+      "region_overlap_fraction": 0.886194406538217
+    },
+    {
+      "id": "osm-relation-363092",
+      "name": "Красное Село",
+      "region_assignment": "source_confirmed_city_assignment",
+      "region_overlap_fraction": 0.807829413336593
+    },
+    {
+      "id": "osm-relation-363095",
+      "name": "округ Горелово",
+      "region_assignment": "source_confirmed_city_assignment",
+      "region_overlap_fraction": 0.8738797097505716
+    }
+  ],
+  "source_coverage_status": "partial_source_coverage",
+  "coverage_review_status": "All111reference municipalities represented by original OSM polygons; legal/current geometry validation unconfirmed"
 }

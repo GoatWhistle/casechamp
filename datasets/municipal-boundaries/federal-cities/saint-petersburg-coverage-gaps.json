@@ -1,0 +1,58 @@
+{
+  "checked_at": "2026-11-12T22:02:08.161792+00:00",
+  "status": "resolved_source_attribution_gaps",
+  "source_policy": "source-confirmed-v3",
+  "published_features": 111,
+  "official_reference_count": 111,
+  "known_unimported_source_relations": [],
+  "classification_reference_url": "https://www.gov.spb.ru/gov/self_gov/",
+  "source_sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+  "region_geometry_sha256": "38a1c01e2e94f785b37ad426436fc57f92ee5e9d7f207437e119b6532c3f6ff7",
+  "next_action": "No known missing SPb polygons relative to the official111reference; legal/current boundary qualification remains unconfirmed",
+  "source_coverage_status": "partial_source_coverage",
+  "resolved_source_relations": [
+    {
+      "id": "osm-relation-1116469",
+      "name": "Песочный",
+      "region_assignment": "source_confirmed_city_assignment",
+      "region_overlap_fraction": 0.8807352918246473
+    },
+    {
+      "id": "osm-relation-1120127",
+      "name": "Смолячково",
+      "region_assignment": "source_confirmed_city_assignment",
+      "region_overlap_fraction": 0.8938516592404927
+    },
+    {
+      "id": "osm-relation-1124718",
+      "name": "округ Морской",
+      "region_assignment": "source_confirmed_city_assignment",
+      "region_overlap_fraction": 0.8806626166544047
+    },
+    {
+      "id": "osm-relation-1124723",
+      "name": "округ Остров Декабристов",
+      "region_assignment": "source_confirmed_city_assignment",
+      "region_overlap_fraction": 0.8408235720767464
+    },
+    {
+      "id": "osm-relation-337426",
+      "name": "Сапёрный",
+      "region_assignment": "source_confirmed_city_assignment",
+      "region_overlap_fraction": 0.886194406538217
+    },
+    {
+      "id": "osm-relation-363092",
+      "name": "Красное Село",
+      "region_assignment": "source_confirmed_city_assignment",
+      "region_overlap_fraction": 0.807829413336593
+    },
+    {
+      "id": "osm-relation-363095",
+      "name": "округ Горелово",
+      "region_assignment": "source_confirmed_city_assignment",
+      "region_overlap_fraction": 0.8738797097505716
+    }
+  ],
+  "assignment_rule": "Only admin8 + exact source city tag + explicit municipal evidence + >=80% overlap + representative point inside current city polygon; generic90%rule unchanged"
+}

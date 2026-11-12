@@ -1,4 +1,5 @@
 from synthetic_traffic.municipal_boundaries import MunicipalHandler
+from synthetic_traffic.municipal_tags import municipal_source_confirmed
 
 
 def test_only_complete_original_admin6_relation_is_emitted():
@@ -9,3 +10,30 @@ def test_only_complete_original_admin6_relation_is_emitted():
     assert set(handler.polygons) == {20}
     assert handler.polygons[20][0].area == 1
     assert handler.polygons[20][1]["name"] == "District"
+
+
+def test_federal_city_requires_explicit_municipal_source_evidence():
+    assert municipal_source_confirmed(
+        {
+            "admin_level": "8",
+            "name": "район Арбат",
+            "alt_name": "муниципальный округ Арбат",
+        }
+    )
+    assert municipal_source_confirmed(
+        {"admin_level": "8", "name": "District", "omkmo:code": "1"}
+    )
+    assert not municipal_source_confirmed({"admin_level": "8", "name": "District"})
+
+
+def test_municipal_classifier_codes_and_official_city_legal_link_are_recognized():
+    for key in ["ref:oktmo", "oktmo", "oktmo:code"]:
+        assert municipal_source_confirmed({key: "40300000"})
+    tags = {
+        "addr:region": "Санкт-Петербург",
+        "official_status": "ru:посёлок",
+        "url": "https://www.gov.spb.ru/law?d&nd=8414528",
+    }
+    assert municipal_source_confirmed(tags)
+    assert not municipal_source_confirmed({**tags, "url": "https://example.org/law"})
+    assert not municipal_source_confirmed({**tags, "addr:region": "Another region"})
