@@ -38,8 +38,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
   const { networkMode } = useNetworkMode()
   const fullscreen = useLocation().pathname === "/"
   const { t } = useTranslation()
-  const { metric, season, selectedId, setMetric, setSeason, select, searchFor } =
-    useExplorerParams()
+  const { metric, season, selectedId, select, searchFor } = useExplorerParams()
   const { hoveredId, cardRef, point, onHover } = useMapHover()
   const host = useRef<HTMLDivElement | null>(null)
   const panelWidth = usePanelWidth(host, PANEL_WIDTH_KEY)
@@ -154,9 +153,6 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
         <div className={styles.overlay}>
           <MapToolbar
             metric={metric}
-            season={season}
-            onMetric={setMetric}
-            onSeason={setSeason}
             regionId={scope.regionId}
             regions={scope.options}
             onRegion={selectRegion}
