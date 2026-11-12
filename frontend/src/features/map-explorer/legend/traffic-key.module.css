@@ -1,0 +1,31 @@
+.key {
+  display: grid;
+  gap: var(--space-8);
+  padding-block: var(--space-12);
+}
+.items {
+  composes: bareList from "../../../shared/styles/compose.module.css";
+  display: grid;
+  gap: var(--space-8);
+  font-size: var(--font-size-body-sm);
+}
+.items li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+.road,
+.connection,
+.relief {
+  flex-shrink: 0;
+  inline-size: var(--space-24);
+  border-block-start: var(--iso-line-strong) solid var(--agent-action);
+}
+.connection {
+  border-block-start-color: var(--agent-new-road);
+  filter: var(--filter-agent-new-road);
+  border-block-start-style: dashed;
+}
+.relief {
+  border-block-start-style: dotted;
+}

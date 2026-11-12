@@ -14,3 +14,7 @@ CREATE TABLE IF NOT EXISTS plexus_state.stress_point_impacts
  lost_markets UInt16, external_isolation Bool, delay_minutes Float64, worst_market String,
  markets Array(String), before_hours Array(Float64), after_hours Array(Nullable(Float64)), updated UInt64)
 ENGINE = ReplacingMergeTree(updated) ORDER BY (job_id, region, point_id);
+
+CREATE TABLE IF NOT EXISTS plexus_state.traffic_jobs
+(id String, payload String, updated UInt64)
+ENGINE = ReplacingMergeTree(updated) ORDER BY id;

@@ -2,7 +2,6 @@ from collections.abc import Callable
 from typing import Any
 
 import numpy as np
-from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import floyd_warshall
 
 from app.adapter.road_graph.data import GraphData
@@ -15,31 +14,13 @@ from app.adapter.road_graph.links import (
 from app.adapter.road_graph.road_profiles import requested_profiles
 from app.adapter.road_graph.search_cache import SearchCache, changed_weights
 from app.adapter.road_graph.shortest_paths import ShortestPaths
+from app.adapter.road_graph.weighted import WeightedRoads, minimum_csr
 from app.domain.errors import InvalidQuery
 from app.domain.road_analysis import SettlementAccess
 from app.usecase.road_graph import RoadAddition, RoadChange
 from app.usecase.transport_links import LinkChange
 
-
-def minimum_csr(src: Any, dst: Any, weights: Any, count: int) -> Any:
-    a = np.concatenate([src, dst]).astype(np.int64)
-    b = np.concatenate([dst, src]).astype(np.int64)
-    keys = a * count + b
-    w = np.concatenate([weights, weights])
-    order = np.argsort(keys, kind="stable")
-    keys = keys[order]
-    if len(keys):
-        starts = np.flatnonzero(np.r_[True, keys[1:] != keys[:-1]])
-        values = np.minimum.reduceat(w[order], starts).astype(np.float64)
-        keys = keys[starts]
-    else:
-        values = np.empty(0, dtype=np.float64)
-    rows = keys // count
-    indptr = np.zeros(count + 1, dtype=np.int64)
-    np.cumsum(np.bincount(rows, minlength=count), out=indptr[1:])
-    return csr_matrix(
-        (values, (keys % count).astype(np.int32), indptr.astype(np.int32)), shape=(count, count)
-    )
+__all__ = ["GraphRouting", "minimum_csr"]
 
 
 class GraphRouting:
@@ -121,8 +102,10 @@ class GraphRouting:
         addition: RoadAddition | None = None,
         links: list[LinkChange] | None = None,
         on_times: Callable[[list[str], list[str], Any], None] | None = None,
+        weighted: WeightedRoads | None = None,
     ) -> tuple[tuple[float, int, int, int, float], tuple[SettlementAccess, ...]]:
         self.data.load()
+        self.data.attachment_audit.validate([c.way_id for c in changes if c.speed_factor == 0])
         points = self.data.read("points")
         origins = self.data.read("origins", {"season": scenario, "region": region})
         cities = self.data.read("cities")
@@ -165,6 +148,10 @@ class GraphRouting:
             profiles,
         )
 
+        if weighted is not None:
+            weighted.validate(len(weights))
+            weights = weighted.hours
+
         def graph() -> Any:
             finite = np.isfinite(weights) & self.data.allowed_edges(scenario)
             return minimum_csr(
@@ -197,7 +184,19 @@ class GraphRouting:
                 [np.array([v[0] for v in lookup.values() if v[0] >= 0], dtype=np.int64), city_nodes]
             )
         )
-        key = None if addition else (scenario, tuple(changes), tuple(links or ()))
+        key = (
+            (
+                scenario,
+                weighted.key,
+                addition.source_node if addition else None,
+                addition.target_node if addition else None,
+                addition.travel_hours if addition else None,
+            )
+            if weighted
+            else None
+            if addition
+            else (scenario, tuple(changes), tuple(links or ()))
+        )
         every = self.searches.get(key)
         if every is None:
             every = self.paths.distances(

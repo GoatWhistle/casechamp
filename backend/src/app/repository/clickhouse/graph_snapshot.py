@@ -61,6 +61,16 @@ class ClickHouseGraphSnapshot:
         return f"{name}, {canonical}" if canonical else query
 
     def _rows(self, query: GraphQuery, parameters: GraphParameters) -> list[tuple[Any, ...]]:
+        ids = parameters.get("ids")
+        if query == "candidates" and isinstance(ids, list) and len(ids) > 5000:
+            unique_ids = list(dict.fromkeys(int(value) for value in ids))
+            return [
+                row
+                for start in range(0, len(unique_ids), 5000)
+                for row in self._rows(
+                    query, {**parameters, "ids": unique_ids[start : start + 5000]}
+                )
+            ]
         table = self.reader.arrow(QUERIES[query], parameters)
         return list(zip(*(table[c].to_pylist() for c in table.column_names), strict=True))
 

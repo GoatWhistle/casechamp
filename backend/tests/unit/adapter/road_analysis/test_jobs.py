@@ -184,3 +184,35 @@ def test_queued_cancel_does_not_wait_for_manual_worker(tmp_path: Path) -> None:
     release.set()
     pool.shutdown()
     assert engine.get(job.id).status == "cancelled"
+
+
+def test_boundary_fingerprint_survives_storage_numeric_conversion(tmp_path: Path) -> None:
+    engine, pool = engine_for(tmp_path)
+    original = replace(boundary(), bounds=(0, 0, 1, 1), polygons=[[[(0, 0), (1, 1)]]])
+    restored = replace(boundary(), polygons=[[[(0.0, 0.0), (1.0, 1.0)]]])
+    try:
+        assert engine.fingerprint(original) == engine.fingerprint(restored)
+    finally:
+        pool.shutdown()
+
+
+def test_incompatible_saved_ranking_is_not_exposed_as_verified(tmp_path: Path) -> None:
+    engine, pool = engine_for(tmp_path)
+    candidate = Candidate(201616290, "Road", 0.167, 1, 38614, False)
+    result = VerifiedRoad(candidate, 99.15, 98.02, -1.13, 38614, 38614, 0.1)
+    job = AnalysisJob(
+        "outdated-ranking",
+        "1",
+        "Region",
+        "criticality",
+        0,
+        "old-method",
+        status="paused",
+        results=[result],
+        compatible=False,
+    )
+    engine.jobs[job.id] = job
+    assert engine.get(job.id).results == []
+    with pytest.raises(Exception, match="validation have changed"):
+        engine.detail(job.id, candidate.way_id)
+    pool.shutdown()

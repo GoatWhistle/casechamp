@@ -43,6 +43,52 @@ afterEach(() => {
 })
 
 describe("saved chat sessions", () => {
+  it("names the initial question once and retains its title across followups and reloads", async () => {
+    const title = "First question topic"
+    vi.mocked(streamChat).mockImplementation(async (_body, _signal, emit) => {
+      emit({ type: "title", text: title, code: "" })
+      emit({ type: "title", text: "Replacement title", code: "" })
+      emit({ type: "delta", text: "Answer", code: "" })
+      emit({ type: "done", text: "", code: "" })
+    })
+    const chat = setup()
+    act(() => chat.result.current.send("First question"))
+    await waitFor(() => expect(chat.result.current.status).toBe("done"))
+    expect(vi.mocked(streamChat).mock.calls[0]?.[0].title_requested).toBe(true)
+    expect(chat.result.current.sessions[0]?.title).toBe(title)
+    act(() => chat.result.current.send("Followup"))
+    await waitFor(() => expect(streamChat).toHaveBeenCalledTimes(2))
+    await waitFor(() => expect(chat.result.current.status).toBe("done"))
+    expect(vi.mocked(streamChat).mock.calls[1]?.[0].title_requested).toBe(false)
+    expect(chat.result.current.sessions[0]?.title).toBe(title)
+    act(() => chat.result.current.retrySave())
+    chat.unmount()
+    const restored = setup()
+    expect(restored.result.current.sessions[0]?.title).toBe(title)
+    restored.unmount()
+  })
+
+  it("does not rename an older conversation when its first reply had no title", async () => {
+    vi.mocked(streamChat)
+      .mockImplementationOnce(async (_body, _signal, emit) => {
+        emit({ type: "delta", text: "Answer without title", code: "" })
+        emit({ type: "done", text: "", code: "" })
+      })
+      .mockImplementation(async (_body, _signal, emit) => {
+        emit({ type: "title", text: "Unsolicited title", code: "" })
+        emit({ type: "done", text: "", code: "" })
+      })
+    const chat = setup()
+    act(() => chat.result.current.send("Original question"))
+    await waitFor(() => expect(chat.result.current.status).toBe("done"))
+    act(() => chat.result.current.send("Followup"))
+    await waitFor(() => expect(streamChat).toHaveBeenCalledTimes(2))
+    await waitFor(() => expect(chat.result.current.status).toBe("done"))
+    expect(vi.mocked(streamChat).mock.calls[1]?.[0].title_requested).toBe(false)
+    expect(chat.result.current.sessions[0]?.title).toBeUndefined()
+    chat.unmount()
+  })
+
   it("keeps streamed answers in their own chats and restores chats and drafts after remount", async () => {
     const pending: { emit: (event: ChatStreamEvent) => void; finish: () => void }[] = []
     vi.mocked(streamChat).mockImplementation(

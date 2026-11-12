@@ -1,0 +1,1244 @@
+{
+  "checked_at": "2026-11-12T07:37:11.319164+00:00",
+  "hypothesis": "A fixed synthetic passenger matrix can be assigned jointly and compared across bounded road improvements without changing demand",
+  "status": "locally_verified_scenario_execution_not_observed_traffic_calibration",
+  "sample": {
+    "road_nodes": 17160,
+    "directed_edges": 44624,
+    "place_records": 161,
+    "source": {
+      "bounds": [
+        41.55,
+        43.8,
+        42.25,
+        44.95
+      ],
+      "metadata": [
+        {
+          "key": "graph_revision",
+          "value": "{\"artifact\": \"adeb4170a71a6b9bbb8b5b5fe6de0a627e1e9a83b483e0328a0b172cb2964b29\", \"base\": \"[[\\\"casechamp.duckdb\\\", 1223700480, 1794314040488599643], [\\\"edges.parquet\\\", 368279977, 1794039336000000000], [\\\"nodes.parquet\\\", 180769332, 1794039313000000000], [\\\"points.parquet\\\", 6587005, 1794039339000000000], [\\\"ways.parquet\\\", 83529268, 1794039338000000000]]\", \"road_cost_model\": \"road-capacity-v1\"}"
+        },
+        {
+          "key": "road_cost_model_version",
+          "value": "road-capacity-v1"
+        }
+      ],
+      "network": "original_directed_edges_conservative_directional_capacity",
+      "limits": [
+        "No intersection or turning capacity",
+        "Shared single lane combines both directions",
+        "Asymmetric lane counts use conservative representative capacity",
+        "Bounds clip network; no external transit inferred"
+      ],
+      "sha256": {
+        "places.parquet": "3aafb4a15741dbb5b5b947878ab95d7dc70cb93478776f8a7c7189ca36337d19",
+        "nodes.parquet": "2ae6e4fc86c304b32115a45466ec3e18055a3c5752f4fca5cb952a66e9950ee3",
+        "edges.parquet": "a1767a226790746df52b7a2cafaf8e386b6de0645864a5f0aaec8f828ba702b0"
+      },
+      "normalization": "Explicit unqualified SQL output names; values unchanged"
+    },
+    "coverage": {
+      "missing_or_outside_network_population": 344.0,
+      "settlements": 157,
+      "region": null
+    },
+    "housing": {
+      "allocated_population": 442603.99999999953,
+      "fallback_settlement_population": 89613.0,
+      "used_buildings": 10840,
+      "unused_buildings": 623208,
+      "nearest_access_unverified": true,
+      "sha256": "e4d0431a64ee8bb5dc1da6ee313664a5249609c052dd23113126b1073b55b6f4"
+    },
+    "scope": "all_snapshot_population",
+    "zones": 30,
+    "effective_cell_km": 22.5,
+    "parameters": {
+      "daily_person_trips": 2.0,
+      "interzonal_share": 0.25,
+      "car_share": 0.5,
+      "car_occupancy": 1.5,
+      "hour_share": 0.1,
+      "half_life_hours": 1.0
+    },
+    "demand": {
+      "generated_vehicles_per_hour": 8865.918321469126,
+      "unavailable_destination_vehicles_per_hour": 4.365011864209861,
+      "population": 532217.0
+    },
+    "zone_population": [
+      {
+        "id": "0",
+        "node": 9892,
+        "population": 119129.31300306709,
+        "lat": 44.62394965,
+        "lon": 41.975169750997225
+      },
+      {
+        "id": "1",
+        "node": 8509,
+        "population": 143284.37148730672,
+        "lat": 44.2890321,
+        "lon": 42.06781760428405
+      },
+      {
+        "id": "2",
+        "node": 6497,
+        "population": 38484.6914406301,
+        "lat": 43.88433125,
+        "lon": 41.89974085
+      },
+      {
+        "id": "3",
+        "node": 1702,
+        "population": 20173.70415823938,
+        "lat": 44.6818129,
+        "lon": 41.82510425
+      },
+      {
+        "id": "4",
+        "node": 2314,
+        "population": 17776.15598439641,
+        "lat": 44.0969175,
+        "lon": 41.9774709
+      },
+      {
+        "id": "5",
+        "node": 4360,
+        "population": 13305.0,
+        "lat": 44.372399,
+        "lon": 41.959426
+      },
+      {
+        "id": "6",
+        "node": 9075,
+        "population": 15178.953779755806,
+        "lat": 44.76153,
+        "lon": 41.81797
+      },
+      {
+        "id": "7",
+        "node": 15284,
+        "population": 1003.5251256241623,
+        "lat": 44.2063823,
+        "lon": 42.04856602851663
+      },
+      {
+        "id": "8",
+        "node": 8937,
+        "population": 36.37775988652665,
+        "lat": 44.93944,
+        "lon": 41.79062
+      },
+      {
+        "id": "9",
+        "node": 7159,
+        "population": 6874.0,
+        "lat": 44.86267,
+        "lon": 41.57351
+      },
+      {
+        "id": "10",
+        "node": 4087,
+        "population": 29480.392101283527,
+        "lat": 44.428965,
+        "lon": 41.774258
+      },
+      {
+        "id": "11",
+        "node": 2515,
+        "population": 12257.829280347441,
+        "lat": 44.14729,
+        "lon": 42.057019
+      },
+      {
+        "id": "12",
+        "node": 1960,
+        "population": 9.274106721630192,
+        "lat": 44.1866139,
+        "lon": 42.041973049999996
+      },
+      {
+        "id": "13",
+        "node": 11726,
+        "population": 33293.391385795025,
+        "lat": 43.955388,
+        "lon": 41.73769
+      },
+      {
+        "id": "14",
+        "node": 10584,
+        "population": 10042.78325421378,
+        "lat": 43.824078,
+        "lon": 41.786547
+      },
+      {
+        "id": "15",
+        "node": 1929,
+        "population": 2044.423427566972,
+        "lat": 43.8026924,
+        "lon": 41.91047348906142
+      },
+      {
+        "id": "16",
+        "node": 9005,
+        "population": 1594.0,
+        "lat": 44.59878725,
+        "lon": 41.60484499262275
+      },
+      {
+        "id": "17",
+        "node": 11374,
+        "population": 801.6086142049825,
+        "lat": 44.09503975,
+        "lon": 41.62637445
+      },
+      {
+        "id": "18",
+        "node": 12402,
+        "population": 1894.2213943580732,
+        "lat": 44.88474565,
+        "lon": 42.12395290881446
+      },
+      {
+        "id": "19",
+        "node": 15899,
+        "population": 7849.622240113472,
+        "lat": 44.77521645,
+        "lon": 41.78816396990257
+      },
+      {
+        "id": "20",
+        "node": 9463,
+        "population": 3322.0,
+        "lat": 44.4539,
+        "lon": 41.5714
+      },
+      {
+        "id": "21",
+        "node": 12871,
+        "population": 16478.629364926972,
+        "lat": 43.992496,
+        "lon": 41.741719
+      },
+      {
+        "id": "22",
+        "node": 14517,
+        "population": 109.21104183464196,
+        "lat": 43.965464,
+        "lon": 41.900438547979036
+      },
+      {
+        "id": "23",
+        "node": 5982,
+        "population": 25270.10548643108,
+        "lat": 44.244039,
+        "lon": 41.739461
+      },
+      {
+        "id": "24",
+        "node": 15817,
+        "population": 143.4155632963195,
+        "lat": 44.8852981,
+        "lon": 42.126591399999995
+      },
+      {
+        "id": "25",
+        "node": 912,
+        "population": 1784.0,
+        "lat": 44.35779925,
+        "lon": 41.78093285792474
+      },
+      {
+        "id": "26",
+        "node": 12672,
+        "population": 484.0,
+        "lat": 44.6690601,
+        "lon": 42.13974982781991
+      },
+      {
+        "id": "27",
+        "node": 15606,
+        "population": 1959.0,
+        "lat": 44.60734,
+        "lon": 42.23151
+      },
+      {
+        "id": "28",
+        "node": 6665,
+        "population": 8092.0,
+        "lat": 44.20744,
+        "lon": 41.55545
+      },
+      {
+        "id": "29",
+        "node": 2861,
+        "population": 61.0,
+        "lat": 44.314248,
+        "lon": 42.244205
+      }
+    ]
+  },
+  "housing_source": {
+    "residential_buildings": 634048,
+    "invalid_geometry_or_floors": 142,
+    "buildings_with_assumed_one_floor": 537551,
+    "pbf_sha256": "a6db83fb55e03cc9730da9aff42730003b7d1591a38d4cf0fd15d4fe66743701",
+    "source_path": "data/additional/stavropol/raw/north-caucasus-261107.osm.pbf",
+    "url": "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf",
+    "osm_timestamp": "2026-11-07T21:21:36Z",
+    "parquet_sha256": "e4d0431a64ee8bb5dc1da6ee313664a5249609c052dd23113126b1073b55b6f4",
+    "unknown_floors": "one_assumed",
+    "population": "not_observed_in_buildings"
+  },
+  "demand_sha256": "a6059603b795159a1c14f1255abe4ca416d458ab18fcc8df78a42a7ddad622c0",
+  "cases": [
+    {
+      "multiplier": 0.7,
+      "baseline": {
+        "vehicle_hours": 5788.102111570797,
+        "unserved_vehicles": 0.0,
+        "overloaded_directed_edges": 0,
+        "maximum_demand_capacity_ratio": 0.9286950003806914,
+        "relative_gap": 9.756456279673977e-06,
+        "iterations": 13,
+        "converged": true,
+        "edge_flows": "baseline-flows-0.7.parquet"
+      },
+      "projects": [
+        {
+          "vehicle_hours": 5784.407232670534,
+          "unserved_vehicles": 0.0,
+          "overloaded_directed_edges": 0,
+          "maximum_demand_capacity_ratio": 0.7664418655108508,
+          "relative_gap": 9.762688366024157e-06,
+          "iterations": 13,
+          "converged": true,
+          "project": {
+            "name": "one_extra_lane_each_direction",
+            "kind": "capacity",
+            "way_ids": [
+              301861394,
+              178673480,
+              302147425,
+              583477758,
+              583477757
+            ]
+          },
+          "vehicle_hours_saved": 3.694878900263575,
+          "unserved_vehicles_reduction": 0.0,
+          "comparison_status": "converged_same_served_demand",
+          "edge_flows": "flows-0.7-0.parquet"
+        },
+        {
+          "vehicle_hours": 5772.51154345072,
+          "unserved_vehicles": 0.0,
+          "overloaded_directed_edges": 0,
+          "maximum_demand_capacity_ratio": 0.9286950003806914,
+          "relative_gap": 9.782806802492921e-06,
+          "iterations": 13,
+          "converged": true,
+          "project": {
+            "name": "same_corridor_speed_plus_20_percent",
+            "kind": "speed",
+            "way_ids": [
+              301861394,
+              178673480,
+              302147425,
+              583477758,
+              583477757
+            ],
+            "factor": 1.2
+          },
+          "vehicle_hours_saved": 15.590568120077478,
+          "unserved_vehicles_reduction": 0.0,
+          "comparison_status": "converged_same_served_demand",
+          "edge_flows": "flows-0.7-1.parquet"
+        }
+      ]
+    },
+    {
+      "multiplier": 1.0,
+      "baseline": {
+        "vehicle_hours": 8438.274368681537,
+        "unserved_vehicles": 0.0,
+        "overloaded_directed_edges": 32,
+        "maximum_demand_capacity_ratio": 1.3267071434009876,
+        "relative_gap": 9.92134508854134e-06,
+        "iterations": 76,
+        "converged": true,
+        "edge_flows": "baseline-flows-1.0.parquet"
+      },
+      "projects": [
+        {
+          "vehicle_hours": 8416.290201963719,
+          "unserved_vehicles": 0.0,
+          "overloaded_directed_edges": 22,
+          "maximum_demand_capacity_ratio": 1.0949169507297873,
+          "relative_gap": 9.947260604888389e-06,
+          "iterations": 76,
+          "converged": true,
+          "project": {
+            "name": "one_extra_lane_each_direction",
+            "kind": "capacity",
+            "way_ids": [
+              301861394,
+              178673480,
+              302147425,
+              583477758,
+              583477757
+            ]
+          },
+          "vehicle_hours_saved": 21.98416671781888,
+          "unserved_vehicles_reduction": 0.0,
+          "comparison_status": "converged_same_served_demand",
+          "edge_flows": "flows-1.0-0.parquet"
+        },
+        {
+          "vehicle_hours": 8413.032214147534,
+          "unserved_vehicles": 0.0,
+          "overloaded_directed_edges": 32,
+          "maximum_demand_capacity_ratio": 1.3267071434009876,
+          "relative_gap": 9.951112730142426e-06,
+          "iterations": 76,
+          "converged": true,
+          "project": {
+            "name": "same_corridor_speed_plus_20_percent",
+            "kind": "speed",
+            "way_ids": [
+              301861394,
+              178673480,
+              302147425,
+              583477758,
+              583477757
+            ],
+            "factor": 1.2
+          },
+          "vehicle_hours_saved": 25.24215453400393,
+          "unserved_vehicles_reduction": 0.0,
+          "comparison_status": "converged_same_served_demand",
+          "edge_flows": "flows-1.0-1.parquet"
+        }
+      ]
+    },
+    {
+      "multiplier": 1.3,
+      "baseline": {
+        "vehicle_hours": 11504.364985472752,
+        "unserved_vehicles": 0.0,
+        "overloaded_directed_edges": 64,
+        "maximum_demand_capacity_ratio": 1.7247192864212844,
+        "relative_gap": 9.970655474985266e-06,
+        "iterations": 453,
+        "converged": true,
+        "edge_flows": "baseline-flows-1.3.parquet"
+      },
+      "projects": [
+        {
+          "vehicle_hours": 11422.76670013461,
+          "unserved_vehicles": 0.0,
+          "overloaded_directed_edges": 54,
+          "maximum_demand_capacity_ratio": 1.4168795648947226,
+          "relative_gap": 9.972408499964146e-06,
+          "iterations": 455,
+          "converged": true,
+          "project": {
+            "name": "one_extra_lane_each_direction",
+            "kind": "capacity",
+            "way_ids": [
+              301861394,
+              178673480,
+              302147425,
+              583477758,
+              583477757
+            ]
+          },
+          "vehicle_hours_saved": 81.59828533814107,
+          "unserved_vehicles_reduction": 0.0,
+          "comparison_status": "converged_same_served_demand",
+          "edge_flows": "flows-1.3-0.parquet"
+        },
+        {
+          "vehicle_hours": 11462.121572172067,
+          "unserved_vehicles": 0.0,
+          "overloaded_directed_edges": 64,
+          "maximum_demand_capacity_ratio": 1.7247192864212844,
+          "relative_gap": 9.969839850851913e-06,
+          "iterations": 454,
+          "converged": true,
+          "project": {
+            "name": "same_corridor_speed_plus_20_percent",
+            "kind": "speed",
+            "way_ids": [
+              301861394,
+              178673480,
+              302147425,
+              583477758,
+              583477757
+            ],
+            "factor": 1.2
+          },
+          "vehicle_hours_saved": 42.24341330068455,
+          "unserved_vehicles_reduction": 0.0,
+          "comparison_status": "converged_same_served_demand",
+          "edge_flows": "flows-1.3-1.parquet"
+        }
+      ]
+    }
+  ],
+  "duration_hours": 1.0,
+  "negative_control": {
+    "pair": [
+      "07528000101",
+      "07724000001"
+    ],
+    "pair_flow_vehicles_per_hour": 1000,
+    "results": [
+      {
+        "multiplier": 1.0,
+        "baseline": {
+          "vehicle_hours": 323.3996462161584,
+          "unserved_vehicles": 0.0,
+          "overloaded_directed_edges": 0,
+          "maximum_demand_capacity_ratio": 0.5555555555555556,
+          "relative_gap": 1.7576833965617332e-16,
+          "iterations": 1,
+          "converged": true,
+          "edge_flows": "baseline-flows-1.0.parquet"
+        },
+        "projects": [
+          {
+            "vehicle_hours": 323.3996462161584,
+            "unserved_vehicles": 0.0,
+            "overloaded_directed_edges": 0,
+            "maximum_demand_capacity_ratio": 0.5555555555555556,
+            "relative_gap": 1.7576833965617332e-16,
+            "iterations": 1,
+            "converged": true,
+            "project": {
+              "name": "one_extra_lane_each_direction",
+              "kind": "capacity",
+              "way_ids": [
+                301861394,
+                178673480,
+                302147425,
+                583477758,
+                583477757
+              ]
+            },
+            "vehicle_hours_saved": 0.0,
+            "unserved_vehicles_reduction": 0.0,
+            "comparison_status": "converged_same_served_demand",
+            "edge_flows": "flows-1.0-0.parquet"
+          },
+          {
+            "vehicle_hours": 323.3996462161584,
+            "unserved_vehicles": 0.0,
+            "overloaded_directed_edges": 0,
+            "maximum_demand_capacity_ratio": 0.5555555555555556,
+            "relative_gap": 1.7576833965617332e-16,
+            "iterations": 1,
+            "converged": true,
+            "project": {
+              "name": "same_corridor_speed_plus_20_percent",
+              "kind": "speed",
+              "way_ids": [
+                301861394,
+                178673480,
+                302147425,
+                583477758,
+                583477757
+              ],
+              "factor": 1.2
+            },
+            "vehicle_hours_saved": 0.0,
+            "unserved_vehicles_reduction": 0.0,
+            "comparison_status": "converged_same_served_demand",
+            "edge_flows": "flows-1.0-1.parquet"
+          }
+        ]
+      }
+    ]
+  },
+  "unit_checks": {
+    "passed": 22,
+    "command": ".venv/bin/python -m unittest discover -s tests -p 'test_synthetic_traffic*.py' -v"
+  },
+  "ruff": {
+    "check": "passed_owned_files",
+    "format": "passed_owned_files"
+  },
+  "real_kernel_concordance": {
+    "passed": true,
+    "rtol": 1e-10,
+    "atol": 1e-08
+  },
+  "local_clickhouse": {
+    "database": "plexus_synthetic_traffic",
+    "run_id": "nevinnomyssk-housing-20261112-v1",
+    "housing_rows": 634048,
+    "demand_rows": 676,
+    "flow_rows": 401616,
+    "numeric_equality": {
+      "checked_groups": 9,
+      "vehicle_hours_equal": true,
+      "housing": {
+        "n": "634048",
+        "unique_homes": "634048"
+      },
+      "groups": [
+        {
+          "variant": "0",
+          "multiplier": 0.7,
+          "n": "44624",
+          "vehicle_hours": 5784.407232670528
+        },
+        {
+          "variant": "1",
+          "multiplier": 0.7,
+          "n": "44624",
+          "vehicle_hours": 5772.511543450715
+        },
+        {
+          "variant": "baseline",
+          "multiplier": 0.7,
+          "n": "44624",
+          "vehicle_hours": 5788.102111570795
+        },
+        {
+          "variant": "0",
+          "multiplier": 1,
+          "n": "44624",
+          "vehicle_hours": 8416.290201963726
+        },
+        {
+          "variant": "1",
+          "multiplier": 1,
+          "n": "44624",
+          "vehicle_hours": 8413.032214147539
+        },
+        {
+          "variant": "baseline",
+          "multiplier": 1,
+          "n": "44624",
+          "vehicle_hours": 8438.274368681547
+        },
+        {
+          "variant": "0",
+          "multiplier": 1.3,
+          "n": "44624",
+          "vehicle_hours": 11422.766700134573
+        },
+        {
+          "variant": "1",
+          "multiplier": 1.3,
+          "n": "44624",
+          "vehicle_hours": 11462.121572172036
+        },
+        {
+          "variant": "baseline",
+          "multiplier": 1.3,
+          "n": "44624",
+          "vehicle_hours": 11504.364985472703
+        }
+      ]
+    }
+  },
+  "limits": [
+    "Population attractiveness proxy; no observed jobs or freight demand",
+    "Static assignment: overload demand is not completed throughput",
+    "No network queue lengths, spillback or intersection controls",
+    "New connections need independent buildability checks",
+    "Coarse zones omit intrazonal routing; no induced demand",
+    "One bounded network window only; outside transit absent",
+    "National collection and national assignment are separate activities",
+    "No application chat/map integration, no observed flow calibration",
+    "New local connections tested with synthetic fixture, not engineered alignments"
+  ],
+  "final_kernel_and_housing_concordance": {
+    "matrix_sha256": "a6059603b795159a1c14f1255abe4ca416d458ab18fcc8df78a42a7ddad622c0",
+    "matched": true
+  },
+  "conditional_connection": {
+    "buildability": "not_reviewed",
+    "cases": [
+      {
+        "multiplier": 1.3,
+        "baseline": {
+          "vehicle_hours": 11504.364985472752,
+          "unserved_vehicles": 0.0,
+          "overloaded_directed_edges": 64,
+          "maximum_demand_capacity_ratio": 1.7247192864212841,
+          "relative_gap": 9.970655474985266e-06,
+          "iterations": 453,
+          "converged": true,
+          "edge_flows": "baseline-flows-1.3.parquet"
+        },
+        "projects": [
+          {
+            "vehicle_hours": 11470.97048121165,
+            "unserved_vehicles": 0.0,
+            "overloaded_directed_edges": 64,
+            "maximum_demand_capacity_ratio": 1.7247192864212841,
+            "relative_gap": 9.944652452149645e-06,
+            "iterations": 463,
+            "converged": true,
+            "project": {
+              "name": "unreviewed_parallel_connection",
+              "kind": "connection",
+              "source_node": 3107341,
+              "target_node": 3107342,
+              "length_km": 0.13313306093215943,
+              "speed_kmh": 40,
+              "buildability": "not_reviewed",
+              "purpose": "conditional_new_link_traffic_relief_test"
+            },
+            "vehicle_hours_saved": 33.39450426110125,
+            "unserved_vehicles_reduction": 0.0,
+            "comparison_status": "converged_same_served_demand",
+            "edge_flows": "flows-1.3-0.parquet"
+          }
+        ]
+      }
+    ],
+    "demand_sha256": "a6059603b795159a1c14f1255abe4ca416d458ab18fcc8df78a42a7ddad622c0",
+    "old_edge_forward_demand_before": 3104.4947155583113,
+    "old_edge_forward_demand_after": 590.0551511212338,
+    "new_edge_forward_assigned_demand": 2514.439564437082,
+    "new_edge_forward_demand_capacity_ratio": 1.3969108691317123,
+    "network_overloaded_edges_before": 64,
+    "network_overloaded_edges_after": 64,
+    "interpretation": "Demand moves to new link, which becomes overloaded; this does not remove all network bottlenecks",
+    "local_clickhouse_run": "nevinnomyssk-connection-20261112-v1",
+    "published_flow_rows": 89250
+  },
+  "candidate_screening": {
+    "existing_corridor_projects": 19,
+    "connections_for_review": 10,
+    "data_gaps": 0,
+    "status": "screening_only_no_engineering_or_benefit_validation"
+  },
+  "national_housing": {
+    "collection_status": "complete",
+    "districts": 9,
+    "raw_rows": 6443907,
+    "unique_current_rows": 6404792,
+    "cross_extract_duplicates_removed": 39115,
+    "osm_timestamps": [
+      "2026-11-11T21:22:47Z"
+    ],
+    "counts_and_numeric_sums_verified": true,
+    "groups": [
+      {
+        "source_id": "4bfb15e5817fd370a590c084417eb92e77b94633ed6b8e3dbbdf5513247453bf",
+        "n": "453738",
+        "latitude_sum": 27079131.890312098,
+        "longitude_sum": 15549499.994399011,
+        "area_sum": 500960245.14090437
+      },
+      {
+        "source_id": "17e17cbe9d3420da8baffb38f5faf3ff0267e6f38180af55b7222b35c1e85044",
+        "n": "482621",
+        "latitude_sum": 27271863.379891656,
+        "longitude_sum": 30287338.1283602,
+        "area_sum": 320870938.25296754
+      },
+      {
+        "source_id": "ffd3e2869bd3aba8eaca2ad4b7059dc13477e1b2d7c5269c00ab9c5a0cec35f1",
+        "n": "65864",
+        "latitude_sum": 2968190.4170763567,
+        "longitude_sum": 2238408.6065862398,
+        "area_sum": 37573566.131774396
+      },
+      {
+        "source_id": "070946a668c20e19a1b946524a8672d3ed0b572eede83b06b1806bbb50d9f5f5",
+        "n": "365088",
+        "latitude_sum": 17011746.90372915,
+        "longitude_sum": 48831161.66820505,
+        "area_sum": 134982197.11679274
+      },
+      {
+        "source_id": "2ad7f6b0f123bf8032cbb513254ef9093f390ea1abc49698609085e1fc56e315",
+        "n": "959177",
+        "latitude_sum": 44227706.1601824,
+        "longitude_sum": 38740265.152793065,
+        "area_sum": 332021115.2744643
+      },
+      {
+        "source_id": "eb94b67a427505a0000c04f13fadf06be6cae2fe4994f66deff95b8fe8a7578f",
+        "n": "812273",
+        "latitude_sum": 44093939.16656753,
+        "longitude_sum": 71976577.83211371,
+        "area_sum": 406931326.26423705
+      },
+      {
+        "source_id": "7cfc5fbe18c807ad2aae5acf2d79389fe7c78220051be93eefc0dfbf83da059a",
+        "n": "1289790",
+        "latitude_sum": 71095309.27880259,
+        "longitude_sum": 64529991.773938686,
+        "area_sum": 731963577.3195655
+      },
+      {
+        "source_id": "0d24f9b76fb9981863664a8521309fddd9394052ec27adc286ba92d0dc896643",
+        "n": "1380575",
+        "latitude_sum": 75352995.73635359,
+        "longitude_sum": 52616036.72517833,
+        "area_sum": 1268816984.3500376
+      },
+      {
+        "source_id": "aa222df3f7da93c1ab27aa465ddf1208068855084a72bb8b993e633a75e8557b",
+        "n": "634781",
+        "latitude_sum": 27387261.71065212,
+        "longitude_sum": 29084577.028922826,
+        "area_sum": 156777278.2604203
+      }
+    ]
+  },
+  "national_housing_pilot_smoke": {
+    "method": "synthetic_passenger_od_static_msa_v1",
+    "status": "complete",
+    "multipliers": [
+      0.7
+    ],
+    "project_count": 0,
+    "observed_traffic": false,
+    "created_at": "2026-11-12T08:13:53.897297+00:00",
+    "demand_sha256": "7fa2428aa96c21427899b3d7e73e4750490c361fef5331b3a586bcad5207be39",
+    "duration_hours": 1.0,
+    "metadata": {
+      "source": {
+        "bounds": [
+          41.55,
+          43.8,
+          42.25,
+          44.95
+        ],
+        "created_at": "2026-11-12T08:07:43.161517+00:00",
+        "metadata": [
+          {
+            "key": "graph_revision",
+            "value": "{\"artifact\": \"adeb4170a71a6b9bbb8b5b5fe6de0a627e1e9a83b483e0328a0b172cb2964b29\", \"base\": \"[[\\\"casechamp.duckdb\\\", 1223700480, 1794314040488599643], [\\\"edges.parquet\\\", 368279977, 1794039336000000000], [\\\"nodes.parquet\\\", 180769332, 1794039313000000000], [\\\"points.parquet\\\", 6587005, 1794039339000000000], [\\\"ways.parquet\\\", 83529268, 1794039338000000000]]\", \"road_cost_model\": \"road-capacity-v1\"}"
+          },
+          {
+            "key": "road_cost_model_version",
+            "value": "road-capacity-v1"
+          }
+        ],
+        "sha256": {
+          "places.parquet": "3aafb4a15741dbb5b5b947878ab95d7dc70cb93478776f8a7c7189ca36337d19",
+          "nodes.parquet": "2ae6e4fc86c304b32115a45466ec3e18055a3c5752f4fca5cb952a66e9950ee3",
+          "edges.parquet": "a1767a226790746df52b7a2cafaf8e386b6de0645864a5f0aaec8f828ba702b0"
+        },
+        "network": "original_directed_edges_conservative_directional_capacity",
+        "limits": [
+          "No intersection or turning capacity",
+          "Shared single lane combines both directions",
+          "Asymmetric lane counts use conservative representative capacity",
+          "Bounds clip network; no external transit inferred"
+        ]
+      },
+      "coverage": {
+        "missing_or_outside_network_population": 344.0,
+        "settlements": 157,
+        "region": null
+      },
+      "housing": {
+        "allocated_population": 456783.00000000047,
+        "fallback_settlement_population": 75434.0,
+        "used_buildings": 15169,
+        "unused_buildings": 11141,
+        "nearest_access_unverified": true,
+        "duplicates_removed": 16,
+        "sha256": {
+          "central-fed-district.parquet": "0d24f9b76fb9981863664a8521309fddd9394052ec27adc286ba92d0dc896643",
+          "crimean-fed-district.parquet": "ffd3e2869bd3aba8eaca2ad4b7059dc13477e1b2d7c5269c00ab9c5a0cec35f1",
+          "far-eastern-fed-district.parquet": "070946a668c20e19a1b946524a8672d3ed0b572eede83b06b1806bbb50d9f5f5",
+          "north-caucasus-fed-district.parquet": "aa222df3f7da93c1ab27aa465ddf1208068855084a72bb8b993e633a75e8557b",
+          "northwestern-fed-district.parquet": "4bfb15e5817fd370a590c084417eb92e77b94633ed6b8e3dbbdf5513247453bf",
+          "siberian-fed-district.parquet": "eb94b67a427505a0000c04f13fadf06be6cae2fe4994f66deff95b8fe8a7578f",
+          "south-fed-district.parquet": "2ad7f6b0f123bf8032cbb513254ef9093f390ea1abc49698609085e1fc56e315",
+          "ural-fed-district.parquet": "17e17cbe9d3420da8baffb38f5faf3ff0267e6f38180af55b7222b35c1e85044",
+          "volga-fed-district.parquet": "7cfc5fbe18c807ad2aae5acf2d79389fe7c78220051be93eefc0dfbf83da059a"
+        }
+      },
+      "scope": "all_snapshot_population",
+      "zones": 32,
+      "effective_cell_km": 22.5,
+      "parameters": {
+        "daily_person_trips": 2.0,
+        "interzonal_share": 0.25,
+        "car_share": 0.5,
+        "car_occupancy": 1.5,
+        "hour_share": 0.1,
+        "half_life_hours": 1.0,
+        "max_trip_hours": 4.0
+      },
+      "demand": {
+        "generated_vehicles_per_hour": 8865.317476232412,
+        "unavailable_destination_vehicles_per_hour": 4.965857100922329,
+        "population": 532217.0
+      },
+      "zone_population": [
+        {
+          "id": "0",
+          "node": 9892,
+          "population": 119129.31300306709,
+          "lat": 44.62394965,
+          "lon": 41.975169750997225
+        },
+        {
+          "id": "1",
+          "node": 8509,
+          "population": 143284.37148730672,
+          "lat": 44.2890321,
+          "lon": 42.06781760428405
+        },
+        {
+          "id": "2",
+          "node": 6497,
+          "population": 38484.6914406301,
+          "lat": 43.88433125,
+          "lon": 41.89974085
+        },
+        {
+          "id": "3",
+          "node": 1702,
+          "population": 20173.70415823938,
+          "lat": 44.6818129,
+          "lon": 41.82510425
+        },
+        {
+          "id": "4",
+          "node": 2314,
+          "population": 17776.15598439641,
+          "lat": 44.0969175,
+          "lon": 41.9774709
+        },
+        {
+          "id": "5",
+          "node": 4360,
+          "population": 13305.0,
+          "lat": 44.372399,
+          "lon": 41.959426
+        },
+        {
+          "id": "6",
+          "node": 9075,
+          "population": 15178.953779755806,
+          "lat": 44.76153,
+          "lon": 41.81797
+        },
+        {
+          "id": "7",
+          "node": 15284,
+          "population": 1003.5251256241623,
+          "lat": 44.2063823,
+          "lon": 42.04856602851663
+        },
+        {
+          "id": "8",
+          "node": 8937,
+          "population": 36.37775988652665,
+          "lat": 44.93944,
+          "lon": 41.79062
+        },
+        {
+          "id": "9",
+          "node": 6439,
+          "population": 6874.000000000007,
+          "lat": 44.65907,
+          "lon": 41.6486
+        },
+        {
+          "id": "10",
+          "node": 4087,
+          "population": 29480.39210128353,
+          "lat": 44.428965,
+          "lon": 41.774258
+        },
+        {
+          "id": "11",
+          "node": 2515,
+          "population": 12257.829280347441,
+          "lat": 44.14729,
+          "lon": 42.057019
+        },
+        {
+          "id": "12",
+          "node": 1960,
+          "population": 9.274106721630192,
+          "lat": 44.1866139,
+          "lon": 42.041973049999996
+        },
+        {
+          "id": "13",
+          "node": 11726,
+          "population": 33293.391385795025,
+          "lat": 43.955388,
+          "lon": 41.73769
+        },
+        {
+          "id": "14",
+          "node": 10584,
+          "population": 10042.78325421378,
+          "lat": 43.824078,
+          "lon": 41.786547
+        },
+        {
+          "id": "15",
+          "node": 1929,
+          "population": 2044.423427566972,
+          "lat": 43.8026924,
+          "lon": 41.91047348906142
+        },
+        {
+          "id": "16",
+          "node": 9005,
+          "population": 1594.0,
+          "lat": 44.59878725,
+          "lon": 41.60484499262275
+        },
+        {
+          "id": "17",
+          "node": 11374,
+          "population": 801.6086142049825,
+          "lat": 44.09503975,
+          "lon": 41.62637445
+        },
+        {
+          "id": "18",
+          "node": 12402,
+          "population": 1894.2213943580732,
+          "lat": 44.88474565,
+          "lon": 42.12395290881446
+        },
+        {
+          "id": "19",
+          "node": 15899,
+          "population": 7849.622240113472,
+          "lat": 44.77521645,
+          "lon": 41.78816396990257
+        },
+        {
+          "id": "20",
+          "node": 11362,
+          "population": 3148.07473467435,
+          "lat": 44.370738,
+          "lon": 41.638778
+        },
+        {
+          "id": "21",
+          "node": 12871,
+          "population": 16478.629364926972,
+          "lat": 43.992496,
+          "lon": 41.741719
+        },
+        {
+          "id": "22",
+          "node": 14517,
+          "population": 109.21104183464196,
+          "lat": 43.965464,
+          "lon": 41.900438547979036
+        },
+        {
+          "id": "23",
+          "node": 3733,
+          "population": 21715.352872148193,
+          "lat": 44.19981,
+          "lon": 41.717117
+        },
+        {
+          "id": "24",
+          "node": 15817,
+          "population": 143.4155632963195,
+          "lat": 44.8852981,
+          "lon": 42.126591399999995
+        },
+        {
+          "id": "25",
+          "node": 912,
+          "population": 1784.0,
+          "lat": 44.35779925,
+          "lon": 41.78093285792474
+        },
+        {
+          "id": "26",
+          "node": 12672,
+          "population": 484.0,
+          "lat": 44.6690601,
+          "lon": 42.13974982781991
+        },
+        {
+          "id": "27",
+          "node": 15606,
+          "population": 1959.0,
+          "lat": 44.60734,
+          "lon": 42.23151
+        },
+        {
+          "id": "28",
+          "node": 11582,
+          "population": 11576.722541034278,
+          "lat": 44.306057,
+          "lon": 41.743461
+        },
+        {
+          "id": "29",
+          "node": 6943,
+          "population": 207.9046243715063,
+          "lat": 44.496083,
+          "lon": 41.54376793806061
+        },
+        {
+          "id": "30",
+          "node": 2058,
+          "population": 36.050714202748075,
+          "lat": 44.21833635,
+          "lon": 41.548923546826565
+        },
+        {
+          "id": "31",
+          "node": 2861,
+          "population": 61.0,
+          "lat": 44.314248,
+          "lon": 42.244205
+        }
+      ]
+    },
+    "cases": [
+      {
+        "multiplier": 0.7,
+        "baseline": {
+          "vehicle_hours": 5645.5566808578005,
+          "unserved_vehicles": 0.0,
+          "overloaded_directed_edges": 0,
+          "maximum_demand_capacity_ratio": 0.9286950003806916,
+          "relative_gap": 0.00022615096956601018,
+          "iterations": 1,
+          "converged": true,
+          "edge_flows": "baseline-flows-0.7.parquet"
+        },
+        "projects": []
+      }
+    ],
+    "limits": [
+      "Population attractiveness proxy; no observed jobs or freight demand",
+      "Static assignment: overload demand is not completed throughput",
+      "No network queue lengths, spillback or intersection controls",
+      "New connections need independent buildability checks",
+      "Coarse zones omit intrazonal routing; no induced demand"
+    ]
+  },
+  "max_trip_profile_check": {
+    "max_default_hours": 4.0,
+    "pilot_maximum_baseline_zone_hours": 3.3477405263582045,
+    "old_pilot_demand_hash_unchanged": true,
+    "purpose": "Do not force regional daily demand to faraway destinations when nearby options are absent"
+  },
+  "final_snapshot_reexport_arrays_equal": true,
+  "national_source_manifest": {
+    "status": "complete",
+    "sources": {
+      "central-fed-district": {
+        "residential_buildings": 1380575,
+        "invalid_geometry_or_floors": 520,
+        "buildings_with_assumed_one_floor": 1007930,
+        "url": "https://download.geofabrik.de/russia/central-fed-district-latest.osm.pbf",
+        "osm_timestamp": "2026-11-11T21:22:47Z",
+        "pbf_sha256": "2fd62276257a8aee32975e9fb28c2a23180403d548ccd6ac93ddfa819907e1c0",
+        "pbf_bytes": 885511241,
+        "parquet_sha256": "0d24f9b76fb9981863664a8521309fddd9394052ec27adc286ba92d0dc896643",
+        "status": "complete"
+      },
+      "northwestern-fed-district": {
+        "residential_buildings": 453738,
+        "invalid_geometry_or_floors": 225,
+        "buildings_with_assumed_one_floor": 266591,
+        "url": "https://download.geofabrik.de/russia/northwestern-fed-district-latest.osm.pbf",
+        "osm_timestamp": "2026-11-11T21:22:47Z",
+        "pbf_sha256": "7a5f66a334f0d02e5dc546afe0e634c27954e186b9a5c9b208121801f3001a22",
+        "pbf_bytes": 657342350,
+        "parquet_sha256": "4bfb15e5817fd370a590c084417eb92e77b94633ed6b8e3dbbdf5513247453bf",
+        "status": "complete"
+      },
+      "south-fed-district": {
+        "residential_buildings": 959177,
+        "invalid_geometry_or_floors": 111,
+        "buildings_with_assumed_one_floor": 778568,
+        "url": "https://download.geofabrik.de/russia/south-fed-district-latest.osm.pbf",
+        "osm_timestamp": "2026-11-11T21:22:47Z",
+        "pbf_sha256": "4132a00c24934d7f1eec5cf308433b1d4c375202136ea4fb03d3570dffc5b123",
+        "pbf_bytes": 317528442,
+        "parquet_sha256": "2ad7f6b0f123bf8032cbb513254ef9093f390ea1abc49698609085e1fc56e315",
+        "status": "complete"
+      },
+      "north-caucasus-fed-district": {
+        "residential_buildings": 634781,
+        "invalid_geometry_or_floors": 142,
+        "buildings_with_assumed_one_floor": 538282,
+        "url": "https://download.geofabrik.de/russia/north-caucasus-fed-district-latest.osm.pbf",
+        "osm_timestamp": "2026-11-11T21:22:47Z",
+        "pbf_sha256": "5b2c55f35a35a79f3ce1371288ffee696a5dc4051facfbd2b015b6032f34a1db",
+        "pbf_bytes": 129590959,
+        "parquet_sha256": "aa222df3f7da93c1ab27aa465ddf1208068855084a72bb8b993e633a75e8557b",
+        "status": "complete"
+      },
+      "volga-fed-district": {
+        "residential_buildings": 1289790,
+        "invalid_geometry_or_floors": 479,
+        "buildings_with_assumed_one_floor": 979386,
+        "url": "https://download.geofabrik.de/russia/volga-fed-district-latest.osm.pbf",
+        "osm_timestamp": "2026-11-11T21:22:47Z",
+        "pbf_sha256": "fbd3f13c7f41c0725bb54d681dfe75027d5cec69ae3ab204f390e0a542e85bf3",
+        "pbf_bytes": 778106635,
+        "parquet_sha256": "7cfc5fbe18c807ad2aae5acf2d79389fe7c78220051be93eefc0dfbf83da059a",
+        "status": "complete"
+      },
+      "ural-fed-district": {
+        "residential_buildings": 482621,
+        "invalid_geometry_or_floors": 91,
+        "buildings_with_assumed_one_floor": 305132,
+        "url": "https://download.geofabrik.de/russia/ural-fed-district-latest.osm.pbf",
+        "osm_timestamp": "2026-11-11T21:22:47Z",
+        "pbf_sha256": "59727ec0b08a2abbcd2c69b5157a95225c8e492b580ac887261c856d275489c1",
+        "pbf_bytes": 397562992,
+        "parquet_sha256": "17e17cbe9d3420da8baffb38f5faf3ff0267e6f38180af55b7222b35c1e85044",
+        "status": "complete"
+      },
+      "siberian-fed-district": {
+        "residential_buildings": 812273,
+        "invalid_geometry_or_floors": 263,
+        "buildings_with_assumed_one_floor": 624355,
+        "url": "https://download.geofabrik.de/russia/siberian-fed-district-latest.osm.pbf",
+        "osm_timestamp": "2026-11-11T21:22:47Z",
+        "pbf_sha256": "7f5fc9b86febfbe1063ac430b378cf909e615a3132d08980a96204cfdf5609cc",
+        "pbf_bytes": 589940057,
+        "parquet_sha256": "eb94b67a427505a0000c04f13fadf06be6cae2fe4994f66deff95b8fe8a7578f",
+        "status": "complete"
+      },
+      "far-eastern-fed-district": {
+        "residential_buildings": 365088,
+        "invalid_geometry_or_floors": 32,
+        "buildings_with_assumed_one_floor": 321393,
+        "url": "https://download.geofabrik.de/russia/far-eastern-fed-district-latest.osm.pbf",
+        "osm_timestamp": "2026-11-11T21:22:47Z",
+        "pbf_sha256": "0c3f1f12b00cd9ad4a7a38bfb00a134f410667a31111a1d49f52e335d5cf8b74",
+        "pbf_bytes": 398304329,
+        "parquet_sha256": "070946a668c20e19a1b946524a8672d3ed0b572eede83b06b1806bbb50d9f5f5",
+        "status": "complete"
+      },
+      "crimean-fed-district": {
+        "residential_buildings": 65864,
+        "invalid_geometry_or_floors": 9,
+        "buildings_with_assumed_one_floor": 53862,
+        "url": "https://download.geofabrik.de/russia/crimean-fed-district-latest.osm.pbf",
+        "osm_timestamp": "2026-11-11T21:22:47Z",
+        "pbf_sha256": "df67e8d1137d9afed2e1012399b5db4d889f58d548c1913d655122b49858b26e",
+        "pbf_bytes": 40756137,
+        "parquet_sha256": "ffd3e2869bd3aba8eaca2ad4b7059dc13477e1b2d7c5269c00ab9c5a0cec35f1",
+        "status": "complete"
+      }
+    },
+    "residential_records_before_cross_extract_deduplication": 6443907
+  }
+}

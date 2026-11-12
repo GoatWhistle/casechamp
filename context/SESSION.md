@@ -1,36 +1,93 @@
 # Session state
 
-## Hackathon decision scenario proposal, 2026-11-11
+## Current closeout, 2026-11-12
 
-User requested remaining work for a compelling hackathon result, then supplied a
-consultation screenshot. [Source and exact replies](../brief/QA.md); speaker/date unknown.
-[Revised proposal and preserved user wording](../work/hackathon-decision-plan.md):
-regional access, disruption vulnerability and intervention effect; small-group scores
-are drill-down, not the main product. Define market/self contribution and comparable
-scenarios before implementation. Current edit_selection uses the open baseline.
-Proposal only; no product changes, model calls or new runtime checks.
-feat/map-first-ui HEAD cdb2c2e1108bde7ff37ab91f9d7907d05de2a897. Next if requested:
-fix metric/decision specification, then implement common experiment comparisons.
-Further user guidance: choose concrete trips before metrics; revenue is not transport
-quality, school access is an example. Exact wording and implications are preserved at
-the top of the decision plan. Keep route time/path availability explicit beside scores.
+Branch feat/transport-scenarios-update, base986ae0f. User authorized committing/pushing all.
+Completed compact traffic results, local minutes plus regional index, selected-road overlay,
+housing screening and consistent chat typography. [Checks/runtime](../work/synthetic-traffic/agent-integration.md).
+Izobilny false isolation reproduced: centroid attached to residential dead end; guarded
+at calculation layer and old ranking invalidated. [Cause/remaining representation limit](../work/closure-anchor-diagnosis/README.md).
+Do not rewrite historical answers. Verified441backendunit/49integration/498frontend; Ruff/mypy/build passed.
+Local APIs8007/8817 active with the guard. All199files staged and credential-pattern scan clean; publication next.
 
-## Agent capability review, 2026-11-11
 
-User: «изучи что уже умеет ии агент и что мы умеем считать».
-Reviewed working code, bundled analyst skills and numerical evidence. 93 focused tests
-passed; read-only API confirmed health, 82 regions and 180 markets. No paid model run.
-feat/map-first-ui HEAD cdb2c2e1108bde7ff37ab91f9d7907d05de2a897; product unchanged.
-[Capabilities, gaps, limits and next actions](../work/agent-capabilities-review.md).
+## Chat road focus, 2026-11-12
+
+User: «добавь ему в скилл возможность зума на участок графа например».
+Implemented and locally verified on feat/transport-scenarios-update, HEAD986ae0f.
+Existing present_atlas now highlights/zooms exact way IDs or resolved selections.
+[Contract, checks, runtime and remaining verify limitation](../work/chat-road-focus/README.md).
+Protected user instructions exceed SESSION budget and are preserved verbatim.
+
+## Traffic agent integration, 2026-11-12
+
+Implemented/verified on API8007/UI5187. [Runtime, checks and next actions](../work/synthetic-traffic/agent-integration.md).
+[State before compaction](../work/synthetic-traffic/session-before-agent-closeout.md).
+
+## Thinking dots, 2026-11-12
+
+User: «сделай лоадер прикольный из 3 точек как то перемешивающихся пока модель думает».
+Implemented/verified: [behavior, checks and screenshots](../work/screens/map-chat.md).
+
+## Chat starter examples, 2026-11-12
+
+User: «не ты просто туда вставь более крутые примеры».
+[Starter examples and checks](../work/screens/map-chat.md).
+
+## Synthetic traffic implementation, 2026-11-12
+
+User: «поищи есть ли такой датасет для всей рф посвежее. Иначе давай поудмаем как можно их эмулировать от жилых домов условно»
+User: «деладелайдддделай»; «ддделай»; «деайltkfq».
+[Implementation, source checkpoint, checks and limits](../work/synthetic-traffic/README.md).
+
+## Universal network improvement scope, 2026-11-12
+
+User: «вот нужно это всё подсвечивать».
+User: «вообще переносимость на все регионы».
+[Scope, source checkpoint and next implementation](../work/pogosyan-product-framing.md).
+
+Prior state, dates, source links and checks: [preserved session detail](../work/network-development/session-before-scope-compaction.md).
+
+## Disk inspection, 2026-11-12
+
+User: «посмотри что на компе занимает много места».
+
+User: «удали тендер хак. ПОчисти докер. Удали андроид эмулятор».
+
+User: «забери размер и сворачивание легенды. Название перенеси. Позиция чтения тоже забери елси не поправлено»
+
+## Regional candidate repair, 2026-11-12
+
+User: «фикси». Fixed oversized ClickHouse candidates parameters, empty-failure copy,
 
 ## Chat diagnostics and capital unbound fix, 2026-11-11
 
 User: «добавляй дебаг такого»; then reported Moscow–Petersburg unbound.
-Implemented; runtime, checks and results: [evidence](../work/chat-debug/README.md).
-Prior log inspection and full state: [archive](../work/chat-debug/context-before-compaction.md).
-Protected instructions exceed SESSION target; preserve them verbatim.
 
 ## Explicit user instructions
+
+### Road development corrections and publication, 2026-11-12
+
+> УБЕРИ СУКА УПОМИНАНИЯ МОДЕЛИ ЭТО ХАКАТОН. ОНО В СВОЕМ МИРЕ РАБОТАЕТ И НЕ ЗНАЕТ ОБ ЭТОМ И УПУЩЕНИЯХ СУКА
+
+> сделай меньше визуальной нагрузки и отображай только сразу целиком. Не надо смущать человека нулем
+
+> ну и выводи туда тогда сразу и метрику какую то кроме индекса. Локальную какую то и индекс региона
+
+> авантюрно...))
+
+> фикси всё это.
+
+> сука сделай размеры консистентными
+
+> не нужно это выделять так сильно. Действия оформи как то более входяще сюда а не так будто там конец ответа и пизда
+
+> этот переулок не может ничему мешать, он буквально улица с домами...
+
+> не исправляй ответ агента. Баги фикси и понимай что это было
+
+> доделай и закомить и запушь всё
+
 
 2026-11-06:
 
@@ -428,6 +485,32 @@ Approved plexus_accessibility.runs, results and frequencies in the same GitHub r
 > что продублировалось
 > Действия: 3 что блять, не должен он получать, вынеси это под капотом ему в инструмент, огромные данные должны без его участия пересчитываться
 
+### Traffic agent and map integration, 2026-11-12
+
+> дай агенту доступ к этому всему и дай юз кейс промпт какой то
+> визуалом сопровождай, везде отрисовывай. Красным цветом что агент делает
+> а почему мы опять считаем какую то ебланскую метрику часов. А не индекс
+> убери вообще их
+> выделяем только дороги
+> и почему это НАД ЧАТОМ И ВСЕГДА А НЕ ПОСЛЕ ПРОМПТА ИИ АГЕНТА ?
+> индекс и предложения по улучшения и сразу посчитанный эффект в чате и визуал на карте
+> новые участки пусть ядренно зеленым выделяет
+> которые предлагается добавить
+
+### Product framing for Pogosyan, 2026-11-12
+
+User: «подумай как адаптировать и что поменять чтоб это понравилось человеку который хочет мониторить связанность, трафик и тд. И его зовут погосян) ректор маи)»
+
+User: «думай максимально с его парадигмы»
+
+User: «что уже есть и что нам нужно чтобы закрыть эту хотелку»
+
+User: «да, но ведь потеря маршрута какая то слишком узкая задача. Нужно добавлять пути»
+
+User: «ну вообще надо продумать связанности. Какие то не сильно глобальные изменения и скрипт как их искать вообще. А если человек не в регионе а в паре хчоет. А если просто по всей рф. Но при это раскинуть трассу 10 полос между москвой и камчаткой нельзя)»
+
+User: «окей. Как мы можем эмулировать нагрузку ? чтоб считать разгрузку и тд ?»
+
 ## Current state
 
 [Archived completed implementation notes](../work/completed-session-notes-2026-11-11.md).
@@ -456,19 +539,7 @@ User: «Не прогноз про ну вот я перекрыл. Почему
 
 ## Frontend replacement, 2026-11-11
 
-
-
 User: «все что удалилось не пренеслось про рендер графа что могло сломаться кроме визуала».
-[Functional regression audit and Vite fix](../work/frontend-upstream-sync/functional-audit.md).
-
-
-[Scope, checks, schema, browser evidence and limits](../work/frontend-functional-merge/README.md).
-
-
-[Measurements, browser checks and limits](../work/map-hover-performance/README.md).
-
-
-[Profiles, tests and limits](../work/map-pan-performance/README.md).
 
 ## Combined agent evidence, 2026-11-11
 
@@ -499,7 +570,3 @@ User: «все что удалилось не пренеслось про рен
 ## Publication, 2026-11-11
 
 > запушь все что сделанотлокально в новую ветку
-
-New branch feat/transport-scenarios-update from cdb2c2e1108bde7ff37ab91f9d7907d05de2a897.
-Publishing all nonignored local changes, preserving excluded root HTML prototypes and secrets.
-Frontend verify and commit-hook backend unit tests run before push. Runtime restart remains separate.

@@ -1,4 +1,7 @@
 :root {
+  --agent-new-road: var(--green-electric);
+  --agent-new-road-outline: var(--green-600);
+  --agent-action: var(--status-danger);
   --map-ferry: var(--teal-600);
   color-scheme: light;
 

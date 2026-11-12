@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--space-8);
+  gap: var(--space-4);
 }
 .steps {
   color: var(--text-secondary);
@@ -14,4 +14,8 @@
 .action {
   font-size: var(--font-size-caption);
   color: var(--text-secondary);
+}
+
+.actions:empty {
+  display: none;
 }

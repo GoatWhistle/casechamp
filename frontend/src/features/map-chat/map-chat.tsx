@@ -1,4 +1,4 @@
-import { type ReactNode, useEffect, useId, useRef, useState } from "react"
+import { type ReactNode, useId, useState } from "react"
 import { useSearchParams } from "react-router"
 import { type ChatContext, chatSessionTitle } from "@/entities/chat"
 import { useRegion } from "@/entities/region"
@@ -6,14 +6,24 @@ import type { CalculationHandler } from "@/shared/api/chat-calculation"
 import type { MapCommandHandler } from "@/shared/api/chat-map"
 import { useTranslation } from "@/shared/i18n"
 import { Swap } from "@/shared/motion"
-import { Banner, Button, ChatComposer, Icon, ScrollArea, Tabs, Tooltip } from "@/shared/ui"
+import {
+  Banner,
+  Button,
+  ChatComposer,
+  Icon,
+  ScrollArea,
+  Tabs,
+  ThinkingDots,
+  Tooltip,
+} from "@/shared/ui"
 import { ownedResults } from "./calculation/owned-results"
 import { ChatAnswer } from "./chat-answer"
 import { chatErrorKey, chatStatusKey } from "./chat-copy"
 import { ChatEmpty } from "./chat-empty"
 import styles from "./map-chat.module.css"
+import { useChatScroll } from "./scroll/use-chat-scroll"
 import { ChatStorageNotice } from "./sessions/chat-storage-notice"
-import { useMapChat } from "./use-map-chat"
+import { type ChatEntry, useMapChat } from "./use-map-chat"
 
 export interface MapChatProps {
   readonly onSessionChange?: (() => void) | undefined
@@ -41,20 +51,8 @@ export function MapChat({
   const active = chat.sessions.find((session) => session.id === chat.sessionId)
   const threadTitle = (active ? chatSessionTitle(active) : "") || t("chat:new")
   const titleId = useId()
-  const scroll = useRef<HTMLDivElement>(null)
-  const follow = useRef(true)
   const tail = chat.messages.at(-1)
-  useEffect(() => {
-    const node = scroll.current
-    if (tail === undefined || !node) return
-    const sync = () => {
-      if (follow.current) node.scrollTop = node.scrollHeight
-    }
-    sync()
-    const observer = new ResizeObserver(sync)
-    for (const child of node.children) observer.observe(child)
-    return () => observer.disconnect()
-  }, [tail])
+  const { scroll, follow, scrollProps } = useChatScroll(tail)
   const startNew = () => {
     follow.current = true
     onSessionChange?.()
@@ -131,10 +129,7 @@ export function MapChat({
           ref={scroll}
           className={styles.messages}
           label={t("chat:history")}
-          onScroll={() => {
-            const node = scroll.current
-            if (node) follow.current = node.scrollHeight - node.scrollTop - node.clientHeight < 80
-          }}
+          {...scrollProps}
         >
           <Swap swapKey={chat.sessionId} as="div" className={styles.swap}>
             {chat.messages.length === 0 ? (
@@ -164,14 +159,9 @@ export function MapChat({
                 onMapCommand={onMapCommand}
               />
             ))}
-            {chat.messages.length &&
-            !chat.error &&
-            !tail?.calculations?.length &&
-            !tail?.stressTests?.length &&
-            !tail?.scenarios?.length &&
-            !tail?.analyses?.length ? (
+            {showChatStatus(tail, chat.busy, Boolean(chat.error)) ? (
               <p role="status" className={styles.status}>
-                <Icon name={statusIcon(chat.busy, Boolean(chat.error))} size="sm" />
+                {chat.busy ? <ThinkingDots /> : <Icon name="check" size="sm" />}
                 {t(chatStatusKey(chat.status))}
               </p>
             ) : null}
@@ -229,11 +219,20 @@ function regionLabel(
   return data?.id === id ? data.name : t("common:state.loading")
 }
 
-function statusIcon(busy: boolean, failed: boolean): "neutral" | "error" | "check" {
-  if (busy) return "neutral"
-  return failed ? "error" : "check"
-}
-
 function initialTab(params: URLSearchParams): "chat" | "scenario" {
   return params.has("analysis") || params.get("panel") === "scenario" ? "scenario" : "chat"
+}
+
+function hasResults(row: ChatEntry | undefined) {
+  return [
+    row?.calculations,
+    row?.stressTests,
+    row?.scenarios,
+    row?.analyses,
+    row?.trafficJobs,
+  ].some((items) => items?.length)
+}
+
+function showChatStatus(tail: ChatEntry | undefined, busy: boolean, failed: boolean) {
+  return Boolean(tail) && !failed && (busy || !hasResults(tail))
 }

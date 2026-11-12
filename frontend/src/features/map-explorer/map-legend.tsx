@@ -4,6 +4,8 @@ import { useMediaQuery } from "@/shared/hooks"
 import { type MessageKey, useFormatters, useTranslation } from "@/shared/i18n"
 import { Swap, useLatched, usePresence } from "@/shared/motion"
 import { Button, Disclosure, Popover, Switch } from "@/shared/ui"
+import { LegendPanel } from "./legend/legend-panel"
+import { TrafficKey } from "./legend/traffic-key"
 import styles from "./map-legend.module.css"
 import { formatThreshold, type MetricKey } from "./metric"
 import type { MetricScale } from "./scale"
@@ -36,20 +38,18 @@ export function MapLegend({ metric, scale, drawn, airportsFailed, children }: Ma
   const wide = useMediaQuery(WIDE)
   const body = (
     <>
+      <TrafficKey />
       <SymbolKey drawn={drawn} airportsFailed={airportsFailed} />
       <div className={styles.layers}>{children}</div>
     </>
   )
   return (
-    <figure className={styles.legend} aria-label={title}>
+    <LegendPanel title={title}>
       <Swap swapKey={metric} as="div" className={styles.key}>
-        <figcaption className={styles.title} aria-hidden="true">
-          {title}
-        </figcaption>
         <MetricRamp metric={metric} scale={scale} />
       </Swap>
       {wide ? body : <Disclosure title={t("map:legend.layers")}>{body}</Disclosure>}
-    </figure>
+    </LegendPanel>
   )
 }
 

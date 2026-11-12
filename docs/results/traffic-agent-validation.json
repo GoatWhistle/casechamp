@@ -1,0 +1,279 @@
+{
+  "status": "verified_locally",
+  "verified_at": "2026-11-12T10:00:23.977550+00:00",
+  "method": "synthetic_passenger_od_static_msa_hansen_v2",
+  "runtime_scope": "local synthetic demand with full regional Plexus road indices; fixed national normalization",
+  "job_id": "traffic-3b4f60842c8948ff84c1e3f5254acd4a",
+  "bounds": [
+    41.55,
+    43.8,
+    42.25,
+    44.95
+  ],
+  "demand_sha256": "bf59f7c5b67373552aa997431bc12a68dbb42e55adfc55315e37679027def666",
+  "od_pairs": 841,
+  "modeled_vehicles_per_hour": 8865.89934874898,
+  "housing": {
+    "allocated_population": 456783.0000000007,
+    "fallback_settlement_population": 75434.0,
+    "used_buildings": 14105,
+    "unused_buildings": 1,
+    "nearest_access_unverified": true,
+    "duplicates_removed": 0
+  },
+  "binding": {
+    "missing_or_outside_network_population": 344.0,
+    "settlements": 157,
+    "region": null
+  },
+  "source_checksums": {
+    "places.parquet": "3aafb4a15741dbb5b5b947878ab95d7dc70cb93478776f8a7c7189ca36337d19",
+    "nodes.parquet": "2ae6e4fc86c304b32115a45466ec3e18055a3c5752f4fca5cb952a66e9950ee3",
+    "edges.parquet": "a1767a226790746df52b7a2cafaf8e386b6de0645864a5f0aaec8f828ba702b0",
+    "housing.parquet": "4bb951b6386ced7a6c45ecb76d41626b5a8e260e1eec121fe3edf8483d9214d0"
+  },
+  "model_parameters": {
+    "daily_person_trips": 2.0,
+    "interzonal_share": 0.25,
+    "car_share": 0.5,
+    "car_occupancy": 1.5,
+    "hour_share": 0.1,
+    "half_life_hours": 1.0,
+    "max_trip_hours": 4.0
+  },
+  "baseline": {
+    "vehicle_hours": 8163.508213012245,
+    "unserved_vehicles": 0.0,
+    "overloaded_edges": 20,
+    "relative_gap": 0.0,
+    "converged": true
+  },
+  "indices": [
+    {
+      "region": "Карачаево-Черкесская Республика",
+      "value": 90.02131617735839,
+      "population": 469865,
+      "settlements": 148,
+      "normalization": 7897244.511692026
+    },
+    {
+      "region": "Ставропольский край",
+      "value": 99.12077775686153,
+      "population": 2907593,
+      "settlements": 760,
+      "normalization": 7897244.511692026
+    },
+    {
+      "region": "Краснодарский край",
+      "value": 93.4705327047467,
+      "population": 5838273,
+      "settlements": 1765,
+      "normalization": 7897244.511692026
+    }
+  ],
+  "alternatives": [
+    {
+      "id": "0",
+      "kind": "capacity",
+      "way_ids": [
+        301861394
+      ],
+      "length_km": 0.846564307808876,
+      "vehicle_hours_saved": 4.33385422243191,
+      "after": {
+        "vehicle_hours": 8159.174358789813,
+        "unserved_vehicles": 0.0,
+        "overloaded_edges": 18,
+        "relative_gap": 0.0,
+        "converged": true
+      },
+      "indices": [
+        {
+          "region": "Карачаево-Черкесская Республика",
+          "before": 90.02131617735839,
+          "after": 90.02131617735839,
+          "delta": 0.0,
+          "relative_percent": 0.0,
+          "population": 469865
+        },
+        {
+          "region": "Ставропольский край",
+          "before": 99.12077775686153,
+          "after": 99.12077775686153,
+          "delta": 0.0,
+          "relative_percent": 0.0,
+          "population": 2907593
+        },
+        {
+          "region": "Краснодарский край",
+          "before": 93.4705327047467,
+          "after": 93.4705327047467,
+          "delta": 0.0,
+          "relative_percent": 0.0,
+          "population": 5838273
+        }
+      ],
+      "road_names": [
+        "301861394"
+      ],
+      "map_edges": 810
+    },
+    {
+      "id": "1",
+      "kind": "speed",
+      "way_ids": [
+        235963363
+      ],
+      "length_km": 19.344530910253525,
+      "vehicle_hours_saved": 185.5272767552542,
+      "after": {
+        "vehicle_hours": 7977.98093625699,
+        "unserved_vehicles": 0.0,
+        "overloaded_edges": 20,
+        "relative_gap": 0.00011888438635402854,
+        "converged": true
+      },
+      "indices": [
+        {
+          "region": "Карачаево-Черкесская Республика",
+          "before": 90.02131617735839,
+          "after": 90.66835365252814,
+          "delta": 0.6470374751697534,
+          "relative_percent": 0.718760292167886,
+          "population": 469865
+        },
+        {
+          "region": "Ставропольский край",
+          "before": 99.12077775686153,
+          "after": 99.1630267255825,
+          "delta": 0.04224896872096906,
+          "relative_percent": 0.04262372600081221,
+          "population": 2907593
+        },
+        {
+          "region": "Краснодарский край",
+          "before": 93.4705327047467,
+          "after": 93.48229281876426,
+          "delta": 0.011760114017562273,
+          "relative_percent": 0.01258162725434886,
+          "population": 5838273
+        }
+      ],
+      "road_names": [
+        "«Кавказ»"
+      ],
+      "map_edges": 800
+    },
+    {
+      "id": "2",
+      "kind": "connection",
+      "way_ids": [],
+      "length_km": 1.799816069275208,
+      "vehicle_hours_saved": -0.027183425874682143,
+      "after": {
+        "vehicle_hours": 8163.535396438119,
+        "unserved_vehicles": 0.0,
+        "overloaded_edges": 20,
+        "relative_gap": 1.104660724594743e-06,
+        "converged": true
+      },
+      "indices": [
+        {
+          "region": "Карачаево-Черкесская Республика",
+          "before": 90.02131617735839,
+          "after": 90.02456271914323,
+          "delta": 0.003246541784847068,
+          "relative_percent": 0.003606414483492415,
+          "population": 469865
+        },
+        {
+          "region": "Ставропольский край",
+          "before": 99.12077775686153,
+          "after": 99.12215413120312,
+          "delta": 0.001376374341589326,
+          "relative_percent": 0.0013885830728366244,
+          "population": 2907593
+        },
+        {
+          "region": "Краснодарский край",
+          "before": 93.4705327047467,
+          "after": 93.47052787303075,
+          "delta": -4.831715955333493e-06,
+          "relative_percent": -5.169239780666857e-06,
+          "population": 5838273
+        }
+      ],
+      "road_names": [],
+      "map_edges": 802
+    }
+  ],
+  "checked_projects": [
+    {
+      "kind": "capacity",
+      "way_ids": [
+        301861394
+      ],
+      "screening_only": true,
+      "current_edge_demand_capacity_ratio": 1.157636629597868,
+      "review": "profile_and_engineering_assumptions"
+    },
+    {
+      "kind": "speed",
+      "way_ids": [
+        235963363
+      ],
+      "factor": 1.2,
+      "screening_only": true,
+      "current_edge_demand_capacity_ratio": 1.035093894261235,
+      "review": "profile_and_engineering_assumptions"
+    },
+    {
+      "kind": "connection",
+      "source_node": 829441,
+      "target_node": 737933,
+      "length_km": 1.799816069275208,
+      "speed_kmh": 40,
+      "length_basis": "1.2_times_geodesic_unreviewed_alignment",
+      "screening_only": true,
+      "review": "alignment_water_terrain_land_and_road_access_unverified",
+      "current_between_endpoint_minutes": 18.531704929153843,
+      "assumed_new_link_minutes": 2.699724103912812
+    }
+  ],
+  "tool_validation": {
+    "interface": "manage_calculation",
+    "event": "traffic",
+    "regions": 3,
+    "proposals": 3,
+    "reply_bytes": 19326,
+    "event_bytes": 22480,
+    "review_bytes": 22191,
+    "paid_model_called": false
+  },
+  "limits": [
+    "Clipped network omits external transit and induced demand",
+    "Population attraction proxy; no observed jobs or freight",
+    "Static assignment; no queue length, spillback or intersection controls",
+    "New links are straight endpoint sketches; terrain, water, land and costs unverified",
+    "Map shows up to 800 priority directed edges plus each project",
+    "Best checked alternative, not a global optimum"
+  ],
+  "demand_summary": {
+    "generated_vehicles_per_hour": 8865.89934874898,
+    "unavailable_destination_vehicles_per_hour": 4.383984584358375,
+    "population": 532217.0000000002
+  },
+  "observed_traffic": false,
+  "period_hours": 1,
+  "checks": {
+    "backend_unit": 425,
+    "backend_integration": 49,
+    "frontend_unit": 492,
+    "traffic_cli_unit": 22,
+    "ruff": "passed",
+    "mypy": "passed",
+    "frontend_rules": 36,
+    "frontend_build": "passed",
+    "paid_model_run": false
+  }
+}

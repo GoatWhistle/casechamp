@@ -127,6 +127,8 @@ speed assumption, stating that assumption rather than demanding individual IDs.
 The live ranking and final commentary appear in chat; do not send the user to another
 page. Best checked candidates are not proven global optima. Uniform-time sensitivity
 is a separate experiment, not the infrastructure effect.
+To show a ranked section on the map, load `present-atlas` and use
+`present_atlas(kind=road, way_ids=[candidate.way_id])` from that saved analysis.
 
 Report queued/running jobs as pending. Read `manage_calculation(kind=status)` for actual
 results without busy-polling. Load `economic-assessment` for monetary effects and

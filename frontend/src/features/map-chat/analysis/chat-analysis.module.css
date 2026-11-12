@@ -1,8 +1,8 @@
 .analysis {
   display: grid;
-  gap: var(--space-12);
+  gap: var(--space-8);
   min-inline-size: 0;
-  margin-block-start: var(--space-16);
+  margin-block-start: var(--space-8);
 }
 
 .note {
@@ -25,4 +25,13 @@
 .table td,
 .table th {
   padding: var(--space-8);
+}
+
+.analysis > strong {
+  font-size: inherit;
+  font-weight: var(--weight-semibold);
+}
+
+.analysis > p {
+  margin: 0;
 }

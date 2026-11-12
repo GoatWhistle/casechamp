@@ -11,8 +11,8 @@ import {
 } from "@/entities/chat"
 import { isApiError } from "@/shared/api"
 import type { MapCommandHandler } from "@/shared/api/chat-map"
-import { showStressView } from "@/shared/hooks/use-stress-view"
-import { streamStatus, updateChatRows } from "./chat-events"
+import { clearTrafficView } from "@/shared/hooks/use-traffic-view"
+import { applyMapEvent, streamStatus, updateChatRows } from "./chat-events"
 import { historyOf } from "./chat-history"
 
 export type { ChatEntry } from "@/entities/chat"
@@ -39,8 +39,12 @@ export function useMapChat(context: ChatContext, onMapCommand: MapCommandHandler
     const sessionId = session.id
     if (controllers.current.has(sessionId)) return
     const abort = new AbortController()
+    const request = {
+      ...body,
+      title_requested: !session.title && !previous.some((message) => message.role === "user"),
+    }
     controllers.current.set(sessionId, abort)
-    requests.current.set(sessionId, body)
+    requests.current.set(sessionId, request)
     const id = createChatId()
     update(sessionId, (current) => ({
       ...current,
@@ -73,22 +77,16 @@ export function useMapChat(context: ChatContext, onMapCommand: MapCommandHandler
     }))
     try {
       await mutation.mutateAsync({
-        body,
+        body: request,
         signal: abort.signal,
         onEvent: (event) => {
           if (abort.signal.aborted) return
-          if (event.type === "stress_test" && event.stress_test && activeId.current === sessionId)
-            showStressView({
-              showPoints: false,
-              jobId: event.stress_test.id,
-              impacts: [],
-              route: event.stress_route ?? null,
-              regions: event.stress_test.regions ?? [],
-            })
-          if (event.type === "map" && event.map && activeId.current === sessionId)
-            mapHandler.current(event.map)
+          applyMapEvent(event, activeId.current === sessionId, mapHandler.current)
           update(sessionId, (current) => ({
             ...current,
+            ...(event.type === "title" && request.title_requested && !current.title
+              ? { title: event.text?.trim() ?? "" }
+              : {}),
             status: streamStatus(current.status, event),
             messages: updateChatRows(current.messages, id, event),
           }))
@@ -148,8 +146,14 @@ export function useMapChat(context: ChatContext, onMapCommand: MapCommandHandler
     error: session.error,
     sessionId: session.id,
     sessions: archive.sessions,
-    selectSession: archive.select,
-    newSession: archive.create,
+    selectSession: (id: string) => {
+      clearTrafficView()
+      archive.select(id)
+    },
+    newSession: () => {
+      clearTrafficView()
+      archive.create()
+    },
     deleteSession: (id: string) => {
       controllers.current.get(id)?.abort()
       requests.current.delete(id)

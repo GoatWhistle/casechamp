@@ -78,7 +78,6 @@ export function useOsmMap({
   const reduced = useReducedMotion()
   const state = useRef({ atlas, stepOf, selectedId, command, onSelect, onHover, reduced })
   state.current = { atlas, stepOf, selectedId, command, onSelect, onHover, reduced }
-
   const duration = useCallback(
     (instant?: boolean, command = false) =>
       instant || state.current.reduced
@@ -115,7 +114,8 @@ export function useOsmMap({
       const current = state.current
       const action = current.command !== appliedCommand.current ? current.command : undefined
       appliedCommand.current = current.command
-      if (!action && current.command?.action === "focus_settlement") return
+      if (!action && ["focus_settlement", "focus_road"].includes(current.command?.action ?? ""))
+        return
       aimCamera(
         map,
         current.atlas,

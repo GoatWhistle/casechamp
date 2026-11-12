@@ -4,6 +4,7 @@ export function ownedResults(messages: readonly ChatEntry[], index: number): Cha
   const message = messages[index]
   if (!message) throw new Error("Missing chat message")
   const previous = messages.slice(0, index)
+  const traffic = new Set(previous.flatMap((row) => row.trafficJobs?.map((job) => job.id) ?? []))
   const stress = new Set(previous.flatMap((row) => row.stressTests?.map((job) => job.id) ?? []))
   const analyses = new Set(previous.flatMap((row) => row.analyses?.map((job) => job.id) ?? []))
   const scenarios = new Set(
@@ -14,6 +15,7 @@ export function ownedResults(messages: readonly ChatEntry[], index: number): Cha
   )
   return {
     ...message,
+    trafficJobs: message.trafficJobs?.filter((job) => !traffic.has(job.id)) ?? [],
     stressTests: message.stressTests?.filter((job) => !stress.has(job.id)) ?? [],
     analyses: message.analyses?.filter((job) => !analyses.has(job.id)) ?? [],
     calculations:

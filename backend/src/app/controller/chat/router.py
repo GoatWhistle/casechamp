@@ -17,6 +17,7 @@ from app.usecase.chat_calculation_review import CalculationReview
 from app.usecase.chat_map import ChatMapCommand
 from app.usecase.road_corridor import CorridorCalculation
 from app.usecase.road_stress import StressJob, StressRouteComparison
+from app.usecase.traffic import TrafficJob
 
 
 class ChatMessageInput(BaseModel):
@@ -37,6 +38,7 @@ class ChatContextInput(BaseModel):
 class CalculationReviewInput(BaseModel):
     scenario_ids: list[str] = Field(default_factory=list, max_length=12)
     stress_ids: list[str] = Field(default_factory=list, max_length=12)
+    traffic_ids: list[str] = Field(default_factory=list, max_length=12)
 
 
 class ChatInput(BaseModel):
@@ -45,10 +47,11 @@ class ChatInput(BaseModel):
     context: ChatContextInput = Field(default_factory=ChatContextInput)
     analysis_id: str | None = Field(default=None, min_length=1, max_length=128)
     calculation_review: CalculationReviewInput | None = None
+    title_requested: bool = False
 
 
 class ChatStreamEvent(BaseModel):
-    type: Literal["status", "delta", "done", "error", "table", "chart", "map", "calculation", "analysis", "stress_test", "scenario"]
+    type: Literal["status", "delta", "done", "error", "table", "chart", "map", "calculation", "analysis", "stress_test", "scenario", "title", "traffic"]
     text: str = ""
     code: str = ""
     table: ChatTable | None = None
@@ -58,6 +61,7 @@ class ChatStreamEvent(BaseModel):
     stress_route: StressRouteComparison | None = None
     stress_test: StressJob | None = None
     calculation: CorridorCalculation | None = None
+    traffic: TrafficJob | None = None
     analysis: AnalysisResponse | None = None
 
 
@@ -66,7 +70,7 @@ def build_chat_router(chat: Chat) -> APIRouter:
 
     @router.post("/chat/calculation-tables", response_model=list[ChatTable])
     def calculation_tables(body: CalculationReviewInput) -> list[ChatTable]:
-        return chat.comparison_tables(CalculationReview(tuple(body.scenario_ids), tuple(body.stress_ids)))
+        return chat.comparison_tables(CalculationReview(tuple(body.scenario_ids), tuple(body.stress_ids), tuple(body.traffic_ids)))
 
     @router.post("/chat/calculation-review", response_model=ChatStreamEvent)
     @router.post(
@@ -97,8 +101,9 @@ def build_chat_router(chat: Chat) -> APIRouter:
             ),
             body.analysis_id,
             CalculationReview(tuple(body.calculation_review.scenario_ids),
-                              tuple(body.calculation_review.stress_ids))
+                              tuple(body.calculation_review.stress_ids), tuple(body.calculation_review.traffic_ids))
             if body.calculation_review else None,
+            title_requested=body.title_requested,
         )
 
         async def events() -> AsyncIterator[str]:

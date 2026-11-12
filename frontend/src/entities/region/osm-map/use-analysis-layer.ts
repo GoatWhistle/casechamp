@@ -24,7 +24,7 @@ export function useAnalysisLayer(
     const detail = overlay?.detail
     const data = analysisFeatures(detail)
     const style = getComputedStyle(map.getContainer())
-    const color = style.getPropertyValue("--action-primary").trim()
+    const color = style.getPropertyValue("--agent-action").trim()
     const way = String(detail?.result.candidate.way_id ?? "")
     const fresh = way !== "" && map.getContainer().dataset.analysisWay !== way
     if (!map.getSource(SOURCE)) {
@@ -47,7 +47,7 @@ export function useAnalysisLayer(
             "case",
             ["get", "isolated"],
             style.getPropertyValue("--status-danger").trim(),
-            style.getPropertyValue("--action-primary").trim(),
+            style.getPropertyValue("--agent-action").trim(),
           ],
           "circle-stroke-width": 1,
           "circle-stroke-color": style.getPropertyValue("--surface-base").trim(),

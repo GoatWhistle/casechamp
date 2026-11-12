@@ -1,7 +1,7 @@
 import hashlib
 import json
 from concurrent.futures import Future
-from dataclasses import asdict, replace
+from dataclasses import replace
 from threading import Event, RLock
 from time import monotonic
 from uuid import uuid4
@@ -9,6 +9,7 @@ from uuid import uuid4
 from app.adapter.log.stdlib import StdlibLogger
 from app.adapter.road_analysis.evaluation import RoadEvaluation
 from app.adapter.road_analysis.screening import CandidateScreening
+from app.adapter.road_graph.attachment_audit import ATTACHMENT_AUDIT_VERSION
 from app.adapter.road_graph.jobs import RoadJobs
 from app.domain.errors import InvalidQuery
 from app.usecase.dto import BoundaryShape
@@ -41,13 +42,22 @@ class AnalysisJobs:
             self.stops[job.id] = Event()
 
     def fingerprint(self, boundary: BoundaryShape) -> str:
-        source = self.roads.cache.path(boundary.id, "analysis-v1").stem
-        return hashlib.sha256(
-            (source + json.dumps(asdict(boundary), sort_keys=True)).encode()
-        ).hexdigest()
+        source = self.roads.cache.path(boundary.id, "analysis-v1").stem + ATTACHMENT_AUDIT_VERSION
+        shape = {
+            "id": str(boundary.id),
+            "name": boundary.name,
+            "bounds": [float(value) for value in boundary.bounds],
+            "polygons": [
+                [[[float(x), float(y)] for x, y in ring] for ring in polygon]
+                for polygon in boundary.polygons
+            ],
+        }
+        return hashlib.sha256((source + json.dumps(shape, sort_keys=True)).encode()).hexdigest()
 
     def view(self, job: AnalysisJob) -> AnalysisJob:
         checked = len(job.results) + len(job.failures)
+        if not job.compatible:
+            return replace(job, candidates=[], results=[])
         return replace(job, candidates=job.candidates[checked : job.batch_target])
 
     def get(self, analysis_id: str) -> AnalysisJob:
@@ -64,7 +74,7 @@ class AnalysisJobs:
         fingerprint = self.fingerprint(boundary)
         with self.lock:
             for job in self.jobs.values():
-                if (job.region_id, job.mode, job.percent, job.fingerprint) == (
+                if job.compatible and (job.region_id, job.mode, job.percent, job.fingerprint) == (
                     boundary.id,
                     mode,
                     percent,
@@ -115,6 +125,8 @@ class AnalysisJobs:
 
     def detail(self, analysis_id: str, way_id: int) -> AnalysisDetail:
         job = self.get(analysis_id)
+        if not job.compatible:
+            raise InvalidQuery("Analysis sources or attachment validation have changed")
         if not any(r.candidate.way_id == way_id for r in job.results):
             raise InvalidQuery("Road has no verified result in this analysis")
         return self.store.detail(analysis_id, way_id)
@@ -186,7 +198,9 @@ class AnalysisJobs:
                             job,
                             failures=[
                                 *job.failures,
-                                AnalysisFailure(candidate.way_id, "calculation_failed"),
+                                AnalysisFailure(
+                                    candidate.way_id, getattr(error, "code", "calculation_failed")
+                                ),
                             ],
                         )
                     )

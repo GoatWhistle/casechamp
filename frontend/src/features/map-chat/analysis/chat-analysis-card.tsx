@@ -7,6 +7,10 @@ import { Banner, Button, ChatMessage, Meter } from "@/shared/ui"
 import { chatErrorKey } from "../chat-copy"
 import styles from "./chat-analysis.module.css"
 
+function failureKey(job: AnalysisJob) {
+  return job.results.length ? "analysis:failed" : "analysis:failedEmpty"
+}
+
 export function ChatAnalysisCard({
   analysis,
   commentary,
@@ -44,7 +48,7 @@ export function ChatAnalysisCard({
     cancelling: t("analysis:cancelling"),
     paused: t("analysis:batchComplete"),
     completed: t("analysis:complete"),
-    failed: t("analysis:failed"),
+    failed: t(failureKey(job)),
     cancelled: t("analysis:cancelled"),
     interrupted: t("analysis:interrupted"),
   }

@@ -13,16 +13,17 @@ ENV UV_COMPILE_BYTECODE=1 \
     PATH=/opt/venv/bin:$PATH \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1
-WORKDIR /srv
+WORKDIR /srv/backend
 RUN --mount=from=uv,source=/uv,target=/usr/local/bin/uv \
     --mount=type=cache,id=uv,target=/root/.cache/uv \
-    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=backend/pyproject.toml,target=pyproject.toml \
+    --mount=type=bind,source=backend/uv.lock,target=uv.lock \
+    --mount=type=bind,source=etl,target=/srv/etl \
     uv sync --locked --no-install-project --no-default-groups
 
 FROM base
-ENV PYTHONPATH=/srv/src
-COPY src ./src
+ENV PYTHONPATH=/srv/backend/src
+COPY backend/src ./src
 RUN mkdir -p /cache/scenario-cache /cache/scenario-results && chown -R app:app /cache
 USER app
 EXPOSE 8000

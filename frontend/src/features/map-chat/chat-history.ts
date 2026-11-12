@@ -2,6 +2,7 @@ import type { ChatEntry } from "./use-map-chat"
 
 export function historyContent(row: ChatEntry): string {
   if (
+    !row.trafficJobs?.length &&
     !row.scenarios?.length &&
     !row.stressTests?.length &&
     !row.tables.length &&
@@ -11,6 +12,7 @@ export function historyContent(row: ChatEntry): string {
   )
     return row.content.slice(0, 12000)
   const context = {
+    traffic_jobs: row.trafficJobs?.map(({ id, scope }) => ({ id, scope })),
     scenarios: row.scenarios,
     stress_routes: Object.entries(row.stressRoutes ?? {}).map(([job_id, route]) => ({
       job_id,
@@ -32,7 +34,10 @@ export function historyContent(row: ChatEntry): string {
     commentaries: Object.values(row.commentaries ?? {})
       .filter((value) => value.complete)
       .map((value) => value.text.slice(0, 2000)),
-    map_commands: row.mapCommands,
+    map_commands: row.mapCommands.map(({ road, ...command }) => ({
+      ...command,
+      ...(road ? { road: { names: road.names, length_km: road.length_km } } : {}),
+    })),
     calculations: row.calculations?.map((item) => ({
       corridor_id: item.corridor.id,
       job_ids: item.job_ids,
@@ -55,7 +60,8 @@ export function historyOf(messages: ChatEntry[]) {
           row.calculations?.length ||
           row.analyses?.length ||
           row.stressTests?.length ||
-          row.scenarios?.length),
+          row.scenarios?.length ||
+          row.trafficJobs?.length),
     )
     .slice(-12)
     .map((row) => ({ role: row.role, content: historyContent(row) }))

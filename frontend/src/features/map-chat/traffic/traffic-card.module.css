@@ -1,0 +1,12 @@
+.card {
+  display: grid;
+  gap: var(--space-12);
+  padding-block: var(--space-12);
+  border-block-start: var(--hairline) solid var(--border-subtle);
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-12);
+}

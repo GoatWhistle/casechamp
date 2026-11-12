@@ -15,6 +15,7 @@ from app.usecase.road_corridor import RoadCorridors
 from app.usecase.road_graph import RoadGraph
 from app.usecase.road_stress import StressPort
 from app.usecase.sensitivity import AccessibilitySensitivity
+from app.usecase.traffic import TrafficPort
 
 
 class CalculationTools:
@@ -25,7 +26,9 @@ class CalculationTools:
         analysis: RoadAnalysis | None = None,
         corridors: RoadCorridors | None = None,
         stress: StressPort | None = None,
+        traffic: TrafficPort | None = None,
     ) -> None:
+        self._traffic = traffic
         self._stress = stress
         self._sensitivity = sensitivity
         self._roads = roads
@@ -36,13 +39,17 @@ class CalculationTools:
         if self._stress is not None:
             StressTools(self._stress, self._corridors, self._roads).register(agent)
         NetworkSearch(self._roads, self._corridors).register(agent)
-        NetworkScenarios(self._roads, self._corridors, self._analysis, self._stress).register(agent)
-        NetworkJobs(self._roads, self._analysis, self._corridors, self._stress).register(agent)
+        NetworkScenarios(self._roads, self._corridors, self._analysis, self._stress, self._traffic).register(agent)
+        NetworkJobs(self._roads, self._analysis, self._corridors, self._stress, self._traffic).register(agent)
 
     def calculation_capabilities(self, ctx: RunContext[ChatRun]) -> str:
         model = self._roads.model_info() if self._roads else None
         return json.dumps(
             {
+                "road_development": {"available": self._traffic is not None,
+                    "calculate": "calculate_scenario(kind=traffic_development)",
+                    "data": "manage_calculation(kind=traffic_data)",
+                    "scope": "bounded housing demand or explicit pair, with map before/after"},
                 "settlement_connectivity": {
                     "available": self._corridors is not None,
                     "calculate": "calculate_scenario(kind=connectivity)",

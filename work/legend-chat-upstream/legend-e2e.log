@@ -1,0 +1,13 @@
+
+Running 6 tests using 1 worker
+
+(node:42462) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › e2e/map-legend.spec.ts:5:1 › legend collapses to a round control and restores focus and saved size (17.4s)
+  ✓  2 [chromium] › e2e/map-legend.spec.ts:38:1 › legend resizes in either direction with pointer and keyboard (8.7s)
+  ✓  3 [chromium] › e2e/map-legend.spec.ts:70:1 › legend remains operable with reduced motion and blocked storage (6.2s)
+  ✓  4 [chromium] › e2e/map-legend.spec.ts:98:1 › legend grows and shrinks diagonally while its lower-left corner stays fixed (9.1s)
+  ✓  5 [chromium] › e2e/map-legend.spec.ts:161:1 › legend corner supports keyboard resizing, cancellation and automatic size reset (4.8s)
+  ✓  6 [chromium] › e2e/map-legend.spec.ts:199:1 › legend corner clamps dimensions to the viewport and resets on double click (6.4s)
+
+  6 passed (58.8s)

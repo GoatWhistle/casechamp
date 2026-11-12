@@ -1,4 +1,5 @@
 :root {
+  --filter-agent-new-road: drop-shadow(0 0 1px var(--agent-new-road-outline));
   --layer-raised: 1;
   --layer-sticky: 10;
   --layer-popover: 40;

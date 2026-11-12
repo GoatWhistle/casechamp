@@ -131,3 +131,4 @@ export { EmptyState, type EmptyStateProps } from "./states/empty-state/empty-sta
 export { ErrorState, type ErrorStateProps } from "./states/error-state/error-state"
 export { Skeleton, type SkeletonProps, type SkeletonShape } from "./states/skeleton/skeleton"
 export { Spinner, type SpinnerProps } from "./states/spinner/spinner"
+export { ThinkingDots } from "./states/thinking-dots/thinking-dots"

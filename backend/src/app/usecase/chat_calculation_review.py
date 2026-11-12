@@ -9,18 +9,22 @@ from app.usecase.closure_assessment import closure_indices, closure_traffic, ind
 from app.usecase.road_corridor import RoadCorridors
 from app.usecase.road_graph import RoadGraph, RoadJob
 from app.usecase.road_stress import StressPort, StressSummary
+from app.usecase.traffic import TrafficPort
+from app.usecase.traffic_presentation import traffic_brief
 
 
 @dataclass(frozen=True)
 class CalculationReview:
     scenario_ids: tuple[str, ...] = ()
     stress_ids: tuple[str, ...] = ()
+    traffic_ids: tuple[str, ...] = ()
 
 
 class CalculationReviews:
     def __init__(self, roads: RoadGraph | None, stress: StressPort | None,
-                 corridors: RoadCorridors | None = None) -> None:
+                 corridors: RoadCorridors | None = None, traffic: TrafficPort | None = None) -> None:
         self.roads, self.stress, self.corridors = roads, stress, corridors
+        self.traffic = traffic
 
     def tables(self, request: CalculationReview) -> list[ChatTable]:
         scenarios = [key for key in request.scenario_ids
@@ -31,6 +35,13 @@ class CalculationReviews:
 
     def prompt(self, request: CalculationReview) -> str:
         rows: list[dict[str, object]] = []
+        for key in dict.fromkeys(request.traffic_ids):
+            if self.traffic is None:
+                raise DataUnavailable("Traffic results unavailable")
+            traffic_job = self.traffic.get(key)
+            self.ready(traffic_job.status)
+            traffic_result = traffic_brief(traffic_job)
+            rows.append({"kind": "road_development", "result": traffic_result if traffic_job.status == "completed" else None})
         combined_ids = {job.id for key in request.stress_ids
                         for job in closure_indices(self.roads, self.stress.get(key))} if self.stress else set()
         for key in dict.fromkeys(request.scenario_ids):
@@ -92,6 +103,8 @@ class CalculationReviews:
             raise InvalidQuery("No completed results to interpret")
         return (
             "The background calculation has finished. Write a concise Russian Markdown answer "
+            "For road development, lead with average local trip minutes before/after and the regional index effect, then identify the specific road. Present the useful improvements. The application already shows the complete comparison. "
+            "Keep the interpretation short and focused on the transport decision. Explain methods and data preparation when the user explicitly asks about them. "
             "directly to the user: what changed, where it matters most and what this means for "
             "businesses and people. Read indices together with road_impact and consequences: use named origin-destination "
             "examples with before/after minutes, lost nearby links and residents exposed to a "

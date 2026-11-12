@@ -4,6 +4,7 @@ import { isChatCalculation } from "@/shared/api/chat-calculation"
 import { isChatMapCommand } from "@/shared/api/chat-map"
 import { isChatScenario } from "@/shared/api/chat-scenario"
 import { isStressJob, isStressRoutes } from "@/shared/api/road-stress"
+import { isTrafficJob } from "@/shared/api/traffic"
 import type { AnalysisCommentary, ChatEntry, ChatSession } from "./chat-session"
 
 const record = (value: unknown): value is Record<string, unknown> =>
@@ -33,6 +34,7 @@ function isEntry(value: unknown): value is ChatEntry {
     array(value.charts, isChatChart) &&
     array(value.mapCommands, isChatMapCommand)
   const calculations =
+    optionalArray(value.trafficJobs, isTrafficJob) &&
     optionalArray(value.stressTests, isStressJob) &&
     isStressRoutes(value.stressRoutes) &&
     optionalArray(value.analyses, isChatAnalysis) &&
@@ -59,6 +61,7 @@ export function isChatSession(value: unknown): value is ChatSession {
     value.version === 1 &&
     typeof value.id === "string" &&
     value.id.length > 0 &&
+    (value.title === undefined || (text(value.title) && String(value.title).length <= 80)) &&
     typeof value.createdAt === "number" &&
     Number.isFinite(new Date(value.createdAt).getTime()) &&
     typeof value.updatedAt === "number" &&

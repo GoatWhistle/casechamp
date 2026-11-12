@@ -706,6 +706,58 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/traffic-jobs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Recent */
+        get: operations["recent_api_v1_traffic_jobs_get"];
+        put?: never;
+        /** Submit */
+        post: operations["submit_api_v1_traffic_jobs_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/traffic-jobs/{job_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get */
+        get: operations["get_api_v1_traffic_jobs__job_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/traffic-jobs/{job_id}/cancel": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Cancel */
+        post: operations["cancel_api_v1_traffic_jobs__job_id__cancel_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -981,6 +1033,8 @@ export interface components {
             scenario_ids?: string[];
             /** Stress Ids */
             stress_ids?: string[];
+            /** Traffic Ids */
+            traffic_ids?: string[];
         };
         /** Candidate */
         Candidate: {
@@ -1053,14 +1107,20 @@ export interface components {
             /** Analysis Id */
             analysis_id?: string | null;
             calculation_review?: components["schemas"]["CalculationReviewInput"] | null;
+            /**
+             * Title Requested
+             * @default false
+             */
+            title_requested: boolean;
         };
         /** ChatMapCommand */
         ChatMapCommand: {
             /** Action */
-            action: ("focus" | "reset" | "zoom_in" | "zoom_out") | "focus_settlement";
+            action: ("focus" | "reset" | "zoom_in" | "zoom_out") | ("focus_settlement" | "focus_road");
             /** Region Ids */
             region_ids: string[];
             settlement?: components["schemas"]["SettlementMapTarget"] | null;
+            road?: components["schemas"]["RoadGeometry"] | null;
         };
         /** ChatMessageInput */
         ChatMessageInput: {
@@ -1078,7 +1138,7 @@ export interface components {
              * Type
              * @enum {string}
              */
-            type: "status" | "delta" | "done" | "error" | "table" | "chart" | "map" | "calculation" | "analysis" | "stress_test" | "scenario";
+            type: "status" | "delta" | "done" | "error" | "table" | "chart" | "map" | "calculation" | "analysis" | "stress_test" | "scenario" | "title" | "traffic";
             /**
              * Text
              * @default
@@ -1096,6 +1156,7 @@ export interface components {
             stress_route?: components["schemas"]["StressRouteComparison"] | null;
             stress_test?: components["schemas"]["StressJob"] | null;
             calculation?: components["schemas"]["CorridorCalculation"] | null;
+            traffic?: components["schemas"]["TrafficJob"] | null;
             analysis?: components["schemas"]["AnalysisResponse"] | null;
         };
         /** ChatTable */
@@ -2471,6 +2532,215 @@ export interface components {
             max_delay_minutes: number;
             /** Affected Regions */
             affected_regions: number;
+        };
+        /** TrafficAlternative */
+        TrafficAlternative: {
+            /** Id */
+            id: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "capacity" | "speed" | "connection";
+            /** Way Ids */
+            way_ids: number[];
+            /** Length Km */
+            length_km: number;
+            /** Vehicle Hours Saved */
+            vehicle_hours_saved: number | null;
+            after: components["schemas"]["TrafficMetrics"];
+            /** Roads */
+            roads: components["schemas"]["TrafficRoad"][];
+            /** Indices */
+            indices?: components["schemas"]["TrafficIndexChange"][];
+            /** Road Names */
+            road_names?: string[];
+            /** Housing Clearance */
+            housing_clearance?: boolean | null;
+        };
+        /** TrafficIndexChange */
+        TrafficIndexChange: {
+            /** Region */
+            region: string;
+            /** Before */
+            before: number;
+            /** After */
+            after: number;
+            /** Delta */
+            delta: number;
+            /** Relative Percent */
+            relative_percent: number | null;
+            /** Population */
+            population: number;
+        };
+        /** TrafficIndexValue */
+        TrafficIndexValue: {
+            /** Region */
+            region: string;
+            /** Value */
+            value: number;
+            /** Population */
+            population: number;
+            /** Settlements */
+            settlements: number;
+            /** Normalization */
+            normalization: number;
+        };
+        /** TrafficInput */
+        TrafficInput: {
+            /** Places */
+            places?: string[];
+            /**
+             * Region
+             * @default
+             */
+            region: string;
+            /** Bounds */
+            bounds?: number[];
+            /**
+             * Demand Multiplier
+             * @default 1
+             */
+            demand_multiplier: number;
+            /**
+             * Pair Flow
+             * @default 1000
+             */
+            pair_flow: number;
+            /**
+             * Max Projects
+             * @default 3
+             */
+            max_projects: number;
+        };
+        /** TrafficJob */
+        TrafficJob: {
+            /** Id */
+            id: string;
+            scope: components["schemas"]["TrafficScope"];
+            /**
+             * Status
+             * @default queued
+             * @enum {string}
+             */
+            status: "queued" | "running" | "completed" | "failed" | "cancelled";
+            /**
+             * Stage
+             * @default queued
+             */
+            stage: string;
+            /**
+             * Completed
+             * @default 0
+             */
+            completed: number;
+            /**
+             * Total
+             * @default 1
+             */
+            total: number;
+            /** Bounds */
+            bounds?: number[];
+            /** Zones */
+            zones?: components["schemas"]["TrafficZone"][];
+            baseline?: components["schemas"]["TrafficMetrics"] | null;
+            /** Roads */
+            roads?: components["schemas"]["TrafficRoad"][];
+            /** Alternatives */
+            alternatives?: components["schemas"]["TrafficAlternative"][];
+            /** Indices */
+            indices?: components["schemas"]["TrafficIndexValue"][];
+            /**
+             * Provenance
+             * @default {}
+             */
+            provenance: string;
+            /**
+             * Error
+             * @default
+             */
+            error: string;
+            /**
+             * Version
+             * @default synthetic_passenger_od_static_msa_hansen_v2
+             */
+            version: string;
+        };
+        /** TrafficMetrics */
+        TrafficMetrics: {
+            /** Vehicle Hours */
+            vehicle_hours: number;
+            /** Unserved Vehicles */
+            unserved_vehicles: number;
+            /** Overloaded Edges */
+            overloaded_edges: number;
+            /** Relative Gap */
+            relative_gap: number;
+            /** Converged */
+            converged: boolean;
+            /** Mean Trip Minutes */
+            mean_trip_minutes?: number | null;
+        };
+        /** TrafficRoad */
+        TrafficRoad: {
+            /** Way Id */
+            way_id: number;
+            /** Coordinates */
+            coordinates: number[][];
+            /** Flow Before */
+            flow_before: number;
+            /** Flow After */
+            flow_after: number;
+            /** Ratio Before */
+            ratio_before: number | null;
+            /** Ratio After */
+            ratio_after: number;
+            /**
+             * Project
+             * @default false
+             */
+            project: boolean;
+            /**
+             * New Link
+             * @default false
+             */
+            new_link: boolean;
+        };
+        /** TrafficScope */
+        TrafficScope: {
+            /** Places */
+            places?: string[];
+            /**
+             * Region
+             * @default
+             */
+            region: string;
+            /** Bounds */
+            bounds?: number[];
+            /**
+             * Demand Multiplier
+             * @default 1
+             */
+            demand_multiplier: number;
+            /**
+             * Pair Flow
+             * @default 1000
+             */
+            pair_flow: number;
+            /**
+             * Max Projects
+             * @default 3
+             */
+            max_projects: number;
+        };
+        /** TrafficZone */
+        TrafficZone: {
+            /** Longitude */
+            longitude: number;
+            /** Latitude */
+            latitude: number;
+            /** Population */
+            population: number;
         };
         /** TransportLink */
         TransportLink: {
@@ -4121,6 +4391,121 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["StressRouteComparison"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    recent_api_v1_traffic_jobs_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TrafficJob"][];
+                };
+            };
+        };
+    };
+    submit_api_v1_traffic_jobs_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TrafficInput"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TrafficJob"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_api_v1_traffic_jobs__job_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TrafficJob"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    cancel_api_v1_traffic_jobs__job_id__cancel_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                job_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TrafficJob"];
                 };
             };
             /** @description Validation Error */

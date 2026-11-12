@@ -1,6 +1,6 @@
 ---
 name: present-atlas
-description: Present rankings, charts or map focus for regions and settlements using verified atlas data.
+description: Present rankings, charts or map focus for regions, settlements and road graph sections using verified data.
 ---
 
 # Present atlas evidence
@@ -18,9 +18,15 @@ or `query_atlas(kind=settlements)`, then use `present_atlas(kind=settlement, set
 Use region context to distinguish namesakes; ask only if multiple choices remain.
 The server reads coordinates from storage. Do not supply or invent coordinates.
 Settlement focus zooms to the point, labels it and selects its parent region.
-This camera tool does not accept arbitrary coordinates or route geometry.
-Calculation cards can separately select their own road geometry. Claim a map action
-only after its tool succeeds.
+For a road or graph section, use `present_atlas(kind=road, way_ids=[...])` with exact
+IDs from the ranking, viewport or selected map context. For a resolved corridor or
+bridge, pass `selection_ids=[...]` from `find_transport` instead. The server loads
+the geometry, highlights the section and fits the camera to its bounds. Showing a
+road requires no new scenario calculation. For “show that lane”, reuse the ranked
+candidate's way_id so the camera shows the checked section, not the whole street.
+If its ID is missing from history, read the saved analysis with `manage_calculation`
+or resolve the requested road with `find_transport`; distinguish namesakes by place.
+Coordinates come from storage. Claim a map action only after its tool succeeds.
 
 Tables, charts, calculation cards and road-analysis rankings appear in chat. Describe
 the main conclusion rather than directing users to another page. Pending calculations

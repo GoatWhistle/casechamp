@@ -62,6 +62,7 @@ def calculate_connectivity(
     snapped = [attachments.get(p.id, (-1, 0.0)) for p in places]
     roads.delta.base.prepare()
     baseline = roads.delta.base.graph
+    data.attachment_audit.validate(closed_way_ids)
     changed = baseline
     indices: dict[int, int] = {}
     if closed_way_ids:

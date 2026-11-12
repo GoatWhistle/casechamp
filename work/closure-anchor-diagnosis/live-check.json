@@ -1,0 +1,8 @@
+{
+  "ranking_compatible": false,
+  "ranking_results": 0,
+  "closure_error": {
+    "code": "settlement_attachment_conflict",
+    "message": "Atlas data is unavailable"
+  }
+}

@@ -18,12 +18,15 @@ from app.adapter.chat.scenario_requests import (
     TransportScenario,
 )
 from app.adapter.chat.stress_tools import StressTools
+from app.adapter.chat.traffic_requests import TrafficDevelopment
+from app.adapter.chat.traffic_tools import TrafficTools
 from app.adapter.chat.transport_tools import TransportTools
 from app.domain.errors import DomainError
 from app.usecase.road_analysis import RoadAnalysis
 from app.usecase.road_corridor import RoadCorridors
 from app.usecase.road_graph import RoadChange, RoadGraph
 from app.usecase.road_stress import StressPort
+from app.usecase.traffic import TrafficPort, TrafficScope
 from app.usecase.transport_links import LinkChange
 
 
@@ -34,14 +37,17 @@ class NetworkScenarios:
         corridors: RoadCorridors | None,
         analysis: RoadAnalysis | None,
         stress: StressPort | None = None,
+        traffic: TrafficPort | None = None,
     ) -> None:
         self.roads, self.corridors, self.analysis = roads, corridors, analysis
         self.stress = stress
+        self.traffic = TrafficTools(traffic)
 
     def register(self, agent: Agent[ChatRun, str]) -> None:
         agent.tool(
             sequential=True,
-            description="Calculate a transport scenario. connectivity compares selected settlements "
+            description="Calculate a transport scenario. traffic_development builds housing-derived demand, "
+            "assigns road loads and verifies bounded capacity/speed/new-link alternatives with red map progress. connectivity compares selected settlements "
             "and optional closures; traffic={} adds assumed load and queues, returning a saved ID "
             "and summary. network edits roads/services for 1-6 regions, with optional appraisal "
             "for one region. close_selection combines resolved closure IDs; assessment=impact "
@@ -54,6 +60,10 @@ class NetworkScenarios:
         )(self.calculate_scenario)
 
     def calculate_scenario(self, ctx: RunContext[ChatRun], request: TransportScenario) -> str:
+        if isinstance(request, TrafficDevelopment):
+            values = asdict(request)
+            values.pop("kind")
+            return self.traffic.calculate(ctx, TrafficScope(**values))
         if isinstance(request, ConnectivityScenario):
             if self.corridors is None:
                 raise ModelRetry("Settlement connectivity is unavailable")

@@ -33,6 +33,7 @@ def test_stream_keeps_context_and_history_without_credentials() -> None:
             "/api/v1/chat",
             json={
                 "prompt": "Compare",
+                "title_requested": True,
                 "context": {"region_id": "07000000", "season": "winter"},
                 "history": [{"role": "user", "content": "Hello"}],
             },
@@ -43,12 +44,13 @@ def test_stream_keeps_context_and_history_without_credentials() -> None:
     assert [event["type"] for event in events] == ["status", "delta", "delta", "done"]
     assert provider.requests[0].context.region_id == "07000000"
     assert provider.requests[0].history[0].content == "Hello"
+    assert provider.requests[0].title_requested is True
 
 
 def test_disabled_chat_reports_unavailable_without_inventing_answer() -> None:
     with client_for() as client:
         response = client.post("/api/v1/chat", json={"prompt": "Hello"})
-    assert response.json() == {"type": "error", "text": "", "code": "chat_unavailable", "table": None, "chart": None, "map": None, "calculation": None, "analysis": None, "stress_route": None, "stress_test": None, "scenario": None}
+    assert response.json() == {"type": "error", "text": "", "code": "chat_unavailable", "table": None, "chart": None, "map": None, "calculation": None, "analysis": None, "stress_route": None, "stress_test": None, "scenario": None, "traffic": None}
 
 
 def test_remote_origin_cannot_spend_local_subscription() -> None:

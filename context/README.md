@@ -62,3 +62,9 @@ Separate validation UI5190/API8817, primary5187/8007 unchanged. No paid agent ev
   thresholds, nearby links, comparable before/after times, named connections),
   shared by API/agent; [method](../docs/road-stress.md),
   [checks](../docs/results/regional-consequences-validation.json).
+
+2026-11-12: implemented/locally verified synthetic traffic CLI and bounded project screening.
+National residential OSM collection stored in separate local CH database; pilot models tested.
+[Method and limits](../docs/synthetic-traffic.md), [evidence](../docs/results/synthetic-traffic-validation.json).
+
+2026-11-12: verified agent road proposals with Plexus indices, chat results and road overlays. [Evidence](../docs/results/traffic-agent-validation.json).

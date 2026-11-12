@@ -3,6 +3,7 @@ import type { AnalysisCommentary, ChatEntry } from "@/entities/chat"
 import type { CalculationHandler } from "@/shared/api/chat-calculation"
 import { ChatAnalysisCard } from "../analysis/chat-analysis-card"
 import { ChatArtifacts } from "../chat-artifacts"
+import { TrafficCard } from "../traffic/traffic-card"
 import { ChatCalculationRun } from "./chat-calculation-run"
 
 export function ChatFollowups({
@@ -27,6 +28,15 @@ export function ChatFollowups({
   const ready = !hasCalculation || calculationDone
   return (
     <>
+      {message.trafficJobs?.map((job) => (
+        <TrafficCard
+          key={job.id}
+          initial={job}
+          autoReview={autoReview}
+          commentary={message.commentaries?.[job.id]}
+          onCommentary={(value) => onCommentary?.(message.id, job.id, value)}
+        />
+      ))}
       {hasCalculation ? (
         <ChatCalculationRun
           message={message}

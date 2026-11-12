@@ -1,0 +1,11 @@
+**
+!backend/
+!backend/pyproject.toml
+!backend/uv.lock
+!backend/src/
+!backend/src/**
+!etl/
+!etl/pyproject.toml
+!etl/synthetic_traffic/
+!etl/synthetic_traffic/**
+**/__pycache__/

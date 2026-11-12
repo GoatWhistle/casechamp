@@ -1,7 +1,9 @@
 .message {
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-body);
   margin-block-end: var(--space-24);
   overflow-wrap: anywhere;
-  animation: var(--motion-swap-in);
+  animation: var(--motion-fade-in);
 }
 
 .message[data-role="user"] {

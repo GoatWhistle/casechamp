@@ -35,12 +35,17 @@ export function ChatAnswer({
       footer={
         message.complete ? (
           <>
+            {message.complete ? (
+              <ChatFollowups
+                message={message}
+                onCalculation={onCalculation}
+                autoReview={autoReview}
+                onCommentary={onCommentary}
+              />
+            ) : null}
             <div className={styles.actions}>
               {message.steps.length ? (
-                <Disclosure
-                  className={styles.steps}
-                  title={t("chat:steps", { count: message.steps.length })}
-                >
+                <Disclosure className={styles.steps} title={t("chat:steps")}>
                   <ol>
                     {message.steps.map((step) => (
                       <li key={step}>{t(chatStatusKey(step))}</li>
@@ -71,14 +76,6 @@ export function ChatAnswer({
                   </Button>
                 ))}
             </div>
-            {message.complete ? (
-              <ChatFollowups
-                message={message}
-                onCalculation={onCalculation}
-                autoReview={autoReview}
-                onCommentary={onCommentary}
-              />
-            ) : null}
           </>
         ) : null
       }

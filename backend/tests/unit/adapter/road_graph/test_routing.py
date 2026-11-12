@@ -8,6 +8,7 @@ import pytest
 from app.adapter.road_graph.data import GraphData
 from app.adapter.road_graph.routing import GraphRouting
 from app.adapter.road_graph.shortest_paths import ShortestPaths
+from app.adapter.road_graph.weighted import WeightedRoads
 from app.usecase.graph_snapshot import GraphParameters, GraphQuery
 from app.usecase.road_graph import RoadChange
 
@@ -91,3 +92,39 @@ def test_second_region_reuses_searches_of_same_scenario(routing: GraphRouting) -
     routing.calculate("region", "road", [RoadChange(101, 0)], lambda _: None)
     assert first == second
     assert len(calls) == 2
+
+
+def test_loaded_road_times_use_existing_hansen_formula_and_normalization(routing: GraphRouting) -> None:
+    baseline, _ = routing.calculate_details("region", "road", [], lambda _: None,
+        weighted=WeightedRoads(np.array([1.0, 1.0, 3.0, 5.0]), "base"))
+    loaded, _ = routing.calculate_details("region", "road", [], lambda _: None,
+        weighted=WeightedRoads(np.array([2.0, 2.0, 3.0, 5.0]), "loaded"))
+    improved, _ = routing.calculate_details("region", "road", [], lambda _: None,
+        weighted=WeightedRoads(np.array([1.0, 0.5, 3.0, 5.0]), "improved"))
+    assert baseline[0] == pytest.approx(50.0)
+    assert loaded[0] == pytest.approx(25.0)
+    assert improved[0] == pytest.approx(100 * math.exp(-math.log(2) * 1.5 / 2))
+    assert baseline[4] == loaded[4] == improved[4] == 100.0
+
+
+def test_weighted_index_cache_is_shared_across_regions_not_demand_variants(routing: GraphRouting, monkeypatch: pytest.MonkeyPatch) -> None:
+    calls: list[int] = []
+    original = routing.paths.distances
+    def counted(*args: Any, **kwargs: Any) -> Any:
+        calls.append(1)
+        return original(*args, **kwargs)
+    monkeypatch.setattr(routing.paths, "distances", counted)
+    base = WeightedRoads(np.array([1.0, 1.0, 3.0, 5.0]), "base")
+    loaded = WeightedRoads(np.array([2.0, 2.0, 3.0, 5.0]), "loaded")
+    first, _ = routing.calculate_details("region", "road", [], lambda _: None, weighted=base)
+    second, _ = routing.calculate_details("region", "road", [], lambda _: None, weighted=base)
+    third, _ = routing.calculate_details("region", "road", [], lambda _: None, weighted=loaded)
+    assert first == second
+    assert first[0] != third[0]
+    assert len(calls) == 2
+
+
+def test_loaded_index_preserves_zero_connectors_and_infinite_original_edges(routing: GraphRouting) -> None:
+    values, _ = routing.calculate_details("region", "road", [], lambda _: None,
+        weighted=WeightedRoads(np.array([0.0, 1.0, 3.0, np.inf]), "connectors"))
+    assert values[0] == pytest.approx(100 * math.exp(-math.log(2) / 2))

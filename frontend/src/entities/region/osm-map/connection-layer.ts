@@ -14,7 +14,7 @@ export function drawConnection(map: LibreMap, addition: RoadJob["addition"] | un
       ? [{ type: "Feature", properties: {}, geometry: { type: "LineString", coordinates } }]
       : [],
   }
-  const color = getComputedStyle(map.getContainer()).getPropertyValue("--data-gain-3").trim()
+  const color = getComputedStyle(map.getContainer()).getPropertyValue("--agent-new-road").trim()
   const key = coordinates ? JSON.stringify(coordinates) : ""
   const fresh = key !== "" && map.getContainer().dataset.connection !== key
   if (!map.getSource(CONNECTION_LAYER)) {

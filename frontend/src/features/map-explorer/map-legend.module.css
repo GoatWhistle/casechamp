@@ -1,27 +1,6 @@
-.legend {
-  composes: mapFloat from "../../shared/styles/compose.module.css";
-  inset-block-end: var(--space-16);
-  inset-inline-start: var(--space-16);
-  display: grid;
-  gap: var(--space-12);
-  inline-size: calc(var(--legend-width) + var(--space-64));
-  padding: var(--space-12) var(--space-16) var(--space-4);
-  color: var(--text-secondary);
-  font-size: var(--font-size-caption);
-  line-height: var(--line-height-caption);
-  animation: var(--motion-fade-in);
-}
-
 .key.key {
   display: grid;
   gap: var(--space-8);
-}
-
-.title {
-  color: var(--text-primary);
-  font-size: var(--font-size-label);
-  font-weight: var(--weight-semibold);
-  line-height: var(--line-height-label);
 }
 
 .ramp {
@@ -101,7 +80,13 @@
 .symbols {
   composes: bareList from "../../shared/styles/compose.module.css";
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(
+      auto-fit,
+      minmax(
+        min(100%, max(calc((100% - var(--space-12)) / 2), calc(var(--font-size-caption) * 10))),
+        1fr
+      )
+    );
   gap: var(--space-4) var(--space-12);
 }
 
@@ -228,23 +213,4 @@
   composes: secondaryText from "../../shared/styles/compose.module.css";
   inline-size: calc(var(--legend-width) + var(--space-64));
   padding: var(--space-12);
-}
-
-@media (max-width: 64rem) {
-  .legend {
-    inline-size: min(
-      calc(var(--legend-width) + var(--space-64)),
-      calc(100% - var(--space-48) - var(--space-8))
-    );
-    padding: var(--space-4) var(--space-12);
-    gap: 0;
-  }
-
-  .key.key {
-    padding-block: var(--space-12) var(--space-4);
-  }
-
-  .title {
-    display: none;
-  }
 }

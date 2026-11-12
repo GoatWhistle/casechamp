@@ -53,6 +53,23 @@ def test_saved_analysis_details_remain_readable() -> None:
 
 
 def test_indexed_search_normalization_matches_domain_for_every_name() -> None:
-    rows = atlas_repository().reader.rows("SELECT name,name_key FROM plexus_atlas.atlas_settlements", {})
+    rows = atlas_repository().reader.rows(
+        "SELECT name,name_key FROM plexus_atlas.atlas_settlements", {}
+    )
     assert len(rows) == 155412
     assert all(normalize_name(row["name"]) == row["name_key"] for row in rows)
+
+
+def test_regional_candidate_selection_exceeds_http_field_limit() -> None:
+    reader = atlas_repository().reader
+    source = ClickHouseGraphSnapshot(reader)
+    selected = reader.rows(
+        "SELECT way_idx FROM plexus_graph.ways WHERE NOT coalesce(is_ferry,false) "
+        "ORDER BY way_idx LIMIT 30000",
+        {},
+    )
+    ids = [int(row["way_idx"]) for row in selected]
+    assert len(ids) == 30000
+    candidates = source.read("candidates", {"ids": ids})
+    assert {int(row[0]) for row in candidates} == set(ids)
+    assert len(candidates) == len(ids)

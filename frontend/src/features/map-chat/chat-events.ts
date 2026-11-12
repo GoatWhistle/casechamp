@@ -1,4 +1,7 @@
+import type { MapCommandHandler } from "@/shared/api/chat-map"
 import type { ChatStreamEvent } from "@/shared/api/chat-stream"
+import { showStressView } from "@/shared/hooks/use-stress-view"
+import { showTrafficView } from "@/shared/hooks/use-traffic-view"
 import type { ChatEntry } from "./use-map-chat"
 
 export function applyChatEvent(row: ChatEntry, event: ChatStreamEvent): ChatEntry {
@@ -49,6 +52,8 @@ export function applyChatEvent(row: ChatEntry, event: ChatStreamEvent): ChatEntr
             ],
           }
         : row
+    case "traffic":
+      return applyTraffic(row, event)
     case "stress_test":
       return applyStress(row, event)
     case "analysis":
@@ -103,4 +108,29 @@ function applyStress(row: ChatEntry, event: ChatStreamEvent): ChatEntry {
 
 function applyScenario(row: ChatEntry, event: ChatStreamEvent): ChatEntry {
   return event.scenario ? { ...row, scenarios: [...(row.scenarios ?? []), event.scenario] } : row
+}
+
+function applyTraffic(row: ChatEntry, event: ChatStreamEvent): ChatEntry {
+  const job = event.traffic
+  return job
+    ? {
+        ...row,
+        reviewPending: true,
+        trafficJobs: [...(row.trafficJobs ?? []).filter((item) => item.id !== job.id), job],
+      }
+    : row
+}
+
+export function applyMapEvent(event: ChatStreamEvent, active: boolean, onMap: MapCommandHandler) {
+  if (!active) return
+  if (event.type === "traffic" && event.traffic) showTrafficView(event.traffic)
+  if (event.type === "stress_test" && event.stress_test)
+    showStressView({
+      showPoints: false,
+      jobId: event.stress_test.id,
+      impacts: [],
+      route: event.stress_route ?? null,
+      regions: event.stress_test.regions ?? [],
+    })
+  if (event.type === "map" && event.map) onMap(event.map)
 }

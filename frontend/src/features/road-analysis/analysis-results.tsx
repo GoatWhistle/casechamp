@@ -30,7 +30,11 @@ export function AnalysisResults({
         <Banner
           tone="danger"
           title={t(
-            job.error === "baseline_mismatch" ? "analysis:baselineMismatch" : "analysis:failed",
+            job.error === "baseline_mismatch"
+              ? "analysis:baselineMismatch"
+              : job.results.length
+                ? "analysis:failed"
+                : "analysis:failedEmpty",
           )}
         />
       ) : null}

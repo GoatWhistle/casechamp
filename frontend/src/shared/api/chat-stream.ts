@@ -6,13 +6,19 @@ import { isChatScenario } from "./chat-scenario"
 import { ApiError, api, codeOf, SERVER_UNAVAILABLE, UNEXPECTED } from "./client"
 import { isStressJob, isStressRoute } from "./road-stress"
 import type { components } from "./schema.gen"
+import { isTrafficJob, type TrafficJob } from "./traffic"
 
-export type ChatInput = components["schemas"]["ChatInput"]
+type ChatRequest = components["schemas"]["ChatInput"]
+export type ChatInput = Omit<ChatRequest, "title_requested"> &
+  Partial<Pick<ChatRequest, "title_requested">>
 export type ChatContext = components["schemas"]["ChatContextInput"]
-export type ChatStreamEvent = components["schemas"]["ChatStreamEvent"]
+export type ChatStreamEvent = Omit<components["schemas"]["ChatStreamEvent"], "traffic"> & {
+  traffic?: TrafficJob | null
+}
 
 const ARTIFACTS: Record<string, (value: unknown) => boolean> = {
   stress_test: isStressJob,
+  traffic: isTrafficJob,
   table: isChatTable,
   chart: isChatChart,
   map: isChatMapCommand,
@@ -47,6 +53,8 @@ function parseEvent(line: string): ChatStreamEvent {
       "analysis",
       "stress_test",
       "scenario",
+      "title",
+      "traffic",
     ].includes(String(value.type)) ||
     !("text" in value) ||
     typeof value.text !== "string" ||
@@ -55,6 +63,8 @@ function parseEvent(line: string): ChatStreamEvent {
   )
     throw new ApiError(502, "chat_stream_error")
   const artifact = value as Record<string, unknown>
+  if (value.type === "title" && (!value.text.trim() || value.text.length > 80))
+    throw new ApiError(502, "chat_stream_error")
   const validate = ARTIFACTS[String(value.type)]
   if (validate && !validate(artifact[String(value.type)]))
     throw new ApiError(502, "chat_stream_error")
@@ -70,7 +80,7 @@ export async function streamChat(
 ): Promise<void> {
   const endpoint = body.calculation_review ? "/api/v1/chat/calculation-review" : "/api/v1/chat"
   const { data, response, error } = await api.POST(endpoint, {
-    body,
+    body: { ...body, title_requested: body.title_requested ?? false },
     signal,
     parseAs: "stream",
   })

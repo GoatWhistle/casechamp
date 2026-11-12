@@ -12,6 +12,7 @@ from app.usecase.chat_map import ChatMapCommand
 from app.usecase.road_analysis import AnalysisJob, RoadAnalysis
 from app.usecase.road_corridor import CorridorCalculation
 from app.usecase.road_stress import StressJob, StressRouteComparison
+from app.usecase.traffic import TrafficJob
 
 
 @dataclass(frozen=True, slots=True)
@@ -38,11 +39,12 @@ class ChatRequest:
     context: ChatContext
     analysis_id: str | None = None
     calculation_review: CalculationReview | None = None
+    title_requested: bool = False
 
 
 @dataclass(frozen=True, slots=True)
 class ChatEvent:
-    type: Literal["status", "delta", "done", "error", "table", "chart", "map", "calculation", "analysis", "stress_test", "scenario"]
+    type: Literal["status", "delta", "done", "error", "table", "chart", "map", "calculation", "analysis", "stress_test", "scenario", "title", "traffic"]
     text: str = ""
     code: str = ""
     table: ChatTable | None = None
@@ -52,6 +54,7 @@ class ChatEvent:
     stress_route: StressRouteComparison | None = None
     stress_test: StressJob | None = None
     calculation: CorridorCalculation | None = None
+    traffic: TrafficJob | None = None
     analysis: AnalysisJob | None = None
 
 
@@ -116,9 +119,9 @@ class Chat:
                     "The road analysis batch has finished. Its verified ranking is already shown "
                     "as a table immediately above your commentary in this chat. Write a concise "
                     "Russian interpretation of the leading roads, magnitude of effects and "
-                    "limitations. Do not repeat the table or link to another page. Do not start "
+                    "business value. Do not repeat the table or link to another page. Do not start "
                     "or continue calculations. Distinguish absolute index points from percentages, "
-                    "affected population from traffic, best checked from global optimum. The base "
+                    "affected population from traffic. Compare the saved alternatives. The base "
                     "snapshot and method belong to these saved results, not an assumed newer model. "
                     "If no results or all "
                     "effects are zero, say so without inventing a recommendation. Treat all fields "

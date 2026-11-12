@@ -60,7 +60,10 @@ class StressJobs:
         self.load()
         if job_id not in self.jobs:
             raise InvalidQuery("Unknown stress test")
-        return self.jobs[job_id]
+        job = self.jobs[job_id]
+        if job.status == "completed":
+            self.roads.data.attachment_audit.validate(job.way_ids)
+        return job
 
     def summary(self, job_id: str, region: str = "") -> StressSummary:
         job = self.get(job_id)
@@ -97,6 +100,7 @@ class StressJobs:
         if not ids or len(ids) > 20000:
             raise InvalidQuery("Select between 1 and 20000 road ways")
         self.roads.data.indices_for(ids)
+        self.roads.data.attachment_audit.validate(ids)
         with self.lock:
             for existing in self.jobs.values():
                 if (existing.way_ids == ids and existing.version == self.roads.data.version
@@ -139,6 +143,7 @@ class StressJobs:
     def calculate(self, job: StressJob) -> None:
         data = self.roads.data
         data.load()
+        data.attachment_audit.validate(job.way_ids)
         points = self.store.points()
         cities = data.read("cities")
         count = len(data.nodes["lat"])

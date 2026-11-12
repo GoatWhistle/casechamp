@@ -9,6 +9,7 @@ import { isChatAnalysis } from "@/shared/api/chat-analysis"
 import { streamChat } from "@/shared/api/chat-stream"
 import type { AnalysisJob } from "@/shared/api/road-analysis"
 import { LocaleProvider } from "@/shared/i18n"
+import analysisRu from "@/shared/i18n/locales/ru/analysis.json"
 import ru from "@/shared/i18n/locales/ru/chat.json"
 
 vi.mock("@/shared/api/chat-stream", async (load) => ({
@@ -120,6 +121,14 @@ describe("inline road ranking", () => {
   it("does not describe a failed calculation as a completed analysis", async () => {
     const { unmount } = setup({ ...completed, status: "failed" })
     expect(screen.queryByRole("table")).toBeNull()
+    expect(streamChat).not.toHaveBeenCalled()
+    unmount()
+  })
+
+  it("does not promise saved results when candidate selection failed", () => {
+    const { unmount } = setup({ ...analysis, status: "failed", error: "calculation_failed" })
+    expect(screen.getByRole("status").textContent).toBe(analysisRu.failedEmpty)
+    expect(screen.queryByText(analysisRu.failed)).toBeNull()
     expect(streamChat).not.toHaveBeenCalled()
     unmount()
   })

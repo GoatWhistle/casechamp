@@ -1,6 +1,7 @@
 import { type Map as LibreMap, LngLat, type LngLatBoundsLike, type MapOptions } from "maplibre-gl"
 import type { ChatMapCommand } from "@/shared/api/chat-map"
 import type { BoundaryAtlas, LonLatBounds } from "./boundary-geojson"
+import { focusRoad, updateRoadFocus } from "./camera/road-focus"
 import { NO_REGION, SELECTED_LAYER } from "./osm-style"
 
 const ROAM_BASE = 12
@@ -112,6 +113,11 @@ export function aimCamera(
   duration: number,
   zoomDuration: number,
 ) {
+  updateRoadFocus(map, command)
+  if (command?.action === "focus_road" && command.road) {
+    focusRoad(map, command.road.lines, duration)
+    return
+  }
   if (command?.action === "focus_settlement" && command.settlement) {
     const target = command.settlement
     map.stop()

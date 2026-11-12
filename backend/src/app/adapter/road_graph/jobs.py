@@ -45,8 +45,7 @@ class RoadJobs:
         self.delta = DeltaCalculation(DeltaBase(self.data, self.paths))
         self.delta.base.prepare()
         self.pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix="road-calculation")
-        self.lock = Lock()
-        self.store = store
+        self.lock, self.store = Lock(), store
         self.jobs = {
             key: replace(job, status="cancelled") if job.status in {"queued", "running"} else job
             for key, job in store.load().items()
@@ -159,7 +158,10 @@ class RoadJobs:
         with self.lock:
             if job_id not in self.jobs:
                 raise InvalidQuery("Unknown calculation")
-            return self.jobs[job_id]
+            job = self.jobs[job_id]
+        if job.status == "completed":
+            self.data.attachment_audit.validate([c.way_id for c in job.changes if c.speed_factor == 0])
+        return job
 
     def cancel(self, job_id: str) -> RoadJob:
         self.job(job_id)

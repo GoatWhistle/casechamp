@@ -1,0 +1,27 @@
+.index {
+  display: grid;
+  gap: var(--space-8);
+}
+.region {
+  margin: 0;
+  font-weight: var(--weight-medium);
+}
+.note {
+  composes: secondaryText from "../../../shared/styles/compose.module.css";
+  margin: 0;
+}
+.project {
+  display: grid;
+  gap: var(--space-4);
+  overflow-wrap: anywhere;
+}
+.project small {
+  color: var(--text-secondary);
+  font-size: var(--font-size-caption);
+  font-weight: var(--weight-regular);
+}
+.change {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+}

@@ -4,6 +4,7 @@ import type { ChatMapCommand } from "@/shared/api/chat-map"
 import type { ChatScenario } from "@/shared/api/chat-scenario"
 import type { AnalysisJob } from "@/shared/api/road-analysis"
 import type { StressJob, StressRouteComparison } from "@/shared/api/road-stress"
+import type { TrafficJob } from "@/shared/api/traffic"
 import { createChatId } from "./chat-id"
 
 export interface AnalysisCommentary {
@@ -15,6 +16,7 @@ export interface AnalysisCommentary {
 }
 
 export interface ChatEntry {
+  readonly trafficJobs?: readonly TrafficJob[]
   readonly reviewPending?: boolean
   readonly stressRoutes?: Readonly<Record<string, StressRouteComparison>>
   readonly stressTests?: readonly StressJob[]
@@ -35,6 +37,7 @@ export interface ChatEntry {
 export interface ChatSession {
   readonly version: 1
   readonly id: string
+  readonly title?: string
   readonly createdAt: number
   readonly updatedAt: number
   readonly messages: ChatEntry[]
@@ -58,6 +61,7 @@ export function createChatSession(): ChatSession {
 }
 
 export function chatSessionTitle(session: ChatSession): string {
+  if (session.title?.trim()) return session.title.trim()
   return (session.messages.find((message) => message.role === "user")?.content ?? session.draft)
     .replace(/\s+/g, " ")
     .trim()

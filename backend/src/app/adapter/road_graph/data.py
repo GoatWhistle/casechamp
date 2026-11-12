@@ -6,6 +6,7 @@ from typing import Any
 
 import numpy as np
 
+from app.adapter.road_graph.attachment_audit import AttachmentAudit
 from app.adapter.road_graph.view_geometry import road_segments
 from app.domain.errors import DataUnavailable, InvalidQuery
 from app.usecase.graph_snapshot import GraphModelInfo, GraphParameters, GraphQuery, GraphSnapshot
@@ -34,6 +35,10 @@ class GraphData:
     def road_cost_model(self) -> str:
         rows = self.read("road_cost_model")
         return str(rows[0][0]) if rows else ""
+
+    @cached_property
+    def attachment_audit(self) -> AttachmentAudit:
+        return AttachmentAudit(self)
 
     def cost_profiles(self, way_ids: list[int]) -> dict[int, dict[str, Any]]:
         if not way_ids or not self.road_cost_model:

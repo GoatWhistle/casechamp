@@ -74,4 +74,11 @@ class SettlementPresentation:
     settlement_id: str
 
 
-type AtlasPresentation = ChartPresentation | MapPresentation | SettlementPresentation
+@dataclass(config=ConfigDict(extra="forbid"))
+class RoadPresentation:
+    kind: Literal["road"]
+    way_ids: list[int] = field(default_factory=list)
+    selection_ids: list[str] = field(default_factory=list)
+
+
+type AtlasPresentation = ChartPresentation | MapPresentation | SettlementPresentation | RoadPresentation

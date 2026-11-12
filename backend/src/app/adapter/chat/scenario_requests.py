@@ -4,6 +4,7 @@ from typing import Literal
 from pydantic import ConfigDict
 from pydantic.dataclasses import dataclass
 
+from app.adapter.chat.traffic_requests import TrafficData, TrafficDevelopment
 from app.domain.appraisal_inputs import ProjectAssumptions
 from app.domain.road_economics import MoneyAssumptions
 from app.domain.traffic_diversion import TrafficAssumptions
@@ -89,7 +90,8 @@ class ConnectivityScenario:
 
 
 type TransportScenario = (
-    NetworkScenario
+    TrafficDevelopment
+    | NetworkScenario
     | SelectionClosure
     | SelectionEdit
     | ConnectionScenario
@@ -102,7 +104,7 @@ type TransportScenario = (
 class CalculationQuery:
     kind: Literal["status", "cancel"]
     calculation_id: str
-    calculation_type: Literal["scenario", "analysis", "connectivity"] = "scenario"
+    calculation_type: Literal["scenario", "analysis", "connectivity", "traffic"] = "scenario"
     detail: Literal["summary", "full"] = "summary"
 
 
@@ -134,5 +136,5 @@ class ComparisonTable:
 
 
 type CalculationRequest = (
-    CalculationQuery | RecentCalculations | ContinueAnalysis | ConnectivityEconomics | ComparisonTable
+    TrafficData | CalculationQuery | RecentCalculations | ContinueAnalysis | ConnectivityEconomics | ComparisonTable
 )

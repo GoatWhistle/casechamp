@@ -18,7 +18,7 @@ export function AnalysisProgress({ job, busy, pending, control }: AnalysisProgre
     queued: t("analysis:queued"),
     cancelled: t("analysis:cancelled"),
     interrupted: t("analysis:interrupted"),
-    failed: t("analysis:failed"),
+    failed: t(job.results.length ? "analysis:failed" : "analysis:failedEmpty"),
     cancelling: t("analysis:cancelling"),
     preparing: t("analysis:preparing"),
     geography: t("analysis:geography"),

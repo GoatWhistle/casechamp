@@ -39,6 +39,8 @@ describe("map commands", () => {
     const element = { dataset: {} }
     const map = {
       stop: vi.fn(),
+      getLayer: vi.fn(),
+      getSource: vi.fn(),
       setFilter: vi.fn(),
       getContainer: () => element,
       easeTo: vi.fn(),
@@ -67,5 +69,40 @@ describe("map commands", () => {
       expect.objectContaining({ center: [42, 45], zoom: 12, duration: 0, essential: false }),
     )
     expect(settlementCenter({ ...settlement, longitude: -179 })).toEqual([181, 45])
+  })
+  it("validates road geometry before accepting a saved map command", () => {
+    const command = {
+      action: "focus_road",
+      region_ids: [],
+      road: {
+        names: ["Lane"],
+        length_km: 0.167,
+        lines: [
+          [
+            [42, 45],
+            [42.002, 45],
+          ],
+        ],
+      },
+    }
+    expect(isChatMapCommand(command)).toBe(true)
+    expect(isChatMapCommand({ ...command, road: { ...command.road, lines: [] } })).toBe(false)
+    expect(isChatMapCommand({ ...command, road: { ...command.road, lines: [[[42, 45]]] } })).toBe(
+      false,
+    )
+    expect(
+      isChatMapCommand({
+        ...command,
+        road: {
+          ...command.road,
+          lines: [
+            [
+              [42, 45],
+              [NaN, 45],
+            ],
+          ],
+        },
+      }),
+    ).toBe(false)
   })
 })

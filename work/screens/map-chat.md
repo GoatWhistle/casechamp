@@ -72,3 +72,44 @@ browser1440/1920 waiting-to-completed transition, map corridor ID, reduced motio
 JSerrors0 and axeviolations0. UI test values are synthetic; no paid model call.
 Context compact-context: three paragraphs moved to work/integration/session-before-chat-visual-closeout.md;
 protected quotes preserved; budget check passes with protected-text notice (SESSION12622chars).
+
+
+## Starter examples, 2026-11-12
+
+Replaced only three starter strings in frontend/src/shared/i18n/locales/ru/chat.json:
+road improvement priorities, closure consequences and adding a road between cities.
+Branch feat/transport-scenarios-update, HEAD986ae0f5ee754b9e98f25e2e608b5bc37cbad507.
+Dictionary Biome and frontend build pass; verify stops on pre-existing css-literals/css-duplicates in traffic UI.
+Browser QA blocked: sandbox Chromium launch denied; CUA has no available browsers.
+No commit/push/paid calls. Preserve unrelated work; review in existing local UI5187.
+
+
+## Thinking indicator, 2026-11-12
+
+Requested: three dots exchanging positions while the model is working. Shared ThinkingDots
+replaces the idle glyph only while the current conversation is busy, including further model
+work after tool artifacts arrive. Completion, cancellation and failure unmount the indicator.
+The existing status remains a live region; the three decorative dots are aria-hidden.
+
+Predetermined CSS transforms and opacity use the existing motion tokens. The 1.56s loop
+represents ongoing work; each half-step uses the existing 260ms panel duration. It starts
+with the existing 400ms spinner delay and 160ms fade. Reduced motion keeps each dot in its
+own position and substitutes a 1.6s opacity pulse. No new dependencies or paid calls.
+
+Motion review against review-animations/STANDARDS.md:
+
+| Before | After | Why |
+| --- | --- | --- |
+| Static busy glyph | Three phase-shifted dots | Indicates work without moving content or blocking input |
+| Busy status hidden when results arrive | Busy status stays until model completion | Tool results can precede further model work |
+| Spatial movement | Fixed positions with opacity in reduced motion | Keeps feedback without positional movement |
+
+Approve: transform/opacity only, token timing, immediate unmount, fixed footprint and
+reduced-motion variant. Existing shared animation standards pass.
+
+Verified 2026-11-12: npm run verify passes all 36 rules, typecheck, lint, 491 tests and build.
+Additional focused run: 57 tests across 18 files passed. Chromium checks at desktop1440/1920
+cover all three dots, normal/reduced motion, completion and cancellation. Test-only intercepted
+chat responses; no real model call. Captures and six phase frames: /private/tmp/plexus-thinking/.
+Branch feat/transport-scenarios-update, HEAD986ae0f5ee754b9e98f25e2e608b5bc37cbad507.
+Unrelated dirty work preserved; no commit/push/restart. No mobile checks per user instruction.

@@ -5,6 +5,8 @@ import { drawConnection } from "./connection-layer"
 import { REGIONS_SOURCE } from "./osm-style"
 import { roadLayers } from "./road-parts"
 import { drawRoadParts, selectRoads } from "./road-source"
+import { raiseTrafficLayers } from "./traffic/traffic-paint"
+import { useTrafficLayer } from "./traffic/use-traffic-layer"
 import { useAnalysisLayer } from "./use-analysis-layer"
 import { useCorridorLayer } from "./use-corridor-layer"
 import { useStressLayer } from "./use-stress-layer"
@@ -15,6 +17,7 @@ export function useRoadLayer(
   roads: RoadLayerProps | undefined,
   ready: boolean,
 ) {
+  useTrafficLayer(engine, ready)
   useStressRegions(engine, ready)
   useStressLayer(engine, ready)
   useAnalysisLayer(engine, roads?.analysis, ready)
@@ -39,8 +42,10 @@ export function useRoadLayer(
       () => current.current.selected ?? [],
     )
       .then(() => {
-        if (!controller.signal.aborted)
+        if (!controller.signal.aborted) {
           map.getContainer().dataset.roadSegments = String(view?.segmentCount ?? 0)
+          raiseTrafficLayers(map)
+        }
       })
       .catch((error: unknown) => {
         if (!controller.signal.aborted) console.error(error)

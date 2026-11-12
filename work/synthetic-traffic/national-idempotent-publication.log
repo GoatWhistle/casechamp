@@ -1,0 +1,38 @@
+{
+  "central-fed-district.parquet": {
+    "source_id": "0d24f9b76fb9981863664a8521309fddd9394052ec27adc286ba92d0dc896643",
+    "rows": 1380575
+  },
+  "northwestern-fed-district.parquet": {
+    "source_id": "4bfb15e5817fd370a590c084417eb92e77b94633ed6b8e3dbbdf5513247453bf",
+    "rows": 453738
+  },
+  "south-fed-district.parquet": {
+    "source_id": "2ad7f6b0f123bf8032cbb513254ef9093f390ea1abc49698609085e1fc56e315",
+    "rows": 959177
+  },
+  "north-caucasus-fed-district.parquet": {
+    "source_id": "aa222df3f7da93c1ab27aa465ddf1208068855084a72bb8b993e633a75e8557b",
+    "rows": 634781
+  },
+  "volga-fed-district.parquet": {
+    "source_id": "7cfc5fbe18c807ad2aae5acf2d79389fe7c78220051be93eefc0dfbf83da059a",
+    "rows": 1289790
+  },
+  "ural-fed-district.parquet": {
+    "source_id": "17e17cbe9d3420da8baffb38f5faf3ff0267e6f38180af55b7222b35c1e85044",
+    "rows": 482621
+  },
+  "siberian-fed-district.parquet": {
+    "source_id": "eb94b67a427505a0000c04f13fadf06be6cae2fe4994f66deff95b8fe8a7578f",
+    "rows": 812273
+  },
+  "far-eastern-fed-district.parquet": {
+    "source_id": "070946a668c20e19a1b946524a8672d3ed0b572eede83b06b1806bbb50d9f5f5",
+    "rows": 365088
+  },
+  "crimean-fed-district.parquet": {
+    "source_id": "ffd3e2869bd3aba8eaca2ad4b7059dc13477e1b2d7c5269c00ab9c5a0cec35f1",
+    "rows": 65864
+  }
+}

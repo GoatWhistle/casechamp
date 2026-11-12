@@ -2321,6 +2321,154 @@
           }
         }
       }
+    },
+    "/api/v1/traffic-jobs": {
+      "get": {
+        "tags": [
+          "synthetic traffic"
+        ],
+        "summary": "Recent",
+        "operationId": "recent_api_v1_traffic_jobs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/TrafficJob"
+                  },
+                  "type": "array",
+                  "title": "Response Recent Api V1 Traffic Jobs Get"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "synthetic traffic"
+        ],
+        "summary": "Submit",
+        "operationId": "submit_api_v1_traffic_jobs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrafficInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrafficJob"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/traffic-jobs/{job_id}": {
+      "get": {
+        "tags": [
+          "synthetic traffic"
+        ],
+        "summary": "Get",
+        "operationId": "get_api_v1_traffic_jobs__job_id__get",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrafficJob"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/traffic-jobs/{job_id}/cancel": {
+      "post": {
+        "tags": [
+          "synthetic traffic"
+        ],
+        "summary": "Cancel",
+        "operationId": "cancel_api_v1_traffic_jobs__job_id__cancel_post",
+        "parameters": [
+          {
+            "name": "job_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrafficJob"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -3122,6 +3270,14 @@
             "type": "array",
             "maxItems": 12,
             "title": "Stress Ids"
+          },
+          "traffic_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 12,
+            "title": "Traffic Ids"
           }
         },
         "type": "object",
@@ -3324,6 +3480,11 @@
                 "type": "null"
               }
             ]
+          },
+          "title_requested": {
+            "type": "boolean",
+            "title": "Title Requested",
+            "default": false
           }
         },
         "type": "object",
@@ -3347,7 +3508,10 @@
               },
               {
                 "type": "string",
-                "const": "focus_settlement"
+                "enum": [
+                  "focus_settlement",
+                  "focus_road"
+                ]
               }
             ],
             "title": "Action"
@@ -3363,6 +3527,16 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/SettlementMapTarget"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "road": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/RoadGeometry"
               },
               {
                 "type": "null"
@@ -3416,7 +3590,9 @@
               "calculation",
               "analysis",
               "stress_test",
-              "scenario"
+              "scenario",
+              "title",
+              "traffic"
             ],
             "title": "Type"
           },
@@ -3494,6 +3670,16 @@
             "anyOf": [
               {
                 "$ref": "#/components/schemas/CorridorCalculation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "traffic": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TrafficJob"
               },
               {
                 "type": "null"
@@ -7659,6 +7845,490 @@
           "affected_regions"
         ],
         "title": "StressTotals"
+      },
+      "TrafficAlternative": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "capacity",
+              "speed",
+              "connection"
+            ],
+            "title": "Kind"
+          },
+          "way_ids": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Way Ids"
+          },
+          "length_km": {
+            "type": "number",
+            "title": "Length Km"
+          },
+          "vehicle_hours_saved": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vehicle Hours Saved"
+          },
+          "after": {
+            "$ref": "#/components/schemas/TrafficMetrics"
+          },
+          "roads": {
+            "items": {
+              "$ref": "#/components/schemas/TrafficRoad"
+            },
+            "type": "array",
+            "title": "Roads"
+          },
+          "indices": {
+            "items": {
+              "$ref": "#/components/schemas/TrafficIndexChange"
+            },
+            "type": "array",
+            "title": "Indices"
+          },
+          "road_names": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Road Names"
+          },
+          "housing_clearance": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Housing Clearance"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "way_ids",
+          "length_km",
+          "vehicle_hours_saved",
+          "after",
+          "roads"
+        ],
+        "title": "TrafficAlternative"
+      },
+      "TrafficIndexChange": {
+        "properties": {
+          "region": {
+            "type": "string",
+            "title": "Region"
+          },
+          "before": {
+            "type": "number",
+            "title": "Before"
+          },
+          "after": {
+            "type": "number",
+            "title": "After"
+          },
+          "delta": {
+            "type": "number",
+            "title": "Delta"
+          },
+          "relative_percent": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Relative Percent"
+          },
+          "population": {
+            "type": "integer",
+            "title": "Population"
+          }
+        },
+        "type": "object",
+        "required": [
+          "region",
+          "before",
+          "after",
+          "delta",
+          "relative_percent",
+          "population"
+        ],
+        "title": "TrafficIndexChange"
+      },
+      "TrafficIndexValue": {
+        "properties": {
+          "region": {
+            "type": "string",
+            "title": "Region"
+          },
+          "value": {
+            "type": "number",
+            "title": "Value"
+          },
+          "population": {
+            "type": "integer",
+            "title": "Population"
+          },
+          "settlements": {
+            "type": "integer",
+            "title": "Settlements"
+          },
+          "normalization": {
+            "type": "number",
+            "title": "Normalization"
+          }
+        },
+        "type": "object",
+        "required": [
+          "region",
+          "value",
+          "population",
+          "settlements",
+          "normalization"
+        ],
+        "title": "TrafficIndexValue"
+      },
+      "TrafficInput": {
+        "properties": {
+          "places": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "maxItems": 2,
+            "title": "Places"
+          },
+          "region": {
+            "type": "string",
+            "maxLength": 128,
+            "title": "Region",
+            "default": ""
+          },
+          "bounds": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "maxItems": 4,
+            "title": "Bounds"
+          },
+          "demand_multiplier": {
+            "type": "number",
+            "maximum": 3.0,
+            "minimum": 0.1,
+            "title": "Demand Multiplier",
+            "default": 1
+          },
+          "pair_flow": {
+            "type": "number",
+            "maximum": 10000.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Pair Flow",
+            "default": 1000
+          },
+          "max_projects": {
+            "type": "integer",
+            "maximum": 3.0,
+            "minimum": 1.0,
+            "title": "Max Projects",
+            "default": 3
+          }
+        },
+        "type": "object",
+        "title": "TrafficInput"
+      },
+      "TrafficJob": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/TrafficScope"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "queued",
+              "running",
+              "completed",
+              "failed",
+              "cancelled"
+            ],
+            "title": "Status",
+            "default": "queued"
+          },
+          "stage": {
+            "type": "string",
+            "title": "Stage",
+            "default": "queued"
+          },
+          "completed": {
+            "type": "integer",
+            "title": "Completed",
+            "default": 0
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total",
+            "default": 1
+          },
+          "bounds": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Bounds"
+          },
+          "zones": {
+            "items": {
+              "$ref": "#/components/schemas/TrafficZone"
+            },
+            "type": "array",
+            "title": "Zones"
+          },
+          "baseline": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TrafficMetrics"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "roads": {
+            "items": {
+              "$ref": "#/components/schemas/TrafficRoad"
+            },
+            "type": "array",
+            "title": "Roads"
+          },
+          "alternatives": {
+            "items": {
+              "$ref": "#/components/schemas/TrafficAlternative"
+            },
+            "type": "array",
+            "title": "Alternatives"
+          },
+          "indices": {
+            "items": {
+              "$ref": "#/components/schemas/TrafficIndexValue"
+            },
+            "type": "array",
+            "title": "Indices"
+          },
+          "provenance": {
+            "type": "string",
+            "title": "Provenance",
+            "default": "{}"
+          },
+          "error": {
+            "type": "string",
+            "title": "Error",
+            "default": ""
+          },
+          "version": {
+            "type": "string",
+            "title": "Version",
+            "default": "synthetic_passenger_od_static_msa_hansen_v2"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "scope"
+        ],
+        "title": "TrafficJob"
+      },
+      "TrafficMetrics": {
+        "properties": {
+          "vehicle_hours": {
+            "type": "number",
+            "title": "Vehicle Hours"
+          },
+          "unserved_vehicles": {
+            "type": "number",
+            "title": "Unserved Vehicles"
+          },
+          "overloaded_edges": {
+            "type": "integer",
+            "title": "Overloaded Edges"
+          },
+          "relative_gap": {
+            "type": "number",
+            "title": "Relative Gap"
+          },
+          "converged": {
+            "type": "boolean",
+            "title": "Converged"
+          },
+          "mean_trip_minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mean Trip Minutes"
+          }
+        },
+        "type": "object",
+        "required": [
+          "vehicle_hours",
+          "unserved_vehicles",
+          "overloaded_edges",
+          "relative_gap",
+          "converged"
+        ],
+        "title": "TrafficMetrics"
+      },
+      "TrafficRoad": {
+        "properties": {
+          "way_id": {
+            "type": "integer",
+            "title": "Way Id"
+          },
+          "coordinates": {
+            "items": {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Coordinates"
+          },
+          "flow_before": {
+            "type": "number",
+            "title": "Flow Before"
+          },
+          "flow_after": {
+            "type": "number",
+            "title": "Flow After"
+          },
+          "ratio_before": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ratio Before"
+          },
+          "ratio_after": {
+            "type": "number",
+            "title": "Ratio After"
+          },
+          "project": {
+            "type": "boolean",
+            "title": "Project",
+            "default": false
+          },
+          "new_link": {
+            "type": "boolean",
+            "title": "New Link",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "way_id",
+          "coordinates",
+          "flow_before",
+          "flow_after",
+          "ratio_before",
+          "ratio_after"
+        ],
+        "title": "TrafficRoad"
+      },
+      "TrafficScope": {
+        "properties": {
+          "places": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Places"
+          },
+          "region": {
+            "type": "string",
+            "title": "Region",
+            "default": ""
+          },
+          "bounds": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Bounds"
+          },
+          "demand_multiplier": {
+            "type": "number",
+            "title": "Demand Multiplier",
+            "default": 1.0
+          },
+          "pair_flow": {
+            "type": "number",
+            "title": "Pair Flow",
+            "default": 1000.0
+          },
+          "max_projects": {
+            "type": "integer",
+            "title": "Max Projects",
+            "default": 3
+          }
+        },
+        "type": "object",
+        "title": "TrafficScope"
+      },
+      "TrafficZone": {
+        "properties": {
+          "longitude": {
+            "type": "number",
+            "title": "Longitude"
+          },
+          "latitude": {
+            "type": "number",
+            "title": "Latitude"
+          },
+          "population": {
+            "type": "number",
+            "title": "Population"
+          }
+        },
+        "type": "object",
+        "required": [
+          "longitude",
+          "latitude",
+          "population"
+        ],
+        "title": "TrafficZone"
       },
       "TransportLink": {
         "properties": {

@@ -15,7 +15,7 @@ class ClickHouseWriter:
         self.insert_many(table, [row])
 
     def insert_many(self, table: str, rows: list[dict[str, object]]) -> None:
-        allowed = {"road_jobs", "analysis_jobs", "analysis_details", "stress_jobs", "stress_impacts", "stress_baseline", "stress_point_impacts"}
+        allowed = {"road_jobs", "analysis_jobs", "analysis_details", "stress_jobs", "stress_impacts", "stress_baseline", "stress_point_impacts", "traffic_jobs"}
         if table not in allowed:
             raise ValueError("Unknown state table")
         if table not in self.schemas:

@@ -81,6 +81,9 @@
   --ring-ripple-from: 0.9;
   --ring-ripple-to: 1.6;
   --motion-shimmer: kf-shimmer var(--dur-breathe) var(--ease-in-out) infinite;
+  --motion-thinking-in: kf-fade-in var(--dur-fast) var(--ease-out) var(--delay-spinner) both;
+  --motion-thinking-shuffle: kf-thinking-shuffle calc(var(--dur-panel) * 6) var(--ease-in-out)
+    infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -110,6 +113,7 @@
     --motion-spin: none;
     --motion-shimmer: none;
     --motion-ring-pulse: none;
+    --motion-thinking-shuffle: kf-shimmer calc(var(--reduced-fade) * 10) var(--ease-in-out) infinite;
     --ring-scale-from: 1;
     --ring-ripple-to: 1;
   }

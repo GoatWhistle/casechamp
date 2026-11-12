@@ -1,0 +1,345 @@
+{
+  "id": "traffic-3b4f60842c8948ff84c1e3f5254acd4a",
+  "scope": {
+    "places": [],
+    "region": "",
+    "bounds": [
+      41.55,
+      43.8,
+      42.25,
+      44.95
+    ],
+    "demand_multiplier": 1.0,
+    "pair_flow": 1000.0,
+    "max_projects": 3
+  },
+  "status": "completed",
+  "stage": "completed",
+  "completed": 3,
+  "total": 3,
+  "bounds": [
+    41.55,
+    43.8,
+    42.25,
+    44.95
+  ],
+  "baseline": {
+    "vehicle_hours": 8163.508213012245,
+    "unserved_vehicles": 0.0,
+    "overloaded_edges": 20,
+    "relative_gap": 0.0,
+    "converged": true
+  },
+  "alternatives": [
+    {
+      "id": "0",
+      "kind": "capacity",
+      "way_ids": [
+        301861394
+      ],
+      "length_km": 0.846564307808876,
+      "vehicle_hours_saved": 4.33385422243191,
+      "after": {
+        "vehicle_hours": 8159.174358789813,
+        "unserved_vehicles": 0.0,
+        "overloaded_edges": 18,
+        "relative_gap": 0.0,
+        "converged": true
+      },
+      "indices": [
+        {
+          "region": "Карачаево-Черкесская Республика",
+          "before": 90.02131617735839,
+          "after": 90.02131617735839,
+          "delta": 0.0,
+          "relative_percent": 0.0,
+          "population": 469865
+        },
+        {
+          "region": "Ставропольский край",
+          "before": 99.12077775686153,
+          "after": 99.12077775686153,
+          "delta": 0.0,
+          "relative_percent": 0.0,
+          "population": 2907593
+        },
+        {
+          "region": "Краснодарский край",
+          "before": 93.4705327047467,
+          "after": 93.4705327047467,
+          "delta": 0.0,
+          "relative_percent": 0.0,
+          "population": 5838273
+        }
+      ],
+      "road_names": [
+        "301861394"
+      ],
+      "map_edges": 810
+    },
+    {
+      "id": "1",
+      "kind": "speed",
+      "way_ids": [
+        235963363
+      ],
+      "length_km": 19.344530910253525,
+      "vehicle_hours_saved": 185.5272767552542,
+      "after": {
+        "vehicle_hours": 7977.98093625699,
+        "unserved_vehicles": 0.0,
+        "overloaded_edges": 20,
+        "relative_gap": 0.00011888438635402854,
+        "converged": true
+      },
+      "indices": [
+        {
+          "region": "Карачаево-Черкесская Республика",
+          "before": 90.02131617735839,
+          "after": 90.66835365252814,
+          "delta": 0.6470374751697534,
+          "relative_percent": 0.718760292167886,
+          "population": 469865
+        },
+        {
+          "region": "Ставропольский край",
+          "before": 99.12077775686153,
+          "after": 99.1630267255825,
+          "delta": 0.04224896872096906,
+          "relative_percent": 0.04262372600081221,
+          "population": 2907593
+        },
+        {
+          "region": "Краснодарский край",
+          "before": 93.4705327047467,
+          "after": 93.48229281876426,
+          "delta": 0.011760114017562273,
+          "relative_percent": 0.01258162725434886,
+          "population": 5838273
+        }
+      ],
+      "road_names": [
+        "«Кавказ»"
+      ],
+      "map_edges": 800
+    },
+    {
+      "id": "2",
+      "kind": "connection",
+      "way_ids": [],
+      "length_km": 1.799816069275208,
+      "vehicle_hours_saved": -0.027183425874682143,
+      "after": {
+        "vehicle_hours": 8163.535396438119,
+        "unserved_vehicles": 0.0,
+        "overloaded_edges": 20,
+        "relative_gap": 1.104660724594743e-06,
+        "converged": true
+      },
+      "indices": [
+        {
+          "region": "Карачаево-Черкесская Республика",
+          "before": 90.02131617735839,
+          "after": 90.02456271914323,
+          "delta": 0.003246541784847068,
+          "relative_percent": 0.003606414483492415,
+          "population": 469865
+        },
+        {
+          "region": "Ставропольский край",
+          "before": 99.12077775686153,
+          "after": 99.12215413120312,
+          "delta": 0.001376374341589326,
+          "relative_percent": 0.0013885830728366244,
+          "population": 2907593
+        },
+        {
+          "region": "Краснодарский край",
+          "before": 93.4705327047467,
+          "after": 93.47052787303075,
+          "delta": -4.831715955333493e-06,
+          "relative_percent": -5.169239780666857e-06,
+          "population": 5838273
+        }
+      ],
+      "road_names": [],
+      "map_edges": 802
+    }
+  ],
+  "indices": [
+    {
+      "region": "Карачаево-Черкесская Республика",
+      "value": 90.02131617735839,
+      "population": 469865,
+      "settlements": 148,
+      "normalization": 7897244.511692026
+    },
+    {
+      "region": "Ставропольский край",
+      "value": 99.12077775686153,
+      "population": 2907593,
+      "settlements": 760,
+      "normalization": 7897244.511692026
+    },
+    {
+      "region": "Краснодарский край",
+      "value": 93.4705327047467,
+      "population": 5838273,
+      "settlements": 1765,
+      "normalization": 7897244.511692026
+    }
+  ],
+  "provenance": {
+    "source": {
+      "bounds": [
+        41.55,
+        43.8,
+        42.25,
+        44.95
+      ],
+      "metadata": [
+        {
+          "key": "graph_revision",
+          "value": "{\"artifact\": \"adeb4170a71a6b9bbb8b5b5fe6de0a627e1e9a83b483e0328a0b172cb2964b29\", \"base\": \"[[\\\"casechamp.duckdb\\\", 1223700480, 1794314040488599643], [\\\"edges.parquet\\\", 368279977, 1794039336000000000], [\\\"nodes.parquet\\\", 180769332, 1794039313000000000], [\\\"points.parquet\\\", 6587005, 1794039339000000000], [\\\"ways.parquet\\\", 83529268, 1794039338000000000]]\", \"road_cost_model\": \"road-capacity-v1\"}"
+        },
+        {
+          "key": "road_cost_model_version",
+          "value": "road-capacity-v1"
+        }
+      ],
+      "housing_sources": [
+        {
+          "source_id": "070946a668c20e19a1b946524a8672d3ed0b572eede83b06b1806bbb50d9f5f5",
+          "record": "{\"file\": \"far-eastern-fed-district.parquet\", \"rows\": 365088, \"parquet_sha256\": \"070946a668c20e19a1b946524a8672d3ed0b572eede83b06b1806bbb50d9f5f5\", \"extraction\": {\"residential_buildings\": 365088, \"invalid_geometry_or_floors\": 32, \"buildings_with_assumed_one_floor\": 321393, \"pbf_sha256\": \"0c3f1f12b00cd9ad4a7a38bfb00a134f410667a31111a1d49f52e335d5cf8b74\", \"source_path\": \"data/additional/synthetic-traffic/russia-homes-20261112/far-eastern-fed-district.download.pbf\", \"residential_type_filter\": [\"apartments\", \"bungalow\", \"detached\", \"dormitory\", \"house\", \"residential\", \"semidetached_house\", \"terrace\"], \"unknown_floors\": \"one_assumed\", \"population\": \"not_observed_in_buildings\"}, \"collection\": {\"residential_buildings\": 365088, \"invalid_geometry_or_floors\": 32, \"buildings_with_assumed_one_floor\": 321393, \"url\": \"https://download.geofabrik.de/russia/far-eastern-fed-district-latest.osm.pbf\", \"osm_timestamp\": \"2026-11-11T21:22:47Z\", \"pbf_sha256\": \"0c3f1f12b00cd9ad4a7a38bfb00a134f410667a31111a1d49f52e335d5cf8b74\", \"pbf_bytes\": 398304329, \"parquet_sha256\": \"070946a668c20e19a1b946524a8672d3ed0b572eede83b06b1806bbb50d9f5f5\", \"status\": \"complete\"}}"
+        },
+        {
+          "source_id": "0d24f9b76fb9981863664a8521309fddd9394052ec27adc286ba92d0dc896643",
+          "record": "{\"file\": \"central-fed-district.parquet\", \"rows\": 1380575, \"parquet_sha256\": \"0d24f9b76fb9981863664a8521309fddd9394052ec27adc286ba92d0dc896643\", \"extraction\": {\"residential_buildings\": 1380575, \"invalid_geometry_or_floors\": 520, \"buildings_with_assumed_one_floor\": 1007930, \"pbf_sha256\": \"2fd62276257a8aee32975e9fb28c2a23180403d548ccd6ac93ddfa819907e1c0\", \"source_path\": \"data/additional/synthetic-traffic/russia-homes-20261112/central-fed-district.download.pbf\", \"residential_type_filter\": [\"apartments\", \"bungalow\", \"detached\", \"dormitory\", \"house\", \"residential\", \"semidetached_house\", \"terrace\"], \"unknown_floors\": \"one_assumed\", \"population\": \"not_observed_in_buildings\"}, \"collection\": {\"residential_buildings\": 1380575, \"invalid_geometry_or_floors\": 520, \"buildings_with_assumed_one_floor\": 1007930, \"url\": \"https://download.geofabrik.de/russia/central-fed-district-latest.osm.pbf\", \"osm_timestamp\": \"2026-11-11T21:22:47Z\", \"pbf_sha256\": \"2fd62276257a8aee32975e9fb28c2a23180403d548ccd6ac93ddfa819907e1c0\", \"pbf_bytes\": 885511241, \"parquet_sha256\": \"0d24f9b76fb9981863664a8521309fddd9394052ec27adc286ba92d0dc896643\", \"status\": \"complete\"}}"
+        },
+        {
+          "source_id": "17e17cbe9d3420da8baffb38f5faf3ff0267e6f38180af55b7222b35c1e85044",
+          "record": "{\"file\": \"ural-fed-district.parquet\", \"rows\": 482621, \"parquet_sha256\": \"17e17cbe9d3420da8baffb38f5faf3ff0267e6f38180af55b7222b35c1e85044\", \"extraction\": {\"residential_buildings\": 482621, \"invalid_geometry_or_floors\": 91, \"buildings_with_assumed_one_floor\": 305132, \"pbf_sha256\": \"59727ec0b08a2abbcd2c69b5157a95225c8e492b580ac887261c856d275489c1\", \"source_path\": \"data/additional/synthetic-traffic/russia-homes-20261112/ural-fed-district.download.pbf\", \"residential_type_filter\": [\"apartments\", \"bungalow\", \"detached\", \"dormitory\", \"house\", \"residential\", \"semidetached_house\", \"terrace\"], \"unknown_floors\": \"one_assumed\", \"population\": \"not_observed_in_buildings\"}, \"collection\": {\"residential_buildings\": 482621, \"invalid_geometry_or_floors\": 91, \"buildings_with_assumed_one_floor\": 305132, \"url\": \"https://download.geofabrik.de/russia/ural-fed-district-latest.osm.pbf\", \"osm_timestamp\": \"2026-11-11T21:22:47Z\", \"pbf_sha256\": \"59727ec0b08a2abbcd2c69b5157a95225c8e492b580ac887261c856d275489c1\", \"pbf_bytes\": 397562992, \"parquet_sha256\": \"17e17cbe9d3420da8baffb38f5faf3ff0267e6f38180af55b7222b35c1e85044\", \"status\": \"complete\"}}"
+        },
+        {
+          "source_id": "2ad7f6b0f123bf8032cbb513254ef9093f390ea1abc49698609085e1fc56e315",
+          "record": "{\"file\": \"south-fed-district.parquet\", \"rows\": 959177, \"parquet_sha256\": \"2ad7f6b0f123bf8032cbb513254ef9093f390ea1abc49698609085e1fc56e315\", \"extraction\": {\"residential_buildings\": 959177, \"invalid_geometry_or_floors\": 111, \"buildings_with_assumed_one_floor\": 778568, \"pbf_sha256\": \"4132a00c24934d7f1eec5cf308433b1d4c375202136ea4fb03d3570dffc5b123\", \"source_path\": \"data/additional/synthetic-traffic/russia-homes-20261112/south-fed-district.download.pbf\", \"residential_type_filter\": [\"apartments\", \"bungalow\", \"detached\", \"dormitory\", \"house\", \"residential\", \"semidetached_house\", \"terrace\"], \"unknown_floors\": \"one_assumed\", \"population\": \"not_observed_in_buildings\"}, \"collection\": {\"residential_buildings\": 959177, \"invalid_geometry_or_floors\": 111, \"buildings_with_assumed_one_floor\": 778568, \"url\": \"https://download.geofabrik.de/russia/south-fed-district-latest.osm.pbf\", \"osm_timestamp\": \"2026-11-11T21:22:47Z\", \"pbf_sha256\": \"4132a00c24934d7f1eec5cf308433b1d4c375202136ea4fb03d3570dffc5b123\", \"pbf_bytes\": 317528442, \"parquet_sha256\": \"2ad7f6b0f123bf8032cbb513254ef9093f390ea1abc49698609085e1fc56e315\", \"status\": \"complete\"}}"
+        },
+        {
+          "source_id": "4bfb15e5817fd370a590c084417eb92e77b94633ed6b8e3dbbdf5513247453bf",
+          "record": "{\"file\": \"northwestern-fed-district.parquet\", \"rows\": 453738, \"parquet_sha256\": \"4bfb15e5817fd370a590c084417eb92e77b94633ed6b8e3dbbdf5513247453bf\", \"extraction\": {\"residential_buildings\": 453738, \"invalid_geometry_or_floors\": 225, \"buildings_with_assumed_one_floor\": 266591, \"pbf_sha256\": \"7a5f66a334f0d02e5dc546afe0e634c27954e186b9a5c9b208121801f3001a22\", \"source_path\": \"data/additional/synthetic-traffic/russia-homes-20261112/northwestern-fed-district.download.pbf\", \"residential_type_filter\": [\"apartments\", \"bungalow\", \"detached\", \"dormitory\", \"house\", \"residential\", \"semidetached_house\", \"terrace\"], \"unknown_floors\": \"one_assumed\", \"population\": \"not_observed_in_buildings\"}, \"collection\": {\"residential_buildings\": 453738, \"invalid_geometry_or_floors\": 225, \"buildings_with_assumed_one_floor\": 266591, \"url\": \"https://download.geofabrik.de/russia/northwestern-fed-district-latest.osm.pbf\", \"osm_timestamp\": \"2026-11-11T21:22:47Z\", \"pbf_sha256\": \"7a5f66a334f0d02e5dc546afe0e634c27954e186b9a5c9b208121801f3001a22\", \"pbf_bytes\": 657342350, \"parquet_sha256\": \"4bfb15e5817fd370a590c084417eb92e77b94633ed6b8e3dbbdf5513247453bf\", \"status\": \"complete\"}}"
+        },
+        {
+          "source_id": "7cfc5fbe18c807ad2aae5acf2d79389fe7c78220051be93eefc0dfbf83da059a",
+          "record": "{\"file\": \"volga-fed-district.parquet\", \"rows\": 1289790, \"parquet_sha256\": \"7cfc5fbe18c807ad2aae5acf2d79389fe7c78220051be93eefc0dfbf83da059a\", \"extraction\": {\"residential_buildings\": 1289790, \"invalid_geometry_or_floors\": 479, \"buildings_with_assumed_one_floor\": 979386, \"pbf_sha256\": \"fbd3f13c7f41c0725bb54d681dfe75027d5cec69ae3ab204f390e0a542e85bf3\", \"source_path\": \"data/additional/synthetic-traffic/russia-homes-20261112/volga-fed-district.download.pbf\", \"residential_type_filter\": [\"apartments\", \"bungalow\", \"detached\", \"dormitory\", \"house\", \"residential\", \"semidetached_house\", \"terrace\"], \"unknown_floors\": \"one_assumed\", \"population\": \"not_observed_in_buildings\"}, \"collection\": {\"residential_buildings\": 1289790, \"invalid_geometry_or_floors\": 479, \"buildings_with_assumed_one_floor\": 979386, \"url\": \"https://download.geofabrik.de/russia/volga-fed-district-latest.osm.pbf\", \"osm_timestamp\": \"2026-11-11T21:22:47Z\", \"pbf_sha256\": \"fbd3f13c7f41c0725bb54d681dfe75027d5cec69ae3ab204f390e0a542e85bf3\", \"pbf_bytes\": 778106635, \"parquet_sha256\": \"7cfc5fbe18c807ad2aae5acf2d79389fe7c78220051be93eefc0dfbf83da059a\", \"status\": \"complete\"}}"
+        },
+        {
+          "source_id": "aa222df3f7da93c1ab27aa465ddf1208068855084a72bb8b993e633a75e8557b",
+          "record": "{\"file\": \"north-caucasus-fed-district.parquet\", \"rows\": 634781, \"parquet_sha256\": \"aa222df3f7da93c1ab27aa465ddf1208068855084a72bb8b993e633a75e8557b\", \"extraction\": {\"residential_buildings\": 634781, \"invalid_geometry_or_floors\": 142, \"buildings_with_assumed_one_floor\": 538282, \"pbf_sha256\": \"5b2c55f35a35a79f3ce1371288ffee696a5dc4051facfbd2b015b6032f34a1db\", \"source_path\": \"data/additional/synthetic-traffic/russia-homes-20261112/north-caucasus-fed-district.download.pbf\", \"residential_type_filter\": [\"apartments\", \"bungalow\", \"detached\", \"dormitory\", \"house\", \"residential\", \"semidetached_house\", \"terrace\"], \"unknown_floors\": \"one_assumed\", \"population\": \"not_observed_in_buildings\"}, \"collection\": {\"residential_buildings\": 634781, \"invalid_geometry_or_floors\": 142, \"buildings_with_assumed_one_floor\": 538282, \"url\": \"https://download.geofabrik.de/russia/north-caucasus-fed-district-latest.osm.pbf\", \"osm_timestamp\": \"2026-11-11T21:22:47Z\", \"pbf_sha256\": \"5b2c55f35a35a79f3ce1371288ffee696a5dc4051facfbd2b015b6032f34a1db\", \"pbf_bytes\": 129590959, \"parquet_sha256\": \"aa222df3f7da93c1ab27aa465ddf1208068855084a72bb8b993e633a75e8557b\", \"status\": \"complete\"}}"
+        },
+        {
+          "source_id": "e4d0431a64ee8bb5dc1da6ee313664a5249609c052dd23113126b1073b55b6f4",
+          "record": "{\"file\": \"north-caucasus-homes.parquet\", \"rows\": 634048, \"parquet_sha256\": \"e4d0431a64ee8bb5dc1da6ee313664a5249609c052dd23113126b1073b55b6f4\"}"
+        },
+        {
+          "source_id": "eb94b67a427505a0000c04f13fadf06be6cae2fe4994f66deff95b8fe8a7578f",
+          "record": "{\"file\": \"siberian-fed-district.parquet\", \"rows\": 812273, \"parquet_sha256\": \"eb94b67a427505a0000c04f13fadf06be6cae2fe4994f66deff95b8fe8a7578f\", \"extraction\": {\"residential_buildings\": 812273, \"invalid_geometry_or_floors\": 263, \"buildings_with_assumed_one_floor\": 624355, \"pbf_sha256\": \"7f5fc9b86febfbe1063ac430b378cf909e615a3132d08980a96204cfdf5609cc\", \"source_path\": \"data/additional/synthetic-traffic/russia-homes-20261112/siberian-fed-district.download.pbf\", \"residential_type_filter\": [\"apartments\", \"bungalow\", \"detached\", \"dormitory\", \"house\", \"residential\", \"semidetached_house\", \"terrace\"], \"unknown_floors\": \"one_assumed\", \"population\": \"not_observed_in_buildings\"}, \"collection\": {\"residential_buildings\": 812273, \"invalid_geometry_or_floors\": 263, \"buildings_with_assumed_one_floor\": 624355, \"url\": \"https://download.geofabrik.de/russia/siberian-fed-district-latest.osm.pbf\", \"osm_timestamp\": \"2026-11-11T21:22:47Z\", \"pbf_sha256\": \"7f5fc9b86febfbe1063ac430b378cf909e615a3132d08980a96204cfdf5609cc\", \"pbf_bytes\": 589940057, \"parquet_sha256\": \"eb94b67a427505a0000c04f13fadf06be6cae2fe4994f66deff95b8fe8a7578f\", \"status\": \"complete\"}}"
+        },
+        {
+          "source_id": "ffd3e2869bd3aba8eaca2ad4b7059dc13477e1b2d7c5269c00ab9c5a0cec35f1",
+          "record": "{\"file\": \"crimean-fed-district.parquet\", \"rows\": 65864, \"parquet_sha256\": \"ffd3e2869bd3aba8eaca2ad4b7059dc13477e1b2d7c5269c00ab9c5a0cec35f1\", \"extraction\": {\"residential_buildings\": 65864, \"invalid_geometry_or_floors\": 9, \"buildings_with_assumed_one_floor\": 53862, \"pbf_sha256\": \"df67e8d1137d9afed2e1012399b5db4d889f58d548c1913d655122b49858b26e\", \"source_path\": \"data/additional/synthetic-traffic/russia-homes-20261112/crimean-fed-district.download.pbf\", \"residential_type_filter\": [\"apartments\", \"bungalow\", \"detached\", \"dormitory\", \"house\", \"residential\", \"semidetached_house\", \"terrace\"], \"unknown_floors\": \"one_assumed\", \"population\": \"not_observed_in_buildings\"}, \"collection\": {\"residential_buildings\": 65864, \"invalid_geometry_or_floors\": 9, \"buildings_with_assumed_one_floor\": 53862, \"url\": \"https://download.geofabrik.de/russia/crimean-fed-district-latest.osm.pbf\", \"osm_timestamp\": \"2026-11-11T21:22:47Z\", \"pbf_sha256\": \"df67e8d1137d9afed2e1012399b5db4d889f58d548c1913d655122b49858b26e\", \"pbf_bytes\": 40756137, \"parquet_sha256\": \"ffd3e2869bd3aba8eaca2ad4b7059dc13477e1b2d7c5269c00ab9c5a0cec35f1\", \"status\": \"complete\"}}"
+        }
+      ],
+      "sha256": {
+        "places.parquet": "3aafb4a15741dbb5b5b947878ab95d7dc70cb93478776f8a7c7189ca36337d19",
+        "nodes.parquet": "2ae6e4fc86c304b32115a45466ec3e18055a3c5752f4fca5cb952a66e9950ee3",
+        "edges.parquet": "a1767a226790746df52b7a2cafaf8e386b6de0645864a5f0aaec8f828ba702b0",
+        "housing.parquet": "4bb951b6386ced7a6c45ecb76d41626b5a8e260e1eec121fe3edf8483d9214d0"
+      }
+    },
+    "housing": {
+      "allocated_population": 456783.0000000007,
+      "fallback_settlement_population": 75434.0,
+      "used_buildings": 14105,
+      "unused_buildings": 1,
+      "nearest_access_unverified": true,
+      "duplicates_removed": 0
+    },
+    "binding": {
+      "missing_or_outside_network_population": 344.0,
+      "settlements": 157,
+      "region": null
+    },
+    "demand": {
+      "generated_vehicles_per_hour": 8865.89934874898,
+      "unavailable_destination_vehicles_per_hour": 4.383984584358375,
+      "population": 532217.0000000002
+    },
+    "parameters": {
+      "daily_person_trips": 2.0,
+      "interzonal_share": 0.25,
+      "car_share": 0.5,
+      "car_occupancy": 1.5,
+      "hour_share": 0.1,
+      "half_life_hours": 1.0,
+      "max_trip_hours": 4.0
+    },
+    "cell_km": 22.78125,
+    "od_pairs": 841,
+    "demand_multiplier": 1.0,
+    "generated_vehicles_per_hour": 8865.89934874898,
+    "demand_sha256": "bf59f7c5b67373552aa997431bc12a68dbb42e55adfc55315e37679027def666",
+    "hansen": "Existing Plexus road index: 180 national markets, half-life 2h, fixed national normalization; local loaded times, outside window baseline weights; representative undirected index routing",
+    "observed_traffic": false,
+    "period_hours": 1,
+    "scope": "housing-derived local demand",
+    "limits": [
+      "Clipped network omits external transit and induced demand",
+      "Population attraction proxy; no observed jobs or freight",
+      "Static assignment; no queue length, spillback or intersection controls",
+      "New links are straight endpoint sketches; terrain, water, land and costs unverified",
+      "Map shows up to 800 priority directed edges plus each project",
+      "Best checked alternative, not a global optimum"
+    ],
+    "candidate_counts": {
+      "existing_corridor_projects": 15,
+      "connections_for_review": 8,
+      "data_gaps": 0
+    },
+    "checked_projects": [
+      {
+        "kind": "capacity",
+        "way_ids": [
+          301861394
+        ],
+        "screening_only": true,
+        "current_edge_demand_capacity_ratio": 1.157636629597868,
+        "review": "profile_and_engineering_assumptions"
+      },
+      {
+        "kind": "speed",
+        "way_ids": [
+          235963363
+        ],
+        "factor": 1.2,
+        "screening_only": true,
+        "current_edge_demand_capacity_ratio": 1.035093894261235,
+        "review": "profile_and_engineering_assumptions"
+      },
+      {
+        "kind": "connection",
+        "source_node": 829441,
+        "target_node": 737933,
+        "length_km": 1.799816069275208,
+        "speed_kmh": 40,
+        "length_basis": "1.2_times_geodesic_unreviewed_alignment",
+        "screening_only": true,
+        "review": "alignment_water_terrain_land_and_road_access_unverified",
+        "current_between_endpoint_minutes": 18.531704929153843,
+        "assumed_new_link_minutes": 2.699724103912812
+      }
+    ]
+  },
+  "error": "",
+  "version": "synthetic_passenger_od_static_msa_hansen_v2",
+  "verified_at": "2026-11-12T10:00:23.977550+00:00"
+}

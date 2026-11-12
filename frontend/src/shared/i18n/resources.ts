@@ -20,6 +20,7 @@ import ruScenario from "./locales/ru/scenario.json"
 import ruSeasons from "./locales/ru/seasons.json"
 import ruSources from "./locales/ru/sources.json"
 import ruStress from "./locales/ru/stress.json"
+import ruTraffic from "./locales/ru/traffic.json"
 
 export const NAMESPACES = [
   "common",
@@ -43,6 +44,7 @@ export const NAMESPACES = [
   "seasons",
   "sources",
   "stress",
+  "traffic",
 ] as const
 
 export type Namespace = (typeof NAMESPACES)[number]
@@ -71,6 +73,7 @@ const ru = {
   seasons: ruSeasons,
   sources: ruSources,
   stress: ruStress,
+  traffic: ruTraffic,
 }
 
 export type Dictionary = typeof ru

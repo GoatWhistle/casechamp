@@ -24,6 +24,8 @@ from app.usecase.chat_artifacts import (
 from app.usecase.links import LinkQueries
 from app.usecase.reference import ReferenceQueries
 from app.usecase.regions import RegionQueries
+from app.usecase.road_corridor import RoadCorridors
+from app.usecase.road_geometry import RoadGeometrySource
 from app.usecase.search import Search
 from app.usecase.settlements import SettlementQueries, SettlementQuery
 
@@ -37,8 +39,11 @@ class AtlasTools:
         search: Search,
         references: ReferenceQueries,
         calculations: CalculationTools,
+        roads: RoadGeometrySource | None = None,
+        corridors: RoadCorridors | None = None,
     ) -> None:
         self._calculations = calculations
+        self._map = MapTools(regions, settlements, roads, corridors)
         self._regions = regions
         self._comparisons = ChatComparisons(regions)
         self._links = links
@@ -47,7 +52,7 @@ class AtlasTools:
         self._references = references
 
     def register(self, agent: Agent[ChatRun, str]) -> None:
-        MapTools(self._regions, self._settlements).register(agent)
+        self._map.register(agent)
         self._calculations.register(agent)
         agent.tool(
             sequential=True,

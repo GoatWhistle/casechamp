@@ -1,7 +1,14 @@
-import { type RefObject, useCallback, useEffect, useState } from "react"
+import { type RefObject, useCallback, useLayoutEffect, useState } from "react"
 import { readPixels } from "@/shared/motion"
 
 const MAX_SHARE = 0.6
+
+interface PanelWidthOptions {
+  readonly minToken?: `--${string}`
+  readonly baseToken?: `--${string}`
+  readonly maxToken?: `--${string}`
+  readonly maxShare?: number
+}
 
 function stored(key: string): number | null {
   try {
@@ -21,25 +28,34 @@ function save(key: string, width: number | null) {
   }
 }
 
-export function usePanelWidth(host: RefObject<HTMLElement | null>, key: string) {
+export function usePanelWidth(
+  host: RefObject<HTMLElement | null>,
+  key: string,
+  {
+    minToken = "--panel-min",
+    baseToken = "--map-panel-width",
+    maxToken = "--map-panel-max",
+    maxShare = MAX_SHARE,
+  }: PanelWidthOptions = {},
+) {
   const [width, setWidth] = useState<number | null>(() => stored(key))
   const [bounds, setBounds] = useState({ min: 320, max: 760, base: 400 })
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const element = host.current
     if (!element) return
     const measure = () => {
-      const min = readPixels("--panel-min", element)
-      const base = readPixels("--map-panel-width", element)
-      const cap = readPixels("--map-panel-max", element)
-      const max = Math.max(min, Math.min(cap, element.clientWidth * MAX_SHARE))
+      const min = Math.min(readPixels(minToken, element), element.clientWidth)
+      const base = readPixels(baseToken, element)
+      const cap = readPixels(maxToken, element)
+      const max = Math.max(min, Math.min(cap, element.clientWidth * maxShare))
       setBounds({ min, max, base })
     }
     measure()
     const observer = new ResizeObserver(measure)
     observer.observe(element)
     return () => observer.disconnect()
-  }, [host])
+  }, [host, minToken, baseToken, maxToken, maxShare])
 
   const current = Math.min(bounds.max, Math.max(bounds.min, width ?? bounds.base))
 
