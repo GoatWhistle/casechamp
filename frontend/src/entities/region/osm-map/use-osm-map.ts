@@ -19,12 +19,12 @@ import { useMapControls } from "./camera/use-map-controls"
 import { aimCamera, corners, FLAT_MAP, keepFlat, roamConstrain } from "./map-camera"
 
 import { bindHover } from "./map-hover"
-import { MUNICIPAL_FILL, useMunicipalityLayer } from "./municipalities/use-municipality-layer"
-import { NORMATIVE_OVERLAY_LAYERS, useNormativeLayer } from "./normative-layer/use-normative-layer"
+import { useMunicipalityLayer } from "./municipalities/use-municipality-layer"
+import { useNormativeLayer } from "./normative-layer/use-normative-layer"
 import { buildStyle, FILL_LAYER, REGIONS_SOURCE, readMapColors } from "./osm-style"
+import { blocksRegionSelection } from "./paint/map-hit-test"
 import { recolorRegions, regionSteps } from "./paint/recolor"
-import { roadLayers } from "./road-parts"
-import { AIRPORT_LAYER, useAirportLayer } from "./use-airport-layer"
+import { useAirportLayer } from "./use-airport-layer"
 import { useRoadLayer } from "./use-road-layer"
 import { useSettlementFocus } from "./use-settlement-focus"
 import { useTransitLayer } from "./use-transit-layer"
@@ -38,6 +38,7 @@ const MAX_ZOOM = 18
 export type MapStep = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
 
 export interface OsmMapOptions {
+  readonly contextualWater?: readonly RegionBoundary[] | undefined
   readonly contextualRegions?: readonly RegionBoundary[] | undefined
   readonly outsideMask?: MultiPolygon | undefined
   readonly municipalities?: MunicipalityLayer | undefined
@@ -55,6 +56,7 @@ export interface OsmMapOptions {
 }
 
 export function useOsmMap({
+  contextualWater,
   contextualRegions,
   outsideMask,
   municipalities,
@@ -149,6 +151,7 @@ export function useOsmMap({
         state.current.reduced ? 0 : motionMs("--dur-base", element),
         outsideMask,
         contextualRegions,
+        contextualWater,
       ),
       bounds: corners(atlas.home),
       fitBoundsOptions: { padding: HOME_PADDING },
@@ -169,13 +172,7 @@ export function useOsmMap({
     })
     resize.observe(element)
     const onClick = (event: MapLayerMouseEvent) => {
-      const layers = [
-        ...NORMATIVE_OVERLAY_LAYERS,
-        MUNICIPAL_FILL,
-        AIRPORT_LAYER,
-        ...roadLayers(map),
-      ].filter((id) => map.getLayer(id))
-      if (layers.length && map.queryRenderedFeatures(event.point, { layers }).length) return
+      if (blocksRegionSelection(map, event.point)) return
       const id = event.features?.[0]?.id
       const region = typeof id === "number" ? state.current.atlas.regionOf.get(id) : undefined
       if (region) state.current.onSelect(region)
@@ -220,7 +217,17 @@ export function useOsmMap({
       resize.disconnect()
       map.remove()
     }
-  }, [atlas, contextualRegions, outsideMask, paintSteps, aim, setHover, label, airportHover])
+  }, [
+    atlas,
+    contextualWater,
+    contextualRegions,
+    outsideMask,
+    paintSteps,
+    aim,
+    setHover,
+    label,
+    airportHover,
+  ])
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: Repaint when data read through the latest-state ref changes.
   useEffect(() => {

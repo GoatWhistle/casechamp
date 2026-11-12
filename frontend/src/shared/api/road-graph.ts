@@ -4,7 +4,16 @@ import type { components } from "./schema.gen"
 
 export type RoadSegment = components["schemas"]["RoadSegment"]
 export type RoadView = components["schemas"]["RoadView"]
+export interface RoadFocus {
+  readonly id: string
+  readonly polygons: number[][][][]
+}
+export interface RoadWorkerRequest {
+  readonly bounds: RoadBounds
+  readonly focus?: RoadFocus | null
+}
 export interface RoadRenderView extends RoadView {
+  readonly focusRegionId?: string | null
   readonly segmentCount: number
   readonly geometry: readonly Blob[]
 }

@@ -1,6 +1,7 @@
 import type {
   DataDrivenPropertyValueSpecification,
   ExpressionSpecification,
+  FilterSpecification,
   LineLayerSpecification,
 } from "maplibre-gl"
 
@@ -72,3 +73,17 @@ export const ROAD_LAYOUT = {
   "line-join": "round",
   "line-sort-key": byRank([3, 2, 1, 0]),
 } satisfies LineLayerSpecification["layout"]
+
+export function roadVisibility(ids: readonly number[]): FilterSpecification {
+  return [
+    "any",
+    ["boolean", ["get", "focus_connected"], false],
+    picked(ids),
+    [
+      "in",
+      ["get", "highway"],
+      ["literal", ["motorway", "trunk", "primary", "motorway_link", "trunk_link", "primary_link"]],
+    ],
+    [">=", ["zoom"], 9],
+  ]
+}

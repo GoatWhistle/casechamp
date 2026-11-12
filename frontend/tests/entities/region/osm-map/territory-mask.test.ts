@@ -83,3 +83,43 @@ it("keeps contextual outlines outside the analytical region source", () => {
     paint: { "raster-fade-duration": 0 },
   })
 })
+
+it("fills decorative regions uniformly and draws sourced water separately without index features", () => {
+  const colors: OsmMapColors = {
+    fills: ["#eee", "#fed", "#fca", "#e99"],
+    border: "#fff",
+    selected: "#000",
+    water: "#abc",
+    outside: "#fff",
+  }
+  const data: FeatureCollection<MultiPolygon> = { type: "FeatureCollection", features: [] }
+  const shape = {
+    id: "context",
+    name: "Context",
+    bounds: [1, 1, 2, 2],
+    polygons: [
+      [
+        [
+          [1, 1],
+          [2, 1],
+          [2, 2],
+          [1, 2],
+          [1, 1],
+        ],
+      ],
+    ],
+  }
+  const style = buildStyle(colors, data, 0, undefined, [shape], [{ ...shape, id: "water" }])
+  expect(style.layers.find((layer) => layer.id === "contextual-region-fill")).toMatchObject({
+    paint: { "fill-color": "#e99", "fill-opacity": 0.72 },
+  })
+  expect(style.layers.find((layer) => layer.id === "contextual-water-fill")).toMatchObject({
+    paint: { "fill-color": "#abc", "fill-opacity": 1 },
+  })
+  const ids = style.layers.map((layer) => layer.id)
+  expect(ids.indexOf("contextual-water-fill")).toBeGreaterThan(
+    ids.indexOf("contextual-region-fill"),
+  )
+  expect(ids.indexOf("contextual-water-fill")).toBeGreaterThan(ids.indexOf(FILL_LAYER))
+  expect(style.sources.regions).toMatchObject({ data })
+})

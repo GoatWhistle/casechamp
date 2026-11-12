@@ -1725,6 +1725,47 @@ export interface components {
              */
             contested: true;
         };
+        /** ContextualWaterResponse */
+        ContextualWaterResponse: {
+            /** Id */
+            id: string;
+            /** Name */
+            name: string;
+            /** Bounds */
+            bounds: [
+                number,
+                number,
+                number,
+                number
+            ];
+            /** Polygons */
+            polygons: [
+                number,
+                number
+            ][][][];
+            /** Source Url */
+            source_url: string;
+            /** Observed At */
+            observed_at: string;
+            /** Source Sha256 */
+            source_sha256: string;
+            /** Osm Relation Id */
+            osm_relation_id: number;
+            /** Geometry Basis */
+            geometry_basis: string;
+            /**
+             * Display Only
+             * @default true
+             * @constant
+             */
+            display_only: true;
+            /**
+             * Analytics Enabled
+             * @default false
+             * @constant
+             */
+            analytics_enabled: false;
+        };
         /** CorridorCalculation */
         CorridorCalculation: {
             corridor: components["schemas"]["RoadCorridor"];
@@ -2017,6 +2058,8 @@ export interface components {
             outside_mask?: components["schemas"]["OutsideMaskResponse"] | null;
             /** Contextual Regions */
             contextual_regions?: components["schemas"]["ContextualBoundaryResponse"][];
+            /** Contextual Water */
+            contextual_water?: components["schemas"]["ContextualWaterResponse"][];
         };
         /** GeoRegionsResponse */
         GeoRegionsResponse: {
@@ -5665,6 +5708,7 @@ export interface operations {
                 east: number;
                 north: number;
                 zoom?: number;
+                region_id?: string | null;
             };
             header?: never;
             path?: never;

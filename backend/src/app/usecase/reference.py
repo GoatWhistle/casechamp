@@ -3,6 +3,7 @@ from collections.abc import Callable
 from dataclasses import dataclass, replace
 
 from app.usecase.contextual_boundaries import ContextualBoundary, ContextualBoundaryRepository
+from app.usecase.contextual_water import ContextualWater, ContextualWaterRepository
 from app.usecase.dto import BoundaryShape, RegionShape, SourceRecord, WinterRoadRecord
 from app.usecase.index_status import IndexStatus, index_status
 from app.usecase.interface import AtlasRepository
@@ -56,10 +57,12 @@ class ReferenceQueries:
         repository: AtlasRepository,
         outside_mask: Callable[[list[BoundaryShape]], MunicipalCoordinates] | None = None,
         contextual: ContextualBoundaryRepository | None = None,
+        water: ContextualWaterRepository | None = None,
     ) -> None:
         self._repository = repository
         self._outside_mask = outside_mask
         self._contextual = contextual
+        self._water = water
 
     def geo(self) -> GeoRegions:
         layer = self._repository.geo()
@@ -83,12 +86,20 @@ class ReferenceQueries:
     def contextual_boundaries(self) -> list[ContextualBoundary]:
         return self._contextual.boundaries() if self._contextual else []
 
+    def contextual_water(self) -> list[ContextualWater]:
+        return self._water.boundaries() if self._water else []
+
     def outside_mask(
         self,
         boundaries: list[BoundaryShape],
         contextual: list[ContextualBoundary] | None = None,
+        water: list[ContextualWater] | None = None,
     ) -> MunicipalCoordinates | None:
-        shapes = [*boundaries, *[item.shape() for item in (contextual or [])]]
+        shapes = [
+            *boundaries,
+            *[item.shape() for item in (contextual or [])],
+            *[item.shape() for item in (water or [])],
+        ]
         return self._outside_mask(shapes) if self._outside_mask else None
 
     def winter_roads(self) -> list[WinterRoadRecord]:

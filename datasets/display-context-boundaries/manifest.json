@@ -1,6 +1,6 @@
 {
   "created_at": "2026-11-12T20:34:35.060146+00:00",
-  "features": 4,
+  "features": 5,
   "source_metadata": {
     "boundaryID": "UKR-ADM1-14850775",
     "boundaryName": "Ukraine",
@@ -39,12 +39,11 @@
   "raw_sha256": "4a5947e7497574d51f93255dfa7e03dce0c7acf6ecee52d25773a5205854a399",
   "license": "ODbL-1.0",
   "attribution": "OpenStreetMap contributors; Wambacher; geoBoundaries",
-  "selection_method": "Exact original source shapeISO values UA-14,UA-09,UA-23,UA-65; no coordinate modification",
+  "selection_method": "Exact original source shapeISO values UA-14,UA-09,UA-23,UA-65,UA-40; no coordinate modification",
   "display_only": true,
   "analytics_enabled": false,
   "territorial_status": "disputed; source administrative outlines do not define present control or universal recognition",
   "artifacts": {
-    "contextual-regions.json": "17f1b518a9150faf6f3fc89c198edc43b64d2cb506cc2f67cc8e8a28185ce3b4",
-    "contextual-regions.geojson": "d7933b7ae9fbf38de0c9d72337bc7d83445c4351f76ce0a4e4612ad72f285ed0"
+    "contextual-regions.json": "88e50ce69e37d5e332efa1c602731cd541ffc7b1d6b92aa2cce49aac2db32b77"
   }
 }

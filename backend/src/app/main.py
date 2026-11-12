@@ -174,7 +174,7 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
     ErrorHandlers(StdlibLogger("app")).register(app)
     app.include_router(
         build_api_router(
-            *build_atlas_routers(atlas, config.contextual_boundaries),
+            *build_atlas_routers(atlas, config.contextual_boundaries, config.contextual_water),
             build_airports_router(AirportQueries(ClickHouseAirportRepository(atlas), atlas)),
             build_accessibility_router(AccessibilityQueries(ClickHouseAccessibilityRepository(reader), atlas)),
             build_scenarios_router(scenarios),

@@ -50,8 +50,15 @@ def build_road_graph_router(graph: RoadGraph) -> APIRouter:
         return graph.locations(query, region_id)
 
     @router.get("/road-graph", response_model=RoadView)
-    def view(west: float, south: float, east: float, north: float, zoom: float = 8) -> RoadView:
-        return graph.view(west, south, east, north, zoom)
+    def view(
+        west: float,
+        south: float,
+        east: float,
+        north: float,
+        zoom: float = 8,
+        region_id: str | None = None,
+    ) -> RoadView:
+        return graph.view(west, south, east, north, zoom, region_id)
 
     @router.get("/transport-links", response_model=list[TransportLink])
     def transport_links(
@@ -75,7 +82,10 @@ def build_road_graph_router(graph: RoadGraph) -> APIRouter:
         return graph.submit(
             body.region_id,
             body.scenario,
-            [RoadChange(c.way_id, 0 if c.closed else 1, lanes_total=c.lanes_total) for c in body.changes],
+            [
+                RoadChange(c.way_id, 0 if c.closed else 1, lanes_total=c.lanes_total)
+                for c in body.changes
+            ],
             [LinkChange(**link.model_dump()) for link in body.links],
             appraisal=body.appraisal,
         )

@@ -15,3 +15,5 @@
 !datasets/
 !datasets/display-context-boundaries/
 !datasets/display-context-boundaries/contextual-regions.json
+!datasets/contextual-water/
+!datasets/contextual-water/contextual-water.json

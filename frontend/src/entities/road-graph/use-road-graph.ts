@@ -6,6 +6,7 @@ import type { AnalysisOverlay } from "@/shared/api/road-analysis"
 import type {
   LinkChangeInput,
   RoadBounds,
+  RoadFocus,
   RoadJob,
   RoadRenderView,
   RoadScenarioInput,
@@ -22,7 +23,8 @@ export interface ScenarioDraft {
 
 const EMPTY_DRAFT: ScenarioDraft = { network: "road", links: [] }
 
-export function useRoadGraph(regionSelected = true) {
+export function useRoadGraph(focus?: RoadFocus | null) {
+  const regionSelected = Boolean(focus)
   const [draft, setDraft] = useState<ScenarioDraft>(EMPTY_DRAFT)
   const editDraft = useCallback(
     (patch: Partial<ScenarioDraft>) => setDraft((current) => ({ ...current, ...patch })),
@@ -49,19 +51,19 @@ export function useRoadGraph(regionSelected = true) {
   const [enabled, setEnabled] = useState(true)
   const cache = useQueryClient()
   const view = useQuery<RoadRenderView>({
-    queryKey: ["road-graph", bounds],
+    queryKey: ["road-graph", bounds, focus?.id ?? null],
     placeholderData: keepPreviousData,
     staleTime: Infinity,
     gcTime: 60_000,
     structuralSharing: false,
     enabled: regionSelected && enabled && bounds !== null,
     retry: false,
-    queryFn: ({ signal }) => loadRoadView(bounds ?? [0, 0, 1, 1, 8], signal),
+    queryFn: ({ signal }) => loadRoadView(bounds ?? [0, 0, 1, 1, 8], signal, focus),
   })
   const lastView = useRef<RoadRenderView | undefined>(undefined)
   useEffect(() => {
-    if (view.data) lastView.current = view.data
-  }, [view.data])
+    if (view.data && view.data.focusRegionId === focus?.id) lastView.current = view.data
+  }, [view.data, focus?.id])
   const recent = useQuery({
     queryKey: ["road-scenarios"],
     queryFn: ({ signal }) => unwrap(api.GET("/api/v1/road-scenarios", { signal })),
@@ -135,7 +137,10 @@ export function useRoadGraph(regionSelected = true) {
     view,
     rendering,
     setRendering,
-    layerView: regionSelected && enabled ? (view.data ?? lastView.current) : undefined,
+    layerView:
+      regionSelected && enabled
+        ? [view.data, lastView.current].find((item) => item?.focusRegionId === focus?.id)
+        : undefined,
     selected,
     enabled,
     visible: regionSelected && enabled,

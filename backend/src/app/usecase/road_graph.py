@@ -20,6 +20,7 @@ from app.usecase.road_records import (
     RoadView,
     SettlementEffect,
 )
+from app.usecase.selected_road_view import selected_view
 from app.usecase.transport_links import LinkChange, PlaceName, TransportLink, validate_links
 
 __all__ = [
@@ -111,7 +112,9 @@ class RoadGraph:
     def closure_jobs(self, way_ids: list[int], version: str) -> list[RoadJob]:
         return matching_closure_jobs(self.engine.recent(limit=None), way_ids, version)
 
-    def submit_closure(self, way_ids: list[int], region_ids: list[str], version: str) -> list[RoadJob]:
+    def submit_closure(
+        self, way_ids: list[int], region_ids: list[str], version: str
+    ) -> list[RoadJob]:
         if version != self.model_info().version:
             raise InvalidQuery("Closure belongs to a different graph version")
         ids = sorted(set(way_ids))
@@ -120,24 +123,46 @@ class RoadGraph:
         regions = {r.id: r for r in self.atlas.regions()}
         if any(key not in regions for key in region_ids):
             raise RegionNotFound()
-        existing = {job.region_id: job for job in self.closure_jobs(ids, version)
-                    if job.status in {"queued", "running", "completed"}}
+        existing = {
+            job.region_id: job
+            for job in self.closure_jobs(ids, version)
+            if job.status in {"queued", "running", "completed"}
+        }
         changes = [RoadChange(way, 0) for way in ids]
-        return [existing[key] if key in existing else self.engine.submit(
-            key, regions[key].name, "road", changes, queue=True,
-        ) for key in dict.fromkeys(region_ids)]
+        return [
+            existing[key]
+            if key in existing
+            else self.engine.submit(
+                key,
+                regions[key].name,
+                "road",
+                changes,
+                queue=True,
+            )
+            for key in dict.fromkeys(region_ids)
+        ]
 
     def geometry(self, way_ids: list[int]) -> RoadGeometry:
         if self.geometry_source is None:
             raise DataUnavailable("Road scenario geometry is not configured")
         return self.geometry_source.geometry(way_ids)
 
-    def view(self, west: float, south: float, east: float, north: float, zoom: float) -> RoadView:
+    def view(
+        self,
+        west: float,
+        south: float,
+        east: float,
+        north: float,
+        zoom: float,
+        region_id: str | None = None,
+    ) -> RoadView:
         if not all(isfinite(v) for v in (west, south, east, north, zoom)):
             raise InvalidQuery()
         if not (-180 <= west < east <= 180 and -85 <= south < north <= 85 and 0 <= zoom <= 22):
             raise InvalidQuery()
         source = self.view_source if self.view_source is not None else self.engine
+        if region_id is not None:
+            return selected_view(source, self.atlas, (west, south, east, north), zoom, region_id)
         return source.view((west, south, east, north), zoom)
 
     def transport_links(

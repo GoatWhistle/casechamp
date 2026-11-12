@@ -2,7 +2,7 @@ import type { GeoJSONSource, Map as LibreMap } from "maplibre-gl"
 import type { RoadSegment } from "@/shared/api/road-graph"
 import { motionMs, prefersReducedMotion } from "@/shared/motion"
 import { transparent } from "./paint/line-reveal"
-import { ROAD_LAYOUT, roadOpacity, roadWidth } from "./road-paint"
+import { ROAD_LAYOUT, roadOpacity, roadVisibility, roadWidth } from "./road-paint"
 import { betweenRoadParts, roadLayers, roadPart } from "./road-parts"
 
 export function selectRoads(
@@ -14,6 +14,7 @@ export function selectRoads(
   const width = roadWidth(ids)
   const opacity = roadOpacity(ids)
   for (const id of layers) {
+    map.setFilter(id, roadVisibility(ids))
     map.setPaintProperty(id, "line-width", width)
     map.setPaintProperty(id, "line-opacity", opacity)
   }
@@ -61,6 +62,7 @@ export async function drawRoadParts(
         type: "line",
         source: id,
         layout: ROAD_LAYOUT,
+        filter: roadVisibility([]),
         paint: {
           "line-color": transparent(color),
           "line-color-transition": { duration: fade, delay: 0 },

@@ -38,7 +38,6 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
   const fullscreen = useLocation().pathname === "/"
   const { t } = useTranslation()
   const { metric, season, selectedId, select, searchFor } = useExplorerParams()
-  const roads = useRoadGraph(selectedId !== null)
   const { hoveredId, cardRef, point, onHover } = useMapHover()
   const host = useRef<HTMLDivElement | null>(null)
   const panelWidth = usePanelWidth(host, PANEL_WIDTH_KEY)
@@ -56,6 +55,11 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
     normativeFacilities,
     normativeState,
   } = useMapData(metric, season, selectedId)
+  const focus = useMemo(
+    () => geo.data?.regions.find((region) => region.id === selectedId) ?? null,
+    [geo.data, selectedId],
+  )
+  const roads = useRoadGraph(focus)
   const normativeMode = normativeId(metric)
   const scope = useNormativeMapScope(selectedId, normativeMode, {
     result: normative.data,
@@ -137,6 +141,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
             roads={roadMapProps(roads)}
             outsideMask={geo.data.outside_mask ?? undefined}
             contextualRegions={geo.data.contextual_regions}
+            contextualWater={geo.data.contextual_water}
             municipalities={municipalities.layer}
             regions={geo.data.regions}
             stepOf={stepOf}

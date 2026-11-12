@@ -4,7 +4,7 @@ import { type RefObject, useEffect, useRef } from "react"
 import type { MunicipalityLayer } from "@/shared/api/municipalities"
 import { motionMs, useReducedMotion } from "@/shared/motion"
 import { NORMATIVE_OVERLAY_LAYERS } from "../normative-layer/use-normative-layer"
-import { SELECTED_LAYER } from "../osm-style"
+import { CONTEXTUAL_WATER_LAYER, SELECTED_LAYER } from "../osm-style"
 import { roadLayers } from "../road-parts"
 import { AIRPORT_LAYER } from "../use-airport-layer"
 
@@ -115,9 +115,12 @@ export function useMunicipalityLayer(
     const map = engine.current
     if (!ready || !map) return
     const click = (event: MapLayerMouseEvent) => {
-      const layers = [...roadLayers(map), ...NORMATIVE_OVERLAY_LAYERS, AIRPORT_LAYER].filter((id) =>
-        map.getLayer(id),
-      )
+      const layers = [
+        ...roadLayers(map),
+        ...NORMATIVE_OVERLAY_LAYERS,
+        CONTEXTUAL_WATER_LAYER,
+        AIRPORT_LAYER,
+      ].filter((id) => map.getLayer(id))
       if (layers.length && map.queryRenderedFeatures(event.point, { layers }).length) return
       const id = event.features?.[0]?.properties?.id
       if (typeof id === "string") current.current?.onSelect(id)

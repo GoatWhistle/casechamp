@@ -96,10 +96,21 @@ class ContextualBoundaryResponse(BoundaryShapeResponse):
     contested: Literal[True] = True
 
 
+class ContextualWaterResponse(BoundaryShapeResponse):
+    source_url: str
+    observed_at: str
+    source_sha256: str
+    osm_relation_id: int
+    geometry_basis: str
+    display_only: Literal[True] = True
+    analytics_enabled: Literal[False] = False
+
+
 class GeoBoundariesResponse(BaseModel):
     regions: list[BoundaryShapeResponse]
     outside_mask: OutsideMaskResponse | None = None
     contextual_regions: list[ContextualBoundaryResponse] = Field(default_factory=list)
+    contextual_water: list[ContextualWaterResponse] = Field(default_factory=list)
 
 
 class RegionSummaryResponse(BaseModel):

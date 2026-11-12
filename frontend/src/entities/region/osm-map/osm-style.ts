@@ -3,6 +3,7 @@ import type { ExpressionSpecification, StyleSpecification } from "maplibre-gl"
 import type { RegionBoundary } from "./boundary-geojson"
 
 export const REGIONS_SOURCE = "regions"
+export const CONTEXTUAL_WATER_LAYER = "contextual-water-fill"
 export const FILL_LAYER = "region-fill"
 export const BORDER_LAYER = "region-border"
 export const SELECTED_LAYER = "region-selected"
@@ -89,6 +90,7 @@ export function buildStyle(
   fade: number,
   outsideMask?: MultiPolygon,
   contextualRegions: readonly RegionBoundary[] = [],
+  contextualWater: readonly RegionBoundary[] = [],
 ): StyleSpecification {
   return {
     version: 8,
@@ -104,6 +106,17 @@ export function buildStyle(
             },
           }
         : {}),
+      "contextual-water": {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: contextualWater.map((water) => ({
+            type: "Feature",
+            properties: { name: water.name, display_only: true },
+            geometry: { type: "MultiPolygon", coordinates: water.polygons },
+          })),
+        },
+      },
       "contextual-regions": {
         type: "geojson",
         data: {
@@ -149,16 +162,18 @@ export function buildStyle(
         id: "contextual-region-fill",
         type: "fill",
         source: "contextual-regions",
-        paint: { "fill-color": colors.fills[0] ?? colors.outside, "fill-opacity": 0.25 },
+        paint: {
+          "fill-color": colors.fills[3] ?? colors.fills[1] ?? colors.outside,
+          "fill-opacity": 0.72,
+        },
       },
       {
         id: "contextual-region-border",
         type: "line",
         source: "contextual-regions",
         paint: {
-          "line-color": colors.contextBorder ?? colors.border,
-          "line-width": 1.4,
-          "line-dasharray": [4, 3],
+          "line-color": colors.border,
+          "line-width": 1.5,
         },
       },
       {
@@ -166,6 +181,12 @@ export function buildStyle(
         type: "fill",
         source: REGIONS_SOURCE,
         paint: { "fill-color": fillColor(colors.fills), "fill-opacity": fillOpacity() },
+      },
+      {
+        id: CONTEXTUAL_WATER_LAYER,
+        type: "fill",
+        source: "contextual-water",
+        paint: { "fill-color": colors.water, "fill-opacity": 1 },
       },
       {
         id: BORDER_LAYER,

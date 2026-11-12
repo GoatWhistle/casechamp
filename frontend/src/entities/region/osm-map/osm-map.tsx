@@ -10,6 +10,7 @@ import styles from "./osm-map.module.css"
 import { type MapControls, useOsmMap } from "./use-osm-map"
 
 export interface OsmMapProps {
+  readonly contextualWater?: readonly RegionBoundary[] | undefined
   readonly contextualRegions?: readonly RegionBoundary[] | undefined
   readonly outsideMask?: MultiPolygon | undefined
   readonly municipalities?: MunicipalityLayer | undefined
@@ -29,6 +30,7 @@ export interface OsmMapProps {
 }
 
 export const OsmMap = memo(function OsmMap({
+  contextualWater,
   contextualRegions,
   outsideMask,
   municipalities,
@@ -48,6 +50,7 @@ export const OsmMap = memo(function OsmMap({
 }: OsmMapProps) {
   const atlas = useMemo(() => buildBoundaryAtlas(regions), [regions])
   const map = useOsmMap({
+    contextualWater,
     contextualRegions,
     outsideMask,
     municipalities,

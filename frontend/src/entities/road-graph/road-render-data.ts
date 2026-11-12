@@ -1,5 +1,7 @@
 import type { FeatureCollection, LineString } from "geojson"
-import type { RoadRenderView, RoadView } from "@/shared/api/road-graph"
+import type { RoadFocus, RoadRenderView, RoadView } from "@/shared/api/road-graph"
+
+import { prepareRegionIntersection } from "./road-region-geometry"
 
 const FIRST_BATCH = 2000
 const MAX_SOURCES = 6
@@ -14,7 +16,11 @@ function roadRank(highway: string): number {
   return SECONDARY.has(highway) ? 2 : 3
 }
 
-export function prepareRoadView(view: RoadView): RoadRenderView {
+export function prepareRoadView(view: RoadView, focus?: RoadFocus | null): RoadRenderView {
+  const intersects = focus ? prepareRegionIntersection(focus) : null
+  const connected = new Set(
+    view.segments.filter((road) => intersects?.(road.coordinates)).map((road) => road.way_id),
+  )
   const choices = new Map<number, RoadView["segments"][number]>()
   const geometry: Blob[] = []
   const segments = [...view.segments].sort((a, b) => roadRank(a.highway) - roadRank(b.highway))
@@ -32,7 +38,7 @@ export function prepareRoadView(view: RoadView): RoadRenderView {
         return {
           type: "Feature",
           id: offset + index,
-          properties,
+          properties: { ...properties, focus_connected: !focus || connected.has(road.way_id) },
           geometry: { type: "LineString", coordinates },
         }
       }),
@@ -42,6 +48,7 @@ export function prepareRoadView(view: RoadView): RoadRenderView {
   }
   return {
     ...view,
+    focusRegionId: focus?.id ?? null,
     segments: [...choices.values()],
     segmentCount: view.segments.length,
     geometry,

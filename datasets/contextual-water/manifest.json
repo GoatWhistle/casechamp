@@ -1,0 +1,18 @@
+{
+  "created_at": "2026-11-12T20:43:48.923925+00:00",
+  "source_url": "https://api.openstreetmap.org/api/0.6/relation/5486417/full",
+  "raw_sha256": "1c88caf02376c0b01b6cf6067dc6c382f147f98a19183973d600081d5d634f0d",
+  "source_timestamp": "2026-01-15T10:25:37Z",
+  "source_version": "229",
+  "license": "ODbL-1.0",
+  "attribution": "OpenStreetMap contributors",
+  "method": "Complete source member ways polygonized with strict rejection of cuts,dangles,invalid rings; no clipping or invented edges",
+  "geometry_valid": true,
+  "bounds": [
+    34.0239336,
+    45.104662,
+    39.3106229,
+    47.2887778
+  ],
+  "artifact_sha256": "11f6a7181f61164f4dab852fbd0963f315d24a41f62ef6f46bcb93c2b5277dff"
+}

@@ -2474,6 +2474,22 @@
               "default": 8,
               "title": "Zoom"
             }
+          },
+          {
+            "name": "region_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Region Id"
+            }
           }
         ],
         "responses": {
@@ -5778,6 +5794,106 @@
         ],
         "title": "ContextualBoundaryResponse"
       },
+      "ContextualWaterResponse": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "bounds": {
+            "prefixItems": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              },
+              {
+                "type": "number"
+              }
+            ],
+            "type": "array",
+            "maxItems": 4,
+            "minItems": 4,
+            "title": "Bounds"
+          },
+          "polygons": {
+            "items": {
+              "items": {
+                "items": {
+                  "prefixItems": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ],
+                  "type": "array",
+                  "maxItems": 2,
+                  "minItems": 2
+                },
+                "type": "array"
+              },
+              "type": "array"
+            },
+            "type": "array",
+            "title": "Polygons"
+          },
+          "source_url": {
+            "type": "string",
+            "title": "Source Url"
+          },
+          "observed_at": {
+            "type": "string",
+            "title": "Observed At"
+          },
+          "source_sha256": {
+            "type": "string",
+            "title": "Source Sha256"
+          },
+          "osm_relation_id": {
+            "type": "integer",
+            "title": "Osm Relation Id"
+          },
+          "geometry_basis": {
+            "type": "string",
+            "title": "Geometry Basis"
+          },
+          "display_only": {
+            "type": "boolean",
+            "const": true,
+            "title": "Display Only",
+            "default": true
+          },
+          "analytics_enabled": {
+            "type": "boolean",
+            "const": false,
+            "title": "Analytics Enabled",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "bounds",
+          "polygons",
+          "source_url",
+          "observed_at",
+          "source_sha256",
+          "osm_relation_id",
+          "geometry_basis"
+        ],
+        "title": "ContextualWaterResponse"
+      },
       "CorridorCalculation": {
         "properties": {
           "corridor": {
@@ -6662,6 +6778,13 @@
             },
             "type": "array",
             "title": "Contextual Regions"
+          },
+          "contextual_water": {
+            "items": {
+              "$ref": "#/components/schemas/ContextualWaterResponse"
+            },
+            "type": "array",
+            "title": "Contextual Water"
           }
         },
         "type": "object",

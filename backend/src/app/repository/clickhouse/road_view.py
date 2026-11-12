@@ -1,6 +1,7 @@
 from functools import cached_property
 
 from app.repository.clickhouse.client import ClickHouseReader
+from app.repository.clickhouse.selected_road_view import selected_road_view
 from app.usecase.road_graph import RoadSegment, RoadView
 
 BOUNDS = """min_lon <= {east:Float64} AND max_lon >= {west:Float64}
@@ -29,6 +30,14 @@ class ClickHouseRoadView:
             "SELECT value FROM plexus_atlas.atlas_metadata WHERE key='graph_version'", {}
         )
         return str(rows[0]["value"]) if rows else "data-20261107"
+
+    def view_selected(
+        self,
+        bounds: tuple[float, float, float, float],
+        zoom: float,
+        selected_bounds: tuple[float, float, float, float],
+    ) -> RoadView:
+        return selected_road_view(self.reader, bounds, zoom, selected_bounds, self.version)
 
     def view(self, bounds: tuple[float, float, float, float], zoom: float) -> RoadView:
         west, south, east, north = bounds
