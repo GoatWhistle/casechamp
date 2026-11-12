@@ -1,0 +1,24 @@
+.symbols {
+  display: grid;
+  gap: var(--space-8);
+  padding-block-end: var(--space-12);
+}
+
+.travelRamp {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--hairline);
+  block-size: var(--space-8);
+}
+
+.travelRamp > :nth-child(1) {
+  background: var(--data-seq-2);
+}
+
+.travelRamp > :nth-child(2) {
+  background: var(--data-seq-4);
+}
+
+.travelRamp > :nth-child(3) {
+  background: var(--data-seq-7);
+}

@@ -1,0 +1,24 @@
+[
+  {
+    "width": 1440,
+    "errors": [],
+    "violations": [],
+    "overflow": false,
+    "sverdlovskMfc": "83,1",
+    "schoolOrigins": 1322,
+    "spbModeGuard": true,
+    "spbUnregulated": true,
+    "fireProfileVisible": true
+  },
+  {
+    "width": 1920,
+    "errors": [],
+    "violations": [],
+    "overflow": false,
+    "sverdlovskMfc": "83,1",
+    "schoolOrigins": 1322,
+    "spbModeGuard": true,
+    "spbUnregulated": true,
+    "fireProfileVisible": true
+  }
+]

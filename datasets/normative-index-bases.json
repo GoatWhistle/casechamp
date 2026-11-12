@@ -1,0 +1,608 @@
+[
+  {
+    "criterion_id": "N01",
+    "region_id": "RU",
+    "act": "132n",
+    "clause": "2",
+    "edition_date": "2016-02-27",
+    "source_url": "http://publication.pravo.gov.ru/document/0001201603250001",
+    "unit": "minutes",
+    "thresholds": [
+      60
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold",
+    "review": {
+      "reviewed_at": "2026-11-12",
+      "as_of": "2026-10-22",
+      "locator": "sheet1!A226:J226",
+      "source_url": "https://roszdravnadzor.gov.ru/i/upload/files/%D0%A0%D0%B5%D1%84%D0%BE%D1%80%D0%BC%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C%D0%BD%D0%BE-%D0%BD%D0%B0%D0%B4%D0%B7%D0%BE%D1%80%D0%BD%D0%BE%D0%B9%20%D0%B4%D0%B5%D1%8F%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F%2C%20%D1%81%D0%BE%D0%BA%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BA%D0%BE%D0%BB%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B0%20%D0%BE%D0%B1%D1%8F%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D1%82%D1%80%D0%B5%D0%B1%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9/%D0%9F%D0%B5%D1%80%D0%B5%D1%87%D0%B5%D0%BD%D1%8C%20%D0%9D%D0%9F%D0%90%2C%20%D1%81%D0%BE%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D1%89%D0%B8%D1%85%20%D0%BE%D0%B1%D1%8F%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5%20%D1%82%D1%80%D0%B5%D0%B1%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F/%D0%9F%D0%B5%D1%80%D0%B5%D1%87%D0%B5%D0%BD%D1%8C%20%D0%9D%D0%9F%D0%90-%D0%BC%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%20%D0%B4%D0%B5%D1%8F%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C-22.10.2026.xlsx",
+      "source_sha256": "7091246c7876b6c1a69807c7bc482cb9f5d1f5b0c4769ae54665f4cfda1d1c62",
+      "scope": "registry_listing"
+    }
+  },
+  {
+    "criterion_id": "N02",
+    "region_id": "RU",
+    "act": "132n",
+    "clause": "3",
+    "edition_date": "2016-02-27",
+    "source_url": "http://publication.pravo.gov.ru/document/0001201603250001",
+    "unit": "minutes",
+    "thresholds": [
+      120
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold",
+    "review": {
+      "reviewed_at": "2026-11-12",
+      "as_of": "2026-10-22",
+      "locator": "sheet1!A226:J226",
+      "source_url": "https://roszdravnadzor.gov.ru/i/upload/files/%D0%A0%D0%B5%D1%84%D0%BE%D1%80%D0%BC%D0%B0%20%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C%D0%BD%D0%BE-%D0%BD%D0%B0%D0%B4%D0%B7%D0%BE%D1%80%D0%BD%D0%BE%D0%B9%20%D0%B4%D0%B5%D1%8F%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D0%B8/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%D1%82%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F%2C%20%D1%81%D0%BE%D0%BA%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BA%D0%BE%D0%BB%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%B0%20%D0%BE%D0%B1%D1%8F%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D1%85%20%D1%82%D1%80%D0%B5%D0%B1%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9/%D0%9F%D0%B5%D1%80%D0%B5%D1%87%D0%B5%D0%BD%D1%8C%20%D0%9D%D0%9F%D0%90%2C%20%D1%81%D0%BE%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D1%89%D0%B8%D1%85%20%D0%BE%D0%B1%D1%8F%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5%20%D1%82%D1%80%D0%B5%D0%B1%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F/%D0%9F%D0%B5%D1%80%D0%B5%D1%87%D0%B5%D0%BD%D1%8C%20%D0%9D%D0%9F%D0%90-%D0%BC%D0%B5%D0%B4%D0%B8%D1%86%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%20%D0%B4%D0%B5%D1%8F%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C-22.10.2026.xlsx",
+      "source_sha256": "7091246c7876b6c1a69807c7bc482cb9f5d1f5b0c4769ae54665f4cfda1d1c62",
+      "scope": "registry_listing"
+    }
+  },
+  {
+    "criterion_id": "N03",
+    "region_id": "RU",
+    "act": "123-FZ",
+    "clause": "76",
+    "edition_date": "2008-07-22",
+    "source_url": "https://18.mchs.gov.ru/deyatelnost/chasto-zadavaemye-voprosy/zaglyani-syuda-esli-hochesh-bolshe-znat-o-rabote-pozharnyh/ot-chego-zavisit-vremya-reagirovaniya-pozharno-spasatelnyh-podrazdeleniy",
+    "unit": "minutes",
+    "thresholds": [
+      10,
+      20
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "emergency_response",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N04",
+    "region_id": "RU",
+    "act": "SP2.4.2.4283-26",
+    "clause": "13.1",
+    "edition_date": "2026-06-02",
+    "source_url": "http://publication.pravo.gov.ru/document/0001202606020083",
+    "unit": "metres",
+    "thresholds": [
+      500,
+      800,
+      1000
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "walk",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N05",
+    "region_id": "37000000",
+    "act": "178",
+    "clause": "5",
+    "edition_date": "2023-02-08",
+    "source_url": "https://gkh.kurganobl.ru/?page_id=14474",
+    "unit": "minutes",
+    "thresholds": [
+      60
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N06",
+    "region_id": "37000000",
+    "act": "178",
+    "clause": "5",
+    "edition_date": "2023-02-08",
+    "source_url": "https://gkh.kurganobl.ru/?page_id=14474",
+    "unit": "minutes",
+    "thresholds": [
+      60
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N07",
+    "region_id": "37000000",
+    "act": "178",
+    "clause": "18",
+    "edition_date": "2023-02-08",
+    "source_url": "https://gkh.kurganobl.ru/?page_id=14474",
+    "unit": "minutes",
+    "thresholds": [
+      40,
+      60
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N08",
+    "region_id": "37000000",
+    "act": "178",
+    "clause": "22",
+    "edition_date": "2023-02-08",
+    "source_url": "https://gkh.kurganobl.ru/?page_id=14474",
+    "unit": "minutes",
+    "thresholds": [
+      60
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N09",
+    "region_id": "37000000",
+    "act": "178",
+    "clause": "22",
+    "edition_date": "2023-02-08",
+    "source_url": "https://gkh.kurganobl.ru/?page_id=14474",
+    "unit": "metres",
+    "thresholds": [
+      250,
+      400,
+      500,
+      600,
+      800
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "walk",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N05",
+    "region_id": "34000000",
+    "act": "344-а",
+    "clause": "14, таблица 8",
+    "edition_date": "2025-01-20",
+    "source_url": "https://volgorechensk.kostroma.gov.ru/upload/medialibrary/314/bg3woub6g8dahlrb9aixaucgkb1tes8e/344-%D0%B0.pdf",
+    "unit": "minutes",
+    "thresholds": [
+      90
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N07",
+    "region_id": "34000000",
+    "act": "344-а",
+    "clause": "21, таблица 15",
+    "edition_date": "2025-01-20",
+    "source_url": "https://volgorechensk.kostroma.gov.ru/upload/medialibrary/314/bg3woub6g8dahlrb9aixaucgkb1tes8e/344-%D0%B0.pdf",
+    "unit": "minutes",
+    "thresholds": [
+      40,
+      60
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N06",
+    "region_id": "34000000",
+    "act": "344-а",
+    "clause": "14, таблица 8",
+    "edition_date": "2025-01-20",
+    "source_url": "https://volgorechensk.kostroma.gov.ru/upload/medialibrary/314/bg3woub6g8dahlrb9aixaucgkb1tes8e/344-%D0%B0.pdf",
+    "unit": "minutes",
+    "thresholds": [
+      90
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N08",
+    "region_id": "34000000",
+    "act": "344-а",
+    "clause": "4, таблица 1, межмуниципальное сообщение",
+    "edition_date": "2025-01-20",
+    "source_url": "https://volgorechensk.kostroma.gov.ru/upload/medialibrary/314/bg3woub6g8dahlrb9aixaucgkb1tes8e/344-%D0%B0.pdf",
+    "unit": "minutes",
+    "thresholds": [
+      90
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N05",
+    "region_id": "40000000",
+    "act": "257, редакция 1357",
+    "clause": "1.2.20, с.7",
+    "edition_date": "2023-12-19",
+    "source_url": "http://publication.pravo.gov.ru/Document/View/7800202312200008",
+    "unit": "minutes",
+    "thresholds": [
+      45
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "pedestrian_transit",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N07",
+    "region_id": "40000000",
+    "act": "257, редакция 1357",
+    "clause": "1.2.15, с.6",
+    "edition_date": "2023-12-19",
+    "source_url": "http://publication.pravo.gov.ru/Document/View/7800202312200008",
+    "unit": "minutes",
+    "thresholds": [
+      30
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "pedestrian_transit",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N08",
+    "region_id": "40000000",
+    "act": "257, редакция 1357",
+    "clause": "1.2.2, с.3",
+    "edition_date": "2023-12-19",
+    "source_url": "http://publication.pravo.gov.ru/Document/View/7800202312200008",
+    "unit": "minutes",
+    "thresholds": [],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "none",
+    "regulation": "not_regulated"
+  },
+  {
+    "criterion_id": "N05",
+    "region_id": "65000000",
+    "act": "435-П",
+    "clause": "1.13, таблица 25, с.55",
+    "edition_date": "2023-08-01",
+    "source_url": "https://www.pravo.gov66.ru/media/pravo/%D0%9F%D0%A0%D0%98%D0%9A%D0%90%D0%97%D0%BE%D1%8201.08.2023435-%D0%9F.pdf",
+    "unit": "minutes",
+    "thresholds": [
+      45
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N07",
+    "region_id": "65000000",
+    "act": "435-П",
+    "clause": "2.7, таблица 40, с.72; транспортные варианты по типу муниципалитета",
+    "edition_date": "2023-08-01",
+    "source_url": "https://www.pravo.gov66.ru/media/pravo/%D0%9F%D0%A0%D0%98%D0%9A%D0%90%D0%97%D0%BE%D1%8201.08.2023435-%D0%9F.pdf",
+    "unit": "minutes",
+    "thresholds": [
+      30,
+      40,
+      60
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N08",
+    "region_id": "36000000",
+    "act": "235-п",
+    "clause": "таблица 1, строка 4, с.6; региональное и межрегиональное сообщение",
+    "edition_date": "2026-03-31",
+    "source_url": "https://admpriboy.ru/kcfinder/upload/1008/files/new/3103-235-p-2.pdf",
+    "unit": "minutes",
+    "thresholds": [
+      45
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N07",
+    "region_id": "11800000",
+    "act": "4",
+    "clause": "п.11, с.2",
+    "edition_date": "2025-12-10",
+    "source_url": "https://dizog.adm-nao.ru/media/uploads/userfiles/2026/09/28/%D0%A0%D0%9D%D0%93%D0%9F_%D1%81_%D0%B2%D0%BD.%D0%B8%D0%B7%D0%BC..pdf",
+    "unit": "minutes",
+    "thresholds": [],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "none",
+    "regulation": "local_selection_required",
+    "intervals": [
+      {
+        "minimum": 30,
+        "maximum": 40,
+        "municipality_type": "urban_okrug",
+        "mode": "transport",
+        "profile": "library_type_not_specified"
+      },
+      {
+        "minimum": 15,
+        "maximum": 30,
+        "municipality_type": "urban_settlement",
+        "mode": "pedestrian_or_transport",
+        "profile": "library_type_not_specified"
+      },
+      {
+        "minimum": 15,
+        "maximum": 30,
+        "municipality_type": "rural_settlement",
+        "mode": "pedestrian_or_transport",
+        "profile": "library_type_not_specified"
+      }
+    ]
+  },
+  {
+    "criterion_id": "N07",
+    "region_id": "20000000",
+    "act": "45-01-04/115",
+    "clause": "1.3.9, строка 1.2, с.39–40",
+    "edition_date": "2017-10-09",
+    "source_url": "http://publication.pravo.gov.ru/Document/View/3601201710300002",
+    "unit": "minutes",
+    "thresholds": [],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "none",
+    "regulation": "local_selection_required",
+    "intervals": [
+      {
+        "minimum": 30,
+        "maximum": 40,
+        "municipality_type": "urban_okrug",
+        "mode": "transport",
+        "profile": "municipal_public_library_or_branch"
+      },
+      {
+        "minimum": 30,
+        "maximum": 60,
+        "municipality_type": "municipal_district",
+        "mode": "transport",
+        "profile": "municipal_public_library_or_branch"
+      },
+      {
+        "minimum": 15,
+        "maximum": 30,
+        "municipality_type": "urban_settlement",
+        "mode": "transport",
+        "profile": "municipal_public_library_or_branch"
+      },
+      {
+        "minimum": 15,
+        "maximum": 30,
+        "municipality_type": "rural_settlement",
+        "mode": "transport",
+        "profile": "municipal_public_library_or_branch"
+      }
+    ]
+  },
+  {
+    "region_id": "03000000",
+    "act": "Приказ от 16.04.2015 №78, редакция от 11.07.2025 №87",
+    "clause": "п.2.9.1, таблица 11, PDF с.27; объекты регионального значения",
+    "edition_date": "2025-07-11",
+    "source_url": "http://publication.pravo.gov.ru/Document/View/2301202507170001",
+    "unit": "minutes",
+    "currentness": "published_currentness_unconfirmed",
+    "review": {
+      "reviewed_at": "2026-11-12",
+      "as_of": "2025-07-11",
+      "locator": "п.2.9.1, таблица 11, PDF с.27 / печатная с.25",
+      "source_url": "http://publication.pravo.gov.ru/file/pdf?eoNumber=2301202507170001",
+      "source_sha256": "f466fdee1348ea4f3def66ff49811d86597230297b85c91c54ec9bde961b4547",
+      "scope": "consolidated_text"
+    },
+    "criterion_id": "N05",
+    "thresholds": [],
+    "required_mode": "none",
+    "regulation": "not_regulated"
+  },
+  {
+    "region_id": "03000000",
+    "act": "Приказ от 16.04.2015 №78, редакция от 11.07.2025 №87",
+    "clause": "п.2.9.1, таблица 11, PDF с.27; объекты регионального значения; 1,5 ч, вид транспорта не уточнён",
+    "edition_date": "2025-07-11",
+    "source_url": "http://publication.pravo.gov.ru/Document/View/2301202507170001",
+    "unit": "minutes",
+    "currentness": "published_currentness_unconfirmed",
+    "review": {
+      "reviewed_at": "2026-11-12",
+      "as_of": "2025-07-11",
+      "locator": "п.2.9.1, таблица 11, PDF с.27 / печатная с.25",
+      "source_url": "http://publication.pravo.gov.ru/file/pdf?eoNumber=2301202507170001",
+      "source_sha256": "f466fdee1348ea4f3def66ff49811d86597230297b85c91c54ec9bde961b4547",
+      "scope": "consolidated_text"
+    },
+    "criterion_id": "N06",
+    "thresholds": [
+      90
+    ],
+    "required_mode": "car",
+    "regulation": "threshold"
+  },
+  {
+    "criterion_id": "N09",
+    "region_id": "RU",
+    "act": "СП 42.13330.2026, приказ Минстроя России от 11.06.2026 №368/пр",
+    "clause": "пп.1.2–1.3, 8.83–8.84, таблица 8.12, PDF с.166–167; жилые участки: МКД 500 м, ИЖД 800 м. Федеральные показатели при отсутствии региональных и местных; специальные уменьшения требуют отдельного основания. Обязательность и применимость не подтверждены.",
+    "edition_date": "2026-06-11",
+    "source_url": "https://www.minstroyrf.gov.ru/docs/484508/",
+    "unit": "metres",
+    "thresholds": [
+      500,
+      800
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "walk",
+    "regulation": "threshold",
+    "required_measurement_definition": "stop_pavilion_to_farthest_parcel_boundary_opposite_directions",
+    "review": {
+      "reviewed_at": "2026-11-12",
+      "as_of": "2026-06-11",
+      "locator": "пп.8.83–8.84, таблица 8.12, PDF с.166–167 / печатные с.163–164",
+      "source_url": "https://www.minstroyrf.gov.ru/upload/iblock/89a/a94kvc7y3urtagzj7eesh7pfq6lk0bz2/%D0%A1%D0%9F%2042.pdf",
+      "source_sha256": "b4d980a6038a6b228d75b31b0912851a1eea5261905a786c907000779c07db12",
+      "scope": "consolidated_text"
+    }
+  },
+  {
+    "region_id": "07000000",
+    "act": "Приказ Министерства строительства и архитектуры Ставропольского края от 10.10.2022 №532",
+    "clause": "Основная часть, таблица 1.2.3, PDF с.9–10 / печатные с.6–7; объекты регионального значения. Транспортная доступность 1,5 ч; вид транспорта не уточнён.",
+    "edition_date": "2022-10-10",
+    "source_url": "http://publication.pravo.gov.ru/Document/View/2601202210120001",
+    "unit": "minutes",
+    "thresholds": [
+      90
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold",
+    "review": {
+      "reviewed_at": "2026-11-12",
+      "as_of": "2022-10-10",
+      "locator": "таблица 1.2.3, PDF с.9–10 / печатные с.6–7",
+      "source_url": "http://publication.pravo.gov.ru/file/pdf?eoNumber=2601202210120001",
+      "source_sha256": "cefca5676fbdb099984e5516400b4bf1dae6b9c8e37647669ada5142dd979183",
+      "scope": "consolidated_text"
+    },
+    "criterion_id": "N05"
+  },
+  {
+    "region_id": "07000000",
+    "act": "Приказ Министерства строительства и архитектуры Ставропольского края от 10.10.2022 №532",
+    "clause": "Основная часть, таблица 1.2.3, PDF с.9–10 / печатные с.6–7; объекты регионального значения. Транспортная доступность 1,5 ч; вид транспорта не уточнён.",
+    "edition_date": "2022-10-10",
+    "source_url": "http://publication.pravo.gov.ru/Document/View/2601202210120001",
+    "unit": "minutes",
+    "thresholds": [
+      90
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold",
+    "review": {
+      "reviewed_at": "2026-11-12",
+      "as_of": "2022-10-10",
+      "locator": "таблица 1.2.3, PDF с.9–10 / печатные с.6–7",
+      "source_url": "http://publication.pravo.gov.ru/file/pdf?eoNumber=2601202210120001",
+      "source_sha256": "cefca5676fbdb099984e5516400b4bf1dae6b9c8e37647669ada5142dd979183",
+      "scope": "consolidated_text"
+    },
+    "criterion_id": "N06"
+  },
+  {
+    "region_id": "33000000",
+    "criterion_id": "N06",
+    "act": "Постановление Правительства Кировской области от 29.11.2024 №523-П",
+    "clause": "Основная часть, таблица 9, строка 2.9, PDF с.46 / печатная с.43; ЦЗН городского округа, муниципального округа, муниципального района. Транспортная доступность в течение 1 часа; вид транспорта не уточнён.",
+    "edition_date": "2024-11-29",
+    "source_url": "http://publication.pravo.gov.ru/Document/View/4300202412020012",
+    "unit": "minutes",
+    "thresholds": [
+      60
+    ],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "car",
+    "regulation": "threshold",
+    "review": {
+      "reviewed_at": "2026-11-12",
+      "as_of": "2024-11-29",
+      "locator": "Основная часть, таблица 9, строка 2.9, PDF с.46 / печатная с.43",
+      "source_url": "http://publication.pravo.gov.ru/file/pdf?eoNumber=4300202412020012",
+      "source_sha256": "705990a3b5ee4960b4cd7836bf0c46065b838c38eb15d565c834575046938833",
+      "scope": "consolidated_text"
+    }
+  },
+  {
+    "region_id": "83000000",
+    "criterion_id": "N06",
+    "act": "Постановление Правительства Кабардино-Балкарской Республики от26.09.2019 №173-ПП",
+    "clause": "п.1.5.6.4, таблица11, PDF/газетнаяс.25; центры занятости населения регионального значения: максимальный уровень территориальной доступности не устанавливается. Исходная опубликованная редакция2019; последующая цепочка изменений не подтверждена.",
+    "edition_date": "2019-09-26",
+    "source_url": "https://smikbr.ru/arhiv/2019/kbp/10/04d.pdf",
+    "unit": "minutes",
+    "thresholds": [],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "none",
+    "regulation": "not_regulated",
+    "review": {
+      "reviewed_at": "2026-11-12",
+      "as_of": "2019-09-26",
+      "locator": "п.1.5.6.4, таблица11, PDFс.25; обоснованиеп.2.3.2.6.4, PDFс.27",
+      "source_url": "https://smikbr.ru/arhiv/2019/kbp/10/04d.pdf",
+      "source_sha256": "9315f4b2e52036fd8044bd1fe0346e66523c256360226eb701cd524fcc27370f",
+      "scope": "consolidated_text"
+    }
+  },
+  {
+    "region_id": "83000000",
+    "criterion_id": "N08",
+    "act": "Постановление Правительства Кабардино-Балкарской Республики от26.09.2019 №173-ПП",
+    "clause": "п.1.5.1, таблица1, PDF/газетнаяс.23; автовокзалы и автостанции регионального и межмуниципального значения: максимальный уровень территориальной доступности не устанавливается. Не относится ко всем автобусным остановкам; исходная опубликованная редакция2019, цепочка изменений не подтверждена.",
+    "edition_date": "2019-09-26",
+    "source_url": "https://smikbr.ru/arhiv/2019/kbp/10/04d.pdf",
+    "unit": "minutes",
+    "thresholds": [],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "none",
+    "regulation": "not_regulated",
+    "review": {
+      "reviewed_at": "2026-11-12",
+      "as_of": "2019-09-26",
+      "locator": "п.1.5.1, таблица1, PDFс.23; обоснованиеп.2.3.3, PDFс.27",
+      "source_url": "https://smikbr.ru/arhiv/2019/kbp/10/04d.pdf",
+      "source_sha256": "9315f4b2e52036fd8044bd1fe0346e66523c256360226eb701cd524fcc27370f",
+      "scope": "consolidated_text"
+    }
+  },
+  {
+    "region_id": "44000000",
+    "criterion_id": "N06",
+    "act": "Постановление Правительства Магаданской области от09.02.2026 №70-пп",
+    "clause": "Таблица11 строка2, PDFс.14/печатнаяс.13: территориальный ЦЗН, транспортная доступность30мин для городского округа и60мин для муниципального округа. Вид транспорта не уточнён; управляющий областной центр является другим профилем. Требуется установить применимый тип муниципалитета; единый нормативный процент не выбирается.",
+    "edition_date": "2026-02-09",
+    "source_url": "https://magadangorod.ru/common/upload/29/editor/file/rgnp_ot_9.02.26.pdf",
+    "unit": "minutes",
+    "thresholds": [],
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "none",
+    "regulation": "local_selection_required",
+    "review": {
+      "reviewed_at": "2026-11-12",
+      "as_of": "2026-02-09",
+      "locator": "Таблица11 строка2 PDF14/печатная13; §3.3.9 PDF63/печатная62",
+      "source_url": "https://magadangorod.ru/common/upload/29/editor/file/rgnp_ot_9.02.26.pdf",
+      "source_sha256": "7a87b1d77a8315407114c104f542e3dd29b2ca51a1d351df9521a8ce516459c9",
+      "scope": "consolidated_text"
+    },
+    "intervals": [
+      {
+        "minimum": 30,
+        "maximum": 30,
+        "municipality_type": "urban_okrug",
+        "mode": "transport",
+        "profile": "territorial_employment_center"
+      },
+      {
+        "minimum": 60,
+        "maximum": 60,
+        "municipality_type": "municipal_okrug",
+        "mode": "transport",
+        "profile": "territorial_employment_center"
+      }
+    ]
+  }
+]

@@ -1,0 +1,59 @@
+{
+  "checked_at": "2026-11-12T15:22:42.308238+00:00",
+  "scope": "Definition compatibility guard; SP42.13330.2026 required pavilion/parcel/opposite-direction measurement cannot reuse nearest-reference-point routes",
+  "backend_unit_tests": 619,
+  "affected_storage_integration_tests": 3,
+  "frontend_tests": 462,
+  "etl_tests": 110,
+  "federal_source_sha256": "b4d980a6038a6b228d75b31b0912851a1eea5261905a786c907000779c07db12",
+  "blocked_territories": 83,
+  "local_conditional_index_territories": 1,
+  "legal_compliance_confirmed": false,
+  "desktop": [
+    {
+      "width": 1440,
+      "runId": "6c4e2aab33ce46e4a492eb652905b91a",
+      "status": "measurement_incompatible",
+      "initialFullDataRequests": 0,
+      "blockedNumericValues": true,
+      "physicalRouteOrigin": "osm-way-279573580",
+      "physicalRouteVertices": 599,
+      "sourceViolations": [],
+      "physicalViolations": [],
+      "errors": [],
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "runId": "6c4e2aab33ce46e4a492eb652905b91a",
+      "status": "measurement_incompatible",
+      "initialFullDataRequests": 0,
+      "blockedNumericValues": true,
+      "physicalRouteOrigin": "osm-way-279573580",
+      "physicalRouteVertices": 599,
+      "sourceViolations": [],
+      "physicalViolations": [],
+      "errors": [],
+      "overflow": false
+    }
+  ],
+  "single_sample_head_api_timings": [
+    {
+      "region_id": "20000000",
+      "run_id": "e344e7ef99ca44b2ba5709c155714909",
+      "status": "measurement_incompatible",
+      "response_bytes": 1764,
+      "elapsed_seconds": 0.04467233398463577,
+      "samples": 1
+    },
+    {
+      "region_id": "03000000",
+      "run_id": "6c4e2aab33ce46e4a492eb652905b91a",
+      "status": "measurement_incompatible",
+      "response_bytes": 1764,
+      "elapsed_seconds": 0.013479165965691209,
+      "samples": 1
+    }
+  ],
+  "remaining": "Actual parcel boundaries, paired direction-specific stops, applicability and verified origin/destination inputs remain absent"
+}

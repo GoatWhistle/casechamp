@@ -1,0 +1,13 @@
+.index {
+  gap: var(--space-16);
+}
+
+.value {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.method {
+  display: grid;
+  gap: var(--space-12);
+}

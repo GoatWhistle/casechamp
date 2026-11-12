@@ -1,0 +1,170 @@
+{
+  "checked_at": "2026-11-12T16:00:26.718141+00:00",
+  "scope": "Original2019publishededition; subsequent amendments not exhaustively verified",
+  "indices": [
+    {
+      "region_id": "83000000",
+      "criterion_id": "N06",
+      "run_id": null,
+      "measured_at": null,
+      "basis": {
+        "criterion_id": "N06",
+        "region_id": "83000000",
+        "act": "Постановление Правительства Кабардино-Балкарской Республики от26.09.2019 №173-ПП",
+        "clause": "п.1.5.6.4, таблица11, PDF/газетнаяс.25; центры занятости населения регионального значения: максимальный уровень территориальной доступности не устанавливается. Исходная опубликованная редакция2019; последующая цепочка изменений не подтверждена.",
+        "edition_date": "2019-09-26",
+        "source_url": "https://smikbr.ru/arhiv/2019/kbp/10/04d.pdf",
+        "unit": "minutes",
+        "thresholds": [],
+        "definition_sha256": "997be2389648fe1a8150c72f1a6a4b58f793914313227c4a172c2e227d527044",
+        "currentness": "published_currentness_unconfirmed",
+        "required_mode": "none",
+        "regulation": "not_regulated",
+        "review": {
+          "reviewed_at": "2026-11-12",
+          "as_of": "2019-09-26",
+          "locator": "п.1.5.6.4, таблица11, PDFс.25; обоснованиеп.2.3.2.6.4, PDFс.27",
+          "source_url": "https://smikbr.ru/arhiv/2019/kbp/10/04d.pdf",
+          "source_sha256": "9315f4b2e52036fd8044bd1fe0346e66523c256360226eb701cd524fcc27370f",
+          "scope": "consolidated_text"
+        },
+        "intervals": [],
+        "required_measurement_definition": "single_reference_point"
+      },
+      "baseline": [],
+      "scenario": [],
+      "qualification": "conditional_known_objects",
+      "weighting": "population",
+      "status": "not_regulated",
+      "legal_compliance_confirmed": false,
+      "measurement_definition": "single_reference_point",
+      "model_index": {
+        "region_id": "83000000",
+        "criterion_id": "N06",
+        "run_id": "fae17812742e40338fef76b2662ad334",
+        "measured_at": "2026-11-12T15:45:33.016095+00:00",
+        "policy": {
+          "criterion_id": "N06",
+          "thresholds": [
+            60.0
+          ],
+          "unit": "minutes",
+          "mode": "car",
+          "weighting": "population",
+          "definition_sha256": "5c347216dbad467f4021a02289c747c979c8d762de547f56ca9270e6dd6ff1bc",
+          "fire_speed_kmh": null
+        },
+        "baseline": [
+          {
+            "threshold": 60.0,
+            "reference_points": 180,
+            "measured_points": 180,
+            "within_points": 175,
+            "unresolved_points": 0,
+            "point_share_percent": 97.22222222222223,
+            "population": 904200,
+            "within_population": 899289,
+            "population_share_percent": 99.45686794956868
+          }
+        ],
+        "scenario": [
+          {
+            "threshold": 60.0,
+            "reference_points": 180,
+            "measured_points": 180,
+            "within_points": 175,
+            "unresolved_points": 0,
+            "point_share_percent": 97.22222222222223,
+            "population": 904200,
+            "within_population": 899289,
+            "population_share_percent": 99.45686794956868
+          }
+        ],
+        "measurement_definition": "single_reference_point",
+        "legal_compliance_confirmed": false
+      }
+    },
+    {
+      "region_id": "83000000",
+      "criterion_id": "N08",
+      "run_id": null,
+      "measured_at": null,
+      "basis": {
+        "criterion_id": "N08",
+        "region_id": "83000000",
+        "act": "Постановление Правительства Кабардино-Балкарской Республики от26.09.2019 №173-ПП",
+        "clause": "п.1.5.1, таблица1, PDF/газетнаяс.23; автовокзалы и автостанции регионального и межмуниципального значения: максимальный уровень территориальной доступности не устанавливается. Не относится ко всем автобусным остановкам; исходная опубликованная редакция2019, цепочка изменений не подтверждена.",
+        "edition_date": "2019-09-26",
+        "source_url": "https://smikbr.ru/arhiv/2019/kbp/10/04d.pdf",
+        "unit": "minutes",
+        "thresholds": [],
+        "definition_sha256": "7b51a87f854ffae2eddda572bf3a5ae479592fa0c1ab31a95893b00f0cac5893",
+        "currentness": "published_currentness_unconfirmed",
+        "required_mode": "none",
+        "regulation": "not_regulated",
+        "review": {
+          "reviewed_at": "2026-11-12",
+          "as_of": "2019-09-26",
+          "locator": "п.1.5.1, таблица1, PDFс.23; обоснованиеп.2.3.3, PDFс.27",
+          "source_url": "https://smikbr.ru/arhiv/2019/kbp/10/04d.pdf",
+          "source_sha256": "9315f4b2e52036fd8044bd1fe0346e66523c256360226eb701cd524fcc27370f",
+          "scope": "consolidated_text"
+        },
+        "intervals": [],
+        "required_measurement_definition": "single_reference_point"
+      },
+      "baseline": [],
+      "scenario": [],
+      "qualification": "conditional_known_objects",
+      "weighting": "population",
+      "status": "not_regulated",
+      "legal_compliance_confirmed": false,
+      "measurement_definition": "single_reference_point",
+      "model_index": {
+        "region_id": "83000000",
+        "criterion_id": "N08",
+        "run_id": "0597a00fcd3840969e03091d9dfc7321",
+        "measured_at": "2026-11-12T11:06:27.165176+00:00",
+        "policy": {
+          "criterion_id": "N08",
+          "thresholds": [
+            60.0
+          ],
+          "unit": "minutes",
+          "mode": "car",
+          "weighting": "population",
+          "definition_sha256": "1fb6a7564b45350d13c706d2c0dd3ef38781d9fdb0605272f09b322dd52d694b",
+          "fire_speed_kmh": null
+        },
+        "baseline": [
+          {
+            "threshold": 60.0,
+            "reference_points": 180,
+            "measured_points": 180,
+            "within_points": 155,
+            "unresolved_points": 0,
+            "point_share_percent": 86.11111111111111,
+            "population": 904200,
+            "within_population": 848173,
+            "population_share_percent": 93.80369387303693
+          }
+        ],
+        "scenario": [
+          {
+            "threshold": 60.0,
+            "reference_points": 180,
+            "measured_points": 180,
+            "within_points": 155,
+            "unresolved_points": 0,
+            "point_share_percent": 86.11111111111111,
+            "population": 904200,
+            "within_population": 848173,
+            "population_share_percent": 93.80369387303693
+          }
+        ],
+        "measurement_definition": "single_reference_point",
+        "legal_compliance_confirmed": false
+      }
+    }
+  ]
+}

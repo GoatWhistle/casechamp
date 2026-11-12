@@ -1,0 +1,393 @@
+{
+  "checked_at": "2026-11-12T15:21:56.683416+00:00",
+  "scope": "Stavropol N05/N06 and Kirov N06 conditional car-model accessibility; transport mode unspecified in primary acts",
+  "legal_compliance_confirmed": false,
+  "results": [
+    {
+      "index": {
+        "region_id": "07000000",
+        "criterion_id": "N05",
+        "run_id": "5430ef04b35a459db9f547b1b8fd3628",
+        "measured_at": "2026-11-12T10:28:48.351651+00:00",
+        "basis": {
+          "criterion_id": "N05",
+          "region_id": "07000000",
+          "act": "Приказ Министерства строительства и архитектуры Ставропольского края от 10.10.2022 №532",
+          "clause": "Основная часть, таблица 1.2.3, PDF с.9–10 / печатные с.6–7; объекты регионального значения. Транспортная доступность 1,5 ч; вид транспорта не уточнён.",
+          "edition_date": "2022-10-10",
+          "source_url": "http://publication.pravo.gov.ru/Document/View/2601202210120001",
+          "unit": "minutes",
+          "thresholds": [
+            90.0
+          ],
+          "definition_sha256": "0d93262de6caa0d0828b972361520dfed8f7be878b8ca45d549e98888ad3e800",
+          "currentness": "published_currentness_unconfirmed",
+          "required_mode": "car",
+          "regulation": "threshold",
+          "review": {
+            "reviewed_at": "2026-11-12",
+            "as_of": "2022-10-10",
+            "locator": "таблица 1.2.3, PDF с.9–10 / печатные с.6–7",
+            "source_url": "http://publication.pravo.gov.ru/file/pdf?eoNumber=2601202210120001",
+            "source_sha256": "cefca5676fbdb099984e5516400b4bf1dae6b9c8e37647669ada5142dd979183",
+            "scope": "consolidated_text"
+          },
+          "intervals": [],
+          "required_measurement_definition": "single_reference_point"
+        },
+        "baseline": [
+          {
+            "threshold": 90.0,
+            "reference_points": 760,
+            "measured_points": 760,
+            "within_points": 445,
+            "unresolved_points": 0,
+            "point_share_percent": 58.55263157894737,
+            "population": 2907593,
+            "within_population": 2372327,
+            "population_share_percent": 81.5907522132568
+          }
+        ],
+        "scenario": [
+          {
+            "threshold": 90.0,
+            "reference_points": 760,
+            "measured_points": 760,
+            "within_points": 445,
+            "unresolved_points": 0,
+            "point_share_percent": 58.55263157894737,
+            "population": 2907593,
+            "within_population": 2372327,
+            "population_share_percent": 81.5907522132568
+          }
+        ],
+        "qualification": "conditional_known_objects",
+        "weighting": "population",
+        "status": "ready",
+        "legal_compliance_confirmed": false,
+        "measurement_definition": "single_reference_point"
+      },
+      "independent_stored_payload_sums": {
+        "points": 760,
+        "measured": 760,
+        "population_total": 2907593,
+        "within_population_total": 2372327,
+        "within_points": 445
+      }
+    },
+    {
+      "index": {
+        "region_id": "07000000",
+        "criterion_id": "N06",
+        "run_id": "f80083efb6a5445a9edb742dd07e1a9d",
+        "measured_at": "2026-11-12T10:28:49.379930+00:00",
+        "basis": {
+          "criterion_id": "N06",
+          "region_id": "07000000",
+          "act": "Приказ Министерства строительства и архитектуры Ставропольского края от 10.10.2022 №532",
+          "clause": "Основная часть, таблица 1.2.3, PDF с.9–10 / печатные с.6–7; объекты регионального значения. Транспортная доступность 1,5 ч; вид транспорта не уточнён.",
+          "edition_date": "2022-10-10",
+          "source_url": "http://publication.pravo.gov.ru/Document/View/2601202210120001",
+          "unit": "minutes",
+          "thresholds": [
+            90.0
+          ],
+          "definition_sha256": "c360f25c3eb772a430a9e7b29c99887a44555cfaf6b38cf59af3b09ebfa8dfcc",
+          "currentness": "published_currentness_unconfirmed",
+          "required_mode": "car",
+          "regulation": "threshold",
+          "review": {
+            "reviewed_at": "2026-11-12",
+            "as_of": "2022-10-10",
+            "locator": "таблица 1.2.3, PDF с.9–10 / печатные с.6–7",
+            "source_url": "http://publication.pravo.gov.ru/file/pdf?eoNumber=2601202210120001",
+            "source_sha256": "cefca5676fbdb099984e5516400b4bf1dae6b9c8e37647669ada5142dd979183",
+            "scope": "consolidated_text"
+          },
+          "intervals": [],
+          "required_measurement_definition": "single_reference_point"
+        },
+        "baseline": [
+          {
+            "threshold": 90.0,
+            "reference_points": 760,
+            "measured_points": 760,
+            "within_points": 154,
+            "unresolved_points": 0,
+            "point_share_percent": 20.263157894736842,
+            "population": 2907593,
+            "within_population": 1131134,
+            "population_share_percent": 38.90276252556668
+          }
+        ],
+        "scenario": [
+          {
+            "threshold": 90.0,
+            "reference_points": 760,
+            "measured_points": 760,
+            "within_points": 154,
+            "unresolved_points": 0,
+            "point_share_percent": 20.263157894736842,
+            "population": 2907593,
+            "within_population": 1131134,
+            "population_share_percent": 38.90276252556668
+          }
+        ],
+        "qualification": "conditional_known_objects",
+        "weighting": "population",
+        "status": "ready",
+        "legal_compliance_confirmed": false,
+        "measurement_definition": "single_reference_point"
+      },
+      "independent_stored_payload_sums": {
+        "points": 760,
+        "measured": 760,
+        "population_total": 2907593,
+        "within_population_total": 1131134,
+        "within_points": 154
+      }
+    },
+    {
+      "index": {
+        "region_id": "33000000",
+        "criterion_id": "N06",
+        "run_id": "0f440dd685724f97a80ba6a3d8077197",
+        "measured_at": "2026-11-12T10:40:57.125462+00:00",
+        "basis": {
+          "criterion_id": "N06",
+          "region_id": "33000000",
+          "act": "Постановление Правительства Кировской области от 29.11.2024 №523-П",
+          "clause": "Основная часть, таблица 9, строка 2.9, PDF с.46 / печатная с.43; ЦЗН городского округа, муниципального округа, муниципального района. Транспортная доступность в течение 1 часа; вид транспорта не уточнён.",
+          "edition_date": "2024-11-29",
+          "source_url": "http://publication.pravo.gov.ru/Document/View/4300202412020012",
+          "unit": "minutes",
+          "thresholds": [
+            60.0
+          ],
+          "definition_sha256": "2cba453968f0d12df68690c2409d3173e33ab206c51808ad6f8bb6049270478f",
+          "currentness": "published_currentness_unconfirmed",
+          "required_mode": "car",
+          "regulation": "threshold",
+          "review": {
+            "reviewed_at": "2026-11-12",
+            "as_of": "2024-11-29",
+            "locator": "Основная часть, таблица 9, строка 2.9, PDF с.46 / печатная с.43",
+            "source_url": "http://publication.pravo.gov.ru/file/pdf?eoNumber=4300202412020012",
+            "source_sha256": "705990a3b5ee4960b4cd7836bf0c46065b838c38eb15d565c834575046938833",
+            "scope": "consolidated_text"
+          },
+          "intervals": [],
+          "required_measurement_definition": "single_reference_point"
+        },
+        "baseline": [
+          {
+            "threshold": 60.0,
+            "reference_points": 4245,
+            "measured_points": 4244,
+            "within_points": 916,
+            "unresolved_points": 1,
+            "point_share_percent": 21.578327444051826,
+            "population": 1153680,
+            "within_population": 715984,
+            "population_share_percent": 62.060883433881145
+          }
+        ],
+        "scenario": [
+          {
+            "threshold": 60.0,
+            "reference_points": 4245,
+            "measured_points": 4244,
+            "within_points": 916,
+            "unresolved_points": 1,
+            "point_share_percent": 21.578327444051826,
+            "population": 1153680,
+            "within_population": 715984,
+            "population_share_percent": 62.060883433881145
+          }
+        ],
+        "qualification": "conditional_known_objects",
+        "weighting": "population",
+        "status": "ready",
+        "legal_compliance_confirmed": false,
+        "measurement_definition": "single_reference_point"
+      },
+      "independent_stored_payload_sums": {
+        "points": 4245,
+        "measured": 4244,
+        "population_total": 1153680,
+        "within_population_total": 715984,
+        "within_points": 916
+      }
+    }
+  ],
+  "desktop": [
+    {
+      "width": 1440,
+      "region": "37000000",
+      "criterion": "N06",
+      "status": "ready",
+      "runId": "033a7c1119e04175a1bcff6bd2d42d5d",
+      "population": 776633,
+      "withinPopulation": 661146,
+      "score": 85.12978459581295,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "region": "03000000",
+      "criterion": "N06",
+      "status": "ready",
+      "runId": "feaa58bddd394ffb83cc6148ae666a8f",
+      "population": 5838273,
+      "withinPopulation": 3772229,
+      "score": 64.6120693568115,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "region": "03000000",
+      "criterion": "N05",
+      "status": "not_regulated",
+      "runId": null,
+      "population": null,
+      "withinPopulation": null,
+      "score": null,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "region": "07000000",
+      "criterion": "N05",
+      "status": "ready",
+      "runId": "5430ef04b35a459db9f547b1b8fd3628",
+      "population": 2907593,
+      "withinPopulation": 2372327,
+      "score": 81.5907522132568,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "region": "07000000",
+      "criterion": "N06",
+      "status": "ready",
+      "runId": "f80083efb6a5445a9edb742dd07e1a9d",
+      "population": 2907593,
+      "withinPopulation": 1131134,
+      "score": 38.90276252556668,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "region": "33000000",
+      "criterion": "N06",
+      "status": "ready",
+      "runId": "0f440dd685724f97a80ba6a3d8077197",
+      "population": 1153680,
+      "withinPopulation": 715984,
+      "score": 62.060883433881145,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "region": "37000000",
+      "criterion": "N06",
+      "status": "ready",
+      "runId": "033a7c1119e04175a1bcff6bd2d42d5d",
+      "population": 776633,
+      "withinPopulation": 661146,
+      "score": 85.12978459581295,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "region": "03000000",
+      "criterion": "N06",
+      "status": "ready",
+      "runId": "feaa58bddd394ffb83cc6148ae666a8f",
+      "population": 5838273,
+      "withinPopulation": 3772229,
+      "score": 64.6120693568115,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "region": "03000000",
+      "criterion": "N05",
+      "status": "not_regulated",
+      "runId": null,
+      "population": null,
+      "withinPopulation": null,
+      "score": null,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "region": "07000000",
+      "criterion": "N05",
+      "status": "ready",
+      "runId": "5430ef04b35a459db9f547b1b8fd3628",
+      "population": 2907593,
+      "withinPopulation": 2372327,
+      "score": 81.5907522132568,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "region": "07000000",
+      "criterion": "N06",
+      "status": "ready",
+      "runId": "f80083efb6a5445a9edb742dd07e1a9d",
+      "population": 2907593,
+      "withinPopulation": 1131134,
+      "score": 38.90276252556668,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "region": "33000000",
+      "criterion": "N06",
+      "status": "ready",
+      "runId": "0f440dd685724f97a80ba6a3d8077197",
+      "population": 1153680,
+      "withinPopulation": 715984,
+      "score": 62.060883433881145,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    }
+  ]
+}

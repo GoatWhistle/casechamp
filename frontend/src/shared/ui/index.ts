@@ -11,6 +11,7 @@ export {
   type DataTableProps,
   type SortDirection,
   type SortValue,
+  type TablePaginationState,
   type TableSort,
 } from "./data-display/data-table/data-table"
 export { type FactItem, FactList, type FactListProps } from "./data-display/fact-list/fact-list"
@@ -92,6 +93,7 @@ export { TextField, type TextFieldProps, type TextFieldType } from "./forms/text
 export { Card, type CardProps } from "./layout/card/card"
 export { Disclosure } from "./layout/disclosure/disclosure"
 export { PageHeader, type PageHeaderProps } from "./layout/page-header/page-header"
+export { PanelActions } from "./layout/panel-actions/panel-actions"
 export { PanelResizer, type PanelResizerProps } from "./layout/panel-resizer/panel-resizer"
 export { PanelView, type PanelViewProps } from "./layout/panel-view/panel-view"
 export {

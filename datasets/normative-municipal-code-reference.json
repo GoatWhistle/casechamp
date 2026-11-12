@@ -1,0 +1,142 @@
+{
+  "source_url": "https://www.nalog.gov.ru/rn45/news/activities_fts/14849279/",
+  "file_url": "https://www.nalog.gov.ru/html/sites/www.rn45.nalog.ru/OKTMO.docx",
+  "sha256": "03051ab2fcd571969461311e39b151783c3c783457f0f0862de784f82abddd13",
+  "reference_date": "2024-01-01",
+  "structure_source_url": "https://www.nalog.gov.ru/rn27/news/activities_fts/6061590/",
+  "structure_source_date": "2016-05-04",
+  "assignment_verified": false,
+  "currentness_verified": false,
+  "municipalities": [
+    {
+      "code": "37701000",
+      "name": "г. Курган",
+      "municipality_type": "urban_okrug"
+    },
+    {
+      "code": "37705000",
+      "name": "г. Шадринск",
+      "municipality_type": "urban_okrug"
+    },
+    {
+      "code": "37502000",
+      "name": "Альменевский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37504000",
+      "name": "Белозерский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37506000",
+      "name": "Варгашинский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37508000",
+      "name": "Далматовский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37509000",
+      "name": "Звериноголовский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37510000",
+      "name": "Каргапольский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37512000",
+      "name": "Катайский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37514000",
+      "name": "Кетовский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37516000",
+      "name": "Куртамышский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37518000",
+      "name": "Лебяжьевский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37520000",
+      "name": "Макушинский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37522000",
+      "name": "Мишкинский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37524000",
+      "name": "Мокроусовский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37526000",
+      "name": "Петуховский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37528000",
+      "name": "Половинский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37530000",
+      "name": "Притобольный муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37532000",
+      "name": "Сафакулевский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37534000",
+      "name": "Целинный муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37536000",
+      "name": "Частоозерский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37538000",
+      "name": "Шадринский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37540000",
+      "name": "Шатровский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37542000",
+      "name": "Шумихинский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37544000",
+      "name": "Щучанский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    },
+    {
+      "code": "37546000",
+      "name": "Юргамышский муниципальный округ",
+      "municipality_type": "municipal_okrug"
+    }
+  ]
+}

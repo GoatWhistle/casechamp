@@ -1,0 +1,81 @@
+{
+  "date": "2026-11-12",
+  "model_revision": "normative-v6",
+  "production_medical_facts": 0,
+  "production_library_facts": 0,
+  "runs": [
+    {
+      "criterion": "N01",
+      "run_id": "ef405395cdad446ba8c8e5e1a0e3fb66",
+      "origin_count": 1235,
+      "timed_origins": 1234,
+      "post_get_exact": true,
+      "physical_results_unchanged": true,
+      "all_states": "unknown"
+    },
+    {
+      "criterion": "N02",
+      "run_id": "d8caad8f81584c84950f668313d8c4d5",
+      "origin_count": 1235,
+      "timed_origins": 1234,
+      "post_get_exact": true,
+      "physical_results_unchanged": true,
+      "all_states": "unknown"
+    },
+    {
+      "criterion": "N07",
+      "run_id": "fcfe7d1417f94524b3eb8adbeee73512",
+      "origin_count": 1235,
+      "timed_origins": 1234,
+      "post_get_exact": true,
+      "physical_results_unchanged": true,
+      "all_states": "unknown"
+    }
+  ],
+  "tests": {
+    "backend_unit": 468,
+    "backend_mypy_files": 256,
+    "etl": 33,
+    "frontend": 444,
+    "frontend_rules": 36,
+    "isolated_fact_storage_tests": 2,
+    "medical_api_integration": 1,
+    "medical_api_integration_seconds": 22.4
+  },
+  "desktop": [
+    {
+      "criterion": "N01",
+      "width": 1440,
+      "errors": [],
+      "axe": [],
+      "overflow": false
+    },
+    {
+      "criterion": "N02",
+      "width": 1920,
+      "errors": [],
+      "axe": [],
+      "overflow": false
+    }
+  ],
+  "old_v5_route": {
+    "run_id": "fdc3282426eb41ae938a36de83d93098",
+    "origin_id": "37502000101",
+    "geometry_nodes": 100,
+    "replay_verified": true
+  },
+  "limitations": [
+    "No production medical attestation was fabricated. Positive qualifications use test fixtures only.",
+    "Medical facts do not model clinical treatment deadlines or ambulance response time.",
+    "A dev latest N07 read returned HTTP 503: ClickHouse query_log confirms total memory limit code 241 at 06:14:16 UTC, memory_usage 12245653 bytes, while formatting output. Repeated read succeeded. Shared server settings unchanged.",
+    "Full backend format baseline still contains the unrelated test_chat.py formatting issue.",
+    "Fire verified qualification remains incomplete."
+  ],
+  "map_ready_visual_check": {
+    "width": 1440,
+    "criterion": "N01",
+    "canvas_visible": true,
+    "road_graph_control_visible": true,
+    "image": "/tmp/normative-v6-medical-map-ready-1440.png"
+  }
+}

@@ -9,11 +9,13 @@ import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url"
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import type { AirportCatalog } from "@/shared/api/airports"
 import type { ChatMapCommand } from "@/shared/api/chat-map"
+import type { NormativeMapLayer } from "@/shared/api/normative-map"
 import type { RoadLayerProps } from "@/shared/api/road-graph"
 import { motionMs, useReducedMotion } from "@/shared/motion"
 import type { BoundaryAtlas } from "./boundary-geojson"
 import { corners, FLAT_MAP, focusIds, focusRegions, keepFlat, roamConstrain } from "./map-camera"
 import { bindHover } from "./map-hover"
+import { NORMATIVE_OVERLAY_LAYERS, useNormativeLayer } from "./normative-layer/use-normative-layer"
 import { buildStyle, FILL_LAYER, REGIONS_SOURCE, readMapColors } from "./osm-style"
 import { recolorRegions, regionSteps } from "./recolor"
 import { roadLayers } from "./road-parts"
@@ -22,13 +24,11 @@ import { useRoadLayer } from "./use-road-layer"
 import { useTransitLayer } from "./use-transit-layer"
 
 setWorkerUrl(workerUrl)
-
 const HOME_PADDING = 24
 const TILE_CACHE = 1024
 const HOME_SLACK = 0.4
 const MIN_ZOOM = 1.4
 const MAX_ZOOM = 18
-
 export type MapStep = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
 
 export interface MapControls {
@@ -38,6 +38,7 @@ export interface MapControls {
 }
 
 export interface OsmMapOptions {
+  readonly normative?: NormativeMapLayer | undefined
   readonly airports?: AirportCatalog | undefined
   readonly transit: FeatureCollection<LineString>
   readonly roads?: RoadLayerProps | undefined
@@ -51,6 +52,7 @@ export interface OsmMapOptions {
 }
 
 export function useOsmMap({
+  normative,
   airports,
   transit,
   roads,
@@ -68,6 +70,7 @@ export function useOsmMap({
   useRoadLayer(engine, roads, styleReady)
   useTransitLayer(engine, transit, styleReady)
   useAirportLayer(engine, airports, styleReady)
+  useNormativeLayer(engine, normative, styleReady)
   const roadState = useRef(roads)
   roadState.current = roads
   const ready = useRef(false)
@@ -158,16 +161,10 @@ export function useOsmMap({
     })
     resize.observe(element)
     const onClick = (event: MapLayerMouseEvent) => {
-      if (
-        map.getLayer(AIRPORT_LAYER) &&
-        map.queryRenderedFeatures(event.point, { layers: [AIRPORT_LAYER] }).length
+      const layers = [...NORMATIVE_OVERLAY_LAYERS, AIRPORT_LAYER, ...roadLayers(map)].filter((id) =>
+        map.getLayer(id),
       )
-        return
-      if (
-        roadLayers(map).length &&
-        map.queryRenderedFeatures(event.point, { layers: roadLayers(map) }).length
-      )
-        return
+      if (layers.length && map.queryRenderedFeatures(event.point, { layers }).length) return
       const id = event.features?.[0]?.id
       const region = typeof id === "number" ? state.current.atlas.regionOf.get(id) : undefined
       if (region) state.current.onSelect(region)

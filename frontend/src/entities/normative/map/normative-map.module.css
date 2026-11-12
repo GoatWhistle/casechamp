@@ -1,0 +1,21 @@
+.map {
+  width: 100%;
+  height: auto;
+  background: var(--surface-muted);
+  border: var(--hairline) solid var(--border-subtle);
+}
+.point {
+  fill: var(--text-muted);
+}
+.point[data-state="within"] {
+  fill: var(--status-success);
+}
+.point[data-state="exceeded"],
+.point[data-state="unreachable"] {
+  fill: var(--status-danger);
+}
+.facility {
+  fill: var(--action-primary);
+  stroke: var(--surface-raised);
+  stroke-width: var(--hairline);
+}

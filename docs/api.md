@@ -169,3 +169,84 @@ DuckDB и Parquet одного снимка data-20261107. Без настрой
 отсутствующий или неполный расчёт 503. Сохранённый снимок может
 быть старше рабочего графа; такие данные явно помечены, сравнение внутри него остаётся
 на одной базе. [Метод и воспроизведение](potential-accessibility.md).
+
+## Как вызвать расчёт нормативной доступности?
+
+| Метод и путь `/api/v1` | Результат |
+|---|---|
+| GET `/normative/criteria` | Девять критериев с актом, редакцией, единицами и режимом |
+| GET `/normative/criteria/{criterion_id}/facilities` | Объекты из базы с источниками адреса и координат |
+| GET `/normative/criteria/{criterion_id}/latest` | Последний сохранённый расчёт или null; снимок может быть старше текущих источников |
+| POST `/normative/assessments` | Исходный и сценарный охват, строки пунктов, версия графа и сохранённый `run_id` |
+
+Тело расчёта: `{"criterion_id":"N05","closed_way_ids":[]}`. Допускается до 20 OSM way ID. Неизвестный критерий или дорога вызывает ошибку валидации; отсутствие объектов или нужной транспортной модели — 503 `data_unavailable`. Результат включает неопределённые случаи, которые не превращаются в доказанную недоступность. [Методика и запуск](normative-accessibility.md).
+
+Пешеходные N04/N09 возвращают `distance_metres`, автомобильные режимы — `minutes`. Отсутствующее значение остаётся null. `uncertainty` содержит машинные причины неизвестного статуса; источник физической длины не подтверждает условия правовой применимости. Для N01/N02 целевая группа — прикреплённые взрослые: без её распределения `population=null`, `lower_percent=null`, статусы неизвестны, времена сохраняются.
+
+Ответы нормативного модуля с большими таблицами сжимаются gzip при поддержке клиентом. В пользовательском интерфейсе результаты разбиты на страницы; сервер сохраняет полный снимок строк.
+
+
+Normative N07 rows also freeze nullable `threshold_minutes`, `territory_type` and
+`territory_source_url`. Missing municipality context leaves the threshold null.
+The library model keeps physical car minutes and unknown legal states when transport,
+facility profile or entrance conditions are unconfirmed. Regional and institutional
+libraries remain in separate stored profiles and are excluded from local N07 targets.
+
+
+N03 requires `fire_profile: {speed_kmh, assumption}` on assessment requests. No speed
+is inferred. The speed is finite and in(0,200]; the assumption has8–500characters.
+The profile is returned in assessments and frozen in run storage. Other criteria
+reject fire parameters. Missing parameters produce the existing validation error422.
+N03 routes run from the depot candidate to the origin/call location. Stored minutes
+remain conditional, with unknown legal status and explicit vehicle/readiness reasons.
+
+
+Normative assessments expose `saved_at` as an aware UTC timestamp with millisecond
+precision, read from the run metadata. POST and latest GET return the same timestamp.
+`graph_fingerprint` is SHA256 of the UTF8 `graph_revision` descriptor; it is a compact
+reference to the stored revision, not a binary graph content checksum. The original
+revision descriptor remains available for replay. Historical legal source displays use
+the saved criterion, independently of catalog updates.
+
+
+N04/N09 возвращают `rule_sets`: группы правовых проверок с `rule_id`, применимостью, результатом, причиной, единицей, выбранным пределом, возможными пределами и источниками. Строка связывается с группой через `rule_set_id`. Физическое расстояние остаётся в `distance_metres`. `not_regulated` и `not_applicable` являются отдельными состояниями; их население и число точек учитываются отдельно от числового знаменателя. Подтверждения методики должны относиться к версии сети и выбранному сценарию. Новые снимки имеют `model_revision=normative-v4`; правила старого v3 не пересчитываются при чтении.
+
+
+Объекты нормативных услуг дополнительно возвращают nullable`published_on`: дату публикации карточки источника. `observed_at` остаётся датой чтения; при известной точности до дня сохраняется ISOдата без выдуманного времени. Оба поля замораживаются в `run_facilities`; исторические снимки без даты публикации возвращаютnull. Дата публикации не равнозначна подтверждению текущего обслуживания.
+
+
+Строки N07 дополнительно сохраняют `territory_verification_status`, `municipality_code`, `territory_structure_source_url`. Статус `encoded_parent_2024_assignment_unconfirmed` означает условное декодирование входногоОКТМО по перечню2024, а не подтверждённую территориальную принадлежность. `territory_source_url` указывает перечень кодов, `territory_structure_source_url` — правило декодирования. Код и оба основания замораживаются вместе с исходными и сценарными строками. В прежних снимках новые поляnull; чтение не дополняет их текущим справочником.
+
+Для N07 модель `normative-v5` возвращает nullable `qualification_as_of` в ответе расчёта и `latest`, а в строках nullable `qualification_source_url` и `qualification_observed_at`. При пустом реестре все три поля равны null. Время квалификации имеет часовой пояс UTC и точность до миллисекунд; оно не заменяет время сохранения `saved_at`. Источник подтверждения и дата наблюдения замораживаются вместе со строкой. Несогласованные контингенты или подтверждённые муниципальные условия дают `data_unavailable` до записи результата. Подтверждения не принимаются из запроса браузера: их проверяет отдельный импорт справочников.
+
+Модель `normative-v6` поддерживает типизированные медицинские подтверждения для N01/N02. `AccessResponse` содержит nullable `catchment_source_url` и `threshold_source_url`; `threshold_minutes` хранит применимый подтверждённый порог точки. Исходный федеральный ориентир остаётся в `criterion.threshold`. Пустой реестр сохраняет неизвестное взрослое население, неизвестный статус и null в новых ссылках. Время решения, источник и дата подтверждения используют контракт v5. Сохранённые маршруты v3/v4/v5 воспроизводятся с прежней стоимостью без переквалификации условий.
+
+Модель `normative-v7` добавляет обработку `FireFacts` для N03. Строки содержат nullable `travel_profile_source_url` и `measurement_method_source_url`, замороженные вместе с источником подтверждения и `qualification_as_of`. Входной `fire_profile.speed_kmh` принимает явное число в диапазоне `(0, 200]`; логические значения и числовые строки отклоняются с 422 до расчёта. Исходные целочисленные JSON-числа допустимы. Проверенный профиль должен точно совпадать по скорости и описанию. Рабочий пустой реестр сохраняет неизвестный нормативный статус и null в новых ссылках. Маршруты v3–v6 остаются воспроизводимыми без переквалификации условий.
+
+
+`FacilityResponse` содержит nullable `source_sha256`: 64 строчных шестнадцатеричных символа хеша адресного первичного документа. Поле сохраняется в `run_facilities` и возвращается без подстановки текущего хеша в старые снимки. Оно не характеризует актуальность услуги или координаты. Импорт проверяет формат до открытия хранилища. Для пожарного PDF все 26 записей имеют один хеш и отдельную ссылку на физическую страницу документа.
+
+
+### N03: выбор объектов назначения
+
+`GET /api/v1/normative/fire-destinations` возвращает текущие адресные объекты N03 с координатами, источником, датой наблюдения, статусом положения и необязательным хешем. Рабочий ответ сейчас `[]`.
+
+`POST /api/v1/normative/assessments` принимает `origin_basis`: `settlements` или `fire_objects`. При отсутствии поля применяется `settlements`; явные null, логические значения и прочие строки отклоняются с422. `fire_objects` доступен только для N03 и не подменяется населёнными пунктами при пустом реестре. Отсутствие объектов приводит к503 `data_unavailable`. Пожарный профиль остаётся обязательным для расчёта.
+
+Ответ содержит `origin_basis`; пешеходные расчёты возвращают `residential_references`. Nullable поля строк: `origin_source_url`, `origin_observed_at`, `origin_source_sha256`, `origin_reference_status`. Они сохраняются вместе с результатом и не перечитываются из текущего реестра при восстановлении. Формат объектов, привязка и ограничения описаны в нормативной методике.
+
+
+### Версия координатного источника
+
+FacilityResponse содержит необязательные `coordinate_snapshot_sha256` и `coordinate_snapshot_url`. Они независимы от `source_sha256` адресного документа, проходят отдельную проверку и сохраняются в снимке учреждения. Пара требует известной геометрии и HTTPисточника; неполные или конфликтующие значения отклоняются до импорта. Старые снимки получают null, их происхождение не заполняется текущим каталогом. Версия ссылки может обновляться; точный использованный снимок определяется хешем.
+
+### Региональные каталоги услуг
+
+`GET /api/v1/normative/regions/{region_id}/catalog/{criterion_id}` возвращает объекты выбранного региона, `candidate_count`, категорию, источники и версии координат. Регион определяется пересечением координаты с сохранёнными границами, без подмены Курганской областью. Неизвестный регион или критерий отклоняется. Для этих каталогов `calculation_available=false`, `profile_verification=unconfirmed`: наличие OSM-объекта не подтверждает профиль услуги или соблюдение норматива.
+
+`POST /api/v1/normative/regions/{region_id}/measurements/{criterion_id}` с `closed_way_ids` рассчитывает автомобильную поездку для N01/N02/N05/N06/N07/N08. Это физические измерения до кандидатных объектов, без нормативного порога; школы, остановки и пожарное реагирование требуют своих моделей и отклоняются. `GET` по тому же пути с `/latest` возвращает сохранённый снимок выбранных региона и услуги. `GET /api/v1/normative/regional-measurements/{run_id}/routes/{origin_id}?stage=baseline|scenario` восстанавливает проверенный по стоимости путь из снимка.
+
+`GET /api/v1/normative/regions/{region_id}/indices/{criterion_id}` возвращает опубликованное основание, варианты порога, числовые исходную/сценарную оценки, знаменатель, количество неизвестных путей и ID физического снимка. `qualification=conditional_known_objects`, `legal_compliance_confirmed=false`. Отсутствие взрослого контингента оставляет медицинскую долю населения `null`. Нет регионального основания: `basis=null`, числовые массивы пусты. Неизвестный регион отклоняется.
+
+
+Для пакетных региональных расчётов доступны `GET` и `POST /api/v1/normative/regions/{region_id}/measurements/{criterion_id}/receipt`. POST принимает тот же сценарий, что полный расчёт, сохраняет его и возвращает идентификатор, дату, версию графа, режим, число опорных точек, рассчитанных путей и учреждений. GET возвращает последнее такое подтверждение либо `null`. Строки маршрутов в ответ не входят. Полный endpoint измерений сохранён для просмотра данных.

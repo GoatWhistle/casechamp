@@ -310,6 +310,313 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/normative/regions/{region_id}/catalog/{criterion_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Catalog */
+        get: operations["catalog_api_v1_normative_regions__region_id__catalog__criterion_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/regions/{region_id}/measurements/{criterion_id}/view": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Latest */
+        get: operations["latest_api_v1_normative_regions__region_id__measurements__criterion_id__view_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/regional-measurements/{run_id}/rows": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Rows */
+        get: operations["rows_api_v1_normative_regional_measurements__run_id__rows_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/regional-measurements/{run_id}/facilities": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Facilities */
+        get: operations["facilities_api_v1_normative_regional_measurements__run_id__facilities_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/regional-measurements/{run_id}/points/{origin_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Point */
+        get: operations["point_api_v1_normative_regional_measurements__run_id__points__origin_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/regional-measurements/{run_id}/map": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Map View */
+        get: operations["map_view_api_v1_normative_regional_measurements__run_id__map_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/regions/{region_id}/indices/{criterion_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Latest */
+        get: operations["latest_api_v1_normative_regions__region_id__indices__criterion_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/indices/{criterion_id}/regions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Regions */
+        get: operations["regions_api_v1_normative_indices__criterion_id__regions_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/regions/{region_id}/measurements/{criterion_id}/latest": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Latest */
+        get: operations["latest_api_v1_normative_regions__region_id__measurements__criterion_id__latest_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/regions/{region_id}/measurements/{criterion_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Calculate */
+        post: operations["calculate_api_v1_normative_regions__region_id__measurements__criterion_id__post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/regions/{region_id}/measurements/{criterion_id}/receipt": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Latest Receipt */
+        get: operations["latest_receipt_api_v1_normative_regions__region_id__measurements__criterion_id__receipt_get"];
+        put?: never;
+        /** Calculate Receipt */
+        post: operations["calculate_receipt_api_v1_normative_regions__region_id__measurements__criterion_id__receipt_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/regional-measurements/{run_id}/routes/{origin_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Route */
+        get: operations["route_api_v1_normative_regional_measurements__run_id__routes__origin_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/fire-destinations": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Fire Destinations */
+        get: operations["fire_destinations_api_v1_normative_fire_destinations_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/criteria": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Criteria */
+        get: operations["criteria_api_v1_normative_criteria_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/criteria/{criterion_id}/facilities": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Facilities */
+        get: operations["facilities_api_v1_normative_criteria__criterion_id__facilities_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/criteria/{criterion_id}/latest": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Latest */
+        get: operations["latest_api_v1_normative_criteria__criterion_id__latest_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/assessments/{run_id}/routes/{origin_id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Route */
+        get: operations["route_api_v1_normative_assessments__run_id__routes__origin_id__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/normative/assessments": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Assess */
+        post: operations["assess_api_v1_normative_assessments_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/regions/{region_id}/sensitivity": {
         parameters: {
             query?: never;
@@ -555,6 +862,72 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        /** AccessResponse */
+        AccessResponse: {
+            /** Id */
+            id: string;
+            /** Name */
+            name: string;
+            /** Population */
+            population: number | null;
+            /** Latitude */
+            latitude: number | null;
+            /** Longitude */
+            longitude: number | null;
+            /** Facility Id */
+            facility_id: string | null;
+            /** Minutes */
+            minutes: number | null;
+            /** Excess Minutes */
+            excess_minutes: number | null;
+            /**
+             * State
+             * @enum {string}
+             */
+            state: "within" | "exceeded" | "unreachable" | "unknown" | "not_regulated" | "not_applicable";
+            /** Distance Metres */
+            distance_metres?: number | null;
+            /** Uncertainty */
+            uncertainty?: ("residential_reference_not_entrance" | "population_group_missing" | "territory_conditions_missing" | "facility_entrances_unverified" | "origin_unattached" | "path_unconfirmed" | "service_status_unconfirmed" | "medical_catchment_unconfirmed" | "transport_mode_unconfirmed" | "facility_profile_unconfirmed" | "fire_speed_assumed" | "fire_vehicle_access_unconfirmed" | "fire_readiness_unconfirmed" | "fire_adverse_conditions_unconfirmed" | "fire_directionality_unconfirmed" | "fire_destination_unconfirmed" | "fire_measurement_definition_unconfirmed" | "qualification_unconfirmed" | "evidence_outside_validity" | "normative_rule_unconfirmed" | "planning_scope_unconfirmed" | "reference_location_unconfirmed" | "measurement_version_unconfirmed" | "scenario_conditions_unconfirmed" | "inventory_incomplete" | "ownership_scope_unconfirmed" | "regional_adjustment_unconfirmed" | "medical_form_unconfirmed" | "adult_profile_unconfirmed")[];
+            /** Routing Node */
+            routing_node?: number | null;
+            /** Approach Metres */
+            approach_metres?: number | null;
+            /** Threshold Minutes */
+            threshold_minutes?: number | null;
+            /** Territory Type */
+            territory_type?: string | null;
+            /** Territory Source Url */
+            territory_source_url?: string | null;
+            /** Territory Verification Status */
+            territory_verification_status?: string | null;
+            /** Municipality Code */
+            municipality_code?: string | null;
+            /** Territory Structure Source Url */
+            territory_structure_source_url?: string | null;
+            /** Qualification Source Url */
+            qualification_source_url?: string | null;
+            /** Qualification Observed At */
+            qualification_observed_at?: string | null;
+            /** Catchment Source Url */
+            catchment_source_url?: string | null;
+            /** Threshold Source Url */
+            threshold_source_url?: string | null;
+            /** Travel Profile Source Url */
+            travel_profile_source_url?: string | null;
+            /** Measurement Method Source Url */
+            measurement_method_source_url?: string | null;
+            /** Origin Source Url */
+            origin_source_url?: string | null;
+            /** Origin Observed At */
+            origin_observed_at?: string | null;
+            /** Origin Source Sha256 */
+            origin_source_sha256?: string | null;
+            /** Origin Reference Status */
+            origin_reference_status?: string | null;
+            /** Rule Set Id */
+            rule_set_id?: string | null;
+        };
         /** AccessibilityComparison */
         AccessibilityComparison: {
             /** Region Id */
@@ -737,6 +1110,63 @@ export interface components {
             /** Compatible */
             compatible: boolean;
         };
+        /** AssessmentInput */
+        AssessmentInput: {
+            /** Criterion Id */
+            criterion_id: string;
+            /**
+             * Origin Basis
+             * @enum {string}
+             */
+            origin_basis?: "settlements" | "fire_objects";
+            fire_profile?: components["schemas"]["FireProfileInput"] | null;
+            /** Closed Way Ids */
+            closed_way_ids?: number[];
+        };
+        /** AssessmentResponse */
+        AssessmentResponse: {
+            /** Qualification As Of */
+            qualification_as_of?: string | null;
+            /**
+             * Origin Basis
+             * @enum {string}
+             */
+            origin_basis?: "settlements" | "fire_objects" | "residential_references";
+            criterion: components["schemas"]["CriterionResponse"];
+            /** Facilities */
+            facilities: components["schemas"]["FacilityResponse"][];
+            /** Graph Revision */
+            graph_revision: string;
+            /** Region */
+            region: string;
+            baseline: components["schemas"]["CoverageResponse"];
+            scenario: components["schemas"]["CoverageResponse"];
+            /** Baseline Rows */
+            baseline_rows: components["schemas"]["AccessResponse"][];
+            /** Rows */
+            rows: components["schemas"]["AccessResponse"][];
+            /** Closed Way Ids */
+            closed_way_ids: number[];
+            /** Coverage Loss Pp */
+            coverage_loss_pp: number | null;
+            /** Run Id */
+            run_id: string | null;
+            /** Saved At */
+            saved_at?: string | null;
+            /** Rule Sets */
+            rule_sets?: components["schemas"]["RuleSetResponse"][];
+            fire_profile?: components["schemas"]["FireProfileInput"] | null;
+            /**
+             * Model Revision
+             * @default unversioned
+             */
+            model_revision: string;
+            comparison?: components["schemas"]["ComparisonResponse"] | null;
+            /** Ignored Way Ids */
+            ignored_way_ids?: number[];
+            /** Graph Fingerprint */
+            readonly graph_fingerprint: string;
+        };
         /** BoundaryShapeResponse */
         BoundaryShapeResponse: {
             /** Id */
@@ -902,6 +1332,29 @@ export interface components {
             /** Changed H */
             changed_h: number;
         };
+        /** ComparisonResponse */
+        ComparisonResponse: {
+            /** Unit */
+            unit: string;
+            /** Paired Paths */
+            paired_paths: number;
+            /** Increased */
+            increased: number;
+            /** Decreased */
+            decreased: number;
+            /** Unchanged */
+            unchanged: number;
+            /** Lost */
+            lost: number;
+            /** Restored */
+            restored: number;
+            /** Unresolved */
+            unresolved: number;
+            /** Mean Change */
+            mean_change: number | null;
+            /** Max Increase */
+            max_increase: number | null;
+        };
         /**
          * Confidence
          * @enum {string}
@@ -919,6 +1372,77 @@ export interface components {
             id: string;
             /** Name */
             name: string;
+        };
+        /** CoverageResponse */
+        CoverageResponse: {
+            /** Population */
+            population: number;
+            /** Within */
+            within: number;
+            /** Exceeded */
+            exceeded: number;
+            /** Unreachable */
+            unreachable: number;
+            /** Unknown */
+            unknown: number;
+            /** Unknown Population Points */
+            unknown_population_points: number;
+            /** Lower Percent */
+            lower_percent: number | null;
+            /** Upper Percent */
+            upper_percent: number | null;
+            /**
+             * Not Regulated Population
+             * @default 0
+             */
+            not_regulated_population: number;
+            /**
+             * Not Applicable Population
+             * @default 0
+             */
+            not_applicable_population: number;
+            /**
+             * Not Regulated Points
+             * @default 0
+             */
+            not_regulated_points: number;
+            /**
+             * Not Applicable Points
+             * @default 0
+             */
+            not_applicable_points: number;
+            /**
+             * Excluded Unknown Population Points
+             * @default 0
+             */
+            excluded_unknown_population_points: number;
+        };
+        /** CriterionResponse */
+        CriterionResponse: {
+            /** Id */
+            id: string;
+            /** Service */
+            service: string;
+            /** Act */
+            act: string;
+            /** Clause */
+            clause: string;
+            /** Source Url */
+            source_url: string;
+            /** Edition Date */
+            edition_date: string;
+            /** Threshold */
+            threshold: number;
+            /** Unit */
+            unit: string;
+            /** Mode */
+            mode: string;
+            /** Territory */
+            territory: string;
+            /** Legal Status */
+            legal_status: string;
+            /** Verification Status */
+            verification_status: string;
         };
         /** EconomyResponse */
         EconomyResponse: {
@@ -952,6 +1476,67 @@ export interface components {
             code: string;
             /** Message */
             message: string;
+        };
+        /** FacilityResponse */
+        FacilityResponse: {
+            /** Id */
+            id: string;
+            /** Service */
+            service: string;
+            /** Name */
+            name: string;
+            /** Address */
+            address: string;
+            /** Source Url */
+            source_url: string;
+            /** Observed At */
+            observed_at: string;
+            /** Latitude */
+            latitude: number | null;
+            /** Longitude */
+            longitude: number | null;
+            /** Coordinate Source */
+            coordinate_source: string | null;
+            /** Coordinate Status */
+            coordinate_status: string;
+            /** Published On */
+            published_on?: string | null;
+            /** Source Sha256 */
+            source_sha256?: string | null;
+            /** Coordinate Snapshot Sha256 */
+            coordinate_snapshot_sha256?: string | null;
+            /** Coordinate Snapshot Url */
+            coordinate_snapshot_url?: string | null;
+        };
+        /** FireDestinationResponse */
+        FireDestinationResponse: {
+            /** Id */
+            id: string;
+            /** Name */
+            name: string;
+            /** Address */
+            address: string;
+            /** Region */
+            region: string;
+            /** Latitude */
+            latitude: number;
+            /** Longitude */
+            longitude: number;
+            /** Source Url */
+            source_url: string;
+            /** Observed At */
+            observed_at: string;
+            /** Reference Status */
+            reference_status: string;
+            /** Source Sha256 */
+            source_sha256?: string | null;
+        };
+        /** FireProfileInput */
+        FireProfileInput: {
+            /** Speed Kmh */
+            speed_kmh: number;
+            /** Assumption */
+            assumption: string;
         };
         /** FrequencyCoverage */
         FrequencyCoverage: {
@@ -1020,6 +1605,52 @@ export interface components {
             /** Latitude */
             latitude: number;
         };
+        /** IndexBasisResponse */
+        IndexBasisResponse: {
+            /** Criterion Id */
+            criterion_id: string;
+            /** Region Id */
+            region_id: string;
+            /** Act */
+            act: string;
+            /** Clause */
+            clause: string;
+            /** Edition Date */
+            edition_date: string;
+            /** Source Url */
+            source_url: string;
+            /** Unit */
+            unit: string;
+            /** Thresholds */
+            thresholds: number[];
+            /** Definition Sha256 */
+            definition_sha256: string;
+            /** Currentness */
+            currentness: string;
+            /** Required Mode */
+            required_mode: string;
+            /** Regulation */
+            regulation: string;
+            review: components["schemas"]["IndexBasisReviewResponse"] | null;
+            /** Intervals */
+            intervals: components["schemas"]["IndexThresholdIntervalResponse"][];
+            required_measurement_definition: components["schemas"]["MeasurementDefinition"];
+        };
+        /** IndexBasisReviewResponse */
+        IndexBasisReviewResponse: {
+            /** Reviewed At */
+            reviewed_at: string;
+            /** As Of */
+            as_of: string;
+            /** Locator */
+            locator: string;
+            /** Source Url */
+            source_url: string;
+            /** Source Sha256 */
+            source_sha256: string;
+            /** Scope */
+            scope: string;
+        };
         /** IndexComponentResponse */
         IndexComponentResponse: {
             /** Key */
@@ -1030,6 +1661,37 @@ export interface components {
             description: string;
             /** Source */
             source: string;
+        };
+        /** IndexMapRegionResponse */
+        IndexMapRegionResponse: {
+            /** Region Id */
+            region_id: string;
+            /** Region Name */
+            region_name: string;
+            /** Value Min */
+            value_min: number | null;
+            /** Value Max */
+            value_max: number | null;
+            /** Weighting */
+            weighting: string;
+            /** Status */
+            status: string;
+            /** Run Id */
+            run_id: string | null;
+            /** Measured At */
+            measured_at: string | null;
+            /** Threshold Min */
+            threshold_min: number | null;
+            /** Threshold Max */
+            threshold_max: number | null;
+            /** Unit */
+            unit: string | null;
+            /** Reference Points */
+            reference_points: number | null;
+            /** Measured Points */
+            measured_points: number | null;
+            /** Legal Compliance Confirmed */
+            legal_compliance_confirmed: boolean;
         };
         /**
          * IndexState
@@ -1049,6 +1711,40 @@ export interface components {
             markets: number;
             /** Components */
             components: components["schemas"]["IndexComponentResponse"][];
+        };
+        /** IndexThresholdIntervalResponse */
+        IndexThresholdIntervalResponse: {
+            /** Minimum */
+            minimum: number;
+            /** Maximum */
+            maximum: number;
+            /** Municipality Type */
+            municipality_type: string;
+            /** Mode */
+            mode: string;
+            /** Profile */
+            profile: string;
+        };
+        /** IndexValueResponse */
+        IndexValueResponse: {
+            /** Threshold */
+            threshold: number;
+            /** Reference Points */
+            reference_points: number;
+            /** Measured Points */
+            measured_points: number;
+            /** Within Points */
+            within_points: number;
+            /** Unresolved Points */
+            unresolved_points: number;
+            /** Point Share Percent */
+            point_share_percent: number | null;
+            /** Population */
+            population: number | null;
+            /** Within Population */
+            within_population: number | null;
+            /** Population Share Percent */
+            population_share_percent: number | null;
         };
         /** LinkChange */
         LinkChange: {
@@ -1136,6 +1832,11 @@ export interface components {
             is_capital: boolean;
         };
         /**
+         * MeasurementDefinition
+         * @enum {string}
+         */
+        MeasurementDefinition: "single_reference_point" | "stop_pavilion_to_farthest_parcel_boundary_opposite_directions";
+        /**
          * Mode
          * @enum {string}
          */
@@ -1218,6 +1919,25 @@ export interface components {
          * @enum {string}
          */
         NetworkMode: "road" | "multimodal";
+        /** NormativeRouteResponse */
+        NormativeRouteResponse: {
+            /** Run Id */
+            run_id: string;
+            /** Origin Id */
+            origin_id: string;
+            /** Facility Id */
+            facility_id: string;
+            /**
+             * Stage
+             * @enum {string}
+             */
+            stage: "baseline" | "scenario";
+            /** Graph Revision */
+            graph_revision: string;
+            /** Model Revision */
+            model_revision: string;
+            geometry: components["schemas"]["RouteGeometryResponse"];
+        };
         /** OverviewResponse */
         OverviewResponse: {
             /** Regions */
@@ -1351,6 +2071,271 @@ export interface components {
             index_model_version?: string | null;
             /** Index Artifact Version */
             index_artifact_version?: string | null;
+        };
+        /** RegionalCatalogResponse */
+        RegionalCatalogResponse: {
+            /** Region Id */
+            region_id: string;
+            /** Region Name */
+            region_name: string;
+            /** Criterion Id */
+            criterion_id: string;
+            /** Category */
+            category: string;
+            /** Facilities */
+            facilities: components["schemas"]["FacilityResponse"][];
+            /** Candidate Count */
+            candidate_count: number;
+            /** Walking Measurement Available */
+            walking_measurement_available: boolean;
+            /** Emergency Measurement Available */
+            emergency_measurement_available: boolean;
+            /** Road Measurement Available */
+            road_measurement_available: boolean;
+            /** Calculation Available */
+            calculation_available: boolean;
+            /** Profile Verification */
+            profile_verification: string;
+        };
+        /** RegionalFacilityCellResponse */
+        RegionalFacilityCellResponse: {
+            /** Id */
+            id: string;
+            /** Latitude */
+            latitude: number;
+            /** Longitude */
+            longitude: number;
+            /** Facilities */
+            facilities: number;
+            /** Facility Id */
+            facility_id: string | null;
+            /** Bounds */
+            bounds: [
+                number,
+                number,
+                number,
+                number
+            ];
+        };
+        /** RegionalFacilityPageResponse */
+        RegionalFacilityPageResponse: {
+            /** Run Id */
+            run_id: string;
+            /** Facilities */
+            facilities: components["schemas"]["FacilityResponse"][];
+            /** Total */
+            total: number;
+            /** Page */
+            page: number;
+            /** Page Size */
+            page_size: number;
+        };
+        /** RegionalIndexResponse */
+        RegionalIndexResponse: {
+            /** Region Id */
+            region_id: string;
+            /** Criterion Id */
+            criterion_id: string;
+            /** Run Id */
+            run_id: string | null;
+            /** Measured At */
+            measured_at: string | null;
+            basis: components["schemas"]["IndexBasisResponse"] | null;
+            /** Baseline */
+            baseline: components["schemas"]["IndexValueResponse"][];
+            /** Scenario */
+            scenario: components["schemas"]["IndexValueResponse"][];
+            /** Qualification */
+            qualification: string;
+            /** Weighting */
+            weighting: string;
+            /** Status */
+            status: string;
+            /** Legal Compliance Confirmed */
+            legal_compliance_confirmed: boolean;
+            measurement_definition: components["schemas"]["MeasurementDefinition"];
+            model_index: components["schemas"]["ScenarioIndexResponse"] | null;
+        };
+        /** RegionalMapCellResponse */
+        RegionalMapCellResponse: {
+            /** Id */
+            id: string;
+            /** Latitude */
+            latitude: number;
+            /** Longitude */
+            longitude: number;
+            /** References */
+            references: number;
+            /** Measured */
+            measured: number;
+            /** Minimum */
+            minimum: number | null;
+            /** Maximum */
+            maximum: number | null;
+            /** Origin Id */
+            origin_id: string | null;
+            /** Bounds */
+            bounds: [
+                number,
+                number,
+                number,
+                number
+            ];
+        };
+        /** RegionalMapViewResponse */
+        RegionalMapViewResponse: {
+            /** Run Id */
+            run_id: string;
+            /**
+             * Stage
+             * @enum {string}
+             */
+            stage: "baseline" | "scenario";
+            /** Unit */
+            unit: string;
+            /** Cells */
+            cells: components["schemas"]["RegionalMapCellResponse"][];
+            /** Viewport References */
+            viewport_references: number;
+            /** Facilities */
+            facilities: components["schemas"]["RegionalFacilityCellResponse"][];
+            /** Viewport Facilities */
+            viewport_facilities: number;
+        };
+        /** RegionalMeasurementInput */
+        RegionalMeasurementInput: {
+            fire_profile?: components["schemas"]["FireProfileInput"] | null;
+            /** Closed Way Ids */
+            closed_way_ids?: number[];
+        };
+        /** RegionalMeasurementReceiptResponse */
+        RegionalMeasurementReceiptResponse: {
+            /** Run Id */
+            run_id: string;
+            /** Region Id */
+            region_id: string;
+            /** Region Name */
+            region_name: string;
+            /** Criterion Id */
+            criterion_id: string;
+            /** Graph Revision */
+            graph_revision: string;
+            /** Saved At */
+            saved_at: string;
+            /** Origins */
+            origins: number;
+            /** Measured Paths */
+            measured_paths: number;
+            /** Facilities */
+            facilities: number;
+            /** Mode */
+            mode: string;
+            /** Unit */
+            unit: string;
+            /** Qualification */
+            qualification: string;
+            /** Model Revision */
+            model_revision: string;
+            /** Closed Way Ids */
+            closed_way_ids: number[];
+            measurement_definition: components["schemas"]["MeasurementDefinition"];
+        };
+        /** RegionalMeasurementResponse */
+        RegionalMeasurementResponse: {
+            /** Run Id */
+            run_id: string;
+            /** Region Id */
+            region_id: string;
+            /** Region Name */
+            region_name: string;
+            /** Criterion Id */
+            criterion_id: string;
+            /** Category */
+            category: string;
+            /** Graph Revision */
+            graph_revision: string;
+            /** Saved At */
+            saved_at: string;
+            /** Facilities */
+            facilities: components["schemas"]["FacilityResponse"][];
+            /** Baseline Rows */
+            baseline_rows: components["schemas"]["AccessResponse"][];
+            /** Rows */
+            rows: components["schemas"]["AccessResponse"][];
+            /** Closed Way Ids */
+            closed_way_ids: number[];
+            comparison: components["schemas"]["ComparisonResponse"];
+            /** Model Revision */
+            model_revision: string;
+            /** Mode */
+            mode: string;
+            /** Unit */
+            unit: string;
+            /** Qualification */
+            qualification: string;
+            fire_profile?: components["schemas"]["FireProfileInput"] | null;
+            measurement_definition: components["schemas"]["MeasurementDefinition"];
+        };
+        /** RegionalPointDetailResponse */
+        RegionalPointDetailResponse: {
+            row: components["schemas"]["AccessResponse"];
+            facility: components["schemas"]["FacilityResponse"] | null;
+        };
+        /** RegionalRowPageResponse */
+        RegionalRowPageResponse: {
+            /** Run Id */
+            run_id: string;
+            /**
+             * Stage
+             * @enum {string}
+             */
+            stage: "baseline" | "scenario";
+            /** Rows */
+            rows: components["schemas"]["AccessResponse"][];
+            /** Total */
+            total: number;
+            /** Page */
+            page: number;
+            /** Page Size */
+            page_size: number;
+        };
+        /** RegionalRunViewResponse */
+        RegionalRunViewResponse: {
+            /** Run Id */
+            run_id: string;
+            /** Region Id */
+            region_id: string;
+            /** Region Name */
+            region_name: string;
+            /** Criterion Id */
+            criterion_id: string;
+            /** Category */
+            category: string;
+            /** Graph Revision */
+            graph_revision: string;
+            /** Saved At */
+            saved_at: string;
+            /** Closed Way Ids */
+            closed_way_ids: number[];
+            comparison: components["schemas"]["ComparisonResponse"];
+            /** Model Revision */
+            model_revision: string;
+            /** Mode */
+            mode: string;
+            /** Unit */
+            unit: string;
+            /** Qualification */
+            qualification: string;
+            fire_profile: components["schemas"]["FireProfileInput"] | null;
+            /** Origins */
+            origins: number;
+            /** Baseline Measured Paths */
+            baseline_measured_paths: number;
+            /** Scenario Measured Paths */
+            scenario_measured_paths: number;
+            /** Facility Count */
+            facility_count: number;
+            measurement_definition: components["schemas"]["MeasurementDefinition"];
         };
         /** RoadAddition */
         RoadAddition: {
@@ -1524,6 +2509,23 @@ export interface components {
              */
             detail: string;
         };
+        /** RouteGeometryResponse */
+        RouteGeometryResponse: {
+            /** Network Coordinates */
+            network_coordinates: [
+                number,
+                number
+            ][];
+            /** Approaches */
+            approaches: [
+                number,
+                number
+            ][][];
+            /** Minutes */
+            minutes: number | null;
+            /** Distance Metres */
+            distance_metres: number | null;
+        };
         /** RouteResponse */
         RouteResponse: {
             /** Id */
@@ -1542,6 +2544,57 @@ export interface components {
             x2: number;
             /** Y2 */
             y2: number;
+        };
+        /** RuleCheckResponse */
+        RuleCheckResponse: {
+            /**
+             * Rule Id
+             * @enum {string}
+             */
+            rule_id: "sp4283_school_walk" | "rngp178_school_walk" | "mngp114_school_walk" | "sp4283_bus_approach" | "sp4283_bus_route" | "rngp178_school_transport" | "rngp178_stop_walk" | "mngp114_stop_walk";
+            /**
+             * Applicability
+             * @enum {string}
+             */
+            applicability: "unknown" | "applicable" | "not_applicable" | "not_regulated";
+            /** Threshold */
+            threshold: number | null;
+            /**
+             * Unit
+             * @enum {string}
+             */
+            unit: "metres" | "kilometres";
+            /** Measurement */
+            measurement: string;
+            /** Value */
+            value: number | null;
+            /**
+             * Result
+             * @enum {string}
+             */
+            result: "unknown" | "within" | "exceeded" | "not_applicable" | "not_regulated";
+            /**
+             * Reason
+             * @enum {string}
+             */
+            reason: "conditions_missing" | "comparison_only" | "facts_missing" | "facts_unverified" | "rule_currentness_unconfirmed" | "target_mismatch" | "measurement_unverified" | "measurement_version_mismatch" | "eligible_service_unconfirmed" | "eligible_inventory_incomplete" | "scenario_unverified" | "school_transport_unconfirmed" | "measurement_missing" | "jurisdiction_unknown" | "outside_jurisdiction" | "planning_scope_unknown" | "outside_planning_scope" | "origin_profile_unknown" | "settlement_unknown" | "rural_branch" | "exception_unknown" | "exception_checked" | "project_scope_unknown" | "transitional_project_review" | "institution_branch" | "bus_scope_unknown" | "outside_bus_scope" | "bus_collection_point" | "organized_transport_limit" | "municipality_type_unknown" | "no_numerical_limit" | "municipal_okrug_transport" | "municipal_rural_scope_review" | "rural_not_regulated" | "zone_unknown" | "zone_conflict" | "zoning_incomplete" | "zone_selected" | "settlement_id_unknown" | "city_category_review" | "kurgan_municipality_housing" | "city_housing";
+            /** Source Url */
+            source_url: string;
+            /** Edition Date */
+            edition_date: string;
+            /** Facts Source Url */
+            facts_source_url: string | null;
+            /** Facts Observed At */
+            facts_observed_at: string | null;
+            /** Candidate Thresholds */
+            candidate_thresholds: number[];
+        };
+        /** RuleSetResponse */
+        RuleSetResponse: {
+            /** Id */
+            id: string;
+            /** Checks */
+            checks: components["schemas"]["RuleCheckResponse"][];
         };
         /** ScenarioCard */
         ScenarioCard: {
@@ -1606,6 +2659,42 @@ export interface components {
             regions: components["schemas"]["RegionImpactResponse"][];
             /** Settlements */
             settlements: components["schemas"]["SettlementImpactResponse"][];
+        };
+        /** ScenarioIndexPolicyResponse */
+        ScenarioIndexPolicyResponse: {
+            /** Criterion Id */
+            criterion_id: string;
+            /** Thresholds */
+            thresholds: number[];
+            /** Unit */
+            unit: string;
+            /** Mode */
+            mode: string;
+            /** Weighting */
+            weighting: string;
+            /** Definition Sha256 */
+            definition_sha256: string;
+            /** Fire Speed Kmh */
+            fire_speed_kmh: number | null;
+        };
+        /** ScenarioIndexResponse */
+        ScenarioIndexResponse: {
+            /** Region Id */
+            region_id: string;
+            /** Criterion Id */
+            criterion_id: string;
+            /** Run Id */
+            run_id: string;
+            /** Measured At */
+            measured_at: string;
+            policy: components["schemas"]["ScenarioIndexPolicyResponse"];
+            /** Baseline */
+            baseline: components["schemas"]["IndexValueResponse"][];
+            /** Scenario */
+            scenario: components["schemas"]["IndexValueResponse"][];
+            measurement_definition: components["schemas"]["MeasurementDefinition"];
+            /** Legal Compliance Confirmed */
+            legal_compliance_confirmed: boolean;
         };
         /** ScenarioRegionResponse */
         ScenarioRegionResponse: {
@@ -2561,6 +3650,619 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    catalog_api_v1_normative_regions__region_id__catalog__criterion_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                region_id: string;
+                criterion_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RegionalCatalogResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    latest_api_v1_normative_regions__region_id__measurements__criterion_id__view_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                region_id: string;
+                criterion_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RegionalRunViewResponse"] | null;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    rows_api_v1_normative_regional_measurements__run_id__rows_get: {
+        parameters: {
+            query?: {
+                stage?: "baseline" | "scenario";
+                page?: number;
+                page_size?: number;
+                sort?: "position" | "name" | "cost";
+                descending?: boolean;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RegionalRowPageResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    facilities_api_v1_normative_regional_measurements__run_id__facilities_get: {
+        parameters: {
+            query?: {
+                page?: number;
+                page_size?: number;
+                search?: string;
+            };
+            header?: never;
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RegionalFacilityPageResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    point_api_v1_normative_regional_measurements__run_id__points__origin_id__get: {
+        parameters: {
+            query?: {
+                stage?: "baseline" | "scenario";
+            };
+            header?: never;
+            path: {
+                run_id: string;
+                origin_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RegionalPointDetailResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    map_view_api_v1_normative_regional_measurements__run_id__map_get: {
+        parameters: {
+            query: {
+                west: number;
+                south: number;
+                east: number;
+                north: number;
+                stage?: "baseline" | "scenario";
+                zoom?: number;
+            };
+            header?: never;
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RegionalMapViewResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    latest_api_v1_normative_regions__region_id__indices__criterion_id__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                region_id: string;
+                criterion_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RegionalIndexResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    regions_api_v1_normative_indices__criterion_id__regions_get: {
+        parameters: {
+            query?: {
+                stage?: "baseline" | "scenario";
+            };
+            header?: never;
+            path: {
+                criterion_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["IndexMapRegionResponse"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    latest_api_v1_normative_regions__region_id__measurements__criterion_id__latest_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                region_id: string;
+                criterion_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RegionalMeasurementResponse"] | null;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    calculate_api_v1_normative_regions__region_id__measurements__criterion_id__post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                region_id: string;
+                criterion_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RegionalMeasurementInput"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RegionalMeasurementResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    latest_receipt_api_v1_normative_regions__region_id__measurements__criterion_id__receipt_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                region_id: string;
+                criterion_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RegionalMeasurementReceiptResponse"] | null;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    calculate_receipt_api_v1_normative_regions__region_id__measurements__criterion_id__receipt_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                region_id: string;
+                criterion_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RegionalMeasurementInput"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["RegionalMeasurementReceiptResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    route_api_v1_normative_regional_measurements__run_id__routes__origin_id__get: {
+        parameters: {
+            query?: {
+                stage?: "baseline" | "scenario";
+            };
+            header?: never;
+            path: {
+                run_id: string;
+                origin_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NormativeRouteResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    fire_destinations_api_v1_normative_fire_destinations_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FireDestinationResponse"][];
+                };
+            };
+        };
+    };
+    criteria_api_v1_normative_criteria_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["CriterionResponse"][];
+                };
+            };
+        };
+    };
+    facilities_api_v1_normative_criteria__criterion_id__facilities_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                criterion_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FacilityResponse"][];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    latest_api_v1_normative_criteria__criterion_id__latest_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                criterion_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AssessmentResponse"] | null;
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    route_api_v1_normative_assessments__run_id__routes__origin_id__get: {
+        parameters: {
+            query?: {
+                stage?: "baseline" | "scenario";
+            };
+            header?: never;
+            path: {
+                run_id: string;
+                origin_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NormativeRouteResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    assess_api_v1_normative_assessments_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["AssessmentInput"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AssessmentResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
                 };
             };
         };

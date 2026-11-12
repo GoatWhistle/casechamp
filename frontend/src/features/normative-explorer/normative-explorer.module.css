@@ -1,0 +1,44 @@
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(20rem, 0.7fr) minmax(0, 2fr);
+  gap: var(--space-24);
+  align-items: start;
+}
+.controls {
+  display: grid;
+  gap: var(--space-16);
+  min-width: 0;
+}
+.content {
+  min-width: 0;
+}
+.results {
+  display: grid;
+  gap: var(--space-20);
+}
+.summary {
+  font-size: var(--font-size-heading);
+  font-variant-numeric: tabular-nums;
+}
+.note {
+  color: var(--text-secondary);
+}
+.facilities {
+  display: grid;
+  gap: var(--space-16);
+}
+.facility {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-inline-size: 0;
+  white-space: normal;
+  gap: var(--space-8);
+  padding-block: var(--space-12);
+  border-bottom: var(--hairline) solid var(--border-subtle);
+  overflow-wrap: anywhere;
+}
+
+.documentHash {
+  min-inline-size: 0;
+  overflow-wrap: anywhere;
+}

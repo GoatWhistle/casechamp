@@ -1,0 +1,164 @@
+{
+  "checked_at": "2026-11-12T08:03:42.670591+00:00",
+  "scope": "One N09 full row query compared across three controlled variants; two full HTTP snapshot reads after deployment, with a concurrent N05 calculation, then one idle N09 read. Single measurements, no throughput/concurrency or global exhaustion proof.",
+  "experiments": [
+    {
+      "label": "baseline",
+      "query_id": "normative-read-baseline-f61a59fe5aa448e5a4b35527230abcd8",
+      "seconds": 0.9698331250110641,
+      "rows": 82472,
+      "semantic_sha256": "2aa3be6466e924911a346f8ea7a136ee0aaee1e23412949fe45fd4b07d1e73e3",
+      "query_log": [
+        {
+          "memory_usage": "142760023",
+          "query_duration_ms": "139",
+          "result_rows": "82472",
+          "read_rows": "84942",
+          "exception_code": 0
+        }
+      ]
+    },
+    {
+      "label": "one_thread",
+      "query_id": "normative-read-one_thread-4628549f5c7649a0922246ba620ca35e",
+      "seconds": 1.0907575000310317,
+      "rows": 82472,
+      "semantic_sha256": "2aa3be6466e924911a346f8ea7a136ee0aaee1e23412949fe45fd4b07d1e73e3",
+      "query_log": [
+        {
+          "memory_usage": "96435660",
+          "query_duration_ms": "271",
+          "result_rows": "82472",
+          "read_rows": "84942",
+          "exception_code": 0
+        }
+      ]
+    },
+    {
+      "label": "one_thread_no_server_sort",
+      "query_id": "normative-read-unsorted-9fb831ecd35c4b0281440f594ee4338b",
+      "seconds": 0.8156004169723019,
+      "rows": 82472,
+      "semantic_sha256": "2aa3be6466e924911a346f8ea7a136ee0aaee1e23412949fe45fd4b07d1e73e3",
+      "query_log": [
+        {
+          "memory_usage": "96403125",
+          "query_duration_ms": "205",
+          "result_rows": "82472",
+          "read_rows": "84942",
+          "exception_code": 0
+        }
+      ]
+    }
+  ],
+  "deployed_query_log": [
+    {
+      "event_time": "2026-11-12 08:01:01",
+      "query_id": "2cae7ae0-8ce4-455c-bd27-117612814673",
+      "memory_usage": "11191053",
+      "query_duration_ms": "23",
+      "result_rows": "2470",
+      "read_rows": "24668"
+    },
+    {
+      "event_time": "2026-11-12 08:00:48",
+      "query_id": "d63ab9f5-776d-4d63-adfb-78dfd8c8a323",
+      "memory_usage": "96435036",
+      "query_duration_ms": "1036",
+      "result_rows": "82472",
+      "read_rows": "84942"
+    },
+    {
+      "event_time": "2026-11-12 08:00:42",
+      "query_id": "07ec69c3-8e88-4851-8ee5-012ca1f03e55",
+      "memory_usage": "14556397",
+      "query_duration_ms": "25",
+      "result_rows": "2470",
+      "read_rows": "3022"
+    },
+    {
+      "event_time": "2026-11-12 08:00:41",
+      "query_id": "e397c04b-a8b4-483a-82ae-22a7d4fb4502",
+      "memory_usage": "96605061",
+      "query_duration_ms": "223",
+      "result_rows": "82472",
+      "read_rows": "82472"
+    },
+    {
+      "event_time": "2026-11-12 07:58:04",
+      "query_id": "normative-read-unsorted-9fb831ecd35c4b0281440f594ee4338b",
+      "memory_usage": "96403125",
+      "query_duration_ms": "205",
+      "result_rows": "82472",
+      "read_rows": "84942"
+    },
+    {
+      "event_time": "2026-11-12 07:57:36",
+      "query_id": "normative-read-one_thread-4628549f5c7649a0922246ba620ca35e",
+      "memory_usage": "96435660",
+      "query_duration_ms": "271",
+      "result_rows": "82472",
+      "read_rows": "84942"
+    }
+  ],
+  "http_before": [
+    {
+      "criterion": "N04",
+      "http_status": 200,
+      "headers_seconds": 2.5081410000566393,
+      "elapsed_seconds": 2.5401204579975456,
+      "wire_bytes": 4555993,
+      "content_encoding": "gzip",
+      "sha256": "e3b4876d3ce94ec2ef21cf07db13be6af76ccaad95402c63068e4e7ff49467f0"
+    },
+    {
+      "criterion": "N09",
+      "http_status": 200,
+      "headers_seconds": 2.1505957080516964,
+      "elapsed_seconds": 2.17046658298932,
+      "wire_bytes": 4585726,
+      "content_encoding": "gzip",
+      "sha256": "0ce6ee4c182d7bacf443195c3e702ba9eda4def934ba7ea91623324d44c29bde"
+    }
+  ],
+  "http_after_with_competing_assessment": [
+    {
+      "criterion": "N04",
+      "http_status": 200,
+      "seconds": 3.0782045419327915,
+      "wire_bytes": 4555993,
+      "content_encoding": "gzip",
+      "run_id": "32847ba12d234164a66a236101402a4c",
+      "baseline_rows": 41236,
+      "scenario_rows": 41236,
+      "source_hashes": 0
+    },
+    {
+      "criterion": "N09",
+      "http_status": 200,
+      "seconds": 18.925066416035406,
+      "wire_bytes": 4585726,
+      "content_encoding": "gzip",
+      "run_id": "98c9e0938c3344c4b7bb43866be2e424",
+      "baseline_rows": 41236,
+      "scenario_rows": 41236,
+      "source_hashes": 0,
+      "db_rows_semantic_sha256": "2aa3be6466e924911a346f8ea7a136ee0aaee1e23412949fe45fd4b07d1e73e3"
+    }
+  ],
+  "http_idle": {
+    "criterion": "N09",
+    "seconds": 2.970847583026625,
+    "wire_bytes": 4585726,
+    "rows": 41236,
+    "baseline_rows": 41236,
+    "competing_assessment": false
+  },
+  "global_code241_resolved": false,
+  "readonly": 1,
+  "applied_limits": {
+    "max_threads": 1,
+    "max_block_size": 8192
+  },
+  "server_sort_removed": false
+}

@@ -1,0 +1,151 @@
+{
+  "id": "d16ca0010f0a4c2ba4c5aa2ded78b5ec",
+  "region_id": "01000000",
+  "category": "employment_candidate",
+  "observed_at": "2026-11-12T15:57:21.724376+00:00",
+  "source_sha256": "a924848a78c69cd3db48babe620ae9e995dc5d3b63a1aeff08b0b5bed53bfa92",
+  "facilities": 65,
+  "source_url": "https://portal.22trud.ru/czn",
+  "raw_records": 65,
+  "located": 65,
+  "quality": {
+    "duplicates": 0,
+    "geometry_rejected": 0,
+    "profile_rejected": 0
+  },
+  "coordinate_status": "official_institution_pin",
+  "entrances_verified": false,
+  "receipt": {
+    "run_id": "520c51c4e7e94ad6ac07312f7fc276e2",
+    "region_id": "01000000",
+    "region_name": "Алтайский край",
+    "criterion_id": "N06",
+    "graph_revision": "[[\"casechamp.duckdb\", 1223700480, 1794314040488599643], [\"edges.parquet\", 368279977, 1794039336000000000], [\"nodes.parquet\", 180769332, 1794039313000000000], [\"points.parquet\", 6587005, 1794039339000000000], [\"ways.parquet\", 83529268, 1794039338000000000]]",
+    "saved_at": "2026-11-12T15:57:26.713620+00:00",
+    "origins": 1604,
+    "measured_paths": 1604,
+    "facilities": 65,
+    "mode": "car",
+    "unit": "minutes",
+    "qualification": "physical_only",
+    "model_revision": "regional-road-v1",
+    "closed_way_ids": [],
+    "measurement_definition": "single_reference_point"
+  },
+  "published_index": {
+    "region_id": "01000000",
+    "criterion_id": "N06",
+    "run_id": null,
+    "measured_at": null,
+    "basis": null,
+    "baseline": [],
+    "scenario": [],
+    "qualification": "conditional_known_objects",
+    "weighting": "population",
+    "status": "basis_missing",
+    "legal_compliance_confirmed": false,
+    "measurement_definition": "single_reference_point",
+    "model_index": {
+      "region_id": "01000000",
+      "criterion_id": "N06",
+      "run_id": "520c51c4e7e94ad6ac07312f7fc276e2",
+      "measured_at": "2026-11-12T15:57:26.713620+00:00",
+      "policy": {
+        "criterion_id": "N06",
+        "thresholds": [
+          60.0
+        ],
+        "unit": "minutes",
+        "mode": "car",
+        "weighting": "population",
+        "definition_sha256": "5c347216dbad467f4021a02289c747c979c8d762de547f56ca9270e6dd6ff1bc",
+        "fire_speed_kmh": null
+      },
+      "baseline": [
+        {
+          "threshold": 60.0,
+          "reference_points": 1604,
+          "measured_points": 1604,
+          "within_points": 1405,
+          "unresolved_points": 0,
+          "point_share_percent": 87.5935162094763,
+          "population": 2163361,
+          "within_population": 2119677,
+          "population_share_percent": 97.980734606938
+        }
+      ],
+      "scenario": [
+        {
+          "threshold": 60.0,
+          "reference_points": 1604,
+          "measured_points": 1604,
+          "within_points": 1405,
+          "unresolved_points": 0,
+          "point_share_percent": 87.5935162094763,
+          "population": 2163361,
+          "within_population": 2119677,
+          "population_share_percent": 97.980734606938
+        }
+      ],
+      "measurement_definition": "single_reference_point",
+      "legal_compliance_confirmed": false
+    }
+  },
+  "desktop": [
+    {
+      "region": "01000000",
+      "criterion": "N06",
+      "width": 1440,
+      "normativeStatus": "basis_missing",
+      "runId": "520c51c4e7e94ad6ac07312f7fc276e2",
+      "thresholds": [
+        60
+      ],
+      "values": [
+        {
+          "threshold": 60,
+          "reference_points": 1604,
+          "measured_points": 1604,
+          "within_points": 1405,
+          "unresolved_points": 0,
+          "point_share_percent": 87.5935162094763,
+          "population": 2163361,
+          "within_population": 2119677,
+          "population_share_percent": 97.980734606938
+        }
+      ],
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "region": "01000000",
+      "criterion": "N06",
+      "width": 1920,
+      "normativeStatus": "basis_missing",
+      "runId": "520c51c4e7e94ad6ac07312f7fc276e2",
+      "thresholds": [
+        60
+      ],
+      "values": [
+        {
+          "threshold": 60,
+          "reference_points": 1604,
+          "measured_points": 1604,
+          "within_points": 1405,
+          "unresolved_points": 0,
+          "point_share_percent": 87.5935162094763,
+          "population": 2163361,
+          "within_population": 2119677,
+          "population_share_percent": 97.980734606938
+        }
+      ],
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "repeat_import": "existing verified generation reused;no duplicate publication"
+}

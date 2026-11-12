@@ -1,0 +1,7 @@
+.actions {
+  display: grid;
+  gap: var(--space-8);
+  padding: var(--space-16) var(--space-24);
+  border-block-start: var(--hairline) solid var(--border-subtle);
+  background: var(--surface-raised);
+}

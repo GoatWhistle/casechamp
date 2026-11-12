@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-12",
+  "model_revision": "normative-v5",
+  "run_id": "fdc3282426eb41ae938a36de83d93098",
+  "criterion": "N07",
+  "production_facts": 0,
+  "origin_count": 1235,
+  "facility_count": 429,
+  "physical_results_equal_v4_run": "42f886c0d9a4498bbf0ed4f418eba55c",
+  "post_get_exact": true,
+  "all_production_states": "unknown",
+  "qualification_as_of": null,
+  "tests": {
+    "backend_unit": 411,
+    "etl": 28,
+    "frontend": 443,
+    "integration_selected": 3,
+    "integration_deselected": 3,
+    "integration_seconds": 71.25
+  },
+  "limitations": [
+    "Positive legal qualification is tested with isolated test fixtures only; no production attestation was fabricated.",
+    "Medical and fire verified qualification paths remain incomplete.",
+    "Full backend format check retains a pre-existing formatting violation in tests/unit/controller/test_chat.py."
+  ],
+  "desktop": {
+    "widths": [
+      1440,
+      1920
+    ],
+    "javascript_errors": 0,
+    "axe_violations": 0,
+    "horizontal_overflow": false,
+    "checks": [
+      "Search finds 37502000101 in real saved results",
+      "Source disclosure opens",
+      "Empty production registry does not show a qualification timestamp"
+    ]
+  }
+}

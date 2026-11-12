@@ -1,0 +1,3999 @@
+{
+  "verified_at": "2026-11-12T10:24:44.402970+00:00",
+  "method": "Spatial intersection with stored regional polygons; unique OSM object IDs within each region using ClickHouse FINAL",
+  "planned_districts": 8,
+  "acquired_districts": 8,
+  "extracted_districts": 8,
+  "totals": {
+    "objects": "279736",
+    "represented_regions": "84"
+  },
+  "acquired_extracts": 10,
+  "extracted_extracts": 10,
+  "sources": [
+    {
+      "id": "central_federal_district",
+      "url": "https://download.openstreetmap.fr/extracts/russia/central_federal_district-latest.osm.pbf",
+      "bytes": 987121805,
+      "sha256": "02ba9bfc791089351c352a2824b59a68282300f70f6fa4acb129d24f20016bf3",
+      "received_at": "2026-11-12T09:20:17.050594+00:00",
+      "state": "sequenceNumber=7367379\ntimestamp=2026-11-11T00\\:07\\:10Z",
+      "licence": "ODbL-1.0"
+    },
+    {
+      "id": "far_eastern_federal_district",
+      "url": "https://download.openstreetmap.fr/extracts/russia/far_eastern_federal_district-latest.osm.pbf",
+      "bytes": 422052979,
+      "sha256": "d2b922369e07ef7bc142c5f25df242627906ee6e48c744456c8a631e90caaa14",
+      "received_at": "2026-11-12T09:26:58.000908+00:00",
+      "state": "sequenceNumber=7367372\ntimestamp=2026-11-11T00\\:00\\:06Z",
+      "licence": "ODbL-1.0"
+    },
+    {
+      "id": "north_caucasian_federal_district",
+      "url": "https://download.openstreetmap.fr/extracts/russia/north_caucasian_federal_district-latest.osm.pbf",
+      "bytes": 139767662,
+      "sha256": "27dc956de536e9d5f167113cf54d09c2f23fd3504c1d5aebd33994d22158a7cc",
+      "received_at": "2026-11-12T09:29:05.317189+00:00",
+      "state": "sequenceNumber=7367378\ntimestamp=2026-11-11T00\\:06\\:10Z",
+      "licence": "ODbL-1.0"
+    },
+    {
+      "id": "northwestern_federal_district",
+      "url": "https://download.openstreetmap.fr/extracts/russia/northwestern_federal_district-latest.osm.pbf",
+      "bytes": 716430137,
+      "sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+      "received_at": "2026-11-12T09:40:31.213305+00:00",
+      "state": "sequenceNumber=7367378\ntimestamp=2026-11-11T00\\:06\\:10Z",
+      "licence": "ODbL-1.0"
+    },
+    {
+      "id": "siberian_federal_district",
+      "url": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district-latest.osm.pbf",
+      "bytes": 630238494,
+      "sha256": "cf33df0c178290809307aae7101b933ceca7baf29b3f28552bc6dbd2094c262f",
+      "received_at": "2026-11-12T09:52:06.798844+00:00",
+      "state": "sequenceNumber=7367376\ntimestamp=2026-11-11T00\\:04\\:05Z",
+      "licence": "ODbL-1.0"
+    },
+    {
+      "id": "southern_federal_district",
+      "url": "https://download.openstreetmap.fr/extracts/russia/southern_federal_district-latest.osm.pbf",
+      "bytes": 348238664,
+      "sha256": "3a2443d2777993bb4e117d76b3507af489ad1135efb93377b72408571839443b",
+      "received_at": "2026-11-12T09:58:40.502480+00:00",
+      "state": "sequenceNumber=7367375\ntimestamp=2026-11-11T00\\:03\\:02Z",
+      "licence": "ODbL-1.0"
+    },
+    {
+      "id": "ural_federal_district",
+      "url": "https://download.openstreetmap.fr/extracts/russia/ural_federal_district-latest.osm.pbf",
+      "bytes": 433194476,
+      "sha256": "dd74703a45100371fee400b785c0ad6e81f4c0b67185dd0e33be1efaf44bcd52",
+      "received_at": "2026-11-12T10:06:25.009155+00:00",
+      "state": "sequenceNumber=7367376\ntimestamp=2026-11-11T00\\:04\\:05Z",
+      "licence": "ODbL-1.0"
+    },
+    {
+      "id": "volga_federal_district",
+      "url": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district-latest.osm.pbf",
+      "bytes": 849242254,
+      "sha256": "5da527cf7bb95ff0aaa4a6b738e503f65fdfa135a0c6d55c1507ff6d086c6004",
+      "received_at": "2026-11-12T10:21:02.853273+00:00",
+      "state": "sequenceNumber=7367378\ntimestamp=2026-11-11T00\\:06\\:10Z",
+      "licence": "ODbL-1.0"
+    },
+    {
+      "id": "crimea",
+      "url": "https://download.openstreetmap.fr/extracts/europe/ukraine/crimea-latest.osm.pbf",
+      "bytes": 39823647,
+      "sha256": "b7b39ff7b756cefcd2b8bcb31a82d8ea2268e31a87d818d3f06da1cc57534570",
+      "received_at": "2026-11-12T10:23:56.376087+00:00",
+      "state": "sequenceNumber=7367438\ntimestamp=2026-11-11T01\\:07\\:05Z",
+      "licence": "ODbL-1.0"
+    },
+    {
+      "id": "sevastopol",
+      "url": "https://download.openstreetmap.fr/extracts/europe/ukraine/sevastopol-latest.osm.pbf",
+      "bytes": 7506121,
+      "sha256": "096de63ca70e535352b7a34d9c59a267ea056426a88c20286c7a1b08c1266248",
+      "received_at": "2026-11-12T10:24:06.309501+00:00",
+      "state": "sequenceNumber=7367436\ntimestamp=2026-11-11T01\\:04\\:58Z",
+      "licence": "ODbL-1.0"
+    }
+  ],
+  "regional_categories": [
+    {
+      "region_id": "01000000",
+      "region_name": "Алтайский край",
+      "category": "bus_station",
+      "objects": "59"
+    },
+    {
+      "region_id": "01000000",
+      "region_name": "Алтайский край",
+      "category": "employment_candidate",
+      "objects": "5"
+    },
+    {
+      "region_id": "01000000",
+      "region_name": "Алтайский край",
+      "category": "fire",
+      "objects": "136"
+    },
+    {
+      "region_id": "01000000",
+      "region_name": "Алтайский край",
+      "category": "library",
+      "objects": "224"
+    },
+    {
+      "region_id": "01000000",
+      "region_name": "Алтайский край",
+      "category": "medical",
+      "objects": "516"
+    },
+    {
+      "region_id": "01000000",
+      "region_name": "Алтайский край",
+      "category": "mfc_candidate",
+      "objects": "17"
+    },
+    {
+      "region_id": "01000000",
+      "region_name": "Алтайский край",
+      "category": "school",
+      "objects": "922"
+    },
+    {
+      "region_id": "01000000",
+      "region_name": "Алтайский край",
+      "category": "stop",
+      "objects": "1851"
+    },
+    {
+      "region_id": "03000000",
+      "region_name": "Краснодарский край",
+      "category": "bus_station",
+      "objects": "130"
+    },
+    {
+      "region_id": "03000000",
+      "region_name": "Краснодарский край",
+      "category": "employment_candidate",
+      "objects": "8"
+    },
+    {
+      "region_id": "03000000",
+      "region_name": "Краснодарский край",
+      "category": "fire",
+      "objects": "244"
+    },
+    {
+      "region_id": "03000000",
+      "region_name": "Краснодарский край",
+      "category": "library",
+      "objects": "209"
+    },
+    {
+      "region_id": "03000000",
+      "region_name": "Краснодарский край",
+      "category": "medical",
+      "objects": "981"
+    },
+    {
+      "region_id": "03000000",
+      "region_name": "Краснодарский край",
+      "category": "mfc_candidate",
+      "objects": "46"
+    },
+    {
+      "region_id": "03000000",
+      "region_name": "Краснодарский край",
+      "category": "school",
+      "objects": "1397"
+    },
+    {
+      "region_id": "03000000",
+      "region_name": "Краснодарский край",
+      "category": "stop",
+      "objects": "7014"
+    },
+    {
+      "region_id": "04000000",
+      "region_name": "Красноярский край",
+      "category": "bus_station",
+      "objects": "44"
+    },
+    {
+      "region_id": "04000000",
+      "region_name": "Красноярский край",
+      "category": "employment_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "04000000",
+      "region_name": "Красноярский край",
+      "category": "fire",
+      "objects": "83"
+    },
+    {
+      "region_id": "04000000",
+      "region_name": "Красноярский край",
+      "category": "library",
+      "objects": "94"
+    },
+    {
+      "region_id": "04000000",
+      "region_name": "Красноярский край",
+      "category": "medical",
+      "objects": "438"
+    },
+    {
+      "region_id": "04000000",
+      "region_name": "Красноярский край",
+      "category": "mfc_candidate",
+      "objects": "12"
+    },
+    {
+      "region_id": "04000000",
+      "region_name": "Красноярский край",
+      "category": "school",
+      "objects": "578"
+    },
+    {
+      "region_id": "04000000",
+      "region_name": "Красноярский край",
+      "category": "stop",
+      "objects": "2929"
+    },
+    {
+      "region_id": "05000000",
+      "region_name": "Приморский край",
+      "category": "bus_station",
+      "objects": "35"
+    },
+    {
+      "region_id": "05000000",
+      "region_name": "Приморский край",
+      "category": "employment_candidate",
+      "objects": "5"
+    },
+    {
+      "region_id": "05000000",
+      "region_name": "Приморский край",
+      "category": "fire",
+      "objects": "59"
+    },
+    {
+      "region_id": "05000000",
+      "region_name": "Приморский край",
+      "category": "library",
+      "objects": "60"
+    },
+    {
+      "region_id": "05000000",
+      "region_name": "Приморский край",
+      "category": "medical",
+      "objects": "327"
+    },
+    {
+      "region_id": "05000000",
+      "region_name": "Приморский край",
+      "category": "mfc_candidate",
+      "objects": "14"
+    },
+    {
+      "region_id": "05000000",
+      "region_name": "Приморский край",
+      "category": "school",
+      "objects": "516"
+    },
+    {
+      "region_id": "05000000",
+      "region_name": "Приморский край",
+      "category": "stop",
+      "objects": "4088"
+    },
+    {
+      "region_id": "07000000",
+      "region_name": "Ставропольский край",
+      "category": "bus_station",
+      "objects": "55"
+    },
+    {
+      "region_id": "07000000",
+      "region_name": "Ставропольский край",
+      "category": "employment_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "07000000",
+      "region_name": "Ставропольский край",
+      "category": "fire",
+      "objects": "42"
+    },
+    {
+      "region_id": "07000000",
+      "region_name": "Ставропольский край",
+      "category": "library",
+      "objects": "74"
+    },
+    {
+      "region_id": "07000000",
+      "region_name": "Ставропольский край",
+      "category": "medical",
+      "objects": "355"
+    },
+    {
+      "region_id": "07000000",
+      "region_name": "Ставропольский край",
+      "category": "mfc_candidate",
+      "objects": "12"
+    },
+    {
+      "region_id": "07000000",
+      "region_name": "Ставропольский край",
+      "category": "school",
+      "objects": "501"
+    },
+    {
+      "region_id": "07000000",
+      "region_name": "Ставропольский край",
+      "category": "stop",
+      "objects": "1913"
+    },
+    {
+      "region_id": "08000000",
+      "region_name": "Хабаровский край",
+      "category": "bus_station",
+      "objects": "35"
+    },
+    {
+      "region_id": "08000000",
+      "region_name": "Хабаровский край",
+      "category": "employment_candidate",
+      "objects": "3"
+    },
+    {
+      "region_id": "08000000",
+      "region_name": "Хабаровский край",
+      "category": "fire",
+      "objects": "69"
+    },
+    {
+      "region_id": "08000000",
+      "region_name": "Хабаровский край",
+      "category": "library",
+      "objects": "53"
+    },
+    {
+      "region_id": "08000000",
+      "region_name": "Хабаровский край",
+      "category": "medical",
+      "objects": "252"
+    },
+    {
+      "region_id": "08000000",
+      "region_name": "Хабаровский край",
+      "category": "mfc_candidate",
+      "objects": "12"
+    },
+    {
+      "region_id": "08000000",
+      "region_name": "Хабаровский край",
+      "category": "school",
+      "objects": "362"
+    },
+    {
+      "region_id": "08000000",
+      "region_name": "Хабаровский край",
+      "category": "stop",
+      "objects": "2754"
+    },
+    {
+      "region_id": "10000000",
+      "region_name": "Амурская область",
+      "category": "bus_station",
+      "objects": "12"
+    },
+    {
+      "region_id": "10000000",
+      "region_name": "Амурская область",
+      "category": "fire",
+      "objects": "46"
+    },
+    {
+      "region_id": "10000000",
+      "region_name": "Амурская область",
+      "category": "library",
+      "objects": "16"
+    },
+    {
+      "region_id": "10000000",
+      "region_name": "Амурская область",
+      "category": "medical",
+      "objects": "178"
+    },
+    {
+      "region_id": "10000000",
+      "region_name": "Амурская область",
+      "category": "mfc_candidate",
+      "objects": "9"
+    },
+    {
+      "region_id": "10000000",
+      "region_name": "Амурская область",
+      "category": "school",
+      "objects": "119"
+    },
+    {
+      "region_id": "10000000",
+      "region_name": "Амурская область",
+      "category": "stop",
+      "objects": "2562"
+    },
+    {
+      "region_id": "11000000",
+      "region_name": "Архангельская область",
+      "category": "bus_station",
+      "objects": "52"
+    },
+    {
+      "region_id": "11000000",
+      "region_name": "Архангельская область",
+      "category": "employment_candidate",
+      "objects": "5"
+    },
+    {
+      "region_id": "11000000",
+      "region_name": "Архангельская область",
+      "category": "fire",
+      "objects": "97"
+    },
+    {
+      "region_id": "11000000",
+      "region_name": "Архангельская область",
+      "category": "library",
+      "objects": "129"
+    },
+    {
+      "region_id": "11000000",
+      "region_name": "Архангельская область",
+      "category": "medical",
+      "objects": "315"
+    },
+    {
+      "region_id": "11000000",
+      "region_name": "Архангельская область",
+      "category": "mfc_candidate",
+      "objects": "13"
+    },
+    {
+      "region_id": "11000000",
+      "region_name": "Архангельская область",
+      "category": "school",
+      "objects": "385"
+    },
+    {
+      "region_id": "11000000",
+      "region_name": "Архангельская область",
+      "category": "stop",
+      "objects": "2073"
+    },
+    {
+      "region_id": "11800000",
+      "region_name": "Ненецкий АО",
+      "category": "fire",
+      "objects": "9"
+    },
+    {
+      "region_id": "11800000",
+      "region_name": "Ненецкий АО",
+      "category": "library",
+      "objects": "5"
+    },
+    {
+      "region_id": "11800000",
+      "region_name": "Ненецкий АО",
+      "category": "medical",
+      "objects": "21"
+    },
+    {
+      "region_id": "11800000",
+      "region_name": "Ненецкий АО",
+      "category": "mfc_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "11800000",
+      "region_name": "Ненецкий АО",
+      "category": "school",
+      "objects": "31"
+    },
+    {
+      "region_id": "11800000",
+      "region_name": "Ненецкий АО",
+      "category": "stop",
+      "objects": "66"
+    },
+    {
+      "region_id": "12000000",
+      "region_name": "Астраханская область",
+      "category": "bus_station",
+      "objects": "15"
+    },
+    {
+      "region_id": "12000000",
+      "region_name": "Астраханская область",
+      "category": "employment_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "12000000",
+      "region_name": "Астраханская область",
+      "category": "fire",
+      "objects": "26"
+    },
+    {
+      "region_id": "12000000",
+      "region_name": "Астраханская область",
+      "category": "library",
+      "objects": "23"
+    },
+    {
+      "region_id": "12000000",
+      "region_name": "Астраханская область",
+      "category": "medical",
+      "objects": "120"
+    },
+    {
+      "region_id": "12000000",
+      "region_name": "Астраханская область",
+      "category": "mfc_candidate",
+      "objects": "4"
+    },
+    {
+      "region_id": "12000000",
+      "region_name": "Астраханская область",
+      "category": "school",
+      "objects": "187"
+    },
+    {
+      "region_id": "12000000",
+      "region_name": "Астраханская область",
+      "category": "stop",
+      "objects": "759"
+    },
+    {
+      "region_id": "14000000",
+      "region_name": "Белгородская область",
+      "category": "bus_station",
+      "objects": "44"
+    },
+    {
+      "region_id": "14000000",
+      "region_name": "Белгородская область",
+      "category": "fire",
+      "objects": "29"
+    },
+    {
+      "region_id": "14000000",
+      "region_name": "Белгородская область",
+      "category": "library",
+      "objects": "68"
+    },
+    {
+      "region_id": "14000000",
+      "region_name": "Белгородская область",
+      "category": "medical",
+      "objects": "201"
+    },
+    {
+      "region_id": "14000000",
+      "region_name": "Белгородская область",
+      "category": "mfc_candidate",
+      "objects": "6"
+    },
+    {
+      "region_id": "14000000",
+      "region_name": "Белгородская область",
+      "category": "school",
+      "objects": "399"
+    },
+    {
+      "region_id": "14000000",
+      "region_name": "Белгородская область",
+      "category": "stop",
+      "objects": "2284"
+    },
+    {
+      "region_id": "15000000",
+      "region_name": "Брянская область",
+      "category": "bus_station",
+      "objects": "34"
+    },
+    {
+      "region_id": "15000000",
+      "region_name": "Брянская область",
+      "category": "employment_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "15000000",
+      "region_name": "Брянская область",
+      "category": "fire",
+      "objects": "45"
+    },
+    {
+      "region_id": "15000000",
+      "region_name": "Брянская область",
+      "category": "library",
+      "objects": "46"
+    },
+    {
+      "region_id": "15000000",
+      "region_name": "Брянская область",
+      "category": "medical",
+      "objects": "176"
+    },
+    {
+      "region_id": "15000000",
+      "region_name": "Брянская область",
+      "category": "mfc_candidate",
+      "objects": "9"
+    },
+    {
+      "region_id": "15000000",
+      "region_name": "Брянская область",
+      "category": "school",
+      "objects": "324"
+    },
+    {
+      "region_id": "15000000",
+      "region_name": "Брянская область",
+      "category": "stop",
+      "objects": "2119"
+    },
+    {
+      "region_id": "17000000",
+      "region_name": "Владимирская область",
+      "category": "bus_station",
+      "objects": "32"
+    },
+    {
+      "region_id": "17000000",
+      "region_name": "Владимирская область",
+      "category": "employment_candidate",
+      "objects": "5"
+    },
+    {
+      "region_id": "17000000",
+      "region_name": "Владимирская область",
+      "category": "fire",
+      "objects": "52"
+    },
+    {
+      "region_id": "17000000",
+      "region_name": "Владимирская область",
+      "category": "library",
+      "objects": "80"
+    },
+    {
+      "region_id": "17000000",
+      "region_name": "Владимирская область",
+      "category": "medical",
+      "objects": "194"
+    },
+    {
+      "region_id": "17000000",
+      "region_name": "Владимирская область",
+      "category": "mfc_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "17000000",
+      "region_name": "Владимирская область",
+      "category": "school",
+      "objects": "239"
+    },
+    {
+      "region_id": "17000000",
+      "region_name": "Владимирская область",
+      "category": "stop",
+      "objects": "3066"
+    },
+    {
+      "region_id": "18000000",
+      "region_name": "Волгоградская область",
+      "category": "bus_station",
+      "objects": "42"
+    },
+    {
+      "region_id": "18000000",
+      "region_name": "Волгоградская область",
+      "category": "employment_candidate",
+      "objects": "3"
+    },
+    {
+      "region_id": "18000000",
+      "region_name": "Волгоградская область",
+      "category": "fire",
+      "objects": "220"
+    },
+    {
+      "region_id": "18000000",
+      "region_name": "Волгоградская область",
+      "category": "library",
+      "objects": "86"
+    },
+    {
+      "region_id": "18000000",
+      "region_name": "Волгоградская область",
+      "category": "medical",
+      "objects": "407"
+    },
+    {
+      "region_id": "18000000",
+      "region_name": "Волгоградская область",
+      "category": "mfc_candidate",
+      "objects": "13"
+    },
+    {
+      "region_id": "18000000",
+      "region_name": "Волгоградская область",
+      "category": "school",
+      "objects": "596"
+    },
+    {
+      "region_id": "18000000",
+      "region_name": "Волгоградская область",
+      "category": "stop",
+      "objects": "2030"
+    },
+    {
+      "region_id": "19000000",
+      "region_name": "Вологодская область",
+      "category": "bus_station",
+      "objects": "30"
+    },
+    {
+      "region_id": "19000000",
+      "region_name": "Вологодская область",
+      "category": "employment_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "19000000",
+      "region_name": "Вологодская область",
+      "category": "fire",
+      "objects": "59"
+    },
+    {
+      "region_id": "19000000",
+      "region_name": "Вологодская область",
+      "category": "library",
+      "objects": "91"
+    },
+    {
+      "region_id": "19000000",
+      "region_name": "Вологодская область",
+      "category": "medical",
+      "objects": "231"
+    },
+    {
+      "region_id": "19000000",
+      "region_name": "Вологодская область",
+      "category": "mfc_candidate",
+      "objects": "14"
+    },
+    {
+      "region_id": "19000000",
+      "region_name": "Вологодская область",
+      "category": "school",
+      "objects": "329"
+    },
+    {
+      "region_id": "19000000",
+      "region_name": "Вологодская область",
+      "category": "stop",
+      "objects": "2193"
+    },
+    {
+      "region_id": "20000000",
+      "region_name": "Воронежская область",
+      "category": "bus_station",
+      "objects": "43"
+    },
+    {
+      "region_id": "20000000",
+      "region_name": "Воронежская область",
+      "category": "employment_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "20000000",
+      "region_name": "Воронежская область",
+      "category": "fire",
+      "objects": "83"
+    },
+    {
+      "region_id": "20000000",
+      "region_name": "Воронежская область",
+      "category": "library",
+      "objects": "175"
+    },
+    {
+      "region_id": "20000000",
+      "region_name": "Воронежская область",
+      "category": "medical",
+      "objects": "377"
+    },
+    {
+      "region_id": "20000000",
+      "region_name": "Воронежская область",
+      "category": "mfc_candidate",
+      "objects": "22"
+    },
+    {
+      "region_id": "20000000",
+      "region_name": "Воронежская область",
+      "category": "school",
+      "objects": "671"
+    },
+    {
+      "region_id": "20000000",
+      "region_name": "Воронежская область",
+      "category": "stop",
+      "objects": "3061"
+    },
+    {
+      "region_id": "22000000",
+      "region_name": "Нижегородская область",
+      "category": "bus_station",
+      "objects": "65"
+    },
+    {
+      "region_id": "22000000",
+      "region_name": "Нижегородская область",
+      "category": "employment_candidate",
+      "objects": "13"
+    },
+    {
+      "region_id": "22000000",
+      "region_name": "Нижегородская область",
+      "category": "fire",
+      "objects": "148"
+    },
+    {
+      "region_id": "22000000",
+      "region_name": "Нижегородская область",
+      "category": "library",
+      "objects": "190"
+    },
+    {
+      "region_id": "22000000",
+      "region_name": "Нижегородская область",
+      "category": "medical",
+      "objects": "469"
+    },
+    {
+      "region_id": "22000000",
+      "region_name": "Нижегородская область",
+      "category": "mfc_candidate",
+      "objects": "21"
+    },
+    {
+      "region_id": "22000000",
+      "region_name": "Нижегородская область",
+      "category": "school",
+      "objects": "574"
+    },
+    {
+      "region_id": "22000000",
+      "region_name": "Нижегородская область",
+      "category": "stop",
+      "objects": "4791"
+    },
+    {
+      "region_id": "24000000",
+      "region_name": "Ивановская область",
+      "category": "bus_station",
+      "objects": "29"
+    },
+    {
+      "region_id": "24000000",
+      "region_name": "Ивановская область",
+      "category": "fire",
+      "objects": "39"
+    },
+    {
+      "region_id": "24000000",
+      "region_name": "Ивановская область",
+      "category": "library",
+      "objects": "41"
+    },
+    {
+      "region_id": "24000000",
+      "region_name": "Ивановская область",
+      "category": "medical",
+      "objects": "175"
+    },
+    {
+      "region_id": "24000000",
+      "region_name": "Ивановская область",
+      "category": "mfc_candidate",
+      "objects": "9"
+    },
+    {
+      "region_id": "24000000",
+      "region_name": "Ивановская область",
+      "category": "school",
+      "objects": "235"
+    },
+    {
+      "region_id": "24000000",
+      "region_name": "Ивановская область",
+      "category": "stop",
+      "objects": "1272"
+    },
+    {
+      "region_id": "25000000",
+      "region_name": "Иркутская область",
+      "category": "bus_station",
+      "objects": "42"
+    },
+    {
+      "region_id": "25000000",
+      "region_name": "Иркутская область",
+      "category": "employment_candidate",
+      "objects": "8"
+    },
+    {
+      "region_id": "25000000",
+      "region_name": "Иркутская область",
+      "category": "fire",
+      "objects": "71"
+    },
+    {
+      "region_id": "25000000",
+      "region_name": "Иркутская область",
+      "category": "library",
+      "objects": "71"
+    },
+    {
+      "region_id": "25000000",
+      "region_name": "Иркутская область",
+      "category": "medical",
+      "objects": "363"
+    },
+    {
+      "region_id": "25000000",
+      "region_name": "Иркутская область",
+      "category": "mfc_candidate",
+      "objects": "12"
+    },
+    {
+      "region_id": "25000000",
+      "region_name": "Иркутская область",
+      "category": "school",
+      "objects": "588"
+    },
+    {
+      "region_id": "25000000",
+      "region_name": "Иркутская область",
+      "category": "stop",
+      "objects": "4434"
+    },
+    {
+      "region_id": "26000000",
+      "region_name": "Республика Ингушетия",
+      "category": "bus_station",
+      "objects": "5"
+    },
+    {
+      "region_id": "26000000",
+      "region_name": "Республика Ингушетия",
+      "category": "fire",
+      "objects": "4"
+    },
+    {
+      "region_id": "26000000",
+      "region_name": "Республика Ингушетия",
+      "category": "library",
+      "objects": "1"
+    },
+    {
+      "region_id": "26000000",
+      "region_name": "Республика Ингушетия",
+      "category": "medical",
+      "objects": "23"
+    },
+    {
+      "region_id": "26000000",
+      "region_name": "Республика Ингушетия",
+      "category": "mfc_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "26000000",
+      "region_name": "Республика Ингушетия",
+      "category": "school",
+      "objects": "59"
+    },
+    {
+      "region_id": "26000000",
+      "region_name": "Республика Ингушетия",
+      "category": "stop",
+      "objects": "34"
+    },
+    {
+      "region_id": "27000000",
+      "region_name": "Калининградская область",
+      "category": "bus_station",
+      "objects": "22"
+    },
+    {
+      "region_id": "27000000",
+      "region_name": "Калининградская область",
+      "category": "employment_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "27000000",
+      "region_name": "Калининградская область",
+      "category": "fire",
+      "objects": "34"
+    },
+    {
+      "region_id": "27000000",
+      "region_name": "Калининградская область",
+      "category": "library",
+      "objects": "45"
+    },
+    {
+      "region_id": "27000000",
+      "region_name": "Калининградская область",
+      "category": "medical",
+      "objects": "186"
+    },
+    {
+      "region_id": "27000000",
+      "region_name": "Калининградская область",
+      "category": "mfc_candidate",
+      "objects": "9"
+    },
+    {
+      "region_id": "27000000",
+      "region_name": "Калининградская область",
+      "category": "school",
+      "objects": "194"
+    },
+    {
+      "region_id": "27000000",
+      "region_name": "Калининградская область",
+      "category": "stop",
+      "objects": "1792"
+    },
+    {
+      "region_id": "28000000",
+      "region_name": "Тверская область",
+      "category": "bus_station",
+      "objects": "52"
+    },
+    {
+      "region_id": "28000000",
+      "region_name": "Тверская область",
+      "category": "employment_candidate",
+      "objects": "6"
+    },
+    {
+      "region_id": "28000000",
+      "region_name": "Тверская область",
+      "category": "fire",
+      "objects": "89"
+    },
+    {
+      "region_id": "28000000",
+      "region_name": "Тверская область",
+      "category": "library",
+      "objects": "100"
+    },
+    {
+      "region_id": "28000000",
+      "region_name": "Тверская область",
+      "category": "medical",
+      "objects": "283"
+    },
+    {
+      "region_id": "28000000",
+      "region_name": "Тверская область",
+      "category": "mfc_candidate",
+      "objects": "17"
+    },
+    {
+      "region_id": "28000000",
+      "region_name": "Тверская область",
+      "category": "school",
+      "objects": "451"
+    },
+    {
+      "region_id": "28000000",
+      "region_name": "Тверская область",
+      "category": "stop",
+      "objects": "3458"
+    },
+    {
+      "region_id": "29000000",
+      "region_name": "Калужская область",
+      "category": "bus_station",
+      "objects": "30"
+    },
+    {
+      "region_id": "29000000",
+      "region_name": "Калужская область",
+      "category": "employment_candidate",
+      "objects": "3"
+    },
+    {
+      "region_id": "29000000",
+      "region_name": "Калужская область",
+      "category": "fire",
+      "objects": "41"
+    },
+    {
+      "region_id": "29000000",
+      "region_name": "Калужская область",
+      "category": "library",
+      "objects": "199"
+    },
+    {
+      "region_id": "29000000",
+      "region_name": "Калужская область",
+      "category": "medical",
+      "objects": "357"
+    },
+    {
+      "region_id": "29000000",
+      "region_name": "Калужская область",
+      "category": "mfc_candidate",
+      "objects": "16"
+    },
+    {
+      "region_id": "29000000",
+      "region_name": "Калужская область",
+      "category": "school",
+      "objects": "348"
+    },
+    {
+      "region_id": "29000000",
+      "region_name": "Калужская область",
+      "category": "stop",
+      "objects": "1912"
+    },
+    {
+      "region_id": "30000000",
+      "region_name": "Камчатский край",
+      "category": "bus_station",
+      "objects": "11"
+    },
+    {
+      "region_id": "30000000",
+      "region_name": "Камчатский край",
+      "category": "employment_candidate",
+      "objects": "3"
+    },
+    {
+      "region_id": "30000000",
+      "region_name": "Камчатский край",
+      "category": "fire",
+      "objects": "32"
+    },
+    {
+      "region_id": "30000000",
+      "region_name": "Камчатский край",
+      "category": "library",
+      "objects": "28"
+    },
+    {
+      "region_id": "30000000",
+      "region_name": "Камчатский край",
+      "category": "medical",
+      "objects": "113"
+    },
+    {
+      "region_id": "30000000",
+      "region_name": "Камчатский край",
+      "category": "mfc_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "30000000",
+      "region_name": "Камчатский край",
+      "category": "school",
+      "objects": "116"
+    },
+    {
+      "region_id": "30000000",
+      "region_name": "Камчатский край",
+      "category": "stop",
+      "objects": "853"
+    },
+    {
+      "region_id": "32000000",
+      "region_name": "Кемеровская область",
+      "category": "bus_station",
+      "objects": "50"
+    },
+    {
+      "region_id": "32000000",
+      "region_name": "Кемеровская область",
+      "category": "employment_candidate",
+      "objects": "5"
+    },
+    {
+      "region_id": "32000000",
+      "region_name": "Кемеровская область",
+      "category": "fire",
+      "objects": "54"
+    },
+    {
+      "region_id": "32000000",
+      "region_name": "Кемеровская область",
+      "category": "library",
+      "objects": "73"
+    },
+    {
+      "region_id": "32000000",
+      "region_name": "Кемеровская область",
+      "category": "medical",
+      "objects": "383"
+    },
+    {
+      "region_id": "32000000",
+      "region_name": "Кемеровская область",
+      "category": "mfc_candidate",
+      "objects": "3"
+    },
+    {
+      "region_id": "32000000",
+      "region_name": "Кемеровская область",
+      "category": "school",
+      "objects": "544"
+    },
+    {
+      "region_id": "32000000",
+      "region_name": "Кемеровская область",
+      "category": "stop",
+      "objects": "2674"
+    },
+    {
+      "region_id": "33000000",
+      "region_name": "Кировская область",
+      "category": "bus_station",
+      "objects": "39"
+    },
+    {
+      "region_id": "33000000",
+      "region_name": "Кировская область",
+      "category": "employment_candidate",
+      "objects": "9"
+    },
+    {
+      "region_id": "33000000",
+      "region_name": "Кировская область",
+      "category": "fire",
+      "objects": "75"
+    },
+    {
+      "region_id": "33000000",
+      "region_name": "Кировская область",
+      "category": "library",
+      "objects": "101"
+    },
+    {
+      "region_id": "33000000",
+      "region_name": "Кировская область",
+      "category": "medical",
+      "objects": "285"
+    },
+    {
+      "region_id": "33000000",
+      "region_name": "Кировская область",
+      "category": "mfc_candidate",
+      "objects": "15"
+    },
+    {
+      "region_id": "33000000",
+      "region_name": "Кировская область",
+      "category": "school",
+      "objects": "384"
+    },
+    {
+      "region_id": "33000000",
+      "region_name": "Кировская область",
+      "category": "stop",
+      "objects": "2185"
+    },
+    {
+      "region_id": "34000000",
+      "region_name": "Костромская область",
+      "category": "bus_station",
+      "objects": "19"
+    },
+    {
+      "region_id": "34000000",
+      "region_name": "Костромская область",
+      "category": "employment_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "34000000",
+      "region_name": "Костромская область",
+      "category": "fire",
+      "objects": "34"
+    },
+    {
+      "region_id": "34000000",
+      "region_name": "Костромская область",
+      "category": "library",
+      "objects": "35"
+    },
+    {
+      "region_id": "34000000",
+      "region_name": "Костромская область",
+      "category": "medical",
+      "objects": "104"
+    },
+    {
+      "region_id": "34000000",
+      "region_name": "Костромская область",
+      "category": "mfc_candidate",
+      "objects": "3"
+    },
+    {
+      "region_id": "34000000",
+      "region_name": "Костромская область",
+      "category": "school",
+      "objects": "161"
+    },
+    {
+      "region_id": "34000000",
+      "region_name": "Костромская область",
+      "category": "stop",
+      "objects": "1100"
+    },
+    {
+      "region_id": "35000000",
+      "region_name": "Республика Крым",
+      "category": "bus_station",
+      "objects": "91"
+    },
+    {
+      "region_id": "35000000",
+      "region_name": "Республика Крым",
+      "category": "employment_candidate",
+      "objects": "3"
+    },
+    {
+      "region_id": "35000000",
+      "region_name": "Республика Крым",
+      "category": "fire",
+      "objects": "63"
+    },
+    {
+      "region_id": "35000000",
+      "region_name": "Республика Крым",
+      "category": "library",
+      "objects": "90"
+    },
+    {
+      "region_id": "35000000",
+      "region_name": "Республика Крым",
+      "category": "medical",
+      "objects": "330"
+    },
+    {
+      "region_id": "35000000",
+      "region_name": "Республика Крым",
+      "category": "mfc_candidate",
+      "objects": "40"
+    },
+    {
+      "region_id": "35000000",
+      "region_name": "Республика Крым",
+      "category": "school",
+      "objects": "494"
+    },
+    {
+      "region_id": "35000000",
+      "region_name": "Республика Крым",
+      "category": "stop",
+      "objects": "2535"
+    },
+    {
+      "region_id": "36000000",
+      "region_name": "Самарская область",
+      "category": "bus_station",
+      "objects": "74"
+    },
+    {
+      "region_id": "36000000",
+      "region_name": "Самарская область",
+      "category": "employment_candidate",
+      "objects": "9"
+    },
+    {
+      "region_id": "36000000",
+      "region_name": "Самарская область",
+      "category": "fire",
+      "objects": "103"
+    },
+    {
+      "region_id": "36000000",
+      "region_name": "Самарская область",
+      "category": "library",
+      "objects": "175"
+    },
+    {
+      "region_id": "36000000",
+      "region_name": "Самарская область",
+      "category": "medical",
+      "objects": "626"
+    },
+    {
+      "region_id": "36000000",
+      "region_name": "Самарская область",
+      "category": "mfc_candidate",
+      "objects": "70"
+    },
+    {
+      "region_id": "36000000",
+      "region_name": "Самарская область",
+      "category": "school",
+      "objects": "1013"
+    },
+    {
+      "region_id": "36000000",
+      "region_name": "Самарская область",
+      "category": "stop",
+      "objects": "2817"
+    },
+    {
+      "region_id": "37000000",
+      "region_name": "Курганская область",
+      "category": "bus_station",
+      "objects": "15"
+    },
+    {
+      "region_id": "37000000",
+      "region_name": "Курганская область",
+      "category": "fire",
+      "objects": "33"
+    },
+    {
+      "region_id": "37000000",
+      "region_name": "Курганская область",
+      "category": "library",
+      "objects": "82"
+    },
+    {
+      "region_id": "37000000",
+      "region_name": "Курганская область",
+      "category": "medical",
+      "objects": "102"
+    },
+    {
+      "region_id": "37000000",
+      "region_name": "Курганская область",
+      "category": "mfc_candidate",
+      "objects": "3"
+    },
+    {
+      "region_id": "37000000",
+      "region_name": "Курганская область",
+      "category": "school",
+      "objects": "160"
+    },
+    {
+      "region_id": "37000000",
+      "region_name": "Курганская область",
+      "category": "stop",
+      "objects": "643"
+    },
+    {
+      "region_id": "38000000",
+      "region_name": "Курская область",
+      "category": "bus_station",
+      "objects": "37"
+    },
+    {
+      "region_id": "38000000",
+      "region_name": "Курская область",
+      "category": "employment_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "38000000",
+      "region_name": "Курская область",
+      "category": "fire",
+      "objects": "32"
+    },
+    {
+      "region_id": "38000000",
+      "region_name": "Курская область",
+      "category": "library",
+      "objects": "57"
+    },
+    {
+      "region_id": "38000000",
+      "region_name": "Курская область",
+      "category": "medical",
+      "objects": "372"
+    },
+    {
+      "region_id": "38000000",
+      "region_name": "Курская область",
+      "category": "mfc_candidate",
+      "objects": "6"
+    },
+    {
+      "region_id": "38000000",
+      "region_name": "Курская область",
+      "category": "school",
+      "objects": "755"
+    },
+    {
+      "region_id": "38000000",
+      "region_name": "Курская область",
+      "category": "stop",
+      "objects": "1822"
+    },
+    {
+      "region_id": "40000000",
+      "region_name": "Санкт-Петербург",
+      "category": "bus_station",
+      "objects": "2"
+    },
+    {
+      "region_id": "40000000",
+      "region_name": "Санкт-Петербург",
+      "category": "employment_candidate",
+      "objects": "20"
+    },
+    {
+      "region_id": "40000000",
+      "region_name": "Санкт-Петербург",
+      "category": "fire",
+      "objects": "63"
+    },
+    {
+      "region_id": "40000000",
+      "region_name": "Санкт-Петербург",
+      "category": "library",
+      "objects": "237"
+    },
+    {
+      "region_id": "40000000",
+      "region_name": "Санкт-Петербург",
+      "category": "medical",
+      "objects": "752"
+    },
+    {
+      "region_id": "40000000",
+      "region_name": "Санкт-Петербург",
+      "category": "mfc_candidate",
+      "objects": "70"
+    },
+    {
+      "region_id": "40000000",
+      "region_name": "Санкт-Петербург",
+      "category": "school",
+      "objects": "817"
+    },
+    {
+      "region_id": "40000000",
+      "region_name": "Санкт-Петербург",
+      "category": "stop",
+      "objects": "5803"
+    },
+    {
+      "region_id": "41000000",
+      "region_name": "Ленинградская область",
+      "category": "bus_station",
+      "objects": "20"
+    },
+    {
+      "region_id": "41000000",
+      "region_name": "Ленинградская область",
+      "category": "employment_candidate",
+      "objects": "4"
+    },
+    {
+      "region_id": "41000000",
+      "region_name": "Ленинградская область",
+      "category": "fire",
+      "objects": "92"
+    },
+    {
+      "region_id": "41000000",
+      "region_name": "Ленинградская область",
+      "category": "library",
+      "objects": "120"
+    },
+    {
+      "region_id": "41000000",
+      "region_name": "Ленинградская область",
+      "category": "medical",
+      "objects": "227"
+    },
+    {
+      "region_id": "41000000",
+      "region_name": "Ленинградская область",
+      "category": "mfc_candidate",
+      "objects": "178"
+    },
+    {
+      "region_id": "41000000",
+      "region_name": "Ленинградская область",
+      "category": "school",
+      "objects": "417"
+    },
+    {
+      "region_id": "41000000",
+      "region_name": "Ленинградская область",
+      "category": "stop",
+      "objects": "6687"
+    },
+    {
+      "region_id": "42000000",
+      "region_name": "Липецкая область",
+      "category": "bus_station",
+      "objects": "25"
+    },
+    {
+      "region_id": "42000000",
+      "region_name": "Липецкая область",
+      "category": "employment_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "42000000",
+      "region_name": "Липецкая область",
+      "category": "fire",
+      "objects": "36"
+    },
+    {
+      "region_id": "42000000",
+      "region_name": "Липецкая область",
+      "category": "library",
+      "objects": "53"
+    },
+    {
+      "region_id": "42000000",
+      "region_name": "Липецкая область",
+      "category": "medical",
+      "objects": "177"
+    },
+    {
+      "region_id": "42000000",
+      "region_name": "Липецкая область",
+      "category": "mfc_candidate",
+      "objects": "12"
+    },
+    {
+      "region_id": "42000000",
+      "region_name": "Липецкая область",
+      "category": "school",
+      "objects": "270"
+    },
+    {
+      "region_id": "42000000",
+      "region_name": "Липецкая область",
+      "category": "stop",
+      "objects": "1677"
+    },
+    {
+      "region_id": "44000000",
+      "region_name": "Магаданская область",
+      "category": "bus_station",
+      "objects": "5"
+    },
+    {
+      "region_id": "44000000",
+      "region_name": "Магаданская область",
+      "category": "employment_candidate",
+      "objects": "3"
+    },
+    {
+      "region_id": "44000000",
+      "region_name": "Магаданская область",
+      "category": "fire",
+      "objects": "17"
+    },
+    {
+      "region_id": "44000000",
+      "region_name": "Магаданская область",
+      "category": "library",
+      "objects": "10"
+    },
+    {
+      "region_id": "44000000",
+      "region_name": "Магаданская область",
+      "category": "medical",
+      "objects": "55"
+    },
+    {
+      "region_id": "44000000",
+      "region_name": "Магаданская область",
+      "category": "mfc_candidate",
+      "objects": "3"
+    },
+    {
+      "region_id": "44000000",
+      "region_name": "Магаданская область",
+      "category": "school",
+      "objects": "50"
+    },
+    {
+      "region_id": "44000000",
+      "region_name": "Магаданская область",
+      "category": "stop",
+      "objects": "387"
+    },
+    {
+      "region_id": "45000000",
+      "region_name": "Москва",
+      "category": "bus_station",
+      "objects": "15"
+    },
+    {
+      "region_id": "45000000",
+      "region_name": "Москва",
+      "category": "employment_candidate",
+      "objects": "18"
+    },
+    {
+      "region_id": "45000000",
+      "region_name": "Москва",
+      "category": "fire",
+      "objects": "99"
+    },
+    {
+      "region_id": "45000000",
+      "region_name": "Москва",
+      "category": "library",
+      "objects": "430"
+    },
+    {
+      "region_id": "45000000",
+      "region_name": "Москва",
+      "category": "medical",
+      "objects": "1881"
+    },
+    {
+      "region_id": "45000000",
+      "region_name": "Москва",
+      "category": "mfc_candidate",
+      "objects": "130"
+    },
+    {
+      "region_id": "45000000",
+      "region_name": "Москва",
+      "category": "school",
+      "objects": "1516"
+    },
+    {
+      "region_id": "45000000",
+      "region_name": "Москва",
+      "category": "stop",
+      "objects": "12368"
+    },
+    {
+      "region_id": "46000000",
+      "region_name": "Московская область",
+      "category": "bus_station",
+      "objects": "86"
+    },
+    {
+      "region_id": "46000000",
+      "region_name": "Московская область",
+      "category": "employment_candidate",
+      "objects": "9"
+    },
+    {
+      "region_id": "46000000",
+      "region_name": "Московская область",
+      "category": "fire",
+      "objects": "255"
+    },
+    {
+      "region_id": "46000000",
+      "region_name": "Московская область",
+      "category": "library",
+      "objects": "400"
+    },
+    {
+      "region_id": "46000000",
+      "region_name": "Московская область",
+      "category": "medical",
+      "objects": "1194"
+    },
+    {
+      "region_id": "46000000",
+      "region_name": "Московская область",
+      "category": "mfc_candidate",
+      "objects": "108"
+    },
+    {
+      "region_id": "46000000",
+      "region_name": "Московская область",
+      "category": "school",
+      "objects": "1502"
+    },
+    {
+      "region_id": "46000000",
+      "region_name": "Московская область",
+      "category": "stop",
+      "objects": "20422"
+    },
+    {
+      "region_id": "47000000",
+      "region_name": "Мурманская область",
+      "category": "bus_station",
+      "objects": "18"
+    },
+    {
+      "region_id": "47000000",
+      "region_name": "Мурманская область",
+      "category": "employment_candidate",
+      "objects": "5"
+    },
+    {
+      "region_id": "47000000",
+      "region_name": "Мурманская область",
+      "category": "fire",
+      "objects": "64"
+    },
+    {
+      "region_id": "47000000",
+      "region_name": "Мурманская область",
+      "category": "library",
+      "objects": "98"
+    },
+    {
+      "region_id": "47000000",
+      "region_name": "Мурманская область",
+      "category": "medical",
+      "objects": "207"
+    },
+    {
+      "region_id": "47000000",
+      "region_name": "Мурманская область",
+      "category": "mfc_candidate",
+      "objects": "7"
+    },
+    {
+      "region_id": "47000000",
+      "region_name": "Мурманская область",
+      "category": "school",
+      "objects": "259"
+    },
+    {
+      "region_id": "47000000",
+      "region_name": "Мурманская область",
+      "category": "stop",
+      "objects": "999"
+    },
+    {
+      "region_id": "49000000",
+      "region_name": "Новгородская область",
+      "category": "bus_station",
+      "objects": "21"
+    },
+    {
+      "region_id": "49000000",
+      "region_name": "Новгородская область",
+      "category": "employment_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "49000000",
+      "region_name": "Новгородская область",
+      "category": "fire",
+      "objects": "32"
+    },
+    {
+      "region_id": "49000000",
+      "region_name": "Новгородская область",
+      "category": "library",
+      "objects": "53"
+    },
+    {
+      "region_id": "49000000",
+      "region_name": "Новгородская область",
+      "category": "medical",
+      "objects": "107"
+    },
+    {
+      "region_id": "49000000",
+      "region_name": "Новгородская область",
+      "category": "mfc_candidate",
+      "objects": "11"
+    },
+    {
+      "region_id": "49000000",
+      "region_name": "Новгородская область",
+      "category": "school",
+      "objects": "153"
+    },
+    {
+      "region_id": "49000000",
+      "region_name": "Новгородская область",
+      "category": "stop",
+      "objects": "1373"
+    },
+    {
+      "region_id": "50000000",
+      "region_name": "Новосибирская область",
+      "category": "bus_station",
+      "objects": "37"
+    },
+    {
+      "region_id": "50000000",
+      "region_name": "Новосибирская область",
+      "category": "employment_candidate",
+      "objects": "6"
+    },
+    {
+      "region_id": "50000000",
+      "region_name": "Новосибирская область",
+      "category": "fire",
+      "objects": "62"
+    },
+    {
+      "region_id": "50000000",
+      "region_name": "Новосибирская область",
+      "category": "library",
+      "objects": "94"
+    },
+    {
+      "region_id": "50000000",
+      "region_name": "Новосибирская область",
+      "category": "medical",
+      "objects": "415"
+    },
+    {
+      "region_id": "50000000",
+      "region_name": "Новосибирская область",
+      "category": "mfc_candidate",
+      "objects": "8"
+    },
+    {
+      "region_id": "50000000",
+      "region_name": "Новосибирская область",
+      "category": "school",
+      "objects": "607"
+    },
+    {
+      "region_id": "50000000",
+      "region_name": "Новосибирская область",
+      "category": "stop",
+      "objects": "2329"
+    },
+    {
+      "region_id": "52000000",
+      "region_name": "Омская область",
+      "category": "bus_station",
+      "objects": "29"
+    },
+    {
+      "region_id": "52000000",
+      "region_name": "Омская область",
+      "category": "employment_candidate",
+      "objects": "4"
+    },
+    {
+      "region_id": "52000000",
+      "region_name": "Омская область",
+      "category": "fire",
+      "objects": "44"
+    },
+    {
+      "region_id": "52000000",
+      "region_name": "Омская область",
+      "category": "library",
+      "objects": "62"
+    },
+    {
+      "region_id": "52000000",
+      "region_name": "Омская область",
+      "category": "medical",
+      "objects": "265"
+    },
+    {
+      "region_id": "52000000",
+      "region_name": "Омская область",
+      "category": "mfc_candidate",
+      "objects": "5"
+    },
+    {
+      "region_id": "52000000",
+      "region_name": "Омская область",
+      "category": "school",
+      "objects": "375"
+    },
+    {
+      "region_id": "52000000",
+      "region_name": "Омская область",
+      "category": "stop",
+      "objects": "2282"
+    },
+    {
+      "region_id": "53000000",
+      "region_name": "Оренбургская область",
+      "category": "bus_station",
+      "objects": "34"
+    },
+    {
+      "region_id": "53000000",
+      "region_name": "Оренбургская область",
+      "category": "fire",
+      "objects": "44"
+    },
+    {
+      "region_id": "53000000",
+      "region_name": "Оренбургская область",
+      "category": "library",
+      "objects": "48"
+    },
+    {
+      "region_id": "53000000",
+      "region_name": "Оренбургская область",
+      "category": "medical",
+      "objects": "332"
+    },
+    {
+      "region_id": "53000000",
+      "region_name": "Оренбургская область",
+      "category": "mfc_candidate",
+      "objects": "9"
+    },
+    {
+      "region_id": "53000000",
+      "region_name": "Оренбургская область",
+      "category": "school",
+      "objects": "573"
+    },
+    {
+      "region_id": "53000000",
+      "region_name": "Оренбургская область",
+      "category": "stop",
+      "objects": "1087"
+    },
+    {
+      "region_id": "54000000",
+      "region_name": "Орловская область",
+      "category": "bus_station",
+      "objects": "23"
+    },
+    {
+      "region_id": "54000000",
+      "region_name": "Орловская область",
+      "category": "employment_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "54000000",
+      "region_name": "Орловская область",
+      "category": "fire",
+      "objects": "26"
+    },
+    {
+      "region_id": "54000000",
+      "region_name": "Орловская область",
+      "category": "library",
+      "objects": "38"
+    },
+    {
+      "region_id": "54000000",
+      "region_name": "Орловская область",
+      "category": "medical",
+      "objects": "115"
+    },
+    {
+      "region_id": "54000000",
+      "region_name": "Орловская область",
+      "category": "mfc_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "54000000",
+      "region_name": "Орловская область",
+      "category": "school",
+      "objects": "171"
+    },
+    {
+      "region_id": "54000000",
+      "region_name": "Орловская область",
+      "category": "stop",
+      "objects": "1284"
+    },
+    {
+      "region_id": "56000000",
+      "region_name": "Пензенская область",
+      "category": "bus_station",
+      "objects": "31"
+    },
+    {
+      "region_id": "56000000",
+      "region_name": "Пензенская область",
+      "category": "fire",
+      "objects": "37"
+    },
+    {
+      "region_id": "56000000",
+      "region_name": "Пензенская область",
+      "category": "library",
+      "objects": "43"
+    },
+    {
+      "region_id": "56000000",
+      "region_name": "Пензенская область",
+      "category": "medical",
+      "objects": "216"
+    },
+    {
+      "region_id": "56000000",
+      "region_name": "Пензенская область",
+      "category": "mfc_candidate",
+      "objects": "6"
+    },
+    {
+      "region_id": "56000000",
+      "region_name": "Пензенская область",
+      "category": "school",
+      "objects": "286"
+    },
+    {
+      "region_id": "56000000",
+      "region_name": "Пензенская область",
+      "category": "stop",
+      "objects": "1482"
+    },
+    {
+      "region_id": "57000000",
+      "region_name": "Пермский край",
+      "category": "bus_station",
+      "objects": "83"
+    },
+    {
+      "region_id": "57000000",
+      "region_name": "Пермский край",
+      "category": "employment_candidate",
+      "objects": "4"
+    },
+    {
+      "region_id": "57000000",
+      "region_name": "Пермский край",
+      "category": "fire",
+      "objects": "121"
+    },
+    {
+      "region_id": "57000000",
+      "region_name": "Пермский край",
+      "category": "library",
+      "objects": "120"
+    },
+    {
+      "region_id": "57000000",
+      "region_name": "Пермский край",
+      "category": "medical",
+      "objects": "515"
+    },
+    {
+      "region_id": "57000000",
+      "region_name": "Пермский край",
+      "category": "mfc_candidate",
+      "objects": "16"
+    },
+    {
+      "region_id": "57000000",
+      "region_name": "Пермский край",
+      "category": "school",
+      "objects": "552"
+    },
+    {
+      "region_id": "57000000",
+      "region_name": "Пермский край",
+      "category": "stop",
+      "objects": "3421"
+    },
+    {
+      "region_id": "58000000",
+      "region_name": "Псковская область",
+      "category": "bus_station",
+      "objects": "41"
+    },
+    {
+      "region_id": "58000000",
+      "region_name": "Псковская область",
+      "category": "employment_candidate",
+      "objects": "6"
+    },
+    {
+      "region_id": "58000000",
+      "region_name": "Псковская область",
+      "category": "fire",
+      "objects": "59"
+    },
+    {
+      "region_id": "58000000",
+      "region_name": "Псковская область",
+      "category": "library",
+      "objects": "75"
+    },
+    {
+      "region_id": "58000000",
+      "region_name": "Псковская область",
+      "category": "medical",
+      "objects": "148"
+    },
+    {
+      "region_id": "58000000",
+      "region_name": "Псковская область",
+      "category": "mfc_candidate",
+      "objects": "10"
+    },
+    {
+      "region_id": "58000000",
+      "region_name": "Псковская область",
+      "category": "school",
+      "objects": "263"
+    },
+    {
+      "region_id": "58000000",
+      "region_name": "Псковская область",
+      "category": "stop",
+      "objects": "2844"
+    },
+    {
+      "region_id": "60000000",
+      "region_name": "Ростовская область",
+      "category": "bus_station",
+      "objects": "73"
+    },
+    {
+      "region_id": "60000000",
+      "region_name": "Ростовская область",
+      "category": "employment_candidate",
+      "objects": "5"
+    },
+    {
+      "region_id": "60000000",
+      "region_name": "Ростовская область",
+      "category": "fire",
+      "objects": "148"
+    },
+    {
+      "region_id": "60000000",
+      "region_name": "Ростовская область",
+      "category": "library",
+      "objects": "121"
+    },
+    {
+      "region_id": "60000000",
+      "region_name": "Ростовская область",
+      "category": "medical",
+      "objects": "668"
+    },
+    {
+      "region_id": "60000000",
+      "region_name": "Ростовская область",
+      "category": "mfc_candidate",
+      "objects": "61"
+    },
+    {
+      "region_id": "60000000",
+      "region_name": "Ростовская область",
+      "category": "school",
+      "objects": "961"
+    },
+    {
+      "region_id": "60000000",
+      "region_name": "Ростовская область",
+      "category": "stop",
+      "objects": "4929"
+    },
+    {
+      "region_id": "61000000",
+      "region_name": "Рязанская область",
+      "category": "bus_station",
+      "objects": "31"
+    },
+    {
+      "region_id": "61000000",
+      "region_name": "Рязанская область",
+      "category": "fire",
+      "objects": "61"
+    },
+    {
+      "region_id": "61000000",
+      "region_name": "Рязанская область",
+      "category": "library",
+      "objects": "65"
+    },
+    {
+      "region_id": "61000000",
+      "region_name": "Рязанская область",
+      "category": "medical",
+      "objects": "203"
+    },
+    {
+      "region_id": "61000000",
+      "region_name": "Рязанская область",
+      "category": "mfc_candidate",
+      "objects": "4"
+    },
+    {
+      "region_id": "61000000",
+      "region_name": "Рязанская область",
+      "category": "school",
+      "objects": "299"
+    },
+    {
+      "region_id": "61000000",
+      "region_name": "Рязанская область",
+      "category": "stop",
+      "objects": "2347"
+    },
+    {
+      "region_id": "63000000",
+      "region_name": "Саратовская область",
+      "category": "bus_station",
+      "objects": "41"
+    },
+    {
+      "region_id": "63000000",
+      "region_name": "Саратовская область",
+      "category": "employment_candidate",
+      "objects": "5"
+    },
+    {
+      "region_id": "63000000",
+      "region_name": "Саратовская область",
+      "category": "fire",
+      "objects": "52"
+    },
+    {
+      "region_id": "63000000",
+      "region_name": "Саратовская область",
+      "category": "library",
+      "objects": "116"
+    },
+    {
+      "region_id": "63000000",
+      "region_name": "Саратовская область",
+      "category": "medical",
+      "objects": "255"
+    },
+    {
+      "region_id": "63000000",
+      "region_name": "Саратовская область",
+      "category": "mfc_candidate",
+      "objects": "11"
+    },
+    {
+      "region_id": "63000000",
+      "region_name": "Саратовская область",
+      "category": "school",
+      "objects": "374"
+    },
+    {
+      "region_id": "63000000",
+      "region_name": "Саратовская область",
+      "category": "stop",
+      "objects": "2254"
+    },
+    {
+      "region_id": "64000000",
+      "region_name": "Сахалинская область",
+      "category": "bus_station",
+      "objects": "6"
+    },
+    {
+      "region_id": "64000000",
+      "region_name": "Сахалинская область",
+      "category": "employment_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "64000000",
+      "region_name": "Сахалинская область",
+      "category": "fire",
+      "objects": "45"
+    },
+    {
+      "region_id": "64000000",
+      "region_name": "Сахалинская область",
+      "category": "library",
+      "objects": "54"
+    },
+    {
+      "region_id": "64000000",
+      "region_name": "Сахалинская область",
+      "category": "medical",
+      "objects": "128"
+    },
+    {
+      "region_id": "64000000",
+      "region_name": "Сахалинская область",
+      "category": "mfc_candidate",
+      "objects": "8"
+    },
+    {
+      "region_id": "64000000",
+      "region_name": "Сахалинская область",
+      "category": "school",
+      "objects": "131"
+    },
+    {
+      "region_id": "64000000",
+      "region_name": "Сахалинская область",
+      "category": "stop",
+      "objects": "1793"
+    },
+    {
+      "region_id": "65000000",
+      "region_name": "Свердловская область",
+      "category": "bus_station",
+      "objects": "139"
+    },
+    {
+      "region_id": "65000000",
+      "region_name": "Свердловская область",
+      "category": "employment_candidate",
+      "objects": "7"
+    },
+    {
+      "region_id": "65000000",
+      "region_name": "Свердловская область",
+      "category": "fire",
+      "objects": "188"
+    },
+    {
+      "region_id": "65000000",
+      "region_name": "Свердловская область",
+      "category": "library",
+      "objects": "207"
+    },
+    {
+      "region_id": "65000000",
+      "region_name": "Свердловская область",
+      "category": "medical",
+      "objects": "823"
+    },
+    {
+      "region_id": "65000000",
+      "region_name": "Свердловская область",
+      "category": "mfc_candidate",
+      "objects": "39"
+    },
+    {
+      "region_id": "65000000",
+      "region_name": "Свердловская область",
+      "category": "school",
+      "objects": "1030"
+    },
+    {
+      "region_id": "65000000",
+      "region_name": "Свердловская область",
+      "category": "stop",
+      "objects": "4718"
+    },
+    {
+      "region_id": "66000000",
+      "region_name": "Смоленская область",
+      "category": "bus_station",
+      "objects": "25"
+    },
+    {
+      "region_id": "66000000",
+      "region_name": "Смоленская область",
+      "category": "fire",
+      "objects": "22"
+    },
+    {
+      "region_id": "66000000",
+      "region_name": "Смоленская область",
+      "category": "library",
+      "objects": "35"
+    },
+    {
+      "region_id": "66000000",
+      "region_name": "Смоленская область",
+      "category": "medical",
+      "objects": "164"
+    },
+    {
+      "region_id": "66000000",
+      "region_name": "Смоленская область",
+      "category": "mfc_candidate",
+      "objects": "10"
+    },
+    {
+      "region_id": "66000000",
+      "region_name": "Смоленская область",
+      "category": "school",
+      "objects": "236"
+    },
+    {
+      "region_id": "66000000",
+      "region_name": "Смоленская область",
+      "category": "stop",
+      "objects": "1565"
+    },
+    {
+      "region_id": "68000000",
+      "region_name": "Тамбовская область",
+      "category": "bus_station",
+      "objects": "21"
+    },
+    {
+      "region_id": "68000000",
+      "region_name": "Тамбовская область",
+      "category": "fire",
+      "objects": "21"
+    },
+    {
+      "region_id": "68000000",
+      "region_name": "Тамбовская область",
+      "category": "library",
+      "objects": "46"
+    },
+    {
+      "region_id": "68000000",
+      "region_name": "Тамбовская область",
+      "category": "medical",
+      "objects": "121"
+    },
+    {
+      "region_id": "68000000",
+      "region_name": "Тамбовская область",
+      "category": "mfc_candidate",
+      "objects": "11"
+    },
+    {
+      "region_id": "68000000",
+      "region_name": "Тамбовская область",
+      "category": "school",
+      "objects": "191"
+    },
+    {
+      "region_id": "68000000",
+      "region_name": "Тамбовская область",
+      "category": "stop",
+      "objects": "1424"
+    },
+    {
+      "region_id": "69000000",
+      "region_name": "Томская область",
+      "category": "bus_station",
+      "objects": "20"
+    },
+    {
+      "region_id": "69000000",
+      "region_name": "Томская область",
+      "category": "employment_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "69000000",
+      "region_name": "Томская область",
+      "category": "fire",
+      "objects": "47"
+    },
+    {
+      "region_id": "69000000",
+      "region_name": "Томская область",
+      "category": "library",
+      "objects": "56"
+    },
+    {
+      "region_id": "69000000",
+      "region_name": "Томская область",
+      "category": "medical",
+      "objects": "239"
+    },
+    {
+      "region_id": "69000000",
+      "region_name": "Томская область",
+      "category": "mfc_candidate",
+      "objects": "5"
+    },
+    {
+      "region_id": "69000000",
+      "region_name": "Томская область",
+      "category": "school",
+      "objects": "298"
+    },
+    {
+      "region_id": "69000000",
+      "region_name": "Томская область",
+      "category": "stop",
+      "objects": "1518"
+    },
+    {
+      "region_id": "70000000",
+      "region_name": "Тульская область",
+      "category": "bus_station",
+      "objects": "52"
+    },
+    {
+      "region_id": "70000000",
+      "region_name": "Тульская область",
+      "category": "employment_candidate",
+      "objects": "4"
+    },
+    {
+      "region_id": "70000000",
+      "region_name": "Тульская область",
+      "category": "fire",
+      "objects": "53"
+    },
+    {
+      "region_id": "70000000",
+      "region_name": "Тульская область",
+      "category": "library",
+      "objects": "68"
+    },
+    {
+      "region_id": "70000000",
+      "region_name": "Тульская область",
+      "category": "medical",
+      "objects": "231"
+    },
+    {
+      "region_id": "70000000",
+      "region_name": "Тульская область",
+      "category": "mfc_candidate",
+      "objects": "25"
+    },
+    {
+      "region_id": "70000000",
+      "region_name": "Тульская область",
+      "category": "school",
+      "objects": "373"
+    },
+    {
+      "region_id": "70000000",
+      "region_name": "Тульская область",
+      "category": "stop",
+      "objects": "2641"
+    },
+    {
+      "region_id": "71000000",
+      "region_name": "Тюменская область",
+      "category": "bus_station",
+      "objects": "24"
+    },
+    {
+      "region_id": "71000000",
+      "region_name": "Тюменская область",
+      "category": "employment_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "71000000",
+      "region_name": "Тюменская область",
+      "category": "fire",
+      "objects": "49"
+    },
+    {
+      "region_id": "71000000",
+      "region_name": "Тюменская область",
+      "category": "library",
+      "objects": "83"
+    },
+    {
+      "region_id": "71000000",
+      "region_name": "Тюменская область",
+      "category": "medical",
+      "objects": "197"
+    },
+    {
+      "region_id": "71000000",
+      "region_name": "Тюменская область",
+      "category": "mfc_candidate",
+      "objects": "16"
+    },
+    {
+      "region_id": "71000000",
+      "region_name": "Тюменская область",
+      "category": "school",
+      "objects": "330"
+    },
+    {
+      "region_id": "71000000",
+      "region_name": "Тюменская область",
+      "category": "stop",
+      "objects": "2661"
+    },
+    {
+      "region_id": "71800000",
+      "region_name": "Ханты-Мансийский автономный округ",
+      "category": "bus_station",
+      "objects": "45"
+    },
+    {
+      "region_id": "71800000",
+      "region_name": "Ханты-Мансийский автономный округ",
+      "category": "fire",
+      "objects": "119"
+    },
+    {
+      "region_id": "71800000",
+      "region_name": "Ханты-Мансийский автономный округ",
+      "category": "library",
+      "objects": "79"
+    },
+    {
+      "region_id": "71800000",
+      "region_name": "Ханты-Мансийский автономный округ",
+      "category": "medical",
+      "objects": "203"
+    },
+    {
+      "region_id": "71800000",
+      "region_name": "Ханты-Мансийский автономный округ",
+      "category": "mfc_candidate",
+      "objects": "33"
+    },
+    {
+      "region_id": "71800000",
+      "region_name": "Ханты-Мансийский автономный округ",
+      "category": "school",
+      "objects": "269"
+    },
+    {
+      "region_id": "71800000",
+      "region_name": "Ханты-Мансийский автономный округ",
+      "category": "stop",
+      "objects": "1990"
+    },
+    {
+      "region_id": "71900000",
+      "region_name": "ЯНАО",
+      "category": "bus_station",
+      "objects": "19"
+    },
+    {
+      "region_id": "71900000",
+      "region_name": "ЯНАО",
+      "category": "employment_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "71900000",
+      "region_name": "ЯНАО",
+      "category": "fire",
+      "objects": "51"
+    },
+    {
+      "region_id": "71900000",
+      "region_name": "ЯНАО",
+      "category": "library",
+      "objects": "32"
+    },
+    {
+      "region_id": "71900000",
+      "region_name": "ЯНАО",
+      "category": "medical",
+      "objects": "112"
+    },
+    {
+      "region_id": "71900000",
+      "region_name": "ЯНАО",
+      "category": "mfc_candidate",
+      "objects": "9"
+    },
+    {
+      "region_id": "71900000",
+      "region_name": "ЯНАО",
+      "category": "school",
+      "objects": "84"
+    },
+    {
+      "region_id": "71900000",
+      "region_name": "ЯНАО",
+      "category": "stop",
+      "objects": "579"
+    },
+    {
+      "region_id": "73000000",
+      "region_name": "Ульяновская область",
+      "category": "bus_station",
+      "objects": "19"
+    },
+    {
+      "region_id": "73000000",
+      "region_name": "Ульяновская область",
+      "category": "employment_candidate",
+      "objects": "5"
+    },
+    {
+      "region_id": "73000000",
+      "region_name": "Ульяновская область",
+      "category": "fire",
+      "objects": "33"
+    },
+    {
+      "region_id": "73000000",
+      "region_name": "Ульяновская область",
+      "category": "library",
+      "objects": "69"
+    },
+    {
+      "region_id": "73000000",
+      "region_name": "Ульяновская область",
+      "category": "medical",
+      "objects": "168"
+    },
+    {
+      "region_id": "73000000",
+      "region_name": "Ульяновская область",
+      "category": "mfc_candidate",
+      "objects": "9"
+    },
+    {
+      "region_id": "73000000",
+      "region_name": "Ульяновская область",
+      "category": "school",
+      "objects": "262"
+    },
+    {
+      "region_id": "73000000",
+      "region_name": "Ульяновская область",
+      "category": "stop",
+      "objects": "1264"
+    },
+    {
+      "region_id": "75000000",
+      "region_name": "Челябинская область",
+      "category": "bus_station",
+      "objects": "63"
+    },
+    {
+      "region_id": "75000000",
+      "region_name": "Челябинская область",
+      "category": "employment_candidate",
+      "objects": "4"
+    },
+    {
+      "region_id": "75000000",
+      "region_name": "Челябинская область",
+      "category": "fire",
+      "objects": "143"
+    },
+    {
+      "region_id": "75000000",
+      "region_name": "Челябинская область",
+      "category": "library",
+      "objects": "171"
+    },
+    {
+      "region_id": "75000000",
+      "region_name": "Челябинская область",
+      "category": "medical",
+      "objects": "642"
+    },
+    {
+      "region_id": "75000000",
+      "region_name": "Челябинская область",
+      "category": "mfc_candidate",
+      "objects": "30"
+    },
+    {
+      "region_id": "75000000",
+      "region_name": "Челябинская область",
+      "category": "school",
+      "objects": "952"
+    },
+    {
+      "region_id": "75000000",
+      "region_name": "Челябинская область",
+      "category": "stop",
+      "objects": "4653"
+    },
+    {
+      "region_id": "76000000",
+      "region_name": "Забайкальский край",
+      "category": "bus_station",
+      "objects": "10"
+    },
+    {
+      "region_id": "76000000",
+      "region_name": "Забайкальский край",
+      "category": "employment_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "76000000",
+      "region_name": "Забайкальский край",
+      "category": "fire",
+      "objects": "36"
+    },
+    {
+      "region_id": "76000000",
+      "region_name": "Забайкальский край",
+      "category": "library",
+      "objects": "30"
+    },
+    {
+      "region_id": "76000000",
+      "region_name": "Забайкальский край",
+      "category": "medical",
+      "objects": "161"
+    },
+    {
+      "region_id": "76000000",
+      "region_name": "Забайкальский край",
+      "category": "mfc_candidate",
+      "objects": "4"
+    },
+    {
+      "region_id": "76000000",
+      "region_name": "Забайкальский край",
+      "category": "school",
+      "objects": "209"
+    },
+    {
+      "region_id": "76000000",
+      "region_name": "Забайкальский край",
+      "category": "stop",
+      "objects": "2338"
+    },
+    {
+      "region_id": "77000000",
+      "region_name": "Чукотский АО",
+      "category": "fire",
+      "objects": "4"
+    },
+    {
+      "region_id": "77000000",
+      "region_name": "Чукотский АО",
+      "category": "library",
+      "objects": "10"
+    },
+    {
+      "region_id": "77000000",
+      "region_name": "Чукотский АО",
+      "category": "medical",
+      "objects": "15"
+    },
+    {
+      "region_id": "77000000",
+      "region_name": "Чукотский АО",
+      "category": "mfc_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "77000000",
+      "region_name": "Чукотский АО",
+      "category": "school",
+      "objects": "20"
+    },
+    {
+      "region_id": "77000000",
+      "region_name": "Чукотский АО",
+      "category": "stop",
+      "objects": "78"
+    },
+    {
+      "region_id": "78000000",
+      "region_name": "Ярославская область",
+      "category": "bus_station",
+      "objects": "33"
+    },
+    {
+      "region_id": "78000000",
+      "region_name": "Ярославская область",
+      "category": "employment_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "78000000",
+      "region_name": "Ярославская область",
+      "category": "fire",
+      "objects": "64"
+    },
+    {
+      "region_id": "78000000",
+      "region_name": "Ярославская область",
+      "category": "library",
+      "objects": "63"
+    },
+    {
+      "region_id": "78000000",
+      "region_name": "Ярославская область",
+      "category": "medical",
+      "objects": "235"
+    },
+    {
+      "region_id": "78000000",
+      "region_name": "Ярославская область",
+      "category": "mfc_candidate",
+      "objects": "9"
+    },
+    {
+      "region_id": "78000000",
+      "region_name": "Ярославская область",
+      "category": "school",
+      "objects": "375"
+    },
+    {
+      "region_id": "78000000",
+      "region_name": "Ярославская область",
+      "category": "stop",
+      "objects": "3233"
+    },
+    {
+      "region_id": "79000000",
+      "region_name": "Республика Адыгея",
+      "category": "bus_station",
+      "objects": "12"
+    },
+    {
+      "region_id": "79000000",
+      "region_name": "Республика Адыгея",
+      "category": "fire",
+      "objects": "18"
+    },
+    {
+      "region_id": "79000000",
+      "region_name": "Республика Адыгея",
+      "category": "library",
+      "objects": "16"
+    },
+    {
+      "region_id": "79000000",
+      "region_name": "Республика Адыгея",
+      "category": "medical",
+      "objects": "100"
+    },
+    {
+      "region_id": "79000000",
+      "region_name": "Республика Адыгея",
+      "category": "mfc_candidate",
+      "objects": "5"
+    },
+    {
+      "region_id": "79000000",
+      "region_name": "Республика Адыгея",
+      "category": "school",
+      "objects": "128"
+    },
+    {
+      "region_id": "79000000",
+      "region_name": "Республика Адыгея",
+      "category": "stop",
+      "objects": "539"
+    },
+    {
+      "region_id": "80000000",
+      "region_name": "Республика Башкортостан",
+      "category": "bus_station",
+      "objects": "97"
+    },
+    {
+      "region_id": "80000000",
+      "region_name": "Республика Башкортостан",
+      "category": "employment_candidate",
+      "objects": "7"
+    },
+    {
+      "region_id": "80000000",
+      "region_name": "Республика Башкортостан",
+      "category": "fire",
+      "objects": "102"
+    },
+    {
+      "region_id": "80000000",
+      "region_name": "Республика Башкортостан",
+      "category": "library",
+      "objects": "144"
+    },
+    {
+      "region_id": "80000000",
+      "region_name": "Республика Башкортостан",
+      "category": "medical",
+      "objects": "473"
+    },
+    {
+      "region_id": "80000000",
+      "region_name": "Республика Башкортостан",
+      "category": "mfc_candidate",
+      "objects": "20"
+    },
+    {
+      "region_id": "80000000",
+      "region_name": "Республика Башкортостан",
+      "category": "school",
+      "objects": "810"
+    },
+    {
+      "region_id": "80000000",
+      "region_name": "Республика Башкортостан",
+      "category": "stop",
+      "objects": "2681"
+    },
+    {
+      "region_id": "81000000",
+      "region_name": "Республика Бурятия",
+      "category": "bus_station",
+      "objects": "14"
+    },
+    {
+      "region_id": "81000000",
+      "region_name": "Республика Бурятия",
+      "category": "employment_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "81000000",
+      "region_name": "Республика Бурятия",
+      "category": "fire",
+      "objects": "32"
+    },
+    {
+      "region_id": "81000000",
+      "region_name": "Республика Бурятия",
+      "category": "library",
+      "objects": "44"
+    },
+    {
+      "region_id": "81000000",
+      "region_name": "Республика Бурятия",
+      "category": "medical",
+      "objects": "133"
+    },
+    {
+      "region_id": "81000000",
+      "region_name": "Республика Бурятия",
+      "category": "mfc_candidate",
+      "objects": "3"
+    },
+    {
+      "region_id": "81000000",
+      "region_name": "Республика Бурятия",
+      "category": "school",
+      "objects": "187"
+    },
+    {
+      "region_id": "81000000",
+      "region_name": "Республика Бурятия",
+      "category": "stop",
+      "objects": "2523"
+    },
+    {
+      "region_id": "82000000",
+      "region_name": "Республика Дагестан",
+      "category": "bus_station",
+      "objects": "47"
+    },
+    {
+      "region_id": "82000000",
+      "region_name": "Республика Дагестан",
+      "category": "employment_candidate",
+      "objects": "4"
+    },
+    {
+      "region_id": "82000000",
+      "region_name": "Республика Дагестан",
+      "category": "fire",
+      "objects": "30"
+    },
+    {
+      "region_id": "82000000",
+      "region_name": "Республика Дагестан",
+      "category": "library",
+      "objects": "118"
+    },
+    {
+      "region_id": "82000000",
+      "region_name": "Республика Дагестан",
+      "category": "medical",
+      "objects": "707"
+    },
+    {
+      "region_id": "82000000",
+      "region_name": "Республика Дагестан",
+      "category": "mfc_candidate",
+      "objects": "10"
+    },
+    {
+      "region_id": "82000000",
+      "region_name": "Республика Дагестан",
+      "category": "school",
+      "objects": "1131"
+    },
+    {
+      "region_id": "82000000",
+      "region_name": "Республика Дагестан",
+      "category": "stop",
+      "objects": "263"
+    },
+    {
+      "region_id": "83000000",
+      "region_name": "Кабардино-Балкарская Республика",
+      "category": "bus_station",
+      "objects": "8"
+    },
+    {
+      "region_id": "83000000",
+      "region_name": "Кабардино-Балкарская Республика",
+      "category": "fire",
+      "objects": "11"
+    },
+    {
+      "region_id": "83000000",
+      "region_name": "Кабардино-Балкарская Республика",
+      "category": "library",
+      "objects": "12"
+    },
+    {
+      "region_id": "83000000",
+      "region_name": "Кабардино-Балкарская Республика",
+      "category": "medical",
+      "objects": "86"
+    },
+    {
+      "region_id": "83000000",
+      "region_name": "Кабардино-Балкарская Республика",
+      "category": "mfc_candidate",
+      "objects": "9"
+    },
+    {
+      "region_id": "83000000",
+      "region_name": "Кабардино-Балкарская Республика",
+      "category": "school",
+      "objects": "163"
+    },
+    {
+      "region_id": "83000000",
+      "region_name": "Кабардино-Балкарская Республика",
+      "category": "stop",
+      "objects": "1125"
+    },
+    {
+      "region_id": "84000000",
+      "region_name": "Республика Алтай",
+      "category": "bus_station",
+      "objects": "7"
+    },
+    {
+      "region_id": "84000000",
+      "region_name": "Республика Алтай",
+      "category": "fire",
+      "objects": "15"
+    },
+    {
+      "region_id": "84000000",
+      "region_name": "Республика Алтай",
+      "category": "library",
+      "objects": "38"
+    },
+    {
+      "region_id": "84000000",
+      "region_name": "Республика Алтай",
+      "category": "medical",
+      "objects": "47"
+    },
+    {
+      "region_id": "84000000",
+      "region_name": "Республика Алтай",
+      "category": "mfc_candidate",
+      "objects": "6"
+    },
+    {
+      "region_id": "84000000",
+      "region_name": "Республика Алтай",
+      "category": "school",
+      "objects": "156"
+    },
+    {
+      "region_id": "84000000",
+      "region_name": "Республика Алтай",
+      "category": "stop",
+      "objects": "397"
+    },
+    {
+      "region_id": "85000000",
+      "region_name": "Республика Калмыкия",
+      "category": "bus_station",
+      "objects": "8"
+    },
+    {
+      "region_id": "85000000",
+      "region_name": "Республика Калмыкия",
+      "category": "fire",
+      "objects": "24"
+    },
+    {
+      "region_id": "85000000",
+      "region_name": "Республика Калмыкия",
+      "category": "library",
+      "objects": "10"
+    },
+    {
+      "region_id": "85000000",
+      "region_name": "Республика Калмыкия",
+      "category": "medical",
+      "objects": "67"
+    },
+    {
+      "region_id": "85000000",
+      "region_name": "Республика Калмыкия",
+      "category": "mfc_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "85000000",
+      "region_name": "Республика Калмыкия",
+      "category": "school",
+      "objects": "168"
+    },
+    {
+      "region_id": "85000000",
+      "region_name": "Республика Калмыкия",
+      "category": "stop",
+      "objects": "230"
+    },
+    {
+      "region_id": "86000000",
+      "region_name": "Республика Карелия",
+      "category": "bus_station",
+      "objects": "27"
+    },
+    {
+      "region_id": "86000000",
+      "region_name": "Республика Карелия",
+      "category": "employment_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "86000000",
+      "region_name": "Республика Карелия",
+      "category": "fire",
+      "objects": "55"
+    },
+    {
+      "region_id": "86000000",
+      "region_name": "Республика Карелия",
+      "category": "library",
+      "objects": "145"
+    },
+    {
+      "region_id": "86000000",
+      "region_name": "Республика Карелия",
+      "category": "medical",
+      "objects": "154"
+    },
+    {
+      "region_id": "86000000",
+      "region_name": "Республика Карелия",
+      "category": "mfc_candidate",
+      "objects": "6"
+    },
+    {
+      "region_id": "86000000",
+      "region_name": "Республика Карелия",
+      "category": "school",
+      "objects": "173"
+    },
+    {
+      "region_id": "86000000",
+      "region_name": "Республика Карелия",
+      "category": "stop",
+      "objects": "1377"
+    },
+    {
+      "region_id": "87000000",
+      "region_name": "Республика Коми",
+      "category": "bus_station",
+      "objects": "19"
+    },
+    {
+      "region_id": "87000000",
+      "region_name": "Республика Коми",
+      "category": "employment_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "87000000",
+      "region_name": "Республика Коми",
+      "category": "fire",
+      "objects": "76"
+    },
+    {
+      "region_id": "87000000",
+      "region_name": "Республика Коми",
+      "category": "library",
+      "objects": "69"
+    },
+    {
+      "region_id": "87000000",
+      "region_name": "Республика Коми",
+      "category": "medical",
+      "objects": "234"
+    },
+    {
+      "region_id": "87000000",
+      "region_name": "Республика Коми",
+      "category": "mfc_candidate",
+      "objects": "8"
+    },
+    {
+      "region_id": "87000000",
+      "region_name": "Республика Коми",
+      "category": "school",
+      "objects": "304"
+    },
+    {
+      "region_id": "87000000",
+      "region_name": "Республика Коми",
+      "category": "stop",
+      "objects": "1273"
+    },
+    {
+      "region_id": "88000000",
+      "region_name": "Республика Марий Эл",
+      "category": "bus_station",
+      "objects": "15"
+    },
+    {
+      "region_id": "88000000",
+      "region_name": "Республика Марий Эл",
+      "category": "employment_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "88000000",
+      "region_name": "Республика Марий Эл",
+      "category": "fire",
+      "objects": "56"
+    },
+    {
+      "region_id": "88000000",
+      "region_name": "Республика Марий Эл",
+      "category": "library",
+      "objects": "42"
+    },
+    {
+      "region_id": "88000000",
+      "region_name": "Республика Марий Эл",
+      "category": "medical",
+      "objects": "97"
+    },
+    {
+      "region_id": "88000000",
+      "region_name": "Республика Марий Эл",
+      "category": "mfc_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "88000000",
+      "region_name": "Республика Марий Эл",
+      "category": "school",
+      "objects": "176"
+    },
+    {
+      "region_id": "88000000",
+      "region_name": "Республика Марий Эл",
+      "category": "stop",
+      "objects": "1291"
+    },
+    {
+      "region_id": "89000000",
+      "region_name": "Республика Мордовия",
+      "category": "bus_station",
+      "objects": "25"
+    },
+    {
+      "region_id": "89000000",
+      "region_name": "Республика Мордовия",
+      "category": "employment_candidate",
+      "objects": "3"
+    },
+    {
+      "region_id": "89000000",
+      "region_name": "Республика Мордовия",
+      "category": "fire",
+      "objects": "36"
+    },
+    {
+      "region_id": "89000000",
+      "region_name": "Республика Мордовия",
+      "category": "library",
+      "objects": "45"
+    },
+    {
+      "region_id": "89000000",
+      "region_name": "Республика Мордовия",
+      "category": "medical",
+      "objects": "111"
+    },
+    {
+      "region_id": "89000000",
+      "region_name": "Республика Мордовия",
+      "category": "mfc_candidate",
+      "objects": "5"
+    },
+    {
+      "region_id": "89000000",
+      "region_name": "Республика Мордовия",
+      "category": "school",
+      "objects": "153"
+    },
+    {
+      "region_id": "89000000",
+      "region_name": "Республика Мордовия",
+      "category": "stop",
+      "objects": "871"
+    },
+    {
+      "region_id": "90000000",
+      "region_name": "Республика Северная Осетия",
+      "category": "bus_station",
+      "objects": "4"
+    },
+    {
+      "region_id": "90000000",
+      "region_name": "Республика Северная Осетия",
+      "category": "fire",
+      "objects": "12"
+    },
+    {
+      "region_id": "90000000",
+      "region_name": "Республика Северная Осетия",
+      "category": "library",
+      "objects": "12"
+    },
+    {
+      "region_id": "90000000",
+      "region_name": "Республика Северная Осетия",
+      "category": "medical",
+      "objects": "73"
+    },
+    {
+      "region_id": "90000000",
+      "region_name": "Республика Северная Осетия",
+      "category": "mfc_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "90000000",
+      "region_name": "Республика Северная Осетия",
+      "category": "school",
+      "objects": "163"
+    },
+    {
+      "region_id": "90000000",
+      "region_name": "Республика Северная Осетия",
+      "category": "stop",
+      "objects": "706"
+    },
+    {
+      "region_id": "91000000",
+      "region_name": "Карачаево-Черкесская Республика",
+      "category": "bus_station",
+      "objects": "7"
+    },
+    {
+      "region_id": "91000000",
+      "region_name": "Карачаево-Черкесская Республика",
+      "category": "fire",
+      "objects": "16"
+    },
+    {
+      "region_id": "91000000",
+      "region_name": "Карачаево-Черкесская Республика",
+      "category": "library",
+      "objects": "2"
+    },
+    {
+      "region_id": "91000000",
+      "region_name": "Карачаево-Черкесская Республика",
+      "category": "medical",
+      "objects": "59"
+    },
+    {
+      "region_id": "91000000",
+      "region_name": "Карачаево-Черкесская Республика",
+      "category": "mfc_candidate",
+      "objects": "3"
+    },
+    {
+      "region_id": "91000000",
+      "region_name": "Карачаево-Черкесская Республика",
+      "category": "school",
+      "objects": "111"
+    },
+    {
+      "region_id": "91000000",
+      "region_name": "Карачаево-Черкесская Республика",
+      "category": "stop",
+      "objects": "379"
+    },
+    {
+      "region_id": "92000000",
+      "region_name": "Республика Татарстан",
+      "category": "bus_station",
+      "objects": "53"
+    },
+    {
+      "region_id": "92000000",
+      "region_name": "Республика Татарстан",
+      "category": "employment_candidate",
+      "objects": "13"
+    },
+    {
+      "region_id": "92000000",
+      "region_name": "Республика Татарстан",
+      "category": "fire",
+      "objects": "117"
+    },
+    {
+      "region_id": "92000000",
+      "region_name": "Республика Татарстан",
+      "category": "library",
+      "objects": "131"
+    },
+    {
+      "region_id": "92000000",
+      "region_name": "Республика Татарстан",
+      "category": "medical",
+      "objects": "568"
+    },
+    {
+      "region_id": "92000000",
+      "region_name": "Республика Татарстан",
+      "category": "mfc_candidate",
+      "objects": "40"
+    },
+    {
+      "region_id": "92000000",
+      "region_name": "Республика Татарстан",
+      "category": "school",
+      "objects": "922"
+    },
+    {
+      "region_id": "92000000",
+      "region_name": "Республика Татарстан",
+      "category": "stop",
+      "objects": "4702"
+    },
+    {
+      "region_id": "93000000",
+      "region_name": "Республика Тыва",
+      "category": "bus_station",
+      "objects": "1"
+    },
+    {
+      "region_id": "93000000",
+      "region_name": "Республика Тыва",
+      "category": "fire",
+      "objects": "9"
+    },
+    {
+      "region_id": "93000000",
+      "region_name": "Республика Тыва",
+      "category": "library",
+      "objects": "18"
+    },
+    {
+      "region_id": "93000000",
+      "region_name": "Республика Тыва",
+      "category": "medical",
+      "objects": "46"
+    },
+    {
+      "region_id": "93000000",
+      "region_name": "Республика Тыва",
+      "category": "mfc_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "93000000",
+      "region_name": "Республика Тыва",
+      "category": "school",
+      "objects": "165"
+    },
+    {
+      "region_id": "93000000",
+      "region_name": "Республика Тыва",
+      "category": "stop",
+      "objects": "140"
+    },
+    {
+      "region_id": "94000000",
+      "region_name": "Удмуртская Республика",
+      "category": "bus_station",
+      "objects": "32"
+    },
+    {
+      "region_id": "94000000",
+      "region_name": "Удмуртская Республика",
+      "category": "employment_candidate",
+      "objects": "1"
+    },
+    {
+      "region_id": "94000000",
+      "region_name": "Удмуртская Республика",
+      "category": "fire",
+      "objects": "49"
+    },
+    {
+      "region_id": "94000000",
+      "region_name": "Удмуртская Республика",
+      "category": "library",
+      "objects": "61"
+    },
+    {
+      "region_id": "94000000",
+      "region_name": "Удмуртская Республика",
+      "category": "medical",
+      "objects": "297"
+    },
+    {
+      "region_id": "94000000",
+      "region_name": "Удмуртская Республика",
+      "category": "mfc_candidate",
+      "objects": "11"
+    },
+    {
+      "region_id": "94000000",
+      "region_name": "Удмуртская Республика",
+      "category": "school",
+      "objects": "366"
+    },
+    {
+      "region_id": "94000000",
+      "region_name": "Удмуртская Республика",
+      "category": "stop",
+      "objects": "1881"
+    },
+    {
+      "region_id": "95000000",
+      "region_name": "Республика Хакасия",
+      "category": "bus_station",
+      "objects": "14"
+    },
+    {
+      "region_id": "95000000",
+      "region_name": "Республика Хакасия",
+      "category": "employment_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "95000000",
+      "region_name": "Республика Хакасия",
+      "category": "fire",
+      "objects": "20"
+    },
+    {
+      "region_id": "95000000",
+      "region_name": "Республика Хакасия",
+      "category": "library",
+      "objects": "24"
+    },
+    {
+      "region_id": "95000000",
+      "region_name": "Республика Хакасия",
+      "category": "medical",
+      "objects": "64"
+    },
+    {
+      "region_id": "95000000",
+      "region_name": "Республика Хакасия",
+      "category": "mfc_candidate",
+      "objects": "5"
+    },
+    {
+      "region_id": "95000000",
+      "region_name": "Республика Хакасия",
+      "category": "school",
+      "objects": "116"
+    },
+    {
+      "region_id": "95000000",
+      "region_name": "Республика Хакасия",
+      "category": "stop",
+      "objects": "1058"
+    },
+    {
+      "region_id": "96000000",
+      "region_name": "Чеченская Республика",
+      "category": "bus_station",
+      "objects": "11"
+    },
+    {
+      "region_id": "96000000",
+      "region_name": "Чеченская Республика",
+      "category": "fire",
+      "objects": "15"
+    },
+    {
+      "region_id": "96000000",
+      "region_name": "Чеченская Республика",
+      "category": "library",
+      "objects": "14"
+    },
+    {
+      "region_id": "96000000",
+      "region_name": "Чеченская Республика",
+      "category": "medical",
+      "objects": "106"
+    },
+    {
+      "region_id": "96000000",
+      "region_name": "Чеченская Республика",
+      "category": "mfc_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "96000000",
+      "region_name": "Чеченская Республика",
+      "category": "school",
+      "objects": "222"
+    },
+    {
+      "region_id": "96000000",
+      "region_name": "Чеченская Республика",
+      "category": "stop",
+      "objects": "66"
+    },
+    {
+      "region_id": "97000000",
+      "region_name": "Чувашская Республика",
+      "category": "bus_station",
+      "objects": "21"
+    },
+    {
+      "region_id": "97000000",
+      "region_name": "Чувашская Республика",
+      "category": "employment_candidate",
+      "objects": "3"
+    },
+    {
+      "region_id": "97000000",
+      "region_name": "Чувашская Республика",
+      "category": "fire",
+      "objects": "30"
+    },
+    {
+      "region_id": "97000000",
+      "region_name": "Чувашская Республика",
+      "category": "library",
+      "objects": "131"
+    },
+    {
+      "region_id": "97000000",
+      "region_name": "Чувашская Республика",
+      "category": "medical",
+      "objects": "130"
+    },
+    {
+      "region_id": "97000000",
+      "region_name": "Чувашская Республика",
+      "category": "mfc_candidate",
+      "objects": "9"
+    },
+    {
+      "region_id": "97000000",
+      "region_name": "Чувашская Республика",
+      "category": "school",
+      "objects": "276"
+    },
+    {
+      "region_id": "97000000",
+      "region_name": "Чувашская Республика",
+      "category": "stop",
+      "objects": "2780"
+    },
+    {
+      "region_id": "98000000",
+      "region_name": "Республика Саха (Якутия)",
+      "category": "bus_station",
+      "objects": "21"
+    },
+    {
+      "region_id": "98000000",
+      "region_name": "Республика Саха (Якутия)",
+      "category": "fire",
+      "objects": "70"
+    },
+    {
+      "region_id": "98000000",
+      "region_name": "Республика Саха (Якутия)",
+      "category": "library",
+      "objects": "48"
+    },
+    {
+      "region_id": "98000000",
+      "region_name": "Республика Саха (Якутия)",
+      "category": "medical",
+      "objects": "193"
+    },
+    {
+      "region_id": "98000000",
+      "region_name": "Республика Саха (Якутия)",
+      "category": "mfc_candidate",
+      "objects": "404"
+    },
+    {
+      "region_id": "98000000",
+      "region_name": "Республика Саха (Якутия)",
+      "category": "school",
+      "objects": "283"
+    },
+    {
+      "region_id": "98000000",
+      "region_name": "Республика Саха (Якутия)",
+      "category": "stop",
+      "objects": "2040"
+    },
+    {
+      "region_id": "99000000",
+      "region_name": "Еврейская автономная область",
+      "category": "bus_station",
+      "objects": "2"
+    },
+    {
+      "region_id": "99000000",
+      "region_name": "Еврейская автономная область",
+      "category": "fire",
+      "objects": "10"
+    },
+    {
+      "region_id": "99000000",
+      "region_name": "Еврейская автономная область",
+      "category": "library",
+      "objects": "8"
+    },
+    {
+      "region_id": "99000000",
+      "region_name": "Еврейская автономная область",
+      "category": "medical",
+      "objects": "32"
+    },
+    {
+      "region_id": "99000000",
+      "region_name": "Еврейская автономная область",
+      "category": "mfc_candidate",
+      "objects": "2"
+    },
+    {
+      "region_id": "99000000",
+      "region_name": "Еврейская автономная область",
+      "category": "school",
+      "objects": "39"
+    },
+    {
+      "region_id": "99000000",
+      "region_name": "Еврейская автономная область",
+      "category": "stop",
+      "objects": "624"
+    }
+  ],
+  "regions_without_loaded_objects": [],
+  "completeness_verified": false,
+  "operational_status_verified": false,
+  "national_accessibility_calculated": false,
+  "limitations": [
+    "OSM objects are not unique institutions",
+    "Generic medical objects do not establish adult cardiology profiles",
+    "Some border regions are only partially covered until all extracts are imported",
+    "Open ways and relations are omitted; missing geometries are counted in extraction summaries"
+  ]
+}

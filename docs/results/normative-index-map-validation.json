@@ -1,0 +1,53 @@
+{
+  "checked_at": "2026-11-12T11:29:09.544213+00:00",
+  "legal_compliance_confirmed": false,
+  "criteria": {
+    "N01": {
+      "territories": 84,
+      "ready": 84,
+      "statuses": {
+        "ready": 84
+      }
+    },
+    "N02": {
+      "territories": 84,
+      "ready": 84,
+      "statuses": {
+        "ready": 84
+      }
+    },
+    "N05": {
+      "territories": 84,
+      "ready": 2,
+      "statuses": {
+        "basis_missing": 82,
+        "ready": 2
+      }
+    },
+    "N06": {
+      "territories": 84,
+      "ready": 1,
+      "statuses": {
+        "measurement_missing": 1,
+        "basis_missing": 82,
+        "ready": 1
+      }
+    },
+    "N07": {
+      "territories": 84,
+      "ready": 2,
+      "statuses": {
+        "basis_missing": 82,
+        "ready": 2
+      }
+    },
+    "N08": {
+      "territories": 84,
+      "ready": 2,
+      "statuses": {
+        "basis_missing": 82,
+        "ready": 2
+      }
+    }
+  }
+}

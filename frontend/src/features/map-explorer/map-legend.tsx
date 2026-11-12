@@ -1,12 +1,15 @@
 import clsx from "clsx"
 import { type ReactNode, useId, useRef, useState } from "react"
+import type { NormativeView } from "@/shared/api/normative-map"
 import { useMediaQuery } from "@/shared/hooks"
 import { type MessageKey, useFormatters, useTranslation } from "@/shared/i18n"
 import { Swap, useLatched, usePresence } from "@/shared/motion"
 import { Button, Disclosure, Popover, Switch } from "@/shared/ui"
 import { LegendPanel } from "./legend/legend-panel"
+import { NormativeSymbols } from "./legend/normative-symbols"
+import { RegionalIndexKey } from "./legend/regional-index-key/regional-index-key"
 import styles from "./map-legend.module.css"
-import { formatThreshold, type MetricKey } from "./metric"
+import { formatThreshold, type MetricKey, normativeId } from "./metric"
 import type { MetricScale } from "./scale"
 
 const WIDE = "(min-width: 64rem)"
@@ -24,6 +27,8 @@ const SYMBOL_LABEL: Readonly<Record<MapSymbol, MessageKey>> = {
 }
 
 export interface MapLegendProps {
+  readonly normativeView?: NormativeView
+  readonly normative?: boolean
   readonly metric: MetricKey
   readonly scale: MetricScale
   readonly drawn: Readonly<Record<MapSymbol, boolean>>
@@ -31,20 +36,38 @@ export interface MapLegendProps {
   readonly children: ReactNode
 }
 
-export function MapLegend({ metric, scale, drawn, airportsFailed, children }: MapLegendProps) {
+export function MapLegend({
+  metric,
+  scale,
+  drawn,
+  airportsFailed,
+  children,
+  normative = false,
+  normativeView,
+}: MapLegendProps) {
   const { t } = useTranslation()
   const title = t(`data:metric.${metric}`)
   const wide = useMediaQuery(WIDE)
   const body = (
     <>
-      <SymbolKey drawn={drawn} airportsFailed={airportsFailed} />
+      {normative ? (
+        <NormativeSymbols weighted={scale.bins.length > 0} view={normativeView} />
+      ) : (
+        <SymbolKey drawn={drawn} airportsFailed={airportsFailed} />
+      )}
       <div className={styles.layers}>{children}</div>
     </>
   )
   return (
     <LegendPanel title={title}>
       <Swap swapKey={metric} as="div" className={styles.key}>
-        <MetricRamp metric={metric} scale={scale} />
+        {normative && normativeView?.display === "index" ? (
+          <RegionalIndexKey criterionId={normativeId(metric) ?? ""} stage={normativeView.stage}>
+            <MetricRamp metric={metric} scale={scale} />
+          </RegionalIndexKey>
+        ) : !normative || normativeView?.display !== "travel" ? (
+          <MetricRamp metric={metric} scale={scale} />
+        ) : null}
       </Swap>
       {wide ? body : <Disclosure title={t("map:legend.layers")}>{body}</Disclosure>}
     </LegendPanel>
@@ -61,6 +84,7 @@ function MetricRamp({
   const { t } = useTranslation()
   const f = useFormatters()
   const last = scale.bins.length - 1
+  if (!scale.hasZero && scale.bins.length === 0) return null
   return (
     <ol className={styles.ramp}>
       {scale.hasZero ? (

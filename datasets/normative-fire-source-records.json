@@ -1,0 +1,298 @@
+{
+  "snapshot_kind": "reviewed_pdf_address_rows",
+  "source_url": "https://45.mchs.gov.ru/uploads/resource/2025-02-13/kontakty_17394385451444419162.pdf",
+  "url_upload_date": "2025-02-13",
+  "source_publication_date": null,
+  "observed_at": "2026-11-12",
+  "observation_precision": "day",
+  "pdf_sha256": "c7710fe218bf522a93bb1af8c0653316ef5c77dea6776a9d55bb5587856ac3d4",
+  "pdf_bytes": 197248,
+  "pdf_pages": 13,
+  "inventory_status": "partial",
+  "operational_status": "unconfirmed",
+  "records": [
+    {
+      "id": "psch-11",
+      "name": "11 ПСЧ",
+      "unit_label_raw": "11 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Курган, ул. Ястржембского, 34",
+      "source_address": "Г. КУРГАН, УЛ. ЯСТРЖЕМБСКОГО, 34,",
+      "source_page": 7,
+      "address_status": "complete",
+      "notes": "В PDF №11; номер1неподставлять."
+    },
+    {
+      "id": "psch-15",
+      "name": "15 ПСЧ",
+      "unit_label_raw": "15 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Курган, ул. Машиностроителей, 17",
+      "source_address": "Г. КУРГАН, УЛ. МАШИНОСТРОИТЕЛЕЙ, 17,",
+      "source_page": 7,
+      "address_status": "complete",
+      "notes": "В PDF ул.; не заменять проспектом."
+    },
+    {
+      "id": "psch-08",
+      "name": "8 ПСЧ",
+      "unit_label_raw": "8 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Шадринск, ул. Пионерская, 34",
+      "source_address": "Г. ШАДРИНСК, УЛ. ПИОНЕРСКАЯ 34,",
+      "source_page": 7,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-10",
+      "name": "10 ПСЧ",
+      "unit_label_raw": "10 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Шадринск, ул. Первомайская, 63",
+      "source_address": "Г. ШАДРИНСК, УЛ. ПЕРВОМАЙСКАЯ, 63,",
+      "source_page": 7,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-45",
+      "name": "45 ПСЧ",
+      "unit_label_raw": "45 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Шадринск, ул. К. Маркса, 23",
+      "source_address": "Г. ШАДРИНСК, УЛ. К. МАРКСА, 23,",
+      "source_page": 7,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-14",
+      "name": "14 ПСЧ",
+      "unit_label_raw": "14 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Далматово, ул. Рукманиса, 2А",
+      "source_address": "Г. ДАЛМАТОВО, УЛ. РУКМАНИСА, 2А,",
+      "source_page": 7,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-24",
+      "name": "24 ПСЧ",
+      "unit_label_raw": "24 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "р.п. Каргаполье, ул. Мира, 15",
+      "source_address": "Р.П. КАРГАПОЛЬЕ, УЛ. МИРА, 15,",
+      "source_page": 8,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-26",
+      "name": "26 ПСЧ",
+      "unit_label_raw": "26 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Катайск, ул. Советская, 34",
+      "source_address": "Г. КАТАЙСК, УЛ. СОВЕТСКАЯ, 34,",
+      "source_page": 8,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-40",
+      "name": "40 ПСЧ",
+      "unit_label_raw": "40 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "с. Шатрово, ул. Кирова, 4",
+      "source_address": "С.ШАТРОВО, УЛ. КИРОВА, 4,",
+      "source_page": 8,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-31",
+      "name": "31 ПСЧ",
+      "unit_label_raw": "31 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "р.п. Мишкино, ул. Первомайская, 68",
+      "source_address": "Р.П. МИШКИНО, УЛ. ПЕРВОМАЙСКАЯ, 68,",
+      "source_page": 8,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-38",
+      "name": "38 ПСЧ",
+      "unit_label_raw": "38 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "с. Целинное, ул. Ворошилова, 19",
+      "source_address": "С. ЦЕЛИННОЕ, УЛ. ВОРОШИЛОВА, 19,",
+      "source_page": 8,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-42",
+      "name": "42 ПСЧ",
+      "unit_label_raw": "42 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Шумиха, ул. Гагарина, 6",
+      "source_address": "Г. ШУМИХА, УЛ. ГАГАРИНА, 6,",
+      "source_page": 8,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-43",
+      "name": "43 ПСЧ",
+      "unit_label_raw": "43 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Щучье, ул. Маршала Жукова, 33",
+      "source_address": "Г. ЩУЧЬЕ, УЛ. МАРШАЛА ЖУКОВА, 33,",
+      "source_page": 8,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-44",
+      "name": "44 ПСЧ",
+      "unit_label_raw": "44 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "р.п. Юргамыш, ул. Карпова, 5",
+      "source_address": "Р.П. ЮРГАМЫШ, УЛ. КАРПОВА, 5,",
+      "source_page": 8,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-30",
+      "name": "30 ПСЧ",
+      "unit_label_raw": "30 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Макушино, ул. Энергетиков, 10",
+      "source_address": "Г. МАКУШИНО, УЛ. ЭНЕРГЕТИКОВ, 10",
+      "source_page": 9,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-29",
+      "name": "29 ПСЧ",
+      "unit_label_raw": "29 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "р.п. Лебяжье, ул. Пушкина, 31",
+      "source_address": "Р.П. ЛЕБЯЖЬЕ, УЛ. ПУШКИНА, 31,",
+      "source_page": 9,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-34",
+      "name": "34 ПСЧ",
+      "unit_label_raw": "34 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Петухово, ул. Карла Маркса",
+      "source_address": "г. ПЕТУХОВО,УЛ. КАРЛА МАРКСА,",
+      "source_page": 9,
+      "address_status": "house_missing",
+      "notes": "Номер дома отсутствует."
+    },
+    {
+      "id": "psch-21",
+      "name": "21 ПСЧ",
+      "unit_label_raw": "21 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "с. Белозерское, ул. Попова, 1А",
+      "source_address": "С. БЕЛОЗЕРСКОЕ, УЛ. ПОПОВА, 1А,",
+      "source_page": 9,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-27",
+      "name": "27 ПСЧ",
+      "unit_label_raw": "27 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "с. Кетово, ул. Пожарная, 3",
+      "source_address": "С. КЕТОВО, УЛ. ПОЖАРНАЯ, 3,",
+      "source_page": 9,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-28",
+      "name": "28 ПСЧ",
+      "unit_label_raw": "28 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Куртамыш, пл. Революции, 10",
+      "source_address": "Г. КУРТАМЫШ, ПЛ. РЕВОЛЮЦИИ, 10,",
+      "source_page": 9,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-04",
+      "name": "4 ПСЧ",
+      "unit_label_raw": "4 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Курган, ул. Пушкина, 58",
+      "source_address": "Г. КУРГАН, УЛ. ПУШКИНА, 58,",
+      "source_page": 10,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-06",
+      "name": "6 ПСЧ",
+      "unit_label_raw": "6 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Курган, ул. Омская, 86",
+      "source_address": "Г. КУРГАН, УЛ. ОМСКАЯ, 86,",
+      "source_page": 10,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-09",
+      "name": "9 ПСЧ",
+      "unit_label_raw": "9 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Курган, ул. Куйбышева, 62",
+      "source_address": "Г. КУРГАН, УЛ. КУЙБЫШЕВА, 62,",
+      "source_page": 10,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-16",
+      "name": "16 ПСЧ",
+      "unit_label_raw": "16 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "г. Курган, ул. Панфилова, 20",
+      "source_address": "Г. КУРГАН, УЛ. ПАНФИЛОВА, 20,",
+      "source_page": 10,
+      "address_status": "complete",
+      "notes": null
+    },
+    {
+      "id": "psch-17",
+      "name": "17 ПСЧ",
+      "unit_label_raw": "17 ПОЖАРНО-СПАСАТЕЛЬНАЯ ЧАСТЬ",
+      "address": "640004, г. Курган, Малочаусовский переезд, 1",
+      "source_address": "640004, Г.КУРГАН, МАЛОЧАУСОВСКИЙ ПЕРЕЕЗД, 1,",
+      "source_page": 10,
+      "address_status": "complete",
+      "notes": "Почтовый индекс указан в заголовке."
+    },
+    {
+      "id": "spsch-mamontov",
+      "name": "СПСЧ ФПС по Курганской области им. Мамонтова А.И.",
+      "unit_label_raw": "СПСЧ ФПС по Курганской области им. Мамонтова А.И.",
+      "address": "640008, г. Курган, ул. Автозаводская, 1В",
+      "source_address": "640008, Г. КУРГАН, УЛ.АВТОЗАВОДСКАЯ, 1В,",
+      "source_page": 10,
+      "address_status": "complete",
+      "notes": "Почтовый индекс указан в заголовке."
+    }
+  ],
+  "excluded_categories": [
+    "rescue_detachment_headquarters",
+    "training_unit",
+    "fire_prevention_center",
+    "contract_units_without_individual_addresses",
+    "special_units_without_individual_addresses",
+    "supervision_offices"
+  ],
+  "address_rows_reviewed": 26,
+  "source_pages_reviewed": [
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "address_pages": [
+    7,
+    8,
+    9,
+    10
+  ],
+  "review_scope": "independent_fire_unit_address_headers_on_pages_7_to_10"
+}

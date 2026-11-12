@@ -1,0 +1,97 @@
+{
+  "region_id": "44000000",
+  "criterion_id": "N06",
+  "run_id": null,
+  "measured_at": null,
+  "basis": {
+    "criterion_id": "N06",
+    "region_id": "44000000",
+    "act": "Постановление Правительства Магаданской области от09.02.2026 №70-пп",
+    "clause": "Таблица11 строка2, PDFс.14/печатнаяс.13: территориальный ЦЗН, транспортная доступность30мин для городского округа и60мин для муниципального округа. Вид транспорта не уточнён; управляющий областной центр является другим профилем. Требуется установить применимый тип муниципалитета; единый нормативный процент не выбирается.",
+    "edition_date": "2026-02-09",
+    "source_url": "https://magadangorod.ru/common/upload/29/editor/file/rgnp_ot_9.02.26.pdf",
+    "unit": "minutes",
+    "thresholds": [],
+    "definition_sha256": "fb16dbf61b2a10141f65f5cbb66ccc5846f69d6a1840a006d2085a99afb3e308",
+    "currentness": "published_currentness_unconfirmed",
+    "required_mode": "none",
+    "regulation": "local_selection_required",
+    "review": {
+      "reviewed_at": "2026-11-12",
+      "as_of": "2026-02-09",
+      "locator": "Таблица11 строка2 PDF14/печатная13; §3.3.9 PDF63/печатная62",
+      "source_url": "https://magadangorod.ru/common/upload/29/editor/file/rgnp_ot_9.02.26.pdf",
+      "source_sha256": "7a87b1d77a8315407114c104f542e3dd29b2ca51a1d351df9521a8ce516459c9",
+      "scope": "consolidated_text"
+    },
+    "intervals": [
+      {
+        "minimum": 30.0,
+        "maximum": 30.0,
+        "municipality_type": "urban_okrug",
+        "mode": "transport",
+        "profile": "territorial_employment_center"
+      },
+      {
+        "minimum": 60.0,
+        "maximum": 60.0,
+        "municipality_type": "municipal_okrug",
+        "mode": "transport",
+        "profile": "territorial_employment_center"
+      }
+    ],
+    "required_measurement_definition": "single_reference_point"
+  },
+  "baseline": [],
+  "scenario": [],
+  "qualification": "conditional_known_objects",
+  "weighting": "population",
+  "status": "local_selection_required",
+  "legal_compliance_confirmed": false,
+  "measurement_definition": "single_reference_point",
+  "model_index": {
+    "region_id": "44000000",
+    "criterion_id": "N06",
+    "run_id": "3b29d2e00f7a42f6b6e0d8ed989595ea",
+    "measured_at": "2026-11-12T15:42:48.301774+00:00",
+    "policy": {
+      "criterion_id": "N06",
+      "thresholds": [
+        60.0
+      ],
+      "unit": "minutes",
+      "mode": "car",
+      "weighting": "population",
+      "definition_sha256": "5c347216dbad467f4021a02289c747c979c8d762de547f56ca9270e6dd6ff1bc",
+      "fire_speed_kmh": null
+    },
+    "baseline": [
+      {
+        "threshold": 60.0,
+        "reference_points": 72,
+        "measured_points": 65,
+        "within_points": 43,
+        "unresolved_points": 7,
+        "point_share_percent": 59.72222222222222,
+        "population": 136085,
+        "within_population": 134033,
+        "population_share_percent": 98.49211889627806
+      }
+    ],
+    "scenario": [
+      {
+        "threshold": 60.0,
+        "reference_points": 72,
+        "measured_points": 65,
+        "within_points": 43,
+        "unresolved_points": 7,
+        "point_share_percent": 59.72222222222222,
+        "population": 136085,
+        "within_population": 134033,
+        "population_share_percent": 98.49211889627806
+      }
+    ],
+    "measurement_definition": "single_reference_point",
+    "legal_compliance_confirmed": false
+  }
+}

@@ -2,6 +2,7 @@ import gzip
 import json
 from collections.abc import Iterator, Mapping
 from contextlib import contextmanager
+from http.client import HTTPException
 from typing import Any, BinaryIO, cast
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
@@ -34,7 +35,21 @@ def parameter(value: QueryValue) -> str | float | int:
 
 
 class ClickHouseReader:
-    def __init__(self, url: str, user: str, password: str) -> None:
+    def __init__(
+        self,
+        url: str,
+        user: str,
+        password: str,
+        *,
+        max_threads: int | None = None,
+        max_block_size: int | None = None,
+    ) -> None:
+        self.query_limits = {}
+        for name, value in (("max_threads", max_threads), ("max_block_size", max_block_size)):
+            if value is not None:
+                if type(value) is not int or value <= 0:
+                    raise ValueError("Read limits require positive integers")
+                self.query_limits[name] = value
         self.url = url.rstrip("/")
         self.headers = {
             "X-ClickHouse-User": user,
@@ -48,6 +63,7 @@ class ClickHouseReader:
     ) -> Iterator[BinaryIO]:
         query = urlencode(
             {
+                **self.query_limits,
                 "readonly": 1,
                 "max_execution_time": 120,
                 "enable_http_compression": 1,
@@ -67,7 +83,7 @@ class ClickHouseReader:
                         yield cast(BinaryIO, stream)
                 else:
                     yield cast(BinaryIO, response)
-        except (OSError, ValueError, KeyError) as error:
+        except (OSError, ValueError, KeyError, HTTPException) as error:
             raise DataUnavailable("Analytical storage is unavailable") from error
 
     def rows(self, sql: str, parameters: Mapping[str, QueryValue]) -> list[dict[str, Any]]:

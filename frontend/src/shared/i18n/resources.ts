@@ -13,6 +13,7 @@ import ruHealth from "./locales/ru/health.json"
 import ruLinks from "./locales/ru/links.json"
 import ruMap from "./locales/ru/map.json"
 import ruNav from "./locales/ru/nav.json"
+import ruNormative from "./locales/ru/normative.json"
 import ruProfile from "./locales/ru/profile.json"
 import ruRegion from "./locales/ru/region.json"
 import ruScenario from "./locales/ru/scenario.json"
@@ -34,6 +35,7 @@ export const NAMESPACES = [
   "links",
   "map",
   "nav",
+  "normative",
   "profile",
   "region",
   "scenario",
@@ -60,6 +62,7 @@ const ru = {
   links: ruLinks,
   map: ruMap,
   nav: ruNav,
+  normative: ruNormative,
   profile: ruProfile,
   region: ruRegion,
   scenario: ruScenario,

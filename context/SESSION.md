@@ -394,6 +394,11 @@ Approved plexus_accessibility.runs, results and frequencies in the same GitHub r
 
 ## Current state, 2026-11-12
 
-Branch feat/map-first-ui, HEAD 0c7cb89; local edits to context and work/ only. UI 8080/API 8000 historical runtime; preserve command-scoped author/committer andreysk0304 <andreysk0304@yandex.ru>. Older status lines: [archive](../work/session-notes-2026-11-12.md).
+User: «слей все все ворк три в ветку и запушь».
 
-Normative index work happens in the separate worktree /Users/savelij/projects/casechamp-normative-indices (branch docs/normative-indices-plan); its context/SESSION.md holds that state. Research: [territorial plan](../work/territorial-indices-plan.md), [medical review](../work/research/medical-accessibility.md).
+Consolidated all six worktrees into feat/map-first-ui, base 8d62824.
+Normative implementation, datasets and all research included. Source worktrees retained.
+Differing research and complete worktree contexts preserved in work/worktree-snapshots/.
+Commit/push authorized; command-scoped identity andreysk0304 <andreysk0304@yandex.ru>.
+Checks and publication outcome: work/worktree-consolidation-2026-11-12.md.
+SESSION exceeds target due to protected user instructions, preserved verbatim.

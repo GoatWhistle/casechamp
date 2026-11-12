@@ -103,4 +103,24 @@ describe("Select", () => {
     expect(onChange).toHaveBeenCalledWith("money")
     expect(trigger().getAttribute("aria-expanded")).toBe("false")
   })
+  it("navigates across group headings without treating a heading as an option", async () => {
+    const onChange = vi.fn()
+    render(
+      <Select
+        label={home.formats.title}
+        value="percent"
+        onChange={onChange}
+        options={OPTIONS.map((item, index) => ({
+          ...item,
+          group: index < 2 ? home.formats.number : home.formats.date,
+        }))}
+      />,
+    )
+    await userEvent.tab()
+    await userEvent.keyboard("{ArrowDown}{ArrowDown}")
+    expect(screen.getAllByRole("option")).toHaveLength(4)
+    expect(activeId()).toBe(option(home.formats.money).id)
+    await userEvent.keyboard("{Enter}")
+    expect(onChange).toHaveBeenCalledWith("money")
+  })
 })

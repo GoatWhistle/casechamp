@@ -1,0 +1,38 @@
+{
+  "receipt": {
+    "run_id": "af7636df4c3247a3a99d26af909968ac",
+    "region_id": "03000000",
+    "region_name": "Краснодарский край",
+    "criterion_id": "N04",
+    "graph_revision": "188f91285db0cda0c9ea5df2",
+    "saved_at": "2026-11-12T11:58:31.003008+00:00",
+    "origins": 526926,
+    "measured_paths": 320465,
+    "facilities": 1397,
+    "mode": "walk",
+    "unit": "metres",
+    "qualification": "physical_only",
+    "model_revision": "regional-walk-v1",
+    "closed_way_ids": []
+  },
+  "response_bytes": 408,
+  "post_get_equal_sample": {
+    "receipt": {
+      "run_id": "f7df36ddd2364480bf8d6314baa37597",
+      "region_id": "11800000",
+      "region_name": "Ненецкий АО",
+      "criterion_id": "N05",
+      "graph_revision": "[[\"casechamp.duckdb\", 1223700480, 1794314040488599643], [\"edges.parquet\", 368279977, 1794039336000000000], [\"nodes.parquet\", 180769332, 1794039313000000000], [\"points.parquet\", 6587005, 1794039339000000000], [\"ways.parquet\", 83529268, 1794039338000000000]]",
+      "saved_at": "2026-11-12T12:09:19.464929+00:00",
+      "origins": 42,
+      "measured_paths": 25,
+      "facilities": 2,
+      "mode": "car",
+      "unit": "minutes",
+      "qualification": "physical_only",
+      "model_revision": "regional-road-v1",
+      "closed_way_ids": []
+    },
+    "response_bytes": 625
+  }
+}

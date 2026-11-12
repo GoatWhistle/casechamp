@@ -10,7 +10,7 @@ import styles from "./app-header.module.css"
 interface NavItem {
   readonly to: string
   readonly icon: IconName
-  readonly label: "nav:map" | "nav:compare" | "nav:scenarios" | "nav:sources"
+  readonly label: "nav:map" | "nav:compare" | "nav:scenarios" | "nav:sources" | "nav:normative"
   readonly end?: boolean
 }
 

@@ -1,9 +1,10 @@
 import { clsx } from "clsx"
-import { type ReactNode, useMemo, useState } from "react"
+import { type ReactNode, useMemo, useRef, useState } from "react"
 import { Link } from "react-router"
 import { ScrollArea, type ScrollOrientation } from "../../layout/scroll-area/scroll-area"
 import { Icon, type IconName } from "../../primitives/icon/icon"
 import styles from "./data-table.module.css"
+import { TablePagination } from "./table-pagination"
 import {
   nextSort,
   type SortDirection,
@@ -23,11 +24,21 @@ export interface DataTableColumn<Row> {
   readonly sortValue?: ((row: Row) => SortValue) | undefined
 }
 
+export interface TablePaginationState {
+  readonly page: number
+  readonly pageSize: number
+  readonly totalRows: number
+  readonly onPage: (page: number) => void
+}
+
 export interface DataTableProps<Row> {
+  readonly pagination?: TablePaginationState | undefined
+  readonly manualSorting?: boolean
   readonly scrollOrientation?: ScrollOrientation
   readonly caption: string
   readonly columns: readonly DataTableColumn<Row>[]
   readonly rows: readonly Row[]
+  readonly pageSize?: number | undefined
   readonly rowKey: (row: Row) => string
   readonly sort?: TableSort | null | undefined
   readonly defaultSort?: TableSort | null | undefined
@@ -100,9 +111,12 @@ function RowLead({ href, clickable, children }: RowLeadProps) {
 
 export function DataTable<Row>({
   scrollOrientation = "both",
+  pagination,
+  manualSorting = false,
   caption,
   columns,
   rows,
+  pageSize,
   rowKey,
   sort,
   defaultSort = null,
@@ -113,71 +127,95 @@ export function DataTable<Row>({
   selectedKey = null,
   className,
 }: DataTableProps<Row>) {
+  const frame = useRef<HTMLDivElement>(null)
+  const [page, setPage] = useState(0)
   const [ownSort, setOwnSort] = useState<TableSort | null>(defaultSort)
   const current = sort === undefined ? ownSort : sort
   const sortColumn = columns.find((column) => column.key === current?.key)
   const sorted = useMemo(
-    () => (current === null ? rows : sortRows(rows, sortColumn?.sortValue, current.direction)),
-    [rows, sortColumn, current],
+    () =>
+      current === null || manualSorting
+        ? rows
+        : sortRows(rows, sortColumn?.sortValue, current.direction),
+    [rows, sortColumn, current, manualSorting],
   )
+  const size = Math.max(1, Math.floor(pagination?.pageSize ?? pageSize ?? sorted.length))
+  const pages = Math.max(1, Math.ceil((pagination?.totalRows ?? sorted.length) / size))
+  const currentPage = Math.min(pagination?.page ?? page, pages - 1)
+  const visible =
+    pagination || pageSize === undefined
+      ? sorted
+      : sorted.slice(currentPage * size, (currentPage + 1) * size)
+  const changePage = (next: number) => {
+    if (pagination) pagination.onPage(next)
+    else setPage(next)
+    if (frame.current) frame.current.scrollTop = 0
+  }
   const onSort = (column: DataTableColumn<Row>) => {
     const next = nextSort(current, column.key, column.numeric === true)
     setOwnSort(next)
+    changePage(0)
     onSortChange?.(next)
   }
   const clickable = onRowClick !== undefined || rowHref !== undefined
 
   return (
-    <ScrollArea
-      orientation={scrollOrientation}
-      label={caption}
-      className={clsx(styles.frame, className)}
-    >
-      <table className={styles.table}>
-        <caption className="visually-hidden">{caption}</caption>
-        <thead>
-          <tr>
-            {columns.map((column) => (
-              <HeaderCell
-                key={column.key}
-                column={column}
-                direction={current?.key === column.key ? current.direction : null}
-                onSort={onSort}
-              />
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {sorted.map((row) => {
-            const key = rowKey(row)
-            return (
-              <tr
-                key={key}
-                className={clsx(styles.row, clickable && styles.clickable)}
-                aria-current={key === selectedKey ? "true" : undefined}
-                onPointerEnter={onRowPreview === undefined ? undefined : () => onRowPreview(row)}
-                onFocus={onRowPreview === undefined ? undefined : () => onRowPreview(row)}
-                onClick={onRowClick === undefined ? undefined : () => onRowClick(row)}
-              >
-                {columns.map((column, index) => (
-                  <td
-                    key={column.key}
-                    className={clsx(styles.cell, column.numeric === true && styles.numeric)}
-                  >
-                    {index === 0 ? (
-                      <RowLead href={rowHref?.(row)} clickable={clickable}>
-                        {column.cell(row)}
-                      </RowLead>
-                    ) : (
-                      column.cell(row)
-                    )}
-                  </td>
-                ))}
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
-    </ScrollArea>
+    <>
+      <ScrollArea
+        ref={frame}
+        orientation={scrollOrientation}
+        label={caption}
+        className={clsx(styles.frame, className)}
+      >
+        <table className={styles.table}>
+          <caption className="visually-hidden">{caption}</caption>
+          <thead>
+            <tr>
+              {columns.map((column) => (
+                <HeaderCell
+                  key={column.key}
+                  column={column}
+                  direction={current?.key === column.key ? current.direction : null}
+                  onSort={onSort}
+                />
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {visible.map((row) => {
+              const key = rowKey(row)
+              return (
+                <tr
+                  key={key}
+                  className={clsx(styles.row, clickable && styles.clickable)}
+                  aria-current={key === selectedKey ? "true" : undefined}
+                  onPointerEnter={onRowPreview === undefined ? undefined : () => onRowPreview(row)}
+                  onFocus={onRowPreview === undefined ? undefined : () => onRowPreview(row)}
+                  onClick={onRowClick === undefined ? undefined : () => onRowClick(row)}
+                >
+                  {columns.map((column, index) => (
+                    <td
+                      key={column.key}
+                      className={clsx(styles.cell, column.numeric === true && styles.numeric)}
+                    >
+                      {index === 0 ? (
+                        <RowLead href={rowHref?.(row)} clickable={clickable}>
+                          {column.cell(row)}
+                        </RowLead>
+                      ) : (
+                        column.cell(row)
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </ScrollArea>
+      {pagination || pageSize !== undefined ? (
+        <TablePagination caption={caption} page={currentPage} pages={pages} onPage={changePage} />
+      ) : null}
+    </>
   )
 }

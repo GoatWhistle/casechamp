@@ -100,3 +100,26 @@ CSR графа находится в `scenario-results`. Эти файлы мо�
 ---
 
 <sub>[Оглавление документации](README.md) · [README проекта](../README.md)</sub>
+
+## Как включить нормативный пилот?
+
+Импорт справочников, локальный запуск и ограничения данных описаны в [инструкции нормативной доступности](normative-accessibility.md).
+
+
+Новые региональные расчёты используют типизированные таблицы снимков. После первоначальной загрузки нормативного хранилища примените добавочную схему из корня проекта:
+
+```bash
+set -a
+source .env.analytics
+set +a
+PYTHONPATH=etl backend/.venv/bin/python - <<'PYSQL'
+from pathlib import Path
+from analytics.client import ClickHouse
+client = ClickHouse()
+for statement in Path('infra/clickhouse/normative-regional-snapshots.sql').read_text().split(';'):
+    if statement.strip():
+        client.request(statement)
+PYSQL
+```
+
+`etl/import_index_bases.py` обновляет собственную таблицу оснований и её дополнительные поля. `etl/publish_regional_indices.py --watch` публикует сводки завершённых расчётов и повторяет проход при временной недоступности хранилища. Для школ и остановок отдельный пакет: `python3 etl/calculate_regional_measurements.py --criteria N04 N09 --output .local/regional-walking-measurements-batch.json --resume`. Он обращается только к локальному API8003 и сохраняет исходы каждого расчёта.

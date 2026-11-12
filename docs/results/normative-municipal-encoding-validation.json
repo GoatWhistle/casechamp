@@ -1,0 +1,21 @@
+{
+  "run_id": "42f886c0d9a4498bbf0ed4f418eba55c",
+  "saved_at": "2026-11-12T05:15:53.017000Z",
+  "reference_date": "2024-01-01",
+  "point_count": 1235,
+  "encoded_parent_candidates": 382,
+  "manual_contexts": 2,
+  "conditional_thresholds": 384,
+  "legacy_points_without_parent": 851,
+  "all_states_unknown": true,
+  "physical_times_and_destinations_unchanged": true,
+  "exact_restore": true,
+  "assignment_verified": false,
+  "currentness_verified": false,
+  "structure_reference": "https://www.nalog.gov.ru/rn27/news/activities_fts/6061590/",
+  "municipal_reference": "https://www.nalog.gov.ru/rn45/news/activities_fts/14849279/",
+  "independent_xlsx_structure_rows_checked": 199,
+  "historical_run_id": "5760601acfc24113a47cd12334ab879d",
+  "historical_thresholds": 2,
+  "historical_encoded_codes": 0
+}

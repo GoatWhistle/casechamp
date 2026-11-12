@@ -1,6 +1,7 @@
 import { render, screen, within } from "@testing-library/react"
 import userEvent from "@testing-library/user-event"
 import { describe, expect, it, vi } from "vitest"
+import common from "@/shared/i18n/locales/ru/common.json"
 import { DataTable, type DataTableColumn } from "@/shared/ui"
 import { text as home } from "./dictionary-text"
 
@@ -99,5 +100,55 @@ describe("DataTable", () => {
     expect(onRowClick).toHaveBeenCalledWith(ROWS[2])
     const selected = screen.getAllByRole("row").find((row) => row.getAttribute("aria-current"))
     expect(selected?.textContent).toContain(home.formats.percent)
+  })
+  it("sorts the full collection before paging and resets the page when sorting changes", async () => {
+    render(
+      <DataTable
+        caption={home.title}
+        columns={COLUMNS}
+        rows={ROWS}
+        rowKey={(row) => row.id}
+        pageSize={2}
+        defaultSort={{ key: "amount", direction: "descending" }}
+      />,
+    )
+    expect(firstColumn()).toEqual([home.formats.percent, home.formats.number])
+    const frame = screen.getByRole("region", { name: home.title })
+    frame.scrollTop = 500
+    await userEvent.click(screen.getByRole("button", { name: common.ui.pagination.next }))
+    expect(frame.scrollTop).toBe(0)
+    expect(firstColumn()).toEqual([home.formats.money])
+    expect(
+      screen.getByRole("button", { name: common.ui.pagination.next }).hasAttribute("disabled"),
+    ).toBe(true)
+    await userEvent.click(screen.getByRole("button", { name: home.formats.count }))
+    expect(firstColumn()).toEqual([home.formats.money, home.formats.number])
+    expect(
+      screen.getByRole("button", { name: common.ui.pagination.previous }).hasAttribute("disabled"),
+    ).toBe(true)
+  })
+  it("keeps the server page order and delegates page and sort changes", async () => {
+    const onPage = vi.fn()
+    const onSortChange = vi.fn()
+    render(
+      <DataTable
+        caption={home.title}
+        columns={COLUMNS}
+        rows={ROWS}
+        rowKey={(row) => row.id}
+        manualSorting
+        sort={{ key: "amount", direction: "descending" }}
+        onSortChange={onSortChange}
+        pagination={{ page: 2, pageSize: 3, totalRows: 100, onPage }}
+      />,
+    )
+    expect(firstColumn()).toEqual(ROWS.map((row) => row.name))
+    await userEvent.click(screen.getByRole("button", { name: common.ui.pagination.next }))
+    expect(onPage).toHaveBeenLastCalledWith(3)
+    expect(firstColumn()).toEqual(ROWS.map((row) => row.name))
+    await userEvent.click(screen.getByRole("button", { name: home.formats.count }))
+    expect(onPage).toHaveBeenLastCalledWith(0)
+    expect(onSortChange).toHaveBeenLastCalledWith({ key: "amount", direction: "ascending" })
+    expect(firstColumn()).toEqual(ROWS.map((row) => row.name))
   })
 })

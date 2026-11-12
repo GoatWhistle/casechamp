@@ -1,0 +1,65 @@
+{
+  "verified_at": "2026-11-12T10:21:19.526060+00:00",
+  "scope": "Moscow medical OSM candidates; physical car travel only",
+  "region_id": "45000000",
+  "category": "medical",
+  "qualification": "physical_only",
+  "origins": 293,
+  "measured_paths": 293,
+  "facilities": 1881,
+  "initial_run_id": "077b638d998949bc956abef229b3581b",
+  "optimized_scenario_run_id": "ba5d562ca6de4560b7539751879c1dad",
+  "closed_way_ids": [
+    538960385
+  ],
+  "comparison": {
+    "unit": "minutes",
+    "paired_paths": 293,
+    "increased": 1,
+    "decreased": 0,
+    "unchanged": 292,
+    "lost": 0,
+    "restored": 0,
+    "unresolved": 0,
+    "mean_change": 0.007354936132224642,
+    "max_increase": 2.15499628674182
+  },
+  "post_equals_get": true,
+  "baseline_rows_unchanged_by_optimization": true,
+  "scenario_rows_unchanged_by_optimization": true,
+  "comparison_unchanged_by_optimization": true,
+  "source_hashes": [
+    "02ba9bfc791089351c352a2824b59a68282300f70f6fa4acb129d24f20016bf3"
+  ],
+  "timing": {
+    "before_seconds": 25.775341,
+    "after_seconds": 2.075842,
+    "samples_per_version": 1,
+    "method": "Sequential warm API POSTs with the same region/category/closed way; not a statistical benchmark"
+  },
+  "ui": [
+    {
+      "width": 1440,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "origins": 293,
+      "runId": "ba5d562ca6de4560b7539751879c1dad",
+      "routeVertices": 74,
+      "restored": true,
+      "stageSwitch": true
+    },
+    {
+      "width": 1920,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "origins": 293,
+      "runId": "ba5d562ca6de4560b7539751879c1dad",
+      "routeVertices": 74,
+      "restored": true,
+      "stageSwitch": true
+    }
+  ],
+  "legal_compliance_verified": false
+}

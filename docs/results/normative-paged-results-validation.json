@@ -1,0 +1,84 @@
+{
+  "checked_at": "2026-11-12T13:48:36.673614+00:00",
+  "scope": "Large-region viewer at 1440 and 1920 desktop widths; physical model, no legal qualification",
+  "backend_unit_tests": 611,
+  "frontend_tests": 462,
+  "storage_integration_tests": 1,
+  "desktop": [
+    {
+      "width": 1440,
+      "runId": "af7636df4c3247a3a99d26af909968ac",
+      "origins": 526926,
+      "worldClusters": 2,
+      "conservedReferences": 526926,
+      "measuredPaths": 320465,
+      "pagesDisjoint": true,
+      "searchOrigin": "osm-way-279573580",
+      "routeVertices": 720,
+      "maxResponseBytes": 53625,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "runId": "af7636df4c3247a3a99d26af909968ac",
+      "origins": 526926,
+      "worldClusters": 2,
+      "conservedReferences": 526926,
+      "measuredPaths": 320465,
+      "pagesDisjoint": true,
+      "searchOrigin": "osm-way-279573580",
+      "routeVertices": 720,
+      "maxResponseBytes": 53625,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "deep_page": {
+    "checked_at": "2026-11-12T13:34:43.899610+00:00",
+    "run_id": "af7636df4c3247a3a99d26af909968ac",
+    "page": 5270,
+    "page_size": 100,
+    "rows": 26,
+    "total": 526926,
+    "bytes": 27910,
+    "elapsed_seconds": 0.09600741695612669,
+    "oversized_page_status": 422,
+    "scope": "One live deepest sorted page and oversized page rejection; not a national latency benchmark"
+  },
+  "initial_negative_check": {
+    "status": 503,
+    "clickhouse_exception_code": 241,
+    "query_memory_bytes": 24240906,
+    "cause": "Global ClickHouse memory pressure; background system.metric_log merge also exceeded total limit",
+    "change": "Select sorted page positions before reading complete row columns",
+    "limitation": "Later desktop checks passed; shared ClickHouse total-memory pressure is not proven eliminated"
+  },
+  "cluster_click": [
+    {
+      "region": "11800000",
+      "criterion": "N04",
+      "runId": "ffadcbba854645efbbf7228bfeae17ed",
+      "clusterCount": 856,
+      "initialZoom": 4,
+      "nextZoom": 7,
+      "reducedMotion": true,
+      "errors": []
+    },
+    {
+      "region": "45000000",
+      "criterion": "N01",
+      "runId": "8c28f278388241828d99f9784c3c5325",
+      "clusterCount": 421,
+      "initialZoom": 8,
+      "nextZoom": 11,
+      "reducedMotion": true,
+      "errors": []
+    }
+  ],
+  "legal_compliance_confirmed": false,
+  "interaction_fix": "Tooltip offset keeps the map point clickable; reproduced initial missed click, then verified hover and actual mouse click at two territories without injected listeners.",
+  "final_hover_correction_verified": true
+}

@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-12",
+  "model_revision": "normative-v7",
+  "run_id": "137ac70c89d44d3a991445824f22bd34",
+  "criterion": "N03",
+  "production_fire_facts": 0,
+  "origin_count": 1235,
+  "timed_origins": 1234,
+  "facility_count": 9,
+  "post_get_exact": true,
+  "physical_results_equal_v3": true,
+  "all_states": "unknown",
+  "qualification_as_of": null,
+  "route": {
+    "origin_id": "37701000001",
+    "nodes": 14,
+    "direction": "depot_to_call",
+    "saved_cost_replayed": true
+  },
+  "tests": {
+    "backend_unit": 530,
+    "backend_mypy_files": 267,
+    "etl": 38,
+    "frontend": 445,
+    "frontend_rules": 36,
+    "integration_selected": 4,
+    "integration_deselected": 5,
+    "integration_seconds": 31.66
+  },
+  "limitations": [
+    "No production fire evidence was fabricated; positive qualifications use isolated test fixtures.",
+    "Current source coordinates identify buildings, not verified depot exits.",
+    "Fire graph access, directions, adverse-condition speed and readiness remain unverified for production.",
+    "Full current legal editions and operational source data remain missing.",
+    "Only nine coordinate candidates are imported; the researched official contact directory has 26 address entries, so the catalog still needs expansion without inventing coordinates.",
+    "The shared ClickHouse Code 241 memory limitation documented in the medical validation remains unresolved."
+  ],
+  "desktop": [
+    {
+      "width": 1440,
+      "errors": [],
+      "axe": [],
+      "overflow": false,
+      "callThreshold": 10
+    },
+    {
+      "width": 1920,
+      "errors": [],
+      "axe": [],
+      "overflow": false,
+      "callThreshold": 10
+    }
+  ]
+}

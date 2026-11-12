@@ -4,9 +4,19 @@ import { useTranslation } from "@/shared/i18n"
 import { useLatched, usePresence } from "@/shared/motion"
 import { Segmented, Select } from "@/shared/ui"
 import styles from "./map-explorer.module.css"
-import { dependsOnSeason, METRIC_ICON, METRICS, type MetricKey, SEASONS } from "./metric"
+import {
+  dependsOnSeason,
+  METRIC_ICON,
+  METRICS,
+  type MetricKey,
+  normativeId,
+  SEASONS,
+} from "./metric"
 
 export interface MapToolbarProps {
+  readonly regionId?: string
+  readonly regions?: readonly { readonly id: string; readonly name: string }[]
+  readonly onRegion?: (id: string | null) => void
   readonly metric: MetricKey
   readonly season: Season
   readonly onMetric: (metric: MetricKey) => void
@@ -37,6 +47,9 @@ function ToolbarSlot({ open, className, children }: ToolbarSlotProps) {
 export const MapToolbar = memo(function MapToolbar({
   metric,
   season,
+  regionId = "",
+  regions = [],
+  onRegion,
   onMetric,
   onSeason,
 }: MapToolbarProps) {
@@ -55,9 +68,23 @@ export const MapToolbar = memo(function MapToolbar({
           value: key,
           label: t(`data:metric.${key}`),
           icon: METRIC_ICON[key],
+          group: t(normativeId(key) ? "normative:metricGroup" : "normative:baseGroup"),
         }))}
         className={styles.metric}
       />
+      {normativeId(metric) && onRegion ? (
+        <Select
+          label={t("normative:regionSelect")}
+          hideLabel
+          variant="floating"
+          value={regionId}
+          onChange={(id) => onRegion(id || null)}
+          options={[
+            { value: "", label: t("normative:indexAllRegions") },
+            ...regions.map((region) => ({ value: region.id, label: region.name })),
+          ]}
+        />
+      ) : null}
       <ToolbarSlot open={seasonal} className={styles.seasonSlot}>
         <Segmented
           label={t("data:season.legend")}

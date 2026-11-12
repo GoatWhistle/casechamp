@@ -1,0 +1,512 @@
+{
+  "checked_at": "2026-11-12T15:51:38.961214+00:00",
+  "scope": "National comparison indices requested by user;756criterion/territory pairs, actual API754numbers and2missing bus-terminal catalogs",
+  "coverage": {
+    "basis_records": 27,
+    "ready_region_service_pairs": 352,
+    "scenario_region_service_pairs": 402,
+    "numeric_region_service_pairs": 754,
+    "legal_compliance_confirmed": false
+  },
+  "scenario_thresholds": {
+    "N03": {
+      "minutes": [
+        10,
+        20
+      ],
+      "assumed_speed_kmh": 40
+    },
+    "N05": {
+      "minutes": [
+        60
+      ]
+    },
+    "N06": {
+      "minutes": [
+        60
+      ]
+    },
+    "N07": {
+      "minutes": [
+        40,
+        60
+      ]
+    },
+    "N08": {
+      "minutes": [
+        60
+      ]
+    },
+    "N09": {
+      "metres": [
+        500,
+        800
+      ],
+      "measurement": "nearest single reference point; not regulatory parcel/pavilion definition"
+    }
+  },
+  "backend_unit_tests": 622,
+  "mypy_files": 332,
+  "frontend_tests": 462,
+  "etl_tests": 111,
+  "desktop": [
+    {
+      "region": "01000000",
+      "criterion": "N05",
+      "width": 1440,
+      "normativeStatus": "basis_missing",
+      "runId": "8164e18c18b94c4690732a311a00fc59",
+      "thresholds": [
+        60
+      ],
+      "values": [
+        {
+          "threshold": 60,
+          "reference_points": 1605,
+          "measured_points": 1605,
+          "within_points": 523,
+          "unresolved_points": 0,
+          "point_share_percent": 32.585669781931465,
+          "population": 2163693,
+          "within_population": 1429732,
+          "population_share_percent": 66.07832072294914
+        }
+      ],
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "region": "03000000",
+      "criterion": "N09",
+      "width": 1440,
+      "normativeStatus": "measurement_incompatible",
+      "runId": "6c4e2aab33ce46e4a492eb652905b91a",
+      "thresholds": [
+        500,
+        800
+      ],
+      "values": [
+        {
+          "threshold": 500,
+          "reference_points": 526926,
+          "measured_points": 320650,
+          "within_points": 103960,
+          "unresolved_points": 206276,
+          "point_share_percent": 19.729525588033233,
+          "population": null,
+          "within_population": null,
+          "population_share_percent": null
+        },
+        {
+          "threshold": 800,
+          "reference_points": 526926,
+          "measured_points": 320650,
+          "within_points": 169151,
+          "unresolved_points": 206276,
+          "point_share_percent": 32.10147155388043,
+          "population": null,
+          "within_population": null,
+          "population_share_percent": null
+        }
+      ],
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "region": "19000000",
+      "criterion": "N07",
+      "width": 1440,
+      "normativeStatus": "basis_missing",
+      "runId": "2de755a4cbfa4a38b861fae7dc2f3c30",
+      "thresholds": [
+        40,
+        60
+      ],
+      "values": [
+        {
+          "threshold": 40,
+          "reference_points": 7869,
+          "measured_points": 7852,
+          "within_points": 4372,
+          "unresolved_points": 17,
+          "point_share_percent": 55.55979158724107,
+          "population": 1142807,
+          "within_population": 1034650,
+          "population_share_percent": 90.53584726029854
+        },
+        {
+          "threshold": 60,
+          "reference_points": 7869,
+          "measured_points": 7852,
+          "within_points": 5770,
+          "unresolved_points": 17,
+          "point_share_percent": 73.3257084762994,
+          "population": 1142807,
+          "within_population": 1076895,
+          "population_share_percent": 94.23244694860988
+        }
+      ],
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "region": "03000000",
+      "criterion": "N03",
+      "width": 1440,
+      "normativeStatus": "ready",
+      "runId": "39351fc3fbdf4544b943fa0f97753a35",
+      "thresholds": [
+        10,
+        20
+      ],
+      "values": [
+        {
+          "threshold": 10,
+          "reference_points": 1765,
+          "measured_points": 1765,
+          "within_points": 354,
+          "unresolved_points": 0,
+          "point_share_percent": 20.056657223796034,
+          "population": 5837152,
+          "within_population": 4451449,
+          "population_share_percent": 76.26063189719918
+        },
+        {
+          "threshold": 20,
+          "reference_points": 1765,
+          "measured_points": 1765,
+          "within_points": 922,
+          "unresolved_points": 0,
+          "point_share_percent": 52.23796033994334,
+          "population": 5837152,
+          "within_population": 5079832,
+          "population_share_percent": 87.02586466824917
+        }
+      ],
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "region": "11800000",
+      "criterion": "N06",
+      "width": 1440,
+      "normativeStatus": "basis_missing",
+      "runId": "56a57a617ea543fbaa8daa608c32797a",
+      "thresholds": [
+        60
+      ],
+      "values": [
+        {
+          "threshold": 60,
+          "reference_points": 42,
+          "measured_points": 25,
+          "within_points": 5,
+          "unresolved_points": 17,
+          "point_share_percent": 11.904761904761905,
+          "population": 40937,
+          "within_population": 32424,
+          "population_share_percent": 79.20463150694971
+        }
+      ],
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "region": "01000000",
+      "criterion": "N05",
+      "width": 1920,
+      "normativeStatus": "basis_missing",
+      "runId": "8164e18c18b94c4690732a311a00fc59",
+      "thresholds": [
+        60
+      ],
+      "values": [
+        {
+          "threshold": 60,
+          "reference_points": 1605,
+          "measured_points": 1605,
+          "within_points": 523,
+          "unresolved_points": 0,
+          "point_share_percent": 32.585669781931465,
+          "population": 2163693,
+          "within_population": 1429732,
+          "population_share_percent": 66.07832072294914
+        }
+      ],
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "region": "03000000",
+      "criterion": "N09",
+      "width": 1920,
+      "normativeStatus": "measurement_incompatible",
+      "runId": "6c4e2aab33ce46e4a492eb652905b91a",
+      "thresholds": [
+        500,
+        800
+      ],
+      "values": [
+        {
+          "threshold": 500,
+          "reference_points": 526926,
+          "measured_points": 320650,
+          "within_points": 103960,
+          "unresolved_points": 206276,
+          "point_share_percent": 19.729525588033233,
+          "population": null,
+          "within_population": null,
+          "population_share_percent": null
+        },
+        {
+          "threshold": 800,
+          "reference_points": 526926,
+          "measured_points": 320650,
+          "within_points": 169151,
+          "unresolved_points": 206276,
+          "point_share_percent": 32.10147155388043,
+          "population": null,
+          "within_population": null,
+          "population_share_percent": null
+        }
+      ],
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "region": "19000000",
+      "criterion": "N07",
+      "width": 1920,
+      "normativeStatus": "basis_missing",
+      "runId": "2de755a4cbfa4a38b861fae7dc2f3c30",
+      "thresholds": [
+        40,
+        60
+      ],
+      "values": [
+        {
+          "threshold": 40,
+          "reference_points": 7869,
+          "measured_points": 7852,
+          "within_points": 4372,
+          "unresolved_points": 17,
+          "point_share_percent": 55.55979158724107,
+          "population": 1142807,
+          "within_population": 1034650,
+          "population_share_percent": 90.53584726029854
+        },
+        {
+          "threshold": 60,
+          "reference_points": 7869,
+          "measured_points": 7852,
+          "within_points": 5770,
+          "unresolved_points": 17,
+          "point_share_percent": 73.3257084762994,
+          "population": 1142807,
+          "within_population": 1076895,
+          "population_share_percent": 94.23244694860988
+        }
+      ],
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "region": "03000000",
+      "criterion": "N03",
+      "width": 1920,
+      "normativeStatus": "ready",
+      "runId": "39351fc3fbdf4544b943fa0f97753a35",
+      "thresholds": [
+        10,
+        20
+      ],
+      "values": [
+        {
+          "threshold": 10,
+          "reference_points": 1765,
+          "measured_points": 1765,
+          "within_points": 354,
+          "unresolved_points": 0,
+          "point_share_percent": 20.056657223796034,
+          "population": 5837152,
+          "within_population": 4451449,
+          "population_share_percent": 76.26063189719918
+        },
+        {
+          "threshold": 20,
+          "reference_points": 1765,
+          "measured_points": 1765,
+          "within_points": 922,
+          "unresolved_points": 0,
+          "point_share_percent": 52.23796033994334,
+          "population": 5837152,
+          "within_population": 5079832,
+          "population_share_percent": 87.02586466824917
+        }
+      ],
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "region": "11800000",
+      "criterion": "N06",
+      "width": 1920,
+      "normativeStatus": "basis_missing",
+      "runId": "56a57a617ea543fbaa8daa608c32797a",
+      "thresholds": [
+        60
+      ],
+      "values": [
+        {
+          "threshold": 60,
+          "reference_points": 42,
+          "measured_points": 25,
+          "within_points": 5,
+          "unresolved_points": 17,
+          "point_share_percent": 11.904761904761905,
+          "population": 40937,
+          "within_population": 32424,
+          "population_share_percent": 79.20463150694971
+        }
+      ],
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "employment_batch": {
+    "attempted_regions": 84,
+    "completed_regions": 83,
+    "failed": [
+      {
+        "region_id": "01000000",
+        "region_name": "Алтайский край",
+        "status": 503,
+        "error": {
+          "code": "data_unavailable",
+          "message": "Atlas data is unavailable"
+        }
+      }
+    ],
+    "limitation": "Altai official map publishes64deduplicated social-protection names without an accepted employment profile; source records retained without routing coordinates, recalculation correctly refuses no reachable target; previous dated OSM-model index remains available"
+  },
+  "fire_batch": {
+    "successful_regions": 84,
+    "profile_assumption": "40km/h constant scenario; no readiness/adverse-conditions/access confirmation"
+  },
+  "route_control": {
+    "receipt": {
+      "run_id": "c2fbe72b0d89482c92f8e96b920fbe0a",
+      "region_id": "81000000",
+      "region_name": "Республика Бурятия",
+      "criterion_id": "N06",
+      "graph_revision": "[[\"casechamp.duckdb\", 1223700480, 1794314040488599643], [\"edges.parquet\", 368279977, 1794039336000000000], [\"nodes.parquet\", 180769332, 1794039313000000000], [\"points.parquet\", 6587005, 1794039339000000000], [\"ways.parquet\", 83529268, 1794039338000000000]]",
+      "saved_at": "2026-11-12T15:42:18.521218+00:00",
+      "origins": 633,
+      "measured_paths": 616,
+      "facilities": 23,
+      "mode": "car",
+      "unit": "minutes",
+      "qualification": "physical_only",
+      "model_revision": "regional-road-v1",
+      "closed_way_ids": [],
+      "measurement_definition": "single_reference_point"
+    },
+    "point": {
+      "row": {
+        "id": "81603154051",
+        "name": "пгт Усть-Баргузин",
+        "population": 6193,
+        "latitude": 53.411086,
+        "longitude": 109.030437,
+        "facility_id": "trudvsem-81000000-5e007478d680703f6b102d2c",
+        "minutes": 56.16741854603401,
+        "excess_minutes": null,
+        "state": "unknown",
+        "distance_metres": null,
+        "uncertainty": [
+          "facility_profile_unconfirmed",
+          "inventory_incomplete",
+          "qualification_unconfirmed"
+        ],
+        "routing_node": 4281962,
+        "approach_metres": 144.839925603764,
+        "threshold_minutes": null,
+        "territory_type": null,
+        "territory_source_url": null,
+        "territory_verification_status": null,
+        "municipality_code": null,
+        "territory_structure_source_url": null,
+        "qualification_source_url": null,
+        "qualification_observed_at": null,
+        "catchment_source_url": null,
+        "threshold_source_url": null,
+        "travel_profile_source_url": null,
+        "measurement_method_source_url": null,
+        "origin_source_url": null,
+        "origin_observed_at": null,
+        "origin_source_sha256": null,
+        "origin_reference_status": null,
+        "rule_set_id": null
+      },
+      "facility": {
+        "id": "trudvsem-81000000-5e007478d680703f6b102d2c",
+        "service": "employment",
+        "name": "Государственное  казенное учреждение \"Центр занятости населения Баргузинского района\"",
+        "address": "671610, с. Баргузин, ул. Ленина, 17",
+        "source_url": "https://trudvsem.ru/czn",
+        "observed_at": "2026-11-12T15:27:40.132460+00:00",
+        "latitude": 53.615791,
+        "longitude": 109.640641,
+        "coordinate_source": "https://trudvsem.ru/czn",
+        "coordinate_status": "official_institution_pin",
+        "published_on": null,
+        "source_sha256": "4efa4d8f70e51ce3c0da79baf03310448a2541433bf878012286e8573b34461c",
+        "coordinate_snapshot_sha256": "4efa4d8f70e51ce3c0da79baf03310448a2541433bf878012286e8573b34461c",
+        "coordinate_snapshot_url": "https://trudvsem.ru/czn"
+      }
+    },
+    "route_minutes": 56.16741854603401,
+    "route_network_vertices": 74,
+    "saved_cost_matches_route": true
+  },
+  "missing_catalogs": [
+    {
+      "region_id": "11800000",
+      "criterion_id": "N08",
+      "candidate_count": 0
+    },
+    {
+      "region_id": "77000000",
+      "criterion_id": "N08",
+      "candidate_count": 0
+    }
+  ],
+  "affected_storage_checks": 3,
+  "final_runtime": "Compose8083/API8003healthy; finalfire-speedannotationvisible at1440/1920",
+  "complete_scenario_reaggregation": {
+    "checked_summaries": 502,
+    "mismatches": 0,
+    "evidence": "normative-scenario-reaggregation-validation.json",
+    "limitation": "Rechecks aggregation against immutable stored measurements; does not prove source completeness, routing geometry or legal compliance"
+  }
+}

@@ -1,0 +1,4778 @@
+{
+  "checked_at": "2026-11-12T18:17:28.277037+00:00",
+  "method": "Reaggregate every currently published scenario from its immutable stored measurement using its frozen run ID and compare all policy, baseline/scenario, count and population fields; verifies aggregation, not geographic or legal correctness",
+  "checked_summaries": 502,
+  "mismatches": 0,
+  "results": [
+    {
+      "region_id": "01000000",
+      "criterion_id": "N03",
+      "run_id": "648307cd1f944b2eba38679e519a3bc5",
+      "reference_points": 1604,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "03000000",
+      "criterion_id": "N03",
+      "run_id": "39351fc3fbdf4544b943fa0f97753a35",
+      "reference_points": 1765,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "04000000",
+      "criterion_id": "N03",
+      "run_id": "5115a1559c154ea2adbdfab68a17ee0d",
+      "reference_points": 1718,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "05000000",
+      "criterion_id": "N03",
+      "run_id": "9c991a29b7e84af8b87ed93cb53e6409",
+      "reference_points": 658,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "07000000",
+      "criterion_id": "N03",
+      "run_id": "1111e51861f240f5adf2ddf88d2532df",
+      "reference_points": 760,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "08000000",
+      "criterion_id": "N03",
+      "run_id": "9214624235a64cb4b35befbed53e54dc",
+      "reference_points": 435,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "10000000",
+      "criterion_id": "N03",
+      "run_id": "d1c1c2156ab944daa8a1c41ce3b6f4be",
+      "reference_points": 628,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "11000000",
+      "criterion_id": "N03",
+      "run_id": "a536d410a3344e589708e76dafdde690",
+      "reference_points": 3952,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "11800000",
+      "criterion_id": "N03",
+      "run_id": "2136f191c8ea45ebbc7921a19662d468",
+      "reference_points": 42,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "12000000",
+      "criterion_id": "N03",
+      "run_id": "23523db29f454ee29033941400a0f545",
+      "reference_points": 432,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "14000000",
+      "criterion_id": "N03",
+      "run_id": "e155418c04c14f5598a9662d2a9554fb",
+      "reference_points": 1600,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "15000000",
+      "criterion_id": "N03",
+      "run_id": "79ab4ddb9b614a7d9b6656946c173c94",
+      "reference_points": 2644,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "17000000",
+      "criterion_id": "N03",
+      "run_id": "f542326b7d9643f8abe28647883e7678",
+      "reference_points": 2526,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "18000000",
+      "criterion_id": "N03",
+      "run_id": "8c475e949718442bbf69c109ce7ebeef",
+      "reference_points": 1495,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "19000000",
+      "criterion_id": "N03",
+      "run_id": "c15efb5b9d6d45b9ba02be44717c4479",
+      "reference_points": 7869,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "20000000",
+      "criterion_id": "N03",
+      "run_id": "9f218147318e49dbbb7b68345c8be3dc",
+      "reference_points": 1731,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "22000000",
+      "criterion_id": "N03",
+      "run_id": "05efeedfc3bd421fbc82199becd905aa",
+      "reference_points": 4841,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "24000000",
+      "criterion_id": "N03",
+      "run_id": "1df6940b2e7d44a8ac3c6c9e34fbf101",
+      "reference_points": 3052,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "25000000",
+      "criterion_id": "N03",
+      "run_id": "f71a37949712459d951e73726058758c",
+      "reference_points": 1532,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "26000000",
+      "criterion_id": "N03",
+      "run_id": "00067da0f3c846c88aa1b8454180a8bc",
+      "reference_points": 122,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "27000000",
+      "criterion_id": "N03",
+      "run_id": "ef6e6aa8e075480eb63f9f994417fc34",
+      "reference_points": 1098,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "28000000",
+      "criterion_id": "N03",
+      "run_id": "cf6d4de860d347fcb752b2d3a5cb3e5d",
+      "reference_points": 9581,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "29000000",
+      "criterion_id": "N03",
+      "run_id": "e9ca9888018447dfaaeaf2ab884bdc1f",
+      "reference_points": 3212,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "30000000",
+      "criterion_id": "N03",
+      "run_id": "b6746584f2c54c02b2be81d23dc2e07c",
+      "reference_points": 83,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "32000000",
+      "criterion_id": "N03",
+      "run_id": "642435748cf64a2fbf3561911c415549",
+      "reference_points": 1108,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "33000000",
+      "criterion_id": "N03",
+      "run_id": "5a255ab28c1e461cbf35672b3b3b3e3e",
+      "reference_points": 4239,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "34000000",
+      "criterion_id": "N03",
+      "run_id": "c07c263835f54ae38c4bfbdea314d365",
+      "reference_points": 3467,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "35000000",
+      "criterion_id": "N03",
+      "run_id": "8919054ea4114e84b8ff81b27183ca37",
+      "reference_points": 1019,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "36000000",
+      "criterion_id": "N03",
+      "run_id": "a2d7b1130cc847aca07fda6d69eb9f16",
+      "reference_points": 1333,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "37000000",
+      "criterion_id": "N03",
+      "run_id": "0da2129a6a75402e90ca5a86d6b23a99",
+      "reference_points": 1234,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "38000000",
+      "criterion_id": "N03",
+      "run_id": "061c5be0b2ef41938d861753a82a9370",
+      "reference_points": 2803,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "40000000",
+      "criterion_id": "N03",
+      "run_id": "3ff993f7b1ae4097a94d098c16651753",
+      "reference_points": 884,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "41000000",
+      "criterion_id": "N03",
+      "run_id": "efa4734097c647d0b0ef57451004a6d0",
+      "reference_points": 2937,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "42000000",
+      "criterion_id": "N03",
+      "run_id": "d3aa7f8767e74c8ab79571bd142316bf",
+      "reference_points": 1608,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "44000000",
+      "criterion_id": "N03",
+      "run_id": "5af758b06cb04b2b83df94234992ef15",
+      "reference_points": 72,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "45000000",
+      "criterion_id": "N03",
+      "run_id": "448b5ed55e77475eb205628c33d9227c",
+      "reference_points": 1489,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "46000000",
+      "criterion_id": "N03",
+      "run_id": "c0e28e2e028847d5abcdb66822c6cdd2",
+      "reference_points": 5979,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "47000000",
+      "criterion_id": "N03",
+      "run_id": "c92f53ab610440569d747ad2ae78b468",
+      "reference_points": 135,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "49000000",
+      "criterion_id": "N03",
+      "run_id": "73e901fc0cb347358c6b7b5001220e3b",
+      "reference_points": 3720,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "50000000",
+      "criterion_id": "N03",
+      "run_id": "dd9696ec79654dc4a14960dddacbfc0d",
+      "reference_points": 1544,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "52000000",
+      "criterion_id": "N03",
+      "run_id": "53425fdc909e4d09af948a17245ee8d8",
+      "reference_points": 1498,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "53000000",
+      "criterion_id": "N03",
+      "run_id": "3f00d8f4ad5c48bb862d14327d751b41",
+      "reference_points": 1720,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "54000000",
+      "criterion_id": "N03",
+      "run_id": "78252d6cb2ea4c83b4b3764450921e97",
+      "reference_points": 2946,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "56000000",
+      "criterion_id": "N03",
+      "run_id": "04722837907248f3ab0b9422b9695052",
+      "reference_points": 1409,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "57000000",
+      "criterion_id": "N03",
+      "run_id": "773d9449d77e4351af22c70072ffeed8",
+      "reference_points": 3632,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "58000000",
+      "criterion_id": "N03",
+      "run_id": "82b6d8584ecd40a8811196f3eef20b44",
+      "reference_points": 8381,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "60000000",
+      "criterion_id": "N03",
+      "run_id": "cc20e3f437794ee39d7a669d04d1970f",
+      "reference_points": 2295,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "61000000",
+      "criterion_id": "N03",
+      "run_id": "bfe482d05bc64a4d973ef18cecc7425c",
+      "reference_points": 2776,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "63000000",
+      "criterion_id": "N03",
+      "run_id": "0a78ac73c1a64e6098d26c133e3d4b27",
+      "reference_points": 1820,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "64000000",
+      "criterion_id": "N03",
+      "run_id": "6309700729ea4301b55ddc317cb066c9",
+      "reference_points": 242,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "65000000",
+      "criterion_id": "N03",
+      "run_id": "b14a85189afc45868bd55afcf408b1ec",
+      "reference_points": 1845,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "66000000",
+      "criterion_id": "N03",
+      "run_id": "aec971c09c174a4daa78b6807f65daaa",
+      "reference_points": 4881,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "68000000",
+      "criterion_id": "N03",
+      "run_id": "ae01b87f01b547d2a964c4b46dde08b5",
+      "reference_points": 1575,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "69000000",
+      "criterion_id": "N03",
+      "run_id": "ce3a6dbd6beb4e8d8cbb2eac48064ec3",
+      "reference_points": 578,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "70000000",
+      "criterion_id": "N03",
+      "run_id": "a6b9ac8e0198455bb544de5be90024bc",
+      "reference_points": 3481,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "71000000",
+      "criterion_id": "N03",
+      "run_id": "9dc0c7a0373447859c1a99964c5bdae0",
+      "reference_points": 1236,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "71800000",
+      "criterion_id": "N03",
+      "run_id": "409c40f4b3104c938afa7f8bbf8fc028",
+      "reference_points": 194,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "71900000",
+      "criterion_id": "N03",
+      "run_id": "8bf02beffc3e400fa3ae7878c8d2f927",
+      "reference_points": 88,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "73000000",
+      "criterion_id": "N03",
+      "run_id": "06100de030b44237bc9acf8ce8e359a6",
+      "reference_points": 1007,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "75000000",
+      "criterion_id": "N03",
+      "run_id": "b6cb20849c1c4dcebaa087721c651d64",
+      "reference_points": 1291,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "76000000",
+      "criterion_id": "N03",
+      "run_id": "91287cda6d7a41a9b3e35a7e142aecf8",
+      "reference_points": 874,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "77000000",
+      "criterion_id": "N03",
+      "run_id": "33d9193253b44c9a9967e5f1bb74ac14",
+      "reference_points": 25,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "78000000",
+      "criterion_id": "N03",
+      "run_id": "5a0a7f2719d9458aae8c7ce4b20a2a09",
+      "reference_points": 6045,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "79000000",
+      "criterion_id": "N03",
+      "run_id": "c50b850a2c994a418e0a03bcdaed0fba",
+      "reference_points": 231,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "80000000",
+      "criterion_id": "N03",
+      "run_id": "3ad64dc4380549b8b4de25efe6c9d5f0",
+      "reference_points": 4559,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "81000000",
+      "criterion_id": "N03",
+      "run_id": "1de2584903004b9090895a1112b701d2",
+      "reference_points": 633,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "82000000",
+      "criterion_id": "N03",
+      "run_id": "53c878ebd1ba4ad490f01b1358ef29ec",
+      "reference_points": 1630,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "83000000",
+      "criterion_id": "N03",
+      "run_id": "ee8ee4b2d2e64f1cb6a93b200b900308",
+      "reference_points": 180,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "84000000",
+      "criterion_id": "N03",
+      "run_id": "f08950b96a3c42058e9fa86ab3694ebf",
+      "reference_points": 248,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "85000000",
+      "criterion_id": "N03",
+      "run_id": "a57b24d9eff04346a5cbeb0c0f8f2584",
+      "reference_points": 265,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "86000000",
+      "criterion_id": "N03",
+      "run_id": "6c9768ec30224f90aaafa46eb0e07cbe",
+      "reference_points": 845,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "87000000",
+      "criterion_id": "N03",
+      "run_id": "85340b3a745e4a3991da91125e3c6e51",
+      "reference_points": 758,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "88000000",
+      "criterion_id": "N03",
+      "run_id": "d5f64d47f19140a88e58c8c86686ee1b",
+      "reference_points": 1616,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "89000000",
+      "criterion_id": "N03",
+      "run_id": "443708388c954ecfae9fc047d3f8c6a9",
+      "reference_points": 1260,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "90000000",
+      "criterion_id": "N03",
+      "run_id": "7402266d12d748598cdb6bc8fa708821",
+      "reference_points": 222,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "91000000",
+      "criterion_id": "N03",
+      "run_id": "7f574350ee41445898a38fab672b61aa",
+      "reference_points": 148,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "92000000",
+      "criterion_id": "N03",
+      "run_id": "8e34316647514bbb9a2d2581f9d1cc3d",
+      "reference_points": 3119,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "93000000",
+      "criterion_id": "N03",
+      "run_id": "646125949a9f4766962429673c491594",
+      "reference_points": 150,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "94000000",
+      "criterion_id": "N03",
+      "run_id": "1c63012462d74eeab62bb78c826eaa25",
+      "reference_points": 1962,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "95000000",
+      "criterion_id": "N03",
+      "run_id": "85d5b7980c5145e0a60f31765374b1fa",
+      "reference_points": 285,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "96000000",
+      "criterion_id": "N03",
+      "run_id": "f3a65553ab6c44bdb6d3806397426b60",
+      "reference_points": 363,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "97000000",
+      "criterion_id": "N03",
+      "run_id": "589dea4592e14743b20d2042944b78b9",
+      "reference_points": 1729,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "98000000",
+      "criterion_id": "N03",
+      "run_id": "17b8bb99ae7c480bb996d2c0def2a5c7",
+      "reference_points": 635,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "99000000",
+      "criterion_id": "N03",
+      "run_id": "12b76916f00c4e3eaa9c408940b096bd",
+      "reference_points": 111,
+      "thresholds": [
+        10.0,
+        20.0
+      ]
+    },
+    {
+      "region_id": "01000000",
+      "criterion_id": "N05",
+      "run_id": "8164e18c18b94c4690732a311a00fc59",
+      "reference_points": 1605,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "03000000",
+      "criterion_id": "N05",
+      "run_id": "4d07fd33806940789a58faffd529615e",
+      "reference_points": 1765,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "04000000",
+      "criterion_id": "N05",
+      "run_id": "ec4eb560d21e459dab3a2342130fa2ff",
+      "reference_points": 1718,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "05000000",
+      "criterion_id": "N05",
+      "run_id": "0505a0de60904057893d51c8d745f341",
+      "reference_points": 659,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "07000000",
+      "criterion_id": "N05",
+      "run_id": "5430ef04b35a459db9f547b1b8fd3628",
+      "reference_points": 760,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "08000000",
+      "criterion_id": "N05",
+      "run_id": "fd652bb614924df98f92c53a631a526f",
+      "reference_points": 435,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "10000000",
+      "criterion_id": "N05",
+      "run_id": "5c7b96eb7fea4ef29ff175d80ce66d66",
+      "reference_points": 628,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "11000000",
+      "criterion_id": "N05",
+      "run_id": "74f0da8c05084dd29e0b8c95b4d51a5a",
+      "reference_points": 3956,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "11800000",
+      "criterion_id": "N05",
+      "run_id": "f7df36ddd2364480bf8d6314baa37597",
+      "reference_points": 42,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "12000000",
+      "criterion_id": "N05",
+      "run_id": "f60eb4ec6c9b4000a34493635b07be8f",
+      "reference_points": 432,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "14000000",
+      "criterion_id": "N05",
+      "run_id": "42f219442de641d3ba117f7a74528407",
+      "reference_points": 1602,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "15000000",
+      "criterion_id": "N05",
+      "run_id": "4fc9fb4659cf4fefae906584fb91dbeb",
+      "reference_points": 2643,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "17000000",
+      "criterion_id": "N05",
+      "run_id": "8166bf015b15476b810cfc14d2a574b6",
+      "reference_points": 2526,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "18000000",
+      "criterion_id": "N05",
+      "run_id": "aa24c51768294dbdb40ea0b2352c9326",
+      "reference_points": 1494,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "19000000",
+      "criterion_id": "N05",
+      "run_id": "e94415ea051f4070b896b3209023c9f2",
+      "reference_points": 7869,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "20000000",
+      "criterion_id": "N05",
+      "run_id": "3ee2db06141b468abb820e583db3dcc7",
+      "reference_points": 1732,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "22000000",
+      "criterion_id": "N05",
+      "run_id": "7fe6ae5653784b8c94c76d0a78309296",
+      "reference_points": 4841,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "24000000",
+      "criterion_id": "N05",
+      "run_id": "8d6ea7c015934cba8c75f8ca441a9fcc",
+      "reference_points": 3049,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "25000000",
+      "criterion_id": "N05",
+      "run_id": "80e7bfad371f4bd79b18beae3014d190",
+      "reference_points": 1532,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "26000000",
+      "criterion_id": "N05",
+      "run_id": "b886d29e55d44c6faa058bed92a309ca",
+      "reference_points": 122,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "27000000",
+      "criterion_id": "N05",
+      "run_id": "7cbeba43fabc46698643d131407c5d3a",
+      "reference_points": 1098,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "28000000",
+      "criterion_id": "N05",
+      "run_id": "b172c0a5f4484b3c8e5409303a396b02",
+      "reference_points": 9583,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "29000000",
+      "criterion_id": "N05",
+      "run_id": "90da7a0724dd41d3be32aa4e787b59d0",
+      "reference_points": 3214,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "30000000",
+      "criterion_id": "N05",
+      "run_id": "87b994371cec4995ad45b2acf3c40d24",
+      "reference_points": 86,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "32000000",
+      "criterion_id": "N05",
+      "run_id": "5d0cff236b61461caa696fd9d8b0a751",
+      "reference_points": 1108,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "33000000",
+      "criterion_id": "N05",
+      "run_id": "46171f1192d54eb184128d1e2aa16b0c",
+      "reference_points": 4245,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "34000000",
+      "criterion_id": "N05",
+      "run_id": "b7f5004f397c4898ba6d599deafbe0bd",
+      "reference_points": 3470,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "35000000",
+      "criterion_id": "N05",
+      "run_id": "73b818f964f54070a8034f03334bff4a",
+      "reference_points": 1019,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "36000000",
+      "criterion_id": "N05",
+      "run_id": "487355527a214a83abb67bcc2c0b244e",
+      "reference_points": 1333,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "37000000",
+      "criterion_id": "N05",
+      "run_id": "0e336c8194634a36a52b40be54120905",
+      "reference_points": 1235,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "38000000",
+      "criterion_id": "N05",
+      "run_id": "ad5a86203f76426e8abd157fd6294d13",
+      "reference_points": 2805,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "40000000",
+      "criterion_id": "N05",
+      "run_id": "fac6d8178f1c402eb3e18172b34b2d84",
+      "reference_points": 884,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "41000000",
+      "criterion_id": "N05",
+      "run_id": "fcb0a58c2b8c491e883a3fabbbb2f90a",
+      "reference_points": 2941,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "42000000",
+      "criterion_id": "N05",
+      "run_id": "cb7b3c8226404da1ad3c9d2aabf920f1",
+      "reference_points": 1609,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "44000000",
+      "criterion_id": "N05",
+      "run_id": "c517e40615bd42fdb4eca8326d7d90ec",
+      "reference_points": 72,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "45000000",
+      "criterion_id": "N05",
+      "run_id": "0fdac7f8bdd843d5b67b7aeeb50db13c",
+      "reference_points": 1489,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "46000000",
+      "criterion_id": "N05",
+      "run_id": "093e7ae8b70e4027b20298f6b28d0375",
+      "reference_points": 5978,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "47000000",
+      "criterion_id": "N05",
+      "run_id": "f5f009ab101440a99bed35d4af2ba1b6",
+      "reference_points": 135,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "49000000",
+      "criterion_id": "N05",
+      "run_id": "0f15fed5d3e2471f90f8332ee6debe30",
+      "reference_points": 3720,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "50000000",
+      "criterion_id": "N05",
+      "run_id": "24be6fe710f94398a28128da217a0aa9",
+      "reference_points": 1544,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "52000000",
+      "criterion_id": "N05",
+      "run_id": "64e8e5ba4d624f1ea5309e8ebf1f3674",
+      "reference_points": 1498,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "53000000",
+      "criterion_id": "N05",
+      "run_id": "8b3a22742f2942de965b2db1dcf2910c",
+      "reference_points": 1720,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "54000000",
+      "criterion_id": "N05",
+      "run_id": "c457112b23e542f9bd21eff379ce0193",
+      "reference_points": 2946,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "56000000",
+      "criterion_id": "N05",
+      "run_id": "33968c4786d244158728f98580267685",
+      "reference_points": 1411,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "57000000",
+      "criterion_id": "N05",
+      "run_id": "e218cdc8ea1c47d5847ab3dbe5aac47f",
+      "reference_points": 3629,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "58000000",
+      "criterion_id": "N05",
+      "run_id": "68f40635e98841aaa8a410c461335b4c",
+      "reference_points": 8383,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "60000000",
+      "criterion_id": "N05",
+      "run_id": "ab8553f1905442beaba50f0f306658e3",
+      "reference_points": 2295,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "61000000",
+      "criterion_id": "N05",
+      "run_id": "164d2df7dcbd4cf48562182cc96861ff",
+      "reference_points": 2780,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "63000000",
+      "criterion_id": "N05",
+      "run_id": "05d696ea5af444988ca818a673e44592",
+      "reference_points": 1820,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "64000000",
+      "criterion_id": "N05",
+      "run_id": "e23a253f9deb44be8e1b0cbabd38fc0c",
+      "reference_points": 243,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "65000000",
+      "criterion_id": "N05",
+      "run_id": "7da127dcf1c642b4acff45be011b5427",
+      "reference_points": 1844,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "66000000",
+      "criterion_id": "N05",
+      "run_id": "6807edce7ab94389992c0ddb0eabfe0f",
+      "reference_points": 4878,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "68000000",
+      "criterion_id": "N05",
+      "run_id": "710c7fe7e13848da8996bc2ff360c7b3",
+      "reference_points": 1575,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "69000000",
+      "criterion_id": "N05",
+      "run_id": "de197ba6f3414093a2acb9dfd5f78499",
+      "reference_points": 578,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "70000000",
+      "criterion_id": "N05",
+      "run_id": "ffab6ed35ff34cfcb033c09ac4427e77",
+      "reference_points": 3478,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "71000000",
+      "criterion_id": "N05",
+      "run_id": "cf6579e026a34fa1b9b7ae2d5f9be52d",
+      "reference_points": 1236,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "71800000",
+      "criterion_id": "N05",
+      "run_id": "be4d205dfcd84119af4fa0815fd93993",
+      "reference_points": 194,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "71900000",
+      "criterion_id": "N05",
+      "run_id": "cd2dda75a512471eb2d5dddf453c42d3",
+      "reference_points": 88,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "73000000",
+      "criterion_id": "N05",
+      "run_id": "3ed5084651764028b9c61081c436dbb2",
+      "reference_points": 1006,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "75000000",
+      "criterion_id": "N05",
+      "run_id": "6d198314e59643ecb976943b4bcafadb",
+      "reference_points": 1291,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "76000000",
+      "criterion_id": "N05",
+      "run_id": "d65dbcf272c94ed19aab79ab4f478197",
+      "reference_points": 874,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "77000000",
+      "criterion_id": "N05",
+      "run_id": "f87796bd03f04809bc4c734f8a66b8e2",
+      "reference_points": 25,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "78000000",
+      "criterion_id": "N05",
+      "run_id": "97ba4f0520c7445dbbfc886922f4f329",
+      "reference_points": 6045,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "79000000",
+      "criterion_id": "N05",
+      "run_id": "6632db7a34a74531b40646ca71bf647a",
+      "reference_points": 233,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "80000000",
+      "criterion_id": "N05",
+      "run_id": "1ec7dc7a2afe4bd39bef0b5a2fa99760",
+      "reference_points": 4559,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "81000000",
+      "criterion_id": "N05",
+      "run_id": "0479e6606eec40cca7b77c0f58497cd6",
+      "reference_points": 633,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "82000000",
+      "criterion_id": "N05",
+      "run_id": "310809edaa394102a3b37702820f6c14",
+      "reference_points": 1630,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "83000000",
+      "criterion_id": "N05",
+      "run_id": "ff1dd2e8f5a04e958cd149726340d8f6",
+      "reference_points": 180,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "84000000",
+      "criterion_id": "N05",
+      "run_id": "b8bf5520998f4b44858d1cbbd2e718ee",
+      "reference_points": 247,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "85000000",
+      "criterion_id": "N05",
+      "run_id": "77673073a0684f5ba14b38bc667d9075",
+      "reference_points": 265,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "86000000",
+      "criterion_id": "N05",
+      "run_id": "84fd675a63984692aee98fbb5361d3a9",
+      "reference_points": 845,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "87000000",
+      "criterion_id": "N05",
+      "run_id": "66d8728d61b24408900d58380eb1b71d",
+      "reference_points": 758,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "88000000",
+      "criterion_id": "N05",
+      "run_id": "e880e46cc45e4107acd327746ffb1c4f",
+      "reference_points": 1616,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "89000000",
+      "criterion_id": "N05",
+      "run_id": "119e6d96b2d64742aeb3d10dbbccd8e6",
+      "reference_points": 1257,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "90000000",
+      "criterion_id": "N05",
+      "run_id": "9678595e1c784f24afda7cad13971dec",
+      "reference_points": 222,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "91000000",
+      "criterion_id": "N05",
+      "run_id": "67798b524b184eb8b14ec12ef799de1b",
+      "reference_points": 148,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "92000000",
+      "criterion_id": "N05",
+      "run_id": "db5c8c05d5b74bddbf2801e6ebe06c24",
+      "reference_points": 3119,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "93000000",
+      "criterion_id": "N05",
+      "run_id": "1efc1484d38a43318ad3fe067e79f300",
+      "reference_points": 150,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "94000000",
+      "criterion_id": "N05",
+      "run_id": "7ab9c44c6eff4a58901a064a9a9873c5",
+      "reference_points": 1962,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "95000000",
+      "criterion_id": "N05",
+      "run_id": "ce15376ff5c14cfe8cdc2e169890f3e3",
+      "reference_points": 285,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "96000000",
+      "criterion_id": "N05",
+      "run_id": "21c0eefbdc6d4b49a762724c026c11ce",
+      "reference_points": 363,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "97000000",
+      "criterion_id": "N05",
+      "run_id": "6c2d2beb67d348598f30ec132ca4675f",
+      "reference_points": 1729,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "98000000",
+      "criterion_id": "N05",
+      "run_id": "9f1fa396cea54436b72134d9d3127167",
+      "reference_points": 635,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "99000000",
+      "criterion_id": "N05",
+      "run_id": "88db1ade8d784fd79beda9a562c4b335",
+      "reference_points": 111,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "01000000",
+      "criterion_id": "N06",
+      "run_id": "520c51c4e7e94ad6ac07312f7fc276e2",
+      "reference_points": 1604,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "03000000",
+      "criterion_id": "N06",
+      "run_id": "202e76f723c946b4bb960e309b824b45",
+      "reference_points": 1765,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "04000000",
+      "criterion_id": "N06",
+      "run_id": "8efee74415fe4cd6833f3657bd199835",
+      "reference_points": 1718,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "05000000",
+      "criterion_id": "N06",
+      "run_id": "e8fa0fe0745d4440bc79b52baacfbc47",
+      "reference_points": 658,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "07000000",
+      "criterion_id": "N06",
+      "run_id": "7e8c7d677bef4b8fb1cecad633e7facf",
+      "reference_points": 760,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "08000000",
+      "criterion_id": "N06",
+      "run_id": "f23aef6ef4d64b6fac374e0de5dd39bb",
+      "reference_points": 435,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "10000000",
+      "criterion_id": "N06",
+      "run_id": "e60336de01b34298b85bfd2c741afa3e",
+      "reference_points": 628,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "11000000",
+      "criterion_id": "N06",
+      "run_id": "bc331b0f058f425993aab4ed441b5012",
+      "reference_points": 3952,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "11800000",
+      "criterion_id": "N06",
+      "run_id": "56a57a617ea543fbaa8daa608c32797a",
+      "reference_points": 42,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "12000000",
+      "criterion_id": "N06",
+      "run_id": "e6556f628c0f49cbadac1680e72f3bd2",
+      "reference_points": 432,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "14000000",
+      "criterion_id": "N06",
+      "run_id": "eff883afcc84469994d1b93442830415",
+      "reference_points": 1600,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "15000000",
+      "criterion_id": "N06",
+      "run_id": "0d2d6ef8f73749c28cc9f9d29e6cdf74",
+      "reference_points": 2644,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "17000000",
+      "criterion_id": "N06",
+      "run_id": "5521126d6a7c4feda5530d8dc13f01a4",
+      "reference_points": 2526,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "18000000",
+      "criterion_id": "N06",
+      "run_id": "a266d0e39d1b4b73b0c84edb6bf8db19",
+      "reference_points": 1495,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "19000000",
+      "criterion_id": "N06",
+      "run_id": "ab441c03b51f47368ebfc5ad392fef8e",
+      "reference_points": 7869,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "20000000",
+      "criterion_id": "N06",
+      "run_id": "7e20404af65e42c681efa2b3f30d7ef8",
+      "reference_points": 1731,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "22000000",
+      "criterion_id": "N06",
+      "run_id": "13b080d0bd3749f09ddec0bf78bb1e8c",
+      "reference_points": 4841,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "24000000",
+      "criterion_id": "N06",
+      "run_id": "f7c6027cf2cc48a6a44986fa7a1bf975",
+      "reference_points": 3052,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "25000000",
+      "criterion_id": "N06",
+      "run_id": "e750d4f566194ea780e6df422636d17f",
+      "reference_points": 1532,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "26000000",
+      "criterion_id": "N06",
+      "run_id": "f1a144602e9a41ccb2c3dbd934126cad",
+      "reference_points": 122,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "27000000",
+      "criterion_id": "N06",
+      "run_id": "748470d416244e2b8fea5844dedc914d",
+      "reference_points": 1098,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "28000000",
+      "criterion_id": "N06",
+      "run_id": "ce6cd313b2d54b919982f7e97529dc2b",
+      "reference_points": 9581,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "29000000",
+      "criterion_id": "N06",
+      "run_id": "6907eab731524fa0b88ca989f753db44",
+      "reference_points": 3212,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "30000000",
+      "criterion_id": "N06",
+      "run_id": "5efc034b23a9484ea371b55b65b83962",
+      "reference_points": 83,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "32000000",
+      "criterion_id": "N06",
+      "run_id": "af04a4e0924c48258c8d8ce2e5d139d0",
+      "reference_points": 1108,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "33000000",
+      "criterion_id": "N06",
+      "run_id": "27a512907646404e9ecd4924f4dac2cb",
+      "reference_points": 4239,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "34000000",
+      "criterion_id": "N06",
+      "run_id": "2aab7b100f464c0fa28f22b718d089b1",
+      "reference_points": 3467,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "35000000",
+      "criterion_id": "N06",
+      "run_id": "b9432a71dfb147d99d6fb2c648f807c7",
+      "reference_points": 1019,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "36000000",
+      "criterion_id": "N06",
+      "run_id": "0d17d5dfd2f343cd9b796bd6208f85a3",
+      "reference_points": 1333,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "37000000",
+      "criterion_id": "N06",
+      "run_id": "9d6f062d4edf4d8eac7f1462cb6865a4",
+      "reference_points": 1234,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "38000000",
+      "criterion_id": "N06",
+      "run_id": "285d9c3bb83747beb924dcfe5747703e",
+      "reference_points": 2803,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "40000000",
+      "criterion_id": "N06",
+      "run_id": "c1ac80c296454e6c84e3ef404e0cb77a",
+      "reference_points": 884,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "41000000",
+      "criterion_id": "N06",
+      "run_id": "f86cc9e69cd34839b1e59a8bac2ea43e",
+      "reference_points": 2937,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "42000000",
+      "criterion_id": "N06",
+      "run_id": "18ade867df0846a48a6f065e2843b353",
+      "reference_points": 1608,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "44000000",
+      "criterion_id": "N06",
+      "run_id": "3b29d2e00f7a42f6b6e0d8ed989595ea",
+      "reference_points": 72,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "45000000",
+      "criterion_id": "N06",
+      "run_id": "d119587957fb4a4286c4aefc1822d28a",
+      "reference_points": 1489,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "46000000",
+      "criterion_id": "N06",
+      "run_id": "6949790a39fc4b5ca2279f7e20efa9cb",
+      "reference_points": 5979,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "47000000",
+      "criterion_id": "N06",
+      "run_id": "7b2662ea7e2b4e98ab241565e0816a89",
+      "reference_points": 135,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "49000000",
+      "criterion_id": "N06",
+      "run_id": "4ca297f01cc24f288e0458c063a7a5dd",
+      "reference_points": 3720,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "50000000",
+      "criterion_id": "N06",
+      "run_id": "a140858303744996a4c0db5d44ccc4c9",
+      "reference_points": 1544,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "52000000",
+      "criterion_id": "N06",
+      "run_id": "e714285deca142519d1753e5fdb6c236",
+      "reference_points": 1498,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "53000000",
+      "criterion_id": "N06",
+      "run_id": "f96341b316744085aa02cc321dbc36b6",
+      "reference_points": 1720,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "54000000",
+      "criterion_id": "N06",
+      "run_id": "c95e2818700e4ef690314a4f968f7b0d",
+      "reference_points": 2946,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "56000000",
+      "criterion_id": "N06",
+      "run_id": "3cac7384924846e8aa8d5532676ee8be",
+      "reference_points": 1409,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "57000000",
+      "criterion_id": "N06",
+      "run_id": "4a49ce576e174fbdaa2b54a546730294",
+      "reference_points": 3632,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "58000000",
+      "criterion_id": "N06",
+      "run_id": "b5f9a282ad0e4816bcbe3da6d124e4d8",
+      "reference_points": 8381,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "60000000",
+      "criterion_id": "N06",
+      "run_id": "dea2e13b6ead4b59819f4f510d464225",
+      "reference_points": 2295,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "61000000",
+      "criterion_id": "N06",
+      "run_id": "0756425c2d5643198ed672f168290951",
+      "reference_points": 2776,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "63000000",
+      "criterion_id": "N06",
+      "run_id": "593a26c617144892b3931d0a54be970f",
+      "reference_points": 1820,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "64000000",
+      "criterion_id": "N06",
+      "run_id": "e748371b6bd4427a90c114561f81721c",
+      "reference_points": 242,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "65000000",
+      "criterion_id": "N06",
+      "run_id": "474ade18505a4619b2f9af6829ea1686",
+      "reference_points": 1845,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "66000000",
+      "criterion_id": "N06",
+      "run_id": "3bdc409b7bd84ff2b26edde7e437093c",
+      "reference_points": 4881,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "68000000",
+      "criterion_id": "N06",
+      "run_id": "38a4082e13af4917ac8f02a5d997c38e",
+      "reference_points": 1575,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "69000000",
+      "criterion_id": "N06",
+      "run_id": "f09a594ca0c84991abf8450e18733518",
+      "reference_points": 578,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "70000000",
+      "criterion_id": "N06",
+      "run_id": "76bd63e91766467c9546741006c8853b",
+      "reference_points": 3481,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "71000000",
+      "criterion_id": "N06",
+      "run_id": "4b0e267f001f4a128b9d664a09364c02",
+      "reference_points": 1236,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "71800000",
+      "criterion_id": "N06",
+      "run_id": "323c58ed67504690be0a4e1384f73ca5",
+      "reference_points": 194,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "71900000",
+      "criterion_id": "N06",
+      "run_id": "f7096ee99f35433cb935b536aa1b6c15",
+      "reference_points": 88,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "73000000",
+      "criterion_id": "N06",
+      "run_id": "d9cf430f0c054e7696a463e4baf68d21",
+      "reference_points": 1007,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "75000000",
+      "criterion_id": "N06",
+      "run_id": "7104d92580f3453f886f2a897e98c01a",
+      "reference_points": 1291,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "76000000",
+      "criterion_id": "N06",
+      "run_id": "033d8f8fde5a444989a752363dcbb99e",
+      "reference_points": 874,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "77000000",
+      "criterion_id": "N06",
+      "run_id": "6edcc4a29aec4e22997f13f9d849d4c0",
+      "reference_points": 25,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "78000000",
+      "criterion_id": "N06",
+      "run_id": "d3d708618d6a4bd98106c0ecb20056ec",
+      "reference_points": 6045,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "79000000",
+      "criterion_id": "N06",
+      "run_id": "dce10232ac4743699185e73e86ec240d",
+      "reference_points": 231,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "80000000",
+      "criterion_id": "N06",
+      "run_id": "2c3ee900989347b8a91533993f5c0960",
+      "reference_points": 4559,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "81000000",
+      "criterion_id": "N06",
+      "run_id": "c2fbe72b0d89482c92f8e96b920fbe0a",
+      "reference_points": 633,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "82000000",
+      "criterion_id": "N06",
+      "run_id": "46231656cf41433b8c01082693ab5038",
+      "reference_points": 1630,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "83000000",
+      "criterion_id": "N06",
+      "run_id": "fae17812742e40338fef76b2662ad334",
+      "reference_points": 180,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "84000000",
+      "criterion_id": "N06",
+      "run_id": "ae5922cee99348d08b817bb0de19f196",
+      "reference_points": 248,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "85000000",
+      "criterion_id": "N06",
+      "run_id": "f84357a922eb46a6990d851cc4cfc861",
+      "reference_points": 265,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "86000000",
+      "criterion_id": "N06",
+      "run_id": "ad8ef7e5f5cf4a77875838c2dc6bae4c",
+      "reference_points": 845,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "87000000",
+      "criterion_id": "N06",
+      "run_id": "141025bd52ca40168a33b9f250d48d58",
+      "reference_points": 758,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "88000000",
+      "criterion_id": "N06",
+      "run_id": "4a11eef1c6dd46588107b99f78e62714",
+      "reference_points": 1616,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "89000000",
+      "criterion_id": "N06",
+      "run_id": "896ba76632de4c299193cb5edd2f2741",
+      "reference_points": 1260,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "90000000",
+      "criterion_id": "N06",
+      "run_id": "bfb218b1589949f5869e82c16c444a00",
+      "reference_points": 222,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "91000000",
+      "criterion_id": "N06",
+      "run_id": "8584363a01de4770841e46b2fc992e91",
+      "reference_points": 148,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "92000000",
+      "criterion_id": "N06",
+      "run_id": "be2ed915801240d5b31b2c99e3f29f84",
+      "reference_points": 3119,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "93000000",
+      "criterion_id": "N06",
+      "run_id": "cb7eaf6dd05946bca286a2e67324d4c3",
+      "reference_points": 150,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "94000000",
+      "criterion_id": "N06",
+      "run_id": "f6d908ad5ad9483cb05d9b56f420c275",
+      "reference_points": 1962,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "95000000",
+      "criterion_id": "N06",
+      "run_id": "4ad06fe64502487988a700e37b2f6cbd",
+      "reference_points": 285,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "96000000",
+      "criterion_id": "N06",
+      "run_id": "f68d732d11ac4ad78641da7ace602dbd",
+      "reference_points": 363,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "97000000",
+      "criterion_id": "N06",
+      "run_id": "8f0c4ae8d60545e1b9c9e010561476b2",
+      "reference_points": 1729,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "98000000",
+      "criterion_id": "N06",
+      "run_id": "a7400d49b7414a8faef7185466f03cfb",
+      "reference_points": 635,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "99000000",
+      "criterion_id": "N06",
+      "run_id": "5caf7ddafbe7417bbca15413ca2105f0",
+      "reference_points": 111,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "01000000",
+      "criterion_id": "N07",
+      "run_id": "ddca282c019e4bd38e69e94b30d6497b",
+      "reference_points": 1605,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "03000000",
+      "criterion_id": "N07",
+      "run_id": "2f9ae3f767c54ce3a7d176f6edd6f175",
+      "reference_points": 1765,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "04000000",
+      "criterion_id": "N07",
+      "run_id": "f13d03006dae4123b51233da0805a1ea",
+      "reference_points": 1718,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "05000000",
+      "criterion_id": "N07",
+      "run_id": "e7a2790c92654c5b816f5a84e073cdf5",
+      "reference_points": 659,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "07000000",
+      "criterion_id": "N07",
+      "run_id": "eafc35afd04d4a1890f45d8b6479187f",
+      "reference_points": 760,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "08000000",
+      "criterion_id": "N07",
+      "run_id": "8c74c37d03b144eabff1961b6039ef35",
+      "reference_points": 435,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "10000000",
+      "criterion_id": "N07",
+      "run_id": "3d379005672d428fbe8973b8537500e4",
+      "reference_points": 628,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "11000000",
+      "criterion_id": "N07",
+      "run_id": "8da9359bcda34bb29380f9a57cb847fa",
+      "reference_points": 3956,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "11800000",
+      "criterion_id": "N07",
+      "run_id": "af263445b18e4cd0a6fc3ddfa712e9d8",
+      "reference_points": 42,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "12000000",
+      "criterion_id": "N07",
+      "run_id": "b3d098ce4acd49d0a77264f5e2eabbee",
+      "reference_points": 432,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "14000000",
+      "criterion_id": "N07",
+      "run_id": "a4b275ac77c74c0cb308c228e4b8c406",
+      "reference_points": 1602,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "15000000",
+      "criterion_id": "N07",
+      "run_id": "638271e51e8f48b08bc965068db4f037",
+      "reference_points": 2643,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "17000000",
+      "criterion_id": "N07",
+      "run_id": "00b7abe9d63e43748ac7acd28ab568ec",
+      "reference_points": 2526,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "18000000",
+      "criterion_id": "N07",
+      "run_id": "5c80bb43d0414c0b89cc9797d08e9b72",
+      "reference_points": 1494,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "19000000",
+      "criterion_id": "N07",
+      "run_id": "2de755a4cbfa4a38b861fae7dc2f3c30",
+      "reference_points": 7869,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "20000000",
+      "criterion_id": "N07",
+      "run_id": "be7772b30c4c4638adca90abcd5ed9c2",
+      "reference_points": 1732,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "22000000",
+      "criterion_id": "N07",
+      "run_id": "c6d024bf608b4298bc6b1859151afbab",
+      "reference_points": 4841,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "24000000",
+      "criterion_id": "N07",
+      "run_id": "932211bf29f0489e84c470a13ab247b2",
+      "reference_points": 3049,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "25000000",
+      "criterion_id": "N07",
+      "run_id": "6773b018d2354ddea61e377583c9dbba",
+      "reference_points": 1532,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "26000000",
+      "criterion_id": "N07",
+      "run_id": "707ad861dc154321b77dfdafadaf3eec",
+      "reference_points": 122,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "27000000",
+      "criterion_id": "N07",
+      "run_id": "92021f2d87fd4d90b3bece4ba12639bb",
+      "reference_points": 1098,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "28000000",
+      "criterion_id": "N07",
+      "run_id": "7cbc15fcd0404ac395c1f4c75783bbdd",
+      "reference_points": 9583,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "29000000",
+      "criterion_id": "N07",
+      "run_id": "36c84b7c61e64e1cb253ce1aa78472d0",
+      "reference_points": 3214,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "30000000",
+      "criterion_id": "N07",
+      "run_id": "67e493846dc9479cbafd99a68ab1464c",
+      "reference_points": 86,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "32000000",
+      "criterion_id": "N07",
+      "run_id": "6a718589ddac43c1a56c6ff6241e2709",
+      "reference_points": 1108,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "33000000",
+      "criterion_id": "N07",
+      "run_id": "e66dc48dff7a4b27b52fd05b2c926b74",
+      "reference_points": 4245,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "34000000",
+      "criterion_id": "N07",
+      "run_id": "da8d430988c94569a3f8a9ee4fe8c177",
+      "reference_points": 3470,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "35000000",
+      "criterion_id": "N07",
+      "run_id": "e42a93e492a046f9ac605c348579c731",
+      "reference_points": 1019,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "36000000",
+      "criterion_id": "N07",
+      "run_id": "824cc1bbee0343df9413060457d888cd",
+      "reference_points": 1333,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "37000000",
+      "criterion_id": "N07",
+      "run_id": "d99c2e8668c248f8bc61fab8e54cacb9",
+      "reference_points": 1235,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "38000000",
+      "criterion_id": "N07",
+      "run_id": "f9c207e45f5e4b2ebc63fb85651731e3",
+      "reference_points": 2805,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "40000000",
+      "criterion_id": "N07",
+      "run_id": "dbab7a78701a4643b8c8b6731c76702c",
+      "reference_points": 884,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "41000000",
+      "criterion_id": "N07",
+      "run_id": "44b491156dc74997b5b9009dd9764f3e",
+      "reference_points": 2941,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "42000000",
+      "criterion_id": "N07",
+      "run_id": "eab85804a731410a8d198c795729fdca",
+      "reference_points": 1609,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "44000000",
+      "criterion_id": "N07",
+      "run_id": "ee567aabf4984599989c8732cdd75006",
+      "reference_points": 72,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "45000000",
+      "criterion_id": "N07",
+      "run_id": "b436ac5b254d470a83f3327c6d21dd71",
+      "reference_points": 1489,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "46000000",
+      "criterion_id": "N07",
+      "run_id": "89e4c2b7b0a642698d6f4a37661ef5ae",
+      "reference_points": 5978,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "47000000",
+      "criterion_id": "N07",
+      "run_id": "2e12363d5cdb495f9d4117f36e255180",
+      "reference_points": 136,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "49000000",
+      "criterion_id": "N07",
+      "run_id": "f236768a875d4237b9c286417e768936",
+      "reference_points": 3720,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "50000000",
+      "criterion_id": "N07",
+      "run_id": "1e87e135d1894179ad0f6d30706c9ed3",
+      "reference_points": 1544,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "52000000",
+      "criterion_id": "N07",
+      "run_id": "8b987526b15241e1ad4080bd3baa387f",
+      "reference_points": 1498,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "53000000",
+      "criterion_id": "N07",
+      "run_id": "d9a9602acd544c31a5cb051c6e8ef44c",
+      "reference_points": 1720,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "54000000",
+      "criterion_id": "N07",
+      "run_id": "8f9ae992d1da4a97826c1731870d1586",
+      "reference_points": 2946,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "56000000",
+      "criterion_id": "N07",
+      "run_id": "d27656d7ac634391938e978eedc1b73b",
+      "reference_points": 1411,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "57000000",
+      "criterion_id": "N07",
+      "run_id": "3b1cc748884840088133a8a511caf8ee",
+      "reference_points": 3629,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "58000000",
+      "criterion_id": "N07",
+      "run_id": "819b5791a76b4d11ba4a609346a76704",
+      "reference_points": 8383,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "60000000",
+      "criterion_id": "N07",
+      "run_id": "4461b3ed882142cf8d02d0ccb9edd025",
+      "reference_points": 2295,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "61000000",
+      "criterion_id": "N07",
+      "run_id": "c61b9479fd8647319c1f3d02ae4e99a0",
+      "reference_points": 2780,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "63000000",
+      "criterion_id": "N07",
+      "run_id": "cae106746fb64adda9e9414bcef7fd4f",
+      "reference_points": 1820,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "64000000",
+      "criterion_id": "N07",
+      "run_id": "fac5059e0a254f938fbdcac9c03b2f56",
+      "reference_points": 243,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "65000000",
+      "criterion_id": "N07",
+      "run_id": "403b1263d964430aa8b8fd4d6a3bcc44",
+      "reference_points": 1844,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "66000000",
+      "criterion_id": "N07",
+      "run_id": "ff62fa26be64401b9fd477dd6e6e3192",
+      "reference_points": 4878,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "68000000",
+      "criterion_id": "N07",
+      "run_id": "a00d5c19049a4770811da701898218e9",
+      "reference_points": 1575,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "69000000",
+      "criterion_id": "N07",
+      "run_id": "1291e49200ca4647b9282b79c1c445c8",
+      "reference_points": 578,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "70000000",
+      "criterion_id": "N07",
+      "run_id": "9bff41d19c254c1e9968199963cfd148",
+      "reference_points": 3478,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "71000000",
+      "criterion_id": "N07",
+      "run_id": "c7d3cceaae5242399d93c8732d47f869",
+      "reference_points": 1236,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "71800000",
+      "criterion_id": "N07",
+      "run_id": "8652fa14d09b4f6182034a9cee03a9f5",
+      "reference_points": 194,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "71900000",
+      "criterion_id": "N07",
+      "run_id": "e699b31f59764ac6a853292bbe452765",
+      "reference_points": 88,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "73000000",
+      "criterion_id": "N07",
+      "run_id": "13964732ce4540419320b4ae70dc6a51",
+      "reference_points": 1006,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "75000000",
+      "criterion_id": "N07",
+      "run_id": "7836a95c29cd4564811037e6d671a4fe",
+      "reference_points": 1291,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "76000000",
+      "criterion_id": "N07",
+      "run_id": "60a28c0b27624b7bb1444bf55e70f803",
+      "reference_points": 874,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "77000000",
+      "criterion_id": "N07",
+      "run_id": "9416378c235f49fca3e44a2922c77d6c",
+      "reference_points": 25,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "78000000",
+      "criterion_id": "N07",
+      "run_id": "ad264a92e7084233b9a96fee083f7d6f",
+      "reference_points": 6045,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "79000000",
+      "criterion_id": "N07",
+      "run_id": "390e02fe20cc47469bbc9d2ce947fae4",
+      "reference_points": 233,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "80000000",
+      "criterion_id": "N07",
+      "run_id": "e13e54c9674a402191a8883fb50439b6",
+      "reference_points": 4559,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "81000000",
+      "criterion_id": "N07",
+      "run_id": "39d7e7d4549d4202bb44a70b1e4ca9ed",
+      "reference_points": 633,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "82000000",
+      "criterion_id": "N07",
+      "run_id": "d83373de18ed49db9f465e73bcb64793",
+      "reference_points": 1630,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "83000000",
+      "criterion_id": "N07",
+      "run_id": "d93fd712d51f49849cb054220fa0bfa7",
+      "reference_points": 180,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "84000000",
+      "criterion_id": "N07",
+      "run_id": "55146577428347fd9f61f0c29c05c47c",
+      "reference_points": 247,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "85000000",
+      "criterion_id": "N07",
+      "run_id": "8e67dab36bf84ec0a1d364e3517da897",
+      "reference_points": 265,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "86000000",
+      "criterion_id": "N07",
+      "run_id": "85399db47f3d4d24a1edda3eed3bc356",
+      "reference_points": 845,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "87000000",
+      "criterion_id": "N07",
+      "run_id": "d882fd8dbbbb45cfb6993c9e778d8a1c",
+      "reference_points": 758,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "88000000",
+      "criterion_id": "N07",
+      "run_id": "f7ebacc2505b4bb1bb52a84c995321a6",
+      "reference_points": 1616,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "89000000",
+      "criterion_id": "N07",
+      "run_id": "8ba701f5822a43eb9d4ddb835cc29bb8",
+      "reference_points": 1257,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "90000000",
+      "criterion_id": "N07",
+      "run_id": "a3205c9c41b340b1becd4790ddc192df",
+      "reference_points": 222,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "91000000",
+      "criterion_id": "N07",
+      "run_id": "9d40310357fe4c019ff33eede73eb831",
+      "reference_points": 148,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "92000000",
+      "criterion_id": "N07",
+      "run_id": "451a597c3b0548a3a5135355d3b3222b",
+      "reference_points": 3119,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "93000000",
+      "criterion_id": "N07",
+      "run_id": "57087dffc626488895656997dad371d0",
+      "reference_points": 150,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "94000000",
+      "criterion_id": "N07",
+      "run_id": "dbae36d43bea4409941792efc362192c",
+      "reference_points": 1962,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "95000000",
+      "criterion_id": "N07",
+      "run_id": "1a1c4ef19cb74f489b6945005c654abd",
+      "reference_points": 285,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "96000000",
+      "criterion_id": "N07",
+      "run_id": "a512ecf9391e46fca833f62093fa5df5",
+      "reference_points": 363,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "97000000",
+      "criterion_id": "N07",
+      "run_id": "f5d3afd615004a95b7685f391220aa3b",
+      "reference_points": 1729,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "98000000",
+      "criterion_id": "N07",
+      "run_id": "5cdc0472fc8348ffbcac67567fb96c2b",
+      "reference_points": 635,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "99000000",
+      "criterion_id": "N07",
+      "run_id": "f22c089222e94013986eeddd718f1722",
+      "reference_points": 111,
+      "thresholds": [
+        40.0,
+        60.0
+      ]
+    },
+    {
+      "region_id": "01000000",
+      "criterion_id": "N08",
+      "run_id": "e988bb31ae0a405b8fdc3b79f8024d6c",
+      "reference_points": 1605,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "03000000",
+      "criterion_id": "N08",
+      "run_id": "9f8d865afbd7458c904c5f980df48fa3",
+      "reference_points": 1765,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "04000000",
+      "criterion_id": "N08",
+      "run_id": "1b03b054e7fd435fa68a9b66a5594ee0",
+      "reference_points": 1718,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "05000000",
+      "criterion_id": "N08",
+      "run_id": "0e50bdb9cc22491c80d9aa3a48f12645",
+      "reference_points": 659,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "07000000",
+      "criterion_id": "N08",
+      "run_id": "0fa561932399422c8a3911fc8b87796c",
+      "reference_points": 760,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "08000000",
+      "criterion_id": "N08",
+      "run_id": "97da39ace97148e99f65415bc8b77fec",
+      "reference_points": 435,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "10000000",
+      "criterion_id": "N08",
+      "run_id": "b67eb02ba6074898990b1179313ea1a1",
+      "reference_points": 628,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "11000000",
+      "criterion_id": "N08",
+      "run_id": "edffa5be57e14edbb7efe8d3175cd179",
+      "reference_points": 3956,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "12000000",
+      "criterion_id": "N08",
+      "run_id": "4cafe4d58c044228a7a032d922de1ec9",
+      "reference_points": 432,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "14000000",
+      "criterion_id": "N08",
+      "run_id": "f77a7b06cae340599e92508f6f372eae",
+      "reference_points": 1602,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "15000000",
+      "criterion_id": "N08",
+      "run_id": "1df06e5d64d24233bde9d21e20d4296d",
+      "reference_points": 2643,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "17000000",
+      "criterion_id": "N08",
+      "run_id": "85528d96f97c4fa6be0b6c07629b57d7",
+      "reference_points": 2526,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "18000000",
+      "criterion_id": "N08",
+      "run_id": "4c61f20817c14cec8285e701269048f3",
+      "reference_points": 1494,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "19000000",
+      "criterion_id": "N08",
+      "run_id": "f47480276dad4f3bbdd3c1a53a6a3510",
+      "reference_points": 7869,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "20000000",
+      "criterion_id": "N08",
+      "run_id": "184dfa0b739848a9996b37d71ef7babe",
+      "reference_points": 1732,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "22000000",
+      "criterion_id": "N08",
+      "run_id": "7c0fdde7eeef4949b07c882a19914023",
+      "reference_points": 4841,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "24000000",
+      "criterion_id": "N08",
+      "run_id": "090b265f222d45a49249234cae2a517b",
+      "reference_points": 3049,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "25000000",
+      "criterion_id": "N08",
+      "run_id": "18b05f3d8d174c57b2ba520ca71aa4e9",
+      "reference_points": 1532,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "26000000",
+      "criterion_id": "N08",
+      "run_id": "c08b56267844428bae979033de0f7890",
+      "reference_points": 122,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "27000000",
+      "criterion_id": "N08",
+      "run_id": "b8e263d16ef24d1d83b8a24b16a88e78",
+      "reference_points": 1098,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "28000000",
+      "criterion_id": "N08",
+      "run_id": "9d71d9a1de86437aa50777dfe1e76eb8",
+      "reference_points": 9583,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "29000000",
+      "criterion_id": "N08",
+      "run_id": "d2c34fd215cc471394d292aee817af7b",
+      "reference_points": 3214,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "30000000",
+      "criterion_id": "N08",
+      "run_id": "4b95be00c5654367a8705f3875b5b559",
+      "reference_points": 86,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "32000000",
+      "criterion_id": "N08",
+      "run_id": "08470f53fc7345fe8efac5de4f8ad281",
+      "reference_points": 1108,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "33000000",
+      "criterion_id": "N08",
+      "run_id": "5d963c173c314f82a307f5ccee977de4",
+      "reference_points": 4245,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "34000000",
+      "criterion_id": "N08",
+      "run_id": "0b863e87dcee4ea0ad28926a27d27ce7",
+      "reference_points": 3470,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "35000000",
+      "criterion_id": "N08",
+      "run_id": "48ed401ed0cc498ba39a1468e391448a",
+      "reference_points": 1019,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "36000000",
+      "criterion_id": "N08",
+      "run_id": "e204ea827ad74a8aa233e1a2e4a9652e",
+      "reference_points": 1333,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "37000000",
+      "criterion_id": "N08",
+      "run_id": "6745bd9d83f44b8b9d67d72bc44ea1c0",
+      "reference_points": 1235,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "38000000",
+      "criterion_id": "N08",
+      "run_id": "b80be189076a4d6fbc3dfb74e7a0b2d2",
+      "reference_points": 2805,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "40000000",
+      "criterion_id": "N08",
+      "run_id": "978b8ba612f646f998abe26b6a4c4d3d",
+      "reference_points": 884,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "41000000",
+      "criterion_id": "N08",
+      "run_id": "6409a478f46845dc99a3d31d601c7f2d",
+      "reference_points": 2941,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "42000000",
+      "criterion_id": "N08",
+      "run_id": "80a917891e494fe2b342335c0d0a4008",
+      "reference_points": 1609,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "44000000",
+      "criterion_id": "N08",
+      "run_id": "ccca68255c5d46f6b29c3c73775cfaf8",
+      "reference_points": 72,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "45000000",
+      "criterion_id": "N08",
+      "run_id": "6c37987bbee64161a29a1fd92f21e1ad",
+      "reference_points": 1489,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "46000000",
+      "criterion_id": "N08",
+      "run_id": "b9565d813bb047d2b1e233175e37dc65",
+      "reference_points": 5978,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "47000000",
+      "criterion_id": "N08",
+      "run_id": "4f8ee8dc331641938029ccd54ba121cf",
+      "reference_points": 136,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "49000000",
+      "criterion_id": "N08",
+      "run_id": "ae4c5edf07d448edb6b16f9f8c04a759",
+      "reference_points": 3720,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "50000000",
+      "criterion_id": "N08",
+      "run_id": "d6585aea79ff4232a8781a90c7be5dab",
+      "reference_points": 1544,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "52000000",
+      "criterion_id": "N08",
+      "run_id": "42be44f7b4da41529e94e447050446b6",
+      "reference_points": 1498,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "53000000",
+      "criterion_id": "N08",
+      "run_id": "f0869243a3154f74b0adf83f1c43d1b1",
+      "reference_points": 1720,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "54000000",
+      "criterion_id": "N08",
+      "run_id": "966ae03826cb45c181939012cb609c75",
+      "reference_points": 2946,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "56000000",
+      "criterion_id": "N08",
+      "run_id": "7d9034c189c240b2a058d40095837da2",
+      "reference_points": 1411,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "57000000",
+      "criterion_id": "N08",
+      "run_id": "9400f7a097e04908a58a8b429ab0f556",
+      "reference_points": 3629,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "58000000",
+      "criterion_id": "N08",
+      "run_id": "584b0d35669e4149bd474e5951c93a96",
+      "reference_points": 8383,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "60000000",
+      "criterion_id": "N08",
+      "run_id": "1736e05b7f014c50abe407ed598d36f1",
+      "reference_points": 2295,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "61000000",
+      "criterion_id": "N08",
+      "run_id": "2eda8003789440e4941717f6787849fe",
+      "reference_points": 2780,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "63000000",
+      "criterion_id": "N08",
+      "run_id": "03f3a91685fa41eaa9ebbee8c45c4a0b",
+      "reference_points": 1820,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "64000000",
+      "criterion_id": "N08",
+      "run_id": "82e0af4918ae49fc9ba229ec84e3d08c",
+      "reference_points": 243,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "65000000",
+      "criterion_id": "N08",
+      "run_id": "045b31fcb60646f29393bf40ac06420d",
+      "reference_points": 1844,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "66000000",
+      "criterion_id": "N08",
+      "run_id": "3d687be28c2548ab86a0619ffa37254c",
+      "reference_points": 4878,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "68000000",
+      "criterion_id": "N08",
+      "run_id": "ca6dea72c168487ca7d98503282aa6e4",
+      "reference_points": 1575,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "69000000",
+      "criterion_id": "N08",
+      "run_id": "d6326527e5aa40faa496c0d2cee82da9",
+      "reference_points": 578,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "70000000",
+      "criterion_id": "N08",
+      "run_id": "8afbcda6f5c54be89b18992712fd3d57",
+      "reference_points": 3478,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "71000000",
+      "criterion_id": "N08",
+      "run_id": "e5f59ecae1684b65aff5103629db8f45",
+      "reference_points": 1236,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "71800000",
+      "criterion_id": "N08",
+      "run_id": "8719af3006e8456ca499c5787b1c6f7c",
+      "reference_points": 194,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "71900000",
+      "criterion_id": "N08",
+      "run_id": "a06184529df24fb5921abb0a35834a9e",
+      "reference_points": 88,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "73000000",
+      "criterion_id": "N08",
+      "run_id": "8a13465f6c5c4e829add4c64067d914f",
+      "reference_points": 1006,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "75000000",
+      "criterion_id": "N08",
+      "run_id": "f6a7b6cb97a04aa88308a25000481f2f",
+      "reference_points": 1291,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "76000000",
+      "criterion_id": "N08",
+      "run_id": "01ae7d08eaff4357bd691702d14d22a6",
+      "reference_points": 874,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "78000000",
+      "criterion_id": "N08",
+      "run_id": "f1f5d6c766224da39ebc68a54a2e2a65",
+      "reference_points": 6045,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "79000000",
+      "criterion_id": "N08",
+      "run_id": "7977d0e52fcd44308015313906fe3042",
+      "reference_points": 233,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "80000000",
+      "criterion_id": "N08",
+      "run_id": "a8b9bf7904204518ac2583feddf794c1",
+      "reference_points": 4559,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "81000000",
+      "criterion_id": "N08",
+      "run_id": "3069c3a630e74df6a9784b6c8b3c3b75",
+      "reference_points": 633,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "82000000",
+      "criterion_id": "N08",
+      "run_id": "982d09e749594d998e0c577579aa13c2",
+      "reference_points": 1630,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "83000000",
+      "criterion_id": "N08",
+      "run_id": "0597a00fcd3840969e03091d9dfc7321",
+      "reference_points": 180,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "84000000",
+      "criterion_id": "N08",
+      "run_id": "df45005b8ee04be0b314aeece645534b",
+      "reference_points": 247,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "85000000",
+      "criterion_id": "N08",
+      "run_id": "896650d12d1240e1b6427f71bad084b6",
+      "reference_points": 265,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "86000000",
+      "criterion_id": "N08",
+      "run_id": "c28b82a9e1464de1886b24f909661b50",
+      "reference_points": 845,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "87000000",
+      "criterion_id": "N08",
+      "run_id": "9fb337c379d342dc82d2619728717d86",
+      "reference_points": 758,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "88000000",
+      "criterion_id": "N08",
+      "run_id": "28ed9d7554a74edfbc536bed100fb404",
+      "reference_points": 1616,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "89000000",
+      "criterion_id": "N08",
+      "run_id": "9b34109011b04b9dace907d0f17a622e",
+      "reference_points": 1257,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "90000000",
+      "criterion_id": "N08",
+      "run_id": "599ca3f0937042a7a265cf5508597a18",
+      "reference_points": 222,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "91000000",
+      "criterion_id": "N08",
+      "run_id": "75b5b921127a42aaad4c0bb840cd0b15",
+      "reference_points": 148,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "92000000",
+      "criterion_id": "N08",
+      "run_id": "f1a6166191354ea69dec50c188df0f44",
+      "reference_points": 3119,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "93000000",
+      "criterion_id": "N08",
+      "run_id": "301024e486ac44ab8ba3694f66a272bd",
+      "reference_points": 150,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "94000000",
+      "criterion_id": "N08",
+      "run_id": "acdce138ddb14421b6d6d633968c22c5",
+      "reference_points": 1962,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "95000000",
+      "criterion_id": "N08",
+      "run_id": "1b7690ebc1c34129b57736d695796754",
+      "reference_points": 285,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "96000000",
+      "criterion_id": "N08",
+      "run_id": "fabf5a375d834f6cb8cc71e3b0120ffc",
+      "reference_points": 363,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "97000000",
+      "criterion_id": "N08",
+      "run_id": "4be482546cc841368aab6cb105f84544",
+      "reference_points": 1729,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "98000000",
+      "criterion_id": "N08",
+      "run_id": "6e23179c82c74524b9a7f8fdf5f99c43",
+      "reference_points": 635,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "99000000",
+      "criterion_id": "N08",
+      "run_id": "c3ee8d6a235444a9901a623be8ceca5f",
+      "reference_points": 111,
+      "thresholds": [
+        60.0
+      ]
+    },
+    {
+      "region_id": "63000000",
+      "criterion_id": "N09",
+      "run_id": "4137fc29942242c2925f24bb1e7d3aba",
+      "reference_points": 108947,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "97000000",
+      "criterion_id": "N09",
+      "run_id": "04b3a301e89d49a6b1d2a034e7bb30c6",
+      "reference_points": 48282,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "98000000",
+      "criterion_id": "N09",
+      "run_id": "88be39f5379047cca9a98425daab88bd",
+      "reference_points": 21877,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "01000000",
+      "criterion_id": "N09",
+      "run_id": "5bf4fc5768b640c0a18759ee073dc74c",
+      "reference_points": 132324,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "03000000",
+      "criterion_id": "N09",
+      "run_id": "cc851c1982044c15b51db9424183fe23",
+      "reference_points": 526926,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "04000000",
+      "criterion_id": "N09",
+      "run_id": "691c0dda591c43bc836f28d6bb321ccd",
+      "reference_points": 136549,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "05000000",
+      "criterion_id": "N09",
+      "run_id": "d599b885999e4986a4445165361cd6a1",
+      "reference_points": 221223,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "07000000",
+      "criterion_id": "N09",
+      "run_id": "55a1adceafc541319325a3f26ecefa31",
+      "reference_points": 88848,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "08000000",
+      "criterion_id": "N09",
+      "run_id": "ba57dede695345d0af41560c801f084b",
+      "reference_points": 50255,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "10000000",
+      "criterion_id": "N09",
+      "run_id": "468fd82f97d04a72ba8ec193d385995b",
+      "reference_points": 8902,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "11000000",
+      "criterion_id": "N09",
+      "run_id": "ecca2d15225749bf9ed17cbe6a25f570",
+      "reference_points": 55924,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "11800000",
+      "criterion_id": "N09",
+      "run_id": "329f78f3a42f4bfda3f4cf7a14b76bfe",
+      "reference_points": 1322,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "12000000",
+      "criterion_id": "N09",
+      "run_id": "81e4b562f11e42adaad59f1c565fc947",
+      "reference_points": 15407,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "14000000",
+      "criterion_id": "N09",
+      "run_id": "6bf7b37f510a4b3fac683601f9b01836",
+      "reference_points": 76664,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "15000000",
+      "criterion_id": "N09",
+      "run_id": "c1664bde316a408d96aca9fe426489c4",
+      "reference_points": 46565,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "17000000",
+      "criterion_id": "N09",
+      "run_id": "22122260111149ed984a20f333c495d2",
+      "reference_points": 58337,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "18000000",
+      "criterion_id": "N09",
+      "run_id": "97a307d69de446c9a831cbe3336576d6",
+      "reference_points": 92166,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "19000000",
+      "criterion_id": "N09",
+      "run_id": "c876476c946743cab034784d5b09c559",
+      "reference_points": 66021,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "20000000",
+      "criterion_id": "N09",
+      "run_id": "f4c7bea646994b958e01f458aa80fa25",
+      "reference_points": 120340,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "22000000",
+      "criterion_id": "N09",
+      "run_id": "8fad1cb142e44e19b3a263cf024d8ea7",
+      "reference_points": 171779,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "24000000",
+      "criterion_id": "N09",
+      "run_id": "93a2d91c90234d8081a952ee7547c2b6",
+      "reference_points": 51231,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "25000000",
+      "criterion_id": "N09",
+      "run_id": "9edf909d3cab483ebaecb4d9f6b0b654",
+      "reference_points": 106957,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "26000000",
+      "criterion_id": "N09",
+      "run_id": "9de3dcd243fc4435aaa67d5b6579d38b",
+      "reference_points": 11422,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "27000000",
+      "criterion_id": "N09",
+      "run_id": "d40962ad8c794c3f87601832699b144f",
+      "reference_points": 51913,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "28000000",
+      "criterion_id": "N09",
+      "run_id": "cb119c93137b493d93a5519911985cbc",
+      "reference_points": 113004,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "29000000",
+      "criterion_id": "N09",
+      "run_id": "18d6cbaf3a494970ba2861bea6415430",
+      "reference_points": 71431,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "30000000",
+      "criterion_id": "N09",
+      "run_id": "575f5728582b4354a03c8815cc58574a",
+      "reference_points": 4516,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "32000000",
+      "criterion_id": "N09",
+      "run_id": "f318220424504619bf9a9d9b9ec7ba01",
+      "reference_points": 106977,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "33000000",
+      "criterion_id": "N09",
+      "run_id": "221585371aa44604985b8b0f24367202",
+      "reference_points": 79813,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "34000000",
+      "criterion_id": "N09",
+      "run_id": "239c29cfe4e24a1f96a52c0f55a6f3ef",
+      "reference_points": 50392,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "35000000",
+      "criterion_id": "N09",
+      "run_id": "e82a58638f824999832c767db317bf6c",
+      "reference_points": 48546,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "36000000",
+      "criterion_id": "N09",
+      "run_id": "5dee155c8164460381b358b8f0d7c34f",
+      "reference_points": 65277,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "37000000",
+      "criterion_id": "N09",
+      "run_id": "1b0a29f5f94347d7a86b9686175fb0be",
+      "reference_points": 40896,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "38000000",
+      "criterion_id": "N09",
+      "run_id": "86dc5157a7134395a482f7c42c600e79",
+      "reference_points": 30863,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "40000000",
+      "criterion_id": "N09",
+      "run_id": "5079860ae2eb49a29e2c44100cbfdff3",
+      "reference_points": 31550,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "41000000",
+      "criterion_id": "N09",
+      "run_id": "f74c0feaab89410cb27689748510b665",
+      "reference_points": 106340,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "42000000",
+      "criterion_id": "N09",
+      "run_id": "e0907b23e53d4e47a00738111b548266",
+      "reference_points": 76224,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "44000000",
+      "criterion_id": "N09",
+      "run_id": "7f3b6c6cb9244dfcbc40254e097353ce",
+      "reference_points": 1013,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "45000000",
+      "criterion_id": "N09",
+      "run_id": "5698eac3ee5943dea3b62396617be1ae",
+      "reference_points": 71390,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "46000000",
+      "criterion_id": "N09",
+      "run_id": "7ed636fa623b4158afab6d9e93a65d32",
+      "reference_points": 344040,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "47000000",
+      "criterion_id": "N09",
+      "run_id": "a779ab42c70544869f47f3a1bfebe71e",
+      "reference_points": 4497,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "49000000",
+      "criterion_id": "N09",
+      "run_id": "68390bc1359b421ca2b6de04d673163c",
+      "reference_points": 21186,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "50000000",
+      "criterion_id": "N09",
+      "run_id": "9bf740eb92374208a555eff567858a9f",
+      "reference_points": 102943,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "52000000",
+      "criterion_id": "N09",
+      "run_id": "bcbb8a5b92fe489994bee3b8d87d7613",
+      "reference_points": 85199,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "53000000",
+      "criterion_id": "N09",
+      "run_id": "cfe3acd6b64b4466913508969cf76536",
+      "reference_points": 77829,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "54000000",
+      "criterion_id": "N09",
+      "run_id": "ac81837587e642b7bef5bd66406c1f7d",
+      "reference_points": 27374,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "56000000",
+      "criterion_id": "N09",
+      "run_id": "b0277692234047ca92a5288738d5961a",
+      "reference_points": 65381,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "57000000",
+      "criterion_id": "N09",
+      "run_id": "948908051a864e98934fb1c99aa2f784",
+      "reference_points": 122197,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "58000000",
+      "criterion_id": "N09",
+      "run_id": "e74e617849cc4e51829ac88ef6f81209",
+      "reference_points": 48738,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "60000000",
+      "criterion_id": "N09",
+      "run_id": "be688eacf157412fb8bccb2b99c89c96",
+      "reference_points": 220724,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "61000000",
+      "criterion_id": "N09",
+      "run_id": "39e82951d4bb4acbb2cf3b2305c51a28",
+      "reference_points": 51392,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "64000000",
+      "criterion_id": "N09",
+      "run_id": "826846d4a2da43a99729ab48c493ae9c",
+      "reference_points": 28802,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "65000000",
+      "criterion_id": "N09",
+      "run_id": "d8f99adf2b6f4bcaa4ab68bf58ff4aa9",
+      "reference_points": 145734,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "66000000",
+      "criterion_id": "N09",
+      "run_id": "cfa2e5c8002242248bb1a3a33f497442",
+      "reference_points": 21941,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "68000000",
+      "criterion_id": "N09",
+      "run_id": "c493e5d3855f4fffbf4c1b528d585b97",
+      "reference_points": 58328,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "69000000",
+      "criterion_id": "N09",
+      "run_id": "a5565e55ef5f42358a619f262e5b71b0",
+      "reference_points": 35110,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "70000000",
+      "criterion_id": "N09",
+      "run_id": "510f9f7a2b444eebac863bc85aa148f6",
+      "reference_points": 58019,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "71000000",
+      "criterion_id": "N09",
+      "run_id": "02e954037c1d4dc6bd1d5b13085b1141",
+      "reference_points": 74477,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "71800000",
+      "criterion_id": "N09",
+      "run_id": "a4e5dcdbc3164a619b3b1f794704dcb2",
+      "reference_points": 33443,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "71900000",
+      "criterion_id": "N09",
+      "run_id": "c32a10054a4a444a9fa7dbea316a0a1c",
+      "reference_points": 6035,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "73000000",
+      "criterion_id": "N09",
+      "run_id": "d9f08445ace047349c89339c6b596a84",
+      "reference_points": 25456,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "75000000",
+      "criterion_id": "N09",
+      "run_id": "c4f2761b206f423797153c7c2307a8b3",
+      "reference_points": 179210,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "76000000",
+      "criterion_id": "N09",
+      "run_id": "02c366824ce94a0db07ba7b5942d032b",
+      "reference_points": 20063,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "77000000",
+      "criterion_id": "N09",
+      "run_id": "b7c9298995494c3aabba8564e5324a32",
+      "reference_points": 214,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "78000000",
+      "criterion_id": "N09",
+      "run_id": "5fd7826166ce4d59b46f2c0fc007f6a5",
+      "reference_points": 37479,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "79000000",
+      "criterion_id": "N09",
+      "run_id": "55a47e025e9446f4aa9d7c053d6c7830",
+      "reference_points": 75361,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "80000000",
+      "criterion_id": "N09",
+      "run_id": "0fa638ac2f5c4e8894bb62615caec477",
+      "reference_points": 129407,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "81000000",
+      "criterion_id": "N09",
+      "run_id": "66d3935cc03c4e2586e4e2816297f2eb",
+      "reference_points": 20087,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "82000000",
+      "criterion_id": "N09",
+      "run_id": "5cab48c9881c405ca5c3cf9a140c8af1",
+      "reference_points": 394421,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "83000000",
+      "criterion_id": "N09",
+      "run_id": "5b3fdb2808054de29dabb2505cd27bc5",
+      "reference_points": 81172,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "84000000",
+      "criterion_id": "N09",
+      "run_id": "15712588f8b847b3830a4b89fc1b985c",
+      "reference_points": 16063,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "85000000",
+      "criterion_id": "N09",
+      "run_id": "3607f0ca67c84a4e984b9dc4663ed426",
+      "reference_points": 19636,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "86000000",
+      "criterion_id": "N09",
+      "run_id": "53f22b405e97423e9949f02628f43b3d",
+      "reference_points": 17909,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "87000000",
+      "criterion_id": "N09",
+      "run_id": "791fa2d7db4941589087706da9d64689",
+      "reference_points": 34058,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "88000000",
+      "criterion_id": "N09",
+      "run_id": "2b150f796e54448b95a043ed4c8cd077",
+      "reference_points": 22439,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "89000000",
+      "criterion_id": "N09",
+      "run_id": "a264fcaa80d3497fa35c8430017d7e62",
+      "reference_points": 68447,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "90000000",
+      "criterion_id": "N09",
+      "run_id": "ffbafc3df1e348e8a70c5bb2f6bcd88f",
+      "reference_points": 16022,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "91000000",
+      "criterion_id": "N09",
+      "run_id": "97219c4875a042bd9af30e2bbec57a84",
+      "reference_points": 18701,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "92000000",
+      "criterion_id": "N09",
+      "run_id": "f212d353256b4fc7af9f18ab1dc25ddc",
+      "reference_points": 187882,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "93000000",
+      "criterion_id": "N09",
+      "run_id": "3bbe76d8c628496dbb0dfc7a929e0484",
+      "reference_points": 12626,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "94000000",
+      "criterion_id": "N09",
+      "run_id": "008044989a164ea882666bab2d4e371b",
+      "reference_points": 87621,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "95000000",
+      "criterion_id": "N09",
+      "run_id": "8ca7625a362441a785d6b724a2d52acc",
+      "reference_points": 33753,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "96000000",
+      "criterion_id": "N09",
+      "run_id": "b8b8fc724f974254aba0065092a208fc",
+      "reference_points": 23289,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    },
+    {
+      "region_id": "99000000",
+      "criterion_id": "N09",
+      "run_id": "4389d3bfe8384b379f51cceb68cfc342",
+      "reference_points": 14568,
+      "thresholds": [
+        500.0,
+        800.0
+      ]
+    }
+  ]
+}

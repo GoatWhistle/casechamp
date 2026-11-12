@@ -1,0 +1,17 @@
+{
+  "observed_at": "2026-11-12",
+  "settlements": [
+    {
+      "point_id": "37701000001",
+      "settlement_type": "urban",
+      "source_url": "https://www.kurgan-city.ru/city/ustav/",
+      "verification_status": "primary_verified"
+    },
+    {
+      "point_id": "37705000001",
+      "settlement_type": "urban",
+      "source_url": "https://gkh.kurganobl.ru/?page_id=14474",
+      "verification_status": "primary_2023_currentness_unconfirmed"
+    }
+  ]
+}

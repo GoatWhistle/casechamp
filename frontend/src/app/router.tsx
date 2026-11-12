@@ -18,6 +18,10 @@ export const router = createBrowserRouter([
       { index: true, lazy: lazyPage(() => import("@/pages/map/map-page"), "MapPage") },
       { path: "map", element: <LegacyMapRedirect /> },
       {
+        path: "normative",
+        element: <Navigate to="/?metric=normative_N05" replace />,
+      },
+      {
         path: "compare",
         lazy: lazyPage(() => import("@/pages/compare/compare-page"), "ComparePage"),
       },

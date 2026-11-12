@@ -1,0 +1,1525 @@
+{
+  "checked_at": "2026-11-12T12:39:22.411777+00:00",
+  "territories": 84,
+  "calculations": 168,
+  "reference_count_per_criterion": {
+    "N04": 6337686,
+    "N09": 6337686
+  },
+  "legal_compliance_confirmed": false,
+  "scope": "All latest saved receipts checked against every imported regional network manifest; not a complete per-route replay or legal qualification",
+  "results": [
+    {
+      "region_id": "01000000",
+      "criterion_id": "N04",
+      "run_id": "25750ee34df846cead8a1379e24a26b1",
+      "origins": 132324,
+      "measured_paths": 92018,
+      "facilities": 922,
+      "graph_revision": "df26f9eedd790cb5c0d0808e"
+    },
+    {
+      "region_id": "01000000",
+      "criterion_id": "N09",
+      "run_id": "68534ad65f0a4a0d92c73ff8270721ea",
+      "origins": 132324,
+      "measured_paths": 92012,
+      "facilities": 1851,
+      "graph_revision": "df26f9eedd790cb5c0d0808e"
+    },
+    {
+      "region_id": "03000000",
+      "criterion_id": "N04",
+      "run_id": "af7636df4c3247a3a99d26af909968ac",
+      "origins": 526926,
+      "measured_paths": 320465,
+      "facilities": 1397,
+      "graph_revision": "188f91285db0cda0c9ea5df2"
+    },
+    {
+      "region_id": "03000000",
+      "criterion_id": "N09",
+      "run_id": "6c4e2aab33ce46e4a492eb652905b91a",
+      "origins": 526926,
+      "measured_paths": 320650,
+      "facilities": 7014,
+      "graph_revision": "188f91285db0cda0c9ea5df2"
+    },
+    {
+      "region_id": "04000000",
+      "criterion_id": "N04",
+      "run_id": "2a3dabccc498407e86945cbbf02e5120",
+      "origins": 136549,
+      "measured_paths": 93591,
+      "facilities": 578,
+      "graph_revision": "b16f5710076fe3c503fe414a"
+    },
+    {
+      "region_id": "04000000",
+      "criterion_id": "N09",
+      "run_id": "a8b456b7da104fd182d63c91ce0278dc",
+      "origins": 136549,
+      "measured_paths": 93918,
+      "facilities": 2929,
+      "graph_revision": "b16f5710076fe3c503fe414a"
+    },
+    {
+      "region_id": "05000000",
+      "criterion_id": "N04",
+      "run_id": "68ccc2a1350f4763b36009aab3146dc6",
+      "origins": 221223,
+      "measured_paths": 167318,
+      "facilities": 516,
+      "graph_revision": "02ebc8359dacc5c2e3f3efe2"
+    },
+    {
+      "region_id": "05000000",
+      "criterion_id": "N09",
+      "run_id": "7f4a08667e33498d990ff4c18edc1ce3",
+      "origins": 221223,
+      "measured_paths": 171766,
+      "facilities": 4088,
+      "graph_revision": "02ebc8359dacc5c2e3f3efe2"
+    },
+    {
+      "region_id": "07000000",
+      "criterion_id": "N04",
+      "run_id": "59d52ff0ffa24116bea9b1d8bf5733c6",
+      "origins": 88848,
+      "measured_paths": 54951,
+      "facilities": 501,
+      "graph_revision": "c1821bd03d8180ee4f498266"
+    },
+    {
+      "region_id": "07000000",
+      "criterion_id": "N09",
+      "run_id": "d4e08e64617f41258ea2c4b3ad853b0d",
+      "origins": 88848,
+      "measured_paths": 54970,
+      "facilities": 1913,
+      "graph_revision": "c1821bd03d8180ee4f498266"
+    },
+    {
+      "region_id": "08000000",
+      "criterion_id": "N04",
+      "run_id": "fca7363dbc9b4dbb8a63627f8045b177",
+      "origins": 50255,
+      "measured_paths": 35515,
+      "facilities": 362,
+      "graph_revision": "273bdc286d0bd9c343a24f5e"
+    },
+    {
+      "region_id": "08000000",
+      "criterion_id": "N09",
+      "run_id": "1d3d0b254917446da7c1ebdc98896d0d",
+      "origins": 50255,
+      "measured_paths": 37135,
+      "facilities": 2754,
+      "graph_revision": "273bdc286d0bd9c343a24f5e"
+    },
+    {
+      "region_id": "10000000",
+      "criterion_id": "N04",
+      "run_id": "2cdc2a0f2f4d4a269c1f7551f6cb7813",
+      "origins": 8902,
+      "measured_paths": 5751,
+      "facilities": 119,
+      "graph_revision": "d9a5388aae1e3bfe9ef4f156"
+    },
+    {
+      "region_id": "10000000",
+      "criterion_id": "N09",
+      "run_id": "a24572cb21e34092a1ebe44873c8f0ef",
+      "origins": 8902,
+      "measured_paths": 6132,
+      "facilities": 2562,
+      "graph_revision": "d9a5388aae1e3bfe9ef4f156"
+    },
+    {
+      "region_id": "11000000",
+      "criterion_id": "N04",
+      "run_id": "fdf2744f7513454fbbef5c1f0a77e4b8",
+      "origins": 55924,
+      "measured_paths": 41664,
+      "facilities": 385,
+      "graph_revision": "a2a8b623297765b6fa7e50ea"
+    },
+    {
+      "region_id": "11000000",
+      "criterion_id": "N09",
+      "run_id": "de34526d405a49509e33b7f45c969e3c",
+      "origins": 55924,
+      "measured_paths": 41933,
+      "facilities": 2073,
+      "graph_revision": "a2a8b623297765b6fa7e50ea"
+    },
+    {
+      "region_id": "11800000",
+      "criterion_id": "N04",
+      "run_id": "ffadcbba854645efbbf7228bfeae17ed",
+      "origins": 1322,
+      "measured_paths": 1218,
+      "facilities": 31,
+      "graph_revision": "3a87e5d70f5b7a4ab2c6a198"
+    },
+    {
+      "region_id": "11800000",
+      "criterion_id": "N09",
+      "run_id": "0c1bb3841b8049a8b122db8d776a3d3b",
+      "origins": 1322,
+      "measured_paths": 931,
+      "facilities": 66,
+      "graph_revision": "3a87e5d70f5b7a4ab2c6a198"
+    },
+    {
+      "region_id": "12000000",
+      "criterion_id": "N04",
+      "run_id": "ded54611e68b455fbee9d083c16fa781",
+      "origins": 15407,
+      "measured_paths": 10606,
+      "facilities": 187,
+      "graph_revision": "49d96ea8bbe94c567151a9f5"
+    },
+    {
+      "region_id": "12000000",
+      "criterion_id": "N09",
+      "run_id": "c3d244f273c74320b1e1c419639e80da",
+      "origins": 15407,
+      "measured_paths": 12803,
+      "facilities": 759,
+      "graph_revision": "49d96ea8bbe94c567151a9f5"
+    },
+    {
+      "region_id": "14000000",
+      "criterion_id": "N04",
+      "run_id": "ff7a50521f684671bb1ee67e84144531",
+      "origins": 76664,
+      "measured_paths": 52478,
+      "facilities": 399,
+      "graph_revision": "236357df7edfca2341bfcf03"
+    },
+    {
+      "region_id": "14000000",
+      "criterion_id": "N09",
+      "run_id": "864615172cac45c59f09341b1ddf891a",
+      "origins": 76664,
+      "measured_paths": 52478,
+      "facilities": 2284,
+      "graph_revision": "236357df7edfca2341bfcf03"
+    },
+    {
+      "region_id": "15000000",
+      "criterion_id": "N04",
+      "run_id": "49cc2b69a44d440ea79be6d5a5561a87",
+      "origins": 46565,
+      "measured_paths": 36016,
+      "facilities": 324,
+      "graph_revision": "da1fc7eca9f8d3368568a86e"
+    },
+    {
+      "region_id": "15000000",
+      "criterion_id": "N09",
+      "run_id": "cdb93a2e46b64819b93bad325b8e881a",
+      "origins": 46565,
+      "measured_paths": 36021,
+      "facilities": 2119,
+      "graph_revision": "da1fc7eca9f8d3368568a86e"
+    },
+    {
+      "region_id": "17000000",
+      "criterion_id": "N04",
+      "run_id": "691770c9de7f456abcac853205ba7ffa",
+      "origins": 58337,
+      "measured_paths": 45189,
+      "facilities": 239,
+      "graph_revision": "467c7f409782ca5e47a32f94"
+    },
+    {
+      "region_id": "17000000",
+      "criterion_id": "N09",
+      "run_id": "9979cbea712c47868d75d0eb13a8e0af",
+      "origins": 58337,
+      "measured_paths": 45193,
+      "facilities": 3066,
+      "graph_revision": "467c7f409782ca5e47a32f94"
+    },
+    {
+      "region_id": "18000000",
+      "criterion_id": "N04",
+      "run_id": "b57475a955d24749896d74d4dc6b0223",
+      "origins": 92166,
+      "measured_paths": 66973,
+      "facilities": 596,
+      "graph_revision": "ab220651eb3fafd4eadd96c8"
+    },
+    {
+      "region_id": "18000000",
+      "criterion_id": "N09",
+      "run_id": "d1507ac716fe4030bac88e5e5d83df43",
+      "origins": 92166,
+      "measured_paths": 67188,
+      "facilities": 2030,
+      "graph_revision": "ab220651eb3fafd4eadd96c8"
+    },
+    {
+      "region_id": "19000000",
+      "criterion_id": "N04",
+      "run_id": "853f0ed1c7b7435884ba60fae0942193",
+      "origins": 66021,
+      "measured_paths": 48792,
+      "facilities": 329,
+      "graph_revision": "cc21de9cc946d643d9a3f595"
+    },
+    {
+      "region_id": "19000000",
+      "criterion_id": "N09",
+      "run_id": "9507ea7b5f014e7ea30521946f83bc70",
+      "origins": 66021,
+      "measured_paths": 49019,
+      "facilities": 2193,
+      "graph_revision": "cc21de9cc946d643d9a3f595"
+    },
+    {
+      "region_id": "20000000",
+      "criterion_id": "N04",
+      "run_id": "434eeef7d36d4033ae97845066f54547",
+      "origins": 120340,
+      "measured_paths": 90654,
+      "facilities": 671,
+      "graph_revision": "ffed41cb093d82e57f38a7f2"
+    },
+    {
+      "region_id": "20000000",
+      "criterion_id": "N09",
+      "run_id": "e344e7ef99ca44b2ba5709c155714909",
+      "origins": 120340,
+      "measured_paths": 90690,
+      "facilities": 3061,
+      "graph_revision": "ffed41cb093d82e57f38a7f2"
+    },
+    {
+      "region_id": "22000000",
+      "criterion_id": "N04",
+      "run_id": "fe1721c169094c76a512127f9cee2ba9",
+      "origins": 171779,
+      "measured_paths": 126371,
+      "facilities": 574,
+      "graph_revision": "e5ded873182a26457a771b22"
+    },
+    {
+      "region_id": "22000000",
+      "criterion_id": "N09",
+      "run_id": "f823574215614be4a9e7e9913776b644",
+      "origins": 171779,
+      "measured_paths": 126466,
+      "facilities": 4791,
+      "graph_revision": "e5ded873182a26457a771b22"
+    },
+    {
+      "region_id": "24000000",
+      "criterion_id": "N04",
+      "run_id": "a7e93b1c027943ab947bff741ca17c73",
+      "origins": 51231,
+      "measured_paths": 39754,
+      "facilities": 235,
+      "graph_revision": "cd048c25ee4ff8f8c6091311"
+    },
+    {
+      "region_id": "24000000",
+      "criterion_id": "N09",
+      "run_id": "19ba38a86c5a466bbe60994ff8448a35",
+      "origins": 51231,
+      "measured_paths": 39754,
+      "facilities": 1272,
+      "graph_revision": "cd048c25ee4ff8f8c6091311"
+    },
+    {
+      "region_id": "25000000",
+      "criterion_id": "N04",
+      "run_id": "53a6b2da8cf64c398ae16a9e05ee930a",
+      "origins": 106957,
+      "measured_paths": 79403,
+      "facilities": 588,
+      "graph_revision": "18ebf1de0daaad43be49d7de"
+    },
+    {
+      "region_id": "25000000",
+      "criterion_id": "N09",
+      "run_id": "5bbeffc93d344df1a815f124d22e208b",
+      "origins": 106957,
+      "measured_paths": 79553,
+      "facilities": 4434,
+      "graph_revision": "18ebf1de0daaad43be49d7de"
+    },
+    {
+      "region_id": "26000000",
+      "criterion_id": "N04",
+      "run_id": "f40ebe2fd2804c33bd5fea08cb5d71e4",
+      "origins": 11422,
+      "measured_paths": 7117,
+      "facilities": 59,
+      "graph_revision": "5ae0a775ebf784a07a3d42bb"
+    },
+    {
+      "region_id": "26000000",
+      "criterion_id": "N09",
+      "run_id": "ca1931f976c845fba7b8fba23f887f8a",
+      "origins": 11422,
+      "measured_paths": 7117,
+      "facilities": 34,
+      "graph_revision": "5ae0a775ebf784a07a3d42bb"
+    },
+    {
+      "region_id": "27000000",
+      "criterion_id": "N04",
+      "run_id": "c684401b72aa46d989c04f0ed454399c",
+      "origins": 51913,
+      "measured_paths": 38308,
+      "facilities": 194,
+      "graph_revision": "b057d996dbfb3f7c8ac8ac70"
+    },
+    {
+      "region_id": "27000000",
+      "criterion_id": "N09",
+      "run_id": "72d0aa8ea43b4d23b08b5f99867970fc",
+      "origins": 51913,
+      "measured_paths": 38218,
+      "facilities": 1792,
+      "graph_revision": "b057d996dbfb3f7c8ac8ac70"
+    },
+    {
+      "region_id": "28000000",
+      "criterion_id": "N04",
+      "run_id": "c345d31f63044fdfaf6acfd7fad9ef51",
+      "origins": 113004,
+      "measured_paths": 82525,
+      "facilities": 451,
+      "graph_revision": "1a34d37cd9ef3035fe87852d"
+    },
+    {
+      "region_id": "28000000",
+      "criterion_id": "N09",
+      "run_id": "b059e6fa9c974391836688308b7c9bd4",
+      "origins": 113004,
+      "measured_paths": 82743,
+      "facilities": 3458,
+      "graph_revision": "1a34d37cd9ef3035fe87852d"
+    },
+    {
+      "region_id": "29000000",
+      "criterion_id": "N04",
+      "run_id": "1ca165ca25134ad79f511884ee4b7de3",
+      "origins": 71431,
+      "measured_paths": 53268,
+      "facilities": 348,
+      "graph_revision": "730d2e37b22bc7f45d78a3ae"
+    },
+    {
+      "region_id": "29000000",
+      "criterion_id": "N09",
+      "run_id": "1f2828914ee74c4088c8b2f047c4ba90",
+      "origins": 71431,
+      "measured_paths": 53428,
+      "facilities": 1912,
+      "graph_revision": "730d2e37b22bc7f45d78a3ae"
+    },
+    {
+      "region_id": "30000000",
+      "criterion_id": "N04",
+      "run_id": "eae01cea4bba4710ac0d178e5129661c",
+      "origins": 4516,
+      "measured_paths": 3821,
+      "facilities": 116,
+      "graph_revision": "6147c4d5815d85654993486f"
+    },
+    {
+      "region_id": "30000000",
+      "criterion_id": "N09",
+      "run_id": "92e3289fe3c04b589c22af3347764999",
+      "origins": 4516,
+      "measured_paths": 3796,
+      "facilities": 853,
+      "graph_revision": "6147c4d5815d85654993486f"
+    },
+    {
+      "region_id": "32000000",
+      "criterion_id": "N04",
+      "run_id": "5fd6afd9c3fa4aa6beeead944ef0ba5a",
+      "origins": 106977,
+      "measured_paths": 75483,
+      "facilities": 544,
+      "graph_revision": "f9568443a7d11eb465103b59"
+    },
+    {
+      "region_id": "32000000",
+      "criterion_id": "N09",
+      "run_id": "7e25259a981e4783a28b42fb293cad3d",
+      "origins": 106977,
+      "measured_paths": 75441,
+      "facilities": 2674,
+      "graph_revision": "f9568443a7d11eb465103b59"
+    },
+    {
+      "region_id": "33000000",
+      "criterion_id": "N04",
+      "run_id": "cd36951d1de0426e88e1414cafbb34f4",
+      "origins": 79813,
+      "measured_paths": 56493,
+      "facilities": 384,
+      "graph_revision": "19f00d7e51fa9a107a51eaa7"
+    },
+    {
+      "region_id": "33000000",
+      "criterion_id": "N09",
+      "run_id": "e1600fc2474a4d78b095d2db6207e884",
+      "origins": 79813,
+      "measured_paths": 56765,
+      "facilities": 2185,
+      "graph_revision": "19f00d7e51fa9a107a51eaa7"
+    },
+    {
+      "region_id": "34000000",
+      "criterion_id": "N04",
+      "run_id": "cc9cfae5da65421380929a20c43aeeba",
+      "origins": 50392,
+      "measured_paths": 38367,
+      "facilities": 161,
+      "graph_revision": "250a614827976805c137b521"
+    },
+    {
+      "region_id": "34000000",
+      "criterion_id": "N09",
+      "run_id": "fb4335e8973d4ccaa9e784e38cd21fd3",
+      "origins": 50392,
+      "measured_paths": 38493,
+      "facilities": 1100,
+      "graph_revision": "250a614827976805c137b521"
+    },
+    {
+      "region_id": "35000000",
+      "criterion_id": "N04",
+      "run_id": "db5c5bb75c8542bc8bbf1762647d1527",
+      "origins": 48546,
+      "measured_paths": 29616,
+      "facilities": 494,
+      "graph_revision": "f37e0b50a3b3b4977a4604c7"
+    },
+    {
+      "region_id": "35000000",
+      "criterion_id": "N09",
+      "run_id": "abdc6ba2173040e997ef46caf0cedbda",
+      "origins": 48546,
+      "measured_paths": 29619,
+      "facilities": 2535,
+      "graph_revision": "f37e0b50a3b3b4977a4604c7"
+    },
+    {
+      "region_id": "36000000",
+      "criterion_id": "N04",
+      "run_id": "5f96bf2e7f0a42a7bf62ddcaeda0694a",
+      "origins": 65277,
+      "measured_paths": 50331,
+      "facilities": 1013,
+      "graph_revision": "ef6103ef15eb6046051ae51b"
+    },
+    {
+      "region_id": "36000000",
+      "criterion_id": "N09",
+      "run_id": "290e39113b5f43d3a32e97439add1d22",
+      "origins": 65277,
+      "measured_paths": 50287,
+      "facilities": 2817,
+      "graph_revision": "ef6103ef15eb6046051ae51b"
+    },
+    {
+      "region_id": "37000000",
+      "criterion_id": "N04",
+      "run_id": "190a160bf16142c3b0be7262d180c252",
+      "origins": 40896,
+      "measured_paths": 27702,
+      "facilities": 160,
+      "graph_revision": "dd83cc0f4326d26d382d0359"
+    },
+    {
+      "region_id": "37000000",
+      "criterion_id": "N09",
+      "run_id": "e6966c3904594f0ea6e6bc9ae151f25b",
+      "origins": 40896,
+      "measured_paths": 27544,
+      "facilities": 643,
+      "graph_revision": "dd83cc0f4326d26d382d0359"
+    },
+    {
+      "region_id": "38000000",
+      "criterion_id": "N04",
+      "run_id": "606d2bc256de4f51ac2e777f25a8d65a",
+      "origins": 30863,
+      "measured_paths": 23650,
+      "facilities": 755,
+      "graph_revision": "027f7cfaf3e093a6334d6a1d"
+    },
+    {
+      "region_id": "38000000",
+      "criterion_id": "N09",
+      "run_id": "fb321d2ad0b846689efe3bd37eec0730",
+      "origins": 30863,
+      "measured_paths": 23660,
+      "facilities": 1822,
+      "graph_revision": "027f7cfaf3e093a6334d6a1d"
+    },
+    {
+      "region_id": "40000000",
+      "criterion_id": "N04",
+      "run_id": "af1a282f09524619be7bfba02976adfa",
+      "origins": 31550,
+      "measured_paths": 27311,
+      "facilities": 817,
+      "graph_revision": "5477b631367a89389366ed00"
+    },
+    {
+      "region_id": "40000000",
+      "criterion_id": "N09",
+      "run_id": "8f56416b4f2e4488ae2a7d374fd6851d",
+      "origins": 31550,
+      "measured_paths": 27315,
+      "facilities": 5803,
+      "graph_revision": "5477b631367a89389366ed00"
+    },
+    {
+      "region_id": "41000000",
+      "criterion_id": "N04",
+      "run_id": "3d2ad312461d4b25adb7a8efcdb97c96",
+      "origins": 106340,
+      "measured_paths": 76128,
+      "facilities": 417,
+      "graph_revision": "d9a771647e5187a17abf647b"
+    },
+    {
+      "region_id": "41000000",
+      "criterion_id": "N09",
+      "run_id": "c0b6988ee510460b832fb099e081c9d4",
+      "origins": 106340,
+      "measured_paths": 76481,
+      "facilities": 6687,
+      "graph_revision": "d9a771647e5187a17abf647b"
+    },
+    {
+      "region_id": "42000000",
+      "criterion_id": "N04",
+      "run_id": "b30ce38f47f54fe4b7e56ac12d4d8d30",
+      "origins": 76224,
+      "measured_paths": 54152,
+      "facilities": 270,
+      "graph_revision": "cd24667ac054ba93fc2cf041"
+    },
+    {
+      "region_id": "42000000",
+      "criterion_id": "N09",
+      "run_id": "88634858dcc349e7b1d70da8da8ba58d",
+      "origins": 76224,
+      "measured_paths": 54152,
+      "facilities": 1677,
+      "graph_revision": "cd24667ac054ba93fc2cf041"
+    },
+    {
+      "region_id": "44000000",
+      "criterion_id": "N04",
+      "run_id": "02f2e4ec084247b6baf2f9fe514bb0e6",
+      "origins": 1013,
+      "measured_paths": 833,
+      "facilities": 50,
+      "graph_revision": "736adc5f001d738a5832f85a"
+    },
+    {
+      "region_id": "44000000",
+      "criterion_id": "N09",
+      "run_id": "b4361364be5846b6a27041bd2602311a",
+      "origins": 1013,
+      "measured_paths": 869,
+      "facilities": 387,
+      "graph_revision": "736adc5f001d738a5832f85a"
+    },
+    {
+      "region_id": "45000000",
+      "criterion_id": "N04",
+      "run_id": "52b3f522fdbf40f3b56017cd80b8d483",
+      "origins": 71390,
+      "measured_paths": 57139,
+      "facilities": 1516,
+      "graph_revision": "e37e86a28d4b5ffd82e89ee0"
+    },
+    {
+      "region_id": "45000000",
+      "criterion_id": "N09",
+      "run_id": "7feb2ae160534906b86a5d40d53ac599",
+      "origins": 71390,
+      "measured_paths": 57173,
+      "facilities": 12368,
+      "graph_revision": "e37e86a28d4b5ffd82e89ee0"
+    },
+    {
+      "region_id": "46000000",
+      "criterion_id": "N04",
+      "run_id": "f60fb08ddcad4ca498be925af9246203",
+      "origins": 344040,
+      "measured_paths": 241638,
+      "facilities": 1502,
+      "graph_revision": "fd73056ab32e8d04b5377943"
+    },
+    {
+      "region_id": "46000000",
+      "criterion_id": "N09",
+      "run_id": "da643c4924104b76b163b01b86a69de6",
+      "origins": 344040,
+      "measured_paths": 241928,
+      "facilities": 20422,
+      "graph_revision": "fd73056ab32e8d04b5377943"
+    },
+    {
+      "region_id": "47000000",
+      "criterion_id": "N04",
+      "run_id": "20d18acac88946d7867eed8d856f63c1",
+      "origins": 4497,
+      "measured_paths": 3960,
+      "facilities": 259,
+      "graph_revision": "d90ba8b6affdd0a23a54cd66"
+    },
+    {
+      "region_id": "47000000",
+      "criterion_id": "N09",
+      "run_id": "f19c8061f57c4e4fb450a202540f48f7",
+      "origins": 4497,
+      "measured_paths": 3882,
+      "facilities": 999,
+      "graph_revision": "d90ba8b6affdd0a23a54cd66"
+    },
+    {
+      "region_id": "49000000",
+      "criterion_id": "N04",
+      "run_id": "97d9472a88c0460ba76cc618201aaee2",
+      "origins": 21186,
+      "measured_paths": 16644,
+      "facilities": 153,
+      "graph_revision": "807ad517ea707c1167643290"
+    },
+    {
+      "region_id": "49000000",
+      "criterion_id": "N09",
+      "run_id": "2112d7514d64416fb558e37ccc57e3ce",
+      "origins": 21186,
+      "measured_paths": 16671,
+      "facilities": 1373,
+      "graph_revision": "807ad517ea707c1167643290"
+    },
+    {
+      "region_id": "50000000",
+      "criterion_id": "N04",
+      "run_id": "b2ed48b6bdb94cab85679cfbfb2043a0",
+      "origins": 102943,
+      "measured_paths": 73922,
+      "facilities": 607,
+      "graph_revision": "6e9cd7eeaae20fc40345a4f1"
+    },
+    {
+      "region_id": "50000000",
+      "criterion_id": "N09",
+      "run_id": "4a865004cd7e432bb7b48e41ab960a0d",
+      "origins": 102943,
+      "measured_paths": 73920,
+      "facilities": 2329,
+      "graph_revision": "6e9cd7eeaae20fc40345a4f1"
+    },
+    {
+      "region_id": "52000000",
+      "criterion_id": "N04",
+      "run_id": "4b130adce30041ff83d79957b795fbed",
+      "origins": 85199,
+      "measured_paths": 60866,
+      "facilities": 375,
+      "graph_revision": "90b9d2582c492139dfd416de"
+    },
+    {
+      "region_id": "52000000",
+      "criterion_id": "N09",
+      "run_id": "2194b7aa218a4ae9a805c125ba9e9e68",
+      "origins": 85199,
+      "measured_paths": 60769,
+      "facilities": 2282,
+      "graph_revision": "90b9d2582c492139dfd416de"
+    },
+    {
+      "region_id": "53000000",
+      "criterion_id": "N04",
+      "run_id": "42a1046bb94a4fa19420d127091c4ef2",
+      "origins": 77829,
+      "measured_paths": 53453,
+      "facilities": 573,
+      "graph_revision": "d1bea66b8bfc2d0e80fb9f0d"
+    },
+    {
+      "region_id": "53000000",
+      "criterion_id": "N09",
+      "run_id": "26326dad8fe243f69325169684fa4aa6",
+      "origins": 77829,
+      "measured_paths": 53468,
+      "facilities": 1087,
+      "graph_revision": "d1bea66b8bfc2d0e80fb9f0d"
+    },
+    {
+      "region_id": "54000000",
+      "criterion_id": "N04",
+      "run_id": "fad2fec74de642a9bcf4125d47ac10df",
+      "origins": 27374,
+      "measured_paths": 20465,
+      "facilities": 171,
+      "graph_revision": "c4e7b216e356a520db00fb43"
+    },
+    {
+      "region_id": "54000000",
+      "criterion_id": "N09",
+      "run_id": "cd9a6bf6b9674187a4b48aff8e528b07",
+      "origins": 27374,
+      "measured_paths": 20518,
+      "facilities": 1284,
+      "graph_revision": "c4e7b216e356a520db00fb43"
+    },
+    {
+      "region_id": "56000000",
+      "criterion_id": "N04",
+      "run_id": "2571ca2f5500450497a537f179e27225",
+      "origins": 65381,
+      "measured_paths": 49442,
+      "facilities": 286,
+      "graph_revision": "ed266017b7e7941910a9333d"
+    },
+    {
+      "region_id": "56000000",
+      "criterion_id": "N09",
+      "run_id": "df1c49600e5043c5b36a0fad89002d0b",
+      "origins": 65381,
+      "measured_paths": 49455,
+      "facilities": 1482,
+      "graph_revision": "ed266017b7e7941910a9333d"
+    },
+    {
+      "region_id": "57000000",
+      "criterion_id": "N04",
+      "run_id": "d7135826bdda440a83ab896af0a60831",
+      "origins": 122197,
+      "measured_paths": 92910,
+      "facilities": 552,
+      "graph_revision": "8dbb1588205fcc0153194859"
+    },
+    {
+      "region_id": "57000000",
+      "criterion_id": "N09",
+      "run_id": "57e71692f69644b6bf8c5545939edac7",
+      "origins": 122197,
+      "measured_paths": 93037,
+      "facilities": 3421,
+      "graph_revision": "8dbb1588205fcc0153194859"
+    },
+    {
+      "region_id": "58000000",
+      "criterion_id": "N04",
+      "run_id": "91022f8e6c7844739ef374712a34bfa4",
+      "origins": 48738,
+      "measured_paths": 38787,
+      "facilities": 263,
+      "graph_revision": "7af28c5aecca010e8e9a1ebe"
+    },
+    {
+      "region_id": "58000000",
+      "criterion_id": "N09",
+      "run_id": "3301723da77b4361a7e9c0af2e34cb25",
+      "origins": 48738,
+      "measured_paths": 38969,
+      "facilities": 2844,
+      "graph_revision": "7af28c5aecca010e8e9a1ebe"
+    },
+    {
+      "region_id": "60000000",
+      "criterion_id": "N04",
+      "run_id": "3a0c033cb0d843cbaf83c4988bc73381",
+      "origins": 220724,
+      "measured_paths": 143628,
+      "facilities": 961,
+      "graph_revision": "65e0e0673ee6115b0cbed25e"
+    },
+    {
+      "region_id": "60000000",
+      "criterion_id": "N09",
+      "run_id": "692828da9b0c45de909932c0a9aac32b",
+      "origins": 220724,
+      "measured_paths": 143672,
+      "facilities": 4929,
+      "graph_revision": "65e0e0673ee6115b0cbed25e"
+    },
+    {
+      "region_id": "61000000",
+      "criterion_id": "N04",
+      "run_id": "2cdea084506446229283fb64da223449",
+      "origins": 51392,
+      "measured_paths": 38133,
+      "facilities": 299,
+      "graph_revision": "a9d6d9cd4c6e47e43e7fc31b"
+    },
+    {
+      "region_id": "61000000",
+      "criterion_id": "N09",
+      "run_id": "a4e237d74830452791f6feb12bebb32b",
+      "origins": 51392,
+      "measured_paths": 38133,
+      "facilities": 2347,
+      "graph_revision": "a9d6d9cd4c6e47e43e7fc31b"
+    },
+    {
+      "region_id": "63000000",
+      "criterion_id": "N04",
+      "run_id": "37d1e8edb4854ca4a09d176e97657618",
+      "origins": 108947,
+      "measured_paths": 75304,
+      "facilities": 374,
+      "graph_revision": "b7685c7e91f4526eec53b40b"
+    },
+    {
+      "region_id": "63000000",
+      "criterion_id": "N09",
+      "run_id": "cd9ce026f1e24d46984f2d5cc9ecd6ed",
+      "origins": 108947,
+      "measured_paths": 75415,
+      "facilities": 2254,
+      "graph_revision": "b7685c7e91f4526eec53b40b"
+    },
+    {
+      "region_id": "64000000",
+      "criterion_id": "N04",
+      "run_id": "f70d52b799994a4a88375794630e5ca8",
+      "origins": 28802,
+      "measured_paths": 22831,
+      "facilities": 131,
+      "graph_revision": "30543f5057dd11aa3a7749fa"
+    },
+    {
+      "region_id": "64000000",
+      "criterion_id": "N09",
+      "run_id": "96031ad4f03d4b61a224dd5ce4d8417f",
+      "origins": 28802,
+      "measured_paths": 23983,
+      "facilities": 1793,
+      "graph_revision": "30543f5057dd11aa3a7749fa"
+    },
+    {
+      "region_id": "65000000",
+      "criterion_id": "N04",
+      "run_id": "b52046183bee42dcbb9aefaf7db14fa6",
+      "origins": 145734,
+      "measured_paths": 107838,
+      "facilities": 1030,
+      "graph_revision": "1928694ea0f563af016a0b8e"
+    },
+    {
+      "region_id": "65000000",
+      "criterion_id": "N09",
+      "run_id": "2ec39609aab2468681a0d847512f23d0",
+      "origins": 145734,
+      "measured_paths": 107898,
+      "facilities": 4718,
+      "graph_revision": "1928694ea0f563af016a0b8e"
+    },
+    {
+      "region_id": "66000000",
+      "criterion_id": "N04",
+      "run_id": "b320e005a0424fc498c4341840d5ccab",
+      "origins": 21941,
+      "measured_paths": 16292,
+      "facilities": 236,
+      "graph_revision": "c01622652d979bf9f6fcab03"
+    },
+    {
+      "region_id": "66000000",
+      "criterion_id": "N09",
+      "run_id": "83ddb193c99f413fb4a021539bfb6be6",
+      "origins": 21941,
+      "measured_paths": 16381,
+      "facilities": 1565,
+      "graph_revision": "c01622652d979bf9f6fcab03"
+    },
+    {
+      "region_id": "68000000",
+      "criterion_id": "N04",
+      "run_id": "ce15d4387dd54e1ab5ed3abe53af0d67",
+      "origins": 58328,
+      "measured_paths": 44434,
+      "facilities": 191,
+      "graph_revision": "9d69e51de4d99ecd8be3b3ec"
+    },
+    {
+      "region_id": "68000000",
+      "criterion_id": "N09",
+      "run_id": "da85308dbb174345a2977c80ae37d043",
+      "origins": 58328,
+      "measured_paths": 44434,
+      "facilities": 1424,
+      "graph_revision": "9d69e51de4d99ecd8be3b3ec"
+    },
+    {
+      "region_id": "69000000",
+      "criterion_id": "N04",
+      "run_id": "a550f28c92074d8e9143217856ec4d75",
+      "origins": 35110,
+      "measured_paths": 26787,
+      "facilities": 298,
+      "graph_revision": "de2cf19c0d63219984bae0d6"
+    },
+    {
+      "region_id": "69000000",
+      "criterion_id": "N09",
+      "run_id": "f77327871d644fc8a4733f2b1e00c265",
+      "origins": 35110,
+      "measured_paths": 26773,
+      "facilities": 1518,
+      "graph_revision": "de2cf19c0d63219984bae0d6"
+    },
+    {
+      "region_id": "70000000",
+      "criterion_id": "N04",
+      "run_id": "d22c5e5968574566a6f86cd63d0f615d",
+      "origins": 58019,
+      "measured_paths": 42156,
+      "facilities": 373,
+      "graph_revision": "dc441f162c9641ccc2bc4087"
+    },
+    {
+      "region_id": "70000000",
+      "criterion_id": "N09",
+      "run_id": "b8683e16ef5047988fc421869a0f7156",
+      "origins": 58019,
+      "measured_paths": 42172,
+      "facilities": 2641,
+      "graph_revision": "dc441f162c9641ccc2bc4087"
+    },
+    {
+      "region_id": "71000000",
+      "criterion_id": "N04",
+      "run_id": "94988ef0cc05403a80fa087f0d37660b",
+      "origins": 74477,
+      "measured_paths": 51376,
+      "facilities": 330,
+      "graph_revision": "535a6c838e58a5dbca77c234"
+    },
+    {
+      "region_id": "71000000",
+      "criterion_id": "N09",
+      "run_id": "afb5bd2969dd48ffbe20f41376a93bed",
+      "origins": 74477,
+      "measured_paths": 51578,
+      "facilities": 2661,
+      "graph_revision": "535a6c838e58a5dbca77c234"
+    },
+    {
+      "region_id": "71800000",
+      "criterion_id": "N04",
+      "run_id": "b1c149c999cb4c089832bbad260e5728",
+      "origins": 33443,
+      "measured_paths": 23539,
+      "facilities": 269,
+      "graph_revision": "97a858f46a0cc950752d1694"
+    },
+    {
+      "region_id": "71800000",
+      "criterion_id": "N09",
+      "run_id": "4b208bbc8d074be6b6d1a177beedc701",
+      "origins": 33443,
+      "measured_paths": 24914,
+      "facilities": 1990,
+      "graph_revision": "97a858f46a0cc950752d1694"
+    },
+    {
+      "region_id": "71900000",
+      "criterion_id": "N04",
+      "run_id": "c7238856e479417dafb78ecd997f0cfe",
+      "origins": 6035,
+      "measured_paths": 4837,
+      "facilities": 84,
+      "graph_revision": "fa77bfca746a26745c5223a2"
+    },
+    {
+      "region_id": "71900000",
+      "criterion_id": "N09",
+      "run_id": "ec2cb2fd4de14409aaa428c5d7466c97",
+      "origins": 6035,
+      "measured_paths": 4902,
+      "facilities": 579,
+      "graph_revision": "fa77bfca746a26745c5223a2"
+    },
+    {
+      "region_id": "73000000",
+      "criterion_id": "N04",
+      "run_id": "3f6229086c474c4f949e5301081f0c0b",
+      "origins": 25456,
+      "measured_paths": 19863,
+      "facilities": 262,
+      "graph_revision": "5e28f539184b486431933868"
+    },
+    {
+      "region_id": "73000000",
+      "criterion_id": "N09",
+      "run_id": "01c661ae891a41cc86d7f56b8124ff0d",
+      "origins": 25456,
+      "measured_paths": 19863,
+      "facilities": 1264,
+      "graph_revision": "5e28f539184b486431933868"
+    },
+    {
+      "region_id": "75000000",
+      "criterion_id": "N04",
+      "run_id": "21ff552da380434a8fe1bc3e7f76aa33",
+      "origins": 179210,
+      "measured_paths": 132117,
+      "facilities": 952,
+      "graph_revision": "61d316bfb776fba9e2e9f945"
+    },
+    {
+      "region_id": "75000000",
+      "criterion_id": "N09",
+      "run_id": "95338b2c265940b7aeb910d2a650b9ef",
+      "origins": 179210,
+      "measured_paths": 132260,
+      "facilities": 4653,
+      "graph_revision": "61d316bfb776fba9e2e9f945"
+    },
+    {
+      "region_id": "76000000",
+      "criterion_id": "N04",
+      "run_id": "184514a4310142a2bf28dada4f347314",
+      "origins": 20063,
+      "measured_paths": 13298,
+      "facilities": 209,
+      "graph_revision": "4f9f77a501c0e8a126a50e8c"
+    },
+    {
+      "region_id": "76000000",
+      "criterion_id": "N09",
+      "run_id": "0e2e75038c50421d8a1b46ddf36f800c",
+      "origins": 20063,
+      "measured_paths": 13423,
+      "facilities": 2338,
+      "graph_revision": "4f9f77a501c0e8a126a50e8c"
+    },
+    {
+      "region_id": "77000000",
+      "criterion_id": "N04",
+      "run_id": "c6c4bbeae8df4cfea3719befa42cb916",
+      "origins": 214,
+      "measured_paths": 165,
+      "facilities": 20,
+      "graph_revision": "e9be94b852919b61776a1a74"
+    },
+    {
+      "region_id": "77000000",
+      "criterion_id": "N09",
+      "run_id": "5b8c4572785c4ba3a40ee66df9fd695f",
+      "origins": 214,
+      "measured_paths": 159,
+      "facilities": 78,
+      "graph_revision": "e9be94b852919b61776a1a74"
+    },
+    {
+      "region_id": "78000000",
+      "criterion_id": "N04",
+      "run_id": "b20e8b8a94e84d88aa5fc5c111f66858",
+      "origins": 37479,
+      "measured_paths": 29102,
+      "facilities": 375,
+      "graph_revision": "f1f2b51862bf382e58bae925"
+    },
+    {
+      "region_id": "78000000",
+      "criterion_id": "N09",
+      "run_id": "9aa9b097539f414290cf730bf5aeed1e",
+      "origins": 37479,
+      "measured_paths": 29248,
+      "facilities": 3233,
+      "graph_revision": "f1f2b51862bf382e58bae925"
+    },
+    {
+      "region_id": "79000000",
+      "criterion_id": "N04",
+      "run_id": "18d6785000c94015a26e3c575473b8bf",
+      "origins": 75361,
+      "measured_paths": 47837,
+      "facilities": 128,
+      "graph_revision": "508bb80521d2d70cad0cabe9"
+    },
+    {
+      "region_id": "79000000",
+      "criterion_id": "N09",
+      "run_id": "9f83b805961e4738961dc928c54f6459",
+      "origins": 75361,
+      "measured_paths": 47837,
+      "facilities": 539,
+      "graph_revision": "508bb80521d2d70cad0cabe9"
+    },
+    {
+      "region_id": "80000000",
+      "criterion_id": "N04",
+      "run_id": "20d61f2cdbc54e8b826a72ac776484cc",
+      "origins": 129407,
+      "measured_paths": 89523,
+      "facilities": 810,
+      "graph_revision": "dfa7213c03050b995a4ff91d"
+    },
+    {
+      "region_id": "80000000",
+      "criterion_id": "N09",
+      "run_id": "274765530d97424c961a46deb89957d6",
+      "origins": 129407,
+      "measured_paths": 89521,
+      "facilities": 2681,
+      "graph_revision": "dfa7213c03050b995a4ff91d"
+    },
+    {
+      "region_id": "81000000",
+      "criterion_id": "N04",
+      "run_id": "d40170c294934e14b9c5375161b6e5bd",
+      "origins": 20087,
+      "measured_paths": 14158,
+      "facilities": 187,
+      "graph_revision": "90c2eecc6fc50e29fd0e0a45"
+    },
+    {
+      "region_id": "81000000",
+      "criterion_id": "N09",
+      "run_id": "7f3bbb04fe694a3b9d98ef56b3c68a4e",
+      "origins": 20087,
+      "measured_paths": 14160,
+      "facilities": 2523,
+      "graph_revision": "90c2eecc6fc50e29fd0e0a45"
+    },
+    {
+      "region_id": "82000000",
+      "criterion_id": "N04",
+      "run_id": "f78fe62be5d346699ec595ba450d1f1d",
+      "origins": 394421,
+      "measured_paths": 279446,
+      "facilities": 1131,
+      "graph_revision": "9c7350cdcd3a96e649f5bc92"
+    },
+    {
+      "region_id": "82000000",
+      "criterion_id": "N09",
+      "run_id": "97b8fbca470b446f89dd0cbaf16f0f65",
+      "origins": 394421,
+      "measured_paths": 275647,
+      "facilities": 263,
+      "graph_revision": "9c7350cdcd3a96e649f5bc92"
+    },
+    {
+      "region_id": "83000000",
+      "criterion_id": "N04",
+      "run_id": "ac3dc569de464c8ba4d7cf5ae20fb860",
+      "origins": 81172,
+      "measured_paths": 55153,
+      "facilities": 163,
+      "graph_revision": "18aeab870e5bdf085ddd8e35"
+    },
+    {
+      "region_id": "83000000",
+      "criterion_id": "N09",
+      "run_id": "892fec97986d4293b4780b0583c18968",
+      "origins": 81172,
+      "measured_paths": 55120,
+      "facilities": 1125,
+      "graph_revision": "18aeab870e5bdf085ddd8e35"
+    },
+    {
+      "region_id": "84000000",
+      "criterion_id": "N04",
+      "run_id": "10b3a9ceaf164f3e991bdfb203f0f645",
+      "origins": 16063,
+      "measured_paths": 12234,
+      "facilities": 156,
+      "graph_revision": "0d1df3ca5ffd61f9cd21db8d"
+    },
+    {
+      "region_id": "84000000",
+      "criterion_id": "N09",
+      "run_id": "9e22705fbd1149378da223bbb6bb9a06",
+      "origins": 16063,
+      "measured_paths": 12375,
+      "facilities": 397,
+      "graph_revision": "0d1df3ca5ffd61f9cd21db8d"
+    },
+    {
+      "region_id": "85000000",
+      "criterion_id": "N04",
+      "run_id": "68707920e62d409cac2af88d233b13f0",
+      "origins": 19636,
+      "measured_paths": 11223,
+      "facilities": 168,
+      "graph_revision": "4d613dcc13eba633e6eb4071"
+    },
+    {
+      "region_id": "85000000",
+      "criterion_id": "N09",
+      "run_id": "0e6d257ec00642a28962aab9700dce7a",
+      "origins": 19636,
+      "measured_paths": 11628,
+      "facilities": 230,
+      "graph_revision": "4d613dcc13eba633e6eb4071"
+    },
+    {
+      "region_id": "86000000",
+      "criterion_id": "N04",
+      "run_id": "36b15e12cedc4909a58f39e8feea6cf4",
+      "origins": 17909,
+      "measured_paths": 13946,
+      "facilities": 173,
+      "graph_revision": "3ae757e81dfd2107f6b737b2"
+    },
+    {
+      "region_id": "86000000",
+      "criterion_id": "N09",
+      "run_id": "c3b337b6f2cb44399e1675b6fd75c6c8",
+      "origins": 17909,
+      "measured_paths": 14211,
+      "facilities": 1377,
+      "graph_revision": "3ae757e81dfd2107f6b737b2"
+    },
+    {
+      "region_id": "87000000",
+      "criterion_id": "N04",
+      "run_id": "a7ab297d481d4df4aa2de463d14d31e8",
+      "origins": 34058,
+      "measured_paths": 28159,
+      "facilities": 304,
+      "graph_revision": "e90331c8102433cdd438b8ef"
+    },
+    {
+      "region_id": "87000000",
+      "criterion_id": "N09",
+      "run_id": "dcd00f29003e4f9c8caba2795568f427",
+      "origins": 34058,
+      "measured_paths": 27696,
+      "facilities": 1273,
+      "graph_revision": "e90331c8102433cdd438b8ef"
+    },
+    {
+      "region_id": "88000000",
+      "criterion_id": "N04",
+      "run_id": "4bf20665f1eb45479b9bd69c040c1570",
+      "origins": 22439,
+      "measured_paths": 14997,
+      "facilities": 176,
+      "graph_revision": "4bb9992355252fe5b2d38009"
+    },
+    {
+      "region_id": "88000000",
+      "criterion_id": "N09",
+      "run_id": "99b50ad1925e4417847afd65655f63a0",
+      "origins": 22439,
+      "measured_paths": 15017,
+      "facilities": 1291,
+      "graph_revision": "4bb9992355252fe5b2d38009"
+    },
+    {
+      "region_id": "89000000",
+      "criterion_id": "N04",
+      "run_id": "913b6664048741cea317e7b030b53c34",
+      "origins": 68447,
+      "measured_paths": 41479,
+      "facilities": 153,
+      "graph_revision": "f49bc0f28a3c3af4f0127daa"
+    },
+    {
+      "region_id": "89000000",
+      "criterion_id": "N09",
+      "run_id": "40e74092665240248b47d5a759ba17b6",
+      "origins": 68447,
+      "measured_paths": 41485,
+      "facilities": 871,
+      "graph_revision": "f49bc0f28a3c3af4f0127daa"
+    },
+    {
+      "region_id": "90000000",
+      "criterion_id": "N04",
+      "run_id": "778cc1aab5e340499e072821d94347cc",
+      "origins": 16022,
+      "measured_paths": 8468,
+      "facilities": 163,
+      "graph_revision": "0883d53d0aad431c31aa18be"
+    },
+    {
+      "region_id": "90000000",
+      "criterion_id": "N09",
+      "run_id": "67769df8d65b4826bc2cf2cabea5a849",
+      "origins": 16022,
+      "measured_paths": 8465,
+      "facilities": 706,
+      "graph_revision": "0883d53d0aad431c31aa18be"
+    },
+    {
+      "region_id": "91000000",
+      "criterion_id": "N04",
+      "run_id": "ba4cc72db4444f6ca9bc74ee4f6ee08a",
+      "origins": 18701,
+      "measured_paths": 12572,
+      "facilities": 111,
+      "graph_revision": "dcd7ad9d76dee9605330dba4"
+    },
+    {
+      "region_id": "91000000",
+      "criterion_id": "N09",
+      "run_id": "6aa318a93dd040a58c8103cb226531fb",
+      "origins": 18701,
+      "measured_paths": 12576,
+      "facilities": 379,
+      "graph_revision": "dcd7ad9d76dee9605330dba4"
+    },
+    {
+      "region_id": "92000000",
+      "criterion_id": "N04",
+      "run_id": "bed824436a0a4fcf9639ab6c28bc14fa",
+      "origins": 187882,
+      "measured_paths": 133167,
+      "facilities": 922,
+      "graph_revision": "c4d0f71816fa9be79100ef2e"
+    },
+    {
+      "region_id": "92000000",
+      "criterion_id": "N09",
+      "run_id": "633dce1cc0c44480afcf319a69540f22",
+      "origins": 187882,
+      "measured_paths": 133183,
+      "facilities": 4702,
+      "graph_revision": "c4d0f71816fa9be79100ef2e"
+    },
+    {
+      "region_id": "93000000",
+      "criterion_id": "N04",
+      "run_id": "c8a0287133374f21a591b00af9521944",
+      "origins": 12626,
+      "measured_paths": 5873,
+      "facilities": 165,
+      "graph_revision": "65f9bfc6bb75fec723e842d4"
+    },
+    {
+      "region_id": "93000000",
+      "criterion_id": "N09",
+      "run_id": "00e544bd1ed046f8a53047debb1a0199",
+      "origins": 12626,
+      "measured_paths": 5251,
+      "facilities": 140,
+      "graph_revision": "65f9bfc6bb75fec723e842d4"
+    },
+    {
+      "region_id": "94000000",
+      "criterion_id": "N04",
+      "run_id": "08cdce3b0ab24acea85e4866f22a6f66",
+      "origins": 87621,
+      "measured_paths": 56621,
+      "facilities": 366,
+      "graph_revision": "0d5852018ba0a91a4fc5bf6b"
+    },
+    {
+      "region_id": "94000000",
+      "criterion_id": "N09",
+      "run_id": "b3e990f6738e4ab680db01f7d2921bb0",
+      "origins": 87621,
+      "measured_paths": 56771,
+      "facilities": 1881,
+      "graph_revision": "0d5852018ba0a91a4fc5bf6b"
+    },
+    {
+      "region_id": "95000000",
+      "criterion_id": "N04",
+      "run_id": "9495390840e046899156bcd3ae7a7737",
+      "origins": 33753,
+      "measured_paths": 23101,
+      "facilities": 116,
+      "graph_revision": "74a5a7c0ada376a6df3e3f46"
+    },
+    {
+      "region_id": "95000000",
+      "criterion_id": "N09",
+      "run_id": "64d4c0f4c1a34ea9b9ee6a8968141564",
+      "origins": 33753,
+      "measured_paths": 23101,
+      "facilities": 1058,
+      "graph_revision": "74a5a7c0ada376a6df3e3f46"
+    },
+    {
+      "region_id": "96000000",
+      "criterion_id": "N04",
+      "run_id": "b9558b6b4c244b9b8af733adc522852e",
+      "origins": 23289,
+      "measured_paths": 15623,
+      "facilities": 222,
+      "graph_revision": "9ebf7ca5b5230c3687d8a85f"
+    },
+    {
+      "region_id": "96000000",
+      "criterion_id": "N09",
+      "run_id": "3a3e9b6d70184a97b770e87d4111413b",
+      "origins": 23289,
+      "measured_paths": 15623,
+      "facilities": 66,
+      "graph_revision": "9ebf7ca5b5230c3687d8a85f"
+    },
+    {
+      "region_id": "97000000",
+      "criterion_id": "N04",
+      "run_id": "b89efd7366bc4d9ba6ff2ebd0b5a4403",
+      "origins": 48282,
+      "measured_paths": 33473,
+      "facilities": 276,
+      "graph_revision": "a7bad5b22ee8aa6f821a810a"
+    },
+    {
+      "region_id": "97000000",
+      "criterion_id": "N09",
+      "run_id": "62fb0b17215a4fe8ad1d38ce711ffc97",
+      "origins": 48282,
+      "measured_paths": 33605,
+      "facilities": 2780,
+      "graph_revision": "a7bad5b22ee8aa6f821a810a"
+    },
+    {
+      "region_id": "98000000",
+      "criterion_id": "N04",
+      "run_id": "6f5496ea62c4416a8c3d1ca75d045cd4",
+      "origins": 21877,
+      "measured_paths": 16585,
+      "facilities": 283,
+      "graph_revision": "e5521d35a393b7f56dcac23e"
+    },
+    {
+      "region_id": "98000000",
+      "criterion_id": "N09",
+      "run_id": "7ac3858795614a3f832d4ee29b0646fc",
+      "origins": 21877,
+      "measured_paths": 16644,
+      "facilities": 2040,
+      "graph_revision": "e5521d35a393b7f56dcac23e"
+    },
+    {
+      "region_id": "99000000",
+      "criterion_id": "N04",
+      "run_id": "dd23f47e478d465a9df82c4f7a53caab",
+      "origins": 14568,
+      "measured_paths": 7767,
+      "facilities": 39,
+      "graph_revision": "033ac3405edf99ba06784051"
+    },
+    {
+      "region_id": "99000000",
+      "criterion_id": "N09",
+      "run_id": "32063a9975f5434682309a06799edd03",
+      "origins": 14568,
+      "measured_paths": 10759,
+      "facilities": 624,
+      "graph_revision": "033ac3405edf99ba06784051"
+    }
+  ]
+}

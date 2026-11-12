@@ -1,0 +1,300 @@
+{
+  "checked_at": "2026-11-12T14:17:07.898930+00:00",
+  "scope": "Employment directory restoration and two Krasnodar legal-basis rows, live API/storage and desktop1440/1920; conditional physical-model indices only",
+  "backend_unit_tests": 611,
+  "mypy_files": 322,
+  "etl_tests": 110,
+  "affected_storage_integration_tests": 1,
+  "frontend_tests": 462,
+  "directory_storage": {
+    "receipt": {
+      "run_id": "033a7c1119e04175a1bcff6bd2d42d5d",
+      "region_id": "37000000",
+      "region_name": "Курганская область",
+      "criterion_id": "N06",
+      "graph_revision": "[[\"casechamp.duckdb\", 1223700480, 1794314040488599643], [\"edges.parquet\", 368279977, 1794039336000000000], [\"nodes.parquet\", 180769332, 1794039313000000000], [\"points.parquet\", 6587005, 1794039339000000000], [\"ways.parquet\", 83529268, 1794039338000000000]]",
+      "saved_at": "2026-11-12T13:59:11.489519+00:00",
+      "origins": 1234,
+      "measured_paths": 1233,
+      "facilities": 24,
+      "mode": "car",
+      "unit": "minutes",
+      "qualification": "physical_only",
+      "model_revision": "regional-road-v1",
+      "closed_way_ids": []
+    },
+    "rows": {
+      "n": 1234,
+      "measured": 1233,
+      "population_total": 776633,
+      "within_population_total": 661146,
+      "within_points": 767
+    },
+    "facilities": {
+      "n": 24,
+      "located": 12,
+      "primary_hashes": 24,
+      "coordinate_hashes": 12
+    },
+    "index": {
+      "region_id": "37000000",
+      "criterion_id": "N06",
+      "run_id": "033a7c1119e04175a1bcff6bd2d42d5d",
+      "measured_at": "2026-11-12T13:59:11.489519+00:00",
+      "basis": {
+        "criterion_id": "N06",
+        "region_id": "37000000",
+        "act": "178",
+        "clause": "5",
+        "edition_date": "2023-02-08",
+        "source_url": "https://gkh.kurganobl.ru/?page_id=14474",
+        "unit": "minutes",
+        "thresholds": [
+          60.0
+        ],
+        "definition_sha256": "f3f637ec343bc9acf65226b80a4106a99d3dd15f5f22f997b17c10b807f18746",
+        "currentness": "published_currentness_unconfirmed",
+        "required_mode": "car",
+        "regulation": "threshold",
+        "review": null,
+        "intervals": []
+      },
+      "baseline": [
+        {
+          "threshold": 60.0,
+          "reference_points": 1234,
+          "measured_points": 1233,
+          "within_points": 767,
+          "unresolved_points": 1,
+          "point_share_percent": 62.15559157212318,
+          "population": 776633,
+          "within_population": 661146,
+          "population_share_percent": 85.12978459581295
+        }
+      ],
+      "scenario": [
+        {
+          "threshold": 60.0,
+          "reference_points": 1234,
+          "measured_points": 1233,
+          "within_points": 767,
+          "unresolved_points": 1,
+          "point_share_percent": 62.15559157212318,
+          "population": 776633,
+          "within_population": 661146,
+          "population_share_percent": 85.12978459581295
+        }
+      ],
+      "qualification": "conditional_known_objects",
+      "weighting": "population",
+      "status": "ready",
+      "legal_compliance_confirmed": false
+    }
+  },
+  "krasnodar_indices": {
+    "N05": {
+      "region_id": "03000000",
+      "criterion_id": "N05",
+      "run_id": null,
+      "measured_at": null,
+      "basis": {
+        "criterion_id": "N05",
+        "region_id": "03000000",
+        "act": "Приказ от 16.04.2015 №78, редакция от 11.07.2025 №87",
+        "clause": "п.2.9.1, таблица 11, PDF с.27; объекты регионального значения",
+        "edition_date": "2025-07-11",
+        "source_url": "http://publication.pravo.gov.ru/Document/View/2301202507170001",
+        "unit": "minutes",
+        "thresholds": [],
+        "definition_sha256": "f374e4b711f30e96ef0b30b9b0607238e7c54ac7c17cf9052dcfb88a65e5398f",
+        "currentness": "published_currentness_unconfirmed",
+        "required_mode": "none",
+        "regulation": "not_regulated",
+        "review": {
+          "reviewed_at": "2026-11-12",
+          "as_of": "2025-07-11",
+          "locator": "п.2.9.1, таблица 11, PDF с.27 / печатная с.25",
+          "source_url": "http://publication.pravo.gov.ru/file/pdf?eoNumber=2301202507170001",
+          "source_sha256": "f466fdee1348ea4f3def66ff49811d86597230297b85c91c54ec9bde961b4547",
+          "scope": "consolidated_text"
+        },
+        "intervals": []
+      },
+      "baseline": [],
+      "scenario": [],
+      "qualification": "conditional_known_objects",
+      "weighting": "population",
+      "status": "not_regulated",
+      "legal_compliance_confirmed": false
+    },
+    "N06": {
+      "region_id": "03000000",
+      "criterion_id": "N06",
+      "run_id": "feaa58bddd394ffb83cc6148ae666a8f",
+      "measured_at": "2026-11-12T10:36:46.857189+00:00",
+      "basis": {
+        "criterion_id": "N06",
+        "region_id": "03000000",
+        "act": "Приказ от 16.04.2015 №78, редакция от 11.07.2025 №87",
+        "clause": "п.2.9.1, таблица 11, PDF с.27; объекты регионального значения; 1,5 ч, вид транспорта не уточнён",
+        "edition_date": "2025-07-11",
+        "source_url": "http://publication.pravo.gov.ru/Document/View/2301202507170001",
+        "unit": "minutes",
+        "thresholds": [
+          90.0
+        ],
+        "definition_sha256": "85e909d7b182fff308c44b7d82a4e601eb6ef6fde230da015b1d4c41f7d30e7d",
+        "currentness": "published_currentness_unconfirmed",
+        "required_mode": "car",
+        "regulation": "threshold",
+        "review": {
+          "reviewed_at": "2026-11-12",
+          "as_of": "2025-07-11",
+          "locator": "п.2.9.1, таблица 11, PDF с.27 / печатная с.25",
+          "source_url": "http://publication.pravo.gov.ru/file/pdf?eoNumber=2301202507170001",
+          "source_sha256": "f466fdee1348ea4f3def66ff49811d86597230297b85c91c54ec9bde961b4547",
+          "scope": "consolidated_text"
+        },
+        "intervals": []
+      },
+      "baseline": [
+        {
+          "threshold": 90.0,
+          "reference_points": 1765,
+          "measured_points": 1765,
+          "within_points": 790,
+          "unresolved_points": 0,
+          "point_share_percent": 44.759206798866856,
+          "population": 5838273,
+          "within_population": 3772229,
+          "population_share_percent": 64.6120693568115
+        }
+      ],
+      "scenario": [
+        {
+          "threshold": 90.0,
+          "reference_points": 1765,
+          "measured_points": 1765,
+          "within_points": 790,
+          "unresolved_points": 0,
+          "point_share_percent": 44.759206798866856,
+          "population": 5838273,
+          "within_population": 3772229,
+          "population_share_percent": 64.6120693568115
+        }
+      ],
+      "qualification": "conditional_known_objects",
+      "weighting": "population",
+      "status": "ready",
+      "legal_compliance_confirmed": false
+    }
+  },
+  "desktop": [
+    {
+      "width": 1440,
+      "region": "37000000",
+      "criterion": "N06",
+      "status": "ready",
+      "runId": "033a7c1119e04175a1bcff6bd2d42d5d",
+      "population": 776633,
+      "withinPopulation": 661146,
+      "score": 85.12978459581295,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "region": "03000000",
+      "criterion": "N06",
+      "status": "ready",
+      "runId": "feaa58bddd394ffb83cc6148ae666a8f",
+      "population": 5838273,
+      "withinPopulation": 3772229,
+      "score": 64.6120693568115,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "region": "03000000",
+      "criterion": "N05",
+      "status": "not_regulated",
+      "runId": null,
+      "population": null,
+      "withinPopulation": null,
+      "score": null,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "region": "37000000",
+      "criterion": "N06",
+      "status": "ready",
+      "runId": "033a7c1119e04175a1bcff6bd2d42d5d",
+      "population": 776633,
+      "withinPopulation": 661146,
+      "score": 85.12978459581295,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "region": "03000000",
+      "criterion": "N06",
+      "status": "ready",
+      "runId": "feaa58bddd394ffb83cc6148ae666a8f",
+      "population": 5838273,
+      "withinPopulation": 3772229,
+      "score": 64.6120693568115,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    },
+    {
+      "width": 1920,
+      "region": "03000000",
+      "criterion": "N05",
+      "status": "not_regulated",
+      "runId": null,
+      "population": null,
+      "withinPopulation": null,
+      "score": null,
+      "initialFullArrayRequests": 0,
+      "errors": [],
+      "violations": [],
+      "overflow": false
+    }
+  ],
+  "negative_checks": [
+    "Initial browser heading selector did not match the existing EmptyState markup; corrected to visible text.",
+    "Initial screenshots captured before map/method readiness; final script waits for the source link, selected-region camera and network idle.",
+    "Independent diagnostic SQL initially used a colliding aggregate alias; corrected before verifying the sums."
+  ],
+  "limitations": [
+    "Twelve employment directory records have no coordinates.",
+    "Facility operating status, entrances and completeness remain unconfirmed.",
+    "Krasnodar90minutes specifies transport without a vehicle type; displayed score uses the car scenario.",
+    "Published legal editions do not establish complete current applicability.",
+    "Shared ClickHouse global memory pressure is not proven eliminated."
+  ],
+  "legal_compliance_confirmed": false,
+  "control_route": {
+    "origin_id": "37624456106",
+    "facility_id": "employment-11185dfb1d63",
+    "minutes": 173.82176099589546,
+    "network_vertices": 116,
+    "saved_cost_replayed": true,
+    "primary_source_hash_preserved": true
+  },
+  "final_card_source_label_verified": true
+}

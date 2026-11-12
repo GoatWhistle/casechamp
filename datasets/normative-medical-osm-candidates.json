@@ -1,0 +1,184 @@
+{
+  "snapshot_kind": "exact_osm_building_addresses",
+  "observed_at": "2026-11-12",
+  "coordinate_extract_url": "https://download.openstreetmap.fr/extracts/russia/ural_federal_district/kurgan_oblast-latest.osm.pbf",
+  "pbf_sha256": "8fb994e69910d29708416000cb718a9843a02576f5c45c1cc8e009fcb2d7f87c",
+  "coordinate_licence": "ODbL-1.0",
+  "geometry_method": "closed_way_vertex_mean",
+  "facilities": [
+    {
+      "id": "interdistrict-hospital-2",
+      "name": "Межрайонная больница № 2",
+      "address": "Лебяжье, Первомайская, 10",
+      "latitude": 55.270344275,
+      "longitude": 66.49064527499999,
+      "coordinate_source": "https://www.openstreetmap.org/way/137285439",
+      "coordinate_status": "geocoded_building",
+      "matched_tags": {
+        "addr:city": "Лебяжье",
+        "addr:housenumber": "10",
+        "addr:street": "Первомайская улица",
+        "amenity": "clinic",
+        "building": "yes",
+        "building:levels": "4",
+        "name": "Поликлиника"
+      }
+    },
+    {
+      "id": "interdistrict-hospital-3",
+      "name": "Межрайонная больница № 3",
+      "address": "Кетово, Космонавтов, 48",
+      "latitude": 55.348256660000004,
+      "longitude": 65.33785589,
+      "coordinate_source": "https://www.openstreetmap.org/way/72226801",
+      "coordinate_status": "geocoded_building",
+      "matched_tags": {
+        "addr:city": "Кетово",
+        "addr:housenumber": "48",
+        "addr:postcode": "641310",
+        "addr:street": "улица Космонавтов",
+        "amenity": "hospital",
+        "building": "yes",
+        "healthcare": "hospital",
+        "name": "Кетовская центральная районная больница"
+      }
+    },
+    {
+      "id": "interdistrict-hospital-4",
+      "name": "Межрайонная больница № 4",
+      "address": "Мишкино, Заводская, 2",
+      "latitude": 55.347212875,
+      "longitude": 63.900920475,
+      "coordinate_source": "https://www.openstreetmap.org/way/700868193",
+      "coordinate_status": "geocoded_building",
+      "matched_tags": {
+        "addr:city": "Мишкино",
+        "addr:housenumber": "2",
+        "addr:street": "Заводская улица",
+        "building": "yes"
+      }
+    },
+    {
+      "id": "interdistrict-hospital-7",
+      "name": "Межрайонная больница № 7",
+      "address": "Шумиха, Советская, 125",
+      "latitude": 55.2337766625,
+      "longitude": 63.2831593875,
+      "coordinate_source": "https://www.openstreetmap.org/way/581818883",
+      "coordinate_status": "geocoded_building",
+      "matched_tags": {
+        "addr:city": "Шумиха",
+        "addr:country": "RU",
+        "addr:housenumber": "125",
+        "addr:street": "Советская улица",
+        "building": "hospital"
+      }
+    },
+    {
+      "id": "kataysk-district-hospital",
+      "name": "Катайская центральная районная больница",
+      "address": "Катайск, Матросова, 80",
+      "latitude": 56.27698623333333,
+      "longitude": 62.60107928333334,
+      "coordinate_source": "https://www.openstreetmap.org/way/633646086",
+      "coordinate_status": "geocoded_building",
+      "matched_tags": {
+        "addr:city": "Катайск",
+        "addr:housenumber": "80",
+        "addr:street": "улица Матросова",
+        "building": "hospital",
+        "building:levels": "5"
+      }
+    }
+  ],
+  "address_review": [
+    {
+      "id": "kurgan-emergency-hospital",
+      "candidate_ids": [],
+      "status": "unmatched"
+    },
+    {
+      "id": "kurgan-cardiology-dispensary",
+      "candidate_ids": [],
+      "status": "unmatched"
+    },
+    {
+      "id": "kurgan-veterans-hospital",
+      "candidate_ids": [],
+      "status": "unmatched"
+    },
+    {
+      "id": "shadrinsk-district-hospital",
+      "candidate_ids": [],
+      "status": "unmatched"
+    },
+    {
+      "id": "kurgan-regional-hospital-2",
+      "candidate_ids": [],
+      "status": "unmatched"
+    },
+    {
+      "id": "interdistrict-hospital-1",
+      "candidate_ids": [
+        "way/237887869",
+        "way/238097387"
+      ],
+      "status": "ambiguous"
+    },
+    {
+      "id": "interdistrict-hospital-2",
+      "candidate_ids": [
+        "way/137285439"
+      ],
+      "status": "unique_address"
+    },
+    {
+      "id": "interdistrict-hospital-3",
+      "candidate_ids": [
+        "way/72226801"
+      ],
+      "status": "unique_address"
+    },
+    {
+      "id": "interdistrict-hospital-4",
+      "candidate_ids": [
+        "way/700868193"
+      ],
+      "status": "unique_address"
+    },
+    {
+      "id": "interdistrict-hospital-5",
+      "candidate_ids": [],
+      "status": "unmatched"
+    },
+    {
+      "id": "interdistrict-hospital-6",
+      "candidate_ids": [],
+      "status": "unmatched"
+    },
+    {
+      "id": "interdistrict-hospital-7",
+      "candidate_ids": [
+        "way/581818883"
+      ],
+      "status": "unique_address"
+    },
+    {
+      "id": "interdistrict-hospital-8",
+      "candidate_ids": [],
+      "status": "unmatched"
+    },
+    {
+      "id": "dalmatovo-district-hospital",
+      "candidate_ids": [],
+      "status": "unmatched"
+    },
+    {
+      "id": "kataysk-district-hospital",
+      "candidate_ids": [
+        "way/633646086"
+      ],
+      "status": "unique_address"
+    }
+  ]
+}
