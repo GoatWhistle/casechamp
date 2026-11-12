@@ -110,14 +110,22 @@
 
 .suggestions {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   gap: var(--space-8);
   inline-size: min(100%, 30rem);
 }
 
 .prompt {
+  max-inline-size: 100%;
   font-weight: var(--weight-regular);
+}
+
+.suggestions .prompt[data-wrap] {
+  padding-block: var(--space-8);
+  line-height: var(--line-height-body-sm);
+  text-align: center;
+  text-wrap: balance;
 }
 
 .swap.swap {
