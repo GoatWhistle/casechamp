@@ -2,13 +2,16 @@
 
 ## Current closeout, 2026-11-12
 
-Branch feat/transport-scenarios-update, base986ae0f. User authorized committing/pushing all.
+Branch feat/transport-scenarios-update, implementation SHAafd1d975c1e21caa1720ea3ca5d0dfff71ac24c3.
+User authorized committing/pushing all; implementation pushed and remote SHA equality verified.
 Completed compact traffic results, local minutes plus regional index, selected-road overlay,
 housing screening and consistent chat typography. [Checks/runtime](../work/synthetic-traffic/agent-integration.md).
 Izobilny false isolation reproduced: centroid attached to residential dead end; guarded
 at calculation layer and old ranking invalidated. [Cause/remaining representation limit](../work/closure-anchor-diagnosis/README.md).
 Do not rewrite historical answers. Verified441backendunit/49integration/498frontend; Ruff/mypy/build passed.
-Local APIs8007/8817 active with the guard. All199files staged and credential-pattern scan clean; publication next.
+Local APIs8007/8817 active with the guard. All199implementation files committed/pushed; credential-pattern scan clean.
+CLI22tests passed. No deployment or paid model evaluation. Next: distributed settlement access and baseline recalculation
+if requested; current fix rejects conflicting attachment, does not invent an Izobilny detour.
 
 
 ## Chat road focus, 2026-11-12

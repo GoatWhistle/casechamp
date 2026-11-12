@@ -88,3 +88,8 @@ the configured backend run passed. No paid model evaluation. Both APIs were rest
 idle and live checks confirm the false closure is rejected on8007and8817 and local
 trip metrics are present. Browser reading confirmed compact typography/actions in
 current user chat; no paid prompts were sent. No mobile checks.
+
+Publication: implementation afd1d975c1e21caa1720ea3ca5d0dfff71ac24c3 pushed to
+origin/feat/transport-scenarios-update, remote SHA matched. Working tree was clean.
+CLI22tests passed using the backend environment with PYTHONPATH=etl; root .venv
+does not include pytest. No ignored source datasets or credentials were staged.
