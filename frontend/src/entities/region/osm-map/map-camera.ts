@@ -1,6 +1,7 @@
 import { type Map as LibreMap, LngLat, type LngLatBoundsLike, type MapOptions } from "maplibre-gl"
 import type { ChatMapCommand } from "@/shared/api/chat-map"
 import type { BoundaryAtlas, LonLatBounds } from "./boundary-geojson"
+import { fitNationalView } from "./camera/national-view"
 import { focusRoad, updateRoadFocus } from "./camera/road-focus"
 import { NO_REGION, SELECTED_LAYER } from "./osm-style"
 
@@ -80,6 +81,10 @@ export function focusRegions(
   const selected = ids.map((id) => atlas.featureOf.get(id)?.id ?? NO_REGION)
   map.setFilter(SELECTED_LAYER, ["in", ["id"], ["literal", selected]])
   map.getContainer().dataset.focusRegions = ids.join(",")
+  if (!ids.length) {
+    fitNationalView(map, frame, duration)
+    return
+  }
   map.fitBounds(corners(frame), {
     padding: ids.length ? { top: 96, right: 56, bottom: 144, left: 56 } : 24,
     maxZoom: ids.length ? 8.5 : 18,

@@ -26,6 +26,9 @@ it("covers the raster outside supplied regions while retaining region interactio
     ],
   }
   const style = buildStyle(colors, regions, 0, mask)
+  expect(style.layers.find((layer) => layer.id === "base")).toMatchObject({
+    paint: { "background-color": colors.outside },
+  })
   const ids = style.layers.map((layer) => layer.id)
   expect(ids.indexOf("outside-regions-mask")).toBeGreaterThan(ids.indexOf("osm-tiles"))
   expect(ids.indexOf("outside-regions-mask")).toBeLessThan(ids.indexOf(FILL_LAYER))

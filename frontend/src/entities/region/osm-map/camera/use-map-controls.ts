@@ -1,7 +1,7 @@
 import type { Map as LibreMap } from "maplibre-gl"
 import { type RefObject, useMemo } from "react"
 import type { LonLatBounds } from "../boundary-geojson"
-import { corners } from "../map-camera"
+import { fitNationalView } from "./national-view"
 
 export interface MapControls {
   readonly zoomIn: (instant?: boolean) => void
@@ -18,8 +18,10 @@ export function useMapControls(
     () => ({
       zoomIn: (instant?: boolean) => engine.current?.zoomIn({ duration: duration(instant) }),
       zoomOut: (instant?: boolean) => engine.current?.zoomOut({ duration: duration(instant) }),
-      reset: (instant?: boolean) =>
-        engine.current?.fitBounds(corners(home), { padding: 24, duration: duration(instant) }),
+      reset: (instant?: boolean) => {
+        const map = engine.current
+        if (map) fitNationalView(map, home, duration(instant))
+      },
     }),
     [engine, home, duration],
   )

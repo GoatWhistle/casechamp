@@ -113,7 +113,11 @@ export function buildStyle(
       },
     },
     layers: [
-      { id: "base", type: "background", paint: { "background-color": colors.water } },
+      {
+        id: "base",
+        type: "background",
+        paint: { "background-color": outsideMask ? colors.outside : colors.water },
+      },
       {
         id: "osm-tiles",
         type: "raster",

@@ -14,6 +14,7 @@ import type { NormativeMapLayer } from "@/shared/api/normative-map"
 import type { RoadLayerProps } from "@/shared/api/road-graph"
 import { motionMs, useReducedMotion } from "@/shared/motion"
 import type { BoundaryAtlas } from "./boundary-geojson"
+import { HOME_PADDING, MIN_MAP_ZOOM, resizeMapView } from "./camera/national-view"
 import { useMapControls } from "./camera/use-map-controls"
 import { aimCamera, corners, FLAT_MAP, keepFlat, roamConstrain } from "./map-camera"
 
@@ -31,10 +32,8 @@ import { useTransitLayer } from "./use-transit-layer"
 export type { MapControls } from "./camera/use-map-controls"
 
 setWorkerUrl(workerUrl)
-const HOME_PADDING = 24
 const TILE_CACHE = 1024
-const HOME_SLACK = 0.4
-const MIN_ZOOM = 1.4
+const MIN_ZOOM = MIN_MAP_ZOOM
 const MAX_ZOOM = 18
 export type MapStep = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
 
@@ -163,8 +162,7 @@ export function useOsmMap({
     const map = keepFlat(new LibreMap(options))
     engine.current = map
     const resize = new ResizeObserver(() => {
-      map.resize()
-      map.redraw()
+      resizeMapView(map, state.current.atlas.home, ready.current)
     })
     resize.observe(element)
     const onClick = (event: MapLayerMouseEvent) => {
@@ -197,11 +195,6 @@ export function useOsmMap({
       setStyleReady(true)
       paintSteps()
       aim(true)
-      const home = map.cameraForBounds(corners(state.current.atlas.home), { padding: HOME_PADDING })
-      if (home?.zoom !== undefined) {
-        limits.min = Math.max(MIN_ZOOM, home.zoom - HOME_SLACK)
-        map.setMinZoom(limits.min)
-      }
       markView()
     })
     map.on("moveend", markView)
