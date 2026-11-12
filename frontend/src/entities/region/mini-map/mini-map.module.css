@@ -2,11 +2,16 @@
   inline-size: 100%;
   block-size: 215px;
 }
-.map path {
-  stroke: var(--map-border);
+
+.region {
+  fill: var(--surface-sunken);
+  stroke: var(--border-default);
   stroke-width: var(--hairline);
 }
-.map path[data-selected="true"] {
-  stroke: var(--action-primary);
-  stroke-width: var(--link-active-width);
+
+.selected {
+  fill: var(--action-primary);
+  stroke: var(--surface-base);
+  stroke-width: var(--hairline);
+  animation: var(--motion-fade-in);
 }

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react"
-import { Link, NavLink } from "react-router"
+import { Link, NavLink, useMatch } from "react-router"
 import { useMediaQuery } from "@/shared/hooks"
 import { useSeason } from "@/shared/hooks/use-season"
 import { useTranslation } from "@/shared/i18n"
@@ -31,6 +31,8 @@ export function AppHeader({ search }: AppHeaderProps) {
   const { t } = useTranslation()
   const { seasonHref } = useSeason()
   const iconOnly = useMediaQuery(ICON_ONLY)
+  const regionId = useMatch("/regions/:regionId")?.params.regionId
+  const target = (item: NavItem) => (item.to === "/" && regionId ? `/?region=${regionId}` : item.to)
   return (
     <header className={styles.header}>
       <Link
@@ -46,7 +48,7 @@ export function AppHeader({ search }: AppHeaderProps) {
           const link = (
             <NavLink
               key={item.to}
-              to={seasonHref(item.to)}
+              to={seasonHref(target(item))}
               end={item.end === true}
               viewTransition
               aria-label={t(item.label)}
