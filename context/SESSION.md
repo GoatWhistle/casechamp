@@ -640,3 +640,5 @@ User: «пусть прокручивается если справа не по�
 
 [Prior dated section headings and full session details](../work/municipal-indices/session-before-compaction.md).
 Protected user instructions exceed the SESSION target and remain verbatim.
+
+Current municipal checkpoint: main fa89aa0;899backend/566frontend/12ETL tests pass. National processing continues; see work/municipal-indices/README.md.

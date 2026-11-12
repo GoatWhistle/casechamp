@@ -1,0 +1,47 @@
+{
+  "district": "siberian_federal_district",
+  "source": {
+    "id": "siberian_federal_district",
+    "url": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district-latest.osm.pbf",
+    "bytes": 630238494,
+    "sha256": "cf33df0c178290809307aae7101b933ceca7baf29b3f28552bc6dbd2094c262f",
+    "received_at": "2026-11-12T21:27:09.351930+00:00",
+    "state": "sequenceNumber=7367376\ntimestamp=2026-11-11T00\\:04\\:05Z",
+    "licence": "ODbL-1.0"
+  },
+  "boundary_sha256": "38a1c01e2e94f785b37ad426436fc57f92ee5e9d7f207437e119b6532c3f6ff7",
+  "categories": {
+    "stop": 24480,
+    "bus_station": 329,
+    "medical": 3075,
+    "library": 828,
+    "school": 4758,
+    "fire": 612,
+    "mfc_candidate": 82,
+    "employment_candidate": 36
+  },
+  "regions": {
+    "69000000": 2184,
+    "81000000": 2938,
+    "84000000": 666,
+    "01000000": 3730,
+    "50000000": 3558,
+    "04000000": 4179,
+    "25000000": 5589,
+    "76000000": 2790,
+    "32000000": 3786,
+    "52000000": 3066,
+    "95000000": 1302,
+    "93000000": 380,
+    "10000000": 5,
+    "71000000": 5,
+    "98000000": 2
+  },
+  "assignment": {
+    "spatial_match": 34180,
+    "outside": 19,
+    "geometry_missing": 390
+  },
+  "rows": 34199,
+  "objects_are_not_unique_institutions": true
+}

@@ -1,0 +1,98 @@
+{
+  "format": "osm-poi-jsonl-gzip-v1",
+  "files": [
+    {
+      "path": "objects/central_federal_district.pois.jsonl.gz",
+      "bytes": 4834813,
+      "sha256": "4140d6002fc88694354ffc42de78adf5782cbcb8bae1dae859647b4c7ef65b47"
+    },
+    {
+      "path": "objects/central_federal_district.pois.jsonl.summary.json",
+      "bytes": 1515,
+      "sha256": "3c07863790aec0420c2ef2f6f627a76c023df47132d41fdfed9ba025c54fcf02"
+    },
+    {
+      "path": "objects/crimea.pois.jsonl.gz",
+      "bytes": 280768,
+      "sha256": "6779f6d1513c0a3aa767b96bfcb7a062f8ea82bff790be044e53adbd11726a8f"
+    },
+    {
+      "path": "objects/crimea.pois.jsonl.summary.json",
+      "bytes": 896,
+      "sha256": "f371e093515535c7e3e91ef4bde7a8a9c93e6097fe918f49176cab5a081c1d9c"
+    },
+    {
+      "path": "objects/far_eastern_federal_district.pois.jsonl.gz",
+      "bytes": 911496,
+      "sha256": "ef28f386641ba0f663a60f4863ba0ea41a66d98bb69dd77d1028a1368eb88a10"
+    },
+    {
+      "path": "objects/far_eastern_federal_district.pois.jsonl.summary.json",
+      "bytes": 1147,
+      "sha256": "8aeb6202094642fb68626de00cab1e114ba42e4df9aad75461fea9e0e2659be0"
+    },
+    {
+      "path": "objects/north_caucasian_federal_district.pois.jsonl.gz",
+      "bytes": 481283,
+      "sha256": "83d057dc1d36d883c72483afded013f0605a2b54c925bc98c785db63e13edafa"
+    },
+    {
+      "path": "objects/north_caucasian_federal_district.pois.jsonl.summary.json",
+      "bytes": 1086,
+      "sha256": "0b5e1f9b46429bfd4e74ba3187d2b359547b5ef99c6326ec0fba54ac59e8ed2d"
+    },
+    {
+      "path": "objects/northwestern_federal_district.pois.jsonl.gz",
+      "bytes": 2111113,
+      "sha256": "35e9ed774af273f27d176b0f9697289f7a62e59f389db8e35c66742beff5b4b0"
+    },
+    {
+      "path": "objects/northwestern_federal_district.pois.jsonl.summary.json",
+      "bytes": 1276,
+      "sha256": "695e8990eed682ef0cf59e7f0b9325401889170c6ade11371bd049e0bdd48c54"
+    },
+    {
+      "path": "objects/siberian_federal_district.pois.jsonl.gz",
+      "bytes": 1739942,
+      "sha256": "1563c09f5a0c5a56a437680d719b43bf2c41596135d56820ed96c9234a3e0312"
+    },
+    {
+      "path": "objects/siberian_federal_district.pois.jsonl.summary.json",
+      "bytes": 1260,
+      "sha256": "656f4d5a6ced8dec142c1a6219f4e2a36f481ef4350f2005f68e0665c6ee8e06"
+    },
+    {
+      "path": "objects/southern_federal_district.pois.jsonl.gz",
+      "bytes": 1235004,
+      "sha256": "79344caa09f5cfbe7b83176495c0946854f2d4d53d956d93183b2c64f9a693b0"
+    },
+    {
+      "path": "objects/southern_federal_district.pois.jsonl.summary.json",
+      "bytes": 1088,
+      "sha256": "0ed9b0f8b1860f21d2e092c8ed6c5868100570883d60fde879b01378b61cf1ea"
+    },
+    {
+      "path": "objects/ural_federal_district.pois.jsonl.gz",
+      "bytes": 1246562,
+      "sha256": "74720d9f525113146d63ab75f9eb78f526d565dceeeb4c923d91c77c0bae77c0"
+    },
+    {
+      "path": "objects/ural_federal_district.pois.jsonl.summary.json",
+      "bytes": 1138,
+      "sha256": "56c6812b5c87b1a19f197ce5a118a7adae90b7b5a0e6951aa1bc6a9eea2ed4f0"
+    },
+    {
+      "path": "objects/volga_federal_district.pois.jsonl.gz",
+      "bytes": 2695395,
+      "sha256": "689a5456484345951124f44de6f54a30f3a0c6e207aee255b837b5a2c6597b59"
+    },
+    {
+      "path": "objects/volga_federal_district.pois.jsonl.summary.json",
+      "bytes": 1442,
+      "sha256": "d1471457a78f5e7f4e353f072d3b48597b694a30bd0f3b8eee25f6681e84f332"
+    }
+  ],
+  "represented_regions": 84,
+  "objects_are_not_unique_institutions": true,
+  "operational_status": "unconfirmed"
+}

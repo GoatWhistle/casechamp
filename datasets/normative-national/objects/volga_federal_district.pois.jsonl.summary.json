@@ -1,0 +1,56 @@
+{
+  "district": "volga_federal_district",
+  "source": {
+    "id": "volga_federal_district",
+    "url": "https://download.openstreetmap.fr/extracts/russia/volga_federal_district-latest.osm.pbf",
+    "bytes": 849242254,
+    "sha256": "5da527cf7bb95ff0aaa4a6b738e503f65fdfa135a0c6d55c1507ff6d086c6004",
+    "received_at": "2026-11-12T21:41:02.409441+00:00",
+    "state": "sequenceNumber=7367378\ntimestamp=2026-11-11T00\\:06\\:10Z",
+    "licence": "ODbL-1.0"
+  },
+  "boundary_sha256": "38a1c01e2e94f785b37ad426436fc57f92ee5e9d7f207437e119b6532c3f6ff7",
+  "categories": {
+    "stop": 33840,
+    "medical": 4592,
+    "bus_station": 634,
+    "school": 6800,
+    "library": 1428,
+    "fire": 1015,
+    "employment_candidate": 73,
+    "mfc_candidate": 245
+  },
+  "regions": {
+    "63000000": 3106,
+    "97000000": 3380,
+    "36000000": 4884,
+    "80000000": 4333,
+    "22000000": 6271,
+    "33000000": 3092,
+    "53000000": 2127,
+    "57000000": 4831,
+    "56000000": 2101,
+    "94000000": 2697,
+    "88000000": 1680,
+    "75000000": 246,
+    "92000000": 6546,
+    "89000000": 1249,
+    "73000000": 1828,
+    "17000000": 130,
+    "87000000": 2,
+    "24000000": 15,
+    "61000000": 27,
+    "65000000": 15,
+    "18000000": 22,
+    "68000000": 6,
+    "34000000": 9,
+    "19000000": 3
+  },
+  "assignment": {
+    "spatial_match": 48600,
+    "outside": 17,
+    "geometry_missing": 1127
+  },
+  "rows": 48617,
+  "objects_are_not_unique_institutions": true
+}

@@ -1,0 +1,41 @@
+{
+  "district": "far_eastern_federal_district",
+  "source": {
+    "id": "far_eastern_federal_district",
+    "url": "https://download.openstreetmap.fr/extracts/russia/far_eastern_federal_district-latest.osm.pbf",
+    "bytes": 422052979,
+    "sha256": "d2b922369e07ef7bc142c5f25df242627906ee6e48c744456c8a631e90caaa14",
+    "received_at": "2026-11-12T21:48:42.715406+00:00",
+    "state": "sequenceNumber=7367372\ntimestamp=2026-11-11T00\\:00\\:06Z",
+    "licence": "ODbL-1.0"
+  },
+  "boundary_sha256": "38a1c01e2e94f785b37ad426436fc57f92ee5e9d7f207437e119b6532c3f6ff7",
+  "categories": {
+    "bus_station": 136,
+    "stop": 15249,
+    "fire": 359,
+    "medical": 1313,
+    "library": 294,
+    "school": 1700,
+    "mfc_candidate": 456,
+    "employment_candidate": 15
+  },
+  "regions": {
+    "05000000": 5104,
+    "08000000": 3539,
+    "44000000": 530,
+    "10000000": 2941,
+    "64000000": 2166,
+    "77000000": 128,
+    "99000000": 717,
+    "98000000": 3059,
+    "30000000": 1158
+  },
+  "assignment": {
+    "spatial_match": 19342,
+    "outside": 178,
+    "geometry_missing": 212
+  },
+  "rows": 19520,
+  "objects_are_not_unique_institutions": true
+}

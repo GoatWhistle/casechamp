@@ -1,0 +1,47 @@
+{
+  "district": "northwestern_federal_district",
+  "source": {
+    "id": "northwestern_federal_district",
+    "url": "https://download.openstreetmap.fr/extracts/russia/northwestern_federal_district-latest.osm.pbf",
+    "bytes": 716430137,
+    "sha256": "21fd7bb1f148d55217a64484397ca8d65983bc9f69813def60e936a18edbf49a",
+    "received_at": "2026-11-12T21:45:39.992522+00:00",
+    "state": "sequenceNumber=7367378\ntimestamp=2026-11-11T00\\:06\\:10Z",
+    "licence": "ODbL-1.0"
+  },
+  "boundary_sha256": "38a1c01e2e94f785b37ad426436fc57f92ee5e9d7f207437e119b6532c3f6ff7",
+  "categories": {
+    "stop": 27490,
+    "school": 3373,
+    "library": 1074,
+    "medical": 2595,
+    "bus_station": 256,
+    "fire": 651,
+    "employment_candidate": 47,
+    "mfc_candidate": 328
+  },
+  "regions": {
+    "41000000": 7745,
+    "40000000": 7764,
+    "49000000": 1750,
+    "47000000": 1657,
+    "86000000": 1938,
+    "11000000": 3069,
+    "19000000": 2949,
+    "58000000": 3443,
+    "87000000": 1985,
+    "27000000": 2283,
+    "28000000": 64,
+    "11800000": 134,
+    "78000000": 17,
+    "66000000": 5,
+    "33000000": 4
+  },
+  "assignment": {
+    "spatial_match": 34807,
+    "outside": 1003,
+    "geometry_missing": 789
+  },
+  "rows": 35810,
+  "objects_are_not_unique_institutions": true
+}

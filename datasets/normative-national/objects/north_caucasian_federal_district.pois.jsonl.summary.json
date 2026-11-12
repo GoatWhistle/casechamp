@@ -1,0 +1,40 @@
+{
+  "district": "north_caucasian_federal_district",
+  "source": {
+    "id": "north_caucasian_federal_district",
+    "url": "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf",
+    "bytes": 129493113,
+    "sha256": "a6db83fb55e03cc9730da9aff42730003b7d1591a38d4cf0fd15d4fe66743701",
+    "received_at": "2026-11-07T21:21:36Z",
+    "state": "timestamp=2026-11-07T21:21:36Z",
+    "licence": "ODbL-1.0",
+    "reused_existing_source": true
+  },
+  "boundary_sha256": "38a1c01e2e94f785b37ad426436fc57f92ee5e9d7f207437e119b6532c3f6ff7",
+  "categories": {
+    "stop": 4486,
+    "bus_station": 138,
+    "library": 235,
+    "medical": 1415,
+    "school": 2368,
+    "fire": 131,
+    "mfc_candidate": 38,
+    "employment_candidate": 6
+  },
+  "regions": {
+    "91000000": 577,
+    "07000000": 2953,
+    "96000000": 436,
+    "82000000": 2308,
+    "83000000": 1414,
+    "90000000": 971,
+    "26000000": 127
+  },
+  "assignment": {
+    "spatial_match": 8786,
+    "outside": 29,
+    "geometry_missing": 163
+  },
+  "rows": 8815,
+  "objects_are_not_unique_institutions": true
+}

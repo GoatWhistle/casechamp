@@ -1,0 +1,59 @@
+{
+  "district": "central_federal_district",
+  "source": {
+    "id": "central_federal_district",
+    "url": "https://download.openstreetmap.fr/extracts/russia/central_federal_district-latest.osm.pbf",
+    "bytes": 987121805,
+    "sha256": "02ba9bfc791089351c352a2824b59a68282300f70f6fa4acb129d24f20016bf3",
+    "received_at": "2026-11-12T21:34:02.600222+00:00",
+    "state": "sequenceNumber=7367379\ntimestamp=2026-11-11T00\\:07\\:10Z",
+    "licence": "ODbL-1.0"
+  },
+  "boundary_sha256": "38a1c01e2e94f785b37ad426436fc57f92ee5e9d7f207437e119b6532c3f6ff7",
+  "categories": {
+    "stop": 67287,
+    "medical": 6582,
+    "library": 2006,
+    "bus_station": 633,
+    "school": 8585,
+    "employment_candidate": 56,
+    "fire": 1086,
+    "mfc_candidate": 401
+  },
+  "regions": {
+    "28000000": 4454,
+    "45000000": 16457,
+    "70000000": 3447,
+    "78000000": 4013,
+    "17000000": 3669,
+    "46000000": 23970,
+    "42000000": 2251,
+    "29000000": 2904,
+    "24000000": 1800,
+    "20000000": 4432,
+    "66000000": 2057,
+    "14000000": 3031,
+    "38000000": 3079,
+    "15000000": 2753,
+    "61000000": 3009,
+    "22000000": 44,
+    "54000000": 1660,
+    "68000000": 1835,
+    "34000000": 1458,
+    "89000000": 8,
+    "49000000": 11,
+    "60000000": 5,
+    "58000000": 7,
+    "19000000": 10,
+    "18000000": 6,
+    "63000000": 2,
+    "33000000": 2
+  },
+  "assignment": {
+    "spatial_match": 86374,
+    "outside": 243,
+    "geometry_missing": 2276
+  },
+  "rows": 86617,
+  "objects_are_not_unique_institutions": true
+}

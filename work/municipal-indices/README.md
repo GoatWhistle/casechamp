@@ -33,3 +33,5 @@ ETL тест проверяет явный профиль пожарного д�
 Снимок дорожных таблиц:385,765,927bytes,6,990,556nodes и17,393,384edges; источник `.local/normative-national-inputs/road-network/manifest.json`, копия манифеста в датасете. Проверены реальные экспорт и контрольные суммы; восстановление в новую БД в этом проходе не запускалось.
 
 Контекст сжат: прошлые датированные заголовки и8ссылок перемещены в `session-before-compaction.md`, пользовательские инструкции сохранены дословно. Проверка budget проходит; защищённые инструкции превышают общий SESSIONtarget.
+
+Final checkpoint: main fa89aa0. Pre-commit after concurrent changes:899backendtests PASS; prior two failures resolved. Frontend566tests/build and ETL12tests PASS. All9national POI sources imported; national road batch and regional walking assembly continue. Full municipal national completion is not claimed.

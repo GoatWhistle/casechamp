@@ -32,7 +32,10 @@ def main() -> None:
             client.request(statement)
     regions = json.loads((args.root / "regions.json").read_text())["regions"]
     insert_batch(client, "plexus_normative.inventory_regions", [json.dumps({"id": r["id"], "name": r["name"]}, ensure_ascii=False) for r in regions])
-    path = args.root / "derived" / (args.district + ".pois.jsonl.gz")
+    directory = args.root / "derived"
+    if not directory.exists():
+        directory = args.root / "objects"
+    path = directory / (args.district + ".pois.jsonl.gz")
     batch = []
     count = 0
     with gzip.open(path, "rt", encoding="utf-8") as stream:

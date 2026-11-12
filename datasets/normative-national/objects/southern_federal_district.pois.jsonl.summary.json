@@ -1,0 +1,41 @@
+{
+  "district": "southern_federal_district",
+  "source": {
+    "id": "southern_federal_district",
+    "url": "https://download.geofabrik.de/russia/south-fed-district-261111.osm.pbf",
+    "bytes": 317528442,
+    "sha256": "4132a00c24934d7f1eec5cf308433b1d4c375202136ea4fb03d3570dffc5b123",
+    "received_at": "2026-11-11T21:22:47Z",
+    "state": "timestamp=2026-11-11T21:22:47Z",
+    "licence": "ODbL-1.0",
+    "reused_existing_source": true
+  },
+  "boundary_sha256": "38a1c01e2e94f785b37ad426436fc57f92ee5e9d7f207437e119b6532c3f6ff7",
+  "categories": {
+    "stop": 15558,
+    "medical": 2353,
+    "library": 466,
+    "bus_station": 287,
+    "school": 3468,
+    "fire": 684,
+    "employment_candidate": 17,
+    "mfc_candidate": 130
+  },
+  "regions": {
+    "03000000": 10024,
+    "60000000": 6964,
+    "12000000": 1135,
+    "18000000": 3395,
+    "85000000": 508,
+    "79000000": 818,
+    "91000000": 1,
+    "07000000": 1
+  },
+  "assignment": {
+    "spatial_match": 22846,
+    "outside": 108,
+    "geometry_missing": 277
+  },
+  "rows": 22954,
+  "objects_are_not_unique_institutions": true
+}
