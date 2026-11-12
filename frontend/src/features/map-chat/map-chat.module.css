@@ -71,6 +71,8 @@
 }
 
 .hero {
+  inline-size: 100%;
+  min-inline-size: 0;
   display: grid;
   justify-items: center;
   gap: var(--space-16);
@@ -116,24 +118,25 @@
 }
 
 .suggestions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-auto-rows: 1fr;
   gap: var(--space-8);
-  inline-size: min(100%, 30rem);
+  inline-size: 100%;
 }
 
 .prompt {
+  inline-size: 100%;
   min-block-size: var(--target-min);
   max-inline-size: 100%;
   font-weight: var(--weight-regular);
 }
 
 .suggestions .prompt[data-wrap] {
-  padding-block: var(--space-8);
+  justify-content: flex-start;
+  padding: var(--space-12) var(--space-16);
   line-height: var(--line-height-body-sm);
-  text-align: center;
-  text-wrap: balance;
+  text-align: start;
+  text-wrap: pretty;
 }
 
 .swap.swap {
