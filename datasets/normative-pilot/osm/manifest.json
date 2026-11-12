@@ -1,0 +1,37 @@
+[
+  {
+    "id": "kemerovo",
+    "url": "https://download.openstreetmap.fr/extracts/russia/siberian_federal_district/kemerovo_oblast-latest.osm.pbf",
+    "sha256": "774f4716c0334bcb61d8be98f8a5831f3cb5261dbbfbc0e4321629093a67fc93",
+    "bytes": 38064227,
+    "received_at": "2026-11-11T00:07:10Z"
+  },
+  {
+    "id": "north-caucasus",
+    "url": "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf",
+    "sha256": "a6db83fb55e03cc9730da9aff42730003b7d1591a38d4cf0fd15d4fe66743701",
+    "bytes": 129493113,
+    "received_at": "2026-11-07T21:21:36Z"
+  },
+  {
+    "id": "crimea",
+    "url": "https://download.geofabrik.de/russia/crimean-fed-district-latest.osm.pbf",
+    "sha256": "df67e8d1137d9afed2e1012399b5db4d889f58d548c1913d655122b49858b26e",
+    "bytes": 40756137,
+    "received_at": "2026-11-11T21:22:47Z"
+  },
+  {
+    "id": "south",
+    "url": "https://download.geofabrik.de/russia/south-fed-district-261111.osm.pbf",
+    "sha256": "4132a00c24934d7f1eec5cf308433b1d4c375202136ea4fb03d3570dffc5b123",
+    "bytes": 317528442,
+    "received_at": "2026-11-11T21:22:47Z"
+  },
+  {
+    "id": "ural",
+    "url": "https://download.geofabrik.de/russia/ural-fed-district-261106.osm.pbf",
+    "sha256": "f91d445620021136a8d0e71991c21834440bdf3ccaaa60521762e81a9e5b6074",
+    "bytes": 396895176,
+    "received_at": "2026-11-06T21:21:21Z"
+  }
+]

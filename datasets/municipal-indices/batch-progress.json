@@ -1,0 +1,541 @@
+{
+  "export": {
+    "aggregates": 891,
+    "boundary_files": [
+      "boundaries/405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4/boundaries.json.gz",
+      "boundaries/8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991/boundaries.json.gz",
+      "boundaries/c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4/boundaries.json.gz"
+    ],
+    "boundary_snapshots": [
+      "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
+      "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
+      "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4"
+    ],
+    "export_file": "municipal-indices.jsonl.gz",
+    "export_sha256": "51d82eab2d2d7adf23f07453433696b16c668d831010cae0902c00aa4cb04120",
+    "qualification": "per_record_source_qualification_no_regional_proxy",
+    "schema_version": "municipal-dataset-v1",
+    "source_snapshots": [
+      "003f6289b036b550b911740d676f81c51bd6b0e5ee941c42f2c0bc1e0872f854",
+      "0c4c1a3d7c2d64f72098eb0dbb80b22bdceecb8e56d186bfe21d5e69f64508c2",
+      "0ce65960cda66db3963ce952d603ef50de392cc410f9732163e62e57d53e3c2b",
+      "2f5090be9248735fc890d079494015c70a0a8d15518e04a6154f11261dddddd6",
+      "31bb31144f263d0e4f555b5929568cd500b0ade818f34ffcabab2307e7ff71f1",
+      "31e064043182981eec9ebe2d1a3105022560a7b284a641fd0ed4adb7714e0397",
+      "357e471019f01fa543f8efd2dc69b526cd16ffa4c08619aad92f11b2f2414bbb",
+      "4aea37c6da7d65731ef1b7c916da8c2792fac07107d9dc9763932bff88cbb5be",
+      "4f77f9f72aa3d262f5c606f92d04bab509f38fc9510f86571f5976c95760d991",
+      "64f802e8563f991ebc5830067aa8a28528e57b681e6c6bb3c8cb943571dfd11b",
+      "6acf680c03434ac3326c917054f65512cb0194862dbd0fa31f0411249e584122",
+      "6d4e68e6807ebb14710f0e9708df304889cc68d3c4360c8edfc27f1be0753108",
+      "752b54d3400ce4c0ac1f746e5762e353e1e5766a06bb54ba1924018eeeec8e5e",
+      "769df73fe596b936c2872cd93944c77566ed4ab3f22d70d2bb22b14945a86b26",
+      "7ba56f46c82664842e2c7f731ffd541accaf6a73c0abd9c431ba306f2bc84344",
+      "a67ccafed84a5500fcf7744144b0b4f587895247f22a95ebcb7dce15eedcfb7a",
+      "a9d3d71ab0e6d100dd5c28e54d161db3a40a04ec61ef41e4bce9bb641537bb6f",
+      "b420c8b7a88c306c028731e224689a158da9b144fd3c07eb52ac9d7f1a339bce",
+      "c013114441e4d94f546454365fe771e437f4f7ec58ddf0aedd895e6a288d1c42",
+      "cc09ed2c27411bbdee59880c0d89f9d170051a687a32de7708afb11da68e6016",
+      "d4bf5fc6e44f1310c88b8fd73fe125b4656b9d7493352bf0c75e586f23484491",
+      "d671e18a66ebf4858522565eea839bd67721bf5fffee8ef12fc2bb0f5d8c32fd",
+      "e136830b4641b8974d78c2b842e96c794cf5185bbfd983f08f2bbb3629586186",
+      "e51d0b60988adbb6f26162971487dffd96673706200ee5c6074e2101ad97aa73",
+      "e6810a6b10792fb658adf6290228810e9a6c5c296a8f888933500ad7bf26f20d",
+      "f78b4622e8b37d66b8949124c5698288f1cc56cc37c80b9d1bd7c18a8a01b308",
+      "fa7929c31876dec11f964e5f9922b78ed23b4f567d2a18b02dd0f2e71b8f76f0"
+    ],
+    "statuses": {
+      "available": 576,
+      "unavailable": 315
+    }
+  },
+  "records": [
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 760,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
+      "computed": 33,
+      "criterion_id": "N01",
+      "municipalities": 33,
+      "new_available": 33,
+      "region_id": "07000000",
+      "resumed": 0,
+      "source_run_id": "cb9641145e0749b096ae2bb4ba160820",
+      "source_sha256": "fa7929c31876dec11f964e5f9922b78ed23b4f567d2a18b02dd0f2e71b8f76f0",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 760,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
+      "computed": 33,
+      "criterion_id": "N02",
+      "municipalities": 33,
+      "new_available": 33,
+      "region_id": "07000000",
+      "resumed": 0,
+      "source_run_id": "21082d5609db4f89be05d5a26855a821",
+      "source_sha256": "6d4e68e6807ebb14710f0e9708df304889cc68d3c4360c8edfc27f1be0753108",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 760,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
+      "computed": 33,
+      "criterion_id": "N03",
+      "municipalities": 33,
+      "new_available": 33,
+      "region_id": "07000000",
+      "resumed": 0,
+      "source_run_id": "1dbd183bf1b0407d90b64e195c62d547",
+      "source_sha256": "4f77f9f72aa3d262f5c606f92d04bab509f38fc9510f86571f5976c95760d991",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 88754,
+        "coordinates_missing": 0,
+        "outside": 90
+      },
+      "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
+      "computed": 33,
+      "criterion_id": "N04",
+      "municipalities": 33,
+      "new_available": 33,
+      "region_id": "07000000",
+      "resumed": 0,
+      "source_run_id": "3efd5aaa950e435eb2b08fc3c1dbd0b9",
+      "source_sha256": "e51d0b60988adbb6f26162971487dffd96673706200ee5c6074e2101ad97aa73",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 760,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
+      "computed": 33,
+      "criterion_id": "N05",
+      "municipalities": 33,
+      "new_available": 33,
+      "region_id": "07000000",
+      "resumed": 0,
+      "source_run_id": "9cb3150d3f2f46a29ae43cd6c17d9a78",
+      "source_sha256": "6acf680c03434ac3326c917054f65512cb0194862dbd0fa31f0411249e584122",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 760,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
+      "computed": 33,
+      "criterion_id": "N06",
+      "municipalities": 33,
+      "new_available": 33,
+      "region_id": "07000000",
+      "resumed": 0,
+      "source_run_id": "f81b782e35e74638adadc40600b92a58",
+      "source_sha256": "752b54d3400ce4c0ac1f746e5762e353e1e5766a06bb54ba1924018eeeec8e5e",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 760,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
+      "computed": 33,
+      "criterion_id": "N07",
+      "municipalities": 33,
+      "new_available": 33,
+      "region_id": "07000000",
+      "resumed": 0,
+      "source_run_id": "08a30fab25ec4208b93aa144f77b619a",
+      "source_sha256": "b420c8b7a88c306c028731e224689a158da9b144fd3c07eb52ac9d7f1a339bce",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 760,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
+      "computed": 33,
+      "criterion_id": "N08",
+      "municipalities": 33,
+      "new_available": 33,
+      "region_id": "07000000",
+      "resumed": 0,
+      "source_run_id": "c9f6cf8fb2334f5b855ba94ccc38a73c",
+      "source_sha256": "e136830b4641b8974d78c2b842e96c794cf5185bbfd983f08f2bbb3629586186",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 88754,
+        "coordinates_missing": 0,
+        "outside": 90
+      },
+      "boundary_snapshot_sha256": "405af106d91aa26230745f1f182001a05ec81b2a98bfd75dc5edda6efb9bc5b4",
+      "computed": 33,
+      "criterion_id": "N09",
+      "municipalities": 33,
+      "new_available": 33,
+      "region_id": "07000000",
+      "resumed": 0,
+      "source_run_id": "20be4ea6df704c9ab3254926ba7d7646",
+      "source_sha256": "4aea37c6da7d65731ef1b7c916da8c2792fac07107d9dc9763932bff88cbb5be",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 1107,
+        "coordinates_missing": 0,
+        "outside": 1
+      },
+      "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
+      "computed": 31,
+      "criterion_id": "N01",
+      "municipalities": 31,
+      "new_available": 31,
+      "region_id": "32000000",
+      "resumed": 0,
+      "source_run_id": "8ec4e1ba69a04ff5a6be38ac8f60b254",
+      "source_sha256": "2f5090be9248735fc890d079494015c70a0a8d15518e04a6154f11261dddddd6",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 1107,
+        "coordinates_missing": 0,
+        "outside": 1
+      },
+      "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
+      "computed": 31,
+      "criterion_id": "N02",
+      "municipalities": 31,
+      "new_available": 31,
+      "region_id": "32000000",
+      "resumed": 0,
+      "source_run_id": "ae507d9392c249d2aa4c1e185d7b4933",
+      "source_sha256": "769df73fe596b936c2872cd93944c77566ed4ab3f22d70d2bb22b14945a86b26",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 1107,
+        "coordinates_missing": 0,
+        "outside": 1
+      },
+      "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
+      "computed": 31,
+      "criterion_id": "N03",
+      "municipalities": 31,
+      "new_available": 31,
+      "region_id": "32000000",
+      "resumed": 0,
+      "source_run_id": "dd1b70a937294384ab2d7909f33a8cc2",
+      "source_sha256": "a67ccafed84a5500fcf7744144b0b4f587895247f22a95ebcb7dce15eedcfb7a",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 106977,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
+      "computed": 31,
+      "criterion_id": "N04",
+      "municipalities": 31,
+      "new_available": 31,
+      "region_id": "32000000",
+      "resumed": 0,
+      "source_run_id": "e2f0c856ee4f4157865f96d213bfc35c",
+      "source_sha256": "cc09ed2c27411bbdee59880c0d89f9d170051a687a32de7708afb11da68e6016",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 1107,
+        "coordinates_missing": 0,
+        "outside": 1
+      },
+      "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
+      "computed": 31,
+      "criterion_id": "N05",
+      "municipalities": 31,
+      "new_available": 31,
+      "region_id": "32000000",
+      "resumed": 0,
+      "source_run_id": "8fb04cc034fc4d93b755d406eba4ff28",
+      "source_sha256": "357e471019f01fa543f8efd2dc69b526cd16ffa4c08619aad92f11b2f2414bbb",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 1107,
+        "coordinates_missing": 0,
+        "outside": 1
+      },
+      "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
+      "computed": 31,
+      "criterion_id": "N06",
+      "municipalities": 31,
+      "new_available": 31,
+      "region_id": "32000000",
+      "resumed": 0,
+      "source_run_id": "7ca9737509de43c5afaed0bc08b6c91d",
+      "source_sha256": "31bb31144f263d0e4f555b5929568cd500b0ade818f34ffcabab2307e7ff71f1",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 1107,
+        "coordinates_missing": 0,
+        "outside": 1
+      },
+      "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
+      "computed": 31,
+      "criterion_id": "N07",
+      "municipalities": 31,
+      "new_available": 31,
+      "region_id": "32000000",
+      "resumed": 0,
+      "source_run_id": "4b0c1c7f95aa47bcaaaa621f1b97f69e",
+      "source_sha256": "003f6289b036b550b911740d676f81c51bd6b0e5ee941c42f2c0bc1e0872f854",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 1107,
+        "coordinates_missing": 0,
+        "outside": 1
+      },
+      "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
+      "computed": 31,
+      "criterion_id": "N08",
+      "municipalities": 31,
+      "new_available": 31,
+      "region_id": "32000000",
+      "resumed": 0,
+      "source_run_id": "f87f1fc72f87490fb71effdf3cef89de",
+      "source_sha256": "e6810a6b10792fb658adf6290228810e9a6c5c296a8f888933500ad7bf26f20d",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 106977,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "c4fb66b1b4d49ea6dd0f4a5f4840de8a9026e7204d4c1d7815b9577a01da72b4",
+      "computed": 31,
+      "criterion_id": "N09",
+      "municipalities": 31,
+      "new_available": 31,
+      "region_id": "32000000",
+      "resumed": 0,
+      "source_run_id": "2020392afe134ab6be5cbab1a915f422",
+      "source_sha256": "0c4c1a3d7c2d64f72098eb0dbb80b22bdceecb8e56d186bfe21d5e69f64508c2",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 1019,
+        "assigned": 0,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
+      "computed": 35,
+      "criterion_id": "N01",
+      "municipalities": 35,
+      "new_available": 0,
+      "region_id": "35000000",
+      "resumed": 0,
+      "source_run_id": "89fc61ee436f461ab2f68075b6488b3b",
+      "source_sha256": "d671e18a66ebf4858522565eea839bd67721bf5fffee8ef12fc2bb0f5d8c32fd",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 1019,
+        "assigned": 0,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
+      "computed": 35,
+      "criterion_id": "N02",
+      "municipalities": 35,
+      "new_available": 0,
+      "region_id": "35000000",
+      "resumed": 0,
+      "source_run_id": "68ba8ba30f7244f5ba984d978f2680b2",
+      "source_sha256": "0ce65960cda66db3963ce952d603ef50de392cc410f9732163e62e57d53e3c2b",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 1019,
+        "assigned": 0,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
+      "computed": 35,
+      "criterion_id": "N03",
+      "municipalities": 35,
+      "new_available": 0,
+      "region_id": "35000000",
+      "resumed": 0,
+      "source_run_id": "dc1b17f2c6ef4912acc515925b65a4a6",
+      "source_sha256": "7ba56f46c82664842e2c7f731ffd541accaf6a73c0abd9c431ba306f2bc84344",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 0,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
+      "computed": 35,
+      "criterion_id": "N04",
+      "municipalities": 35,
+      "new_available": 0,
+      "region_id": "35000000",
+      "resumed": 0,
+      "source_run_id": "missing",
+      "source_sha256": "d4bf5fc6e44f1310c88b8fd73fe125b4656b9d7493352bf0c75e586f23484491",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 1019,
+        "assigned": 0,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
+      "computed": 35,
+      "criterion_id": "N05",
+      "municipalities": 35,
+      "new_available": 0,
+      "region_id": "35000000",
+      "resumed": 0,
+      "source_run_id": "c8b379338733441687cd2fbe6fd301f1",
+      "source_sha256": "f78b4622e8b37d66b8949124c5698288f1cc56cc37c80b9d1bd7c18a8a01b308",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 1019,
+        "assigned": 0,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
+      "computed": 35,
+      "criterion_id": "N06",
+      "municipalities": 35,
+      "new_available": 0,
+      "region_id": "35000000",
+      "resumed": 0,
+      "source_run_id": "f92a10c2d8e44baeafaee127fed1f6cf",
+      "source_sha256": "64f802e8563f991ebc5830067aa8a28528e57b681e6c6bb3c8cb943571dfd11b",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 1019,
+        "assigned": 0,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
+      "computed": 35,
+      "criterion_id": "N07",
+      "municipalities": 35,
+      "new_available": 0,
+      "region_id": "35000000",
+      "resumed": 0,
+      "source_run_id": "133b2a83db1b4bd383512e304cbddf9f",
+      "source_sha256": "a9d3d71ab0e6d100dd5c28e54d161db3a40a04ec61ef41e4bce9bb641537bb6f",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 1019,
+        "assigned": 0,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
+      "computed": 35,
+      "criterion_id": "N08",
+      "municipalities": 35,
+      "new_available": 0,
+      "region_id": "35000000",
+      "resumed": 0,
+      "source_run_id": "3e2df0d421f64bfdbb2930feead0006b",
+      "source_sha256": "31e064043182981eec9ebe2d1a3105022560a7b284a641fd0ed4adb7714e0397",
+      "status": "complete"
+    },
+    {
+      "assignment": {
+        "ambiguous_excluded": 0,
+        "assigned": 0,
+        "coordinates_missing": 0,
+        "outside": 0
+      },
+      "boundary_snapshot_sha256": "8f0ebee0f0746e09cea737b82a1ea39614be5a570ff899ad9ff0000c95b43991",
+      "computed": 35,
+      "criterion_id": "N09",
+      "municipalities": 35,
+      "new_available": 0,
+      "region_id": "35000000",
+      "resumed": 0,
+      "source_run_id": "missing",
+      "source_sha256": "c013114441e4d94f546454365fe771e437f4f7ec58ddf0aedd895e6a288d1c42",
+      "status": "complete"
+    }
+  ],
+  "status": "complete"
+}

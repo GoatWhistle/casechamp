@@ -1039,6 +1039,72 @@
         }
       }
     },
+    "/api/v1/regions/{region_id}/municipalities/{municipality_id}/indices": {
+      "get": {
+        "tags": [
+          "municipalities"
+        ],
+        "summary": "Get Indices",
+        "operationId": "get_indices_api_v1_regions__region_id__municipalities__municipality_id__indices_get",
+        "parameters": [
+          {
+            "name": "region_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Region Id"
+            }
+          },
+          {
+            "name": "municipality_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Municipality Id"
+            }
+          },
+          {
+            "name": "season",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "road",
+                "summer",
+                "winter"
+              ],
+              "type": "string",
+              "default": "road",
+              "title": "Season"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MunicipalityIndicesResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/normative/regions/{region_id}/measurements/{criterion_id}/view": {
       "get": {
         "tags": [
@@ -7358,6 +7424,87 @@
         ],
         "title": "IndexThresholdIntervalResponse"
       },
+      "IndexValue": {
+        "properties": {
+          "threshold": {
+            "type": "number",
+            "title": "Threshold"
+          },
+          "reference_points": {
+            "type": "integer",
+            "title": "Reference Points"
+          },
+          "measured_points": {
+            "type": "integer",
+            "title": "Measured Points"
+          },
+          "within_points": {
+            "type": "integer",
+            "title": "Within Points"
+          },
+          "unresolved_points": {
+            "type": "integer",
+            "title": "Unresolved Points"
+          },
+          "point_share_percent": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Point Share Percent"
+          },
+          "population": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Population"
+          },
+          "within_population": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Within Population"
+          },
+          "population_share_percent": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Population Share Percent"
+          }
+        },
+        "type": "object",
+        "required": [
+          "threshold",
+          "reference_points",
+          "measured_points",
+          "within_points",
+          "unresolved_points",
+          "point_share_percent",
+          "population",
+          "within_population",
+          "population_share_percent"
+        ],
+        "title": "IndexValue"
+      },
       "IndexValueResponse": {
         "properties": {
           "threshold": {
@@ -7916,6 +8063,246 @@
         ],
         "title": "MoneyEffect"
       },
+      "MunicipalMetricResponse": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit"
+          },
+          "population": {
+            "type": "integer",
+            "title": "Population"
+          },
+          "measured_population": {
+            "type": "integer",
+            "title": "Measured Population"
+          },
+          "settlements": {
+            "type": "integer",
+            "title": "Settlements"
+          },
+          "measured_settlements": {
+            "type": "integer",
+            "title": "Measured Settlements"
+          },
+          "population_coverage": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Population Coverage"
+          }
+        },
+        "type": "object",
+        "required": [
+          "key",
+          "value",
+          "status",
+          "reason",
+          "unit",
+          "population",
+          "measured_population",
+          "settlements",
+          "measured_settlements",
+          "population_coverage"
+        ],
+        "title": "MunicipalMetricResponse"
+      },
+      "MunicipalNormativeResponse": {
+        "properties": {
+          "criterion_id": {
+            "type": "string",
+            "title": "Criterion Id"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          },
+          "basis_kind": {
+            "type": "string",
+            "title": "Basis Kind"
+          },
+          "qualification": {
+            "type": "string",
+            "title": "Qualification"
+          },
+          "legal_compliance_confirmed": {
+            "type": "boolean",
+            "title": "Legal Compliance Confirmed"
+          },
+          "unit": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Unit"
+          },
+          "mode": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mode"
+          },
+          "thresholds": {
+            "items": {
+              "type": "number"
+            },
+            "type": "array",
+            "title": "Thresholds"
+          },
+          "values": {
+            "items": {
+              "$ref": "#/components/schemas/IndexValue"
+            },
+            "type": "array",
+            "title": "Values"
+          },
+          "mean_travel": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mean Travel"
+          },
+          "measured_points": {
+            "type": "integer",
+            "title": "Measured Points"
+          },
+          "reference_points": {
+            "type": "integer",
+            "title": "Reference Points"
+          },
+          "facilities": {
+            "type": "integer",
+            "title": "Facilities"
+          },
+          "model_revision": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Revision"
+          },
+          "definition_sha256": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Definition Sha256"
+          },
+          "source_urls": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Source Urls"
+          },
+          "origin_kind": {
+            "type": "string",
+            "title": "Origin Kind"
+          }
+        },
+        "type": "object",
+        "required": [
+          "criterion_id",
+          "value",
+          "status",
+          "reason",
+          "basis_kind",
+          "qualification",
+          "legal_compliance_confirmed",
+          "unit",
+          "mode",
+          "thresholds",
+          "values",
+          "mean_travel",
+          "measured_points",
+          "reference_points",
+          "facilities",
+          "model_revision",
+          "definition_sha256",
+          "source_urls",
+          "origin_kind"
+        ],
+        "title": "MunicipalNormativeResponse"
+      },
       "MunicipalityCollectionResponse": {
         "properties": {
           "type": {
@@ -8006,6 +8393,107 @@
           "coordinates"
         ],
         "title": "MunicipalityGeometryResponse"
+      },
+      "MunicipalityIndicesResponse": {
+        "properties": {
+          "region_id": {
+            "type": "string",
+            "title": "Region Id"
+          },
+          "municipality_id": {
+            "type": "string",
+            "title": "Municipality Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "season": {
+            "type": "string",
+            "title": "Season"
+          },
+          "connectivity": {
+            "$ref": "#/components/schemas/MunicipalMetricResponse"
+          },
+          "region_connectivity": {
+            "$ref": "#/components/schemas/MunicipalMetricResponse"
+          },
+          "metrics": {
+            "items": {
+              "$ref": "#/components/schemas/MunicipalMetricResponse"
+            },
+            "type": "array",
+            "title": "Metrics"
+          },
+          "normative": {
+            "items": {
+              "$ref": "#/components/schemas/MunicipalNormativeResponse"
+            },
+            "type": "array",
+            "title": "Normative"
+          },
+          "method": {
+            "type": "string",
+            "title": "Method"
+          },
+          "model_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Version"
+          },
+          "artifact_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Artifact Version"
+          },
+          "source_table": {
+            "type": "string",
+            "title": "Source Table"
+          },
+          "computed_at": {
+            "type": "string",
+            "title": "Computed At"
+          },
+          "boundary_source_url": {
+            "type": "string",
+            "title": "Boundary Source Url"
+          },
+          "boundary_source_sha256": {
+            "type": "string",
+            "title": "Boundary Source Sha256"
+          }
+        },
+        "type": "object",
+        "required": [
+          "region_id",
+          "municipality_id",
+          "name",
+          "season",
+          "connectivity",
+          "region_connectivity",
+          "metrics",
+          "normative",
+          "method",
+          "model_version",
+          "artifact_version",
+          "source_table",
+          "computed_at",
+          "boundary_source_url",
+          "boundary_source_sha256"
+        ],
+        "title": "MunicipalityIndicesResponse"
       },
       "MunicipalityMetadataResponse": {
         "properties": {

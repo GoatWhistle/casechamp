@@ -27,6 +27,7 @@ from app.controller.atlas.accessibility import build_accessibility_router
 from app.controller.atlas.airports import build_airports_router
 from app.controller.chat.router import build_chat_router
 from app.controller.errors import ErrorHandlers
+from app.controller.municipalities.indices import build_municipal_indices_router
 from app.controller.municipalities.router import build_municipality_router
 from app.controller.normative.indices import build_regional_indices_router
 from app.controller.normative.regional_measurements import build_regional_measurements_router
@@ -41,6 +42,7 @@ from app.controller.router import build_api_router
 from app.controller.scenarios.router import build_scenarios_router
 from app.controller.scenarios.sensitivity import build_sensitivity_router
 from app.controller.traffic.router import build_traffic_router
+from app.municipal_wiring import build_municipal_services
 from app.repository.clickhouse.accessibility import ClickHouseAccessibilityRepository
 from app.repository.clickhouse.airports import ClickHouseAirportRepository
 from app.repository.clickhouse.atlas import ClickHouseAtlasRepository
@@ -48,6 +50,7 @@ from app.repository.clickhouse.client import ClickHouseReader
 from app.repository.clickhouse.graph_snapshot import ClickHouseGraphSnapshot
 from app.repository.clickhouse.index_bases import ClickHouseIndexBasisRepository
 from app.repository.clickhouse.index_map import ClickHouseIndexMapRepository
+from app.repository.clickhouse.municipal_indices import ClickHouseMunicipalIndexRepository
 from app.repository.clickhouse.municipalities import ClickHouseMunicipalRepository
 from app.repository.clickhouse.normative import ClickHouseNormativeRepository
 from app.repository.clickhouse.pedestrian import ClickHousePedestrianRepository
@@ -67,6 +70,7 @@ from app.usecase.airports import AirportQueries
 from app.usecase.chat import Chat
 from app.usecase.chat_calculation_review import CalculationReviews
 from app.usecase.links import LinkQueries
+from app.usecase.municipal_indices import MunicipalIndexQueries
 from app.usecase.municipalities import MunicipalityQueries
 from app.usecase.normative.index_map import IndexMapQueries
 from app.usecase.normative.indices import RegionalIndices
@@ -113,6 +117,14 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
     normative_routing = GraphNormativeRouting(road_jobs.delta.base) if road_jobs else None
     regional_views = ClickHouseRegionalViewRepository(normative_reader)
     regional_catalog = RegionalCatalogQueries(ClickHouseRegionalCatalogRepository(normative_reader))
+    municipal_queries = MunicipalityQueries(ClickHouseMunicipalRepository(reader), atlas)
+    walking = RegionalWalkingFactory(
+        lambda region: ClickHousePedestrianRepository(normative_reader, region),
+        lambda region: ClickHousePedestrianRepository(normative_reader, region).latest_revision(),
+    )
+    municipal_services = build_municipal_services(
+        normative_reader, config.municipal_dataset, regional_catalog, normative_routing, walking,
+    )
     road_view = ClickHouseRoadView(reader.url, config.clickhouse_user, config.clickhouse_password)
     geometry = SelectionGeometry(road_jobs.data) if road_jobs else None
     road_graph = RoadGraph(road_jobs, atlas, road_view, geometry)
@@ -157,6 +169,7 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         yield
+        municipal_services.close()
         if traffic is not None:
             traffic.close()
         if stress is not None:
@@ -179,9 +192,10 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
             build_accessibility_router(AccessibilityQueries(ClickHouseAccessibilityRepository(reader), atlas)),
             build_scenarios_router(scenarios),
             build_regional_catalog_router(regional_catalog),
-            build_municipality_router(
-                MunicipalityQueries(ClickHouseMunicipalRepository(reader), atlas)
-            ),
+            build_municipality_router(municipal_queries),
+            build_municipal_indices_router(MunicipalIndexQueries(
+                municipal_queries, ClickHouseMunicipalIndexRepository(reader), municipal_services
+            )),
             build_regional_view_router(RegionalViewQueries(regional_views, regional_catalog)),
             build_regional_indices_router(
                 RegionalIndices(
@@ -203,9 +217,7 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
                     ClickHouseRegionalMeasurementRepository(normative_reader),
                     normative_routing,
                     lambda: datetime.now(UTC),
-                    walking=RegionalWalkingFactory(
-                        lambda region: ClickHousePedestrianRepository(normative_reader, region)
-                    ),
+                    walking=walking,
                     fire=FireRoutingFactory(road_jobs.delta.base) if road_jobs else None,
                     views=regional_views,
                 )

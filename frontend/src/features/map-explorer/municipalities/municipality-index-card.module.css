@@ -1,0 +1,102 @@
+.panel {
+  composes: surface from "../../../shared/styles/compose.module.css";
+  position: absolute;
+  inset-block-end: var(--space-16);
+  inset-inline-start: var(--space-16);
+  z-index: var(--layer-raised);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  inline-size: min(
+    var(--legend-default-width),
+    calc(100% - var(--space-32) - var(--target-min) - var(--space-16))
+  );
+  max-block-size: calc(100% - var(--space-64) * 2);
+  box-shadow: var(--shadow-raised);
+  transform-origin: left bottom;
+  animation: var(--motion-scale-in);
+}
+
+.panel[data-collapsed] {
+  inline-size: fit-content;
+  inset-inline-end: calc(var(--target-min) + var(--space-32));
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  min-inline-size: 0;
+  padding: var(--space-4);
+}
+
+.heading.heading {
+  flex: 1;
+  justify-content: flex-start;
+  min-inline-size: 0;
+  text-align: start;
+}
+
+.name {
+  overflow-wrap: anywhere;
+  font-weight: var(--weight-semibold);
+}
+
+.body {
+  min-block-size: 0;
+  padding: var(--space-4) var(--space-16) var(--space-16);
+  transition: var(--transition-fade);
+}
+
+.body[data-state="closed"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.content {
+  display: grid;
+  gap: var(--space-16);
+}
+
+.services {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.note {
+  composes: captionMuted from "../../../shared/styles/compose.module.css";
+  color: var(--text-secondary);
+  line-height: var(--line-height-caption);
+}
+
+.headingRow {
+  color: var(--text-primary);
+  font-size: var(--font-size-body-sm);
+  font-weight: var(--weight-semibold);
+}
+
+.rows {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-12);
+  font-size: var(--font-size-body-sm);
+}
+
+.row > :last-child {
+  flex: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.medicalValues {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-8);
+}
+
+.note > span {
+  display: block;
+}

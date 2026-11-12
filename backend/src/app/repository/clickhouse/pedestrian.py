@@ -20,6 +20,14 @@ class ClickHousePedestrianRepository:
         self.region_id = region_id
         self.purpose = purpose
 
+    def latest_revision(self) -> str:
+        found = self.reader.rows(
+            NETWORK, {"revision": "", "region": self.region_id, "purpose": self.purpose}
+        )
+        if not found:
+            raise DataUnavailable("No completed pedestrian network has been imported")
+        return str(found[0]["revision"])
+
     def network(self, revision: str | None = None) -> PedestrianNetwork:
         found = self.reader.rows(
             NETWORK, {"revision": revision or "", "region": self.region_id, "purpose": self.purpose}

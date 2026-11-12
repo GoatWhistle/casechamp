@@ -27,4 +27,15 @@ def selected_view(
         raise RegionNotFound()
     if not isinstance(source, SelectedRoadViewSource):
         raise DataUnavailable("Selected-region road detail is unavailable")
-    return source.view_selected(bounds, zoom, boundary.bounds)
+    points = [point for polygon in boundary.polygons for ring in polygon for point in ring]
+    selected_bounds = (
+        (
+            min(point[0] for point in points),
+            min(point[1] for point in points),
+            max(point[0] for point in points),
+            max(point[1] for point in points),
+        )
+        if points
+        else boundary.bounds
+    )
+    return source.view_selected(bounds, zoom, selected_bounds)

@@ -344,6 +344,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/regions/{region_id}/municipalities/{municipality_id}/indices": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Indices */
+        get: operations["get_indices_api_v1_regions__region_id__municipalities__municipality_id__indices_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/normative/regions/{region_id}/measurements/{criterion_id}/view": {
         parameters: {
             query?: never;
@@ -2246,6 +2263,27 @@ export interface components {
             /** Profile */
             profile: string;
         };
+        /** IndexValue */
+        IndexValue: {
+            /** Threshold */
+            threshold: number;
+            /** Reference Points */
+            reference_points: number;
+            /** Measured Points */
+            measured_points: number;
+            /** Within Points */
+            within_points: number;
+            /** Unresolved Points */
+            unresolved_points: number;
+            /** Point Share Percent */
+            point_share_percent: number | null;
+            /** Population */
+            population: number | null;
+            /** Within Population */
+            within_population: number | null;
+            /** Population Share Percent */
+            population_share_percent: number | null;
+        };
         /** IndexValueResponse */
         IndexValueResponse: {
             /** Threshold */
@@ -2435,6 +2473,70 @@ export interface components {
              */
             method: string;
         };
+        /** MunicipalMetricResponse */
+        MunicipalMetricResponse: {
+            /** Key */
+            key: string;
+            /** Value */
+            value: number | null;
+            /** Status */
+            status: string;
+            /** Reason */
+            reason: string | null;
+            /** Unit */
+            unit: string;
+            /** Population */
+            population: number;
+            /** Measured Population */
+            measured_population: number;
+            /** Settlements */
+            settlements: number;
+            /** Measured Settlements */
+            measured_settlements: number;
+            /** Population Coverage */
+            population_coverage: number | null;
+        };
+        /** MunicipalNormativeResponse */
+        MunicipalNormativeResponse: {
+            /** Criterion Id */
+            criterion_id: string;
+            /** Value */
+            value: number | null;
+            /** Status */
+            status: string;
+            /** Reason */
+            reason: string | null;
+            /** Basis Kind */
+            basis_kind: string;
+            /** Qualification */
+            qualification: string;
+            /** Legal Compliance Confirmed */
+            legal_compliance_confirmed: boolean;
+            /** Unit */
+            unit: string | null;
+            /** Mode */
+            mode: string | null;
+            /** Thresholds */
+            thresholds: number[];
+            /** Values */
+            values: components["schemas"]["IndexValue"][];
+            /** Mean Travel */
+            mean_travel: number | null;
+            /** Measured Points */
+            measured_points: number;
+            /** Reference Points */
+            reference_points: number;
+            /** Facilities */
+            facilities: number;
+            /** Model Revision */
+            model_revision: string | null;
+            /** Definition Sha256 */
+            definition_sha256: string | null;
+            /** Source Urls */
+            source_urls: string[];
+            /** Origin Kind */
+            origin_kind: string;
+        };
         /** MunicipalityCollectionResponse */
         MunicipalityCollectionResponse: {
             /**
@@ -2473,6 +2575,37 @@ export interface components {
                 number,
                 number
             ][][][];
+        };
+        /** MunicipalityIndicesResponse */
+        MunicipalityIndicesResponse: {
+            /** Region Id */
+            region_id: string;
+            /** Municipality Id */
+            municipality_id: string;
+            /** Name */
+            name: string;
+            /** Season */
+            season: string;
+            connectivity: components["schemas"]["MunicipalMetricResponse"];
+            region_connectivity: components["schemas"]["MunicipalMetricResponse"];
+            /** Metrics */
+            metrics: components["schemas"]["MunicipalMetricResponse"][];
+            /** Normative */
+            normative: components["schemas"]["MunicipalNormativeResponse"][];
+            /** Method */
+            method: string;
+            /** Model Version */
+            model_version: string | null;
+            /** Artifact Version */
+            artifact_version: string | null;
+            /** Source Table */
+            source_table: string;
+            /** Computed At */
+            computed_at: string;
+            /** Boundary Source Url */
+            boundary_source_url: string;
+            /** Boundary Source Sha256 */
+            boundary_source_sha256: string;
         };
         /** MunicipalityMetadataResponse */
         MunicipalityMetadataResponse: {
@@ -4902,6 +5035,40 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["MunicipalityCollectionResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_indices_api_v1_regions__region_id__municipalities__municipality_id__indices_get: {
+        parameters: {
+            query?: {
+                season?: "road" | "summer" | "winter";
+            };
+            header?: never;
+            path: {
+                region_id: string;
+                municipality_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MunicipalityIndicesResponse"];
                 };
             };
             /** @description Validation Error */

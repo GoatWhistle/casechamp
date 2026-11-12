@@ -70,7 +70,8 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
     facilities: normativeFacilities.data,
   })
   const cameraSelection = scope.selection
-  const municipalities = useMunicipalitySelection(cameraSelection)
+  const ready = geo.data !== undefined && regions.data !== undefined
+  const municipalities = useMunicipalitySelection(cameraSelection, season, ready)
   const {
     selectedPoint,
     selectPoint,
@@ -113,7 +114,6 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
     hovered ? valueAt(hovered.id) : null,
     hovered?.hansen ?? null,
   )
-  const ready = geo.data !== undefined && regions.data !== undefined
   const transitModes = new Set(transit.data.features.map((feature) => feature.properties?.mode))
   const drawnSymbols = {
     none: missing,
@@ -165,7 +165,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
           >
             {municipalities.control}
           </MapToolbar>
-          {ready ? (
+          {municipalities.showLegend ? (
             <MapLegend
               metric={metric}
               scale={scale}
@@ -191,6 +191,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
             </MapLegend>
           ) : null}
         </div>
+        {municipalities.panel}
         {hovered && showRegionHover ? (
           <HoverCard
             cardRef={cardRef}

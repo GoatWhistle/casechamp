@@ -13,6 +13,9 @@ class Settings:
     road_workers: int = 1
     traffic_workers: int = 32
     traffic_geography: Path | None = None
+    municipal_dataset: Path = (
+        Path(__file__).resolve().parents[3] / "datasets/municipal-indices"
+    )
     contextual_water: Path = (
         Path(__file__).resolve().parents[3] / "datasets/contextual-water/contextual-water.json"
     )
@@ -35,6 +38,9 @@ def load_settings(env: Mapping[str, str]) -> Settings:
         road_workers=int(env.get("ROAD_WORKERS", "1")),
         traffic_workers=min(32, max(1, int(env.get("TRAFFIC_WORKERS", "32")))),
         traffic_geography=Path(env["TRAFFIC_GEOGRAPHY"]) if env.get("TRAFFIC_GEOGRAPHY") else None,
+        municipal_dataset=Path(env["MUNICIPAL_DATASET"])
+        if env.get("MUNICIPAL_DATASET")
+        else Path(__file__).resolve().parents[3] / "datasets/municipal-indices",
         contextual_water=Path(env["DISPLAY_CONTEXT_WATER"])
         if env.get("DISPLAY_CONTEXT_WATER")
         else Path(__file__).resolve().parents[3]

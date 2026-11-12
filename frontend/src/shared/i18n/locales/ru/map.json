@@ -76,5 +76,31 @@
     "select": "Район / округ",
     "retry": "Загрузить муниципальные границы",
     "selected": "Выбран район или округ: {{name}}"
+  },
+  "municipalCard": {
+    "label": "Индексы: {{name}}",
+    "collapse": "Свернуть индексы: {{name}}",
+    "restore": "Показать индексы: {{name}}",
+    "clear": "Снять выбор района или округа",
+    "loadError": "Индексы не загрузились",
+    "school": "Школы",
+    "medical": "Медицинские объекты",
+    "hansen": "Индекс Хансена",
+    "pending": "Рассчитываем",
+    "unavailable": "Пока нет расчёта",
+    "coverage": "Охват расчёта: {{value}}",
+    "metres": "м",
+    "minutes": "мин",
+    "range": "{{min}}–{{max}}%",
+    "limitRange": "{{min}}–{{max}}",
+    "within": "В пределах {{value}} {{unit}}",
+    "pointShare": "Доля опорных точек",
+    "settlementEstimate": "Оценка по населённым пунктам",
+    "meanWalk": "Средний путь пешком: {{value}} м",
+    "referenceEstimate": "Сценарная оценка доступности",
+    "regionComparison": "В регионе: {{value}}",
+    "details": "Показатели района",
+    "otherServices": "Другие показатели",
+    "fireAssumption": "Сценарий: 40 км/ч"
   }
 }
