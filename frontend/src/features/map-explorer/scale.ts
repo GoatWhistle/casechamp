@@ -124,3 +124,19 @@ export function buildScale(values: readonly (number | null)[]): MetricScale {
   }
   return { hasZero, bins, stepOf }
 }
+
+export function coverageScale(): MetricScale {
+  const bins: ScaleBin[] = [0, 20, 40, 60, 80, 100].map((from, index) => ({
+    from,
+    step: (index + 2) as MapStep,
+  }))
+  return {
+    hasZero: false,
+    bins,
+    stepOf: (value) => {
+      if (value === null) return 0
+      if (value <= 0) return 1
+      return bins.findLast((bin) => bin.from <= value)?.step ?? 2
+    },
+  }
+}

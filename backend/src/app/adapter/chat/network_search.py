@@ -25,7 +25,9 @@ class NetworkSearch:
         agent.tool(
             sequential=True,
             description="Find transport assets using one typed request. road: endpoints, optional "
-            "road_name restricts to that highway; without a name search the complete road graph. "
+            "road_name restricts to that road; for a street within one town pass the same qualified "
+            "town in origin and destination. Resolved roads are highlighted on the map. "
+            "Without a name search the complete road graph. "
             "bridges: near/name/radius. services: rail/air/seasonal links in the calculation "
             "snapshot. graph_places: real node IDs for a new connection. road_viewport: sampled "
             "OSM ways in bounds. Returns real selections/IDs, never modifies the graph.",

@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-11-12T12:45:55.374107+00:00",
+  "scope": "Observed successful API durations including calculation, persistence and response; mixed regional sizes and current local workload, not a controlled benchmark or fresh full replay",
+  "car": {
+    "sample_size": 479,
+    "median_seconds": 1.929867000086233,
+    "p90_nearest_rank_seconds": 16.796181624988094,
+    "max_seconds": 145.74840554199181,
+    "sum_observed_successful_job_minutes": 45.08722539593388
+  },
+  "walk": {
+    "sample_size": 116,
+    "median_seconds": 5.533061895985156,
+    "p90_nearest_rank_seconds": 21.71165408298839,
+    "max_seconds": 74.35444112494588,
+    "sum_observed_successful_job_minutes": 37.43611406803829
+  }
+}

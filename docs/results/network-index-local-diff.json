@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-12",
+  "method": "same_saved_candidate_before_after_single_measurement",
+  "snapshot": "traffic-8979fdc163fe491a95ca610ed2229033",
+  "national_markets": 180,
+  "regional_origins": 2673,
+  "before_status": "timeout",
+  "before_index_seconds": 60.07558679091744,
+  "after_status": "verified",
+  "after_index_seconds": 50.43834495800547,
+  "weighted_before": 95.11640098918427,
+  "weighted_after": 95.11709802871178,
+  "weighted_delta": 0.0006970395275089913,
+  "baseline_indices": [
+    {
+      "region": "Ставропольский край",
+      "value": 99.15140597565384,
+      "population": 2907593,
+      "settlements": 760,
+      "normalization": 7897244.511692026
+    },
+    {
+      "region": "Карачаево-Черкесская Республика",
+      "value": 90.48542535954101,
+      "population": 469865,
+      "settlements": 148,
+      "normalization": 7897244.511692026
+    },
+    {
+      "region": "Краснодарский край",
+      "value": 93.47957809833936,
+      "population": 5838273,
+      "settlements": 1765,
+      "normalization": 7897244.511692026
+    }
+  ],
+  "after_indices": [
+    {
+      "region": "Ставропольский край",
+      "value": 99.15140596120304,
+      "population": 2907593,
+      "settlements": 760,
+      "normalization": 7897244.511692026
+    },
+    {
+      "region": "Карачаево-Черкесская Республика",
+      "value": 90.4990870659845,
+      "population": 469865,
+      "settlements": 148,
+      "normalization": 7897244.511692026
+    },
+    {
+      "region": "Краснодарский край",
+      "value": 93.47957888848758,
+      "population": 5838273,
+      "settlements": 1765,
+      "normalization": 7897244.511692026
+    }
+  ],
+  "vehicle_hours_saved": 1.5781729546988572,
+  "counters": {
+    "directed_edge_changes": 248,
+    "repaired_markets": 158,
+    "touched_regional_origins": 427,
+    "recomputed_regional_origins": 2673,
+    "graph_seconds": 0.23676758399233222,
+    "repair_seconds": 49.48014791600872,
+    "changed_nodes": 20411056,
+    "overlay_nodes": 20411056,
+    "overlay_seconds": 0.5743829160928726,
+    "transfers_changed": true,
+    "transfer_seconds": 0.017891000024974346,
+    "aggregate_seconds": 0.06418208300601691,
+    "values_seconds": 0.6608545830240473,
+    "total_seconds": 50.43803670804482
+  },
+  "candidate": {
+    "kind": "connection",
+    "source_node": 3929038,
+    "target_node": 740495,
+    "length_km": 17.53073626373226,
+    "speed_kmh": 57.4365949490512,
+    "road_class": "two_lane_connector",
+    "target_origin": null
+  },
+  "limits": [
+    "Synthetic demand and preliminary geographic design",
+    "Different cache warmth and background activity; not a statistical speedup estimate",
+    "Stavropol has no meaningful gain; principal effect is in Karachay-Cherkessia",
+    "Not an LLM-origin candidate; LLM pilot remains separate"
+  ],
+  "parallel_index_seconds": 30.130461624939926,
+  "parallel_peak_rss_bytes": 3376840704,
+  "parallel_counters": {
+    "directed_edge_changes": 248,
+    "repaired_markets": 158,
+    "touched_regional_origins": 427,
+    "recomputed_regional_origins": 2673,
+    "graph_seconds": 0.25902550003957003,
+    "repair_seconds": 28.708587665925734,
+    "changed_nodes": 20411056,
+    "overlay_nodes": 20411056,
+    "overlay_seconds": 0.8867734170053154,
+    "transfers_changed": true,
+    "transfer_seconds": 0.049027167027816176,
+    "aggregate_seconds": 0.12709695799276233,
+    "values_seconds": 1.0712783329654485,
+    "considered_markets": 180,
+    "skipped_markets": 22,
+    "repair_phases": {
+      "delta_seconds": 0.06486754200886935,
+      "delta_edges": 248,
+      "prefilter_seconds": 1.4369889589725062,
+      "reverse_seconds": 0.2886468329234049,
+      "affected_origins": 158,
+      "workers": 4,
+      "repair_and_overlay_seconds": 26.917979667079635,
+      "total_seconds": 28.70850020798389
+    },
+    "total_seconds": 30.129570749937557
+  },
+  "serial_parallel_values_identical": true
+}

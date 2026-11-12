@@ -1,13 +1,15 @@
+from typing import Literal
+
 from fastapi import APIRouter
 from pydantic import BaseModel, Field
 
 from app.controller.road_analysis.schemas import AnalysisResponse
-from app.usecase.road_analysis import AnalysisDetail, AnalysisJob, AnalysisMode, RoadAnalysis
+from app.usecase.road_analysis import AnalysisDetail, AnalysisJob, RoadAnalysis
 
 
 class AnalysisInput(BaseModel):
     region_id: str = Field(min_length=1, max_length=64)
-    mode: AnalysisMode
+    mode: Literal["criticality"]
     percent: int = Field(default=20, ge=1, le=200, strict=True)
 
 

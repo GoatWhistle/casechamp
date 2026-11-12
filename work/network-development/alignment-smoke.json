@@ -1,0 +1,94 @@
+{
+  "code": "/Users/andreykuronskin/keys_champ/etl/synthetic_traffic/candidates.py",
+  "hypotheses_resolved": 11,
+  "trips": 4420,
+  "baseline_converged": true,
+  "generation_seconds": 30.001751207979396,
+  "connections": 12,
+  "llm_connections": 0,
+  "target_diagnostics": {
+    "proposed_pairs": 4428,
+    "hypotheses": 11,
+    "hypotheses_requested": 11,
+    "hypotheses_accepted_for_screening": 8,
+    "hypotheses_snapped_to_road_access": 7,
+    "hypothesis_snap_dijkstra_origins": 11,
+    "hypothesis_rejection_counts": {
+      "snap_endpoints_in_separate_geographic_components": 2,
+      "no_eligible_access_within_2km_existing_road": 1
+    },
+    "hypothesis_rejections": [
+      {
+        "source_node": 3181218,
+        "target_node": 756111,
+        "origin": "agent_hypothesis",
+        "reason": "snap_endpoints_in_separate_geographic_components"
+      },
+      {
+        "source_node": 756111,
+        "target_node": 755897,
+        "origin": "agent_hypothesis",
+        "reason": "snap_endpoints_in_separate_geographic_components"
+      },
+      {
+        "source_node": 740400,
+        "target_node": 2666098,
+        "origin": "agent_hypothesis",
+        "reason": "no_eligible_access_within_2km_existing_road"
+      }
+    ],
+    "index_hints_outside_eligible_geography": 0,
+    "existing_or_same_endpoint": 36,
+    "geography_rejected": 1338,
+    "no_optimistic_gain": 0,
+    "origin_budget_skipped": 0,
+    "dijkstra_origins": 47,
+    "eligible_targets": 1036,
+    "disconnected_targets": 0,
+    "index_route_targets": 0,
+    "hypothesis_diversity_quota": 8,
+    "hypothesis_pairs_in_target_pool": 8
+  },
+  "target_origins": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "speeds_kmh": [
+    54.95746214161024,
+    56.57152608569057,
+    57.14312353191052,
+    56.23301458020323,
+    56.709028367392186,
+    58.18437767353655,
+    55.99801089726374,
+    58.55559507908203,
+    55.5818974395538,
+    55.972137902517154,
+    54.9825031184193,
+    56.88800535099154
+  ],
+  "lengths_km": [
+    10.95045948444105,
+    24.466233056012687,
+    16.889070307747122,
+    21.313490571691382,
+    7.234848347903759,
+    27.637217705479976,
+    24.426032670516737,
+    22.420889316715854,
+    21.270114592493954,
+    11.501587136855559,
+    3.6609854175005294,
+    29.608938747350106
+  ]
+}

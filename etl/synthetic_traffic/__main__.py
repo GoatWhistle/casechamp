@@ -24,7 +24,9 @@ def main() -> None:
     candidates.add_argument("--baseline", type=Path, required=True)
     candidates.add_argument("--output", type=Path, required=True)
     candidates.add_argument("--multiplier", type=float, default=1.0)
-    candidates.add_argument("--limit", type=int, default=20)
+    candidates.add_argument("--limit", type=int, default=3)
+    candidates.add_argument("--geography", type=Path)
+    candidates.add_argument("--workers", type=int, default=32)
     publish = commands.add_parser("publish")
     publish.add_argument("--homes", type=Path)
     publish.add_argument("--run", type=Path)
@@ -56,7 +58,13 @@ def main() -> None:
     args = parser.parse_args()
     if args.command == "candidates":
         result = search(
-            args.snapshot, args.baseline, args.output, args.multiplier, args.limit
+            args.snapshot,
+            args.baseline,
+            args.output,
+            args.multiplier,
+            args.limit,
+            args.geography,
+            args.workers,
         )
         print(
             json.dumps(

@@ -19,12 +19,13 @@ from app.usecase.chat import ChatContext
 from app.usecase.road_corridor import RoadCorridors
 
 
-def test_two_agent_turns_compute_then_read_saved_economics_without_resubmitting(
+def test_two_agent_turns_compute_then_read_saved_connectivity_without_resubmitting(
     tmp_path: Path,
 ) -> None:
     corridors, roads = network()
     roads.data.root = tmp_path
     reference: list[str] = []
+    scores: list[tuple[float, float, float]] = []
     stage = [0]
 
     def respond(messages: list[ModelMessage], info: AgentInfo) -> ModelResponse:
@@ -39,11 +40,7 @@ def test_two_agent_turns_compute_then_read_saved_economics_without_resubmitting(
                 [
                     ToolCallPart(
                         "load_skill",
-                        {
-                            "name": "settlement-connectivity"
-                            if stage[0] == 0
-                            else "economic-assessment"
-                        },
+                        {"name": "settlement-connectivity"},
                     )
                 ]
             )
@@ -60,7 +57,6 @@ def test_two_agent_turns_compute_then_read_saved_economics_without_resubmitting(
                                     "kind": "connectivity",
                                     "places": ["Village A", "Village C"],
                                     "selection_ids": ["fast"],
-                                    "traffic": {},
                                 }
                             },
                         )
@@ -73,9 +69,10 @@ def test_two_agent_turns_compute_then_read_saved_economics_without_resubmitting(
                         "manage_calculation",
                         {
                             "request": {
-                                "kind": "connectivity_economics",
+                                "kind": "status",
+                                "calculation_type": "connectivity",
+                                "detail": "full",
                                 "calculation_id": reference[0],
-                                "value_of_pcu_hour_rub": 500,
                             }
                         },
                     )
@@ -84,10 +81,15 @@ def test_two_agent_turns_compute_then_read_saved_economics_without_resubmitting(
         result = json.loads(str(returned[-1].content))
         if stage[0] == 0:
             reference.append(result["calculation_id"])
-            assert result["pairs"][0]["traffic"]["displaced_flow_pcu_h"] == 1800
+            pair = result["pairs"][0]
+            assert pair["traffic"] is None
+            assert pair["score_after"] < pair["score_before"]
+            scores.append((pair["score_before"], pair["score_after"], pair["delta"]))
         else:
             assert result["calculation_id"] == reference[0]
-            assert result["pairs"][0]["time_cost_rub"] > 0
+            pair = result["pairs"][0]
+            assert (pair["score_before"], pair["score_after"], pair["delta"]) == scores[0]
+            assert result["closed_way_ids"]
         return ModelResponse([TextPart("Verified saved calculation")])
 
     def agent(restored: RoadCorridors) -> Agent[ChatRun, str]:
@@ -101,13 +103,13 @@ def test_two_agent_turns_compute_then_read_saved_economics_without_resubmitting(
 
     context = ChatContext(None, Season.SUMMER, NetworkMode.ROAD, "hansen")
     first = ChatRun(context)
-    asyncio.run(agent(corridors).run("Model closure under average traffic", deps=first))
+    asyncio.run(agent(corridors).run("Compare connectivity with this closure", deps=first))
     stage[0] = 1
     assert first.pending[0].table is not None
     assert first.pending[0].table.rows[0]["calculation_id"] == reference[0]
     asyncio.run(
         agent(RoadCorridors(CorridorResolver(roads))).run(
-            "And economically? Saved calculation: " + reference[0],
+            "Read the full saved connectivity result: " + reference[0],
             deps=ChatRun(context),
         )
     )

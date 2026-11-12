@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "etl"))
 from synthetic_traffic.assignment import assign, costs
 from synthetic_traffic.demand import aggregate, generate
 from synthetic_traffic.housing import distribute
+from synthetic_traffic.geography import polyline_km
 from synthetic_traffic.model import DemandParameters, Network, Trip, Zone
 from synthetic_traffic.projects import apply_project
 from synthetic_traffic.report import compare
@@ -90,15 +91,31 @@ class SyntheticTrafficTests(unittest.TestCase):
                 },
             )
 
-    def test_missing_and_oversized_projects_fail(self):
+    def test_missing_road_and_standalone_speed_projects_fail(self):
         graph = network()
         with self.assertRaises(ValueError):
-            apply_project(graph, {"kind": "speed", "way_ids": [999]})
+            apply_project(graph, {"kind": "capacity", "way_ids": [999]})
         with self.assertRaises(ValueError):
             apply_project(
-                replace(graph, length_km=np.full(4, 31.0)),
-                {"kind": "speed", "way_ids": [0]},
+                graph,
+                {"kind": "speed", "way_ids": [0], "factor": 1.3},
             )
+
+    def test_packages_reject_standalone_speed_changes_at_every_depth(self):
+        graph = network()
+        speed = {"kind": "speed", "way_ids": [1], "factor": 1.3}
+        for project in [
+            speed,
+            {
+                "kind": "package",
+                "projects": [{"kind": "capacity", "way_ids": [0]}, speed],
+            },
+            {"kind": "package", "projects": [{"kind": "package", "projects": [speed]}]},
+        ]:
+            original = graph.free_hours.copy()
+            with self.assertRaises(ValueError):
+                apply_project(graph, project)
+            np.testing.assert_array_equal(graph.free_hours, original)
 
     def test_generation_and_zoning_preserve_population(self):
         graph = network((0, 1, 1, 2), (1, 0, 2, 1))
@@ -172,7 +189,8 @@ class SyntheticTrafficTests(unittest.TestCase):
             "kind": "connection",
             "source_node": 0,
             "target_node": 2,
-            "length_km": 0.25,
+            "length_km": polyline_km([[0, 0], [0.002, 0]]),
+            "geometry": {"type": "LineString", "coordinates": [[0, 0], [0.002, 0]]},
             "speed_kmh": 40,
         }
         result = assign(apply_project(graph, project), [Trip(0, 2, 200)])
@@ -192,7 +210,7 @@ class SyntheticTrafficTests(unittest.TestCase):
             result = compare(
                 network(),
                 [Trip(0, 3, 500)],
-                [{"kind": "speed", "way_ids": [0], "factor": 1.2}],
+                [{"kind": "capacity", "way_ids": [0]}],
                 Path(temporary) / "result",
                 1.0,
                 1,
@@ -209,7 +227,8 @@ class SyntheticTrafficTests(unittest.TestCase):
             "kind": "connection",
             "source_node": 1,
             "target_node": 2,
-            "length_km": 0.15,
+            "length_km": polyline_km([[0.001, 0], [0.002, 0]]),
+            "geometry": {"type": "LineString", "coordinates": [[0.001, 0], [0.002, 0]]},
             "speed_kmh": 40,
         }
         with tempfile.TemporaryDirectory() as temporary:

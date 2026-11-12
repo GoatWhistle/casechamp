@@ -3,20 +3,18 @@ import { type RoadGraphState, type ScenarioView, useScenarioView } from "@/entit
 import type { ChatContext } from "@/shared/api/chat-stream"
 import { type MessageKey, useTranslation } from "@/shared/i18n"
 import { Swap } from "@/shared/motion"
-import { Banner, Disclosure, PanelView, Segmented, ViewHeader } from "@/shared/ui"
+import { Banner, Disclosure, PanelView, ViewHeader } from "@/shared/ui"
 import { AppraisalForm } from "./appraisal/appraisal-form"
 import { type Project, projectReady } from "./appraisal/appraisal-state"
 import { LinkEditor } from "./link-editor"
 import { RoadProfileEditor, type RoadProfileState } from "./profile/road-profile-editor"
 import { profilePayload } from "./profile/road-profile-payload"
-import { RoadConnection } from "./road-connection"
 import styles from "./road-scenario.module.css"
 import { RoadSelection } from "./road-selection"
 import { ScenarioFooter } from "./scenario-footer"
 import { ScenarioHome } from "./scenario-home"
 import { rejectionMessage } from "./scenario-payload"
 import { ScenarioResult } from "./scenario-result"
-import { SpeedPicker } from "./speed-picker"
 import { useScenarioDraft } from "./use-scenario-draft"
 
 export interface RoadScenarioProps {
@@ -29,7 +27,6 @@ const TITLE: Readonly<Record<ScenarioView, MessageKey>> = {
   home: "graph:tab",
   roads: "graph:home.roads",
   links: "graph:home.links",
-  connection: "graph:tools.connection",
   result: "graph:result.title",
   criticality: "graph:tools.criticality",
   improvement: "graph:tools.improvement",
@@ -40,18 +37,11 @@ export function RoadScenario({ roads, context, stress }: RoadScenarioProps) {
   const { view, setView } = useScenarioView()
   const regionId = context.region_id ?? null
   const [appraisal, setAppraisal] = useState<Project | null>(null)
-  const [mode, setMode] = useState<"speed" | "profile">("speed")
   const [profile, setProfile] = useState<RoadProfileState>({
     lanes: "",
-    highway: "",
-    surface: "",
-    speed: "",
+    action: "lanes",
   })
-  const draft = useScenarioDraft(
-    roads,
-    regionId,
-    mode === "profile" ? profilePayload(profile) : undefined,
-  )
+  const draft = useScenarioDraft(roads, regionId, profilePayload(profile))
   const count = roads.selected.length
   const seen = useRef(count)
   useEffect(() => {
@@ -83,42 +73,28 @@ export function RoadScenario({ roads, context, stress }: RoadScenarioProps) {
   )
   return (
     <Swap swapKey={view} as="div" className={styles.stage}>
-      {view === "connection" ? (
-        <RoadConnection
+      <PanelView
+        label={t(TITLE[view])}
+        header={header}
+        footer={view === "result" ? undefined : footer}
+      >
+        <ScenarioBody
+          view={view}
           roads={roads}
-          regionId={regionId}
-          busy={draft.busy}
-          appraisal={appraisal}
-          onAppraisal={setAppraisal}
-          header={header}
-          onDone={() => setView("result")}
+          context={context}
+          draft={draft}
+          profile={profile}
+          setProfile={setProfile}
+          setView={setView}
         />
-      ) : (
-        <PanelView
-          label={t(TITLE[view])}
-          header={header}
-          footer={view === "result" ? undefined : footer}
-        >
-          <ScenarioBody
-            view={view}
-            roads={roads}
-            context={context}
-            draft={draft}
-            mode={mode}
-            setMode={setMode}
-            profile={profile}
-            setProfile={setProfile}
-            setView={setView}
-          />
-          {view !== "result" ? (
-            <AppraisalForm value={appraisal} regionId={regionId} onChange={setAppraisal} />
-          ) : null}
-          {view === "home" && stress ? (
-            <Disclosure title={t("stress:title")}>{stress}</Disclosure>
-          ) : null}
-          <ScenarioError roads={roads} />
-        </PanelView>
-      )}
+        {view !== "result" ? (
+          <AppraisalForm value={appraisal} regionId={regionId} onChange={setAppraisal} />
+        ) : null}
+        {view === "home" && stress ? (
+          <Disclosure title={t("stress:title")}>{stress}</Disclosure>
+        ) : null}
+        <ScenarioError roads={roads} />
+      </PanelView>
     </Swap>
   )
 }
@@ -138,8 +114,6 @@ function ScenarioBody({
   roads,
   context,
   draft,
-  mode,
-  setMode,
   profile,
   setProfile,
   setView,
@@ -148,30 +122,14 @@ function ScenarioBody({
   readonly roads: RoadGraphState
   readonly context: ChatContext
   readonly draft: ReturnType<typeof useScenarioDraft>
-  readonly mode: "speed" | "profile"
-  readonly setMode: (value: "speed" | "profile") => void
   readonly profile: RoadProfileState
   readonly setProfile: (value: RoadProfileState) => void
   readonly setView: (value: ScenarioView) => void
 }) {
-  const { t } = useTranslation()
   return view === "roads" ? (
     <>
       <RoadSelection roads={roads} />
-      <Segmented
-        label={t("graph:profile.mode")}
-        value={mode}
-        onChange={setMode}
-        options={[
-          { value: "speed", label: t("graph:profile.manual") },
-          { value: "profile", label: t("graph:profile.edit") },
-        ]}
-      />
-      {mode === "profile" ? (
-        <RoadProfileEditor value={profile} onChange={setProfile} />
-      ) : (
-        <SpeedPicker value={roads.draft.speed} onChange={(speed) => roads.editDraft({ speed })} />
-      )}
+      <RoadProfileEditor value={profile} onChange={setProfile} />
     </>
   ) : view === "links" ? (
     <LinkEditor roads={roads} />

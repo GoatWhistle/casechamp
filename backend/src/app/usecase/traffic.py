@@ -4,13 +4,24 @@ from typing import Literal, Protocol
 
 
 @dataclass(frozen=True)
+class TrafficHypothesis:
+    source_place: str
+    target_place: str
+    rationale: str = ""
+
+
+@dataclass(frozen=True)
 class TrafficScope:
     places: list[str] = field(default_factory=list)
     region: str = ""
+    regions: list[str] = field(default_factory=list)
     bounds: list[float] = field(default_factory=list)
     demand_multiplier: float = 1.0
     pair_flow: float = 1000.0
     max_projects: int = 3
+    objective: Literal["connectivity", "transit", "congestion"] = "connectivity"
+    focus_bounds: list[float] = field(default_factory=list)
+    hypotheses: list[TrafficHypothesis] = field(default_factory=list)
 
 
 @dataclass(frozen=True)
@@ -57,7 +68,7 @@ class TrafficIndexChange:
 @dataclass(frozen=True)
 class TrafficAlternative:
     id: str
-    kind: Literal["capacity", "speed", "connection"]
+    kind: Literal["capacity", "connection", "closure", "opening", "package"]
     way_ids: list[int]
     length_km: float
     vehicle_hours_saved: float | None
@@ -66,6 +77,12 @@ class TrafficAlternative:
     indices: list[TrafficIndexChange] = field(default_factory=list)
     road_names: list[str] = field(default_factory=list)
     housing_clearance: bool | None = None
+    structures: list[dict[str, object]] = field(default_factory=list)
+    overload_increase: int = 0
+    objective_before: float | None = None
+    objective_after: float | None = None
+    objective_gain: float | None = None
+    objective_unit: str = ""
 
 
 @dataclass(frozen=True)
@@ -91,7 +108,7 @@ class TrafficJob:
     indices: list[TrafficIndexValue] = field(default_factory=list)
     provenance: str = "{}"
     error: str = ""
-    version: str = "synthetic_passenger_od_static_msa_hansen_v2"
+    version: str = "network_development_targets_catboost_v4"
 
 
 class TrafficSource(Protocol):

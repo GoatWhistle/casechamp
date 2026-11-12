@@ -1,3 +1,5 @@
+from typing import Literal
+
 from pydantic import BaseModel, Field
 
 from app.domain.transport import Confidence, Mode, Season
@@ -75,8 +77,14 @@ class BoundaryShapeResponse(BaseModel):
     polygons: list[list[list[tuple[float, float]]]]
 
 
+class OutsideMaskResponse(BaseModel):
+    type: Literal["MultiPolygon"] = "MultiPolygon"
+    coordinates: list[list[list[tuple[float, float]]]]
+
+
 class GeoBoundariesResponse(BaseModel):
     regions: list[BoundaryShapeResponse]
+    outside_mask: OutsideMaskResponse | None = None
 
 
 class RegionSummaryResponse(BaseModel):

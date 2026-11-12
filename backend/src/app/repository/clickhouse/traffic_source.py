@@ -15,8 +15,19 @@ class ClickHouseTrafficSource:
         self.reader = reader
 
     def resolve(self, scope: TrafficScope) -> list[float]:
+        if scope.focus_bounds:
+            focus = validate_bounds(scope.focus_bounds)
+            if not scope.bounds:
+                latitude = max(abs(focus[1]), abs(focus[3]))
+                margin = 20 / (111 * max(0.1, cos(radians(latitude))))
+                return validate_bounds([max(-180, focus[0] - margin), max(-90, focus[1] - 20 / 111),
+                                        min(180, focus[2] + margin), min(90, focus[3] + 20 / 111)])
         if scope.bounds:
-            return validate_bounds(scope.bounds)
+            outer = validate_bounds(scope.bounds)
+            if scope.focus_bounds and not (outer[0] <= focus[0] < focus[2] <= outer[2]
+                                           and outer[1] <= focus[1] < focus[3] <= outer[3]):
+                raise InvalidQuery("Focus bounds must lie inside the context bounds")
+            return outer
         rows = []
         if scope.places:
             for place in scope.places:
@@ -32,13 +43,13 @@ class ClickHouseTrafficSource:
                         "Place is missing or ambiguous; qualify by exact region or point ID"
                     )
                 rows.extend(matches)
-        elif scope.region:
+        elif scope.region or scope.regions:
             rows = self.reader.rows(
-                "SELECT lat,lon FROM plexus_graph.locations WHERE lowerUTF8(region)=lowerUTF8({region:String})",
-                {"region": scope.region},
+                "SELECT lat,lon FROM plexus_graph.locations WHERE lowerUTF8(region) IN {regions:Array(String)}",
+                {"regions": [name.casefold() for name in (scope.regions or [scope.region])]},
             )
         if not rows:
-            raise InvalidQuery("Use two exact settlement names, a region name or geographic bounds")
+            raise InvalidQuery("Use one city, two exact settlement names, region names or geographic bounds")
         latitude = max(abs(float(row["lat"])) for row in rows)
         margin = 20 / (111 * max(0.1, cos(radians(latitude))))
         return validate_bounds(
@@ -63,7 +74,7 @@ class ClickHouseTrafficSource:
                 **rows[0],
                 "collection": json.loads(sources[0]["record"]) if sources else None,
                 "coverage": "Russian Federation residential OSM objects; not observed traffic",
-                "runtime": "bounded windows up to 200000 directed edges, 40 demand zones; nationwide inventory, local assignment",
+                "runtime": "bounded windows up to 2000000 directed edges, 128 demand zones; nationwide inventory, local assignment",
                 "calculate": "calculate_scenario(kind=traffic_development)",
             },
             ensure_ascii=False,
@@ -86,12 +97,12 @@ class ClickHouseTrafficSource:
             "INNER JOIN plexus_graph.road_costs c ON c.way_idx=e.way_idx WHERE NOT c.is_ferry "
             "AND c.capacity_pcu_h>0 AND c.freeflow_speed_kmh>0 AND e.km>0 "
             + season
-            + f" AND e.src IN ({nodes}) AND e.dst IN ({nodes}) ORDER BY e.src,e.dst,w.way_id LIMIT 200001",
+            + f" AND e.src IN ({nodes}) AND e.dst IN ({nodes}) ORDER BY e.src,e.dst,w.way_id LIMIT 2000001",
             parameters,
         )
-        if not 0 < edges.num_rows <= 200000:
+        if not 0 < edges.num_rows <= 2000000:
             raise InvalidQuery(
-                "Traffic window is empty or exceeds 200000 edges; select a smaller area"
+                "Traffic window is empty or exceeds 2000000 edges; select a smaller area"
             )
         homes = self.reader.arrow(
             "SELECT id,lat,lon,residential_m2_proxy,floors_assumed FROM plexus_synthetic_traffic.housing_current "
@@ -99,12 +110,12 @@ class ClickHouseTrafficSource:
             + box
             + ") AND "
             + box
-            + " LIMIT 500001",
+            + " LIMIT 2000001",
             parameters,
         )
-        if homes.num_rows > 500000:
+        if homes.num_rows > 2000000:
             raise InvalidQuery(
-                "Traffic window exceeds 500000 residential objects; select a smaller area"
+                "Traffic window exceeds 2000000 residential objects; select a smaller area"
             )
         destination.mkdir(parents=True, exist_ok=False)
         pq.write_table(edges, destination / "edges.parquet")

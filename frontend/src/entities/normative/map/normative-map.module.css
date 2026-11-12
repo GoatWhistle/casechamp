@@ -1,0 +1,20 @@
+.map {
+  width: 100%;
+  height: auto;
+  background: var(--surface-muted);
+  border: var(--hairline) solid var(--border-subtle);
+}
+.point {
+  fill: var(--text-muted);
+}
+.point[data-state="within"] {
+  fill: var(--status-success);
+}
+.point[data-state="exceeded"],
+.point[data-state="unreachable"] {
+  fill: var(--status-danger);
+}
+.facility {
+  composes: mapAccent from "../../../shared/styles/compose.module.css";
+  stroke: var(--surface-raised);
+}

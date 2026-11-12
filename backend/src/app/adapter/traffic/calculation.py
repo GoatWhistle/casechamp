@@ -1,31 +1,34 @@
 import json
 from collections.abc import Callable
 from dataclasses import asdict, replace
-from functools import partial
 from hashlib import sha256
 from pathlib import Path
 from typing import Any
 
 import numpy as np
 import pyarrow.parquet as pq
-from synthetic_traffic.assignment import assign
-from synthetic_traffic.candidates import generate_candidates
 from synthetic_traffic.demand import aggregate, generate
 from synthetic_traffic.housing import distribute
+from synthetic_traffic.incremental import prepare_incremental
 from synthetic_traffic.model import DemandParameters, Trip
-from synthetic_traffic.projects import apply_project
 from synthetic_traffic.source import load_network, load_places
 
-from app.adapter.traffic.housing_clearance import clear_connections
+from app.adapter.traffic.development import develop
+from app.adapter.traffic.focus import resolve_focus
 from app.adapter.traffic.indices import TrafficIndices
 from app.adapter.traffic.visuals import metrics, roads
 from app.domain.errors import InvalidQuery
-from app.usecase.traffic import TrafficAlternative, TrafficIndexChange, TrafficJob, TrafficZone
+from app.usecase.traffic import TrafficJob, TrafficZone
 
 
 class TrafficCalculation:
-    def __init__(self, indices: TrafficIndices | None = None) -> None:
-        self.indices = indices
+    def __init__(
+        self,
+        indices: TrafficIndices | None = None,
+        geography: Path | None = None,
+        workers: int = 32,
+    ) -> None:
+        self.indices, self.geography, self.workers = indices, geography, workers
 
     def run(
         self,
@@ -37,10 +40,11 @@ class TrafficCalculation:
         network = load_network(path)
         settlements, binding = load_places(path, network)
         homes, housing = distribute(path / "housing.parquet", settlements, network)
-        zones, cell = aggregate(homes, network, 2, 40)
+        job, focus = resolve_focus(job, path, settlements, homes)
+        zones, cell = aggregate(homes, network, 2, 128)
         parameters = DemandParameters()
         trips, demand = generate(network, zones, parameters)
-        if job.scope.places:
+        if len(job.scope.places) == 2:
             trips = self.pair(job, path, network.raw_nodes)
             demand = {
                 "generated_vehicles_per_hour": sum(t.vehicles_per_hour for t in trips),
@@ -57,6 +61,7 @@ class TrafficCalculation:
             )
         canonical = json.dumps([asdict(trip) for trip in trips], sort_keys=True)
         provenance = {
+            "focus": focus,
             "source": json.loads((path / "source.json").read_text()),
             "housing": housing,
             "binding": binding,
@@ -71,13 +76,13 @@ class TrafficCalculation:
             "observed_traffic": False,
             "period_hours": 1,
             "scope": "one direction pair without background traffic"
-            if job.scope.places
+            if len(job.scope.places) == 2
             else "housing-derived local demand",
             "limits": [
                 "Clipped network omits external transit and induced demand",
                 "Population attraction proxy; no observed jobs or freight",
                 "Static assignment; no queue length, spillback or intersection controls",
-                "New links are straight endpoint sketches; terrain, water, land and costs unverified",
+                "New corridors require sourced terrain, water, building and protected-area rasters",
                 "Map shows up to 800 priority directed edges plus each project",
                 "Best checked alternative, not a global optimum",
             ],
@@ -91,13 +96,12 @@ class TrafficCalculation:
         )
         update(job)
 
-        def progress(step: int, gap: float) -> None:
-            checkpoint()
-            if step == 1 or step % 10 == 0:
-                update(replace(job, completed=step))
-
-        baseline = assign(network, trips, 300, 1e-3, progress)
         checkpoint()
+        cache = prepare_incremental(network, trips, 300, 1e-3, check=checkpoint)
+        baseline = cache.assignment
+        checkpoint()
+        if not baseline.converged:
+            raise InvalidQuery("Traffic assignment did not converge; no verified project effect")
         job = replace(
             job,
             baseline=metrics(baseline),
@@ -107,114 +111,19 @@ class TrafficCalculation:
             total=job.scope.max_projects,
         )
         update(job)
-        if self.indices:
-            regions = self.indices.regions(job, path)
-            job = replace(
-                job, stage="index", completed=0, total=len(self.indices.data.read("cities"))
-            )
-            update(job)
-            values = self.indices.calculate(
-                network,
-                baseline.hours,
-                regions,
-                self.indices.revision(provenance),
-                partial(self.indices.progress, job, update=update, checkpoint=checkpoint),
-            )
-            job = replace(
-                job, indices=values, stage="candidates", completed=0, total=job.scope.max_projects
-            )
-            update(job)
-        candidates = generate_candidates(network, baseline.flow, baseline.hours, baseline.ratio, 8)
-        projects = self.projects(clear_connections(candidates, network, path), job.scope.max_projects)
-        alternatives = []
-        for index, project in enumerate(projects):
-            checkpoint()
-            job = replace(job, stage="comparing", completed=index, total=len(projects))
-            update(job)
-            changed = apply_project(network, project)
-            after = assign(changed, trips, 300, 1e-3, lambda step, gap: checkpoint())
-            same = all(
-                (a is None) == (b is None)
-                for a, b in zip(baseline.od_hours, after.od_hours, strict=True)
-            )
-            saving = (
-                baseline.vehicle_hours_per_hour - after.vehicle_hours_per_hour
-                if baseline.converged and after.converged and same
-                else None
-            )
-            ways = project.get("way_ids", [])
-            length = (
-                float(project["length_km"])
-                if project["kind"] == "connection"
-                else float(changed.length_km[np.isin(changed.way_id, ways)].sum() / 2)
-            )
-            index_changes = []
-            if self.indices and baseline.converged and after.converged and same:
-                job = replace(
-                    job,
-                    stage="index_comparing",
-                    completed=0,
-                    total=len(self.indices.data.read("cities")),
-                )
-                update(job)
-                values = self.indices.calculate(
-                    changed,
-                    after.hours,
-                    regions,
-                    self.indices.revision(provenance),
-                    partial(self.indices.progress, job, update=update, checkpoint=checkpoint),
-                )
-                before_by_region = {value.region: value for value in job.indices}
-                index_changes = [
-                    TrafficIndexChange(
-                        value.region,
-                        before_by_region[value.region].value,
-                        value.value,
-                        value.value - before_by_region[value.region].value,
-                        (value.value / before_by_region[value.region].value - 1) * 100
-                        if before_by_region[value.region].value
-                        else None,
-                        value.population,
-                    )
-                    for value in values
-                ]
-            alternatives.append(
-                TrafficAlternative(
-                    str(index),
-                    project["kind"],
-                    ways,
-                    length,
-                    saving,
-                    metrics(after),
-                    roads(changed, baseline, after, ways, len(network.source)),
-                    index_changes,
-                    road_names=self.indices.names(ways) if self.indices and ways else [],
-                    housing_clearance=True if project["kind"] == "connection" else None,
-                )
-            )
-            job = replace(job, alternatives=list(alternatives), completed=index + 1)
-            update(job)
-        provenance["candidate_counts"] = {key: len(value) for key, value in candidates.items()}
-        provenance["checked_projects"] = projects
-        return replace(
+        return develop(
             job,
-            status="completed",
-            stage="completed",
-            completed=len(projects),
-            total=len(projects),
-            provenance=json.dumps(provenance, ensure_ascii=False),
+            path,
+            network,
+            trips,
+            zones,
+            cache,
+            self.indices,
+            update,
+            checkpoint,
+            self.geography,
+            self.workers,
         )
-
-    @staticmethod
-    def projects(candidates: dict[str, Any], limit: int) -> list[dict[str, Any]]:
-        rows = candidates["existing_corridor_projects"]
-        result = []
-        for kind in ["capacity", "speed", "connection"]:
-            choices = candidates["connections_for_review"] if kind == "connection" else rows
-            match = next((row for row in choices if row["kind"] == kind), None)
-            if match is not None:
-                result.append(match)
-        return result[:limit]
 
     @staticmethod
     def pair(job: TrafficJob, path: Path, raw_nodes: np.ndarray[Any, Any]) -> list[Trip]:

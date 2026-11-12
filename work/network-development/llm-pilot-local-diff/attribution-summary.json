@@ -1,0 +1,638 @@
+{
+  "protocol": "work/network-development/llm-pilot-local-diff/protocol.json",
+  "paid_llm_requests": 0,
+  "saved_llm_hypotheses": 11,
+  "unique_original_pairs": 11,
+  "baseline_weighted_regional_index": 95.11640098918427,
+  "frozen_runner_valid_comparison": false,
+  "frozen_runner_valid_run": true,
+  "has_index_verification_in_both_arms": false,
+  "complete_arms": true,
+  "interpretation": [
+    "Merged provenance records exposure, not a unique causal LLM contribution",
+    "Original endpoint matching survives road-access snapping; final-pair overlap is separately reported"
+  ],
+  "arms": [
+    {
+      "arm": "automatic_plus_llm",
+      "status": "completed",
+      "llm_forwarded": 11,
+      "published_target_count": 128,
+      "corridor_variants": 28,
+      "llm_exposed_published_targets": 8,
+      "llm_exposed_corridor_variants": 2,
+      "merged_llm_automatic_corridor_variants": 1,
+      "snapped_llm_corridor_variants": 2,
+      "original_pair_overlap_corridors": 2,
+      "final_pair_overlap_corridors": 0,
+      "corrected_candidate_origin_counts": {
+        "index_route": 7,
+        "agent_hypothesis": 2,
+        "fixed_od_detour": 20
+      },
+      "index_verified_projects": 19,
+      "index_timeout_projects": 1,
+      "llm_exposed_index_verified_projects": 2,
+      "llm_exclusive_index_verified_projects": 1,
+      "llm_original_pairs_index_verified": 2,
+      "best_index_gain": 0.0011267324508565935,
+      "best_llm_exposed_index_gain": 0.0002539962788716821,
+      "target_diagnostics": {
+        "proposed_pairs": 4477,
+        "hypotheses": 75,
+        "hypotheses_requested": 75,
+        "hypotheses_accepted_for_screening": 57,
+        "hypotheses_snapped_to_road_access": 42,
+        "hypothesis_snap_dijkstra_origins": 20,
+        "hypothesis_rejection_counts": {
+          "snap_endpoints_in_separate_geographic_components": 16,
+          "no_eligible_access_within_2km_existing_road": 2
+        },
+        "hypothesis_rejections": [
+          {
+            "source_node": 3181218,
+            "target_node": 756111,
+            "origin": "agent_hypothesis",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          },
+          {
+            "source_node": 756111,
+            "target_node": 755897,
+            "origin": "agent_hypothesis",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          },
+          {
+            "source_node": 740400,
+            "target_node": 2666098,
+            "origin": "agent_hypothesis",
+            "reason": "no_eligible_access_within_2km_existing_road"
+          },
+          {
+            "source_node": 755769,
+            "target_node": 282327,
+            "origin": "index_route",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          },
+          {
+            "source_node": 5141038,
+            "target_node": 2807412,
+            "origin": "index_route",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          },
+          {
+            "source_node": 5141038,
+            "target_node": 1840657,
+            "origin": "index_route",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          },
+          {
+            "source_node": 5141038,
+            "target_node": 209995,
+            "origin": "index_route",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          },
+          {
+            "source_node": 740752,
+            "target_node": 282266,
+            "origin": "index_route",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          },
+          {
+            "source_node": 756111,
+            "target_node": 6099343,
+            "origin": "index_route",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          },
+          {
+            "source_node": 630295,
+            "target_node": 282327,
+            "origin": "index_route",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          },
+          {
+            "source_node": 742071,
+            "target_node": 282266,
+            "origin": "index_route",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          },
+          {
+            "source_node": 5141038,
+            "target_node": 282327,
+            "origin": "index_route",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          },
+          {
+            "source_node": 756111,
+            "target_node": 123153,
+            "origin": "index_route",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          },
+          {
+            "source_node": 3929040,
+            "target_node": 282327,
+            "origin": "index_route",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          },
+          {
+            "source_node": 4210963,
+            "target_node": 282266,
+            "origin": "index_route",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          },
+          {
+            "source_node": 747979,
+            "target_node": 282266,
+            "origin": "index_route",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          },
+          {
+            "source_node": 2666098,
+            "target_node": 755900,
+            "origin": "index_route",
+            "reason": "no_eligible_access_within_2km_existing_road"
+          },
+          {
+            "source_node": 612552,
+            "target_node": 282327,
+            "origin": "index_route",
+            "reason": "snap_endpoints_in_separate_geographic_components"
+          }
+        ],
+        "index_hints_outside_eligible_geography": 15,
+        "existing_or_same_endpoint": 36,
+        "geography_rejected": 1338,
+        "no_optimistic_gain": 0,
+        "origin_budget_skipped": 0,
+        "dijkstra_origins": 52,
+        "eligible_targets": 1082,
+        "disconnected_targets": 0,
+        "index_route_targets": 49,
+        "hypothesis_diversity_quota": 8,
+        "hypothesis_pairs_in_target_pool": 8
+      },
+      "index_attempts": [
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 0.0,
+          "index_seconds": 2.351580417016521,
+          "origins": [
+            "index_route"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 0.0,
+          "index_seconds": 2.242079499992542,
+          "origins": [
+            "fixed_od_detour"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 3.732539448719763e-05,
+          "index_seconds": 2.2996991249965504,
+          "origins": [
+            "agent_hypothesis",
+            "fixed_od_detour"
+          ],
+          "llm_exposed": true,
+          "merged_sources": true,
+          "snapped_llm": true,
+          "llm_original_pairs": [
+            [
+              3083270,
+              3929040
+            ]
+          ],
+          "llm_provenance_pairs": [
+            [
+              3083270,
+              3929040
+            ]
+          ],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 4.647591457285216e-05,
+          "index_seconds": 29.77501908398699,
+          "origins": [
+            "index_route"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 1.86559886969917e-05,
+          "index_seconds": 54.388657208066434,
+          "origins": [
+            "index_route"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 0.0,
+          "index_seconds": 0.9487638339633122,
+          "origins": [
+            "fixed_od_detour"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 0.0003738047227983543,
+          "index_seconds": 3.0212782089365646,
+          "origins": [
+            "fixed_od_detour"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 1.1934022836612712e-07,
+          "index_seconds": 45.988087750039995,
+          "origins": [
+            "fixed_od_detour"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 5.009008610556975e-05,
+          "index_seconds": 1.6252082500141114,
+          "origins": [
+            "index_route"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 0.00030908695357823035,
+          "index_seconds": 20.107034291955642,
+          "origins": [
+            "fixed_od_detour"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 0.0002539962788716821,
+          "index_seconds": 23.52754579205066,
+          "origins": [
+            "agent_hypothesis"
+          ],
+          "llm_exposed": true,
+          "merged_sources": false,
+          "snapped_llm": true,
+          "llm_original_pairs": [
+            [
+              742071,
+              3083270
+            ]
+          ],
+          "llm_provenance_pairs": [
+            [
+              742071,
+              3083270
+            ]
+          ],
+          "final_pair_overlap": false,
+          "llm_exclusive": true
+        },
+        {
+          "status": "index_verified",
+          "kind": "package",
+          "index_gain": 0.0011267324508565935,
+          "index_seconds": 20.7110389159061,
+          "origins": [
+            "index_route"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 0.0011222496610230337,
+          "index_seconds": 20.436185500002466,
+          "origins": [
+            "index_route"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 0.0,
+          "index_seconds": 0.3092127919662744,
+          "origins": [
+            "fixed_od_detour"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 0.0,
+          "index_seconds": 0.23819358402397484,
+          "origins": [
+            "fixed_od_detour"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 0.0,
+          "index_seconds": 0.25544712506234646,
+          "origins": [
+            "fixed_od_detour"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 4.914432068403585e-05,
+          "index_seconds": 33.2901909169741,
+          "origins": [
+            "fixed_od_detour"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "package",
+          "index_gain": 5.009008610556975e-05,
+          "index_seconds": 1.615720917005092,
+          "origins": [
+            "fixed_od_detour",
+            "index_route"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_verified",
+          "kind": "connection",
+          "index_gain": 0.0011267324508565935,
+          "index_seconds": 20.059109250083566,
+          "origins": [
+            "index_route"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        },
+        {
+          "status": "index_timeout",
+          "kind": "package",
+          "index_gain": null,
+          "index_seconds": 5.025632667005993,
+          "origins": [
+            "fixed_od_detour",
+            "index_route"
+          ],
+          "llm_exposed": false,
+          "merged_sources": false,
+          "snapped_llm": false,
+          "llm_original_pairs": [],
+          "llm_provenance_pairs": [],
+          "final_pair_overlap": false,
+          "llm_exclusive": false
+        }
+      ],
+      "benefits": [
+        {
+          "id": "0",
+          "kind": "connection",
+          "regional_index_changes": [
+            {
+              "region": "Ставропольский край",
+              "before": 99.15140597565384,
+              "after": 99.15140597508048,
+              "delta": -5.733653551942552e-10,
+              "relative_percent": -5.78270764606259e-10,
+              "population": 2907593
+            },
+            {
+              "region": "Карачаево-Черкесская Республика",
+              "before": 90.48542535954101,
+              "after": 90.5058129759329,
+              "delta": 0.020387616391886354,
+              "relative_percent": 0.02253138150245526,
+              "population": 469865
+            },
+            {
+              "region": "Краснодарский край",
+              "before": 93.47957809833936,
+              "after": 93.47971585097054,
+              "delta": 0.00013775263117565828,
+              "relative_percent": 0.0001473612033509042,
+              "population": 5838273
+            }
+          ],
+          "weighted_regional_index_gain": 0.001126732450863897,
+          "local_mean_minutes_before": 13.818492604327112,
+          "local_mean_minutes_after": 13.803966664627014,
+          "vehicle_hours_saved": 0.7245417672911572,
+          "overloaded_edges_before": 0,
+          "overloaded_edges_after": 0,
+          "overload_increase": 0
+        },
+        {
+          "id": "1",
+          "kind": "package",
+          "regional_index_changes": [
+            {
+              "region": "Ставропольский край",
+              "before": 99.15140597565384,
+              "after": 99.15140597508048,
+              "delta": -5.733653551942552e-10,
+              "relative_percent": -5.78270764606259e-10,
+              "population": 2907593
+            },
+            {
+              "region": "Карачаево-Черкесская Республика",
+              "before": 90.48542535954101,
+              "after": 90.5058129759329,
+              "delta": 0.020387616391886354,
+              "relative_percent": 0.02253138150245526,
+              "population": 469865
+            },
+            {
+              "region": "Краснодарский край",
+              "before": 93.47957809833936,
+              "after": 93.47971585097054,
+              "delta": 0.00013775263117565828,
+              "relative_percent": 0.0001473612033509042,
+              "population": 5838273
+            }
+          ],
+          "weighted_regional_index_gain": 0.001126732450863897,
+          "local_mean_minutes_before": 13.818492604327112,
+          "local_mean_minutes_after": 13.803966664627014,
+          "vehicle_hours_saved": 0.7245417672911572,
+          "overloaded_edges_before": 0,
+          "overloaded_edges_after": 0,
+          "overload_increase": 0
+        },
+        {
+          "id": "2",
+          "kind": "connection",
+          "regional_index_changes": [
+            {
+              "region": "Ставропольский край",
+              "before": 99.15140597565384,
+              "after": 99.15158911337237,
+              "delta": 0.00018313771852263017,
+              "relative_percent": 0.00018470511509161014,
+              "population": 2907593
+            },
+            {
+              "region": "Карачаево-Черкесская Республика",
+              "before": 90.48542535954101,
+              "after": 90.4995316097571,
+              "delta": 0.014106250216087801,
+              "relative_percent": 0.015589527440518225,
+              "population": 469865
+            },
+            {
+              "region": "Краснодарский край",
+              "before": 93.47957809833936,
+              "after": 93.48012309302953,
+              "delta": 0.0005449946901734393,
+              "relative_percent": 0.0005830093601888464,
+              "population": 5838273
+            }
+          ],
+          "weighted_regional_index_gain": 0.0011222496610390886,
+          "local_mean_minutes_before": 13.818492604327112,
+          "local_mean_minutes_after": 13.803199961208373,
+          "vehicle_hours_saved": 0.7627842948934358,
+          "overloaded_edges_before": 0,
+          "overloaded_edges_after": 0,
+          "overload_increase": 0
+        }
+      ],
+      "timings": {
+        "generation_seconds": 120.17634999996517,
+        "verification_seconds": 300.127803707961,
+        "total_development_seconds": 420.3559285829542
+      }
+    }
+  ]
+}

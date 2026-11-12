@@ -1,0 +1,12 @@
+{
+  "region_id": "77000000",
+  "criterion_id": "N08",
+  "act": "Постановление Правительства Чукотского автономного округа от22.09.2025 №539",
+  "official_publication": "https://publication.pravo.gov.ru/document/8700202509240004",
+  "locator": "Раздел2.3, официальныйлист13/печатнаяс.12",
+  "source_sha256": "5febdf117831ad9bd1e1cc01713cf6a07c76915d590f6c4fa86e69e97bc241a7",
+  "scope": "Complexes of bus terminals/stations for regular interregional bus transportation only",
+  "finding": "Approved transport plan states absence of this profile",
+  "does_not_prove": "Absence of local/municipal bus stations, currentness after publication or universal legal non-applicability",
+  "imported_as_numeric_index": false
+}

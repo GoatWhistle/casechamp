@@ -9,3 +9,6 @@
 !etl/synthetic_traffic/
 !etl/synthetic_traffic/**
 **/__pycache__/
+!docs/
+!docs/results/
+!docs/results/normative-live-index-coverage.json

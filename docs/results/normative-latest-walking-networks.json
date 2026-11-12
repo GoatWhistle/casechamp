@@ -1,0 +1,766 @@
+{
+  "checked_at": "2026-11-12T13:46:54.457392+00:00",
+  "scope": "Latest local network manifests, matched by count and revision to all168 previously verified saved receipts; no complete route replay",
+  "territories": 84,
+  "origins": 6337686,
+  "nodes": 75402464,
+  "edges": 160134727,
+  "rows": [
+    {
+      "region_id": "01000000",
+      "revision": "df26f9eedd790cb5c0d0808e",
+      "created_at": "2026-11-12 11:05:15.841713",
+      "origins": 132324,
+      "nodes": 2208041,
+      "edges": 4598838,
+      "manifest_sha256": "de0103dd45a9a93d4527ffd9721ddb78dd92593ac0320ca685daac194901b11d"
+    },
+    {
+      "region_id": "03000000",
+      "revision": "188f91285db0cda0c9ea5df2",
+      "created_at": "2026-11-12 11:06:43.797756",
+      "origins": 526926,
+      "nodes": 2102757,
+      "edges": 4508608,
+      "manifest_sha256": "fc670f005e8727aeea055567746fa2dd6d2fd59e1a7523d31324919357421b50"
+    },
+    {
+      "region_id": "04000000",
+      "revision": "b16f5710076fe3c503fe414a",
+      "created_at": "2026-11-12 11:09:14.479124",
+      "origins": 136549,
+      "nodes": 1405749,
+      "edges": 2950932,
+      "manifest_sha256": "b96f89eb92758562d54a041cd7526e6764b9ec45e61f9aac41a9a0a275c53341"
+    },
+    {
+      "region_id": "05000000",
+      "revision": "02ebc8359dacc5c2e3f3efe2",
+      "created_at": "2026-11-12 11:05:06.739591",
+      "origins": 221223,
+      "nodes": 1529718,
+      "edges": 3176118,
+      "manifest_sha256": "be3e3baccc92d4662ab6e8a6a61ba3eeacadc855481d51e163867cd2e792d69c"
+    },
+    {
+      "region_id": "07000000",
+      "revision": "c1821bd03d8180ee4f498266",
+      "created_at": "2026-11-12 11:05:10.557926",
+      "origins": 88848,
+      "nodes": 676556,
+      "edges": 1459286,
+      "manifest_sha256": "e9bf00f832190e261a5a4644c65c3f6adf9180923b74e727bf476930d19a6805"
+    },
+    {
+      "region_id": "08000000",
+      "revision": "273bdc286d0bd9c343a24f5e",
+      "created_at": "2026-11-12 11:10:01.227511",
+      "origins": 50255,
+      "nodes": 868707,
+      "edges": 1803240,
+      "manifest_sha256": "6de6ca831c16d792c6a64f70dd6bb1111809f25d2ea461e2781c53903524611c"
+    },
+    {
+      "region_id": "10000000",
+      "revision": "d9a5388aae1e3bfe9ef4f156",
+      "created_at": "2026-11-12 11:09:58.574747",
+      "origins": 8902,
+      "nodes": 385347,
+      "edges": 801140,
+      "manifest_sha256": "88fe5c0281cde953ec40b37b1b3f0746d34845dd5820043de0ea09f362d754f9"
+    },
+    {
+      "region_id": "11000000",
+      "revision": "a2a8b623297765b6fa7e50ea",
+      "created_at": "2026-11-12 11:08:51.345126",
+      "origins": 55924,
+      "nodes": 1137771,
+      "edges": 2367398,
+      "manifest_sha256": "1117289acd5495d81c6fbd75884506419880fd4d7b7aa8c3fb929c417ba02063"
+    },
+    {
+      "region_id": "11800000",
+      "revision": "3a87e5d70f5b7a4ab2c6a198",
+      "created_at": "2026-11-12 11:05:01.471002",
+      "origins": 1322,
+      "nodes": 105099,
+      "edges": 218586,
+      "manifest_sha256": "57f9de28c4f024d121009e110204344ad3e986b4ccbf093a8b0bf79bf0337330"
+    },
+    {
+      "region_id": "12000000",
+      "revision": "49d96ea8bbe94c567151a9f5",
+      "created_at": "2026-11-12 11:06:30.556826",
+      "origins": 15407,
+      "nodes": 889079,
+      "edges": 1888062,
+      "manifest_sha256": "d565a6ebc9fbd3c04e823fa48c7426f17f02e3f3aecc833ab8f11252b350d93f"
+    },
+    {
+      "region_id": "14000000",
+      "revision": "236357df7edfca2341bfcf03",
+      "created_at": "2026-11-12 11:08:45.018903",
+      "origins": 76664,
+      "nodes": 738329,
+      "edges": 1577680,
+      "manifest_sha256": "45541576a3eb51b262ebc2f6d2920830eb3a38d694532e18d093762f57855e59"
+    },
+    {
+      "region_id": "15000000",
+      "revision": "da1fc7eca9f8d3368568a86e",
+      "created_at": "2026-11-12 11:08:40.738525",
+      "origins": 46565,
+      "nodes": 577532,
+      "edges": 1212762,
+      "manifest_sha256": "add7903e6236cf9a184c582644b397223e2201f85d041d34520e133e509429b6"
+    },
+    {
+      "region_id": "17000000",
+      "revision": "467c7f409782ca5e47a32f94",
+      "created_at": "2026-11-12 11:05:58.841553",
+      "origins": 58337,
+      "nodes": 966762,
+      "edges": 2049354,
+      "manifest_sha256": "8c09a5810fd5df2df2d9801d42f53daec546d9e7c90253446b87003fee3cbec2"
+    },
+    {
+      "region_id": "18000000",
+      "revision": "ab220651eb3fafd4eadd96c8",
+      "created_at": "2026-11-12 11:06:18.147786",
+      "origins": 92166,
+      "nodes": 1987251,
+      "edges": 4212536,
+      "manifest_sha256": "e49fb6e287544e3e7d3f0e689c2379d3565dff225e447cdd3ff955897c3d4dea"
+    },
+    {
+      "region_id": "19000000",
+      "revision": "cc21de9cc946d643d9a3f595",
+      "created_at": "2026-11-12 11:10:20.700538",
+      "origins": 66021,
+      "nodes": 822693,
+      "edges": 1719290,
+      "manifest_sha256": "07accbf03dd729c1b29dbbb98bccacdc43f314b1f0dfc9353ef95ade8f38404c"
+    },
+    {
+      "region_id": "20000000",
+      "revision": "ffed41cb093d82e57f38a7f2",
+      "created_at": "2026-11-12 11:04:49.741962",
+      "origins": 120340,
+      "nodes": 1199012,
+      "edges": 2551990,
+      "manifest_sha256": "b307c1a35de5a3219b6acbd6ffe0b3dc74bf6c010403c8e1661fb95ba289d798"
+    },
+    {
+      "region_id": "22000000",
+      "revision": "e5ded873182a26457a771b22",
+      "created_at": "2026-11-12 11:08:55.346660",
+      "origins": 171779,
+      "nodes": 1435802,
+      "edges": 3090154,
+      "manifest_sha256": "3b67ba16fb29af71f8293c9a8fd48a099491a9801905b88bffcf72aa422c4dba"
+    },
+    {
+      "region_id": "24000000",
+      "revision": "cd048c25ee4ff8f8c6091311",
+      "created_at": "2026-11-12 11:08:36.567591",
+      "origins": 51231,
+      "nodes": 389898,
+      "edges": 834416,
+      "manifest_sha256": "398184242851e56d2c69dd176debba685fb9da83133f77b7e505af98bb8a3d82"
+    },
+    {
+      "region_id": "25000000",
+      "revision": "18ebf1de0daaad43be49d7de",
+      "created_at": "2026-11-12 11:09:55.284705",
+      "origins": 106957,
+      "nodes": 1758139,
+      "edges": 3734126,
+      "manifest_sha256": "bf69b540c66eff02d7266d7dbda7e0810ea13f18317262a995d615fa753be73a"
+    },
+    {
+      "region_id": "26000000",
+      "revision": "5ae0a775ebf784a07a3d42bb",
+      "created_at": "2026-11-12 11:10:22.000064",
+      "origins": 11422,
+      "nodes": 68848,
+      "edges": 151034,
+      "manifest_sha256": "038d1e3f2ab39c608b7c56946482003624e4bf5014a7008a3d144c1b0d9c4041"
+    },
+    {
+      "region_id": "27000000",
+      "revision": "b057d996dbfb3f7c8ac8ac70",
+      "created_at": "2026-11-12 11:09:46.180176",
+      "origins": 51913,
+      "nodes": 463152,
+      "edges": 980928,
+      "manifest_sha256": "44db26120f3d25f1407c326dbf069f0dd1c6de629454a8fc9d14c5692618ff6a"
+    },
+    {
+      "region_id": "28000000",
+      "revision": "1a34d37cd9ef3035fe87852d",
+      "created_at": "2026-11-12 11:08:02.064110",
+      "origins": 113004,
+      "nodes": 1341540,
+      "edges": 2804828,
+      "manifest_sha256": "00194efda3900733b813628d1cd8078e019aa4287b30b8596e3a3cbdcc3c49fc"
+    },
+    {
+      "region_id": "29000000",
+      "revision": "730d2e37b22bc7f45d78a3ae",
+      "created_at": "2026-11-12 11:08:10.701972",
+      "origins": 71431,
+      "nodes": 761333,
+      "edges": 1609544,
+      "manifest_sha256": "f935bc0731d3a1cb3b037f2b41377ce64970339918bd3d1a40b3f294369a8702"
+    },
+    {
+      "region_id": "30000000",
+      "revision": "6147c4d5815d85654993486f",
+      "created_at": "2026-11-12 11:05:03.121538",
+      "origins": 4516,
+      "nodes": 393845,
+      "edges": 806700,
+      "manifest_sha256": "f42099a874fcfe8e3860fd82db3f4c9e8e34cb7e48c89ff6fe1b3801c952f59b"
+    },
+    {
+      "region_id": "32000000",
+      "revision": "f9568443a7d11eb465103b59",
+      "created_at": "2026-11-12 11:10:03.807551",
+      "origins": 106977,
+      "nodes": 831045,
+      "edges": 1764834,
+      "manifest_sha256": "2e61e971366b38138b23c86d87bd35b43ede7397fe6bb05db8fd42e47c2c5ed5"
+    },
+    {
+      "region_id": "33000000",
+      "revision": "19f00d7e51fa9a107a51eaa7",
+      "created_at": "2026-11-12 11:07:54.815212",
+      "origins": 79813,
+      "nodes": 1206086,
+      "edges": 2532094,
+      "manifest_sha256": "9afa577b1f3179f51f504aad128ea38e9d54cafdcdd24a7fa99b76dee9366c21"
+    },
+    {
+      "region_id": "34000000",
+      "revision": "250a614827976805c137b521",
+      "created_at": "2026-11-12 11:07:57.356590",
+      "origins": 50392,
+      "nodes": 426201,
+      "edges": 894540,
+      "manifest_sha256": "b4e7f4eb62c6b7d76a61314312397618219151f7ae262490fa4a0f020353dd14"
+    },
+    {
+      "region_id": "35000000",
+      "revision": "f37e0b50a3b3b4977a4604c7",
+      "created_at": "2026-11-12 11:10:36.927370",
+      "origins": 48546,
+      "nodes": 940236,
+      "edges": 2023158,
+      "manifest_sha256": "5f647946e9489c4e067da8b812e78c875fab5a3a3653f4d6da1ef447c241dd65"
+    },
+    {
+      "region_id": "36000000",
+      "revision": "ef6103ef15eb6046051ae51b",
+      "created_at": "2026-11-12 11:06:27.139157",
+      "origins": 65277,
+      "nodes": 1024467,
+      "edges": 2232594,
+      "manifest_sha256": "1d2bdaca5c5ee6d32e1992ea9cb28baa65d5eb09b75a82c928a68fd5a9c25334"
+    },
+    {
+      "region_id": "37000000",
+      "revision": "dd83cc0f4326d26d382d0359",
+      "created_at": "2026-11-12 11:08:57.688155",
+      "origins": 40896,
+      "nodes": 335992,
+      "edges": 712632,
+      "manifest_sha256": "5e7126abefcb54ffa9bcd87e90b9a04dae596d3f7a8027691f3feb98e6fa6dc6"
+    },
+    {
+      "region_id": "38000000",
+      "revision": "027f7cfaf3e093a6334d6a1d",
+      "created_at": "2026-11-12 11:08:59.203611",
+      "origins": 30863,
+      "nodes": 709897,
+      "edges": 1493786,
+      "manifest_sha256": "efb2a4c3ba8f8307a745fa2cae7f92e2df095a65464999ecff8830e6e1bc34f7"
+    },
+    {
+      "region_id": "40000000",
+      "revision": "5477b631367a89389366ed00",
+      "created_at": "2026-11-12 11:07:31.740419",
+      "origins": 31550,
+      "nodes": 1081625,
+      "edges": 2482329,
+      "manifest_sha256": "cf23ac507a6c643f3d38e6a3f68e92196da0c8a22e56ba140288d6f0afe92884"
+    },
+    {
+      "region_id": "41000000",
+      "revision": "d9a771647e5187a17abf647b",
+      "created_at": "2026-11-12 11:07:41.044084",
+      "origins": 106340,
+      "nodes": 1976808,
+      "edges": 4217676,
+      "manifest_sha256": "f03f7d38e7d5dd7be3be78e62d595fb51fd9bcf7e5d56fba65400f2f44971565"
+    },
+    {
+      "region_id": "42000000",
+      "revision": "cd24667ac054ba93fc2cf041",
+      "created_at": "2026-11-12 11:08:47.000186",
+      "origins": 76224,
+      "nodes": 666042,
+      "edges": 1408800,
+      "manifest_sha256": "359d031ba37b63a8912146b9c832abb6be2dc7cf065926ed29f87196aaf6d791"
+    },
+    {
+      "region_id": "44000000",
+      "revision": "736adc5f001d738a5832f85a",
+      "created_at": "2026-11-12 11:05:02.069698",
+      "origins": 1013,
+      "nodes": 225415,
+      "edges": 462944,
+      "manifest_sha256": "cc56df71d05aa39eb36e0f3c3656ca670038a4431fcb6cab7516f8c85411157f"
+    },
+    {
+      "region_id": "45000000",
+      "revision": "e37e86a28d4b5ffd82e89ee0",
+      "created_at": "2026-11-12 11:05:22.642812",
+      "origins": 71390,
+      "nodes": 1490127,
+      "edges": 3492264,
+      "manifest_sha256": "632e0e0ee98a5af7d6885bd123ade68b79a18ad1cc531eb6f0d8865a880c2af5"
+    },
+    {
+      "region_id": "46000000",
+      "revision": "fd73056ab32e8d04b5377943",
+      "created_at": "2026-11-12 11:06:08.365842",
+      "origins": 344040,
+      "nodes": 3628280,
+      "edges": 7886170,
+      "manifest_sha256": "75afaf4274a8f26e0e539d75292637c7bb191e2f7255caf5bbb71d82f0c3dd35"
+    },
+    {
+      "region_id": "47000000",
+      "revision": "d90ba8b6affdd0a23a54cd66",
+      "created_at": "2026-11-12 11:07:22.347275",
+      "origins": 4497,
+      "nodes": 496228,
+      "edges": 1031662,
+      "manifest_sha256": "d2f1ef27d29d5105e92b5a6d540155f2a858a54cb05b9a049ae055f21ae69e90"
+    },
+    {
+      "region_id": "49000000",
+      "revision": "807ad517ea707c1167643290",
+      "created_at": "2026-11-12 11:08:48.689714",
+      "origins": 21186,
+      "nodes": 465189,
+      "edges": 969872,
+      "manifest_sha256": "5207d717c9903108a7e9ce07bc8fbe9d4789158d4335065cbe5e9ccd7b05e86f"
+    },
+    {
+      "region_id": "50000000",
+      "revision": "6e9cd7eeaae20fc40345a4f1",
+      "created_at": "2026-11-12 11:04:57.591547",
+      "origins": 102943,
+      "nodes": 988356,
+      "edges": 2121156,
+      "manifest_sha256": "7905e5e745bb39df80984e999118878f8c60b0748909239bdb6aa494bfb6d750"
+    },
+    {
+      "region_id": "52000000",
+      "revision": "90b9d2582c492139dfd416de",
+      "created_at": "2026-11-12 11:09:27.494577",
+      "origins": 85199,
+      "nodes": 1575578,
+      "edges": 3339128,
+      "manifest_sha256": "7cf392e8dc063f5ea98b26cc1ab63c0f3c796760967008b511e77065772f5a68"
+    },
+    {
+      "region_id": "53000000",
+      "revision": "d1bea66b8bfc2d0e80fb9f0d",
+      "created_at": "2026-11-12 11:06:23.734190",
+      "origins": 77829,
+      "nodes": 993591,
+      "edges": 2106974,
+      "manifest_sha256": "0e647dd7a47a68912c52c221c106edde1e0f2c96353f54c0a37530563b8d3fb6"
+    },
+    {
+      "region_id": "54000000",
+      "revision": "c4e7b216e356a520db00fb43",
+      "created_at": "2026-11-12 11:09:47.510598",
+      "origins": 27374,
+      "nodes": 467257,
+      "edges": 979840,
+      "manifest_sha256": "6a0a790a1827fa024ba5783bb48cbc8c34ff6f0653dbb9a150f6f53bd88c0d26"
+    },
+    {
+      "region_id": "56000000",
+      "revision": "ed266017b7e7941910a9333d",
+      "created_at": "2026-11-12 11:08:42.554526",
+      "origins": 65381,
+      "nodes": 706629,
+      "edges": 1493166,
+      "manifest_sha256": "0dadc63e715d13951d766ae4956526749bea550d1a2c86dd2d07b8f9aaa80611"
+    },
+    {
+      "region_id": "57000000",
+      "revision": "8dbb1588205fcc0153194859",
+      "created_at": "2026-11-12 11:08:23.329087",
+      "origins": 122197,
+      "nodes": 1688048,
+      "edges": 3600246,
+      "manifest_sha256": "ade4580a6190cb085c3313cb3fd34bea2c04f3c387640f19156b6d207db41c34"
+    },
+    {
+      "region_id": "58000000",
+      "revision": "7af28c5aecca010e8e9a1ebe",
+      "created_at": "2026-11-12 11:07:28.136977",
+      "origins": 48738,
+      "nodes": 851482,
+      "edges": 1760266,
+      "manifest_sha256": "c0ef91517d6e0406ed4a0cefbd1044c375c106493cf8ae471fa3c70056d3330a"
+    },
+    {
+      "region_id": "60000000",
+      "revision": "65e0e0673ee6115b0cbed25e",
+      "created_at": "2026-11-12 11:07:18.807457",
+      "origins": 220724,
+      "nodes": 2078310,
+      "edges": 4422624,
+      "manifest_sha256": "375dca84351d14002b5a45a6d3f8884684f0c39a95cfc95a5a6ea763bade9d36"
+    },
+    {
+      "region_id": "61000000",
+      "revision": "a9d6d9cd4c6e47e43e7fc31b",
+      "created_at": "2026-11-12 11:09:08.288220",
+      "origins": 51392,
+      "nodes": 808254,
+      "edges": 1694668,
+      "manifest_sha256": "f0cc5ecca22e1dd9206eccb0cd32256458ccd21c8741811fcd00e03879d477e1"
+    },
+    {
+      "region_id": "63000000",
+      "revision": "b7685c7e91f4526eec53b40b",
+      "created_at": "2026-11-12 11:09:43.701776",
+      "origins": 108947,
+      "nodes": 1014897,
+      "edges": 2177206,
+      "manifest_sha256": "2e065a88a6bca76167d56a5bee6d2efa03ebb69f518b09df30d61b03336e7e79"
+    },
+    {
+      "region_id": "64000000",
+      "revision": "30543f5057dd11aa3a7749fa",
+      "created_at": "2026-11-12 11:04:46.090412",
+      "origins": 28802,
+      "nodes": 508810,
+      "edges": 1052352,
+      "manifest_sha256": "305d1d13d28f54b1b6a861b37d1e52bfbb2ad4669870cc48c0f8abd06be8e411"
+    },
+    {
+      "region_id": "65000000",
+      "revision": "1928694ea0f563af016a0b8e",
+      "created_at": "2026-11-12 11:05:32.188378",
+      "origins": 145734,
+      "nodes": 1834764,
+      "edges": 3939704,
+      "manifest_sha256": "b3b7924e0e98132ed5c8dbf39c0dd7ee98cc57ea370c8145da1c5a29366d70c2"
+    },
+    {
+      "region_id": "66000000",
+      "revision": "c01622652d979bf9f6fcab03",
+      "created_at": "2026-11-12 11:08:19.027425",
+      "origins": 21941,
+      "nodes": 642823,
+      "edges": 1339010,
+      "manifest_sha256": "c5ab0018e9fdd2420382ea100716b346306461df468afbf324b19cb2d3ae25bc"
+    },
+    {
+      "region_id": "68000000",
+      "revision": "9d69e51de4d99ecd8be3b3ec",
+      "created_at": "2026-11-12 11:05:27.367838",
+      "origins": 58328,
+      "nodes": 709010,
+      "edges": 1501734,
+      "manifest_sha256": "5b855e90ea9c085fbbd7fdfe58e0186efee0303ca09f3b4f64f5f10ffa1044cc"
+    },
+    {
+      "region_id": "69000000",
+      "revision": "de2cf19c0d63219984bae0d6",
+      "created_at": "2026-11-12 11:04:54.911036",
+      "origins": 35110,
+      "nodes": 600125,
+      "edges": 1267028,
+      "manifest_sha256": "d4b3aaeb2b641f2ec626c6280527d9a295531cdaaf67a950e73baf607fa257ab"
+    },
+    {
+      "region_id": "70000000",
+      "revision": "dc441f162c9641ccc2bc4087",
+      "created_at": "2026-11-12 11:08:07.006042",
+      "origins": 58019,
+      "nodes": 767706,
+      "edges": 1623772,
+      "manifest_sha256": "ae5dd3251c3573429fa869f1c3e4e4aec2827ed4cc9a4a070ea863e687d79911"
+    },
+    {
+      "region_id": "71000000",
+      "revision": "535a6c838e58a5dbca77c234",
+      "created_at": "2026-11-12 11:05:55.815506",
+      "origins": 74477,
+      "nodes": 673328,
+      "edges": 1439822,
+      "manifest_sha256": "efeb8feb2a13fea6b12560f3ed17f51ea3d7e8863f77b0c599ab2e2e14865188"
+    },
+    {
+      "region_id": "71800000",
+      "revision": "97a858f46a0cc950752d1694",
+      "created_at": "2026-11-12 11:05:46.633994",
+      "origins": 33443,
+      "nodes": 1605981,
+      "edges": 3325566,
+      "manifest_sha256": "506258b04fab2c0817cb46db2491c93196ebbd9c3ec82b0c4ee8469ce6f5753b"
+    },
+    {
+      "region_id": "71900000",
+      "revision": "fa77bfca746a26745c5223a2",
+      "created_at": "2026-11-12 11:09:11.607454",
+      "origins": 6035,
+      "nodes": 407880,
+      "edges": 843436,
+      "manifest_sha256": "48852385d23237ff859062ffb742f594a0215c77401817f4d0b77f3a38eabbb2"
+    },
+    {
+      "region_id": "73000000",
+      "revision": "5e28f539184b486431933868",
+      "created_at": "2026-11-12 11:08:14.091883",
+      "origins": 25456,
+      "nodes": 754320,
+      "edges": 1624946,
+      "manifest_sha256": "5ffa055e89b5f9d2e7b2e0bb7bd3518923f8af707ce5bb31e45d52c2b3425113"
+    },
+    {
+      "region_id": "75000000",
+      "revision": "61d316bfb776fba9e2e9f945",
+      "created_at": "2026-11-12 11:10:25.968206",
+      "origins": 179210,
+      "nodes": 1638428,
+      "edges": 3547488,
+      "manifest_sha256": "542a948383f93a8056fa3248e977794c6bdff3fb79a8048ef0b941c09fe93349"
+    },
+    {
+      "region_id": "76000000",
+      "revision": "4f9f77a501c0e8a126a50e8c",
+      "created_at": "2026-11-12 11:09:01.530283",
+      "origins": 20063,
+      "nodes": 425898,
+      "edges": 899844,
+      "manifest_sha256": "1194d7397a63bc0ee7986dde38c42e0357d551f810a892246324dd8bd6295fa3"
+    },
+    {
+      "region_id": "77000000",
+      "revision": "e9be94b852919b61776a1a74",
+      "created_at": "2026-11-12 11:05:50.198736",
+      "origins": 214,
+      "nodes": 149764,
+      "edges": 303142,
+      "manifest_sha256": "48aed50c90df8b5b9551fc1631181bbf124e7be41feece1b025c387a9247132d"
+    },
+    {
+      "region_id": "78000000",
+      "revision": "f1f2b51862bf382e58bae925",
+      "created_at": "2026-11-12 11:10:10.257595",
+      "origins": 37479,
+      "nodes": 722308,
+      "edges": 1528114,
+      "manifest_sha256": "ca46985df904e8f03b10e74eec4656e4f678d413b27120703ccf128623791ae6"
+    },
+    {
+      "region_id": "79000000",
+      "revision": "508bb80521d2d70cad0cabe9",
+      "created_at": "2026-11-12 11:06:33.306798",
+      "origins": 75361,
+      "nodes": 233863,
+      "edges": 495556,
+      "manifest_sha256": "1e38439dfa8bba55eda248068805f58b89c80dad820f7c73488703e46460a2e8"
+    },
+    {
+      "region_id": "80000000",
+      "revision": "dfa7213c03050b995a4ff91d",
+      "created_at": "2026-11-12 11:10:31.395768",
+      "origins": 129407,
+      "nodes": 1632789,
+      "edges": 3483388,
+      "manifest_sha256": "715a829a5df74f11be58d76d1d56998decbae1769dc8b96dc6d61ce3270c8946"
+    },
+    {
+      "region_id": "81000000",
+      "revision": "90c2eecc6fc50e29fd0e0a45",
+      "created_at": "2026-11-12 11:04:43.416081",
+      "origins": 20087,
+      "nodes": 445911,
+      "edges": 936656,
+      "manifest_sha256": "b142ed5b9a81d27335bbe208945729fc376c8ac3b811e97a2077323f986a46c4"
+    },
+    {
+      "region_id": "82000000",
+      "revision": "9c7350cdcd3a96e649f5bc92",
+      "created_at": "2026-11-12 11:09:23.222950",
+      "origins": 394421,
+      "nodes": 893523,
+      "edges": 1852406,
+      "manifest_sha256": "ad3958056db0c38286ec5bf570a2a8350b0a5f5c09c40465d012a77efa68e119"
+    },
+    {
+      "region_id": "83000000",
+      "revision": "18aeab870e5bdf085ddd8e35",
+      "created_at": "2026-11-12 11:09:41.387971",
+      "origins": 81172,
+      "nodes": 273774,
+      "edges": 571550,
+      "manifest_sha256": "76fa75776d5714da5005923e740205809a2aede7cda3675ffbf94cee921dd948"
+    },
+    {
+      "region_id": "84000000",
+      "revision": "0d1df3ca5ffd61f9cd21db8d",
+      "created_at": "2026-11-12 11:09:04.686870",
+      "origins": 16063,
+      "nodes": 1270857,
+      "edges": 2568154,
+      "manifest_sha256": "fed76bad3de29b98e5cd83a4646ae7ebf849504a38439d1314a3741279a124cc"
+    },
+    {
+      "region_id": "85000000",
+      "revision": "4d613dcc13eba633e6eb4071",
+      "created_at": "2026-11-12 11:06:35.503675",
+      "origins": 19636,
+      "nodes": 241128,
+      "edges": 505926,
+      "manifest_sha256": "3abd7ca0096883e025f039a5b6527da27ad80626f1d2d7f740f8b1460304045e"
+    },
+    {
+      "region_id": "86000000",
+      "revision": "3ae757e81dfd2107f6b737b2",
+      "created_at": "2026-11-12 11:09:50.253477",
+      "origins": 17909,
+      "nodes": 1316952,
+      "edges": 2690018,
+      "manifest_sha256": "7799bcc35bb9b7d98029860efd3eee9909aa1ddae8047e671a537b55270520de"
+    },
+    {
+      "region_id": "87000000",
+      "revision": "e90331c8102433cdd438b8ef",
+      "created_at": "2026-11-12 11:09:38.810515",
+      "origins": 34058,
+      "nodes": 771331,
+      "edges": 1616426,
+      "manifest_sha256": "10a9260a5d0d425130b10df37a7bd0fa3164348ce5071243cbc91332687c5c79"
+    },
+    {
+      "region_id": "88000000",
+      "revision": "4bb9992355252fe5b2d38009",
+      "created_at": "2026-11-12 11:08:16.762104",
+      "origins": 22439,
+      "nodes": 478481,
+      "edges": 1016344,
+      "manifest_sha256": "c63532323c4fe1d330a2869ad237594d5b390322ad5897dba8485558d4afc6f4"
+    },
+    {
+      "region_id": "89000000",
+      "revision": "f49bc0f28a3c3af4f0127daa",
+      "created_at": "2026-11-12 11:07:45.754674",
+      "origins": 68447,
+      "nodes": 420026,
+      "edges": 882078,
+      "manifest_sha256": "e8e0b212df0c2e55eaa6587647f5d9fc545894eb93bc64e2f833798895b8b724"
+    },
+    {
+      "region_id": "90000000",
+      "revision": "0883d53d0aad431c31aa18be",
+      "created_at": "2026-11-12 11:08:39.583284",
+      "origins": 16022,
+      "nodes": 126769,
+      "edges": 279502,
+      "manifest_sha256": "95b57d26ac2463b61237d8ad6dc1d974fdbe565c64014b6569df1c30bc494053"
+    },
+    {
+      "region_id": "91000000",
+      "revision": "dcd7ad9d76dee9605330dba4",
+      "created_at": "2026-11-12 11:04:44.701055",
+      "origins": 18701,
+      "nodes": 287062,
+      "edges": 591026,
+      "manifest_sha256": "936d3d288e9fd31eee738888facd426228667a92b730e8a4e2c386ce3690b941"
+    },
+    {
+      "region_id": "92000000",
+      "revision": "c4d0f71816fa9be79100ef2e",
+      "created_at": "2026-11-12 11:07:49.665646",
+      "origins": 187882,
+      "nodes": 1501717,
+      "edges": 3260816,
+      "manifest_sha256": "4ff3157ac3c821c9d411c86b59df06e1249db271a4ed019cd580a8c15199b878"
+    },
+    {
+      "region_id": "93000000",
+      "revision": "65f9bfc6bb75fec723e842d4",
+      "created_at": "2026-11-12 11:05:25.701503",
+      "origins": 12626,
+      "nodes": 202091,
+      "edges": 419406,
+      "manifest_sha256": "ea5bd3178b48c29704e6d9e78fe43062f3996d764841f67bd9595a29fa8dafea"
+    },
+    {
+      "region_id": "94000000",
+      "revision": "0d5852018ba0a91a4fc5bf6b",
+      "created_at": "2026-11-12 11:10:18.262059",
+      "origins": 87621,
+      "nodes": 750122,
+      "edges": 1638902,
+      "manifest_sha256": "1cdb8962090e1019c866712deeb28522d4fdd227a957416fe5063932a321736c"
+    },
+    {
+      "region_id": "95000000",
+      "revision": "74a5a7c0ada376a6df3e3f46",
+      "created_at": "2026-11-12 11:10:06.146613",
+      "origins": 33753,
+      "nodes": 299331,
+      "edges": 634276,
+      "manifest_sha256": "74b3edbf35de55ae2ae57fc2b99d2b940239c6b3e14497599bebd7e8de4ec87c"
+    },
+    {
+      "region_id": "96000000",
+      "revision": "9ebf7ca5b5230c3687d8a85f",
+      "created_at": "2026-11-12 11:09:40.561508",
+      "origins": 23289,
+      "nodes": 237424,
+      "edges": 519696,
+      "manifest_sha256": "da9bfed00eba79d50c7b2106303442d07fad4563cc88806ff7b12c852504fdf8"
+    },
+    {
+      "region_id": "97000000",
+      "revision": "a7bad5b22ee8aa6f821a810a",
+      "created_at": "2026-11-12 11:08:38.317134",
+      "origins": 48282,
+      "nodes": 549721,
+      "edges": 1198610,
+      "manifest_sha256": "83fc22ef17c2b21345ff4c1a2e1dbdd228ec5acd8f9a33f11f1e59106eebfe05"
+    },
+    {
+      "region_id": "98000000",
+      "revision": "e5521d35a393b7f56dcac23e",
+      "created_at": "2026-11-12 11:09:18.438727",
+      "origins": 21877,
+      "nodes": 1053687,
+      "edges": 2152356,
+      "manifest_sha256": "85f769dc13192f0e1427a53cad9a0e0757b56d48df10f070e6b99322fa3070a2"
+    },
+    {
+      "region_id": "99000000",
+      "revision": "033ac3405edf99ba06784051",
+      "created_at": "2026-11-12 11:09:59.419778",
+      "origins": 14568,
+      "nodes": 85760,
+      "edges": 177498,
+      "manifest_sha256": "f32b4246cbd06d3cd8457e02a875b361c6b277022e8b12e78117e5f6561483e4"
+    }
+  ]
+}

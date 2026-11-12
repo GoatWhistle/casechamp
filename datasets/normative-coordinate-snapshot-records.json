@@ -1,0 +1,448 @@
+{
+  "pbf_sha256": "8fb994e69910d29708416000cb718a9843a02576f5c45c1cc8e009fcb2d7f87c",
+  "coordinate_licence": "ODbL-1.0",
+  "records": [
+    {
+      "kind": "node",
+      "id": 1173928519,
+      "version": 2,
+      "timestamp": "2013-03-24 06:27:10+00:00",
+      "latitude": 56.077425,
+      "longitude": 63.634959,
+      "geometry_method": "osm_node",
+      "bounding_box_center": {
+        "latitude": 56.077425,
+        "longitude": 63.634959
+      },
+      "area_centroid": {
+        "latitude": 56.077425,
+        "longitude": 63.634959
+      }
+    },
+    {
+      "kind": "node",
+      "id": 1173945481,
+      "version": 3,
+      "timestamp": "2015-03-19 07:27:31+00:00",
+      "latitude": 56.0910856,
+      "longitude": 63.6825617,
+      "geometry_method": "osm_node",
+      "bounding_box_center": {
+        "latitude": 56.0910856,
+        "longitude": 63.6825617
+      },
+      "area_centroid": {
+        "latitude": 56.0910856,
+        "longitude": 63.6825617
+      }
+    },
+    {
+      "kind": "node",
+      "id": 13197139523,
+      "version": 1,
+      "timestamp": "2025-10-06 06:29:31+00:00",
+      "latitude": 55.3732278,
+      "longitude": 64.4523458,
+      "geometry_method": "osm_node",
+      "bounding_box_center": {
+        "latitude": 55.3732278,
+        "longitude": 64.4523458
+      },
+      "area_centroid": {
+        "latitude": 55.3732278,
+        "longitude": 64.4523458
+      }
+    },
+    {
+      "kind": "way",
+      "id": 72226801,
+      "version": 9,
+      "timestamp": "2020-12-27 10:16:16+00:00",
+      "latitude": 55.348256660000004,
+      "longitude": 65.33785589,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.3483356,
+        "longitude": 65.3378602
+      },
+      "area_centroid": {
+        "latitude": 55.34830472186992,
+        "longitude": 65.33797069715581
+      }
+    },
+    {
+      "kind": "way",
+      "id": 72877724,
+      "version": 8,
+      "timestamp": "2022-05-09 17:46:28+00:00",
+      "latitude": 55.43535078333333,
+      "longitude": 65.3511993,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.43536935,
+        "longitude": 65.35124865
+      },
+      "area_centroid": {
+        "latitude": 55.43536884569576,
+        "longitude": 65.3512711803734
+      }
+    },
+    {
+      "kind": "way",
+      "id": 82158398,
+      "version": 18,
+      "timestamp": "2026-04-15 12:08:18+00:00",
+      "latitude": 55.44040982,
+      "longitude": 65.31705523000001,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.440427799999995,
+        "longitude": 65.31712759999999
+      },
+      "area_centroid": {
+        "latitude": 55.440436182048465,
+        "longitude": 65.31715801627786
+      }
+    },
+    {
+      "kind": "way",
+      "id": 101971794,
+      "version": 4,
+      "timestamp": "2026-06-06 13:05:47+00:00",
+      "latitude": 55.446543750000004,
+      "longitude": 65.300758475,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.446543750000004,
+        "longitude": 65.30075844999999
+      },
+      "area_centroid": {
+        "latitude": 55.44654375031823,
+        "longitude": 65.30075846718135
+      }
+    },
+    {
+      "kind": "way",
+      "id": 103261448,
+      "version": 3,
+      "timestamp": "2013-10-12 19:20:13+00:00",
+      "latitude": 55.33987088461539,
+      "longitude": 65.32949849230769,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.339875500000005,
+        "longitude": 65.3294649
+      },
+      "area_centroid": {
+        "latitude": 55.3398656953771,
+        "longitude": 65.32948964906802
+      }
+    },
+    {
+      "kind": "way",
+      "id": 105203593,
+      "version": 6,
+      "timestamp": "2025-09-27 19:17:11+00:00",
+      "latitude": 56.25767475,
+      "longitude": 62.9369435,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 56.25767475,
+        "longitude": 62.9369435
+      },
+      "area_centroid": {
+        "latitude": 56.25767475,
+        "longitude": 62.936943500000005
+      }
+    },
+    {
+      "kind": "way",
+      "id": 137285439,
+      "version": 4,
+      "timestamp": "2014-11-14 17:01:19+00:00",
+      "latitude": 55.270344275,
+      "longitude": 66.49064527499999,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.27034425,
+        "longitude": 66.49064525
+      },
+      "area_centroid": {
+        "latitude": 55.270344249523156,
+        "longitude": 66.49064527434074
+      }
+    },
+    {
+      "kind": "way",
+      "id": 233593173,
+      "version": 6,
+      "timestamp": "2025-09-05 18:05:56+00:00",
+      "latitude": 55.20440335,
+      "longitude": 67.2499096,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.20440335,
+        "longitude": 67.2499096
+      },
+      "area_centroid": {
+        "latitude": 55.20440335,
+        "longitude": 67.2499096
+      }
+    },
+    {
+      "kind": "way",
+      "id": 240588626,
+      "version": 3,
+      "timestamp": "2019-04-14 10:57:46+00:00",
+      "latitude": 55.196946975,
+      "longitude": 67.261894375,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.19694695,
+        "longitude": 67.2618944
+      },
+      "area_centroid": {
+        "latitude": 55.19694697111467,
+        "longitude": 67.2618943753805
+      }
+    },
+    {
+      "kind": "way",
+      "id": 241206479,
+      "version": 7,
+      "timestamp": "2026-07-20 13:51:32+00:00",
+      "latitude": 55.9579063125,
+      "longitude": 64.4361739875,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.957931200000004,
+        "longitude": 64.43618989999999
+      },
+      "area_centroid": {
+        "latitude": 55.95792722694686,
+        "longitude": 64.43618149469502
+      }
+    },
+    {
+      "kind": "way",
+      "id": 260252101,
+      "version": 10,
+      "timestamp": "2026-05-19 17:07:03+00:00",
+      "latitude": 55.375240325,
+      "longitude": 65.81732845,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.3752403,
+        "longitude": 65.81732845
+      },
+      "area_centroid": {
+        "latitude": 55.3752403215061,
+        "longitude": 65.81732845953675
+      }
+    },
+    {
+      "kind": "way",
+      "id": 301792851,
+      "version": 2,
+      "timestamp": "2014-09-24 12:04:24+00:00",
+      "latitude": 56.5109239,
+      "longitude": 64.64427495,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 56.510923899999995,
+        "longitude": 64.64427495000001
+      },
+      "area_centroid": {
+        "latitude": 56.5109239,
+        "longitude": 64.64427495
+      }
+    },
+    {
+      "kind": "way",
+      "id": 581818883,
+      "version": 4,
+      "timestamp": "2019-04-14 10:58:06+00:00",
+      "latitude": 55.2337766625,
+      "longitude": 63.2831593875,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.2337762,
+        "longitude": 63.28322765
+      },
+      "area_centroid": {
+        "latitude": 55.23373048065568,
+        "longitude": 63.28329413949759
+      }
+    },
+    {
+      "kind": "way",
+      "id": 633646086,
+      "version": 3,
+      "timestamp": "2021-06-09 06:23:02+00:00",
+      "latitude": 56.27698623333333,
+      "longitude": 62.60107928333334,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 56.2769579,
+        "longitude": 62.6010811
+      },
+      "area_centroid": {
+        "latitude": 56.27698665310985,
+        "longitude": 62.601071742181325
+      }
+    },
+    {
+      "kind": "way",
+      "id": 700868193,
+      "version": 1,
+      "timestamp": "2019-07-01 15:10:43+00:00",
+      "latitude": 55.347212875,
+      "longitude": 63.900920475,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.3472129,
+        "longitude": 63.90092045
+      },
+      "area_centroid": {
+        "latitude": 55.347212882919294,
+        "longitude": 63.900920483792824
+      }
+    },
+    {
+      "kind": "way",
+      "id": 700869090,
+      "version": 4,
+      "timestamp": "2022-06-30 02:37:42+00:00",
+      "latitude": 55.337256950000004,
+      "longitude": 63.92342275,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.337249150000005,
+        "longitude": 63.9234611
+      },
+      "area_centroid": {
+        "latitude": 55.33724487902509,
+        "longitude": 63.92348197292514
+      }
+    },
+    {
+      "kind": "way",
+      "id": 721229753,
+      "version": 4,
+      "timestamp": "2025-09-05 19:55:26+00:00",
+      "latitude": 55.3978339875,
+      "longitude": 67.41231095,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.39782915,
+        "longitude": 67.4122869
+      },
+      "area_centroid": {
+        "latitude": 55.39781405956095,
+        "longitude": 67.4122983528563
+      }
+    },
+    {
+      "kind": "way",
+      "id": 742265183,
+      "version": 5,
+      "timestamp": "2025-09-05 19:55:26+00:00",
+      "latitude": 55.38086465,
+      "longitude": 67.065906125,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.38086465,
+        "longitude": 67.0659061
+      },
+      "area_centroid": {
+        "latitude": 55.380864652378726,
+        "longitude": 67.06590612464171
+      }
+    },
+    {
+      "kind": "way",
+      "id": 742289856,
+      "version": 5,
+      "timestamp": "2025-09-05 19:55:26+00:00",
+      "latitude": 55.295654400000004,
+      "longitude": 67.37431955,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.295654400000004,
+        "longitude": 67.37431955
+      },
+      "area_centroid": {
+        "latitude": 55.295654400000004,
+        "longitude": 67.37431955
+      }
+    },
+    {
+      "kind": "way",
+      "id": 867021811,
+      "version": 3,
+      "timestamp": "2025-10-03 19:21:20+00:00",
+      "latitude": 54.616200524999996,
+      "longitude": 65.1501121875,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 54.616188199999996,
+        "longitude": 65.1501126
+      },
+      "area_centroid": {
+        "latitude": 54.61618666372969,
+        "longitude": 65.15010543661545
+      }
+    },
+    {
+      "kind": "way",
+      "id": 1434991673,
+      "version": 1,
+      "timestamp": "2025-10-03 04:13:26+00:00",
+      "latitude": 54.90861755,
+      "longitude": 65.086729175,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 54.908621600000004,
+        "longitude": 65.0867315
+      },
+      "area_centroid": {
+        "latitude": 54.90861869918865,
+        "longitude": 65.08672714945716
+      }
+    },
+    {
+      "kind": "way",
+      "id": 1435008089,
+      "version": 2,
+      "timestamp": "2025-10-03 05:58:07+00:00",
+      "latitude": 54.71601915,
+      "longitude": 65.45885115,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 54.71601915,
+        "longitude": 65.45885115
+      },
+      "area_centroid": {
+        "latitude": 54.71601915,
+        "longitude": 65.45885115
+      }
+    },
+    {
+      "kind": "way",
+      "id": 1435011014,
+      "version": 1,
+      "timestamp": "2025-10-03 05:06:02+00:00",
+      "latitude": 55.082132924999996,
+      "longitude": 65.390915,
+      "geometry_method": "closed_way_vertex_mean",
+      "bounding_box_center": {
+        "latitude": 55.0821329,
+        "longitude": 65.390915
+      },
+      "area_centroid": {
+        "latitude": 55.08213292349793,
+        "longitude": 65.39091498862699
+      }
+    }
+  ]
+}

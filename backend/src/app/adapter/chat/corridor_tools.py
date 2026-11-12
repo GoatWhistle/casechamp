@@ -6,7 +6,9 @@ from pydantic_ai import ModelRetry, RunContext
 from app.adapter.chat.artifacts import ChatRun
 from app.domain.errors import DomainError, InvalidQuery
 from app.usecase.chat import ChatEvent
-from app.usecase.road_corridor import CorridorCalculation, RoadCorridors
+from app.usecase.chat_map import ChatMapCommand
+from app.usecase.road_corridor import CorridorCalculation, RoadCorridor, RoadCorridors
+from app.usecase.road_geometry import RoadGeometry
 
 
 class CorridorTools:
@@ -18,6 +20,7 @@ class CorridorTools:
     ) -> str:
         try:
             corridor = self.corridors.resolve(road_name, origin, destination)
+            self.show(ctx, corridor)
             result = asdict(corridor)
             result.pop("lines")
             result.pop("way_ids")
@@ -58,41 +61,10 @@ class CorridorTools:
         except DomainError as error:
             raise ModelRetry(error.message) from error
 
-    def edit_road_corridors(
-        self, ctx: RunContext[ChatRun], selection_ids: list[str], speed_factor: float
-    ) -> str:
-        try:
-            corridor = self.corridors.combined(selection_ids) if selection_ids else None
-            jobs = self.corridors.edit(selection_ids, speed_factor)
-            if corridor is not None:
-                ctx.deps.pending.append(
-                    ChatEvent(
-                        "calculation",
-                        calculation=CorridorCalculation(
-                            corridor, [j.id for j in jobs], jobs[0].changes
-                        ),
-                    )
-                )
-            return json.dumps(
-                [
-                    {
-                        "id": j.id,
-                        "region": j.region,
-                        "status": j.status,
-                        "changed_ways": len(j.changes),
-                        "speed_factor": speed_factor,
-                        "baseline": "open_base_network",
-                    }
-                    for j in jobs
-                ],
-                ensure_ascii=False,
-            )
-        except DomainError as error:
-            raise ModelRetry(error.message) from error
-
     def resolve_road_route(self, ctx: RunContext[ChatRun], origin: str, destination: str) -> str:
         try:
             route = self.corridors.resolve_route(origin, destination)
+            self.show(ctx, route.corridor)
             result = asdict(route.corridor)
             result.pop("lines")
             result.pop("way_ids")
@@ -107,3 +79,23 @@ class CorridorTools:
             )
         except DomainError as error:
             raise ModelRetry(error.message) from error
+
+    def show(self, ctx: RunContext[ChatRun], corridor: RoadCorridor) -> None:
+        ctx.deps.pending.append(
+            ChatEvent(
+                "map",
+                map=ChatMapCommand(
+                    "focus_road",
+                    (),
+                    road=RoadGeometry(
+                        [
+                            corridor.road_ref
+                            if corridor.origin == corridor.destination
+                            else f"{corridor.origin}, {corridor.destination}"
+                        ],
+                        corridor.length_km,
+                        corridor.lines,
+                    ),
+                ),
+            )
+        )

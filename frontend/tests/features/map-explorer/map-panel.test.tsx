@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react"
 import { MemoryRouter } from "react-router"
 import { afterEach, describe, expect, it, vi } from "vitest"
 import type { Overview, RegionSummary } from "@/entities/region"
-import { MapPanel } from "@/features/map-explorer/map-panel"
+import { MapPanel } from "@/features/map-explorer/summary/map-panel"
 import { LocaleProvider } from "@/shared/i18n"
 import map from "@/shared/i18n/locales/ru/map.json"
 

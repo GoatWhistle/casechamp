@@ -59,7 +59,7 @@ class AtlasTools:
             description="Read atlas evidence. Choose request.kind: places for identifiers; "
             "regions for values (supply metric for a sorted comparison table); settlements; "
             "links for the sourced catalog; sources; capabilities for available calculations "
-            "and active model; sensitivity for a uniform-time experiment, not a project forecast.",
+            "and the current network.",
         )(self.query_atlas)
 
     def query_atlas(self, ctx: RunContext[ChatRun], request: AtlasQuery) -> str:
@@ -82,8 +82,12 @@ class AtlasTools:
         if isinstance(request, LinksQuery):
             return self.region_links(ctx, request.region_id, request.offset)
         if isinstance(request, ReferenceQuery):
-            return self.sources(ctx) if request.kind == "sources" else self._calculations.calculation_capabilities(ctx)
-        return self._calculations.accessibility_sensitivity(ctx, request.region_id)
+            return (
+                self.sources(ctx)
+                if request.kind == "sources"
+                else self._calculations.calculation_capabilities(ctx)
+            )
+        raise ModelRetry("Unsupported atlas query")
 
     def list_regions(self, ctx: RunContext[ChatRun]) -> str:
         rows = self._regions.summaries(ctx.deps.context.season, ctx.deps.context.network_mode)

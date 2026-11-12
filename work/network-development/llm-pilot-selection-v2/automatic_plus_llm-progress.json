@@ -1,0 +1,27 @@
+{
+  "arm": "automatic_plus_llm",
+  "status": "completed",
+  "elapsed_seconds": 421.8840030420106,
+  "index_attempts": 12,
+  "verified": 11,
+  "best_index_gain": 0.001164057845358002,
+  "last_attempt_status": "index_timeout",
+  "last_index_seconds": 37.656805958016776,
+  "timing_counters": {
+    "directed_edge_changes": 596,
+    "repaired_markets": 0,
+    "touched_regional_origins": 0,
+    "recomputed_regional_origins": 0,
+    "graph_seconds": 0.1534323749365285,
+    "considered_markets": 180,
+    "skipped_markets": 22,
+    "repair_phases": {
+      "delta_seconds": 0.06049166608136147,
+      "delta_edges": 596,
+      "prefilter_seconds": 4.364645416964777,
+      "reverse_seconds": 0.35701983398757875,
+      "affected_origins": 158
+    },
+    "total_seconds": 37.65541312494315
+  }
+}

@@ -34,6 +34,7 @@ GraphQuery = Literal[
     "terminal_nodes",
     "references",
     "road_reference",
+    "local_road_ways",
     "corridor_places",
     "corridor_edges",
     "corridor_nodes",

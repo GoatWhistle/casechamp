@@ -30,6 +30,7 @@ const job: TrafficJob = {
   completed: 1,
   total: 1,
   scope: {
+    objective: "connectivity",
     places: [],
     region: "",
     bounds: [],
@@ -48,6 +49,8 @@ const job: TrafficJob = {
       kind: "connection",
       way_ids: [],
       length_km: 1,
+      overload_increase: 0,
+      objective_unit: "",
       vehicle_hours_saved: 1,
       after: metrics,
       roads: [road, { ...road, way_id: -1, flow_before: 0, flow_after: 40, new_link: true }],

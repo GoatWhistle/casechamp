@@ -1,5 +1,5 @@
 import json
-from dataclasses import replace
+from dataclasses import asdict, replace
 
 from pydantic_ai import ModelRetry, RunContext
 
@@ -7,14 +7,25 @@ from app.adapter.chat.artifacts import ChatRun
 from app.domain.errors import DomainError
 from app.usecase.chat import ChatEvent
 from app.usecase.traffic import TrafficJob, TrafficPort, TrafficScope
+from app.usecase.traffic_evidence import public_traffic_job
 from app.usecase.traffic_presentation import traffic_brief
 
 
-def traffic_reply(job: TrafficJob) -> str:
-    return json.dumps(traffic_brief(job), ensure_ascii=False)
+def traffic_reply(job: TrafficJob, full: bool = False) -> str:
+    job = public_traffic_job(job)
+    if full:
+        result = asdict(job)
+        for key in ["roads", "zones"]:
+            result.pop(key)
+        for row in result["alternatives"]:
+            row.pop("roads")
+    else:
+        result = traffic_brief(job)
+    return json.dumps(result, ensure_ascii=False)
 
 
 def traffic_event(job: TrafficJob) -> ChatEvent:
+    job = public_traffic_job(job)
     compact = replace(
         job, roads=[], zones=[], alternatives=[replace(row, roads=[]) for row in job.alternatives]
     )
@@ -38,10 +49,12 @@ class TrafficTools:
         ctx.deps.pending.append(traffic_event(job))
         return traffic_reply(job)
 
-    def inspect(self, ctx: RunContext[ChatRun], job_id: str, cancel: bool = False) -> str:
+    def inspect(
+        self, ctx: RunContext[ChatRun], job_id: str, cancel: bool = False, full: bool = False
+    ) -> str:
         try:
             job = self.available().cancel(job_id) if cancel else self.available().get(job_id)
         except DomainError as error:
             raise ModelRetry(error.message) from error
         ctx.deps.pending.append(traffic_event(job))
-        return traffic_reply(job)
+        return traffic_reply(job, full)

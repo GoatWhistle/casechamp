@@ -1,10 +1,12 @@
 import json
+from dataclasses import asdict
 from pathlib import Path
 from unittest.mock import Mock
 
 from tests.unit.adapter.road_corridor.test_group_connectivity import network
 
 from app.adapter.chat.artifacts import ChatRun
+from app.adapter.chat.connectivity_reply import connectivity_reply
 from app.adapter.chat.network_jobs import NetworkJobs
 from app.adapter.chat.network_scenarios import NetworkScenarios
 from app.adapter.chat.scenario_requests import (
@@ -40,16 +42,15 @@ def test_restarted_tools_read_and_monetize_exact_traffic_result(tmp_path: Path) 
     corridors, roads = network()
     roads.data.root = tmp_path
     context = ChatContext(None, Season.SUMMER, NetworkMode.ROAD, "hansen")
-    first = Mock(deps=ChatRun(context))
     result = json.loads(
-        NetworkScenarios(None, corridors, None).calculate_scenario(
-            first,
-            ConnectivityScenario(
-                "connectivity",
-                ["Village A", "Village C"],
-                selection_ids=["fast"],
-                traffic=TrafficAssumptions(),
-            ),
+        connectivity_reply(
+            asdict(
+                corridors.connectivity(
+                    ["Village A", "Village C"],
+                    selection_ids=["fast"],
+                    traffic=TrafficAssumptions(),
+                )
+            )
         )
     )
     pair = result["pairs"][0]
@@ -58,7 +59,6 @@ def test_restarted_tools_read_and_monetize_exact_traffic_result(tmp_path: Path) 
     assert pair["traffic"]["queue_at_end_pcu"] > 0
     assert pair["after"]["hours"] > 3
     reference = result["calculation_id"]
-    assert first.deps.pending[0].table.rows[0]["calculation_id"] == reference
     restarted = NetworkJobs(None, None, RoadCorridors(CorridorResolver(roads)))
     second = Mock(deps=ChatRun(context))
     assert (

@@ -10,6 +10,7 @@ from app.controller.atlas.schemas import (
     GeoBoundariesResponse,
     GeoRegionsResponse,
     IndexStatusResponse,
+    OutsideMaskResponse,
     OverviewResponse,
     RegionRefResponse,
     RegionShapeResponse,
@@ -43,13 +44,16 @@ def build_catalog_router(
 
     @router.get("/geo/boundaries", responses=UNAVAILABLE)
     def get_geo_boundaries() -> GeoBoundariesResponse:
+        boundaries = reference.boundaries()
+        mask = reference.outside_mask(boundaries)
         return GeoBoundariesResponse(
             regions=[
                 BoundaryShapeResponse(
                     id=item.id, name=item.name, bounds=item.bounds, polygons=item.polygons
                 )
-                for item in reference.boundaries()
-            ]
+                for item in boundaries
+            ],
+            outside_mask=OutsideMaskResponse(coordinates=mask) if mask is not None else None,
         )
 
     @router.get("/search", responses=INVALID)

@@ -22,14 +22,18 @@ export function TrafficKey() {
       </strong>
       {proposal ? <span>{t("traffic:projectLength", { value: proposal.length_km })}</span> : null}
       <ul className={styles.items}>
-        <li>
-          <span className={styles.road} aria-hidden="true" />
-          {t(project ? "traffic:legendProject" : "traffic:legendRoad")}
-        </li>
-        <li>
-          <span className={styles.connection} aria-hidden="true" />
-          {t("traffic:legendNew")}
-        </li>
+        {!project || proposal?.kind !== "connection" ? (
+          <li>
+            <span className={styles.road} aria-hidden="true" />
+            {t(project ? "traffic:legendProject" : "traffic:legendRoad")}
+          </li>
+        ) : null}
+        {proposal?.kind === "connection" && view.mode !== "before" ? (
+          <li>
+            <span className={styles.connection} aria-hidden="true" />
+            {t("traffic:legendNew")}
+          </li>
+        ) : null}
         {view.mode === "difference" ? (
           <li>
             <span className={styles.relief} aria-hidden="true" />

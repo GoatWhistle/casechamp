@@ -10,7 +10,7 @@ import {
   useRef,
   useState,
 } from "react"
-import { motionMs, usePresence } from "../../../motion"
+import { motionMs, readPixels, usePresence } from "../../../motion"
 import { Layer } from "../layer-host/layer-host"
 import type { PopoverSide } from "../popover/anchored-position"
 import { useAnchoredPosition } from "../popover/use-anchored-position"
@@ -147,7 +147,7 @@ export function Tooltip({ content, side = "top", describe = true, children }: To
             ref={bubbleRef}
             role="tooltip"
             className={styles.tooltip}
-            style={position.style}
+            style={{ ...position.style, maxInlineSize: bubbleWidth(position.style?.maxInlineSize) }}
             data-state={presence.state}
             data-side={position.side}
             data-instant={instant}
@@ -160,4 +160,9 @@ export function Tooltip({ content, side = "top", describe = true, children }: To
       ) : null}
     </>
   )
+}
+
+function bubbleWidth(available: string | number | undefined): number {
+  const measure = readPixels("--tooltip-measure")
+  return typeof available === "number" ? Math.min(available, measure) : measure
 }

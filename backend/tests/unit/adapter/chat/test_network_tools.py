@@ -11,7 +11,6 @@ from app.adapter.chat.network_search import NetworkSearch
 from app.adapter.chat.scenario_requests import (
     CalculationQuery,
     NetworkScenario,
-    RoadEdit,
     ServiceEdit,
     TransportScenario,
 )
@@ -19,7 +18,7 @@ from app.adapter.chat.transport_requests import RoadSearch
 from app.domain.transport import NetworkMode, Season
 from app.usecase.chat import ChatContext
 from app.usecase.road_corridor import RoadCorridor, RoadRoute
-from app.usecase.road_graph import RoadChange, RoadJob
+from app.usecase.road_graph import RoadJob
 from app.usecase.transport_links import LinkChange
 
 
@@ -48,9 +47,8 @@ def test_one_search_interface_selects_endpoint_or_named_road_search(name: str | 
         corridors.resolve.assert_not_called()
 
 
-def test_roads_and_aviation_submit_together_and_keep_the_calculation_card() -> None:
+def test_aviation_service_returns_saved_job_without_road_edits() -> None:
     graph = Mock()
-    road = RoadChange(7, 1.2)
     link = LinkChange("remove", "intercity", "air", "City", "*")
     graph.geometry.return_value = Mock(
         names=["Road"],
@@ -62,7 +60,7 @@ def test_roads_and_aviation_submit_together_and_keep_the_calculation_card() -> N
         "region",
         "Region",
         "road",
-        [road],
+        [],
         "queued",
         0,
         360,
@@ -77,7 +75,6 @@ def test_roads_and_aviation_submit_together_and_keep_the_calculation_card() -> N
                 "network",
                 ["region"],
                 "road",
-                [RoadEdit(7, 1.2)],
                 [ServiceEdit("remove", "intercity", "air", "City", "*")],
             ),
         )
@@ -85,13 +82,14 @@ def test_roads_and_aviation_submit_together_and_keep_the_calculation_card() -> N
     graph.submit.assert_called_once_with(
         "region",
         "road",
-        [road],
+        [],
         [link],
         queue=True,
         appraisal=None,
     )
     assert result[0]["id"] == "joint"
-    assert ctx.deps.pending[0].calculation.job_ids == ["joint"]
+    graph.geometry.assert_not_called()
+    assert ctx.deps.pending == []
 
 
 def test_reading_a_saved_result_uses_the_job_interface_without_resubmission() -> None:

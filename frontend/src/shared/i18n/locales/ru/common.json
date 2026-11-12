@@ -38,6 +38,12 @@
     },
     "toast": {
       "region": "Уведомления"
+    },
+    "pagination": {
+      "label": "Страницы таблицы: {{table}}",
+      "previous": "Назад",
+      "next": "Далее",
+      "page": "{{page}} из {{pages}}"
     }
   }
 }

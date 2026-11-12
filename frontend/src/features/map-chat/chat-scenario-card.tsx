@@ -5,8 +5,6 @@ import { Icon } from "@/shared/ui"
 import styles from "./chat-calculation.module.css"
 
 const KIND_ICON = {
-  speed: "arrow-up",
-  slowdown: "arrow-down",
   closure: "error",
   roads: "route",
   connection: "link",

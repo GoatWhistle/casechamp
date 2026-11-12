@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-11-12T07:53:09.602570+00:00",
+  "model_revision": "normative-v8",
+  "checks": {
+    "backend_unit": 563,
+    "mypy_files": 277,
+    "ruff": true,
+    "etl": 56,
+    "frontend_tests": 451,
+    "frontend_rules": 36,
+    "frontend_typecheck_lint_build": true,
+    "isolated_snapshot_integration": 1
+  },
+  "production": {
+    "fire_destinations": 0,
+    "empty_registry_post_status": 503,
+    "new_object_run_saved": false,
+    "fake_objects_imported": false
+  },
+  "desktop": [
+    {
+      "width": 1440,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "emptyRegistry": true,
+      "calculationDisabled": true,
+      "savedBasisPreserved": true
+    },
+    {
+      "width": 1920,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "emptyRegistry": true,
+      "calculationDisabled": true,
+      "savedBasisPreserved": true
+    }
+  ],
+  "proof_scope": "Positive object routing/qualification and snapshot replay use isolated test fixtures only; production has no confirmed objects or fire facts.",
+  "limitations": [
+    "No verified operational pilot",
+    "Other source version chains pending",
+    "ClickHouse global memory Code241 unresolved",
+    "Current legal applicability still incomplete"
+  ]
+}

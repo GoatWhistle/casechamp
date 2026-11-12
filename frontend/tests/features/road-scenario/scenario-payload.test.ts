@@ -25,9 +25,7 @@ const ferry = {
 describe("road scenario payload", () => {
   it("builds a links-only payload without road changes", () => {
     const links = [airportClosure(" Surgut ")]
-    expect(
-      scenarioPayload({ regionId: "71800000", scenario: "road", wayIds: [], speed: 1.2, links }),
-    ).toEqual({
+    expect(scenarioPayload({ regionId: "71800000", scenario: "road", wayIds: [], links })).toEqual({
       region_id: "71800000",
       scenario: "road",
       changes: [],
@@ -44,12 +42,12 @@ describe("road scenario payload", () => {
       regionId: "28000000",
       scenario: "summer",
       wayIds: [7, 8],
-      speed: 0,
+      profile: { closed: true },
       links: [rail as LinkChangeInput],
     })
     expect(payload?.changes).toEqual([
-      { way_id: 7, speed_factor: 0 },
-      { way_id: 8, speed_factor: 0 },
+      { way_id: 7, closed: true },
+      { way_id: 8, closed: true },
     ])
     expect(payload?.links).toEqual([
       {
@@ -72,7 +70,7 @@ describe("road scenario payload", () => {
       source: "98614486101",
       target: "98626101001",
     })
-    const base = { regionId: "98000000", wayIds: [] as number[], speed: 1 }
+    const base = { regionId: "98000000", wayIds: [] as number[] }
     expect(scenarioPayload({ ...base, scenario: "summer", links: [] })).toBeNull()
     expect(
       scenarioPayload({ ...base, scenario: "road", links: [local as LinkChangeInput] }),
@@ -81,7 +79,7 @@ describe("road scenario payload", () => {
       scenarioPayload({ ...base, scenario: "winter", links: [local as LinkChangeInput] })?.links,
     ).toHaveLength(1)
     expect(
-      scenarioPayload({ ...base, wayIds: [1], speed: null, scenario: "road", links: [] }),
+      scenarioPayload({ ...base, wayIds: [1], profile: null, scenario: "road", links: [] }),
     ).toBeNull()
     expect(scenarioPayload({ ...base, regionId: null, scenario: "road", links: [] })).toBeNull()
     expect(removalOf({ ...ferry, mode: "bus" })).toBeNull()

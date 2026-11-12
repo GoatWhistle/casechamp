@@ -8,7 +8,6 @@ import styles from "./road-scenario.module.css"
 import { ScenarioHistory } from "./scenario-history"
 
 const TOOLS = [
-  { view: "connection", label: "graph:tools.connection" },
   { view: "criticality", label: "graph:tools.criticality" },
   { view: "improvement", label: "graph:tools.improvement" },
 ] as const

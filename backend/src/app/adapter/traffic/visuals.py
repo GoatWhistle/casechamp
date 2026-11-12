@@ -16,12 +16,36 @@ def metrics(result: Assignment) -> TrafficMetrics:
 
 
 def roads(
-    network: Network, before: Assignment, after: Assignment, way_ids: list[int], original_edges: int
+    network: Network,
+    before: Assignment,
+    after: Assignment,
+    way_ids: list[int],
+    original_edges: int,
+    original: Network | None = None,
 ) -> list[TrafficRoad]:
     count = len(network.source)
-    base_flow = np.pad(before.flow, (0, count - original_edges))
+    if original is None:
+        base_flow = np.pad(before.flow, (0, count - original_edges))
+        base_ratio = np.pad(before.ratio, (0, count - original_edges))
+        new_edges = np.arange(count) >= original_edges
+    else:
+        lookup = {
+            (int(a), int(b), int(w)): i
+            for i, (a, b, w) in enumerate(
+                zip(original.source, original.target, original.way_id, strict=True)
+            )
+        }
+        positions = np.array(
+            [
+                lookup.get((int(a), int(b), int(w)), -1)
+                for a, b, w in zip(network.source, network.target, network.way_id, strict=True)
+            ]
+        )
+        new_edges = positions < 0
+        base_flow = np.where(new_edges, 0, before.flow[np.maximum(positions, 0)])
+        base_ratio = np.where(new_edges, 0, before.ratio[np.maximum(positions, 0)])
     priority = np.maximum(base_flow, after.flow) + np.abs(after.flow - base_flow)
-    changed = np.isin(network.way_id, way_ids) | (np.arange(count) >= original_edges)
+    changed = np.isin(network.way_id, way_ids) | new_edges
     selected = np.unique(np.r_[np.argsort(-priority)[:800], np.flatnonzero(changed)])
     result = []
     for index in selected:
@@ -37,10 +61,10 @@ def roads(
                 ],
                 float(base_flow[index]),
                 float(after.flow[index]),
-                float(before.ratio[index]) if index < original_edges else None,
+                float(base_ratio[index]) if not new_edges[index] else None,
                 float(after.ratio[index]),
                 bool(changed[index]),
-                bool(index >= original_edges),
+                bool(new_edges[index]),
             )
         )
     return result

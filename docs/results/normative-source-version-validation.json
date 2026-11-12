@@ -1,0 +1,153 @@
+{
+  "checked_at": "2026-11-12T08:03:42.660508+00:00",
+  "scope": "Exact cached source bytes, acquisition manifest where available and reproduced identity/address/official geometry fields. Hashes do not verify entrances, operation or legal applicability.",
+  "sources": [
+    {
+      "id": "schools",
+      "records": 34,
+      "source_sha256": "8ca585d8080ab992fc5f2a4e65dc5ddd44bb3a26af0fbf44aaa58dcdb366f87c",
+      "hashes": 34
+    },
+    {
+      "id": "libraries",
+      "records": 29,
+      "source_sha256": "c8b5c4e48d8094aed7bc62b3e761297ee08b2f65b2aa9b4c655980dff45b435b",
+      "hashes": 29
+    },
+    {
+      "id": "stops",
+      "records": 658,
+      "source_sha256": "1f9ad6d3027a12f8b724983acd8da4a79b216a7aa1cc61f713042ada4ed792c6",
+      "hashes": 658
+    },
+    {
+      "id": "employment",
+      "records": 24,
+      "source_sha256": "e08d77e5c274e0a739ac024a5b9f61cefc436b12cc8b381adbab14c9709f2dad",
+      "hashes": 24
+    },
+    {
+      "id": "bus-stations",
+      "records": 1,
+      "source_sha256": "5351e337bf22d8dc773c8b3e43d97427aed4a022954d358d7de23febd1b547e4",
+      "hashes": 1
+    },
+    {
+      "id": "mfc",
+      "records": 38,
+      "source_sha256": "48d87a4be3ef5ed5a7ec008fa3959200e6868a3d13012a07e8aee96b13ace240",
+      "hashes": 38
+    }
+  ],
+  "current_database": [
+    {
+      "service": "bus_station",
+      "records": "1",
+      "source_hashes": "1"
+    },
+    {
+      "service": "children_library",
+      "records": "30",
+      "source_hashes": "2"
+    },
+    {
+      "service": "emergency_cardiology",
+      "records": "2",
+      "source_hashes": "0"
+    },
+    {
+      "service": "employment",
+      "records": "24",
+      "source_hashes": "24"
+    },
+    {
+      "service": "fire",
+      "records": "26",
+      "source_hashes": "26"
+    },
+    {
+      "service": "institutional_library",
+      "records": "2",
+      "source_hashes": "1"
+    },
+    {
+      "service": "library",
+      "records": "429",
+      "source_hashes": "22"
+    },
+    {
+      "service": "mfc",
+      "records": "38",
+      "source_hashes": "38"
+    },
+    {
+      "service": "regional_library",
+      "records": "4",
+      "source_hashes": "4"
+    },
+    {
+      "service": "school",
+      "records": "34",
+      "source_hashes": "34"
+    },
+    {
+      "service": "stop",
+      "records": "658",
+      "source_hashes": "658"
+    },
+    {
+      "service": "urgent_cardiology",
+      "records": "2",
+      "source_hashes": "0"
+    }
+  ],
+  "new_mfc_snapshot": {
+    "criterion": "N05",
+    "prior_run_id": "02cd32a1620e4bd297df7864ddf64e97",
+    "run_id": "33e61f72404144fc9a6efe935ee1d912",
+    "model_revision": "normative-v8",
+    "rows": 1235,
+    "facilities": 38,
+    "source_hashes": 38,
+    "seconds": 18.478229083004408,
+    "unchanged_fields": [
+      "baseline_rows",
+      "rows",
+      "baseline",
+      "scenario",
+      "criterion",
+      "graph_revision"
+    ],
+    "exact_post_get": true
+  },
+  "unhashed": [
+    "436 regional library records with reviewed fields but no raw primary card bytes",
+    "4 medical profile records without raw primary source in this local source cache"
+  ],
+  "historic_snapshots_unchanged": true,
+  "desktop": [
+    {
+      "width": 1440,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "sourceHashFits": true,
+      "sourceUrl": "https://www.mfc45.ru/mfc-map.html"
+    },
+    {
+      "width": 1920,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "sourceHashFits": true,
+      "sourceUrl": "https://www.mfc45.ru/mfc-map.html"
+    }
+  ],
+  "validation": {
+    "backend_unit": 568,
+    "etl": 66,
+    "selected_integration": 3,
+    "mypy_files": 278,
+    "ruff": true
+  }
+}

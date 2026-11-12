@@ -1,0 +1,85 @@
+{
+  "verified_at": "2026-11-12T11:00:03.939252+00:00",
+  "scope": "Buryatia N01 conditional known-object index, not confirmed cardiology coverage",
+  "response": {
+    "region_id": "81000000",
+    "criterion_id": "N01",
+    "run_id": "eb2a8b728c3848f688997e7f8b4241be",
+    "measured_at": "2026-11-12T10:25:01.000917+00:00",
+    "basis": {
+      "criterion_id": "N01",
+      "region_id": "RU",
+      "act": "132n",
+      "clause": "2",
+      "edition_date": "2016-02-27",
+      "source_url": "http://publication.pravo.gov.ru/document/0001201603250001",
+      "unit": "minutes",
+      "thresholds": [
+        60.0
+      ],
+      "definition_sha256": "717daf9beb06f762b4421d510777abd5bb52728455bda5649a7e2a40472b9b47",
+      "currentness": "published_currentness_unconfirmed"
+    },
+    "baseline": [
+      {
+        "threshold": 60.0,
+        "reference_points": 633,
+        "measured_points": 616,
+        "within_points": 432,
+        "unresolved_points": 17,
+        "point_share_percent": 68.24644549763033,
+        "population": null,
+        "within_population": null,
+        "population_share_percent": null
+      }
+    ],
+    "scenario": [
+      {
+        "threshold": 60.0,
+        "reference_points": 633,
+        "measured_points": 616,
+        "within_points": 432,
+        "unresolved_points": 17,
+        "point_share_percent": 68.24644549763033,
+        "population": null,
+        "within_population": null,
+        "population_share_percent": null
+      }
+    ],
+    "qualification": "conditional_known_objects",
+    "legal_compliance_confirmed": false
+  },
+  "independent_expected_share": 68.24644549763033,
+  "within_points": 432,
+  "reference_points": 633,
+  "unresolved_points": 17,
+  "population_denominator_known": false,
+  "regional_basis_is_not_exported_to_other_regions": true,
+  "unknown_region_rejected": true,
+  "real_http_integration_tests": 2,
+  "desktop": [
+    {
+      "width": 1440,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "visibleValue": "68,2",
+      "referencePoints": 633,
+      "withinPoints": 432,
+      "denominator": "reference_points",
+      "legalComplianceClaimed": false
+    },
+    {
+      "width": 1920,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "visibleValue": "68,2",
+      "referencePoints": 633,
+      "withinPoints": 432,
+      "denominator": "reference_points",
+      "legalComplianceClaimed": false
+    }
+  ],
+  "full_goal_complete": false
+}

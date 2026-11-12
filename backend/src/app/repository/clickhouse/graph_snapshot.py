@@ -12,6 +12,19 @@ from app.repository.clickhouse.client import ClickHouseReader
 from app.repository.clickhouse.graph_queries import ARRAYS, QUERIES
 from app.usecase.graph_snapshot import GraphParameters, GraphQuery
 
+INDEPENDENT_ID_QUERIES: frozenset[GraphQuery] = frozenset(
+    {
+        "candidates",
+        "way_indices",
+        "ways",
+        "references_by_ids",
+        "scenario_lines",
+        "bridge_lengths",
+        "corridor_nodes",
+        "corridor_edges",
+    }
+)
+
 
 class ClickHouseGraphSnapshot:
     def __init__(self, reader: ClickHouseReader) -> None:
@@ -62,7 +75,7 @@ class ClickHouseGraphSnapshot:
 
     def _rows(self, query: GraphQuery, parameters: GraphParameters) -> list[tuple[Any, ...]]:
         ids = parameters.get("ids")
-        if query == "candidates" and isinstance(ids, list) and len(ids) > 5000:
+        if query in INDEPENDENT_ID_QUERIES and isinstance(ids, list) and len(ids) > 5000:
             unique_ids = list(dict.fromkeys(int(value) for value in ids))
             return [
                 row

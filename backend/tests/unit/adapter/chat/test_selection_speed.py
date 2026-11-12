@@ -2,10 +2,9 @@ import json
 from unittest.mock import Mock
 
 import pytest
-from pydantic import TypeAdapter
+from pydantic import TypeAdapter, ValidationError
 
 from app.adapter.chat.artifacts import ChatRun
-from app.adapter.chat.network_scenarios import NetworkScenarios
 from app.adapter.chat.road_tools import RoadTools
 from app.adapter.chat.scenario_requests import TransportScenario
 from app.adapter.road_corridor.resolver import CorridorResolver
@@ -38,45 +37,28 @@ def setup_scenario() -> tuple[Mock, RoadCorridors]:
     return roads, RoadCorridors(resolver)
 
 
-def test_joint_speed_resolves_large_selection_internally_on_open_baseline() -> None:
-    roads, corridors = setup_scenario()
-    request = TypeAdapter(TransportScenario).validate_python(
-        {
-            "kind": "edit_selection",
-            "selection_ids": ["m10", "m11"],
-            "speed_factor": 1.2,
-        }
-    )
-    ctx = Mock(deps=ChatRun(ChatContext(None, Season.SUMMER, NetworkMode.ROAD, "hansen")))
-    reply = NetworkScenarios(None, corridors, None).calculate_scenario(ctx, request)
-    assert len(reply) < 1000
-    assert len(json.loads(reply)) == 2
-    assert roads.submit.call_count == 2
-    for call in roads.submit.call_args_list:
-        assert call.args[2] == "road"
-        changes = call.args[3]
-        assert len(changes) == 5000
-        assert {c.speed_factor for c in changes} == {1.2}
-        assert call.kwargs == {"queue": True}
-    assert len(ctx.deps.pending) == 1
-    assert ctx.deps.pending[0].calculation.job_ids == ["1", "2"]
-    assert len(ctx.deps.pending[0].calculation.changes) == 5000
+def test_agent_speed_edit_is_rejected() -> None:
+    with pytest.raises(ValidationError):
+        TypeAdapter(TransportScenario).validate_python(
+            {
+                "kind": "edit_selection",
+                "selection_ids": ["m10", "m11"],
+                "speed_factor": 1.2,
+            }
+        )
 
 
-@pytest.mark.parametrize(
-    "ids,factor",
-    [([], 1.2), (["m10", "m10"], 1.2), (["m10"], -1), (["m10"], float("nan")), (["m10"], 4)],
-)
-def test_invalid_edit_never_submits(ids: list[str], factor: float) -> None:
+@pytest.mark.parametrize("ids", [[], ["m10", "m10"]])
+def test_invalid_closure_never_submits(ids: list[str]) -> None:
     roads, corridors = setup_scenario()
     with pytest.raises(InvalidQuery):
-        corridors.edit(ids, factor)
+        corridors.close(ids)
     roads.submit.assert_not_called()
 
 
 def test_status_and_history_do_not_expand_large_way_lists() -> None:
     roads, corridors = setup_scenario()
-    job = corridors.edit(["m10", "m11"], 1.2)[0]
+    job = corridors.close(["m10", "m11"])[0]
     roads.job.return_value = job
     roads.recent.return_value = [job]
     roads.geometry.return_value = Mock(names=["M10", "M11"], length_km=700, lines=[])

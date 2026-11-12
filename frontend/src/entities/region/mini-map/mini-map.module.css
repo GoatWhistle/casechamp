@@ -2,11 +2,15 @@
   inline-size: 100%;
   block-size: 215px;
 }
-.map path {
-  stroke: var(--map-border);
+
+.region {
+  fill: var(--surface-sunken);
+  stroke: var(--border-default);
   stroke-width: var(--hairline);
 }
-.map path[data-selected="true"] {
-  stroke: var(--action-primary);
-  stroke-width: var(--link-active-width);
+
+.selected {
+  composes: mapAccent from "../../../shared/styles/compose.module.css";
+  stroke: var(--surface-base);
+  animation: var(--motion-fade-in);
 }

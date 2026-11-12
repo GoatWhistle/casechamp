@@ -13,9 +13,16 @@ export interface RecentChatsProps {
 
 const LIMIT = 4
 
+const DAY_MS = 86_400_000
+
 function stamp(value: string | number | Date, f: Formatters): string {
   const date = new Date(value)
-  return date.toDateString() === new Date().toDateString() ? f.time(date) : f.date(date)
+  const today = new Date()
+  if (date.toDateString() === today.toDateString()) return f.time(date)
+  const yesterday = new Date(today.getTime() - DAY_MS)
+  return date.toDateString() === yesterday.toDateString()
+    ? f.relative(-1, "day")
+    : f.shortDate(date)
 }
 
 export function RecentChats({ sessions, activeId, onSelect, onDelete }: RecentChatsProps) {
@@ -36,7 +43,12 @@ export function RecentChats({ sessions, activeId, onSelect, onDelete }: RecentCh
           const title = chatSessionTitle(session)
           return (
             <li key={session.id} className={styles.row}>
-              <Button variant="ghost" className={styles.item} onClick={() => onSelect(session.id)}>
+              <Button
+                variant="ghost"
+                wrap
+                className={styles.item}
+                onClick={() => onSelect(session.id)}
+              >
                 <span className={styles.name}>{title}</span>
                 <span className={styles.meta}>
                   {chatSessionBusy(session.status)

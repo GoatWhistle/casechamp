@@ -1,4 +1,4 @@
-import type { FeatureCollection, LineString } from "geojson"
+import type { FeatureCollection, LineString, MultiPolygon } from "geojson"
 import {
   Map as LibreMap,
   type MapLayerMouseEvent,
@@ -6,14 +6,20 @@ import {
   setWorkerUrl,
 } from "maplibre-gl"
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url"
-import { useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import type { AirportCatalog } from "@/shared/api/airports"
 import type { ChatMapCommand } from "@/shared/api/chat-map"
+import type { MunicipalityLayer } from "@/shared/api/municipalities"
+import type { NormativeMapLayer } from "@/shared/api/normative-map"
 import type { RoadLayerProps } from "@/shared/api/road-graph"
 import { motionMs, useReducedMotion } from "@/shared/motion"
 import type { BoundaryAtlas } from "./boundary-geojson"
+import { useMapControls } from "./camera/use-map-controls"
 import { aimCamera, corners, FLAT_MAP, keepFlat, roamConstrain } from "./map-camera"
+
 import { bindHover } from "./map-hover"
+import { MUNICIPAL_FILL, useMunicipalityLayer } from "./municipalities/use-municipality-layer"
+import { NORMATIVE_OVERLAY_LAYERS, useNormativeLayer } from "./normative-layer/use-normative-layer"
 import { buildStyle, FILL_LAYER, REGIONS_SOURCE, readMapColors } from "./osm-style"
 import { recolorRegions, regionSteps } from "./paint/recolor"
 import { roadLayers } from "./road-parts"
@@ -22,23 +28,20 @@ import { useRoadLayer } from "./use-road-layer"
 import { useSettlementFocus } from "./use-settlement-focus"
 import { useTransitLayer } from "./use-transit-layer"
 
-setWorkerUrl(workerUrl)
+export type { MapControls } from "./camera/use-map-controls"
 
+setWorkerUrl(workerUrl)
 const HOME_PADDING = 24
 const TILE_CACHE = 1024
 const HOME_SLACK = 0.4
 const MIN_ZOOM = 1.4
 const MAX_ZOOM = 18
-
 export type MapStep = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
 
-export interface MapControls {
-  readonly zoomIn: (instant?: boolean) => void
-  readonly zoomOut: (instant?: boolean) => void
-  readonly reset: (instant?: boolean) => void
-}
-
 export interface OsmMapOptions {
+  readonly outsideMask?: MultiPolygon | undefined
+  readonly municipalities?: MunicipalityLayer | undefined
+  readonly normative?: NormativeMapLayer | undefined
   readonly airports?: AirportCatalog | undefined
   readonly transit: FeatureCollection<LineString>
   readonly roads?: RoadLayerProps | undefined
@@ -52,6 +55,9 @@ export interface OsmMapOptions {
 }
 
 export function useOsmMap({
+  outsideMask,
+  municipalities,
+  normative,
   airports,
   transit,
   roads,
@@ -70,6 +76,8 @@ export function useOsmMap({
   useTransitLayer(engine, transit, styleReady)
   const airportHover = useAirportLayer(engine, airports, styleReady)
   useSettlementFocus(engine, command, styleReady)
+  useNormativeLayer(engine, normative, styleReady)
+  useMunicipalityLayer(engine, municipalities, styleReady)
   const roadState = useRef(roads)
   roadState.current = roads
   const ready = useRef(false)
@@ -138,6 +146,7 @@ export function useOsmMap({
         readMapColors(element),
         atlas.collection,
         state.current.reduced ? 0 : motionMs("--dur-base", element),
+        outsideMask,
       ),
       bounds: corners(atlas.home),
       fitBoundsOptions: { padding: HOME_PADDING },
@@ -159,16 +168,13 @@ export function useOsmMap({
     })
     resize.observe(element)
     const onClick = (event: MapLayerMouseEvent) => {
-      if (
-        map.getLayer(AIRPORT_LAYER) &&
-        map.queryRenderedFeatures(event.point, { layers: [AIRPORT_LAYER] }).length
-      )
-        return
-      if (
-        roadLayers(map).length &&
-        map.queryRenderedFeatures(event.point, { layers: roadLayers(map) }).length
-      )
-        return
+      const layers = [
+        ...NORMATIVE_OVERLAY_LAYERS,
+        MUNICIPAL_FILL,
+        AIRPORT_LAYER,
+        ...roadLayers(map),
+      ].filter((id) => map.getLayer(id))
+      if (layers.length && map.queryRenderedFeatures(event.point, { layers }).length) return
       const id = event.features?.[0]?.id
       const region = typeof id === "number" ? state.current.atlas.regionOf.get(id) : undefined
       if (region) state.current.onSelect(region)
@@ -218,7 +224,7 @@ export function useOsmMap({
       resize.disconnect()
       map.remove()
     }
-  }, [atlas, paintSteps, aim, setHover, label, airportHover])
+  }, [atlas, outsideMask, paintSteps, aim, setHover, label, airportHover])
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: Repaint when data read through the latest-state ref changes.
   useEffect(() => {
@@ -230,21 +236,7 @@ export function useOsmMap({
     aim()
   }, [aim, atlas, selectedId, command])
 
-  const controls = useMemo<MapControls>(
-    () => ({
-      zoomIn: (instant) => engine.current?.zoomIn({ duration: duration(instant) }),
-      zoomOut: (instant) => engine.current?.zoomOut({ duration: duration(instant) }),
-      reset: (instant) => {
-        const map = engine.current
-        if (map)
-          map.fitBounds(corners(state.current.atlas.home), {
-            padding: HOME_PADDING,
-            duration: duration(instant),
-          })
-      },
-    }),
-    [duration],
-  )
+  const controls = useMapControls(engine, atlas.home, duration)
 
   return { container, controls }
 }

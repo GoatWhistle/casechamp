@@ -1,0 +1,229 @@
+{
+  "checked_at": "2026-11-12T08:48:22.141588+00:00",
+  "fields": [
+    "coordinate_snapshot_sha256",
+    "coordinate_snapshot_url"
+  ],
+  "schema_migration": "Nullable columns; no historical backfill",
+  "current_database": [
+    {
+      "service": "bus_station",
+      "coordinates": "1",
+      "coordinate_hashes": "1"
+    },
+    {
+      "service": "children_library",
+      "coordinates": "6",
+      "coordinate_hashes": "6"
+    },
+    {
+      "service": "emergency_cardiology",
+      "coordinates": "7",
+      "coordinate_hashes": "5"
+    },
+    {
+      "service": "employment",
+      "coordinates": "12",
+      "coordinate_hashes": "12"
+    },
+    {
+      "service": "fire",
+      "coordinates": "9",
+      "coordinate_hashes": "9"
+    },
+    {
+      "service": "institutional_library",
+      "coordinates": "1",
+      "coordinate_hashes": "1"
+    },
+    {
+      "service": "library",
+      "coordinates": "35",
+      "coordinate_hashes": "35"
+    },
+    {
+      "service": "mfc",
+      "coordinates": "16",
+      "coordinate_hashes": "16"
+    },
+    {
+      "service": "regional_library",
+      "coordinates": "4",
+      "coordinate_hashes": "4"
+    },
+    {
+      "service": "school",
+      "coordinates": "34",
+      "coordinate_hashes": "34"
+    },
+    {
+      "service": "stop",
+      "coordinates": "658",
+      "coordinate_hashes": "658"
+    },
+    {
+      "service": "urgent_cardiology",
+      "coordinates": "7",
+      "coordinate_hashes": "5"
+    }
+  ],
+  "source_types": {
+    "municipal_gis_json_records": 721,
+    "cached_nominatim_records": 34,
+    "osm_extract_records": 31
+  },
+  "current_coordinate_records": 790,
+  "current_coordinate_hashes": 786,
+  "missing_hash_reason": "Four profile entries of two preserved official medical coordinates have no retained coordinate document body.",
+  "osm_object_records": 26,
+  "osm_reproduction": "Node coordinates, closed-way vertex mean or area centroid; maximum rounding difference0.000000051degree. Four fire polygons reproduce via area centroid, coordinates unchanged.",
+  "snapshots": [
+    {
+      "criterion": "N01",
+      "prior_run_id": "c20c49e2ab474c0c8aabadc87f394232",
+      "run_id": "5a34d23654084849957b4aa5181381a9",
+      "rows": 1235,
+      "coordinate_hashes": 5,
+      "unchanged_fields": [
+        "rows",
+        "baseline_rows",
+        "baseline",
+        "scenario",
+        "criterion",
+        "graph_revision"
+      ],
+      "post_equals_get": true,
+      "seconds": 8.041872999980114
+    },
+    {
+      "criterion": "N02",
+      "prior_run_id": "60e182f5def348208780f4867e78d861",
+      "run_id": "f897ddcfff574eea85b016500cb2915f",
+      "rows": 1235,
+      "coordinate_hashes": 5,
+      "unchanged_fields": [
+        "rows",
+        "baseline_rows",
+        "baseline",
+        "scenario",
+        "criterion",
+        "graph_revision"
+      ],
+      "post_equals_get": true,
+      "seconds": 6.944640000001527
+    },
+    {
+      "criterion": "N05",
+      "prior_run_id": "33e61f72404144fc9a6efe935ee1d912",
+      "run_id": "8338ba66a6bd4b95820ff2d351afb4be",
+      "rows": 1235,
+      "coordinate_hashes": 16,
+      "unchanged_fields": [
+        "rows",
+        "baseline_rows",
+        "baseline",
+        "scenario",
+        "criterion",
+        "graph_revision"
+      ],
+      "post_equals_get": true,
+      "seconds": 15.257078499998897
+    },
+    {
+      "criterion": "N03",
+      "prior_run_id": "61737ee8f3d64ef5a1909f80f646fd99",
+      "run_id": "bc772fd28dc84ddaa9c6760f398647b1",
+      "rows": 1235,
+      "coordinate_hashes": 9,
+      "unchanged_fields": [
+        "rows",
+        "baseline_rows",
+        "baseline",
+        "scenario",
+        "criterion",
+        "graph_revision"
+      ],
+      "post_equals_get": true,
+      "seconds": 28.018062541028485
+    }
+  ],
+  "historic_snapshots": [
+    {
+      "run_id": "c20c49e2ab474c0c8aabadc87f394232",
+      "facilities": "16",
+      "coordinate_hashes": "0"
+    },
+    {
+      "run_id": "60e182f5def348208780f4867e78d861",
+      "facilities": "16",
+      "coordinate_hashes": "0"
+    },
+    {
+      "run_id": "33e61f72404144fc9a6efe935ee1d912",
+      "facilities": "38",
+      "coordinate_hashes": "0"
+    },
+    {
+      "run_id": "61737ee8f3d64ef5a1909f80f646fd99",
+      "facilities": "26",
+      "coordinate_hashes": "0"
+    }
+  ],
+  "checks": {
+    "backend_unit": 575,
+    "etl": 93,
+    "selected_integration": 2,
+    "mypy_files": 280,
+    "ruff": true,
+    "frontend_tests": 452,
+    "frontend_rules": 36,
+    "frontend_typecheck_lint_build": true
+  },
+  "limitations": [
+    "A coordinate source hash verifies input bytes and reproduction, not verified entrances, service operation or legal compliance.",
+    "Snapshot URL can serve a newer document; the stored checksum identifies the used snapshot.",
+    "Current legal applicability, verified pilot and global ClickHouse Code241 remain open."
+  ],
+  "desktop": [
+    {
+      "criterion": "N01",
+      "width": 1440,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "bothHashesFit": true,
+      "distinctSourceHashes": true,
+      "coordinateSnapshotUrl": "https://download.openstreetmap.fr/extracts/russia/ural_federal_district/kurgan_oblast-latest.osm.pbf"
+    },
+    {
+      "criterion": "N01",
+      "width": 1920,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "bothHashesFit": true,
+      "distinctSourceHashes": true,
+      "coordinateSnapshotUrl": "https://download.openstreetmap.fr/extracts/russia/ural_federal_district/kurgan_oblast-latest.osm.pbf"
+    },
+    {
+      "criterion": "N05",
+      "width": 1440,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "bothHashesFit": true,
+      "distinctSourceHashes": true,
+      "coordinateSnapshotUrl": "https://nominatim.openstreetmap.org/search?q=%D0%9A%D1%83%D1%80%D0%B3%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C+++%D0%92%D0%B0%D1%80%D0%B3%D0%B0%D1%88%D0%B8+++%D0%9C%D0%B0%D1%82%D1%80%D0%BE%D1%81%D0%BE%D0%B2%D0%B0+++8&format=jsonv2&addressdetails=1&limit=1&countrycodes=ru"
+    },
+    {
+      "criterion": "N05",
+      "width": 1920,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "bothHashesFit": true,
+      "distinctSourceHashes": true,
+      "coordinateSnapshotUrl": "https://nominatim.openstreetmap.org/search?q=%D0%9A%D1%83%D1%80%D0%B3%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C+++%D0%92%D0%B0%D1%80%D0%B3%D0%B0%D1%88%D0%B8+++%D0%9C%D0%B0%D1%82%D1%80%D0%BE%D1%81%D0%BE%D0%B2%D0%B0+++8&format=jsonv2&addressdetails=1&limit=1&countrycodes=ru"
+    }
+  ]
+}

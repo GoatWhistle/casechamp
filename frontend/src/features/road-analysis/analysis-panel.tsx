@@ -1,24 +1,28 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useRoadAnalysis } from "@/entities/road-analysis"
 import type { AnalysisMode, AnalysisOverlay } from "@/shared/api/road-analysis"
 import { useTranslation } from "@/shared/i18n"
-import { Banner, Button, NumberField, PanelView, Select, ViewHeader } from "@/shared/ui"
+import { Banner, Button, PanelView, Select, ViewHeader } from "@/shared/ui"
 import { AnalysisResults } from "./analysis-results"
 import styles from "./road-analysis.module.css"
 
 interface AnalysisPanelProps {
+  readonly onDevelop: () => void
   readonly regionId: string | null
   readonly mode: AnalysisMode
   readonly onOverlay: (overlay: AnalysisOverlay | null) => void
   readonly onBack: () => void
 }
 
-export function AnalysisPanel({ regionId, mode, onOverlay, onBack }: AnalysisPanelProps) {
+export function AnalysisPanel({
+  regionId,
+  mode,
+  onOverlay,
+  onBack,
+  onDevelop,
+}: AnalysisPanelProps) {
   const { t } = useTranslation()
-  const [percent, setPercent] = useState("20")
   const analysis = useRoadAnalysis(regionId, mode)
-  const amount = Number(percent)
-  const valid = Number.isInteger(amount) && amount >= 1 && amount <= 200
   const job = analysis.job
   const title = t(mode === "criticality" ? "graph:tools.criticality" : "graph:tools.improvement")
   useEffect(() => {
@@ -36,8 +40,8 @@ export function AnalysisPanel({ regionId, mode, onOverlay, onBack }: AnalysisPan
           <Button
             icon="search"
             pending={analysis.start.isPending}
-            disabled={!regionId || !valid || analysis.busy}
-            onClick={() => analysis.start.mutate(amount)}
+            disabled={mode === "criticality" && (!regionId || analysis.busy)}
+            onClick={() => (mode === "criticality" ? analysis.start.mutate(20) : onDevelop())}
           >
             {t("analysis:start")}
           </Button>
@@ -46,20 +50,8 @@ export function AnalysisPanel({ regionId, mode, onOverlay, onBack }: AnalysisPan
     >
       <section className={styles.intro}>
         <p className={styles.note}>
-          {t(mode === "criticality" ? "analysis:closureSpec" : "analysis:improvementSpec", {
-            percent: amount,
-          })}
+          {t(mode === "criticality" ? "analysis:closureSpec" : "traffic:developmentHint")}
         </p>
-        {mode === "improvement" ? (
-          <NumberField
-            label={t("analysis:percent")}
-            value={percent}
-            suffix="%"
-            onChange={(e) => setPercent(e.target.value)}
-            hint={t("analysis:percentHint")}
-            error={valid ? undefined : t("analysis:percentError")}
-          />
-        ) : null}
         {analysis.recent.length ? (
           <Select
             label={t("analysis:history")}

@@ -23,13 +23,13 @@ def atlas() -> AtlasRepository:
 
 def test_analysis_contract_is_complete_and_validates_percentage(atlas: AtlasRepository) -> None:
     port = Mock(spec=AnalysisPort)
-    port.submit.return_value = AnalysisJob("id", "18000000", "Region", "improvement", 20, "source")
+    port.submit.return_value = AnalysisJob("id", "18000000", "Region", "criticality", 20, "source")
     app = FastAPI()
     ErrorHandlers(StdlibLogger("test")).register(app)
     app.include_router(build_analysis_router(RoadAnalysis(cast(AnalysisPort, port), atlas)))
     with TestClient(app) as client:
         response = client.post(
-            "/road-analyses", json={"region_id": "18000000", "mode": "improvement"}
+            "/road-analyses", json={"region_id": "18000000", "mode": "criticality"}
         )
         assert response.status_code == 200
         assert response.json()["results"] == []
@@ -38,20 +38,26 @@ def test_analysis_contract_is_complete_and_validates_percentage(atlas: AtlasRepo
         assert (
             client.post(
                 "/road-analyses",
-                json={"region_id": "18000000", "mode": "improvement", "percent": 201},
+                json={"region_id": "18000000", "mode": "criticality", "percent": 201},
             ).status_code
             == 422
         )
         assert (
             client.post(
                 "/road-analyses",
-                json={"region_id": "18000000", "mode": "improvement", "percent": 1.5},
+                json={"region_id": "18000000", "mode": "criticality", "percent": 1.5},
             ).status_code
             == 422
         )
         assert (
             client.post(
                 "/road-analyses", json={"region_id": "18000000", "mode": "unknown"}
+            ).status_code
+            == 422
+        )
+        assert (
+            client.post(
+                "/road-analyses", json={"region_id": "18000000", "mode": "improvement"}
             ).status_code
             == 422
         )

@@ -1,13 +1,14 @@
 import json
+from dataclasses import asdict
 from pathlib import Path
 from unittest.mock import Mock
 
 from tests.unit.adapter.road_corridor.test_group_connectivity import network
 
 from app.adapter.chat.artifacts import ChatRun
+from app.adapter.chat.connectivity_reply import connectivity_reply
 from app.adapter.chat.network_jobs import NetworkJobs
-from app.adapter.chat.network_scenarios import NetworkScenarios
-from app.adapter.chat.scenario_requests import CalculationQuery, ConnectivityScenario
+from app.adapter.chat.scenario_requests import CalculationQuery
 from app.domain.traffic_diversion import TrafficAssumptions
 from app.domain.transport import NetworkMode, Season
 from app.usecase.chat import ChatContext
@@ -17,14 +18,14 @@ def test_summary_preserves_numbers_and_full_result_remains_available(tmp_path: P
     corridors, roads = network()
     roads.data.root = tmp_path
     ctx = Mock(deps=ChatRun(ChatContext(None, Season.SUMMER, NetworkMode.ROAD, "hansen")))
-    response = NetworkScenarios(None, corridors, None).calculate_scenario(
-        ctx,
-        ConnectivityScenario(
-            "connectivity",
-            ["Village A", "Village C"],
-            selection_ids=["fast"],
-            traffic=TrafficAssumptions(),
-        ),
+    response = connectivity_reply(
+        asdict(
+            corridors.connectivity(
+                ["Village A", "Village C"],
+                selection_ids=["fast"],
+                traffic=TrafficAssumptions(),
+            )
+        )
     )
     summary = json.loads(response)
     reference = summary["calculation_id"]

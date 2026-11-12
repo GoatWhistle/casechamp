@@ -3,7 +3,7 @@ import type { components } from "./schema.gen"
 export type ChatScenario = components["schemas"]["ScenarioCard"]
 export type ChatScenarioKind = ChatScenario["kind"]
 
-const KINDS: readonly string[] = ["speed", "slowdown", "closure", "roads", "connection", "links"]
+const KINDS: readonly string[] = ["closure", "roads", "connection", "links"]
 
 export function isChatScenario(value: unknown): value is ChatScenario {
   if (typeof value !== "object" || value === null) return false

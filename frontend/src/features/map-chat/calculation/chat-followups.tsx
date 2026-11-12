@@ -1,6 +1,8 @@
 import { useState } from "react"
 import type { AnalysisCommentary, ChatEntry } from "@/entities/chat"
 import type { CalculationHandler } from "@/shared/api/chat-calculation"
+import { useTranslation } from "@/shared/i18n"
+import { Disclosure } from "@/shared/ui"
 import { ChatAnalysisCard } from "../analysis/chat-analysis-card"
 import { ChatArtifacts } from "../chat-artifacts"
 import { TrafficCard } from "../traffic/traffic-card"
@@ -19,6 +21,7 @@ export function ChatFollowups({
     | ((messageId: string, key: string, value: AnalysisCommentary) => void)
     | undefined
 }) {
+  const { t } = useTranslation()
   const [calculationDone, setCalculationDone] = useState(false)
   const [analysisCount, setAnalysisCount] = useState(0)
   const hasCalculation = Boolean(
@@ -61,7 +64,13 @@ export function ChatFollowups({
             ))
         : null}
       {ready && analysisCount >= analyses.length ? (
-        <ChatArtifacts tables={message.tables} charts={message.charts} />
+        message.trafficJobs?.length && message.tables.length ? (
+          <Disclosure title={t("traffic:selectionDetails")}>
+            <ChatArtifacts tables={message.tables} charts={message.charts} />
+          </Disclosure>
+        ) : (
+          <ChatArtifacts tables={message.tables} charts={message.charts} />
+        )
       ) : null}
     </>
   )

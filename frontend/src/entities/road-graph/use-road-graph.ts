@@ -4,7 +4,6 @@ import type { ChatCalculation, CorridorOverlay } from "@/shared/api/chat-calcula
 import { api, unwrap } from "@/shared/api/client"
 import type { AnalysisOverlay } from "@/shared/api/road-analysis"
 import type {
-  ConnectionInput,
   LinkChangeInput,
   RoadBounds,
   RoadJob,
@@ -17,12 +16,11 @@ import { loadRoadView } from "./load-road-view"
 import { coversRoadViewport, roadViewport } from "./road-viewport"
 
 export interface ScenarioDraft {
-  readonly speed: string
   readonly network: ScenarioNetwork
   readonly links: readonly LinkChangeInput[]
 }
 
-const EMPTY_DRAFT: ScenarioDraft = { speed: "120", network: "road", links: [] }
+const EMPTY_DRAFT: ScenarioDraft = { network: "road", links: [] }
 
 export function useRoadGraph() {
   const [draft, setDraft] = useState<ScenarioDraft>(EMPTY_DRAFT)
@@ -95,17 +93,6 @@ export function useRoadGraph() {
       ])
     },
   })
-  const addConnection = useMutation({
-    mutationFn: (body: ConnectionInput) => unwrap(api.POST("/api/v1/road-connections", { body })),
-    onSuccess: (job) => {
-      setShowJobOverlay(true)
-      setSelectedJobId(job.id)
-      cache.setQueryData<RoadJob[]>(["road-scenarios"], (current) => [
-        job,
-        ...(current ?? []).filter((item) => item.id !== job.id),
-      ])
-    },
-  })
   const cancel = useMutation({
     mutationFn: () =>
       unwrap(
@@ -156,7 +143,6 @@ export function useRoadGraph() {
     onRoad,
     clear: () => setSelected([]),
     submit,
-    addConnection,
     cancel,
     job: status.data ?? current,
     statusError: status.isError,

@@ -1,0 +1,197 @@
+{
+  "date": "2026-11-12",
+  "model_manifest": "etl/synthetic_traffic/surrogate.json",
+  "ranking_replay": {
+    "before": {
+      "metric": "population_weighted_selected_region_hansen",
+      "artifact_sha256": "c45dca13248037d04926a847e3d3215e416170c2214673eb28940229fb5e0318",
+      "ranking_seconds": 0.0025841660099104047,
+      "samples": 19,
+      "distinct_predictions": 4,
+      "best_known_gain": 0.0011267324508565935,
+      "top_k_best_gain": {
+        "1": 0.0,
+        "3": 3.732539448719763e-05,
+        "5": 4.647591457285216e-05,
+        "10": 0.0003738047227983543
+      }
+    },
+    "after": {
+      "metric": "population_weighted_selected_region_hansen",
+      "artifact_sha256": "5994fce91e127e54a383fb5aa2b14df9555a65404a2885fd626abde2604c72dc",
+      "ranking_seconds": 0.12860729196108878,
+      "samples": 19,
+      "distinct_predictions": 19,
+      "best_known_gain": 0.0011267324508565935,
+      "top_k_best_gain": {
+        "1": 0.0002539962788716821,
+        "3": 0.00030908695357823035,
+        "5": 0.00030908695357823035,
+        "10": 0.0011267324508565935
+      }
+    }
+  },
+  "limits": [
+    "Replay uses previous selected pool, not independent geographic validation",
+    "Training targets local accessibility, final connectivity scoring uses regional Hansen index",
+    "Real topology with synthetic demand, not measured traffic"
+  ],
+  "full_pilot": {
+    "valid_run": true,
+    "source_and_geography_stable": true,
+    "baseline_run": "network-llm-pilot-local-diff.json",
+    "summary": {
+      "index_verified_projects": 11,
+      "index_timeout_projects": 1,
+      "llm_exposed_index_verified_projects": 9,
+      "best_index_gain": 0.001164057845358002,
+      "best_llm_exposed_index_gain": 0.001164057845358002,
+      "timings": {
+        "generation_seconds": 120.2579785840353,
+        "verification_seconds": 300.6188393330667,
+        "total_development_seconds": 420.97078187495936
+      }
+    },
+    "selection": {
+      "deduplicated": 0,
+      "invalid_packages": 27,
+      "distinct_projects": 308,
+      "maximum_result_buffer": 6
+    },
+    "positive_verified_projects": 11,
+    "best_results": [
+      {
+        "id": "0",
+        "kind": "package",
+        "regional_index_changes": [
+          {
+            "region": "Ставропольский край",
+            "before": 99.15140597565384,
+            "after": 99.15152427939447,
+            "delta": 0.00011830374062071769,
+            "relative_percent": 0.00011931625119032674,
+            "population": 2907593
+          },
+          {
+            "region": "Карачаево-Черкесская Республика",
+            "before": 90.48542535954101,
+            "after": 90.5058129759329,
+            "delta": 0.020387616391886354,
+            "relative_percent": 0.02253138150245526,
+            "population": 469865
+          },
+          {
+            "region": "Краснодарский край",
+            "before": 93.47957809833936,
+            "after": 93.47971585097054,
+            "delta": 0.00013775263117565828,
+            "relative_percent": 0.0001473612033509042,
+            "population": 5838273
+          }
+        ],
+        "weighted_regional_index_gain": 0.0011640578453676763,
+        "local_mean_minutes_before": 13.818492604327112,
+        "local_mean_minutes_after": 13.802755245854003,
+        "vehicle_hours_saved": 0.7849663261732758,
+        "overloaded_edges_before": 0,
+        "overloaded_edges_after": 0,
+        "overload_increase": 0
+      },
+      {
+        "id": "1",
+        "kind": "package",
+        "regional_index_changes": [
+          {
+            "region": "Ставропольский край",
+            "before": 99.15140597565384,
+            "after": 99.15265740457691,
+            "delta": 0.0012514289230693976,
+            "relative_percent": 0.0012621393622680444,
+            "population": 2907593
+          },
+          {
+            "region": "Карачаево-Черкесская Республика",
+            "before": 90.48542535954101,
+            "after": 90.48542572359861,
+            "delta": 3.6405759828994633e-07,
+            "relative_percent": 4.023383848306139e-07,
+            "population": 469865
+          },
+          {
+            "region": "Краснодарский край",
+            "before": 93.47957809833936,
+            "after": 93.48021888807068,
+            "delta": 0.0006407897313209787,
+            "relative_percent": 0.0006854863322525162,
+            "population": 5838273
+          }
+        ],
+        "weighted_regional_index_gain": 0.0008007962061486022,
+        "local_mean_minutes_before": 13.818492604327112,
+        "local_mean_minutes_after": 13.784817238790176,
+        "vehicle_hours_saved": 1.6796991701777415,
+        "overloaded_edges_before": 0,
+        "overloaded_edges_after": 0,
+        "overload_increase": 0
+      },
+      {
+        "id": "2",
+        "kind": "package",
+        "regional_index_changes": [
+          {
+            "region": "Ставропольский край",
+            "before": 99.15140597565384,
+            "after": 99.15265740285442,
+            "delta": 0.0012514272005716975,
+            "relative_percent": 0.0012621376250354643,
+            "population": 2907593
+          },
+          {
+            "region": "Карачаево-Черкесская Республика",
+            "before": 90.48542535954101,
+            "after": 90.48542570849663,
+            "delta": 3.4895562350811815e-07,
+            "relative_percent": 3.856484243058844e-07,
+            "population": 469865
+          },
+          {
+            "region": "Краснодарский край",
+            "before": 93.47957809833936,
+            "after": 93.48021888765386,
+            "delta": 0.0006407893145023991,
+            "relative_percent": 0.0006854858863647451,
+            "population": 5838273
+          }
+        ],
+        "weighted_regional_index_gain": 0.0008007946286598174,
+        "local_mean_minutes_before": 13.818492604327112,
+        "local_mean_minutes_after": 13.779416856811292,
+        "vehicle_hours_saved": 1.9490657229662247,
+        "overloaded_edges_before": 0,
+        "overloaded_edges_after": 0,
+        "overload_increase": 0
+      }
+    ],
+    "protocol": "work/network-development/llm-pilot-selection-v2/protocol.json",
+    "limits": [
+      "One sequential before/after run; not statistical superiority evidence",
+      "Fewer projects fully checked than previous run:11versus19; heavier rank-selected candidates",
+      "Bestweightedgainimproved3.31percent relative to previous gain, not3.31indexpoints",
+      "No geographic generalization or traffic observation claim"
+    ]
+  },
+  "checks": {
+    "backend_unit": 504,
+    "etl": 186,
+    "backend_integration": 50,
+    "ruff": "passed",
+    "mypy_modules": 327,
+    "local_api": 8007,
+    "local_ui": 5187,
+    "health_regions_history_http": 200,
+    "history_records": 12,
+    "legacy_record_compatibility": "Missing declared default fields load; missing required fields still fail",
+    "public_training_observations": "Excluded from HTTP/chat without mutating saved jobs",
+    "scope": "Final backend checks after public projection and legacy record fix; ETL checks after selection changes; no frontend changes"
+  }
+}

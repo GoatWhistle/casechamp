@@ -44,14 +44,21 @@ export function isTrafficJob(value: unknown): value is TrafficJob {
 export function usefulTrafficAlternatives(job: TrafficJob, region?: string) {
   const before = job.baseline?.mean_trip_minutes
   return job.alternatives.filter((row) => {
-    if (row.kind === "connection" && row.housing_clearance !== true) return false
+    if (!job.baseline?.converged || !row.after.converged) return false
+    const addsLink =
+      row.kind === "connection" ||
+      row.roads?.some((road) => road.new_link) ||
+      row.structures?.some((item) => item.kind === "connection")
+    if (addsLink && row.housing_clearance !== true) return false
     const local =
       before !== null &&
       before !== undefined &&
       row.after.mean_trip_minutes !== null &&
       row.after.mean_trip_minutes !== undefined &&
       before - row.after.mean_trip_minutes >= 0.05
+    const objective = Number.isFinite(row.objective_gain) && (row.objective_gain ?? 0) > 0
     return (
+      objective ||
       local ||
       row.indices?.some((value) => (!region || value.region === region) && value.delta >= 0.0001)
     )

@@ -1,0 +1,30 @@
+.panel {
+  composes: sidePanel from "../../../shared/styles/compose.module.css";
+  block-size: 100%;
+}
+
+.scroll {
+  block-size: 100%;
+}
+
+.content {
+  display: grid;
+  align-content: start;
+  gap: var(--space-24);
+  padding: var(--space-24);
+}
+
+.section {
+  gap: var(--space-12);
+  border: 0;
+  border-block-start: var(--hairline) solid var(--border-subtle);
+  border-radius: 0;
+  padding: var(--space-24) 0 0;
+}
+
+@media (max-width: 64rem) {
+  .panel {
+    border-inline-start: 0;
+    border-block-start: var(--hairline) solid var(--border-subtle);
+  }
+}

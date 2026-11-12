@@ -72,3 +72,14 @@ def test_place_names_resolve_point_ids() -> None:
         assert response.status_code == 200
         assert response.json()[0]["name"] == "село Хоро"
         port.place_names.assert_called_once_with(["98614486101"])
+
+
+def test_speed_overrides_are_rejected_before_submission() -> None:
+    port = Mock(spec=RoadGraphPort)
+    with client(port) as http:
+        for field, value in [("speed_factor", 1.3), ("speed_kmh", 100), ("highway", "motorway")]:
+            response = http.post("/road-scenarios", json={
+                "region_id": "71000000", "changes": [{"way_id": 7, field: value}],
+            })
+            assert response.status_code == 422
+        port.submit.assert_not_called()

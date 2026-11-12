@@ -7,6 +7,7 @@ from scipy.sparse.csgraph import dijkstra
 from app.adapter.road_analysis.geometry import region_edges
 from app.adapter.road_analysis.topology import bridge_exposure
 from app.adapter.road_graph.delta_base import DeltaBase
+from app.domain.errors import InvalidQuery
 from app.usecase.dto import BoundaryShape
 from app.usecase.road_analysis import AnalysisMode, Candidate
 
@@ -28,6 +29,8 @@ class CandidateScreening:
     def candidates(
         self, boundary: BoundaryShape, mode: AnalysisMode, progress: Callable[[str, int, int], None]
     ) -> list[Candidate]:
+        if mode != "criticality":
+            raise InvalidQuery("Use traffic_development for road improvement search")
         data = self.base.data
         self.base.prepare()
         e, n = data.edges, data.nodes
@@ -47,25 +50,24 @@ class CandidateScreening:
         allowed = {int(r[0]) for r in rows}
         scores = self.path_scores(region, allowed, progress)
         isolation: dict[int, float] = {}
-        if mode == "criticality":
-            progress("topology", 0, 1)
-            bridges = bridge_exposure(
-                self.base.graph,
-                region.market_nodes,
-                region.nodes,
-                region.population,
-                lambda: progress("topology", 0, 1),
-            )
-            pairs: dict[tuple[int, int], set[int]] = {}
-            for p in positions:
-                a, b = int(e["src"][p]), int(e["dst"][p])
-                pair = (min(a, b), max(a, b))
-                if pair in bridges:
-                    pairs.setdefault(pair, set()).add(int(e["way_idx"][p]))
-            for pair, ways in pairs.items():
-                if len(ways) == 1:
-                    w = next(iter(ways))
-                    isolation[w] = max(isolation.get(w, 0), bridges[pair])
+        progress("topology", 0, 1)
+        bridges = bridge_exposure(
+            self.base.graph,
+            region.market_nodes,
+            region.nodes,
+            region.population,
+            lambda: progress("topology", 0, 1),
+        )
+        pairs: dict[tuple[int, int], set[int]] = {}
+        for p in positions:
+            a, b = int(e["src"][p]), int(e["dst"][p])
+            pair = (min(a, b), max(a, b))
+            if pair in bridges:
+                pairs.setdefault(pair, set()).add(int(e["way_idx"][p]))
+        for pair, ways in pairs.items():
+            if len(ways) == 1:
+                w = next(iter(ways))
+                isolation[w] = max(isolation.get(w, 0), bridges[pair])
         candidates = [
             Candidate(
                 int(wid),
@@ -82,7 +84,7 @@ class CandidateScreening:
             (c for c in candidates if c.isolation_score > 0),
             key=lambda c: (-c.isolation_score, c.way_id),
         )
-        return interleave(main, isolated) if mode == "criticality" else main
+        return interleave(main, isolated)
 
     def path_scores(
         self, region: Any, allowed: set[int], progress: Callable[[str, int, int], None]

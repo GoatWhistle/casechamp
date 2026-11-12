@@ -30,7 +30,7 @@ export interface MapChatProps {
   readonly onCalculation?: CalculationHandler | undefined
   readonly context: ChatContext
   readonly summary: ReactNode
-  readonly scenario?: ReactNode
+  readonly scenario?: ReactNode | ((onAsk: (prompt: string) => void) => ReactNode)
   readonly onMapCommand: MapCommandHandler
 }
 
@@ -91,7 +91,10 @@ export function MapChat({
         className={styles.summary}
         data-hidden={tab !== "scenario" || undefined}
       >
-        {scenario}
+        {renderScenarioPanel(scenario, (prompt) => {
+          setTab("chat")
+          send(prompt)
+        })}
       </div>
       <div
         id={`${titleId}summary`}
@@ -235,4 +238,8 @@ function hasResults(row: ChatEntry | undefined) {
 
 function showChatStatus(tail: ChatEntry | undefined, busy: boolean, failed: boolean) {
   return Boolean(tail) && !failed && (busy || !hasResults(tail))
+}
+
+function renderScenarioPanel(scenario: MapChatProps["scenario"], onAsk: (prompt: string) => void) {
+  return typeof scenario === "function" ? scenario(onAsk) : scenario
 }

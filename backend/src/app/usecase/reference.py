@@ -1,9 +1,11 @@
 import re
+from collections.abc import Callable
 from dataclasses import dataclass, replace
 
 from app.usecase.dto import BoundaryShape, RegionShape, SourceRecord, WinterRoadRecord
 from app.usecase.index_status import IndexStatus, index_status
 from app.usecase.interface import AtlasRepository
+from app.usecase.municipalities import MunicipalCoordinates
 
 
 @dataclass(frozen=True, slots=True)
@@ -48,8 +50,13 @@ def _years(dates: list[str | None]) -> str | None:
 
 
 class ReferenceQueries:
-    def __init__(self, repository: AtlasRepository) -> None:
+    def __init__(
+        self,
+        repository: AtlasRepository,
+        outside_mask: Callable[[list[BoundaryShape]], MunicipalCoordinates] | None = None,
+    ) -> None:
         self._repository = repository
+        self._outside_mask = outside_mask
 
     def geo(self) -> GeoRegions:
         layer = self._repository.geo()
@@ -69,6 +76,9 @@ class ReferenceQueries:
             replace(shape, name=names.get(shape.id, shape.name))
             for shape in self._repository.boundaries()
         ]
+
+    def outside_mask(self, boundaries: list[BoundaryShape]) -> MunicipalCoordinates | None:
+        return self._outside_mask(boundaries) if self._outside_mask else None
 
     def winter_roads(self) -> list[WinterRoadRecord]:
         return self._repository.winter_roads()

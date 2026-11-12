@@ -7,7 +7,8 @@ from pathlib import Path
 import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
-from synthetic_traffic.assignment import Assignment, assign
+from synthetic_traffic.assignment import Assignment
+from synthetic_traffic.incremental import evaluate_incremental, prepare_incremental
 from synthetic_traffic.model import Network, Trip
 from synthetic_traffic.projects import apply_project
 
@@ -76,7 +77,8 @@ def compare(
             for t in trips
         ]
         print(f"Assigning baseline, demand x{multiplier}", flush=True)
-        baseline = assign(network, demand, iterations, tolerance)
+        cache = prepare_incremental(network, demand, iterations, tolerance)
+        baseline = cache.assignment
         baseline_file = f"baseline-flows-{multiplier}.parquet"
         pq.write_table(
             pa.table(
@@ -98,7 +100,7 @@ def compare(
         }
         for name, project, changed in variants:
             print(f"Assigning project {name}, demand x{multiplier}", flush=True)
-            result = assign(changed, demand, iterations, tolerance)
+            result = evaluate_incremental(cache, changed, iterations, tolerance)
             values = summary(result, duration)
             comparable = (
                 baseline.converged
@@ -125,32 +127,37 @@ def compare(
                 if comparable
                 else "inspect_convergence_and_unserved_demand",
             )
-            existing = len(network.source)
+            lookup = {
+                (int(a), int(b), int(w)): i
+                for i, (a, b, w) in enumerate(
+                    zip(network.source, network.target, network.way_id, strict=True)
+                )
+            }
+            positions = [
+                lookup.get((int(a), int(b), int(w)))
+                for a, b, w in zip(
+                    changed.source, changed.target, changed.way_id, strict=True
+                )
+            ]
+            before_flow = np.array(
+                [baseline.flow[i] if i is not None else 0 for i in positions]
+            )
+            before_ratio = np.array(
+                [baseline.ratio[i] if i is not None else np.nan for i in positions]
+            )
+            before_hours = np.array(
+                [baseline.hours[i] if i is not None else np.nan for i in positions]
+            )
             table = pa.table(
                 {
                     "way_id": changed.way_id,
                     "source_node": changed.raw_nodes[changed.source],
                     "target_node": changed.raw_nodes[changed.target],
-                    "flow_before": np.r_[
-                        baseline.flow, np.zeros(len(changed.source) - existing)
-                    ],
+                    "flow_before": before_flow,
                     "flow_after": result.flow,
-                    "flow_change": result.flow
-                    - np.r_[baseline.flow, np.zeros(len(changed.source) - existing)],
-                    "ratio_before": pa.array(
-                        np.r_[
-                            baseline.ratio,
-                            np.full(len(changed.source) - existing, np.nan),
-                        ],
-                        from_pandas=True,
-                    ),
-                    "hours_before": pa.array(
-                        np.r_[
-                            baseline.hours,
-                            np.full(len(changed.source) - existing, np.nan),
-                        ],
-                        from_pandas=True,
-                    ),
+                    "flow_change": result.flow - before_flow,
+                    "ratio_before": pa.array(before_ratio, from_pandas=True),
+                    "hours_before": pa.array(before_hours, from_pandas=True),
                     "demand_capacity_ratio": result.ratio,
                     "hours_after": result.hours,
                 }

@@ -58,7 +58,10 @@ export function AnalysisProgress({ job, busy, pending, control }: AnalysisProgre
         >
           {t("analysis:stop")}
         </Button>
-      ) : job.compatible && job.status !== "completed" && job.error !== "baseline_mismatch" ? (
+      ) : job.mode === "criticality" &&
+        job.compatible &&
+        job.status !== "completed" &&
+        job.error !== "baseline_mismatch" ? (
         <Button icon="plus" disabled={pending} onClick={() => control("continue")}>
           {t("analysis:continue")}
         </Button>

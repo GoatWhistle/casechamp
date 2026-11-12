@@ -11,7 +11,8 @@ export interface SummaryPart {
 export interface ScenarioShape {
   readonly scenario: string
   readonly changes: readonly {
-    readonly speed_factor: number
+    readonly speed_factor?: number
+    readonly closed?: boolean
     readonly lanes_total?: number | null
     readonly highway?: string | null
     readonly surface?: string | null
@@ -24,6 +25,8 @@ export interface ScenarioShape {
 function roadsPart(changes: ScenarioShape["changes"]): SummaryPart | null {
   const count = changes.length
   if (!count) return null
+  if (changes.every((change) => change.closed === true))
+    return { id: "roads", icon: "route", text: "graph:summary.closed", values: { count } }
   if (
     changes.some(
       (change) =>

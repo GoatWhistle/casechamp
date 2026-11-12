@@ -39,17 +39,27 @@ class CalculationTools:
         if self._stress is not None:
             StressTools(self._stress, self._corridors, self._roads).register(agent)
         NetworkSearch(self._roads, self._corridors).register(agent)
-        NetworkScenarios(self._roads, self._corridors, self._analysis, self._stress, self._traffic).register(agent)
-        NetworkJobs(self._roads, self._analysis, self._corridors, self._stress, self._traffic).register(agent)
+        NetworkScenarios(
+            self._roads, self._corridors, self._analysis, self._stress, self._traffic
+        ).register(agent)
+        NetworkJobs(
+            self._roads, self._analysis, self._corridors, self._stress, self._traffic
+        ).register(agent)
 
     def calculation_capabilities(self, ctx: RunContext[ChatRun]) -> str:
         model = self._roads.model_info() if self._roads else None
         return json.dumps(
             {
-                "road_development": {"available": self._traffic is not None,
+                "road_development": {
+                    "available": self._traffic is not None,
                     "calculate": "calculate_scenario(kind=traffic_development)",
+                    "objectives": ["connectivity", "transit", "congestion"],
+                    "default_objective": "connectivity",
+                    "scope": "bounds, exact region/regions, or resolved places; bounds describe the surrounding network context",
+                    "focus_bounds": "optional measured area for transit or congestion; use stored geographic bounds or the user's map selection",
+                    "workflow": "one adaptive search returns verified proposals, objective effects and map geometry",
                     "data": "manage_calculation(kind=traffic_data)",
-                    "scope": "bounded housing demand or explicit pair, with map before/after"},
+                },
                 "settlement_connectivity": {
                     "available": self._corridors is not None,
                     "calculate": "calculate_scenario(kind=connectivity)",
@@ -58,16 +68,19 @@ class CalculationTools:
                     "closures": "joint resolved selection_ids with before/after rerouting",
                     "network": "baseline roads only, undirected",
                     "half_life_hours": 2,
-                    "traffic": "traffic={} models 50% utilization for 1 hour with lane capacities and queues",
                     "persisted_results": "manage_calculation(kind=status, calculation_type=connectivity)",
                     "time_cost": "manage_calculation(kind=connectivity_economics, calculation_id=...)",
                 },
-                "national_road_stress": {"available": self._stress is not None,
+                "national_road_stress": {
+                    "available": self._stress is not None,
                     "calculate": "calculate_scenario(kind=close_selection, assessment=impact)",
-                    "includes": "regional Hansen plus national consequences; optional places/traffic for modeled queues",
-                    "selected_ways": "stress_test_roads", "inspect": "inspect_road_stress_test",
-                    "route": "compare_stress_route", "network": "road_only_unbounded",
-                    "scope": "all_snapshot_settlements"},
+                    "includes": "regional Hansen plus national road-closure consequences",
+                    "selected_ways": "stress_test_roads",
+                    "inspect": "inspect_road_stress_test",
+                    "route": "compare_stress_route",
+                    "network": "road_only_unbounded",
+                    "scope": "all_snapshot_settlements",
+                },
                 "bridge_closures": {
                     "available": self._corridors is not None and self._roads is not None,
                     "search": "find_transport(kind=bridges)",
@@ -80,9 +93,7 @@ class CalculationTools:
                     "directions": "both",
                     "regions": "endpoint_and_crossed_atlas_regions",
                     "joint_closure": "calculate_scenario(kind=close_selection) with all selection_ids",
-                    "speed_change": "calculate_scenario(kind=edit_selection, selection_ids, speed_factor)",
                     "way_ids": "resolved internally; never enumerate corridor ways",
-                    "speed_baseline": "open base network, independent of previous closures",
                 },
                 "endpoint_road_routes": {
                     "available": self._corridors is not None and self._roads is not None,
@@ -92,16 +103,12 @@ class CalculationTools:
                     "road_name_required": False,
                     "close": "calculate_scenario(kind=close_selection)",
                 },
-                "automatic_road_analysis": {
+                "road_criticality": {
                     "available": self._analysis is not None and self._roads is not None,
-                    "batch_size": 10,
-                    "network": "road",
+                    "calculate": "calculate_scenario(kind=road_analysis, mode=criticality)",
+                    "purpose": "identify consequences of road loss; development uses road_development",
                 },
-                "regional_sensitivity": {
-                    "time_multipliers": [0.5, 1, 2],
-                    "graph_recomputed": False,
-                },
-                "national_road_edits": {
+                "transport_model": {
                     "available": self._roads is not None,
                     "model": asdict(model) if model else None,
                 },
@@ -115,12 +122,6 @@ class CalculationTools:
                     "intercity_in_road": model.intercity_in_road if model else None,
                     "one_way_or_frequency_edits": False,
                     "economic_appraisal": "one region per call with explicit appraisal inputs",
-                },
-                "new_connections": {
-                    "available": self._roads is not None,
-                    "method": "single_edge_delta",
-                    "network": "road",
-                    "money_method": "conditional_time_savings",
                 },
                 "economic_appraisal": {
                     "available": self._roads is not None,
@@ -170,4 +171,3 @@ class CalculationTools:
         return json.dumps(
             {"result": asdict(result), "table": json.loads(table)}, ensure_ascii=False
         )
-

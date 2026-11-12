@@ -1,0 +1,194 @@
+{
+  "checked_at": "2026-11-12T08:18:12.586385+00:00",
+  "primary_pdf": {
+    "source_url": "https://kurgan-med.ru/upload/iblock/838/tjdzs5h4gyy2g651go059a7gr08a1ifg.pdf",
+    "act": "1469",
+    "act_date": "2025-10-16",
+    "pdf_sha256": "df1f8198bc0230f40d45a8483b9a2060962cdad5293daddca3b15c71016de2c9",
+    "pdf_bytes": 39737633,
+    "pdf_pages": 134,
+    "reviewed_pages": [
+      1,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "observed_at": "2026-11-12"
+  },
+  "reviewed_address_rows": 17,
+  "included_per_form": 16,
+  "total_profiles": 32,
+  "known_coordinates_per_form": 2,
+  "missing_coordinates_per_form": 14,
+  "excluded": [
+    {
+      "id": "shadrinsk-district-hospital",
+      "reason": "planned_cardiology_only",
+      "page": 11
+    }
+  ],
+  "identity_correction": {
+    "previous": "1169",
+    "correct": "1469",
+    "proof": "Primary first-page scan and official department card; historical snapshots unchanged"
+  },
+  "cached_pdf_found": true,
+  "original_two_coordinates_preserved": true,
+  "source_field_hash": "50f614f3434e04d902ce919925b342fb1826a9e7f0ba283010b1b8c41fd52a0d",
+  "snapshots": [
+    {
+      "criterion": "N01",
+      "prior_run_id": "ef405395cdad446ba8c8e5e1a0e3fb66",
+      "run_id": "fb858a37eda44ba3be152e4c39c90d6c",
+      "model_revision": "normative-v8",
+      "rows": 1235,
+      "facilities": 16,
+      "coordinates": 2,
+      "source_hashes": 16,
+      "all_states_unknown": true,
+      "all_population_null": true,
+      "unchanged_row_fields": [
+        "id",
+        "minutes",
+        "facility_id",
+        "population",
+        "state",
+        "threshold_minutes"
+      ],
+      "post_equals_get": true,
+      "seconds": 2.138106291065924
+    },
+    {
+      "criterion": "N02",
+      "prior_run_id": "d8caad8f81584c84950f668313d8c4d5",
+      "run_id": "b5673d347d2b48d7945a276c6f559d2a",
+      "model_revision": "normative-v8",
+      "rows": 1235,
+      "facilities": 16,
+      "coordinates": 2,
+      "source_hashes": 16,
+      "all_states_unknown": true,
+      "all_population_null": true,
+      "unchanged_row_fields": [
+        "id",
+        "minutes",
+        "facility_id",
+        "population",
+        "state",
+        "threshold_minutes"
+      ],
+      "post_equals_get": true,
+      "seconds": 2.016282958094962
+    }
+  ],
+  "desktop": [
+    {
+      "width": 1440,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "sourceHashFits": true,
+      "sourceUrl": "https://kurgan-med.ru/upload/iblock/838/tjdzs5h4gyy2g651go059a7gr08a1ifg.pdf#page=12"
+    },
+    {
+      "width": 1920,
+      "errors": [],
+      "violations": [],
+      "overflow": false,
+      "sourceHashFits": true,
+      "sourceUrl": "https://kurgan-med.ru/upload/iblock/838/tjdzs5h4gyy2g651go059a7gr08a1ifg.pdf#page=12"
+    }
+  ],
+  "checks": {
+    "etl": 77,
+    "new_storage_api_integration": 1,
+    "ruff": true,
+    "mypy_files": 279,
+    "backend_last_full_unit": 568,
+    "frontend_last_full_tests": 451
+  },
+  "current_database": [
+    {
+      "service": "bus_station",
+      "records": "1",
+      "source_hashes": "1",
+      "coordinates": "1"
+    },
+    {
+      "service": "children_library",
+      "records": "30",
+      "source_hashes": "2",
+      "coordinates": "6"
+    },
+    {
+      "service": "emergency_cardiology",
+      "records": "16",
+      "source_hashes": "16",
+      "coordinates": "2"
+    },
+    {
+      "service": "employment",
+      "records": "24",
+      "source_hashes": "24",
+      "coordinates": "12"
+    },
+    {
+      "service": "fire",
+      "records": "26",
+      "source_hashes": "26",
+      "coordinates": "9"
+    },
+    {
+      "service": "institutional_library",
+      "records": "2",
+      "source_hashes": "1",
+      "coordinates": "1"
+    },
+    {
+      "service": "library",
+      "records": "429",
+      "source_hashes": "22",
+      "coordinates": "35"
+    },
+    {
+      "service": "mfc",
+      "records": "38",
+      "source_hashes": "38",
+      "coordinates": "16"
+    },
+    {
+      "service": "regional_library",
+      "records": "4",
+      "source_hashes": "4",
+      "coordinates": "4"
+    },
+    {
+      "service": "school",
+      "records": "34",
+      "source_hashes": "34",
+      "coordinates": "34"
+    },
+    {
+      "service": "stop",
+      "records": "658",
+      "source_hashes": "658",
+      "coordinates": "658"
+    },
+    {
+      "service": "urgent_cardiology",
+      "records": "16",
+      "source_hashes": "16",
+      "coordinates": "2"
+    }
+  ],
+  "legal_status": {
+    "current_2026_routing_verified": false,
+    "predecessor_repealed": "194 dated2024-02-19",
+    "annual_update_clause": true,
+    "official_index_pages_read": 8,
+    "official_index_cards_read": 76
+  },
+  "qualification": "No operational/adult catchment facts imported; all new N01/N02 statuses unknown and population null."
+}

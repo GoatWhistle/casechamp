@@ -1,0 +1,80 @@
+[
+  {
+    "source_node": 3401436,
+    "target_node": 5069874,
+    "hypothesis": "Родниковский — Терновский: проверить восточный выход вместо длинного сетевого объезда — 72,4 мин при 13,6 км по прямой. Население невелико, поэтому это локальная гипотеза устранения разрыва, а не обоснование крупной дороги.",
+    "route_found": true,
+    "status": "rejected",
+    "error": "A remaining alignment bend has no validated curve",
+    "terminal_failure": {
+      "reason": "longitudinal_grade_without_supported_structure",
+      "phase": "_curve",
+      "raw_segment": null,
+      "point_a": [
+        42.100984808777284,
+        44.526016444869306
+      ],
+      "point_b": [
+        42.10096613054607,
+        44.5260508041809
+      ],
+      "slope": 0.09058424164127764,
+      "maximum_grade": 0.09058424164127764
+    },
+    "raw_vertices": 188,
+    "raw_structures": 0
+  },
+  {
+    "source_node": 4210963,
+    "target_node": 6917373,
+    "hypothesis": "Стародворцовский — Дворцовское: проверить короткую межпоселенческую перемычку; расчётный путь занимает 44,7 мин при расстоянии по прямой 5,8 км. Выраженный объезд при суммарном населении 1049 человек; осуществимость трассы неизвестна.",
+    "route_found": true,
+    "status": "rejected",
+    "error": "Routed alignment fails full-cell geographic screening",
+    "terminal_failure": {
+      "reason": "longitudinal_grade_without_supported_structure",
+      "phase": "_simplify",
+      "raw_segment": [
+        33,
+        34
+      ],
+      "point_a": [
+        42.121,
+        44.69
+      ],
+      "point_b": [
+        42.121,
+        44.689
+      ],
+      "slope": 0.08625384682473444,
+      "maximum_grade": 0.08625384682473444
+    },
+    "raw_vertices": 74,
+    "raw_structures": 3
+  },
+  {
+    "source_node": 3929038,
+    "target_node": 2129191,
+    "hypothesis": "Апсуа — Саратовский: проверить юго-западный связующий коридор, отличный от подхода со стороны Новой Деревни. Расчётные 45,8 мин при 15,0 км по прямой дают основание искать сокращение объезда для населённых пунктов с 1100 и 308 жителями.",
+    "route_found": true,
+    "status": "rejected",
+    "error": "A remaining alignment bend has no validated curve",
+    "terminal_failure": {
+      "reason": "longitudinal_grade_without_supported_structure",
+      "phase": "_curve",
+      "raw_segment": null,
+      "point_a": [
+        41.76102545015372,
+        44.5820175519216
+      ],
+      "point_b": [
+        41.76105625,
+        44.58205625
+      ],
+      "slope": 0.08133696910382394,
+      "maximum_grade": 0.08133696910382394
+    },
+    "raw_vertices": 141,
+    "raw_structures": 7
+  }
+]

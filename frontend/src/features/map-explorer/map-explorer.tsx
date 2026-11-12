@@ -1,34 +1,34 @@
-import { type CSSProperties, type ReactNode, useCallback, useRef, useState } from "react"
+import { type CSSProperties, type ReactNode, useCallback, useMemo, useRef } from "react"
 import { useLocation } from "react-router"
 import { boundaryName, type MapControls, modelRegionId, OsmMap } from "@/entities/region"
-import { type RoadGraphState, useRoadGraph } from "@/entities/road-graph"
-import type { ChatMapCommand, MapCommandHandler } from "@/shared/api/chat-map"
-import type { ChatContext } from "@/shared/api/chat-stream"
+import { useRoadGraph } from "@/entities/road-graph"
 import { usePanelWidth } from "@/shared/hooks"
 import { useNetworkMode } from "@/shared/hooks/use-network-mode"
-import { useFormatters, useTranslation } from "@/shared/i18n"
+import { useTranslation } from "@/shared/i18n"
 import { PanelResizer } from "@/shared/ui"
-import { MapPending, PanelPending } from "./explorer-states"
+import { MapPending } from "./explorer-states"
 import { HoverCard } from "./hover-card"
 import styles from "./map-explorer.module.css"
 import { LinkLayers, MapLegend } from "./map-legend"
-import { MapPanel } from "./map-panel"
+import type { MapPanelSlot } from "./map-panel-slot"
 import { MapToolbar } from "./map-toolbar"
 import { MapZoom } from "./map-zoom"
-import { formatMetric, metricValue } from "./metric"
+import { normativeId } from "./metric"
+import { roadMapProps } from "./municipalities/road-map-props"
+import { useMunicipalitySelection } from "./municipalities/use-municipalities"
 import { OverlayReset, RoadLayer } from "./road-legend"
+import { useMapSelection } from "./selection/use-map-selection"
+import { useNormativeMapScope } from "./selection/use-regional-scope"
+import { ExplorerSummary } from "./summary/explorer-summary"
+import { RegionSelectionStatus, useRegionCard } from "./summary/use-region-card"
 import { useExplorerParams } from "./use-explorer-params"
+import { useHoverRows } from "./use-hover-rows"
 import { useMapData, useSelectedTransit } from "./use-map-data"
 import { useMapHover } from "./use-map-hover"
+import { useNormativeOverlay } from "./use-normative-overlay"
 
 export interface MapExplorerProps {
-  readonly renderPanel?: (
-    summary: ReactNode,
-    context: ChatContext,
-    onMapCommand: MapCommandHandler,
-    roads: RoadGraphState,
-    onChatChange: () => void,
-  ) => ReactNode
+  readonly renderPanel: (slot: MapPanelSlot) => ReactNode
 }
 
 const PANEL_WIDTH_KEY = "plexus.map-panel-width"
@@ -38,44 +38,62 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
   const { networkMode } = useNetworkMode()
   const fullscreen = useLocation().pathname === "/"
   const { t } = useTranslation()
-  const f = useFormatters()
   const { metric, season, selectedId, setMetric, setSeason, select, searchFor } =
     useExplorerParams()
   const { hoveredId, cardRef, point, onHover } = useMapHover()
   const host = useRef<HTMLDivElement | null>(null)
   const panelWidth = usePanelWidth(host, PANEL_WIDTH_KEY)
-  const { geo, regions, overview, byId, valueAt, scale, missing, failed, retry } = useMapData(
-    metric,
-    season,
-  )
-  const modelId = modelRegionId(selectedId, regions.data)
-  const selectedName = boundaryName(selectedId, geo.data?.regions)
+  const {
+    geo,
+    regions,
+    byId,
+    valueAt,
+    scale,
+    missing,
+    failed,
+    retry,
+    normative,
+    normativeTerritory,
+    normativeFacilities,
+    normativeState,
+  } = useMapData(metric, season, selectedId)
+  const normativeMode = normativeId(metric)
+  const scope = useNormativeMapScope(selectedId, normativeMode, {
+    result: normative.data,
+    physical: normativeState.display !== "index",
+    qualified: normativeState.display === "status",
+    territory: normativeTerritory,
+    regions: geo.data?.regions,
+    facilities: normativeFacilities.data,
+  })
+  const cameraSelection = scope.selection
+  const municipalities = useMunicipalitySelection(cameraSelection)
+  const {
+    selectedPoint,
+    selectPoint,
+    stage,
+    selectStage,
+    layer: normativeLayer,
+    view: normativeView,
+  } = useNormativeOverlay(normativeMode, scope.result, scope.facilities, normativeState)
+  const modelId = modelRegionId(cameraSelection, regions.data)
   const { links, airports, transit, modelCount, showModels, setShowModels } = useSelectedTransit(
     modelId,
     season,
   )
 
-  const [mapCommand, setMapCommand] = useState<ChatMapCommand | null>(null)
-  const selectRegion = useCallback(
-    (id: string | null) => {
-      setMapCommand(null)
-      select(id)
-    },
-    [select],
+  const mapTransit = useMemo(
+    () => (normativeMode ? { ...transit.data, features: [] } : transit.data),
+    [normativeMode, transit.data],
   )
-  const onMapCommand = useCallback<MapCommandHandler>(
-    (command) => {
-      if (command.action === "focus") {
-        if (!command.region_ids.every((id) => geo.data?.regions.some((region) => region.id === id)))
-          return
-        select(command.region_ids.length === 1 ? (command.region_ids[0] ?? null) : null)
-      }
-      if (command.action === "focus_settlement" && command.settlement)
-        select(command.settlement.region_id)
-      if (command.action === "reset") select(null)
-      setMapCommand({ ...command })
-    },
-    [geo.data, select],
+  const mapAirports = useMemo(
+    () => (normativeMode && airports.data ? { ...airports.data, airports: [] } : airports.data),
+    [normativeMode, airports.data],
+  )
+
+  const { mapCommand, setMapCommand, selectRegion, onMapCommand } = useMapSelection(
+    geo.data?.regions,
+    select,
   )
 
   const stepOf = useCallback((id: string) => scale.stepOf(valueAt(id)), [scale, valueAt])
@@ -86,19 +104,12 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
   )
 
   const hovered = hoveredId ? byId.get(hoveredId) : undefined
-  const hoveredIndex = hovered ? hovered.hansen : null
-  const hoveredValue = hovered ? metricValue(hovered, metric) : null
-  const indexRow = {
-    key: "hansen",
-    label: t("data:metric.hansen"),
-    value: hoveredIndex === null ? null : formatMetric(hoveredIndex, "hansen", f),
-  }
-  const metricRow = {
-    key: metric,
-    label: t(`data:metric.${metric}`),
-    value: hoveredValue === null ? null : formatMetric(hoveredValue, metric, f),
-  }
-  const hoverRows = metric === "hansen" ? [indexRow] : [indexRow, metricRow]
+  const showRegionHover = !normativeMode || normativeState.display === "index"
+  const hoverRows = useHoverRows(
+    metric,
+    hovered ? valueAt(hovered.id) : null,
+    hovered?.hansen ?? null,
+  )
   const ready = geo.data !== undefined && regions.data !== undefined
   const transitModes = new Set(transit.data.features.map((feature) => feature.properties?.mode))
   const drawnSymbols = {
@@ -109,21 +120,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
     rail: transitModes.has("rail"),
   }
 
-  const panel =
-    overview.data && regions.data ? (
-      <MapPanel
-        overview={overview.data}
-        regions={regions.data}
-        metric={metric}
-        season={season}
-        selectedId={selectedId}
-        selectedName={selectedName}
-        searchFor={searchFor}
-        onClear={clear}
-      />
-    ) : (
-      <PanelPending failed={failed} onRetry={retry} />
-    )
+  const regionCard = useRegionCard(regions.data, season, geo.data?.regions, clear)
 
   return (
     <div
@@ -135,21 +132,15 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
       <div className={styles.stage}>
         {geo.data && regions.data ? (
           <OsmMap
-            transit={transit.data}
-            airports={airports.data}
-            roads={{
-              view: roads.layerView,
-              onRendering: roads.setRendering,
-              addition: roads.addition,
-              analysis: roads.analysisOverlay,
-              corridor: roads.corridorOverlay,
-              selected: roads.selected,
-              onBounds: roads.onBounds,
-              onRoad: roads.onRoad,
-            }}
+            transit={mapTransit}
+            airports={mapAirports}
+            normative={normativeLayer}
+            roads={roadMapProps(roads)}
+            outsideMask={geo.data.outside_mask ?? undefined}
+            municipalities={municipalities.layer}
             regions={geo.data.regions}
             stepOf={stepOf}
-            selectedId={selectedId}
+            selectedId={cameraSelection}
             label={t("map:label")}
             attribution={t("map:attribution")}
             onSelect={selectRegion}
@@ -161,30 +152,44 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
           <MapPending failed={failed} onRetry={retry} />
         )}
         <div className={styles.overlay}>
-          <MapToolbar metric={metric} season={season} onMetric={setMetric} onSeason={setSeason} />
+          <MapToolbar
+            metric={metric}
+            season={season}
+            onMetric={setMetric}
+            onSeason={setSeason}
+            regionId={scope.regionId}
+            regions={scope.options}
+            onRegion={selectRegion}
+          >
+            {municipalities.control}
+          </MapToolbar>
           {ready ? (
             <MapLegend
               metric={metric}
               scale={scale}
               drawn={drawnSymbols}
               airportsFailed={airports.isError}
+              normative={Boolean(normativeMode)}
+              normativeView={normativeView}
             >
               <RoadLayer roads={roads} />
-              <LinkLayers
-                selected={modelId !== null}
-                loading={links.isPending}
-                failed={links.isError}
-                missing={transit.missing}
-                modelCount={modelCount}
-                showModels={showModels}
-                onModelsChange={setShowModels}
-                onRetry={() => void links.refetch()}
-              />
+              {!normativeMode ? (
+                <LinkLayers
+                  selected={modelId !== null}
+                  loading={links.isPending}
+                  failed={links.isError}
+                  missing={transit.missing}
+                  modelCount={modelCount}
+                  showModels={showModels}
+                  onModelsChange={setShowModels}
+                  onRetry={() => void links.refetch()}
+                />
+              ) : null}
               <OverlayReset roads={roads} />
             </MapLegend>
           ) : null}
         </div>
-        {hovered ? (
+        {hovered && showRegionHover ? (
           <HoverCard
             cardRef={cardRef}
             point={point}
@@ -194,23 +199,39 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
           />
         ) : null}
       </div>
-      {renderPanel
-        ? renderPanel(
-            panel,
-            {
-              region_id: modelId,
-              season,
-              network_mode: networkMode,
-              metric,
-            },
-            onMapCommand,
-            roads,
-            () => {
-              setMapCommand(null)
-              roads.clearOverlays()
-            },
-          )
-        : panel}
+      <RegionSelectionStatus name={modelId ? byId.get(modelId)?.name : undefined} />
+      {renderPanel({
+        summary: (
+          <ExplorerSummary
+            metric={metric}
+            season={season}
+            selectedId={selectedId}
+            selectedName={boundaryName(selectedId, geo.data?.regions)}
+            searchFor={searchFor}
+            onClear={clear}
+          />
+        ),
+        normativeId: normativeMode,
+        normativeRegionName: scope.regionName,
+        normativeRegionId: scope.selection,
+        metricLabel: t(`data:metric.${metric}`),
+        selectedPoint,
+        onPoint: selectPoint,
+        onNormativeRegion: selectRegion,
+        normativeDisplay: normativeState.display,
+        onNormativeDisplay: normativeState.onDisplay,
+        routeStage: stage,
+        onRouteStage: selectStage,
+        regionCard,
+        selection: selectedId,
+        context: { region_id: modelId, season, network_mode: networkMode, metric },
+        onMapCommand,
+        roads,
+        onChatChange: () => {
+          setMapCommand(null)
+          roads.clearOverlays()
+        },
+      })}
       <PanelResizer
         className={styles.resizer}
         width={panelWidth.width}

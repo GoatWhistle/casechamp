@@ -1,13 +1,11 @@
 from typing import Annotated, Literal
 
 from fastapi import APIRouter, Query
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from app.domain.appraisal_inputs import ProjectAssumptions
-from app.domain.road_economics import MoneyAssumptions
 from app.usecase.road_graph import (
     GraphLocation,
-    RoadAddition,
     RoadChange,
     RoadGraph,
     RoadJob,
@@ -17,12 +15,10 @@ from app.usecase.transport_links import LinkChange, PlaceName, TransportLink
 
 
 class RoadChangeInput(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     way_id: int = Field(ge=0)
-    speed_factor: float = Field(default=1, ge=0, le=3)
+    closed: bool = False
     lanes_total: int | None = Field(default=None, ge=1, le=32)
-    highway: str | None = Field(default=None, max_length=40)
-    surface: str | None = Field(default=None, max_length=40)
-    speed_kmh: float | None = Field(default=None, gt=0, le=200)
 
 
 class LinkChangeInput(BaseModel):
@@ -42,15 +38,6 @@ class RoadScenarioInput(BaseModel):
     appraisal: ProjectAssumptions | None = None
 
 
-class RoadAdditionInput(BaseModel):
-    region_id: str = Field(min_length=1, max_length=64)
-    source_node: int = Field(ge=0)
-    target_node: int = Field(ge=0)
-    travel_hours: float = Field(gt=0, le=72)
-    money: MoneyAssumptions | None = None
-    appraisal: ProjectAssumptions | None = None
-
-
 def build_road_graph_router(graph: RoadGraph) -> APIRouter:
     router = APIRouter(tags=["road-graph"])
 
@@ -65,15 +52,6 @@ def build_road_graph_router(graph: RoadGraph) -> APIRouter:
     @router.get("/road-graph", response_model=RoadView)
     def view(west: float, south: float, east: float, north: float, zoom: float = 8) -> RoadView:
         return graph.view(west, south, east, north, zoom)
-
-    @router.post("/road-connections", response_model=RoadJob)
-    def add_connection(body: RoadAdditionInput) -> RoadJob:
-        return graph.add_connection(
-            body.region_id,
-            RoadAddition(body.source_node, body.target_node, body.travel_hours),
-            body.money,
-            body.appraisal,
-        )
 
     @router.get("/transport-links", response_model=list[TransportLink])
     def transport_links(
@@ -97,7 +75,7 @@ def build_road_graph_router(graph: RoadGraph) -> APIRouter:
         return graph.submit(
             body.region_id,
             body.scenario,
-            [RoadChange(**c.model_dump()) for c in body.changes],
+            [RoadChange(c.way_id, 0 if c.closed else 1, lanes_total=c.lanes_total) for c in body.changes],
             [LinkChange(**link.model_dump()) for link in body.links],
             appraisal=body.appraisal,
         )

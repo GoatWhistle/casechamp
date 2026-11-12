@@ -11,6 +11,7 @@ export interface OsmMapColors {
   readonly fills: readonly string[]
   readonly border: string
   readonly selected: string
+  readonly outside: string
   readonly water: string
 }
 
@@ -24,6 +25,7 @@ export function readMapColors(element: HTMLElement): OsmMapColors {
     ],
     border: token("--map-border"),
     selected: token("--iso-1"),
+    outside: token("--surface-base"),
     water: token("--map-water"),
   }
 }
@@ -86,11 +88,22 @@ export function buildStyle(
   colors: OsmMapColors,
   data: FeatureCollection<MultiPolygon>,
   fade: number,
+  outsideMask?: MultiPolygon,
 ): StyleSpecification {
   return {
     version: 8,
     sources: {
       osm: { type: "raster", tiles: [__TILE_URL__], tileSize: 256, maxzoom: 19 },
+      ...(outsideMask
+        ? {
+            "outside-regions": {
+              type: "geojson" as const,
+              data: { type: "Feature" as const, properties: {}, geometry: outsideMask },
+              tolerance: 0,
+              maxzoom: 18,
+            },
+          }
+        : {}),
       [REGIONS_SOURCE]: {
         type: "geojson",
         data,
@@ -107,6 +120,16 @@ export function buildStyle(
         source: "osm",
         paint: { ...BASEMAP, "raster-fade-duration": fade },
       },
+      ...(outsideMask
+        ? [
+            {
+              id: "outside-regions-mask",
+              type: "fill" as const,
+              source: "outside-regions",
+              paint: { "fill-color": colors.outside, "fill-opacity": 1, "fill-antialias": false },
+            },
+          ]
+        : []),
       {
         id: FILL_LAYER,
         type: "fill",

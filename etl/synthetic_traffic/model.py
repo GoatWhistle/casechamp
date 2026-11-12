@@ -64,6 +64,7 @@ class Network:
     lon: NDArray[np.float64]
     shared: NDArray[np.int64]
     access_raw_nodes: NDArray[np.int64] | None = None
+    geometries: dict[int, list[list[float]]] | None = None
 
     def __post_init__(self) -> None:
         count = len(self.source)

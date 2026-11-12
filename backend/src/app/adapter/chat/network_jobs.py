@@ -57,7 +57,9 @@ class NetworkJobs:
         if isinstance(request, TrafficData):
             return self.traffic.available().inventory()
         if isinstance(request, CalculationQuery) and request.calculation_type == "traffic":
-            return self.traffic.inspect(ctx, request.calculation_id, request.kind == "cancel")
+            return self.traffic.inspect(
+                ctx, request.calculation_id, request.kind == "cancel", request.detail == "full"
+            )
         if isinstance(request, ComparisonTable):
             try:
                 tables = self.tables.build(

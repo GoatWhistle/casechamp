@@ -1,0 +1,55 @@
+[
+  {
+    "id": "schools",
+    "url": "https://gis.kurgan-city.ru/api/2.8/gis/ok/layers/school_edu_virtual/objects/?fields=*&returnGeom=1&geomSR=4326",
+    "received_at": "2026-11-11T23:37:53.523859+00:00",
+    "sha256": "8ca585d8080ab992fc5f2a4e65dc5ddd44bb3a26af0fbf44aaa58dcdb366f87c",
+    "bytes": 28925
+  },
+  {
+    "id": "libraries",
+    "url": "https://gis.kurgan-city.ru/api/2.8/gis/ok/layers/bibl_cult_virtual/objects/?fields=*&returnGeom=1&geomSR=4326",
+    "received_at": "2026-11-11T23:37:54.207364+00:00",
+    "sha256": "c8b5c4e48d8094aed7bc62b3e761297ee08b2f65b2aa9b4c655980dff45b435b",
+    "bytes": 16205
+  },
+  {
+    "id": "mfc-city",
+    "url": "https://gis.kurgan-city.ru/api/2.8/gis/ok/layers/mfc_gov_virtual/objects/?fields=*&returnGeom=1&geomSR=4326",
+    "received_at": "2026-11-11T23:37:54.802237+00:00",
+    "sha256": "86fe6f20bc96696aa3103cca24c4e1d7ba262dbc9f91f08ee71d0a3b9011692e",
+    "bytes": 3462
+  },
+  {
+    "id": "stops",
+    "url": "https://gis.kurgan-city.ru/api/2.8/gis/stops/layers/other_stops_virtual/objects/?fields=*&returnGeom=1&geomSR=4326",
+    "received_at": "2026-11-11T23:37:55.839199+00:00",
+    "sha256": "1f9ad6d3027a12f8b724983acd8da4a79b216a7aa1cc61f713042ada4ed792c6",
+    "bytes": 136504
+  },
+  {
+    "id": "bus-stations",
+    "url": "https://220fz.rosavtotransport.ru/hooks/stations/list?regionNumberFilter=45&type=0,1",
+    "received_at": "2026-11-11T23:37:56.628189+00:00",
+    "sha256": "5351e337bf22d8dc773c8b3e43d97427aed4a022954d358d7de23febd1b547e4",
+    "bytes": 1019
+  },
+  {
+    "id": "employment",
+    "url": "https://m.vk.com/@czn.kurganobl-koordinaty-czn-v-kurgane-i-oblasti",
+    "received_at": "2026-11-11T23:37:57.353906+00:00",
+    "sha256": "e08d77e5c274e0a739ac024a5b9f61cefc436b12cc8b381adbab14c9709f2dad",
+    "bytes": 154512
+  },
+  {
+    "id": "fire-directory",
+    "url": "https://45.mchs.gov.ru/uploads/resource/2025-02-13/kontakty_17394385451444419162.pdf",
+    "observed_at": "2026-11-12",
+    "observation_precision": "day",
+    "sha256": "c7710fe218bf522a93bb1af8c0653316ef5c77dea6776a9d55bb5587856ac3d4",
+    "bytes": 197248,
+    "pages": 13,
+    "source_publication_date": null,
+    "url_upload_date": "2025-02-13"
+  }
+]

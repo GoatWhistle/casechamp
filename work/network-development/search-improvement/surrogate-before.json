@@ -1,0 +1,121 @@
+{
+  "created_at": "2026-11-12T13:00:02.571312+00:00",
+  "seed": 20261112,
+  "feature_schema": [
+    "kind",
+    "edges",
+    "length",
+    "flow",
+    "delay",
+    "ratio",
+    "free",
+    "capacity",
+    "extra_lanes",
+    "parts"
+  ],
+  "project_kinds": [
+    "capacity",
+    "closure",
+    "connection",
+    "package"
+  ],
+  "excluded_interventions": [
+    "standalone_speed"
+  ],
+  "training_scenarios": 18,
+  "heldout_scenarios": 7,
+  "training_samples": 550,
+  "heldout_samples": 209,
+  "split": "final quarter of synthetic seeds and last real snapshot held out",
+  "label": "fixed OD flow-weighted exponential accessibility delta, half-life 1 hour",
+  "solver": {
+    "algorithm": "full MSA assignment",
+    "iterations": 150,
+    "tolerance": 0.001
+  },
+  "unconverged_label_solves": 3,
+  "heldout_mae": 0.001737079443322576,
+  "heldout_zero_predictor_mae": 0.003781177919627312,
+  "snapshot_corpus": [
+    {
+      "snapshot": "traffic-faeb74c2918c432e9ca2da334a87942e",
+      "status": "labelled",
+      "edges": 9963,
+      "trips": 72,
+      "samples": 24,
+      "unconverged_excluded": 0,
+      "limits": "Real road topology; synthetic gravity demand; no observed traffic validation"
+    },
+    {
+      "snapshot": "traffic-8979fdc163fe491a95ca610ed2229033",
+      "status": "labelled",
+      "edges": 11312,
+      "trips": 110,
+      "samples": 24,
+      "unconverged_excluded": 0,
+      "limits": "Real road topology; synthetic gravity demand; no observed traffic validation"
+    }
+  ],
+  "heldout_rankings": [
+    {
+      "group": 18,
+      "samples": 31,
+      "selected_gain": -0.0002206170555217879,
+      "deterministic_gain": 0.0012235850183300867,
+      "oracle_gain": 0.010398702816668215
+    },
+    {
+      "group": 19,
+      "samples": 31,
+      "selected_gain": 0.002902863519543941,
+      "deterministic_gain": 0.0003027993215749536,
+      "oracle_gain": 0.011725589073790066
+    },
+    {
+      "group": 20,
+      "samples": 31,
+      "selected_gain": 0.004603484545205649,
+      "deterministic_gain": 0.002518967443959408,
+      "oracle_gain": 0.006317242758851149
+    },
+    {
+      "group": 21,
+      "samples": 30,
+      "selected_gain": 0.0011576859308605192,
+      "deterministic_gain": 0.001851832781494367,
+      "oracle_gain": 0.0027944738909421174
+    },
+    {
+      "group": 22,
+      "samples": 31,
+      "selected_gain": 0.000380776006279282,
+      "deterministic_gain": 0.002236679548897169,
+      "oracle_gain": 0.006579426919603448
+    },
+    {
+      "group": 23,
+      "samples": 31,
+      "selected_gain": 0.00423933894680284,
+      "deterministic_gain": 0.00423933894680284,
+      "oracle_gain": 0.005449257167844279
+    },
+    {
+      "group": 25,
+      "samples": 24,
+      "selected_gain": 0.0008075956676276697,
+      "deterministic_gain": 0.0008075956676276697,
+      "oracle_gain": 0.0008075956676276697
+    }
+  ],
+  "heldout_deterministic_delay_priority_mean_gain": 0.0018829712469552134,
+  "heldout_selected_mean_gain": 0.0019815896515425874,
+  "heldout_oracle_mean_gain": 0.006296041185046707,
+  "artifact_sha256": "c45dca13248037d04926a847e3d3215e416170c2214673eb28940229fb5e0318",
+  "limitations": [
+    "Small synthetic corpus and two clipped road snapshots; no national or observed traffic validation",
+    "Unconverged MSA labels excluded; only converged simulated labels used",
+    "Small package sample; new alignments and sourced openings remain weakly represented",
+    "Surrogate orders evaluations only; returned effects require solver verification",
+    "Numerical training labels do not establish construction clearance; generated capacity projects require sourced raster screening"
+  ]
+}

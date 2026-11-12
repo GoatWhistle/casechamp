@@ -4,6 +4,7 @@ from time import monotonic
 import numpy as np
 
 from app.adapter.road_graph.jobs import RoadJobs
+from app.domain.errors import InvalidQuery
 from app.domain.road_analysis import SettlementAccess, compare_access
 from app.usecase.road_analysis import (
     AnalysisDetail,
@@ -34,18 +35,19 @@ class RoadEvaluation:
     def evaluate(
         self, job: AnalysisJob, candidate: Candidate, progress: Callable[[int], None]
     ) -> AnalysisDetail:
+        if job.mode != "criticality":
+            raise InvalidQuery(
+                "Historical improvement analyses are read-only; use traffic_development"
+            )
         start = monotonic()
         region = self.roads.data.region_name(job.region_id)
         before = self.baseline(region)
-        factor = 0 if job.mode == "criticality" else 1 + job.percent / 100
         _, after = self.roads.routing.calculate_details(
-            region, "road", [RoadChange(candidate.way_id, factor)], progress
+            region, "road", [RoadChange(candidate.way_id, 0)], progress
         )
         effect = compare_access(before, after)
         tolerance = max(0.0001, abs(effect.before) * 0.00001)
-        if (job.mode == "criticality" and effect.delta > tolerance) or (
-            job.mode == "improvement" and effect.delta < -tolerance
-        ):
+        if effect.delta > tolerance:
             raise ValueError("monotonicity_violation")
         result = VerifiedRoad(
             candidate,

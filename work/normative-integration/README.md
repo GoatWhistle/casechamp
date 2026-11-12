@@ -1,0 +1,21 @@
+# Integration, 2026-11-12
+
+User approved importing repository datasets and existing aggregation, then publishing all changes to main.
+
+Imported product delta 8d62824..bd32de3 (map-first-ui) with three-way reconciliation and 5daf681..bcc7301 frontend/brand/README updates. Local traffic search and protected context retained. No new municipal or agglomeration boundaries invented; existing region aggregation and municipal applicability metadata preserved.
+
+Local ClickHouse: 36 normative tables, 9 criteria, 1278 facilities, 384 territory records, 30 normative bases, 84 regions, 24 directory memberships. Source facts arrays are empty; route snapshots and measured runs were not supplied. Seed evidence: seed/validation.json. Guarded seed script refuses populated catalogs.
+
+Archived report fallback exposes exact saved scenario aggregates with report SHA/date/run identity and detail_available=false. No baseline or route fabrication. Current computed values take priority. Docker includes the same report. All nine live HTTP list endpoints return 84 rows; 745 numeric values in 756 rows: nine current explicit regulation/model/selection states take priority over archived values; two archived values are null. Original report retains all 754 numeric values. API evidence: live-api.json.
+
+Checks: backend Ruff and mypy 479 files pass; prearchive full unit 876 pass, final changed archive/composition tests 15 pass; final full unit runs in commit hook. Frontend verify: 36 rules, types, lint, 546 tests, production build pass. ETL: 272 pass, 11 skipped (backend environment excluding road_traffic geography with missing pyproj and integration tests). Earlier broad ETL attempts failed collection due mismatched virtual environments; not counted as passing.
+
+Automatic approval rejected the full integration suite against the working ClickHouse because some tests drop tables. It was not executed. Read-only live catalog and nine index API checks succeeded. Full route-dependent integration also needs the missing derived snapshots.
+
+Runtime API8007 restarted PID63125; UI5187 existing Vite. Large raw local pilot dumps and merge backups remain local; source, JSON input datasets and compact measured evidence are published.
+
+Browser: Chrome native accessibility confirms loaded map page, metric selector, chat/history and scenario tabs on127.0.0.1:5187. Existing stale-HMR tab recovered after fresh navigation. Native screenshot capture returned blank desktop; no screenshot evidence claimed.
+
+Publication paused for additional authorized scope: mask everything outside highlighted region union and real municipal district selection. Search agent owns frontend; diff owns municipal/mask API; geography extracts actual admin_level=6 polygons from existing North Caucasus/South/Ural PBFs. No main commit/push yet.
+
+Additional scope implemented: outside-atlas opaque raster mask with antimeridian handling; actual OSM admin6 boundaries, district click/zoom and keyboard selector. 511 polygons/20 regions imported, available source coverage partial. 33 Stavropol districts confirmed via live GET; Kemerovo correctly unavailable. Public source export datasets/municipal-boundaries with provenance/omission manifest. Final backend894unit/Ruff/mypy486 and frontend549tests/fullverify pass. Full suite initially caught duplicate test basename; renamed and rerun green. API PID67492.

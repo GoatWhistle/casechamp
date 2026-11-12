@@ -8,6 +8,7 @@ from app.adapter.log.stdlib import StdlibLogger
 from app.adapter.road_graph.addition import addition_job, locate_addition
 from app.adapter.road_graph.appraisal import AppraisalRouting
 from app.adapter.road_graph.baselines import BaselineCache
+from app.adapter.road_graph.closure_validity import road_job_view
 from app.adapter.road_graph.data import GraphData
 from app.adapter.road_graph.delta import DeltaCalculation
 from app.adapter.road_graph.delta_base import DeltaBase
@@ -159,9 +160,7 @@ class RoadJobs:
             if job_id not in self.jobs:
                 raise InvalidQuery("Unknown calculation")
             job = self.jobs[job_id]
-        if job.status == "completed":
-            self.data.attachment_audit.validate([c.way_id for c in job.changes if c.speed_factor == 0])
-        return job
+        return road_job_view(job, self.data.attachment_audit)
 
     def cancel(self, job_id: str) -> RoadJob:
         self.job(job_id)

@@ -67,7 +67,7 @@ export function RegionProfile({ regionId, calendar, settlements, actions }: Regi
   return (
     <div className={styles.profile}>
       <ButtonLink
-        to={seasonHref("/")}
+        to={seasonHref(`/?region=${regionId}`)}
         variant="ghost"
         size="compact"
         icon="arrow-left"

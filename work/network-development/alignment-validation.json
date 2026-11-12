@@ -1,0 +1,9 @@
+{
+  "connections": 12,
+  "llm_exposed": 0,
+  "alignment_rejections": 71,
+  "full_supercover_segments_passed": 7949,
+  "speed_min": 54.95746214161024,
+  "speed_max": 58.55559507908203,
+  "validation_seconds": 2.1451768750557676
+}

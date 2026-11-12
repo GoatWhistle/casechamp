@@ -1,0 +1,25 @@
+{
+  "snapshot_kind": "preserved_institution_coordinates",
+  "facilities": [
+    {
+      "id": "kokb",
+      "name": "Курганская областная клиническая больница",
+      "address": "Курган, Томина, 63",
+      "latitude": 55.437955,
+      "longitude": 65.335513,
+      "coordinate_source": "https://www.kurgan-med.ru/contacts/",
+      "coordinate_status": "official_institution_pin",
+      "observed_at": "2026-11-11"
+    },
+    {
+      "id": "shadrinsk",
+      "name": "Шадринская городская больница",
+      "address": "Шадринск, Михайловская, 64",
+      "latitude": 56.078633,
+      "longitude": 63.626064,
+      "coordinate_source": "https://www.kurgan-med.ru/contacts/",
+      "coordinate_status": "official_institution_pin",
+      "observed_at": "2026-11-11"
+    }
+  ]
+}

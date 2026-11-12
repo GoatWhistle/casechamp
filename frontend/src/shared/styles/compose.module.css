@@ -162,3 +162,8 @@
   background-color: var(--surface-raised);
   border-inline-start: var(--hairline) solid var(--border-subtle);
 }
+
+.mapAccent {
+  fill: var(--action-primary);
+  stroke-width: var(--hairline);
+}

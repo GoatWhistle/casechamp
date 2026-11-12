@@ -1,0 +1,2499 @@
+{
+  "method": "walking-control-v1",
+  "measured_at": "2026-11-12T00:24:04.167144+00:00",
+  "graph_revision": "60dea447c6f579fe3e34d661",
+  "rules_version": "pedestrian-v2",
+  "origins_total": 41236,
+  "sample_size": 64,
+  "node_count": 343523,
+  "edge_count": 727804,
+  "baseline_paths": 49,
+  "closed_way_ids": [
+    45315706,
+    46734000,
+    46734004,
+    46741393,
+    235537992,
+    237168050,
+    771215286,
+    912644492
+  ],
+  "distance_increased": 0,
+  "paths_lost": 5,
+  "unchanged_paths": 44,
+  "limits": [
+    "Reference coordinates are not verified entrances",
+    "Population, legal applicability and service operation remain unknown"
+  ],
+  "baseline_rows": [
+    {
+      "id": "osm-way-902187852",
+      "name": "OSM way 902187852",
+      "population": null,
+      "latitude": 55.927264825,
+      "longitude": 64.436591125,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-756225244",
+      "name": "OSM way 756225244",
+      "population": null,
+      "latitude": 55.198523771428576,
+      "longitude": 64.54541342857144,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-795357898",
+      "name": "OSM way 795357898",
+      "population": null,
+      "latitude": 55.900717975,
+      "longitude": 64.3969762,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 115327.78772214193,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1010744002",
+      "name": "Мокроусово",
+      "population": null,
+      "latitude": 55.815771075,
+      "longitude": 66.7675558,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 111694.66077929456,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1425794930",
+      "name": "Красномыльское, Набережная улица, 21",
+      "population": null,
+      "latitude": 56.0946425,
+      "longitude": 63.461734525,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 186813.21513684723,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-756943191",
+      "name": "OSM way 756943191",
+      "population": null,
+      "latitude": 55.4262841,
+      "longitude": 64.4231676,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-633956889",
+      "name": "Катайск, улица Шумилова, 19",
+      "population": null,
+      "latitude": 56.2830228,
+      "longitude": 62.589638425000004,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 263860.0452820358,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-332264320",
+      "name": "Курган, улица Зайцева, 57",
+      "population": null,
+      "latitude": 55.4508722,
+      "longitude": 65.32561855,
+      "facility_id": "kurgan-school-1350",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 1831.5709907991784,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-246138429",
+      "name": "улица Свободы",
+      "population": null,
+      "latitude": 55.9710172,
+      "longitude": 64.44771109999999,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 123452.3695610438,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-659780366",
+      "name": "Половинное, Береговая улица, 93",
+      "population": null,
+      "latitude": 54.7907787,
+      "longitude": 65.9956062,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 81178.86958200605,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-226692242",
+      "name": "улица Суворова, 9",
+      "population": null,
+      "latitude": 56.0663783,
+      "longitude": 63.641895000000005,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 173988.81840753485,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1005841304",
+      "name": "OSM way 1005841304",
+      "population": null,
+      "latitude": 55.0485412,
+      "longitude": 65.7304691,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-308405122",
+      "name": "Лебяжье, улица Карла Маркса, 17",
+      "population": null,
+      "latitude": 55.2713381,
+      "longitude": 66.5037495,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 103176.53936775014,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-244656443",
+      "name": "Речной переулок, 7",
+      "population": null,
+      "latitude": 55.9556284,
+      "longitude": 64.45353255,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 120908.76766263958,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1266503521",
+      "name": "OSM way 1266503521",
+      "population": null,
+      "latitude": 55.49062645,
+      "longitude": 65.778530625,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 45439.70997852235,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-82200931",
+      "name": "улица Ленина, 18",
+      "population": null,
+      "latitude": 55.438995075,
+      "longitude": 65.348805275,
+      "facility_id": "kurgan-school-1322",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 383.8325843038946,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1357778277",
+      "name": "OSM way 1357778277",
+      "population": null,
+      "latitude": 55.78262585,
+      "longitude": 67.1966784,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 147132.46135990927,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1408759678",
+      "name": "Курган",
+      "population": null,
+      "latitude": 55.47107883333334,
+      "longitude": 65.27339906666667,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-80624922",
+      "name": "Курган, улица Максима Горького, 75",
+      "population": null,
+      "latitude": 55.43635038333334,
+      "longitude": 65.34415525,
+      "facility_id": "kurgan-school-1339",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 714.675405124624,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1028090321",
+      "name": "OSM way 1028090321",
+      "population": null,
+      "latitude": 55.857359725,
+      "longitude": 63.651508175000004,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 156412.80730530346,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-999457314",
+      "name": "OSM way 999457314",
+      "population": null,
+      "latitude": 56.09532075,
+      "longitude": 64.41500555,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 197020.23127178082,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1130883143",
+      "name": "OSM way 1130883143",
+      "population": null,
+      "latitude": 55.1432553,
+      "longitude": 66.014075125,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 60040.25640432502,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-988268489",
+      "name": "OSM way 988268489",
+      "population": null,
+      "latitude": 56.2947235,
+      "longitude": 64.81648645,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 161394.9664387162,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1011826135",
+      "name": "OSM way 1011826135",
+      "population": null,
+      "latitude": 55.805847,
+      "longitude": 66.76646235,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 110503.95725939688,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1017767212",
+      "name": "OSM way 1017767212",
+      "population": null,
+      "latitude": 55.845214874999996,
+      "longitude": 66.746560775,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-329323026",
+      "name": "Кузнецово, Кузнецовская улица, 30",
+      "population": null,
+      "latitude": 54.60849605,
+      "longitude": 62.6661463,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-277314920",
+      "name": "Катайск, улица Лизы Чайкиной, 59",
+      "population": null,
+      "latitude": 56.29068105,
+      "longitude": 62.55811565,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-983893678",
+      "name": "Восточная улица, 8",
+      "population": null,
+      "latitude": 55.37640155,
+      "longitude": 65.8337375,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 32743.612871162237,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-659780544",
+      "name": "Половинное, Степная улица, 25",
+      "population": null,
+      "latitude": 54.79265335,
+      "longitude": 65.98121405,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 80365.35326567836,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-784280832",
+      "name": "OSM way 784280832",
+      "population": null,
+      "latitude": 55.938923525,
+      "longitude": 64.446857975,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 118057.46809507866,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-292497463",
+      "name": "OSM way 292497463",
+      "population": null,
+      "latitude": 55.82242535,
+      "longitude": 64.2442165,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 122651.26469117733,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-308887443",
+      "name": "Лебяжье, улица Кирова, 62",
+      "population": null,
+      "latitude": 55.28048915,
+      "longitude": 66.49621625,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 103258.00576819928,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-633458779",
+      "name": "Катайск, Восточная улица, 4",
+      "population": null,
+      "latitude": 56.27647305,
+      "longitude": 62.5909802,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 263412.7621797952,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-244169422",
+      "name": "улица Механизаторов, 8",
+      "population": null,
+      "latitude": 55.95880215,
+      "longitude": 64.4393922,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 120921.88005455755,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-756911287",
+      "name": "OSM way 756911287",
+      "population": null,
+      "latitude": 55.558486200000004,
+      "longitude": 64.35290515,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 79249.03916249525,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-340233510",
+      "name": "Курган, Дамбовая улица, 5",
+      "population": null,
+      "latitude": 55.4466977,
+      "longitude": 65.39126912500001,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 2088.750621064439,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-756468938",
+      "name": "OSM way 756468938",
+      "population": null,
+      "latitude": 55.41422675,
+      "longitude": 64.41402735,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-268285037",
+      "name": "улица Мичурина, 3",
+      "population": null,
+      "latitude": 56.1331416,
+      "longitude": 63.613364775,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 181551.80533874754,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-783722561",
+      "name": "Заречная улица, 45",
+      "population": null,
+      "latitude": 55.9000673,
+      "longitude": 64.75474935,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 100534.82805085987,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-784278794",
+      "name": "OSM way 784278794",
+      "population": null,
+      "latitude": 55.92583365,
+      "longitude": 64.446528375,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-269522994",
+      "name": "OSM way 269522994",
+      "population": null,
+      "latitude": 55.957358475,
+      "longitude": 64.483441925,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-1015039971",
+      "name": "OSM way 1015039971",
+      "population": null,
+      "latitude": 54.8694437,
+      "longitude": 66.591625375,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 124768.42957757755,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-806934957",
+      "name": "OSM way 806934957",
+      "population": null,
+      "latitude": 55.867946275,
+      "longitude": 65.42180625,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 129943.69834514009,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1299230515",
+      "name": "Шадринск, Санаторная улица, 42",
+      "population": null,
+      "latitude": 56.0936831,
+      "longitude": 63.5416244,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 182598.27080250956,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-660009934",
+      "name": "Половинное, Советская улица, 12",
+      "population": null,
+      "latitude": 54.7864841,
+      "longitude": 66.007602925,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 82081.64897135479,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-804702295",
+      "name": "OSM way 804702295",
+      "population": null,
+      "latitude": 55.9447883,
+      "longitude": 64.453184125,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 118908.74137609037,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-862617595",
+      "name": "OSM way 862617595",
+      "population": null,
+      "latitude": 55.363485675,
+      "longitude": 65.822963525,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 32996.36435204842,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1365882615",
+      "name": "Курган, переулок Спартака, 9",
+      "population": null,
+      "latitude": 55.4218144,
+      "longitude": 65.2759886,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 2075.04678718298,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1299798974",
+      "name": "OSM way 1299798974",
+      "population": null,
+      "latitude": 54.650067,
+      "longitude": 64.01852070000001,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 146853.28626371888,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-169816417",
+      "name": "Центральная улица, 1",
+      "population": null,
+      "latitude": 55.50565765,
+      "longitude": 65.312286525,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-663656747",
+      "name": "Элеваторная улица, 34А",
+      "population": null,
+      "latitude": 56.52786885,
+      "longitude": 64.62037620000001,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 192043.76021129757,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-291713116",
+      "name": "OSM way 291713116",
+      "population": null,
+      "latitude": 55.8254652,
+      "longitude": 64.24717584999999,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 122789.35413261925,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1258316051",
+      "name": "OSM way 1258316051",
+      "population": null,
+      "latitude": 55.440112625,
+      "longitude": 65.81026545,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 51897.16702791352,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-659969387",
+      "name": "Половинное, Береговая улица, 149",
+      "population": null,
+      "latitude": 54.79635665,
+      "longitude": 65.987090525,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-268229106",
+      "name": "Первомайская улица, 69",
+      "population": null,
+      "latitude": 56.09108415,
+      "longitude": 63.683829525,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 173876.49402727635,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-244699893",
+      "name": "улица Бажова, 12",
+      "population": null,
+      "latitude": 55.96314665,
+      "longitude": 64.45010365,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 121725.66896764975,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-370141644",
+      "name": "Боровое, улица Калинина, 78",
+      "population": null,
+      "latitude": 54.65804983333334,
+      "longitude": 62.29781690000001,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-301772327",
+      "name": "Южная улица, 26",
+      "population": null,
+      "latitude": 55.934365575,
+      "longitude": 64.37330605,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 124073.82083379301,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1517053162",
+      "name": "СТ Победа, улица Заречная, 38",
+      "population": null,
+      "latitude": 55.4684229,
+      "longitude": 65.44172165,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 6450.08668947662,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-797255209",
+      "name": "OSM way 797255209",
+      "population": null,
+      "latitude": 56.067583150000004,
+      "longitude": 63.63620475,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 174345.86806281927,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-230211024",
+      "name": "OSM way 230211024",
+      "population": null,
+      "latitude": 56.031041725,
+      "longitude": 64.114644825,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 141892.3659222638,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-993455389",
+      "name": "OSM way 993455389",
+      "population": null,
+      "latitude": 55.369919625,
+      "longitude": 65.8318912,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-388045005",
+      "name": "Почтовая улица, 2",
+      "population": null,
+      "latitude": 54.35862225,
+      "longitude": 64.2410519,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 154752.91002601403,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1348916495",
+      "name": "OSM way 1348916495",
+      "population": null,
+      "latitude": 54.7620073,
+      "longitude": 66.215270975,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 96943.2210853895,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    }
+  ],
+  "scenario_rows": [
+    {
+      "id": "osm-way-902187852",
+      "name": "OSM way 902187852",
+      "population": null,
+      "latitude": 55.927264825,
+      "longitude": 64.436591125,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-756225244",
+      "name": "OSM way 756225244",
+      "population": null,
+      "latitude": 55.198523771428576,
+      "longitude": 64.54541342857144,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-795357898",
+      "name": "OSM way 795357898",
+      "population": null,
+      "latitude": 55.900717975,
+      "longitude": 64.3969762,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "path_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1010744002",
+      "name": "Мокроусово",
+      "population": null,
+      "latitude": 55.815771075,
+      "longitude": 66.7675558,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "path_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1425794930",
+      "name": "Красномыльское, Набережная улица, 21",
+      "population": null,
+      "latitude": 56.0946425,
+      "longitude": 63.461734525,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "path_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-756943191",
+      "name": "OSM way 756943191",
+      "population": null,
+      "latitude": 55.4262841,
+      "longitude": 64.4231676,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-633956889",
+      "name": "Катайск, улица Шумилова, 19",
+      "population": null,
+      "latitude": 56.2830228,
+      "longitude": 62.589638425000004,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "path_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-332264320",
+      "name": "Курган, улица Зайцева, 57",
+      "population": null,
+      "latitude": 55.4508722,
+      "longitude": 65.32561855,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "path_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-246138429",
+      "name": "улица Свободы",
+      "population": null,
+      "latitude": 55.9710172,
+      "longitude": 64.44771109999999,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 123452.3695610438,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-659780366",
+      "name": "Половинное, Береговая улица, 93",
+      "population": null,
+      "latitude": 54.7907787,
+      "longitude": 65.9956062,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 81178.86958200605,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-226692242",
+      "name": "улица Суворова, 9",
+      "population": null,
+      "latitude": 56.0663783,
+      "longitude": 63.641895000000005,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 173988.81840753485,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1005841304",
+      "name": "OSM way 1005841304",
+      "population": null,
+      "latitude": 55.0485412,
+      "longitude": 65.7304691,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-308405122",
+      "name": "Лебяжье, улица Карла Маркса, 17",
+      "population": null,
+      "latitude": 55.2713381,
+      "longitude": 66.5037495,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 103176.53936775014,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-244656443",
+      "name": "Речной переулок, 7",
+      "population": null,
+      "latitude": 55.9556284,
+      "longitude": 64.45353255,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 120908.76766263958,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1266503521",
+      "name": "OSM way 1266503521",
+      "population": null,
+      "latitude": 55.49062645,
+      "longitude": 65.778530625,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 45439.70997852235,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-82200931",
+      "name": "улица Ленина, 18",
+      "population": null,
+      "latitude": 55.438995075,
+      "longitude": 65.348805275,
+      "facility_id": "kurgan-school-1322",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 383.8325843038946,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1357778277",
+      "name": "OSM way 1357778277",
+      "population": null,
+      "latitude": 55.78262585,
+      "longitude": 67.1966784,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 147132.46135990927,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1408759678",
+      "name": "Курган",
+      "population": null,
+      "latitude": 55.47107883333334,
+      "longitude": 65.27339906666667,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-80624922",
+      "name": "Курган, улица Максима Горького, 75",
+      "population": null,
+      "latitude": 55.43635038333334,
+      "longitude": 65.34415525,
+      "facility_id": "kurgan-school-1339",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 714.675405124624,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1028090321",
+      "name": "OSM way 1028090321",
+      "population": null,
+      "latitude": 55.857359725,
+      "longitude": 63.651508175000004,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 156412.80730530346,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-999457314",
+      "name": "OSM way 999457314",
+      "population": null,
+      "latitude": 56.09532075,
+      "longitude": 64.41500555,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 197020.23127178082,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1130883143",
+      "name": "OSM way 1130883143",
+      "population": null,
+      "latitude": 55.1432553,
+      "longitude": 66.014075125,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 60040.25640432502,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-988268489",
+      "name": "OSM way 988268489",
+      "population": null,
+      "latitude": 56.2947235,
+      "longitude": 64.81648645,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 161394.9664387162,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1011826135",
+      "name": "OSM way 1011826135",
+      "population": null,
+      "latitude": 55.805847,
+      "longitude": 66.76646235,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 110503.95725939688,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1017767212",
+      "name": "OSM way 1017767212",
+      "population": null,
+      "latitude": 55.845214874999996,
+      "longitude": 66.746560775,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-329323026",
+      "name": "Кузнецово, Кузнецовская улица, 30",
+      "population": null,
+      "latitude": 54.60849605,
+      "longitude": 62.6661463,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-277314920",
+      "name": "Катайск, улица Лизы Чайкиной, 59",
+      "population": null,
+      "latitude": 56.29068105,
+      "longitude": 62.55811565,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-983893678",
+      "name": "Восточная улица, 8",
+      "population": null,
+      "latitude": 55.37640155,
+      "longitude": 65.8337375,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 32743.612871162237,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-659780544",
+      "name": "Половинное, Степная улица, 25",
+      "population": null,
+      "latitude": 54.79265335,
+      "longitude": 65.98121405,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 80365.35326567836,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-784280832",
+      "name": "OSM way 784280832",
+      "population": null,
+      "latitude": 55.938923525,
+      "longitude": 64.446857975,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 118057.46809507866,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-292497463",
+      "name": "OSM way 292497463",
+      "population": null,
+      "latitude": 55.82242535,
+      "longitude": 64.2442165,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 122651.26469117733,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-308887443",
+      "name": "Лебяжье, улица Кирова, 62",
+      "population": null,
+      "latitude": 55.28048915,
+      "longitude": 66.49621625,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 103258.00576819928,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-633458779",
+      "name": "Катайск, Восточная улица, 4",
+      "population": null,
+      "latitude": 56.27647305,
+      "longitude": 62.5909802,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 263412.7621797952,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-244169422",
+      "name": "улица Механизаторов, 8",
+      "population": null,
+      "latitude": 55.95880215,
+      "longitude": 64.4393922,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 120921.88005455755,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-756911287",
+      "name": "OSM way 756911287",
+      "population": null,
+      "latitude": 55.558486200000004,
+      "longitude": 64.35290515,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 79249.03916249525,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-340233510",
+      "name": "Курган, Дамбовая улица, 5",
+      "population": null,
+      "latitude": 55.4466977,
+      "longitude": 65.39126912500001,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 2088.750621064439,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-756468938",
+      "name": "OSM way 756468938",
+      "population": null,
+      "latitude": 55.41422675,
+      "longitude": 64.41402735,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-268285037",
+      "name": "улица Мичурина, 3",
+      "population": null,
+      "latitude": 56.1331416,
+      "longitude": 63.613364775,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 181551.80533874754,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-783722561",
+      "name": "Заречная улица, 45",
+      "population": null,
+      "latitude": 55.9000673,
+      "longitude": 64.75474935,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 100534.82805085987,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-784278794",
+      "name": "OSM way 784278794",
+      "population": null,
+      "latitude": 55.92583365,
+      "longitude": 64.446528375,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-269522994",
+      "name": "OSM way 269522994",
+      "population": null,
+      "latitude": 55.957358475,
+      "longitude": 64.483441925,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-1015039971",
+      "name": "OSM way 1015039971",
+      "population": null,
+      "latitude": 54.8694437,
+      "longitude": 66.591625375,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 124768.42957757755,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-806934957",
+      "name": "OSM way 806934957",
+      "population": null,
+      "latitude": 55.867946275,
+      "longitude": 65.42180625,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 129943.69834514009,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1299230515",
+      "name": "Шадринск, Санаторная улица, 42",
+      "population": null,
+      "latitude": 56.0936831,
+      "longitude": 63.5416244,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 182598.27080250956,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-660009934",
+      "name": "Половинное, Советская улица, 12",
+      "population": null,
+      "latitude": 54.7864841,
+      "longitude": 66.007602925,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 82081.64897135479,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-804702295",
+      "name": "OSM way 804702295",
+      "population": null,
+      "latitude": 55.9447883,
+      "longitude": 64.453184125,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 118908.74137609037,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-862617595",
+      "name": "OSM way 862617595",
+      "population": null,
+      "latitude": 55.363485675,
+      "longitude": 65.822963525,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 32996.36435204842,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1365882615",
+      "name": "Курган, переулок Спартака, 9",
+      "population": null,
+      "latitude": 55.4218144,
+      "longitude": 65.2759886,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 2075.04678718298,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1299798974",
+      "name": "OSM way 1299798974",
+      "population": null,
+      "latitude": 54.650067,
+      "longitude": 64.01852070000001,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 146853.28626371888,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-169816417",
+      "name": "Центральная улица, 1",
+      "population": null,
+      "latitude": 55.50565765,
+      "longitude": 65.312286525,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-663656747",
+      "name": "Элеваторная улица, 34А",
+      "population": null,
+      "latitude": 56.52786885,
+      "longitude": 64.62037620000001,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 192043.76021129757,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-291713116",
+      "name": "OSM way 291713116",
+      "population": null,
+      "latitude": 55.8254652,
+      "longitude": 64.24717584999999,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 122789.35413261925,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1258316051",
+      "name": "OSM way 1258316051",
+      "population": null,
+      "latitude": 55.440112625,
+      "longitude": 65.81026545,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 51897.16702791352,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-659969387",
+      "name": "Половинное, Береговая улица, 149",
+      "population": null,
+      "latitude": 54.79635665,
+      "longitude": 65.987090525,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-268229106",
+      "name": "Первомайская улица, 69",
+      "population": null,
+      "latitude": 56.09108415,
+      "longitude": 63.683829525,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 173876.49402727635,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-244699893",
+      "name": "улица Бажова, 12",
+      "population": null,
+      "latitude": 55.96314665,
+      "longitude": 64.45010365,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 121725.66896764975,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-370141644",
+      "name": "Боровое, улица Калинина, 78",
+      "population": null,
+      "latitude": 54.65804983333334,
+      "longitude": 62.29781690000001,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-301772327",
+      "name": "Южная улица, 26",
+      "population": null,
+      "latitude": 55.934365575,
+      "longitude": 64.37330605,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 124073.82083379301,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1517053162",
+      "name": "СТ Победа, улица Заречная, 38",
+      "population": null,
+      "latitude": 55.4684229,
+      "longitude": 65.44172165,
+      "facility_id": "kurgan-school-1320",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 6450.08668947662,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-797255209",
+      "name": "OSM way 797255209",
+      "population": null,
+      "latitude": 56.067583150000004,
+      "longitude": 63.63620475,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 174345.86806281927,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-230211024",
+      "name": "OSM way 230211024",
+      "population": null,
+      "latitude": 56.031041725,
+      "longitude": 64.114644825,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 141892.3659222638,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-993455389",
+      "name": "OSM way 993455389",
+      "population": null,
+      "latitude": 55.369919625,
+      "longitude": 65.8318912,
+      "facility_id": null,
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": null,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed",
+        "origin_unattached"
+      ]
+    },
+    {
+      "id": "osm-way-388045005",
+      "name": "Почтовая улица, 2",
+      "population": null,
+      "latitude": 54.35862225,
+      "longitude": 64.2410519,
+      "facility_id": "kurgan-school-1335",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 154752.91002601403,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    },
+    {
+      "id": "osm-way-1348916495",
+      "name": "OSM way 1348916495",
+      "population": null,
+      "latitude": 54.7620073,
+      "longitude": 66.215270975,
+      "facility_id": "kurgan-school-1436",
+      "minutes": null,
+      "excess_minutes": null,
+      "state": "unknown",
+      "distance_metres": 96943.2210853895,
+      "uncertainty": [
+        "residential_reference_not_entrance",
+        "population_group_missing",
+        "territory_conditions_missing",
+        "facility_entrances_unverified",
+        "service_status_unconfirmed"
+      ]
+    }
+  ]
+}

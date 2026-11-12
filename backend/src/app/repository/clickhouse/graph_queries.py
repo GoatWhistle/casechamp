@@ -27,6 +27,7 @@ QUERIES: dict[GraphQuery, str] = {
     "city_times": "SELECT point_id,city,road_h FROM plexus_casechamp.np_city_times WHERE season='road' AND point_id IN (SELECT oktmo FROM plexus_casechamp.market_cities)",
     "terminal_nodes": "SELECT DISTINCT node FROM (SELECT node FROM plexus_graph.points WHERE node>=0 UNION ALL SELECT node FROM plexus_casechamp.market_cities) ORDER BY node",
     "references": "SELECT way_idx,way_id,name,ref,km FROM plexus_graph.ways WHERE hasAny(arrayMap(x -> trimBoth(x), splitByChar(';', ifNull(ref,''))), {references:Array(String)})",
+    "local_road_ways": "SELECT way_idx,way_id,name,km FROM plexus_graph.ways WHERE replaceAll(lowerUTF8(ifNull(name,'')),'ё','е')={street:String} AND way_id IN (SELECT way_id FROM plexus_graph.road_lines WHERE min_lon<={east:Float64} AND max_lon>={west:Float64} AND min_lat<={north:Float64} AND max_lat>={south:Float64}) ORDER BY way_id",
     "road_reference": "SELECT DISTINCT ref FROM plexus_graph.road_lookup WHERE lookup IN {names:Array(String)}",
     "market_places": "SELECT DISTINCT oktmo_from,city_from,region_from,lon_from,lat_from FROM plexus_casechamp.stg_intercity WHERE replaceAll(lowerUTF8(ifNull(city_from,'')),'ё','е') LIKE {pattern:String}",
     "place_names": "SELECT point_id,settlement,region FROM plexus_graph.locations WHERE point_id IN {ids:Array(String)} ORDER BY point_id",

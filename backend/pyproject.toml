@@ -21,13 +21,14 @@ dev = [
     "pytest>=8.4",
     "pytest-xdist>=3.8",
     "ruff>=0.14",
+    "types-shapely>=2.1.0.20261030",
 ]
 
 [tool.uv]
 default-groups = ["dev"]
 
 [tool.uv.sources]
-plexus-traffic-model = { path = "../etl" }
+plexus-traffic-model = { path = "../etl", editable = true }
 
 [build-system]
 requires = ["hatchling"]

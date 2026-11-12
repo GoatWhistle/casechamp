@@ -17,34 +17,24 @@ export function TrafficIndex({
   readonly variant: string
 }) {
   const { t } = useTranslation()
-  const f = useFormatters()
   const [selected, setSelected] = useState("")
   const region = job.indices.find((item) => item.region === selected) ?? job.indices[0]
-  if (!region) return <p>{t("traffic:indexUnavailable")}</p>
+  const objective = job.scope.objective ?? "connectivity"
+  const targeted = objective !== "connectivity"
+  if (!region && !targeted) return <p>{t("traffic:indexUnavailable")}</p>
   const delta = (row: TrafficAlternative) =>
-    row.indices?.find((item) => item.region === region.region)
-  const ranked = usefulTrafficAlternatives(job, region.region).sort(
-    (a, b) => (delta(b)?.delta ?? 0) - (delta(a)?.delta ?? 0),
+    row.indices?.find((item) => item.region === region?.region)
+  const ranked = usefulTrafficAlternatives(job, region?.region).sort((a, b) =>
+    targeted
+      ? (b.objective_gain ?? 0) - (a.objective_gain ?? 0)
+      : (delta(b)?.delta ?? 0) - (delta(a)?.delta ?? 0),
   )
   return (
     <div className={styles.index}>
-      {job.indices.length > 1 ? (
-        <Select
-          label={t("traffic:indexRegion")}
-          hideLabel
-          value={region.region}
-          options={job.indices.map((item) => ({ value: item.region, label: item.region }))}
-          onChange={setSelected}
-        />
-      ) : (
-        <p className={styles.region}>{region.region}</p>
-      )}
-      <p className={styles.note}>
-        {t("traffic:baselineIndex", { value: f.number(region.value, 2) })}
-      </p>
+      <RegionHeading job={job} region={region} onChange={setSelected} />
       {ranked.length ? (
         <DataTable<TrafficAlternative>
-          caption={t("traffic:comparison")}
+          caption={t(targeted ? "traffic:objectiveComparison" : "traffic:comparison")}
           rows={ranked}
           rowKey={(row) => row.id}
           selectedKey={variant}
@@ -66,30 +56,26 @@ export function TrafficIndex({
             },
             {
               key: "minutes",
-              header: t("traffic:localMinutes"),
-              numeric: true,
-              cell: (row) => (
-                <TripTime
-                  before={job.baseline?.mean_trip_minutes}
-                  after={row.after.mean_trip_minutes}
-                />
+              header: t(
+                objective === "transit"
+                  ? "traffic:transitMinutes"
+                  : objective === "congestion"
+                    ? "traffic:congestionMinutes"
+                    : "traffic:localMinutes",
               ),
-            },
-            {
-              key: "index",
-              header: t("traffic:indexColumn"),
               numeric: true,
-              cell: (row) => (
-                <span className={styles.project}>
-                  <span>{delta(row) ? f.number(delta(row)?.after ?? 0, 2) : <NoValue />}</span>
-                  <small>
-                    {Math.abs(delta(row)?.delta ?? 0) < 0.0001
-                      ? t("traffic:unchanged")
-                      : t("traffic:indexGain", { value: f.number(delta(row)?.delta ?? 0, 4) })}
-                  </small>
-                </span>
-              ),
+              cell: (row) => <TrafficTime row={row} job={job} targeted={targeted} />,
             },
+            ...(region
+              ? [
+                  {
+                    key: "index",
+                    header: t("traffic:indexColumn"),
+                    numeric: true,
+                    cell: (row: TrafficAlternative) => <IndexValue delta={delta(row)} />,
+                  },
+                ]
+              : []),
           ]}
         />
       ) : (
@@ -114,5 +100,95 @@ function TripTime({
       <Icon name="arrow-right" size="sm" />
       <strong>{f.number(after, 1)}</strong>
     </span>
+  )
+}
+
+function objectiveMinutes(value: number | null | undefined, unit: string | undefined) {
+  if (value == null || !Number.isFinite(value)) return null
+  return unit === "hours" || unit === "vehicle_hours" ? value * 60 : null
+}
+
+function TrafficTime({
+  row,
+  job,
+  targeted,
+}: {
+  readonly row: TrafficAlternative
+  readonly job: TrafficJob
+  readonly targeted: boolean
+}) {
+  const { t } = useTranslation()
+  return (
+    <span className={styles.project}>
+      <TripTime
+        before={
+          targeted
+            ? objectiveMinutes(row.objective_before, row.objective_unit)
+            : job.baseline?.mean_trip_minutes
+        }
+        after={
+          targeted
+            ? objectiveMinutes(row.objective_after, row.objective_unit)
+            : row.after.mean_trip_minutes
+        }
+      />
+      {(row.overload_increase ?? 0) > 0 ? (
+        <small>{t("traffic:overloadIncrease", { count: row.overload_increase ?? 0 })}</small>
+      ) : null}
+    </span>
+  )
+}
+
+function IndexValue({
+  delta,
+}: {
+  readonly delta: NonNullable<TrafficAlternative["indices"]>[number] | undefined
+}) {
+  const { t } = useTranslation()
+  const f = useFormatters()
+  if (!delta) return <NoValue />
+  return (
+    <span className={styles.project}>
+      <span>{f.number(delta.after, 2)}</span>
+      <small>
+        {Math.abs(delta.delta) < 0.0001
+          ? t("traffic:unchanged")
+          : t(delta.delta < 0 ? "traffic:indexLoss" : "traffic:indexGain", {
+              value: f.number(delta.delta, 4),
+            })}
+      </small>
+    </span>
+  )
+}
+
+function RegionHeading({
+  job,
+  region,
+  onChange,
+}: {
+  readonly job: TrafficJob
+  readonly region: TrafficJob["indices"][number] | undefined
+  readonly onChange: (value: string) => void
+}) {
+  const { t } = useTranslation()
+  const f = useFormatters()
+  if (!region) return null
+  return (
+    <>
+      {job.indices.length > 1 ? (
+        <Select
+          label={t("traffic:indexRegion")}
+          hideLabel
+          value={region.region}
+          options={job.indices.map((item) => ({ value: item.region, label: item.region }))}
+          onChange={onChange}
+        />
+      ) : (
+        <p className={styles.region}>{region.region}</p>
+      )}
+      <p className={styles.note}>
+        {t("traffic:baselineIndex", { value: f.number(region.value, 2) })}
+      </p>
+    </>
   )
 }

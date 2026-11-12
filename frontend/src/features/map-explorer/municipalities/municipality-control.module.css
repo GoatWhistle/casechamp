@@ -1,0 +1,18 @@
+.control {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  max-inline-size: 100%;
+}
+
+.control > :first-child {
+  min-inline-size: 0;
+}
+
+.notice {
+  composes: surface from "../../../shared/styles/compose.module.css";
+  max-inline-size: var(--prose-measure);
+  padding: var(--space-8) var(--space-12);
+  font-size: var(--font-size-caption);
+}

@@ -61,7 +61,6 @@ class CorridorPort(Protocol):
     def resolve(self, road_name: str, origin: str, destination: str) -> RoadCorridor: ...
     def resolve_route(self, origin: str, destination: str) -> RoadRoute: ...
     def close(self, corridor_ids: list[str]) -> list[RoadJob]: ...
-    def edit(self, corridor_ids: list[str], speed_factor: float) -> list[RoadJob]: ...
     def bridges(self, near: str, radius_km: float, name: str) -> list[BridgeCandidate]: ...
     def combine_bridges(self, bridge_ids: list[str]) -> RoadCorridor: ...
 
@@ -126,14 +125,6 @@ class RoadCorridors:
             raise InvalidQuery("Select between 1 and 10 distinct resolved corridor IDs")
         return self.engine.close(corridor_ids)
 
-    def edit(self, corridor_ids: list[str], speed_factor: float) -> list[RoadJob]:
-        if self.engine is None:
-            raise DataUnavailable("GRAPH_DIR is not configured")
-        if not 1 <= len(corridor_ids) <= 10 or len(set(corridor_ids)) != len(corridor_ids):
-            raise InvalidQuery("Select between 1 and 10 distinct resolved corridor IDs")
-        if not isfinite(speed_factor) or not 0 < speed_factor <= 3:
-            raise InvalidQuery("Speed factor must be finite and in (0, 3]; use closure for zero")
-        return self.engine.edit(corridor_ids, speed_factor)
 
     def combined(self, corridor_ids: list[str]) -> RoadCorridor:
         corridors = [self.get(key) for key in corridor_ids]

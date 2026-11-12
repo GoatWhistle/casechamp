@@ -2,13 +2,17 @@ import asyncio
 import json
 from unittest.mock import Mock
 
+import pytest
+from pydantic import TypeAdapter, ValidationError
 from pydantic_ai import Agent
 from pydantic_ai.capabilities import PrepareTools
 from pydantic_ai.messages import ModelMessage, ModelResponse, TextPart, ToolCallPart, ToolReturnPart
 from pydantic_ai.models.function import AgentInfo, FunctionModel
 
 from app.adapter.chat.artifacts import ChatRun
+from app.adapter.chat.atlas_requests import AtlasQuery
 from app.adapter.chat.calculation_tools import CalculationTools
+from app.adapter.chat.scenario_requests import TransportScenario
 from app.adapter.chat.skill_tools import SkillTools
 from app.adapter.chat.tool_visibility import analyst_tools
 from app.adapter.chat.tools import AtlasTools
@@ -131,8 +135,9 @@ def test_loading_skill_exposes_unified_search_and_scenario_on_the_next_step() ->
     }
     corridors.resolve_route.assert_called_once_with("Town A", "Town B")
     corridors.close.assert_called_once_with(["selection"])
-    assert run.pending[0].calculation is not None
-    assert run.pending[0].calculation.job_ids == ["job"]
+    calculations = [event.calculation for event in run.pending if event.calculation is not None]
+    assert len(calculations) == 1
+    assert calculations[0].job_ids == ["job"]
 
 
 def test_all_skills_still_expose_only_six_tools_and_do_not_leak_to_another_run() -> None:
@@ -180,3 +185,49 @@ def test_all_skills_still_expose_only_six_tools_and_do_not_leak_to_another_run()
         "present_atlas",
     }
     assert inventories[1] == {"load_skill", "query_atlas"}
+
+
+@pytest.mark.parametrize(
+    "payload",
+    [
+        {"kind": "edit_selection", "selection_ids": ["road"], "speed_factor": 1.2},
+        {
+            "kind": "network",
+            "region_ids": ["1"],
+            "scenario": "road",
+            "road_changes": [{"way_id": 1, "speed_factor": 1.2}],
+        },
+        {"kind": "connectivity", "places": ["A", "B"], "traffic": {}},
+        {"kind": "close_selection", "selection_ids": ["road"], "traffic": {}},
+        {
+            "kind": "connection",
+            "region_id": "1",
+            "source_node": 1,
+            "target_node": 2,
+            "travel_hours": 0.1,
+        },
+        {"kind": "road_analysis", "region_id": "1", "mode": "improvement"},
+    ],
+)
+def test_legacy_development_requests_are_rejected(payload: dict[str, object]) -> None:
+    with pytest.raises(ValidationError):
+        TypeAdapter(TransportScenario).validate_python(payload)
+
+
+def test_legacy_sensitivity_is_absent_from_atlas_schema() -> None:
+    adapter = TypeAdapter(AtlasQuery)
+    assert "SensitivityQuery" not in json.dumps(adapter.json_schema())
+    with pytest.raises(ValidationError):
+        adapter.validate_python({"kind": "sensitivity", "region_id": "1"})
+
+
+def test_legacy_road_and_queue_fields_are_absent_from_scenario_schema() -> None:
+    schema = json.dumps(TypeAdapter(TransportScenario).json_schema())
+    for name in [
+        "SelectionEdit",
+        "RoadEdit",
+        "ConnectionScenario",
+        "road_changes",
+        "TrafficAssumptions",
+    ]:
+        assert name not in schema

@@ -76,6 +76,7 @@
   align-items: center;
   gap: var(--space-4);
   font-weight: var(--weight-medium);
+  white-space: nowrap;
 }
 
 .tone[data-tone="gain"] {
@@ -108,16 +109,6 @@
   margin: 0;
   padding: 0;
   border: 0;
-}
-
-.reveal {
-  display: grid;
-  max-inline-size: var(--field-max-width);
-  animation: var(--motion-rise-in);
-}
-
-.reveal[data-state="closed"] {
-  animation: var(--motion-fade-out);
 }
 
 .pair {

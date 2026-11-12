@@ -1,0 +1,85 @@
+{
+  "imported": 511,
+  "regions": [
+    {
+      "region_id": "03000000",
+      "features": "45"
+    },
+    {
+      "region_id": "07000000",
+      "features": "33"
+    },
+    {
+      "region_id": "12000000",
+      "features": "12"
+    },
+    {
+      "region_id": "18000000",
+      "features": "38"
+    },
+    {
+      "region_id": "26000000",
+      "features": "9"
+    },
+    {
+      "region_id": "37000000",
+      "features": "26"
+    },
+    {
+      "region_id": "60000000",
+      "features": "55"
+    },
+    {
+      "region_id": "65000000",
+      "features": "73"
+    },
+    {
+      "region_id": "69000000",
+      "features": "1"
+    },
+    {
+      "region_id": "71000000",
+      "features": "25"
+    },
+    {
+      "region_id": "71800000",
+      "features": "22"
+    },
+    {
+      "region_id": "71900000",
+      "features": "9"
+    },
+    {
+      "region_id": "75000000",
+      "features": "43"
+    },
+    {
+      "region_id": "79000000",
+      "features": "9"
+    },
+    {
+      "region_id": "82000000",
+      "features": "49"
+    },
+    {
+      "region_id": "83000000",
+      "features": "13"
+    },
+    {
+      "region_id": "85000000",
+      "features": "13"
+    },
+    {
+      "region_id": "90000000",
+      "features": "9"
+    },
+    {
+      "region_id": "91000000",
+      "features": "12"
+    },
+    {
+      "region_id": "96000000",
+      "features": "15"
+    }
+  ]
+}

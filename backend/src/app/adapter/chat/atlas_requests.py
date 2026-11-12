@@ -42,15 +42,7 @@ class ReferenceQuery:
     kind: Literal["sources", "capabilities"]
 
 
-@dataclass(config=ConfigDict(extra="forbid"))
-class SensitivityQuery:
-    kind: Literal["sensitivity"]
-    region_id: str
-
-
-type AtlasQuery = (
-    RegionsQuery | PlacesQuery | SettlementsQuery | LinksQuery | ReferenceQuery | SensitivityQuery
-)
+type AtlasQuery = RegionsQuery | PlacesQuery | SettlementsQuery | LinksQuery | ReferenceQuery
 
 
 @dataclass(config=ConfigDict(extra="forbid"))
@@ -81,4 +73,6 @@ class RoadPresentation:
     selection_ids: list[str] = field(default_factory=list)
 
 
-type AtlasPresentation = ChartPresentation | MapPresentation | SettlementPresentation | RoadPresentation
+type AtlasPresentation = (
+    ChartPresentation | MapPresentation | SettlementPresentation | RoadPresentation
+)

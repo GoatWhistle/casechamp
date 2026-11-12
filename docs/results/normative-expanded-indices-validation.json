@@ -1,0 +1,114 @@
+{
+  "checked_at": "2026-11-12T11:51:25.125994+00:00",
+  "legal_compliance_confirmed": false,
+  "samples": [
+    {
+      "region_id": "11800000",
+      "criterion_id": "N04",
+      "run_id": "ffadcbba854645efbbf7228bfeae17ed",
+      "mode": "walk",
+      "unit": "metres",
+      "weighting": "reference_points",
+      "reference_points": 1322,
+      "values": [
+        {
+          "threshold": 500.0,
+          "numerator": 342,
+          "denominator": 1322,
+          "percent": 25.869894099848715
+        },
+        {
+          "threshold": 800.0,
+          "numerator": 707,
+          "denominator": 1322,
+          "percent": 53.47957639939486
+        },
+        {
+          "threshold": 1000.0,
+          "numerator": 839,
+          "denominator": 1322,
+          "percent": 63.46444780635401
+        }
+      ]
+    },
+    {
+      "region_id": "11800000",
+      "criterion_id": "N03",
+      "run_id": "ebe7740bc67f4a2da96fe120eb19c268",
+      "mode": "emergency_response",
+      "unit": "minutes",
+      "weighting": "reference_points",
+      "reference_points": 42,
+      "values": [
+        {
+          "threshold": 10.0,
+          "numerator": 4,
+          "denominator": 42,
+          "percent": 9.523809523809524
+        },
+        {
+          "threshold": 20.0,
+          "numerator": 5,
+          "denominator": 42,
+          "percent": 11.904761904761905
+        }
+      ]
+    },
+    {
+      "region_id": "65000000",
+      "criterion_id": "N05",
+      "run_id": "7da127dcf1c642b4acff45be011b5427",
+      "mode": "car",
+      "unit": "minutes",
+      "weighting": "population",
+      "reference_points": 1844,
+      "values": [
+        {
+          "threshold": 45.0,
+          "numerator": 3547357,
+          "denominator": 4268998,
+          "percent": 83.0957756363437
+        }
+      ]
+    },
+    {
+      "region_id": "36000000",
+      "criterion_id": "N08",
+      "run_id": "e204ea827ad74a8aa233e1a2e4a9652e",
+      "mode": "car",
+      "unit": "minutes",
+      "weighting": "population",
+      "reference_points": 1333,
+      "values": [
+        {
+          "threshold": 45.0,
+          "numerator": 3096299,
+          "denominator": 3172925,
+          "percent": 97.58500437293664
+        }
+      ]
+    },
+    {
+      "region_id": "40000000",
+      "criterion_id": "N05",
+      "status": "model_unavailable",
+      "thresholds": [
+        45.0
+      ]
+    },
+    {
+      "region_id": "40000000",
+      "criterion_id": "N07",
+      "status": "model_unavailable",
+      "thresholds": [
+        30.0
+      ]
+    },
+    {
+      "region_id": "40000000",
+      "criterion_id": "N08",
+      "status": "not_regulated",
+      "thresholds": []
+    }
+  ]
+}

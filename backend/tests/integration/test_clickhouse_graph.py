@@ -73,3 +73,14 @@ def test_regional_candidate_selection_exceeds_http_field_limit() -> None:
     candidates = source.read("candidates", {"ids": ids})
     assert {int(row[0]) for row in candidates} == set(ids)
     assert len(candidates) == len(ids)
+
+
+def test_dense_city_way_ids_exceed_http_field_limit_without_losing_roads() -> None:
+    reader = atlas_repository().reader
+    source = ClickHouseGraphSnapshot(reader)
+    selected = reader.rows("SELECT way_id FROM plexus_graph.ways ORDER BY way_idx LIMIT 30000", {})
+    ids = [int(row["way_id"]) for row in selected]
+    assert len(ids) == 30000
+    rows = source.read("way_indices", {"ids": ids})
+    assert {int(row[0]) for row in rows} == set(ids)
+    assert len(rows) == len(ids)

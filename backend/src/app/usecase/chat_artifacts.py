@@ -38,7 +38,7 @@ class ChatChart:
 
 @dataclass(frozen=True, slots=True)
 class ScenarioCard:
-    kind: Literal["speed", "slowdown", "closure", "roads", "connection", "links"]
+    kind: Literal["closure", "roads", "connection", "links"]
     job_ids: list[str]
 
 

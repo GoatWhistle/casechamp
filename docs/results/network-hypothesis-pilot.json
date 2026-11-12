@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-12",
+  "method": "single_frozen_ordered_ab",
+  "sources_and_geography_stable": true,
+  "llm_model": "gpt-6.1-sol",
+  "llm_hypotheses": 11,
+  "generation_limit_seconds": 120,
+  "verification_limit_seconds": 300,
+  "index_candidate_limit_seconds": 60,
+  "trips": 4420,
+  "zones": 67,
+  "national_markets": 180,
+  "baseline_indices": [
+    {
+      "region": "Ставропольский край",
+      "value": 99.15140597565384,
+      "population": 2907593,
+      "settlements": 760,
+      "normalization": 7897244.511692026
+    },
+    {
+      "region": "Карачаево-Черкесская Республика",
+      "value": 90.48542535954101,
+      "population": 469865,
+      "settlements": 148,
+      "normalization": 7897244.511692026
+    },
+    {
+      "region": "Краснодарский край",
+      "value": 93.47957809833936,
+      "population": 5838273,
+      "settlements": 1765,
+      "normalization": 7897244.511692026
+    }
+  ],
+  "geography_sha256": "e2efb4120fdaddfae4cd4b7cedea8f9f187f63d90fa4cf1535ce140f21d8c050",
+  "arms": [
+    {
+      "arm": "automatic",
+      "status": "completed",
+      "llm_forwarded": 0,
+      "published_target_count": 128,
+      "corridor_variants": 30,
+      "llm_exposed_published_targets": 0,
+      "llm_exposed_corridor_variants": 0,
+      "merged_llm_automatic_corridor_variants": 0,
+      "snapped_llm_corridor_variants": 0,
+      "original_pair_overlap_corridors": 0,
+      "final_pair_overlap_corridors": 0,
+      "index_verified_projects": 5,
+      "index_timeout_projects": 3,
+      "llm_exposed_index_verified_projects": 0,
+      "llm_exclusive_index_verified_projects": 0,
+      "llm_original_pairs_index_verified": 0,
+      "best_index_gain": 0.0,
+      "best_llm_exposed_index_gain": null,
+      "benefits": [],
+      "timings": {
+        "generation_seconds": 120.1907975829672,
+        "verification_seconds": 300.18418950005434,
+        "total_development_seconds": 420.3858121249359
+      }
+    },
+    {
+      "arm": "automatic_plus_llm",
+      "status": "completed",
+      "llm_forwarded": 11,
+      "published_target_count": 128,
+      "corridor_variants": 29,
+      "llm_exposed_published_targets": 8,
+      "llm_exposed_corridor_variants": 0,
+      "merged_llm_automatic_corridor_variants": 0,
+      "snapped_llm_corridor_variants": 0,
+      "original_pair_overlap_corridors": 0,
+      "final_pair_overlap_corridors": 0,
+      "index_verified_projects": 6,
+      "index_timeout_projects": 3,
+      "llm_exposed_index_verified_projects": 0,
+      "llm_exclusive_index_verified_projects": 0,
+      "llm_original_pairs_index_verified": 0,
+      "best_index_gain": 0.0,
+      "best_llm_exposed_index_gain": null,
+      "benefits": [],
+      "timings": {
+        "generation_seconds": 120.27131658396684,
+        "verification_seconds": 300.19677625002805,
+        "total_development_seconds": 420.48102049995214
+      }
+    }
+  ],
+  "limitations": [
+    "Synthetic demand, not measured traffic",
+    "LLM corridors did not survive geographic alignment screening; LLM index effect untested",
+    "Index timeouts are unknown effects, not zero effects",
+    "One ordered run, background data ingestion active, no statistical superiority claim",
+    "No application restart or deployment"
+  ]
+}

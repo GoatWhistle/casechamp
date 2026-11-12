@@ -27,6 +27,7 @@ const job: TrafficJob = {
   completed: 3,
   total: 3,
   scope: {
+    objective: "connectivity",
     places: [],
     region: "",
     bounds: [],
@@ -46,9 +47,11 @@ const job: TrafficJob = {
   alternatives: [
     {
       id: "0",
-      kind: "speed",
+      kind: "capacity",
       way_ids: [1],
       length_km: 1,
+      overload_increase: 0,
+      objective_unit: "",
       vehicle_hours_saved: 1,
       after: { ...metrics, mean_trip_minutes: 16.2 },
       roads: [],
@@ -82,9 +85,19 @@ beforeEach(() => read.mockReset())
 describe("complete road proposals", () => {
   it("keeps partial indices and alternatives out of the reply while work is running", () => {
     const result = show({ ...job, status: "running", stage: "index_comparing" })
-    expect(screen.getByText(ru.working)).toBeTruthy()
+    expect(screen.getByText(ru.verifying)).toBeTruthy()
     expect(screen.queryByRole("table")).toBeNull()
     expect(result.container.textContent).not.toContain("99,15")
+  })
+  it.each([
+    ["loading", ru.preparing],
+    ["candidates", ru.generating],
+    ["comparing", ru.verifying],
+  ])("names the %s phase without a single-minute completion promise", (stage, label) => {
+    const result = show({ ...job, status: "running", stage })
+    expect(screen.getByText(label)).toBeTruthy()
+    expect(screen.queryByRole("table")).toBeNull()
+    expect(result.container.textContent).not.toMatch(/60|120/)
   })
   it("shows local minutes beside the regional index without a wall of metadata", async () => {
     const result = show(job)

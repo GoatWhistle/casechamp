@@ -95,18 +95,16 @@ class RoadAnalysis:
         return self._engine
 
     def submit(self, region_id: str, mode: AnalysisMode, percent: int = 20) -> AnalysisJob:
-        if (
-            mode not in {"criticality", "improvement"}
-            or type(percent) is not int
-            or not 1 <= percent <= 200
-        ):
-            raise InvalidQuery("Invalid analysis mode or improvement percentage")
+        if mode != "criticality":
+            raise InvalidQuery("Use traffic_development for road improvement search")
+        if type(percent) is not int or not 1 <= percent <= 200:
+            raise InvalidQuery("Invalid analysis percentage")
         if not any(r.id == region_id for r in self.atlas.regions()):
             raise RegionNotFound()
         boundary = next((b for b in self.atlas.boundaries() if b.id == region_id), None)
         if boundary is None:
             raise DataUnavailable("Region boundary is missing")
-        return self.engine.submit(boundary, mode, percent if mode == "improvement" else 0)
+        return self.engine.submit(boundary, mode, 0)
 
     def recent(self) -> list[AnalysisJob]:
         return self.engine.recent()
@@ -115,6 +113,10 @@ class RoadAnalysis:
         return self.engine.get(analysis_id)
 
     def resume(self, analysis_id: str) -> AnalysisJob:
+        if self.engine.get(analysis_id).mode != "criticality":
+            raise InvalidQuery(
+                "Historical improvement analyses are read-only; use traffic_development"
+            )
         return self.engine.resume(analysis_id)
 
     def cancel(self, analysis_id: str) -> AnalysisJob:

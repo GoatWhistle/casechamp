@@ -1,5 +1,5 @@
 import types
-from dataclasses import fields, is_dataclass
+from dataclasses import MISSING, fields, is_dataclass
 from enum import Enum
 from typing import Any, Literal, TypeAliasType, cast, get_args, get_origin, get_type_hints
 
@@ -45,7 +45,11 @@ def decode(kind: Any, value: Any) -> Any:
     if is_dataclass(kind):
         hints = get_type_hints(kind)
         return cast(Any, kind)(
-            **{f.name: decode(hints[f.name], value[f.name]) for f in fields(kind)}
+            **{
+                f.name: decode(hints[f.name], value[f.name])
+                for f in fields(kind)
+                if f.name in value or (f.default is MISSING and f.default_factory is MISSING)
+            }
         )
     origin, args = get_origin(kind), get_args(kind)
     if origin is list:

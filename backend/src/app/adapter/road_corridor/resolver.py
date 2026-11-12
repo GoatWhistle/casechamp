@@ -10,6 +10,7 @@ from app.adapter.road_corridor.bridges import find_bridges
 from app.adapter.road_corridor.connectivity import calculate_connectivity
 from app.adapter.road_corridor.gaps import gap_pairs
 from app.adapter.road_corridor.history import read_result, recent_results, save_result
+from app.adapter.road_corridor.local_street import resolve_street
 from app.adapter.road_corridor.places import corridor_places
 from app.adapter.road_corridor.routes import resolve_route
 from app.adapter.road_graph.jobs import RoadJobs
@@ -49,6 +50,11 @@ class CorridorResolver:
 
     def resolve(self, road_name: str, origin: str, destination: str) -> RoadCorridor:
         data = self.roads.data
+        if origin.strip().casefold() == destination.strip().casefold():
+            result = resolve_street(data, road_name, origin)
+            with self.lock:
+                self.resolved[result.id] = result
+            return result
         references = {
             str(r[0]) for r in data.read("road_reference", {"names": lookup_keys(road_name)})
             if r[0] is not None and str(r[0]).strip()
@@ -180,12 +186,9 @@ class CorridorResolver:
         return [name for name, count in sorted(counts.items(), key=lambda c: -c[1]) if count >= 3]
 
     def close(self, corridor_ids: list[str]) -> list[RoadJob]:
-        return self.edit(corridor_ids, 0)
-
-    def edit(self, corridor_ids: list[str], speed_factor: float) -> list[RoadJob]:
         corridors = [self.get(key) for key in corridor_ids]
         changes = [
-            RoadChange(way, speed_factor)
+            RoadChange(way, 0)
             for way in sorted({way for corridor in corridors for way in corridor.way_ids})
         ]
         regions = {region.id: region for corridor in corridors for region in corridor.regions}

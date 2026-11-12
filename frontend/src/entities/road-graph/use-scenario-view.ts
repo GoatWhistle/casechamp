@@ -1,15 +1,7 @@
 import { useCallback } from "react"
 import { useSearchParams } from "react-router"
 
-const VIEWS = [
-  "home",
-  "roads",
-  "links",
-  "connection",
-  "result",
-  "criticality",
-  "improvement",
-] as const
+const VIEWS = ["home", "roads", "links", "result", "criticality", "improvement"] as const
 
 export type ScenarioView = (typeof VIEWS)[number]
 

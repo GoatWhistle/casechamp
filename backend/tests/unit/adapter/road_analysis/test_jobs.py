@@ -10,6 +10,7 @@ import pytest
 
 from app.adapter.road_analysis.jobs import AnalysisJobs
 from app.adapter.road_graph.jobs import RoadJobs
+from app.domain.errors import InvalidQuery
 from app.domain.road_analysis import SettlementImpact
 from app.repository.files.road_analysis import FileAnalysisStore
 from app.usecase.dto import BoundaryShape
@@ -73,12 +74,12 @@ def test_batch_continue_restart_and_detail(tmp_path: Path, monkeypatch: pytest.M
         )
 
     monkeypatch.setattr(engine.evaluation, "evaluate", evaluate)
-    job = engine.submit(boundary(), "improvement", 20)
+    job = engine.submit(boundary(), "criticality", 0)
     wait(job.id, engine)
     assert len(engine.get(job.id).results) == 10
     assert engine.get(job.id).status == "paused"
     assert engine.detail(job.id, 0).settlements[0].impact.delta == 1
-    assert engine.submit(boundary(), "improvement", 20).id == job.id
+    assert engine.submit(boundary(), "criticality", 0).id == job.id
     engine.resume(job.id)
     wait(job.id, engine)
     assert len(engine.get(job.id).results) == 12
@@ -107,7 +108,7 @@ def test_cancel_keeps_finished_results_and_retries_unfinished(
         return AnalysisDetail(VerifiedRoad(candidate, 100.0, 101.0, 1.0, 10, 0, 0.1), [], [])
 
     monkeypatch.setattr(engine.evaluation, "evaluate", evaluate)
-    job = engine.submit(boundary(), "improvement", 20)
+    job = engine.submit(boundary(), "criticality", 0)
     assert started.wait(3)
     engine.cancel(job.id)
     wait(job.id, engine)
@@ -151,7 +152,7 @@ def test_failed_candidate_does_not_erase_other_results(
         return AnalysisDetail(VerifiedRoad(candidate, 100.0, 101.0, 1.0, 10, 0, 0.1), [], [])
 
     monkeypatch.setattr(engine.evaluation, "evaluate", evaluate)
-    job = engine.submit(boundary(), "improvement", 20)
+    job = engine.submit(boundary(), "criticality", 0)
     wait(job.id, engine)
     assert [r.candidate.way_id for r in engine.get(job.id).results] == [0, 2]
     assert engine.get(job.id).failures[0].way_id == 1
@@ -178,7 +179,7 @@ def test_queued_cancel_does_not_wait_for_manual_worker(tmp_path: Path) -> None:
     engine, pool = engine_for(tmp_path)
     release = Event()
     pool.submit(release.wait)
-    job = engine.submit(boundary(), "improvement", 20)
+    job = engine.submit(boundary(), "criticality", 0)
     assert engine.get(job.id).status == "queued"
     assert engine.cancel(job.id).status == "cancelled"
     release.set()
@@ -216,3 +217,27 @@ def test_incompatible_saved_ranking_is_not_exposed_as_verified(tmp_path: Path) -
     with pytest.raises(Exception, match="validation have changed"):
         engine.detail(job.id, candidate.way_id)
     pool.shutdown()
+
+
+def test_legacy_improvement_search_cannot_launch_or_resume(tmp_path: Path) -> None:
+    engine, pool = engine_for(tmp_path)
+    try:
+        with pytest.raises(InvalidQuery, match="traffic_development"):
+            engine.submit(boundary(), "improvement", 20)
+        old = AnalysisJob(
+            "historical",
+            "1",
+            "Region",
+            "improvement",
+            20,
+            engine.fingerprint(boundary()),
+            status="paused",
+        )
+        engine.jobs[old.id] = old
+        engine.boundaries[old.id] = boundary()
+        assert engine.get(old.id).mode == "improvement"
+        with pytest.raises(InvalidQuery, match="read-only"):
+            engine.resume(old.id)
+        assert not engine.futures
+    finally:
+        pool.shutdown()

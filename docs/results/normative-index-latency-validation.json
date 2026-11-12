@@ -1,0 +1,19 @@
+{
+  "before": {
+    "stage": "before_cache",
+    "region_id": "65000000",
+    "criterion_id": "N04",
+    "seconds": 44.30755316710565,
+    "bytes": 2125,
+    "run_id": "b52046183bee42dcbb9aefaf7db14fa6",
+    "references": 145734
+  },
+  "after": {
+    "seconds": 0.16443908389192075,
+    "bytes": 2125,
+    "run_id": "b52046183bee42dcbb9aefaf7db14fa6",
+    "references": 145734
+  },
+  "scope": "one observation each under the current local workload; not a controlled benchmark",
+  "cached_result_unchanged": true
+}

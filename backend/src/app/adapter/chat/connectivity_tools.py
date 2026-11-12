@@ -21,7 +21,7 @@ def calculate_connectivity(
             request.mode,
             request.center,
             request.selection_ids,
-            request.traffic,
+            None,
         )
     except DomainError as error:
         raise ModelRetry(error.message) from error

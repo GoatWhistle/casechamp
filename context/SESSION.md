@@ -1,31 +1,24 @@
 # Session state
 
-## Current closeout, 2026-11-12
+## New network search, 2026-11-12
 
-Branch feat/transport-scenarios-update, implementation SHAafd1d975c1e21caa1720ea3ca5d0dfff71ac24c3.
-User authorized committing/pushing all; implementation pushed and remote SHA equality verified.
-Completed compact traffic results, local minutes plus regional index, selected-road overlay,
-housing screening and consistent chat typography. [Checks/runtime](../work/synthetic-traffic/agent-integration.md).
-Izobilny false isolation reproduced: centroid attached to residential dead end; guarded
-at calculation layer and old ranking invalidated. [Cause/remaining representation limit](../work/closure-anchor-diagnosis/README.md).
-Do not rewrite historical answers. Verified441backendunit/49integration/498frontend; Ruff/mypy/build passed.
-Local APIs8007/8817 active with the guard. All199implementation files committed/pushed; credential-pattern scan clean.
-CLI22tests passed. No deployment or paid model evaluation. Next: distributed settlement access and baseline recalculation
-if requested; current fix rejects conflicting attachment, does not invent an Izobilny detour.
+Current: imported normative code/datasets from bd32de3 and UI/brand updates bcc7301, preserved adaptive traffic search. Local normative catalogs loaded; archived scenario aggregates exposed honestly (754 numeric/756 rows). Checks/evidence/limits: work/normative-integration/README.md. Map mask and real municipal selection implemented (511 polygons/20regions, partialcoverage). Backend894/frontend549 tests pass. Preparing authorized main publication; API8007 PID67492/UI5187.
+Branch feat/transport-scenarios-update, HEAD5daf6815eac9105d5b4b74e7013a5a49a5faf2e3; uncommitted changes preserved.
+[Implementation, checks, no-speed pilot and performance limits](../work/network-development/README.md).
+Protected user instructions exceed SESSION target and remain verbatim.
 
+
+## Current audit, 2026-11-12
+
+Audit fixes isolated/pushed: fix/desktop-scenario-audit, source c59121a, closeout6c5d459.
+[Current checks, runtime and next actions](../work/audits/frontend-1/session-state.md).
+[Desktop use cases and diagnosed fixes](../work/audits/frontend-1.md).
+Protected user instructions exceed SESSION budget and remain verbatim.
 
 ## Chat road focus, 2026-11-12
 
 User: «добавь ему в скилл возможность зума на участок графа например».
-Implemented and locally verified on feat/transport-scenarios-update, HEAD986ae0f.
-Existing present_atlas now highlights/zooms exact way IDs or resolved selections.
 [Contract, checks, runtime and remaining verify limitation](../work/chat-road-focus/README.md).
-Protected user instructions exceed SESSION budget and are preserved verbatim.
-
-## Traffic agent integration, 2026-11-12
-
-Implemented/verified on API8007/UI5187. [Runtime, checks and next actions](../work/synthetic-traffic/agent-integration.md).
-[State before compaction](../work/synthetic-traffic/session-before-agent-closeout.md).
 
 ## Thinking dots, 2026-11-12
 
@@ -68,6 +61,63 @@ User: «фикси». Fixed oversized ClickHouse candidates parameters, empty-fa
 User: «добавляй дебаг такого»; then reported Moscow–Petersburg unbound.
 
 ## Explicit user instructions
+
+> давай уберем карту европы. и всех других стран кроме рф ( ну те регионы что мы подсветили ). Так же добавим возможность тыкнуть на муниципальный округ какой нить
+
+> забирай ту агрегацию что есть и натягивай сюда
+
+> когда заберешь засунь в main всё это
+
+> Переноси то, что есть в репозитории
+
+> Да, JSON-датасеты тоже запушены: datasets/normative/ и datasets/normative-*.json.
+
+> теперь посмотри пуши
+
+> прочти это. Это главный эксперт
+
+> посмотри ветку фича мап юай в которой недавно был пуш
+
+> делаем, что мешает ?
+
+> продолжай дорабатывать что делал
+
+> подними мне локалку
+
+> проверь ты уже индекс то блять
+
+> да похуй на это покааа
+
+> делаай
+
+> с пилотом что
+
+> давай даавать 5 минут вместо 1
+
+> 30 кмв час трасса ? real?
+
+> не забывай о пилоте на ллм гипотезах
+
+> скачай для всего ставропольского края и расширяй фоном до всей россии
+
+> давай попробуем. Можем ллмкой пробовать генерить условно. Или что то такое. Доабвим времени на генерацию и иоставим минуту нп проверку
+
+> Полностью убери повышение скорости как самостоятельное вмешательство: из генератора, пакетов, API и инструкций агенту.
+> Никаких «+30% скорости». Оставь новые трассы, обходы, соединения, открытия/закрытия и географически допустимые расширения.
+> Скорость новых дорог определяется их параметрами. Ускорение поездок — результат изменения сети и перераспределения потоков. Перезапусти пилот без скоростных кандидатов и покажи реальные прибавки. И ещё оставь добавоения полос
+> забери у него всё что было раньше связано с этим. Оставляем только новое и максимально удобно для него и адаптивно под задачи. Условно как поднять индекс, как ускорить транзит через город. Как разгрузить город и тд.
+> не отключаемый. Удали тот вариант что есть уже и оставляем только новый. Удали по пути всё что повторяет наш путь. Оставляем только его как основной
+> Делай всёёёё.
+> используй субагентов на gpt 6.1 sol fast делай быстро. Оговори только какой выбор сурогата ты сделал и будет ли он
+> нет. Не делать фоном
+> географически. Именно поиск. ЛЛм не наша пробелма сколько думает
+> полноценные трассы тоже. Мосты тоннели да. Быстрый ответ желательно. До минуты
+> но чем больше и круче бдет. Тем пизже очевидно. У нас на демо будет 32 ядра
+
+
+### Desktop scenario audit, 2026-11-12
+
+> погоняй разные юзкейсы через пк юз и проверяй логичность всего
 
 ### Road development corrections and publication, 2026-11-12
 
@@ -573,3 +623,9 @@ User: «все что удалилось не пренеслось про рен
 ## Publication, 2026-11-11
 
 > запушь все что сделанотлокально в новую ветку
+
+## Chat alignment, 2026-11-12
+
+User: «сделай выравнивание плз».
+User: «пусть прокручивается если справа не помещается».
+[State and checks](../work/screens/chat-recent-scroll.md).

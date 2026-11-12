@@ -1,0 +1,46 @@
+{
+  "id": "bus-stations",
+  "url": "https://220fz.rosavtotransport.ru/hooks/stations/list?regionNumberFilter=45&type=0,1",
+  "received_at": "2026-11-11T23:37:56.628189+00:00",
+  "sha256": "5351e337bf22d8dc773c8b3e43d97427aed4a022954d358d7de23febd1b547e4",
+  "bytes": 1019,
+  "complete_inventory": false,
+  "facilities": [
+    {
+      "id": "bus-station-45006",
+      "service": "bus_station",
+      "name": "Курганский автовокзал",
+      "address": "Курганская обл., г. Курган, пл. Собанина, 1",
+      "source_url": "https://220fz.rosavtotransport.ru/hooks/stations/list?regionNumberFilter=45&type=0,1",
+      "observed_at": "2026-11-11T23:37:56.628189+00:00",
+      "latitude": 55.44040982,
+      "longitude": 65.31705523000001,
+      "coordinate_source": "https://www.openstreetmap.org/way/82158398",
+      "coordinate_status": "geocoded_building",
+      "source_sha256": "5351e337bf22d8dc773c8b3e43d97427aed4a022954d358d7de23febd1b547e4",
+      "coordinate_snapshot_sha256": "8fb994e69910d29708416000cb718a9843a02576f5c45c1cc8e009fcb2d7f87c",
+      "coordinate_snapshot_url": "https://download.openstreetmap.fr/extracts/russia/ural_federal_district/kurgan_oblast-latest.osm.pbf"
+    }
+  ],
+  "coordinate_extract_url": "https://download.openstreetmap.fr/extracts/russia/ural_federal_district/kurgan_oblast-latest.osm.pbf",
+  "coordinate_extract_sha256": "8fb994e69910d29708416000cb718a9843a02576f5c45c1cc8e009fcb2d7f87c",
+  "coordinate_licence": "ODbL-1.0",
+  "coordinate_matches": [
+    {
+      "facility_id": "bus-station-45006",
+      "osm_way": 82158398,
+      "matched_tags": {
+        "addr:city": "Курган",
+        "addr:housenumber": "1",
+        "addr:street": "Собанина",
+        "amenity": "bus_station",
+        "building": "yes",
+        "building:levels": "2",
+        "bus": "yes",
+        "name": "Курган автовокзал",
+        "opening_hours": "6:00-23:00",
+        "public_transport": "station"
+      }
+    }
+  ]
+}

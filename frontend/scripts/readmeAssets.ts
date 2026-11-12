@@ -3,10 +3,10 @@ import { join, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 import { chromium, type Page } from "@playwright/test"
 import { embeddedFontFaces, sansFamily } from "./brand/fonts.ts"
+import { bannerAlt, bannerPage } from "./readme/banner.ts"
 import { type BadgeSpec, readContent } from "./readme/content.ts"
 import {
   badgePage,
-  bannerPage,
   buttonPage,
   footerPage,
   type PageInput,
@@ -45,6 +45,9 @@ function token(name: string): string {
   return color
 }
 
+const RAMP = Array.from({ length: 7 }, (_, index) => token(`--data-seq-${index + 1}`))
+const MAP = readFileSync(join(repoRoot, "docs", "brand", "russia-hansen.svg"), "utf8")
+
 const THEMES: Readonly<Record<Variant, ReadmeTheme>> = {
   light: {
     text: token("--text-primary"),
@@ -56,6 +59,9 @@ const THEMES: Readonly<Record<Variant, ReadmeTheme>> = {
     accent: token("--action-primary"),
     onAccent: token("--action-primary-text"),
     warning: token("--text-warning"),
+    ramp: RAMP,
+    mapNone: token("--map-none"),
+    mapBorder: token("--map-border"),
   },
   dark: {
     text: token("--neutral-50"),
@@ -67,6 +73,9 @@ const THEMES: Readonly<Record<Variant, ReadmeTheme>> = {
     accent: token("--blue-500"),
     onAccent: token("--neutral-0"),
     warning: token("--orange-2"),
+    ramp: RAMP,
+    mapNone: token("--neutral-800"),
+    mapBorder: token("--neutral-950"),
   },
 }
 
@@ -93,7 +102,7 @@ async function renderBoth(
 ): Promise<Shot> {
   let light: Shot | null = null
   for (const variant of ["light", "dark"] as const) {
-    const input = { theme: THEMES[variant], fonts, family, wordmark: wordmark(variant) }
+    const input = { theme: THEMES[variant], fonts, family, wordmark: wordmark(variant), map: MAP }
     const shot = await shoot(page, build(input), `${name}.${variant}.png`)
     if (variant === "light") light = shot
   }
@@ -107,12 +116,12 @@ function picture(item: RowItem): string {
   return item.href === undefined ? image : `<a href="${item.href}">${image}</a>`
 }
 
-function lines(items: readonly RowItem[]): string {
+function pack(items: readonly RowItem[], limit: number): RowItem[][] {
   const rows: RowItem[][] = [[]]
   let used = 0
   for (const item of items) {
     const current = rows[rows.length - 1] ?? []
-    if (current.length > 0 && used + GAP + item.shot.width > LINE_LIMIT) {
+    if (current.length > 0 && used + GAP + item.shot.width > limit) {
       rows.push([item])
       used = item.shot.width
     } else {
@@ -120,7 +129,17 @@ function lines(items: readonly RowItem[]): string {
       used += (current.length > 1 ? GAP : 0) + item.shot.width
     }
   }
-  return rows.map((row) => row.map(picture).join("\n")).join("\n<br>\n")
+  return rows
+}
+
+function lines(items: readonly RowItem[]): string {
+  const count = pack(items, LINE_LIMIT).length
+  const total = items.reduce((sum, item) => sum + item.shot.width + GAP, -GAP)
+  let limit = Math.ceil(total / count)
+  while (limit < LINE_LIMIT && pack(items, limit).length > count) limit += 1
+  return pack(items, limit)
+    .map((row) => row.map(picture).join("\n"))
+    .join("\n<br>\n")
 }
 
 function replaceBlock(text: string, marker: string, content: string): string {
@@ -146,13 +165,7 @@ const family = sansFamily(frontendRoot)
 const browser = await chromium.launch()
 const page = await browser.newPage({ deviceScaleFactor: 2 })
 
-const banner = await renderBoth(
-  page,
-  "banner",
-  (input) => bannerPage(input, BANNER.promise, BANNER.note),
-  fonts,
-  family,
-)
+const banner = await renderBoth(page, "banner", (input) => bannerPage(input, BANNER), fonts, family)
 const footer = await renderBoth(page, "footer", (input) => footerPage(input), fonts, family)
 
 const buttons: RowItem[] = []
@@ -191,7 +204,7 @@ let readme = readFileSync(readmePath, "utf8")
 readme = replaceBlock(
   readme,
   "banner",
-  picture({ name: "banner", alt: `Plexus. ${BANNER.promise}`, href: undefined, shot: banner }),
+  picture({ name: "banner", alt: bannerAlt(BANNER), href: undefined, shot: banner }),
 )
 readme = replaceBlock(readme, "buttons", lines(buttons))
 readme = replaceBlock(readme, "status", lines(status))

@@ -6,7 +6,7 @@ export type Tone = "accent" | "warning" | "neutral"
 export interface ButtonSpec {
   readonly name: string
   readonly label: string
-  readonly icon: "terminal" | "book-open"
+  readonly icon: "terminal" | "book-open" | "route"
   readonly href: string
   readonly primary: boolean
 }
@@ -19,8 +19,13 @@ export interface BadgeSpec {
   readonly tone?: Tone
 }
 
+export interface BannerSpec {
+  readonly promise: string
+  readonly accent: string
+}
+
 export interface ReadmeContent {
-  readonly banner: { readonly promise: string; readonly note: string }
+  readonly banner: BannerSpec
   readonly buttons: readonly ButtonSpec[]
   readonly status: readonly BadgeSpec[]
   readonly stack: readonly BadgeSpec[]

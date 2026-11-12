@@ -48,7 +48,7 @@ export function useRoadAnalysis(regionId: string | null, mode: AnalysisMode) {
     mutationFn: (percent: number) =>
       unwrap(
         api.POST("/api/v1/road-analyses", {
-          body: { region_id: regionId ?? "", mode, percent },
+          body: { region_id: regionId ?? "", mode: "criticality", percent },
         }),
       ),
     onSuccess: update,

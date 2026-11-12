@@ -1,0 +1,259 @@
+{
+  "schema_version": 2,
+  "new_road_heldout": {
+    "samples": 186,
+    "mae": 0.007024016680293561,
+    "zero_mae": 0.013709715598391582,
+    "rankings": [
+      {
+        "group": 24,
+        "samples": 17,
+        "selected_gain": 0.0069745873681451576,
+        "top3_best_gain": 0.011820147018016258,
+        "deterministic_gain": 0.0069745873681451576,
+        "oracle_gain": 0.014243493781459615,
+        "top1_regret": 0.007268906413314458
+      },
+      {
+        "group": 25,
+        "samples": 17,
+        "selected_gain": -0.0023605327852641578,
+        "top3_best_gain": 0.034146695050753184,
+        "deterministic_gain": -0.0023605327852641578,
+        "oracle_gain": 0.034146695050753184,
+        "top1_regret": 0.03650722783601734
+      },
+      {
+        "group": 26,
+        "samples": 17,
+        "selected_gain": 0.011837834408815251,
+        "top3_best_gain": 0.020655026803895304,
+        "deterministic_gain": 0.011837834408815251,
+        "oracle_gain": 0.020655026803895304,
+        "top1_regret": 0.008817192395080053
+      },
+      {
+        "group": 27,
+        "samples": 17,
+        "selected_gain": 0.005341991739932994,
+        "top3_best_gain": 0.04695605561139771,
+        "deterministic_gain": 0.04695605561139771,
+        "oracle_gain": 0.04695605561139771,
+        "top1_regret": 0.04161406387146471
+      },
+      {
+        "group": 28,
+        "samples": 17,
+        "selected_gain": 0.05705401630819196,
+        "top3_best_gain": 0.0807970666690061,
+        "deterministic_gain": 0.0807970666690061,
+        "oracle_gain": 0.0807970666690061,
+        "top1_regret": 0.023743050360814144
+      },
+      {
+        "group": 29,
+        "samples": 17,
+        "selected_gain": 0.049470195522691274,
+        "top3_best_gain": 0.049470195522691274,
+        "deterministic_gain": 0.049470195522691274,
+        "oracle_gain": 0.06361393165273044,
+        "top1_regret": 0.014143736130039164
+      },
+      {
+        "group": 30,
+        "samples": 17,
+        "selected_gain": 0.0017372593968846273,
+        "top3_best_gain": 0.002357817192760958,
+        "deterministic_gain": 0.0017372593968846273,
+        "oracle_gain": 0.007155556484809367,
+        "top1_regret": 0.005418297087924739
+      },
+      {
+        "group": 31,
+        "samples": 17,
+        "selected_gain": 0.09053738811645284,
+        "top3_best_gain": 0.09053738811645284,
+        "deterministic_gain": 0.09053738811645284,
+        "oracle_gain": 0.09053738811645284,
+        "top1_regret": 0.0
+      },
+      {
+        "group": 33,
+        "samples": 50,
+        "selected_gain": 0.0,
+        "top3_best_gain": 0.0,
+        "deterministic_gain": 0.002299452377055977,
+        "oracle_gain": 0.002299452377055977,
+        "top1_regret": 0.002299452377055977
+      }
+    ],
+    "selected_mean_gain": 0.024510304452872216,
+    "oracle_mean_gain": 0.04004496294972895
+  },
+  "positive_labels": 1048,
+  "negative_labels": 335,
+  "created_at": "2026-11-12T18:48:28.295968+00:00",
+  "seed": 20261112,
+  "feature_schema": [
+    "kind",
+    "edges",
+    "length",
+    "flow",
+    "delay",
+    "ratio",
+    "free",
+    "capacity",
+    "extra_lanes",
+    "parts",
+    "new_connections",
+    "endpoint_hours",
+    "unreachable_directions",
+    "proposed_hours",
+    "endpoint_flow_sum",
+    "endpoint_flow_min",
+    "endpoint_delay",
+    "endpoint_ratio",
+    "potential_vehicle_hours",
+    "proposed_capacity"
+  ],
+  "project_kinds": [
+    "capacity",
+    "closure",
+    "connection",
+    "package"
+  ],
+  "excluded_interventions": [
+    "standalone_speed"
+  ],
+  "training_scenarios": 24,
+  "heldout_scenarios": 9,
+  "training_samples": 1081,
+  "heldout_samples": 433,
+  "split": "final quarter of synthetic seeds and last real snapshot held out",
+  "label": "fixed OD flow-weighted exponential accessibility delta, half-life 1 hour",
+  "solver": {
+    "algorithm": "full MSA assignment",
+    "iterations": 150,
+    "tolerance": 0.001
+  },
+  "unconverged_label_solves": 22,
+  "heldout_mae": 0.0070712557328922706,
+  "heldout_zero_predictor_mae": 0.012706557955388114,
+  "snapshot_corpus": [
+    {
+      "candidate_source_sha256": "d67acff8b921837c9dee296346c80d59e760d2b807c4ba751a68321a3aaf7e02",
+      "connections": 42,
+      "snapshot": "traffic-faeb74c2918c432e9ca2da334a87942e",
+      "status": "labelled",
+      "edges": 9963,
+      "trips": 72,
+      "samples": 66,
+      "unconverged_excluded": 0,
+      "limits": "Real road topology; synthetic gravity demand; no observed traffic validation",
+      "source_hashes": {
+        "nodes.parquet": "7d4e4911f3c008b4b04c4d8376323843f377504077d57d363cb3e007cdd89f0e",
+        "edges.parquet": "c6413de143d5d1f9c264b235d70fe40b35d368fb54af4a5b80aa53475b2a01c6",
+        "places.parquet": "2035445fa38f29ca641693a01af317ee247c064a8c4f3c7e2de92ca764b490ac"
+      }
+    },
+    {
+      "candidate_source_sha256": "d67acff8b921837c9dee296346c80d59e760d2b807c4ba751a68321a3aaf7e02",
+      "connections": 50,
+      "snapshot": "traffic-8979fdc163fe491a95ca610ed2229033",
+      "status": "labelled",
+      "edges": 11312,
+      "trips": 110,
+      "samples": 74,
+      "unconverged_excluded": 0,
+      "limits": "Real road topology; synthetic gravity demand; no observed traffic validation",
+      "source_hashes": {
+        "nodes.parquet": "980375b384aad2db4e59ad23b1ab23328bb96d3515456b77b32f6c09009f7dbb",
+        "edges.parquet": "81215379e0b630d2b2218258b7b6d128508e37957a3c3d1bf8f6eb0cbc517783",
+        "places.parquet": "0defb5e45ded7def84329b98f743657cedb4ac0aaab038c79233466aa82bfbce"
+      }
+    }
+  ],
+  "heldout_rankings": [
+    {
+      "group": 24,
+      "samples": 45,
+      "selected_gain": 0.0069745873681451576,
+      "deterministic_gain": 0.0007508291597565497,
+      "oracle_gain": 0.014243493781459615
+    },
+    {
+      "group": 25,
+      "samples": 45,
+      "selected_gain": -0.0023605327852641578,
+      "deterministic_gain": 0.002024824606732478,
+      "oracle_gain": 0.034146695050753184
+    },
+    {
+      "group": 26,
+      "samples": 45,
+      "selected_gain": 0.011837834408815251,
+      "deterministic_gain": 9.987395735766569e-05,
+      "oracle_gain": 0.020655026803895304
+    },
+    {
+      "group": 27,
+      "samples": 45,
+      "selected_gain": 0.005341991739932994,
+      "deterministic_gain": 0.0020334390341207875,
+      "oracle_gain": 0.04695605561139771
+    },
+    {
+      "group": 28,
+      "samples": 45,
+      "selected_gain": 0.05705401630819196,
+      "deterministic_gain": 0.0049703816449924165,
+      "oracle_gain": 0.0807970666690061
+    },
+    {
+      "group": 29,
+      "samples": 45,
+      "selected_gain": 0.049470195522691274,
+      "deterministic_gain": 0.02834328205726644,
+      "oracle_gain": 0.06361393165273044
+    },
+    {
+      "group": 30,
+      "samples": 45,
+      "selected_gain": 0.0017372593968846273,
+      "deterministic_gain": 0.0018742150132545765,
+      "oracle_gain": 0.007155556484809367
+    },
+    {
+      "group": 31,
+      "samples": 44,
+      "selected_gain": 0.09053738811645284,
+      "deterministic_gain": 0.05128308256726444,
+      "oracle_gain": 0.09053738811645284
+    },
+    {
+      "group": 33,
+      "samples": 74,
+      "selected_gain": 0.0,
+      "deterministic_gain": 0.0008075956676276697,
+      "oracle_gain": 0.002299452377055977
+    }
+  ],
+  "heldout_deterministic_delay_priority_mean_gain": 0.010243058189819224,
+  "heldout_selected_mean_gain": 0.024510304452872216,
+  "heldout_oracle_mean_gain": 0.04004496294972895,
+  "artifact_sha256": "5994fce91e127e54a383fb5aa2b14df9555a65404a2885fd626abde2604c72dc",
+  "limitations": [
+    "Small synthetic corpus and two clipped road snapshots; no national or observed traffic validation",
+    "Unconverged MSA labels excluded; only converged simulated labels used",
+    "Connections and mixed packages included; physical construction feasibility is not a training label",
+    "Surrogate orders evaluations only; returned effects require solver verification",
+    "Numerical training labels do not establish construction clearance; generated capacity projects require sourced raster screening",
+    "Road snapshots overlap geographically and share sourced candidate alignments; heldout snapshot is not independent geographic validation",
+    "Local accessibility labels do not train national Hansen index, transit or congestion objectives"
+  ],
+  "corpus_sha256": "690369f1bb8bdd8e132314b961cce9310dcfd72bf349e7bb78e6221e1034b6a3",
+  "corpus_file": "surrogate-corpus.npz",
+  "synthetic_scenarios_requested": 32,
+  "candidate_file": "/Users/andreykuronskin/keys_champ/work/network-development/llm-pilot-local-diff/automatic_plus_llm-candidates.json",
+  "feature_basis": "Simulated incident edge flow and delay; exact current endpoint shortest travel; proposed equivalent travel time. No observed demand or LLM priority features."
+}

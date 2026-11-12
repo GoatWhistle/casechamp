@@ -71,6 +71,8 @@ class AnalysisJobs:
             return [self.view(j) for j in reversed(list(self.jobs.values()))][:100]
 
     def submit(self, boundary: BoundaryShape, mode: AnalysisMode, percent: int) -> AnalysisJob:
+        if mode != "criticality":
+            raise InvalidQuery("Use traffic_development for road improvement search")
         fingerprint = self.fingerprint(boundary)
         with self.lock:
             for job in self.jobs.values():
@@ -91,6 +93,10 @@ class AnalysisJobs:
         with self.lock:
             self.get(analysis_id)
             job = self.jobs[analysis_id]
+            if job.mode != "criticality":
+                raise InvalidQuery(
+                    "Historical improvement analyses are read-only; use traffic_development"
+                )
             if not job.compatible or job.fingerprint != self.fingerprint(
                 self.boundaries[analysis_id]
             ):

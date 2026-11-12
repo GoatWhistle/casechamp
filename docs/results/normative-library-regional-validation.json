@@ -1,0 +1,19 @@
+{
+  "run_id": "5760601acfc24113a47cd12334ab879d",
+  "saved_at": "2026-11-12T04:47:05.429000Z",
+  "model_revision": "normative-v4",
+  "previous_run_id": "62cacc28d3cb4aa5a2644db94ff06cd8",
+  "origins": 1235,
+  "paths": 1234,
+  "facilities": 429,
+  "coordinate_records": 35,
+  "published_dates": 407,
+  "all_unknown": true,
+  "exact_restore": true,
+  "paired_origins": 1234,
+  "improved_physical_times": 986,
+  "increased_physical_times": 0,
+  "mean_minutes_before": 129.23089699806414,
+  "mean_minutes_after": 78.2886340182507,
+  "legal_coverage_confirmed": false
+}

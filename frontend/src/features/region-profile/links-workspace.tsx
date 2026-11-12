@@ -40,7 +40,7 @@ export function LinksWorkspace({ regionId, data, isUgra }: LinksWorkspaceProps) 
       <Card
         className={styles.aside}
         title={t("profile:meaning")}
-        media={<MiniMap rows={regions.data ?? []} selectedId={regionId} />}
+        media={<MiniMap selectedId={regionId} />}
       >
         <p>{t("profile:records")}</p>
         <p>{t("profile:isolation")}</p>

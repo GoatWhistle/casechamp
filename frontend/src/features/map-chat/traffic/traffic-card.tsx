@@ -53,7 +53,7 @@ export function TrafficCard({
   return (
     <section className={styles.card} aria-label={t("traffic:title")} data-traffic-job={job.id}>
       <div className={styles.header}>
-        <strong>{t(busy ? "traffic:working" : "traffic:title")}</strong>
+        <strong>{t(busy ? progressKey(job.stage) : "traffic:title")}</strong>
         {busy ? (
           <Button
             variant="ghost"
@@ -66,7 +66,7 @@ export function TrafficCard({
           </Button>
         ) : null}
       </div>
-      {busy ? <Meter value={null} max={1} label={t("traffic:working")} thin /> : null}
+      {busy ? <Meter value={null} max={1} label={t(progressKey(job.stage))} thin /> : null}
       {query.isError || cancel.isError ? (
         <Banner
           tone="danger"
@@ -78,7 +78,7 @@ export function TrafficCard({
           }
         />
       ) : null}
-      {job.status === "failed" ? <Banner tone="danger" title={t("traffic:failed")} /> : null}
+      {job.status === "failed" ? <Banner tone="danger" title={t(failureKey(job.error))} /> : null}
       {job.status === "completed" ? <TrafficResults job={job} /> : null}
       {job.status === "completed" && review.text ? (
         <ChatMessage speaker="assistant" text={review.text} label={t("chat:analysis.commentary")} />
@@ -90,4 +90,17 @@ export function TrafficCard({
       ) : null}
     </section>
   )
+}
+
+function failureKey(error: string) {
+  if (error === "traffic_scope_too_large") return "traffic:scopeTooLarge"
+  if (error === "traffic_assignment_not_converged") return "traffic:notConverged"
+  return "traffic:failed"
+}
+
+function progressKey(stage: string) {
+  if (stage === "loading" || stage === "baseline") return "traffic:preparing"
+  if (stage === "candidates") return "traffic:generating"
+  if (stage === "comparing" || stage === "index_comparing") return "traffic:verifying"
+  return "traffic:working"
 }

@@ -22,8 +22,11 @@ RUN --mount=from=uv,source=/uv,target=/usr/local/bin/uv \
     uv sync --locked --no-install-project --no-default-groups
 
 FROM base
-ENV PYTHONPATH=/srv/backend/src
+ENV PYTHONPATH=/srv/backend/src \
+    NUMBA_CACHE_DIR=/cache/numba
 COPY backend/src ./src
+COPY docs/results/normative-live-index-coverage.json /srv/docs/results/normative-live-index-coverage.json
+COPY etl/synthetic_traffic /srv/etl/synthetic_traffic
 RUN mkdir -p /cache/scenario-cache /cache/scenario-results && chown -R app:app /cache
 USER app
 EXPOSE 8000

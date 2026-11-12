@@ -1,0 +1,104 @@
+{
+  "date": "2026-11-12",
+  "run_id": "61737ee8f3d64ef5a1909f80f646fd99",
+  "model_revision": "normative-v7",
+  "primary_source": {
+    "url": "https://45.mchs.gov.ru/uploads/resource/2025-02-13/kontakty_17394385451444419162.pdf",
+    "sha256": "c7710fe218bf522a93bb1af8c0653316ef5c77dea6776a9d55bb5587856ac3d4",
+    "bytes": 197248,
+    "pages": 13,
+    "address_pages": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "viewed_pages": [
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "observed_at": "2026-11-12",
+    "observation_precision": "day",
+    "source_publication_date": null,
+    "url_upload_date": "2025-02-13"
+  },
+  "facility_count": 26,
+  "coordinate_candidates_unchanged": 9,
+  "unknown_coordinates": 17,
+  "source_hashes_frozen": 26,
+  "origin_count": 1235,
+  "timed_origins": 1234,
+  "all_states": "unknown",
+  "exact_post_get": true,
+  "physical_results_equal_previous_9_candidate_run": true,
+  "historical_snapshots": [
+    {
+      "run_id": "137ac70c89d44d3a991445824f22bd34",
+      "facilities": 9,
+      "document_hashes": 0,
+      "page_links": 0
+    },
+    {
+      "run_id": "68a7519ef80647448c7bedb2637619ec",
+      "facilities": 26,
+      "document_hashes": 0,
+      "page_links": 26
+    }
+  ],
+  "tests": {
+    "backend_unit": 534,
+    "backend_mypy_files": 269,
+    "etl": 51,
+    "frontend": 446,
+    "frontend_rules": 36,
+    "fire_integration_passed": 1,
+    "fire_integration_deselected": 5,
+    "fire_integration_seconds": 29.19
+  },
+  "desktop": [
+    {
+      "baseUrl": "http://127.0.0.1:8083",
+      "width": 1440,
+      "errors": [],
+      "axe": [],
+      "overflow": false,
+      "missingHouseKept": true,
+      "sourcePage": 9,
+      "documentHashVisible": true,
+      "hashBounds": {
+        "scrollWidth": 317,
+        "clientWidth": 317,
+        "insideCell": true
+      },
+      "sourceFits": true
+    },
+    {
+      "baseUrl": "http://127.0.0.1:8083",
+      "width": 1920,
+      "errors": [],
+      "axe": [],
+      "overflow": false,
+      "missingHouseKept": true,
+      "sourcePage": 9,
+      "documentHashVisible": true,
+      "hashBounds": {
+        "scrollWidth": 317,
+        "clientWidth": 317,
+        "insideCell": true
+      },
+      "sourceFits": true
+    }
+  ],
+  "limits": [
+    "The contact directory does not establish a complete currently operational fire inventory.",
+    "All production qualification fact registries remain empty.",
+    "Nine OSM coordinates are building candidates; no exit or readiness is certified.",
+    "The primary PDF publication/edition date is unknown.",
+    "Shared ClickHouse memory code241 remains an unresolved prior limitation.",
+    "Fire assessments still obtain destinations from the original settlement origin list; arbitrary verified object destinations need a dedicated input registry before full object-level use."
+  ],
+  "resolved_visual_failure": "Initial whole-page overflow checks missed clipped cell content. Grid track minimum and hash wrapping were corrected; final cell-level checks pass at both widths."
+}

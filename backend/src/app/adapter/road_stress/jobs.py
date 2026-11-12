@@ -6,6 +6,7 @@ from uuid import uuid4
 import numpy as np
 
 from app.adapter.log.stdlib import StdlibLogger
+from app.adapter.road_graph.closure_validity import stress_job_view
 from app.adapter.road_graph.freight_routes import road_matrix
 from app.adapter.road_graph.jobs import RoadJobs
 from app.adapter.road_graph.routing import minimum_csr
@@ -61,9 +62,7 @@ class StressJobs:
         if job_id not in self.jobs:
             raise InvalidQuery("Unknown stress test")
         job = self.jobs[job_id]
-        if job.status == "completed":
-            self.roads.data.attachment_audit.validate(job.way_ids)
-        return job
+        return stress_job_view(job, self.roads.data.attachment_audit)
 
     def summary(self, job_id: str, region: str = "") -> StressSummary:
         job = self.get(job_id)

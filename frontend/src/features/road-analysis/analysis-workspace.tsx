@@ -8,11 +8,17 @@ import styles from "./road-analysis.module.css"
 
 interface AnalysisWorkspaceProps {
   readonly manual: ReactNode
+  readonly onDevelop: () => void
   readonly regionId: string | null
   readonly onOverlay: (overlay: AnalysisOverlay | null) => void
 }
 
-export function AnalysisWorkspace({ manual, regionId, onOverlay }: AnalysisWorkspaceProps) {
+export function AnalysisWorkspace({
+  manual,
+  regionId,
+  onOverlay,
+  onDevelop,
+}: AnalysisWorkspaceProps) {
   const { t } = useTranslation()
   const modality = useInputModality()
   const { view, setView } = useScenarioView()
@@ -30,6 +36,7 @@ export function AnalysisWorkspace({ manual, regionId, onOverlay }: AnalysisWorks
           <AnalysisPanel
             key={`${regionId}-${analysis}`}
             regionId={regionId}
+            onDevelop={onDevelop}
             mode={analysis}
             onOverlay={onOverlay}
             onBack={() => {

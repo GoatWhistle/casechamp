@@ -11,6 +11,11 @@ class Settings:
     clickhouse_user: str = "plexus"
     clickhouse_password: str = ""
     road_workers: int = 1
+    traffic_workers: int = 32
+    traffic_geography: Path | None = None
+    normative_archive: Path = (
+        Path(__file__).resolve().parents[3] / "docs/results/normative-live-index-coverage.json"
+    )
 
 
 def load_settings(env: Mapping[str, str]) -> Settings:
@@ -21,4 +26,10 @@ def load_settings(env: Mapping[str, str]) -> Settings:
         clickhouse_user=env.get("CLICKHOUSE_USER", "plexus"),
         clickhouse_password=env.get("CLICKHOUSE_PASSWORD", ""),
         road_workers=int(env.get("ROAD_WORKERS", "1")),
+        traffic_workers=min(32, max(1, int(env.get("TRAFFIC_WORKERS", "32")))),
+        traffic_geography=Path(env["TRAFFIC_GEOGRAPHY"]) if env.get("TRAFFIC_GEOGRAPHY") else None,
+        normative_archive=Path(env["NORMATIVE_ARCHIVE"])
+        if env.get("NORMATIVE_ARCHIVE")
+        else Path(__file__).resolve().parents[3]
+        / "docs/results/normative-live-index-coverage.json",
     )
