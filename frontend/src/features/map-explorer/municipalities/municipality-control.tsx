@@ -1,6 +1,6 @@
 import type { useMunicipalities } from "@/entities/region"
-import { useFormatters, useTranslation } from "@/shared/i18n"
-import { Button, ButtonLink, HelpTip, Select, Skeleton, StatusBadge } from "@/shared/ui"
+import { useTranslation } from "@/shared/i18n"
+import { Button, Select, Skeleton } from "@/shared/ui"
 import styles from "./municipality-control.module.css"
 
 export function MunicipalityControl({
@@ -13,7 +13,6 @@ export function MunicipalityControl({
   readonly onSelect: (id: string) => void
 }) {
   const { t } = useTranslation()
-  const f = useFormatters()
   if (query.isPending) return <Skeleton lines={1} />
   if (query.isError)
     return (
@@ -21,12 +20,7 @@ export function MunicipalityControl({
         {t("map:municipalities.retry")}
       </Button>
     )
-  if (!query.data.features.length)
-    return (
-      <p className={styles.notice} role="status">
-        {t("map:municipalities.unavailable")}
-      </p>
-    )
+  if (!query.data.features.length) return null
   const current = query.data.features.find((feature) => feature.properties.id === selected)
   return (
     <div className={styles.control}>
@@ -42,26 +36,6 @@ export function MunicipalityControl({
           label: feature.properties.name,
         }))}
       />
-      <StatusBadge tone="warning" label={t("map:municipalities.partial")} />
-      <HelpTip
-        label={t("map:municipalities.help")}
-        content={t("map:municipalities.basis", {
-          date: query.data.metadata.observed_at
-            ? f.date(query.data.metadata.observed_at)
-            : t("map:municipalities.unknownDate"),
-        })}
-      />
-      {current ? (
-        <ButtonLink
-          to={current.properties.source_url}
-          reloadDocument
-          variant="ghost"
-          size="compact"
-          icon="external"
-        >
-          {t("map:municipalities.source")}
-        </ButtonLink>
-      ) : null}
       <span className="visually-hidden" role="status">
         {current ? t("map:municipalities.selected", { name: current.properties.name }) : ""}
       </span>

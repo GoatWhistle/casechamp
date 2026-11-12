@@ -1,5 +1,5 @@
 import { memo, type ReactNode } from "react"
-import { NetworkModeControl, type Season } from "@/entities/region"
+import type { Season } from "@/entities/region"
 import { useTranslation } from "@/shared/i18n"
 import { useLatched, usePresence } from "@/shared/motion"
 import { Segmented, Select } from "@/shared/ui"
@@ -97,9 +97,6 @@ export const MapToolbar = memo(function MapToolbar({
             (key) => ({ value: key, label: t(`data:seasonShort.${key}`) }),
           )}
         />
-      </ToolbarSlot>
-      <ToolbarSlot open={metric === "hansen"}>
-        <NetworkModeControl hideLabel variant="floating" />
       </ToolbarSlot>
     </div>
   )

@@ -12,7 +12,7 @@ export const MUNICIPAL_FILL = "municipality-fill"
 const SOURCE = "municipalities"
 const OUTLINE = "municipality-outline"
 const SELECTED = "municipality-selected"
-export const MUNICIPAL_MIN_ZOOM = 5
+export const MUNICIPAL_MIN_ZOOM = 0
 
 export function municipalityBounds(
   geometry: MultiPolygon,

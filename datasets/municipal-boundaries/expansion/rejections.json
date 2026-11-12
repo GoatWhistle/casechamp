@@ -1,0 +1,22 @@
+[
+  {
+    "id": "50074027B14526131115929",
+    "reason": "region_overlap_below_90_percent",
+    "fraction": 0.8721744164851832
+  },
+  {
+    "id": "50074027B76144209526439",
+    "reason": "region_overlap_below_90_percent",
+    "fraction": 0.5707072050361303
+  },
+  {
+    "id": "50074027B3022028163112",
+    "reason": "region_overlap_below_90_percent",
+    "fraction": 0
+  },
+  {
+    "id": "50074027B2401368915177",
+    "reason": "region_overlap_below_90_percent",
+    "fraction": 0
+  }
+]

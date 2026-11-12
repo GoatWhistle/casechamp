@@ -56,6 +56,10 @@ it("selects a district on polygon click while leaving road clicks to the road la
   }
   renderHook(() => useMunicipalityLayer({ current: map as unknown as LibreMap }, layer, true))
   act(() => click?.({ point: [0, 0], features: [{ properties: { id: "osm-relation-1" } }] }))
+  expect(map.addLayer).toHaveBeenCalledWith(
+    expect.objectContaining({ id: MUNICIPAL_FILL, minzoom: 0 }),
+    expect.anything(),
+  )
   expect(onSelect).toHaveBeenCalledWith("osm-relation-1")
   onSelect.mockClear()
   map.queryRenderedFeatures.mockReturnValue([{ layer: { id: "road-graph-lines" } }])
