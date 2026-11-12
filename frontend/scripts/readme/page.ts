@@ -10,6 +10,9 @@ export interface ReadmeTheme {
   readonly accent: string
   readonly onAccent: string
   readonly warning: string
+  readonly ramp: readonly string[]
+  readonly mapNone: string
+  readonly mapBorder: string
 }
 
 export interface PageInput {
@@ -17,35 +20,34 @@ export interface PageInput {
   readonly fonts: string
   readonly family: string
   readonly wordmark: string
+  readonly map: string
 }
 
 const ICONS: Readonly<Record<ButtonSpec["icon"], string>> = {
   terminal: '<polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/>',
   "book-open":
     '<path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/>',
+  route:
+    '<circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>',
 }
 
-function escapeHtml(text: string): string {
+export function escapeHtml(text: string): string {
   return text.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
 }
 
-function shell(input: PageInput, body: string): string {
+export function shell(input: PageInput, body: string, extra = ""): string {
   const t = input.theme
   return `<!doctype html><html><head><meta charset="utf-8"><style>
 ${input.fonts}
 * { box-sizing: border-box; margin: 0; }
-body { font-family: ${input.family}; color: ${t.text}; background: transparent; padding: 8px; }
+body { font-family: ${input.family}; color: ${t.text}; background: transparent; padding: 8px; -webkit-font-smoothing: antialiased; }
 #asset { display: inline-flex; }
-.banner { flex-direction: column; align-items: center; gap: 18px; width: 880px; padding: 28px 0 24px; text-align: center; }
-.banner svg { height: 132px; width: auto; overflow: visible; }
-.promise { font-size: 28px; font-weight: 650; letter-spacing: -0.02em; line-height: 1.2; max-width: 720px; text-wrap: balance; }
-.note { font-size: 16px; color: ${t.muted}; }
-.footer svg { height: 44px; width: auto; overflow: visible; }
+.footer svg { height: 56px; width: auto; overflow: visible; }
 .button { align-items: center; gap: 10px; height: 44px; padding: 0 20px; border-radius: 6px; font-size: 15px; font-weight: 600; white-space: nowrap; }
 .button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .primary { background: ${t.accent}; color: ${t.onAccent}; }
 .secondary { box-shadow: inset 0 0 0 1px ${t.border}; color: ${t.text}; }
-.badge { height: 28px; border-radius: 4px; overflow: hidden; border: 1px solid ${t.border}; font-size: 13px; font-weight: 500; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.badge { height: 28px; border-radius: 6px; overflow: hidden; border: 1px solid ${t.border}; font-size: 13px; font-weight: 500; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .badge span { display: inline-flex; align-items: center; padding: 0 10px; }
 .part-label { background: ${t.labelSurface}; color: ${t.label}; }
 .part-value { background: ${t.valueSurface}; color: ${t.text}; font-weight: 600; }
@@ -53,14 +55,8 @@ body { font-family: ${input.family}; color: ${t.text}; background: transparent; 
 .accent .part-value { background: ${t.accent}; color: ${t.onAccent}; }
 .warning .part-value { color: ${t.warning}; }
 .solo .part-value { font-weight: 500; }
+${extra}
 </style></head><body>${body}</body></html>`
-}
-
-export function bannerPage(input: PageInput, promise: string, note: string): string {
-  return shell(
-    input,
-    `<div id="asset" class="banner">${input.wordmark}<p class="promise">${escapeHtml(promise)}</p><p class="note">${escapeHtml(note)}</p></div>`,
-  )
 }
 
 export function footerPage(input: PageInput): string {
