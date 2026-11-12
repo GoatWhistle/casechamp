@@ -2,8 +2,8 @@
 
 ## New network search, 2026-11-12
 
-Current: imported normative code/datasets from bd32de3 and UI/brand updates bcc7301, preserved adaptive traffic search. Local normative catalogs loaded; archived scenario aggregates exposed honestly (754 numeric/756 rows). Checks/evidence/limits: work/normative-integration/README.md. Map mask and real municipal selection implemented (511 polygons/20regions, partialcoverage). Backend894/frontend549 tests pass. Preparing authorized main publication; API8007 PID67492/UI5187.
-Branch feat/transport-scenarios-update, HEAD5daf6815eac9105d5b4b74e7013a5a49a5faf2e3; uncommitted changes preserved.
+Current: imported normative code/datasets from bd32de3 and UI/brand updates bcc7301, preserved adaptive traffic search. Local normative catalogs loaded; archived scenario aggregates exposed honestly (754 numeric/756 rows). Checks/evidence/limits: work/normative-integration/README.md. Map mask and real municipal selection implemented (511 polygons/20regions, partialcoverage). Backend894/frontend549 tests pass. Integrated into main; publication pending; API8007 PID67492/UI5187.
+Branch main, source HEAD0a571bf81cdfedacceca5e000b31602d95ffd26b; local raw pilot dumps and runtime logs preserved.
 [Implementation, checks, no-speed pilot and performance limits](../work/network-development/README.md).
 Protected user instructions exceed SESSION target and remain verbatim.
 
