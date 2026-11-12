@@ -10,6 +10,8 @@ export interface ThemePalette {
   readonly raised: string
   readonly muted: string
   readonly line: string
+  readonly wave: string
+  readonly waveFar: string
 }
 
 export type BrandPalette = Readonly<Record<ThemeName, ThemePalette>>
@@ -29,6 +31,8 @@ const PALETTE_TOKENS: Readonly<Record<keyof ThemePalette, string>> = {
   raised: "--surface-raised",
   muted: "--text-secondary",
   line: "--border-subtle",
+  wave: "--iso-2",
+  waveFar: "--blue-500",
 }
 
 export function readMark(repoRoot: string): Mark {
@@ -59,7 +63,7 @@ export function readPalette(frontendRoot: string): BrandPalette {
 }
 
 function markStyle(colors: ThemePalette): string {
-  return `.mark-base{fill:${colors.base}}.mark-accent{fill:${colors.accent}}`
+  return `.mark-base{fill:${colors.base}}.mark-accent{fill:${colors.accent}}.mark-surface{fill:${colors.surface}}.mark-ring-1{fill:${colors.wave}}.mark-ring-2{fill:${colors.waveFar}}`
 }
 
 export function faviconSvg(mark: Mark, palette: BrandPalette): string {

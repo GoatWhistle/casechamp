@@ -4,9 +4,11 @@ import { fileURLToPath } from "node:url"
 import { chromium, type Page } from "@playwright/test"
 import { ICO_SIZES, type Locale, MANIFEST, META_LOCALE, ogFile, RASTERS } from "./brand/assets.ts"
 import { buildIco, type PngImage } from "./brand/binary.ts"
+import { type CardArt, socialCardHtml } from "./brand/card.ts"
 import { embeddedFontFaces, sansFamily } from "./brand/fonts.ts"
 import { faviconSvg, paintedMark, readMark, readPalette } from "./brand/marks.ts"
-import { cardHtml, rasterHtml, tileHtml } from "./brand/pages.ts"
+import { rasterHtml, tileHtml } from "./brand/pages.ts"
+import { readTokenSources, themeColor } from "./tokenSources.ts"
 
 interface CommonWords {
   readonly app: { readonly name: string; readonly tagline: string }
@@ -42,11 +44,25 @@ const site = process.env.SITE_URL?.replace(/^https?:\/\//, "").replace(/\/$/, ""
 
 write("favicon.svg", faviconSvg(mark, palette))
 
+const tokenSources = readTokenSources(frontendRoot)
+const token = (name: string): string => {
+  const color = themeColor(tokenSources, "light", name)
+  if (color === null) throw new Error(`token ${name} has no light value`)
+  return color
+}
+const art: CardArt = {
+  wordmark: readFileSync(join(repoRoot, "docs", "brand", "wordmark-light.svg"), "utf8"),
+  map: readFileSync(join(repoRoot, "docs", "brand", "russia-hansen.svg"), "utf8"),
+  ramp: Array.from({ length: 7 }, (_, index) => token(`--data-seq-${index + 1}`)),
+  none: token("--map-none"),
+  border: token("--map-border"),
+}
+
 const browser = await chromium.launch()
 const page = await browser.newPage({ deviceScaleFactor: 1 })
 const ico: PngImage[] = []
 for (const size of ICO_SIZES)
-  ico.push({ size, data: await shoot(page, tileHtml(light, size, palette.light, true, 0.78)) })
+  ico.push({ size, data: await shoot(page, tileHtml(light, size, palette.light, false, 1)) })
 write("favicon.ico", buildIco(ico))
 for (const asset of RASTERS)
   write(asset.file, await shoot(page, rasterHtml(light, asset, palette.light)))
@@ -60,7 +76,7 @@ for (const locale of LOCALES) {
     description: text.meta.description,
     site: site || text.app.name,
   }
-  write(ogFile(locale), await shoot(page, cardHtml(light, card, palette.light, fonts, family)))
+  write(ogFile(locale), await shoot(page, socialCardHtml(art, card, palette.light, fonts, family)))
 }
 await browser.close()
 
