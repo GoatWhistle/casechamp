@@ -1,5 +1,4 @@
 import { type ReactNode, useId, useState } from "react"
-import { useSearchParams } from "react-router"
 import { type ChatContext, chatSessionTitle } from "@/entities/chat"
 import { useRegion } from "@/entities/region"
 import type { CalculationHandler } from "@/shared/api/chat-calculation"
@@ -37,14 +36,12 @@ export interface MapChatProps {
 export function MapChat({
   context,
   summary,
-  scenario,
   onMapCommand,
   onCalculation,
   onSessionChange,
 }: MapChatProps) {
   const { t } = useTranslation()
-  const [searchParams] = useSearchParams()
-  const [tab, setTab] = useState<"chat" | "summary" | "scenario">(initialTab(searchParams))
+  const [tab, setTab] = useState<"chat" | "summary">("chat")
   const chat = useMapChat(context, onMapCommand)
   const region = useRegion(context.region_id ?? "", context.season ?? "summer")
   const regionName = regionLabel(context.region_id, region.data, t)
@@ -75,26 +72,12 @@ export function MapChat({
           controls={{
             chat: `${titleId}chat`,
             summary: `${titleId}summary`,
-            scenario: `${titleId}scenario`,
           }}
           items={[
             { value: "chat", label: t("chat:tab"), icon: "chat" },
             { value: "summary", label: t("chat:summary"), icon: "overview" },
-            { value: "scenario", label: t("graph:tab"), icon: "whatif" },
           ]}
         />
-      </div>
-      <div
-        id={`${titleId}scenario`}
-        role="tabpanel"
-        aria-label={t("graph:tab")}
-        className={styles.summary}
-        data-hidden={tab !== "scenario" || undefined}
-      >
-        {renderScenarioPanel(scenario, (prompt) => {
-          setTab("chat")
-          send(prompt)
-        })}
       </div>
       <div
         id={`${titleId}summary`}
@@ -222,10 +205,6 @@ function regionLabel(
   return data?.id === id ? data.name : t("common:state.loading")
 }
 
-function initialTab(params: URLSearchParams): "chat" | "scenario" {
-  return params.has("analysis") || params.get("panel") === "scenario" ? "scenario" : "chat"
-}
-
 function hasResults(row: ChatEntry | undefined) {
   return [
     row?.calculations,
@@ -238,8 +217,4 @@ function hasResults(row: ChatEntry | undefined) {
 
 function showChatStatus(tail: ChatEntry | undefined, busy: boolean, failed: boolean) {
   return Boolean(tail) && !failed && (busy || !hasResults(tail))
-}
-
-function renderScenarioPanel(scenario: MapChatProps["scenario"], onAsk: (prompt: string) => void) {
-  return typeof scenario === "function" ? scenario(onAsk) : scenario
 }
