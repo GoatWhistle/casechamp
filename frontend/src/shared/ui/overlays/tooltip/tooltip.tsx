@@ -34,6 +34,17 @@ export interface TooltipProps {
 }
 
 const warmth = { hiddenAt: Number.NEGATIVE_INFINITY, visible: 0 }
+const input = { touch: false, tracked: false }
+
+function trackInput() {
+  if (input.tracked) return
+  input.tracked = true
+  const onPointer = (event: globalThis.PointerEvent) => {
+    input.touch = event.pointerType !== "mouse"
+  }
+  document.addEventListener("pointerdown", onPointer, true)
+  document.addEventListener("keydown", () => (input.touch = false), true)
+}
 
 function isWarm(): boolean {
   return (
@@ -101,6 +112,7 @@ export function Tooltip({ content, side = "top", describe = true, children }: To
   const anchorRef = useRef<HTMLElement | null>(null)
   const bubbleRef = useRef<HTMLSpanElement | null>(null)
   const { open, instant, show, hide } = useTooltipState()
+  useEffect(trackInput, [])
   const presence = usePresence(open)
   const position = useAnchoredPosition(anchorRef, bubbleRef, {
     active: presence.mounted,
@@ -129,7 +141,7 @@ export function Tooltip({ content, side = "top", describe = true, children }: To
     },
     onFocus: (event: FocusEvent<HTMLElement>) => {
       own.onFocus?.(event)
-      show()
+      if (!input.touch) show()
     },
     onBlur: (event: FocusEvent<HTMLElement>) => {
       own.onBlur?.(event)
