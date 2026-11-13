@@ -75,7 +75,12 @@ def main() -> None:
         name = table["table"].replace("plexus_", args.database_prefix, 1)
         database = name.split(".")[0]
         client.request(f"CREATE DATABASE IF NOT EXISTS {database}")
-        client.request(table["schema"].replace(table["table"], name, 1))
+        schema = re.sub(
+            r"\bplexus_([A-Za-z0-9_]+)\.",
+            lambda match: args.database_prefix + match.group(1) + ".",
+            table["schema"],
+        )
+        client.request(schema)
         path = args.directory / table["asset"]
         if table["rows"] and not table["schema"].startswith("CREATE VIEW"):
             insert_native(client, name, path)

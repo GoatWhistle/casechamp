@@ -21,9 +21,13 @@ CHUNK_BYTES = 1024**2
 TABLE_NAME = re.compile(r"[A-Za-z_][A-Za-z0-9_]*\.[A-Za-z_][A-Za-z0-9_]*")
 
 
-def check_space(directory: Path) -> None:
-    if shutil.disk_usage(directory).free < MIN_FREE_BYTES:
-        raise RuntimeError("Snapshot export requires at least 15 GiB free space")
+def check_space(directory: Path, min_free_bytes: int = MIN_FREE_BYTES) -> None:
+    if min_free_bytes < 1024**3:
+        raise ValueError("Free-space reserve must be at least 1 GiB")
+    if shutil.disk_usage(directory).free < min_free_bytes:
+        raise RuntimeError(
+            f"Snapshot export requires at least {min_free_bytes / 1024**3:g} GiB free space"
+        )
 
 
 def digest(path: Path) -> str:
@@ -56,7 +60,9 @@ def write_manifest(directory: Path, manifest: dict) -> None:
     temporary.replace(directory / "manifest.json")
 
 
-def stream_native(client: ClickHouse, table: str, path: Path) -> None:
+def stream_native(
+    client: ClickHouse, table: str, path: Path, min_free_bytes: int = MIN_FREE_BYTES
+) -> None:
     connection_type = (
         http.client.HTTPSConnection
         if client.url.scheme == "https"
@@ -96,7 +102,7 @@ def stream_native(client: ClickHouse, table: str, path: Path) -> None:
                 filename="", mode="wb", compresslevel=3, fileobj=raw, mtime=0
             ) as compressed:
                 while chunk := response.read(CHUNK_BYTES):
-                    check_space(path.parent)
+                    check_space(path.parent, min_free_bytes)
                     window = tail + chunk
                     tagged = marker is not None and marker in window
                     legacy = re.search(
@@ -131,12 +137,17 @@ def verify_saved(directory: Path, entry: dict, rows: int, schema: str) -> None:
         raise RuntimeError(f"Snapshot asset failed integrity verification: {asset}")
 
 
-def export_snapshot(client: ClickHouse, directory: Path, tables: list[str]) -> dict:
+def export_snapshot(
+    client: ClickHouse,
+    directory: Path,
+    tables: list[str],
+    min_free_bytes: int = MIN_FREE_BYTES,
+) -> dict:
     tables = list(dict.fromkeys(tables))
     if not tables or any(TABLE_NAME.fullmatch(table) is None for table in tables):
         raise ValueError("Specify valid database.table names")
     directory.mkdir(parents=True, exist_ok=True)
-    check_space(directory)
+    check_space(directory, min_free_bytes)
     manifest_path = directory / "manifest.json"
     manifest = (
         json.loads(manifest_path.read_text())
@@ -150,7 +161,7 @@ def export_snapshot(client: ClickHouse, directory: Path, tables: list[str]) -> d
     )
     entries = {entry["table"]: entry for entry in manifest["tables"]}
     for table in tables:
-        check_space(directory)
+        check_space(directory, min_free_bytes)
         rows, schema = table_info(client, table)
         if table in entries:
             verify_saved(directory, entries[table], rows, schema)
@@ -160,7 +171,7 @@ def export_snapshot(client: ClickHouse, directory: Path, tables: list[str]) -> d
         final = directory / asset
         temporary = directory / (asset + ".part")
         try:
-            stream_native(client, table, temporary)
+            stream_native(client, table, temporary, min_free_bytes)
             if table_info(client, table) != (rows, schema):
                 raise RuntimeError(f"Source changed while exporting {table}")
             entry = {
@@ -172,7 +183,7 @@ def export_snapshot(client: ClickHouse, directory: Path, tables: list[str]) -> d
                 "schema": schema,
                 "staging": "__loading" in table or table.endswith("_staging"),
             }
-            check_space(directory)
+            check_space(directory, min_free_bytes)
             temporary.replace(final)
             manifest["tables"].append(entry)
             write_manifest(directory, manifest)
@@ -187,9 +198,10 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("directory", type=Path)
     parser.add_argument("--tables", nargs="+", default=DEFAULT_TABLES)
+    parser.add_argument("--min-free-gib", type=int, default=15)
     args = parser.parse_args()
     tables = [table for item in args.tables for table in item.split(",") if table]
-    export_snapshot(ClickHouse(), args.directory, tables)
+    export_snapshot(ClickHouse(), args.directory, tables, args.min_free_gib * 1024**3)
 
 
 if __name__ == "__main__":
