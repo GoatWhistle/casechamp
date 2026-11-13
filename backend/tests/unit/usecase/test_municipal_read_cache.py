@@ -1,5 +1,7 @@
 import json
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+from threading import Event
 from unittest.mock import Mock
 
 import pytest
@@ -42,3 +44,24 @@ def test_corrupt_cache_is_recomputed(tmp_path: Path) -> None:
     next(tmp_path.glob('*.json')).write_text('broken')
     assert cache.read('roads', {}, compute) == '{"ok":true}'
     assert compute.call_count == 2
+
+
+def test_saved_municipality_does_not_wait_for_another_cold_calculation(tmp_path: Path) -> None:
+    cache = MunicipalReadCache(FileMunicipalReadCache(tmp_path), lambda: 'one')
+    cache.read('baseline', {'municipality': 'warm'}, lambda: '{"ready":true}')
+    started, release = Event(), Event()
+
+    def calculate() -> str:
+        started.set()
+        assert release.wait(5)
+        return '{"cold":true}'
+
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        cold = pool.submit(cache.read, 'baseline', {'municipality': 'cold'}, calculate)
+        assert started.wait(2)
+        warm = pool.submit(cache.read, 'baseline', {'municipality': 'warm'}, Mock())
+        try:
+            assert warm.result(timeout=.5) == '{"ready":true}'
+        finally:
+            release.set()
+        cold.result(timeout=2)

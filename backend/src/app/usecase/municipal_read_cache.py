@@ -16,10 +16,13 @@ class MunicipalReadCache:
         self.lock = Lock()
 
     def read(self, action: str, parameters: dict[str, object], calculate: Callable[[], str]) -> str:
+        revision = self.revision()
+        key = sha256(json.dumps({'format': 'municipal_agent_reads_v1', 'revision': revision,
+                                'action': action, 'parameters': parameters}, sort_keys=True).encode()).hexdigest()
+        cached = self.store.get(key)
+        if cached is not None:
+            return cached
         with self.lock:
-            revision = self.revision()
-            key = sha256(json.dumps({'format': 'municipal_agent_reads_v1', 'revision': revision,
-                                    'action': action, 'parameters': parameters}, sort_keys=True).encode()).hexdigest()
             cached = self.store.get(key)
             if cached is not None:
                 return cached
