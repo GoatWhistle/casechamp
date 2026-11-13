@@ -1,5 +1,5 @@
 import { useTranslation } from "@/shared/i18n"
-import { Button } from "@/shared/ui"
+import { Button, ScrollArea } from "@/shared/ui"
 import styles from "./quick-prompts.module.css"
 
 const PROMPTS = ["kochubey", "neftekumsk", "severny"] as const
@@ -13,7 +13,7 @@ export function QuickPrompts({
 }) {
   const { t } = useTranslation()
   return (
-    <section className={styles.prompts} aria-label={t("chat:quick.title")}>
+    <ScrollArea orientation="horizontal" className={styles.prompts} label={t("chat:quick.title")}>
       {PROMPTS.map((key) => (
         <Button
           key={key}
@@ -27,6 +27,6 @@ export function QuickPrompts({
           {t(`chat:quick.${key}.label`)}
         </Button>
       ))}
-    </section>
+    </ScrollArea>
   )
 }

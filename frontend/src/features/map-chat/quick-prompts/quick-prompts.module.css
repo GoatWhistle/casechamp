@@ -2,4 +2,19 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-8);
+  margin-block: calc(var(--space-4) * -1);
+  padding-block: var(--space-4);
+}
+
+@media (width < 64rem) {
+  .prompts {
+    flex-wrap: nowrap;
+    margin-inline: calc(var(--space-16) * -1);
+    padding-inline: var(--space-16);
+  }
+
+  .prompts > [data-wrap] {
+    flex: none;
+    white-space: nowrap;
+  }
 }
