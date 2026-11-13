@@ -1,0 +1,26 @@
+{
+  "errors": [],
+  "results": [
+    {
+      "answers": 1,
+      "old": false,
+      "municipality": "osm-relation-1030124",
+      "remote": 5,
+      "total": 11
+    },
+    {
+      "answers": 1,
+      "old": false,
+      "municipality": "osm-relation-1030124",
+      "remote": 5,
+      "total": 11
+    },
+    {
+      "answers": 1,
+      "old": false,
+      "municipality": "osm-relation-1030124",
+      "remote": 5,
+      "total": 11
+    }
+  ]
+}

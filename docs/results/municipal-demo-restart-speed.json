@@ -1,0 +1,130 @@
+[
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030066",
+    "kind": "indices",
+    "run": 0,
+    "seconds": 0.23758204199839383,
+    "bytes": 2662
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030066",
+    "kind": "indices",
+    "run": 1,
+    "seconds": 0.05067237501498312,
+    "bytes": 2662
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030066",
+    "kind": "load",
+    "run": 0,
+    "seconds": 0.24629566608928144,
+    "bytes": 127140
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030066",
+    "kind": "load",
+    "run": 1,
+    "seconds": 0.09665445797145367,
+    "bytes": 127140
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030066",
+    "kind": "graph",
+    "run": 0,
+    "seconds": 0.5827684589894488,
+    "bytes": 353639
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030066",
+    "kind": "graph",
+    "run": 1,
+    "seconds": 0.19730645907111466,
+    "bytes": 353639
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030137",
+    "kind": "indices",
+    "run": 0,
+    "seconds": 0.06060316599905491,
+    "bytes": 2620
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030137",
+    "kind": "indices",
+    "run": 1,
+    "seconds": 0.05928016593679786,
+    "bytes": 2620
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030137",
+    "kind": "load",
+    "run": 0,
+    "seconds": 0.08993437502067536,
+    "bytes": 93461
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030137",
+    "kind": "load",
+    "run": 1,
+    "seconds": 0.08900037501007318,
+    "bytes": 93461
+  },
+  {
+    "region": "50000000",
+    "municipality": "geoboundaries-2017-50074027B3453987182776",
+    "kind": "indices",
+    "run": 0,
+    "seconds": 0.05192750005517155,
+    "bytes": 1884
+  },
+  {
+    "region": "50000000",
+    "municipality": "geoboundaries-2017-50074027B3453987182776",
+    "kind": "indices",
+    "run": 1,
+    "seconds": 0.056425707996822894,
+    "bytes": 1884
+  },
+  {
+    "region": "50000000",
+    "municipality": "geoboundaries-2017-50074027B3453987182776",
+    "kind": "load",
+    "run": 0,
+    "seconds": 0.0984734590165317,
+    "bytes": 56069
+  },
+  {
+    "region": "50000000",
+    "municipality": "geoboundaries-2017-50074027B3453987182776",
+    "kind": "load",
+    "run": 1,
+    "seconds": 0.08863637503236532,
+    "bytes": 56069
+  },
+  {
+    "region": "50000000",
+    "municipality": "geoboundaries-2017-50074027B3453987182776",
+    "kind": "graph",
+    "run": 0,
+    "seconds": 0.2391872089356184,
+    "bytes": 25456
+  },
+  {
+    "region": "50000000",
+    "municipality": "geoboundaries-2017-50074027B3453987182776",
+    "kind": "graph",
+    "run": 1,
+    "seconds": 0.07655966700986028,
+    "bytes": 25456
+  }
+]

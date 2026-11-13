@@ -86,6 +86,8 @@ class MunicipalScenarioJobs:
         path = self.directory / request.baseline_id
         if not (path / "sha256").is_file():
             raise DataUnavailable("A converged published baseline is required")
+        if (path / "state.json").is_file() and json.loads((path / "state.json").read_text()).get("preview"):
+            raise DataUnavailable("Preliminary load is display-only; scenario routing baseline is not ready")
         if self.baselines is not None:
             published = self.baseline(request.region_id, request.municipality_id)
             if published.baseline_id != request.baseline_id:

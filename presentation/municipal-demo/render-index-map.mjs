@@ -1,0 +1,2 @@
+import {chromium} from '../../frontend/node_modules/@playwright/test/index.mjs';
+const b=await chromium.launch();const p=await b.newPage({viewport:{width:1920,height:1080},deviceScaleFactor:3});await p.goto('file:///tmp/plexus-before-perf.html?static#3');await p.waitForSelector('html[data-ready="true"]',{timeout:90000});const el=p.locator('.method [data-part="map"]');console.log(await el.boundingBox());await el.screenshot({path:new URL('./index-map.png',import.meta.url).pathname});await b.close();

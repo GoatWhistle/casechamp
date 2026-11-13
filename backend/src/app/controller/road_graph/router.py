@@ -1,9 +1,10 @@
 from typing import Annotated, Literal
 
 from fastapi import APIRouter, Query
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, TypeAdapter
 
 from app.domain.appraisal_inputs import ProjectAssumptions
+from app.usecase.municipal_read_cache import MunicipalReadCache
 from app.usecase.road_graph import (
     GraphLocation,
     RoadChange,
@@ -38,7 +39,7 @@ class RoadScenarioInput(BaseModel):
     appraisal: ProjectAssumptions | None = None
 
 
-def build_road_graph_router(graph: RoadGraph) -> APIRouter:
+def build_road_graph_router(graph: RoadGraph, cache: MunicipalReadCache | None = None) -> APIRouter:
     router = APIRouter(tags=["road-graph"])
 
     @router.get("/road-graph/markets", response_model=list[str])
@@ -58,7 +59,13 @@ def build_road_graph_router(graph: RoadGraph) -> APIRouter:
         zoom: float = 8,
         region_id: str | None = None,
     ) -> RoadView:
-        return graph.view(west, south, east, north, zoom, region_id)
+        if cache is None:
+            return graph.view(west, south, east, north, zoom, region_id)
+        codec = TypeAdapter(RoadView)
+        value = cache.read("road_view", {"bounds": [west, south, east, north], "zoom": zoom,
+                                      "region": region_id},
+                           lambda: codec.dump_json(graph.view(west, south, east, north, zoom, region_id)).decode())
+        return codec.validate_json(value)
 
     @router.get("/transport-links", response_model=list[TransportLink])
     def transport_links(

@@ -1,0 +1,30 @@
+[
+  {
+    "region": "07000000",
+    "run": 0,
+    "seconds": 1.987753790919669,
+    "bytes": 353639,
+    "path": "/api/v1/road-graph?west=41.4270929&south=44.3302519&east=42.3341776&north=44.986253&zoom=9&region_id=07000000"
+  },
+  {
+    "region": "07000000",
+    "run": 1,
+    "seconds": 0.5636905829887837,
+    "bytes": 353639,
+    "path": "/api/v1/road-graph?west=41.4270929&south=44.3302519&east=42.3341776&north=44.986253&zoom=9&region_id=07000000"
+  },
+  {
+    "region": "50000000",
+    "run": 0,
+    "seconds": 0.2200802080333233,
+    "bytes": 25456,
+    "path": "/api/v1/road-graph?west=77.2802372&south=55.7318402&east=80.543963&north=57.1173424&zoom=9&region_id=50000000"
+  },
+  {
+    "region": "50000000",
+    "run": 1,
+    "seconds": 0.18571229197550565,
+    "bytes": 25456,
+    "path": "/api/v1/road-graph?west=77.2802372&south=55.7318402&east=80.543963&north=57.1173424&zoom=9&region_id=50000000"
+  }
+]

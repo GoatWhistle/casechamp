@@ -1,11 +1,14 @@
 from pathlib import Path
 
 from app.repository.clickhouse.client import ClickHouseReader
+from app.repository.clickhouse.municipal_cache_revision import MunicipalCacheRevision
 from app.repository.clickhouse.municipal_published import ClickHouseMunicipalPublished
 from app.repository.clickhouse.regional_measurements import ClickHouseRegionalMeasurementRepository
 from app.repository.clickhouse.regional_view import ClickHouseRegionalViewRepository
 from app.repository.files.municipal_dataset import JsonMunicipalDataset
+from app.repository.files.municipal_read_cache import FileMunicipalReadCache
 from app.usecase.municipal_access import MunicipalAccessQueries
+from app.usecase.municipal_read_cache import MunicipalReadCache
 from app.usecase.municipal_services import MunicipalServiceQueries
 from app.usecase.municipalities import MunicipalityQueries
 from app.usecase.normative.interface import NormativeRouting
@@ -45,3 +48,8 @@ def build_municipal_access(
         municipalities, published.snapshot,
         ClickHouseRegionalViewRepository(reader).selected_facilities,
     )
+
+
+def build_municipal_read_cache(reader: ClickHouseReader, dataset: Path, graph: Path) -> MunicipalReadCache:
+    return MunicipalReadCache(FileMunicipalReadCache(graph.parent / "municipal-agent-cache"),
+        MunicipalCacheRevision(reader, dataset, graph.parent / "municipal-traffic-baselines"))

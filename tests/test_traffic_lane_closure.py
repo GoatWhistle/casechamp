@@ -44,3 +44,11 @@ def test_lane_closure_rejects_ambiguous_or_foreign_edges(project):
 def test_shared_lane_cannot_be_closed_in_one_direction():
     with pytest.raises(ValueError, match='shared lane'):
         apply_project(network(shared=0), {'kind': 'lane_closure', 'way_ids': [10], 'edge_indices': [0]})
+
+
+def test_lane_addition_changes_only_selected_direction_and_preserves_baseline():
+    before = network()
+    after = apply_project(before, {'kind': 'capacity', 'way_ids': [10], 'edge_indices': [1], 'extra_lanes': 1})
+    np.testing.assert_array_equal(after.capacity, [3600, 5400, 1800])
+    np.testing.assert_array_equal(before.capacity, [3600, 3600, 1800])
+    np.testing.assert_array_equal(after.free_hours, before.free_hours)

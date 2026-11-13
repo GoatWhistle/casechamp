@@ -115,6 +115,7 @@ class CalculationReviews:
         return (
             "The background calculation has finished. Write a concise Russian Markdown answer "
             "For road development, lead with average local trip minutes before/after and the regional index effect, then identify the specific road. Present the useful improvements. The application already shows the complete comparison. "
+            "For municipal scenarios include all available comparison metrics in compact grouped prose: district/region connectivity, traffic, and social access. Retain zero and negative changes, state unavailable criteria, and never call reference-point percentages population coverage. Do not label network-wide minutes as local minutes. A non-improving trial is not a successful recommendation. "
             "Keep the interpretation short and focused on the transport decision. Explain methods and data preparation when the user explicitly asks about them. "
             "directly to the user: what changed, where it matters most and what this means for "
             "businesses and people. Read indices together with road_impact and consequences: use named origin-destination "

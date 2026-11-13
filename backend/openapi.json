@@ -10066,6 +10066,28 @@
           },
           "view": {
             "$ref": "#/components/schemas/TrafficJob"
+          },
+          "demand_zones": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Demand Zones"
+          },
+          "demand_cell_km": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Demand Cell Km"
           }
         },
         "type": "object",

@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-13",
+  "scope": "real_tools_without_llm",
+  "byte_identical": true,
+  "records": [
+    {
+      "run": 0,
+      "cache_reopened": false,
+      "municipality": "Нефтекумский муниципальный округ",
+      "diagnosis_seconds": 1.0614174170186743,
+      "roads_seconds": 35.39143962506205,
+      "indices_seconds": 3.678020666935481,
+      "total_seconds": 40.130877709016204
+    },
+    {
+      "run": 1,
+      "cache_reopened": false,
+      "municipality": "Нефтекумский муниципальный округ",
+      "diagnosis_seconds": 0.043528957990929484,
+      "roads_seconds": 0.04327154206112027,
+      "indices_seconds": 0.04316195903811604,
+      "total_seconds": 0.1299624590901658
+    },
+    {
+      "run": 2,
+      "cache_reopened": true,
+      "municipality": "Нефтекумский муниципальный округ",
+      "diagnosis_seconds": 0.04363333294168115,
+      "roads_seconds": 0.04457120900042355,
+      "indices_seconds": 0.044901125016622245,
+      "total_seconds": 0.13310566695872694
+    }
+  ]
+}

@@ -1,9 +1,10 @@
 from synthetic_traffic.incremental import IncrementalBaseline
+from synthetic_traffic.load_preview import LoadPreview
 
 from app.usecase.traffic import TrafficRoad
 
 
-def baseline_roads(baseline: IncrementalBaseline, selected: list[int]) -> list[TrafficRoad]:
+def baseline_roads(baseline: IncrementalBaseline | LoadPreview, selected: list[int]) -> list[TrafficRoad]:
     graph, assignment = baseline.network, baseline.assignment
     lookup = {(int(graph.source[i]), int(graph.target[i]), int(graph.way_id[i])): i for i in selected}
     visible = sorted(selected, key=lambda edge: -assignment.ratio[edge])[:800]

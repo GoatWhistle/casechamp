@@ -235,9 +235,10 @@ class AnalysisJobs:
                 replace(self.jobs[analysis_id], status="failed", error=code, current_way_id=None)
             )
         finally:
-            self.checkpoint(
-                replace(self.jobs[analysis_id], elapsed_seconds=elapsed + monotonic() - started)
-            )
+            with self.lock:
+                self.checkpoint(
+                    replace(self.jobs[analysis_id], elapsed_seconds=elapsed + monotonic() - started)
+                )
 
     def close(self) -> None:
         for stop in self.stops.values():

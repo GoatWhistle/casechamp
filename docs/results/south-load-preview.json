@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-13",
+  "records": [
+    {
+      "region": "07000000",
+      "municipality": "Нефтекумский муниципальный округ",
+      "baseline_id": "south-preview-v1",
+      "gap": 0.014946341705042573,
+      "converged": false,
+      "roads": 800,
+      "corridors": 1221,
+      "flow_visible": 64947.8608511059
+    },
+    {
+      "region": "03000000",
+      "municipality": "Ейский район",
+      "baseline_id": "south-preview-v1",
+      "gap": 0.014946341705042573,
+      "converged": false,
+      "roads": 800,
+      "corridors": 2867,
+      "flow_visible": 272963.6289553819
+    }
+  ],
+  "scenario_routing_ready": false
+}

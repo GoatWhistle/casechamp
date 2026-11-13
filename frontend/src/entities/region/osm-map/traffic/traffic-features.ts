@@ -5,7 +5,6 @@ export function trafficFeatures(
   job: TrafficJob | null,
   variant: string,
   mode: TrafficMode,
-  picked: TrafficRoad | null = null,
 ): FeatureCollection<Geometry> {
   const features: FeatureCollection<Geometry>["features"] = []
   if (job?.status !== "completed") return { type: "FeatureCollection", features }
@@ -14,9 +13,8 @@ export function trafficFeatures(
     return { type: "FeatureCollection", features }
   const roads = selected?.roads ?? job.roads
   for (const [index, road] of roads.entries()) {
-    const chosen = picked?.edge_index != null && road.edge_index === picked.edge_index
     const feature = roadFeature(
-      chosen ? { ...road, project: true } : road,
+      road,
       index,
       mode,
       selected?.kind === "closure" || road.closed === true,

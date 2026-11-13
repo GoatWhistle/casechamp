@@ -27,11 +27,9 @@ import { useHoverRows } from "./use-hover-rows"
 import { useMapData, useSelectedTransit } from "./use-map-data"
 import { useMapHover } from "./use-map-hover"
 import { useNormativeOverlay } from "./use-normative-overlay"
-
 export interface MapExplorerProps {
   readonly renderPanel: (slot: MapPanelSlot) => ReactNode
 }
-
 const PANEL_WIDTH_KEY = "plexus.map-panel-width"
 
 export function MapExplorer({ renderPanel }: MapExplorerProps) {

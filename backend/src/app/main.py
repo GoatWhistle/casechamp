@@ -5,6 +5,7 @@ from datetime import UTC, datetime
 
 from fastapi import FastAPI
 
+from app import municipal_wiring
 from app.adapter.chat.calculation_tools import CalculationTools
 from app.adapter.chat.gateway import CodexResponsesGateway
 from app.adapter.chat.municipal_tools import MunicipalTools
@@ -47,7 +48,6 @@ from app.controller.scenarios.sensitivity import build_sensitivity_router
 from app.controller.traffic.municipal_scenarios import build_municipal_scenarios_router
 from app.controller.traffic.router import build_traffic_router
 from app.controller.transit import build_transit_router
-from app.municipal_wiring import build_municipal_access, build_municipal_services
 from app.normative_wiring import build_pilot_normative_router
 from app.repository.clickhouse.accessibility import ClickHouseAccessibilityRepository
 from app.repository.clickhouse.airports import ClickHouseAirportRepository
@@ -77,6 +77,7 @@ from app.usecase.chat import Chat
 from app.usecase.chat_calculation_review import CalculationReviews
 from app.usecase.links import LinkQueries
 from app.usecase.municipal_indices import MunicipalIndexQueries
+from app.usecase.municipal_road_candidates import MunicipalRoadCandidates
 from app.usecase.municipal_social import MunicipalSocialSources
 from app.usecase.municipalities import MunicipalityQueries
 from app.usecase.normative.index_map import IndexMapQueries
@@ -127,11 +128,11 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
         lambda region: ClickHousePedestrianRepository(normative_reader, region),
         lambda region: ClickHousePedestrianRepository(normative_reader, region).latest_revision(),
     )
-    municipal_services = build_municipal_services(
+    municipal_services = municipal_wiring.build_municipal_services(
         normative_reader, config.municipal_dataset, regional_catalog, normative_routing, walking,
     )
     transit = build_transit_queries(normative_reader)
-    municipal_access = build_municipal_access(normative_reader, config.municipal_dataset, regional_catalog, municipal_queries)
+    municipal_access = municipal_wiring.build_municipal_access(normative_reader, config.municipal_dataset, regional_catalog, municipal_queries)
     road_view = ClickHouseRoadView(reader.url, config.clickhouse_user, config.clickhouse_password)
     geometry = SelectionGeometry(road_jobs.data) if road_jobs else None
     road_graph = RoadGraph(road_jobs, atlas, road_view, geometry)
@@ -152,11 +153,10 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
                               TrafficIndices(road_jobs.data),
                               geography=geography, workers=config.traffic_workers)
                if config.graph_dir and road_jobs else None)
-    municipal_baselines = MunicipalBaselines(config.graph_dir.parent / "municipal-traffic-baselines", municipal_queries, road_jobs.data if road_jobs else None) if config.graph_dir else None
+    municipal_baselines = MunicipalBaselines(config.graph_dir.parent / "municipal-traffic-baselines", municipal_queries, road_jobs.data if road_jobs else None, municipal_wiring.build_municipal_read_cache(reader, config.municipal_dataset, config.graph_dir)) if config.graph_dir else None
     municipal_connectivity = MunicipalConnectivity(road_jobs.data, municipal_baselines, ClickHouseMunicipalIndexRepository(reader)) if road_jobs and municipal_baselines else None
     municipal_scenarios = MunicipalScenarioJobs(municipal_baselines.directory, ClickHouseTrafficStore(reader), municipal_baselines, municipal_connectivity, MunicipalSocialAccess(MunicipalSocialSources(municipal_access))) if municipal_baselines else None
-    sensitivity = AccessibilitySensitivity(atlas)
-    scenarios = ScenarioQueries(scenario_repository or ClickHouseScenarioRepository(reader))
+    sensitivity, scenarios = AccessibilitySensitivity(atlas), ScenarioQueries(scenario_repository or ClickHouseScenarioRepository(reader))
     gateway = (
         CodexResponsesGateway(
             AtlasTools(
@@ -167,7 +167,7 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
                 ReferenceQueries(atlas),
                 CalculationTools(
                     sensitivity, road_graph if road_jobs else None, analysis, corridors, stress, traffic,
-                    MunicipalTools(MunicipalIndexQueries(municipal_queries, ClickHouseMunicipalIndexRepository(reader), municipal_services), municipal_scenarios, municipal_access, transit)
+                    MunicipalTools(MunicipalIndexQueries(municipal_queries, ClickHouseMunicipalIndexRepository(reader), municipal_services), municipal_scenarios, municipal_access, transit, MunicipalRoadCandidates(municipal_queries, road_graph, municipal_scenarios, municipal_access), municipal_wiring.build_municipal_read_cache(reader, config.municipal_dataset, config.graph_dir) if config.graph_dir else None)
                 ),
                 road_graph if road_jobs else None,
                 corridors,
@@ -210,7 +210,7 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
             build_transit_router(transit),
             build_municipal_indices_router(MunicipalIndexQueries(
                 municipal_queries, ClickHouseMunicipalIndexRepository(reader), municipal_services
-            )),
+            ), municipal_wiring.build_municipal_read_cache(reader, config.municipal_dataset, config.graph_dir) if config.graph_dir else None),
             build_regional_view_router(RegionalViewQueries(regional_views, regional_catalog)),
             build_regional_indices_router(
                 RegionalIndices(
@@ -242,7 +242,7 @@ def create_app(settings: Settings | None = None, *, scenario_repository: Scenari
             build_chat_router(Chat(gateway, analysis, CalculationReviews(road_graph, stress, corridors, traffic, municipal_scenarios))),
         )
     )
-    app.include_router(build_road_graph_router(road_graph), prefix="/api/v1")
+    app.include_router(build_road_graph_router(road_graph, municipal_wiring.build_municipal_read_cache(reader, config.municipal_dataset, config.graph_dir) if config.graph_dir else None), prefix="/api/v1")
     app.include_router(build_analysis_router(analysis), prefix="/api/v1")
     app.include_router(build_stress_router(stress), prefix="/api/v1")
     app.include_router(build_traffic_router(traffic), prefix="/api/v1")

@@ -1,0 +1,11 @@
+import {chromium} from '../../frontend/node_modules/@playwright/test/index.mjs';
+import {writeFile} from 'node:fs/promises';
+const b=await chromium.launch();const p=await b.newPage({viewport:{width:1440,height:810}});
+const errors=[];p.on('pageerror',e=>errors.push(e.message));
+await p.goto('file:///Users/andreykuronskin/Downloads/Telegram%20Desktop/plexus-deck.html?static#1');await p.waitForSelector('html[data-ready="true"]',{timeout:90000});await p.screenshot({path:new URL('./reference-shots/original-cover.png',import.meta.url).pathname});
+await p.goto(new URL('../plexus-deck.html',import.meta.url).href+'?noauto#1');await p.waitForSelector('html[data-ready="true"]',{timeout:90000});
+const typed=p.waitForFunction(()=>{const f=document.querySelector('aside textarea');return f&&f.value.length>3&&f.value.length<30},{},{timeout:30000});
+await p.keyboard.press('ArrowRight');await typed;await p.screenshot({path:new URL('./reference-shots/typing.png',import.meta.url).pathname});
+await p.waitForFunction(()=>document.body.innerText.includes('33 муниципалитета на карте.'),{},{timeout:30000});
+await p.keyboard.press('r');await p.waitForFunction(()=>document.querySelector('aside textarea')?.value.length>3,{},{timeout:30000});
+await writeFile(new URL('./motion-validation.json',import.meta.url),JSON.stringify({errors,typing:true,replay:true,originalCover:true},null,2));await b.close();if(errors.length)throw Error(JSON.stringify(errors));console.log('Typing, immediate reply, replay, original reference passed');

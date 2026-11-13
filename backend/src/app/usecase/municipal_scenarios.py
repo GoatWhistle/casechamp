@@ -45,6 +45,8 @@ class MunicipalTrafficBaseline:
     source_bounds: list[float] | None
     artifact_sha256: str
     view: TrafficJob
+    demand_zones: int | None = None
+    demand_cell_km: float | None = None
 
 
 @dataclass(frozen=True)

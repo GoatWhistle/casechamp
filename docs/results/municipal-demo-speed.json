@@ -1,0 +1,66 @@
+[
+  {
+    "region": "07000000",
+    "kind": "indices",
+    "run": 0,
+    "seconds": 0.83501779101789,
+    "bytes": 2662,
+    "encoding": "gzip"
+  },
+  {
+    "region": "07000000",
+    "kind": "indices",
+    "run": 1,
+    "seconds": 0.23884154192637652,
+    "bytes": 2662,
+    "encoding": "gzip"
+  },
+  {
+    "region": "07000000",
+    "kind": "load",
+    "run": 0,
+    "seconds": 66.10281762492377,
+    "bytes": 127140,
+    "encoding": "gzip"
+  },
+  {
+    "region": "07000000",
+    "kind": "load",
+    "run": 1,
+    "seconds": 0.14557212498039007,
+    "bytes": 127140,
+    "encoding": "gzip"
+  },
+  {
+    "region": "50000000",
+    "kind": "indices",
+    "run": 0,
+    "seconds": 1.4495657500810921,
+    "bytes": 1884,
+    "encoding": "gzip"
+  },
+  {
+    "region": "50000000",
+    "kind": "indices",
+    "run": 1,
+    "seconds": 0.14021799992769957,
+    "bytes": 1884,
+    "encoding": "gzip"
+  },
+  {
+    "region": "50000000",
+    "kind": "load",
+    "run": 0,
+    "seconds": 89.4209833330242,
+    "bytes": 56069,
+    "encoding": "gzip"
+  },
+  {
+    "region": "50000000",
+    "kind": "load",
+    "run": 1,
+    "seconds": 0.6023887089686468,
+    "bytes": 56069,
+    "encoding": "gzip"
+  }
+]

@@ -3,8 +3,10 @@ from pathlib import Path
 from threading import Lock
 
 import numpy as np
+from pydantic import TypeAdapter
 from synthetic_traffic.baseline_store import load_baseline
 from synthetic_traffic.incremental import IncrementalBaseline
+from synthetic_traffic.load_preview import LoadPreview, load_preview
 
 from app.adapter.road_graph.data import GraphData
 from app.adapter.traffic.municipal_corridors import municipal_corridors
@@ -12,16 +14,20 @@ from app.adapter.traffic.municipal_membership import municipal_edge_indices
 from app.adapter.traffic.municipal_road_view import baseline_roads
 from app.adapter.traffic.visuals import metrics
 from app.domain.errors import DataUnavailable, InvalidQuery
+from app.usecase.municipal_read_cache import MunicipalReadCache
 from app.usecase.municipal_scenarios import MunicipalTrafficBaseline
 from app.usecase.municipalities import Municipality, MunicipalityQueries
 from app.usecase.traffic import TrafficJob, TrafficScope
 
 
 class MunicipalBaselines:
-    def __init__(self, directory: Path, municipalities: MunicipalityQueries, graph: GraphData | None = None) -> None:
+    def __init__(self, directory: Path, municipalities: MunicipalityQueries, graph: GraphData | None = None, cache: MunicipalReadCache | None = None) -> None:
+        self.read_cache = cache
+        self.codec = TypeAdapter(MunicipalTrafficBaseline)
         self.graph = graph
         self._cache: tuple[str, IncrementalBaseline] | None = None
         self._lock = Lock()
+        self._preview: tuple[str, LoadPreview] | None = None
         self.directory = directory
         self.municipalities = municipalities
 
@@ -38,19 +44,34 @@ class MunicipalBaselines:
         return result
 
     def get(self, region: str, identifier: str) -> MunicipalTrafficBaseline:
+        if self.read_cache is None:
+            return self._get(region, identifier)
+        value = self.read_cache.read("traffic_baseline", {"region": region, "municipality": identifier},
+            lambda: self.codec.dump_json(self._get(region, identifier)).decode())
+        return self.codec.validate_json(value)
+
+    def _get(self, region: str, identifier: str) -> MunicipalTrafficBaseline:
         municipality = self.municipality(region, identifier)
         vertices = [point for polygon in municipality.coordinates for ring in polygon for point in ring]
-        for path in sorted(self.directory.glob("*/state.json"), reverse=True):
+        records = [(path, json.loads(path.read_text())) for path in self.directory.glob("*/state.json")
+                   if (path.parent / "sha256").is_file()]
+        records.sort(key=lambda item: (item[1].get("assignment", {}).get("relative_gap", float("inf")), str(item[0])))
+        for path, record in records:
             if not (path.parent / "sha256").is_file():
                 continue
-            record = json.loads(path.read_text())
             region_ids = record.get("metadata", {}).get("region_ids")
             if region_ids and region not in region_ids:
                 continue
             bounds = record.get("metadata", {}).get("source", {}).get("bounds")
             if not vertices or (bounds and not all(bounds[0] <= x <= bounds[2] and bounds[1] <= y <= bounds[3] for x, y in vertices)):
                 continue
-            baseline = self.load(path.parent.name)
+            if record.get("preview"):
+                with self._lock:
+                    if self._preview is None or self._preview[0] != path.parent.name:
+                        self._preview = (path.parent.name, load_preview(path.parent))
+                    baseline: IncrementalBaseline | LoadPreview = self._preview[1]
+            else:
+                baseline = self.load(path.parent.name)
             graph, assignment = baseline.network, baseline.assignment
             selected = municipal_edge_indices(municipality, graph)
             if not selected:
@@ -62,12 +83,14 @@ class MunicipalBaselines:
             corridors = municipal_corridors(graph, assignment, selected, names)
             roads = baseline_roads(baseline, selected)
             view = TrafficJob(id="municipal-baseline-" + path.parent.name + "-" + identifier, scope=TrafficScope(region=region),
-                              status="completed", stage="completed", completed=1,
+                              status="completed", stage="preliminary" if record.get("preview") else "completed", completed=1,
                               bounds=[min(x for x, _ in vertices), min(y for _, y in vertices),
                                       max(x for x, _ in vertices), max(y for _, y in vertices)],
                               baseline=metrics(assignment), roads=roads, version="municipal_fixed_od_v1")
             return MunicipalTrafficBaseline(path.parent.name, identifier, corridors, roads,
-                                            assignment.relative_gap, bounds, (path.parent / "sha256").read_text(), view)
+                                            assignment.relative_gap, bounds, (path.parent / "sha256").read_text(), view,
+                                            len(record.get("metadata", {}).get("zones", [])) or None,
+                                            record.get("metadata", {}).get("effective_cell_km"))
         raise DataUnavailable("No published traffic baseline covers this municipality")
 
     def selected_edges(self, region: str, municipality_id: str, baseline: IncrementalBaseline, ways: list[int]) -> list[int]:

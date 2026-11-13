@@ -11,6 +11,7 @@ from synthetic_traffic.housing import distribute
 from synthetic_traffic.incremental import prepare_incremental
 from synthetic_traffic.initial_flow_checkpoint import read_initial_flows
 from synthetic_traffic.model import DemandParameters
+from synthetic_traffic.load_preview import save_preview
 from synthetic_traffic.source import load_network, load_places
 
 
@@ -41,6 +42,7 @@ def main() -> None:
     parser.add_argument('--max-zones', type=int, default=128)
     parser.add_argument('--iterations', type=int, default=10000)
     parser.add_argument('--tolerance', type=float, default=0.001)
+    parser.add_argument('--preview-on-limit', action='store_true')
     args = parser.parse_args()
     if bool(args.region) != bool(args.region_id) or len(args.region or []) != len(args.region_id or []):
         parser.error('Supply matching --region and --region-id entries')
@@ -85,10 +87,19 @@ def main() -> None:
         initial_flows = read_initial_flows(args.initial_flow_checkpoint, source, demand_record['sha256'])
         print(json.dumps({'stage': 'resuming_initial_flows', 'origins': len(initial_flows)}), flush=True)
     baseline = prepare_incremental(graph, trips, args.iterations, args.tolerance, tree_directory=args.tree_cache, path_limit=parameters.max_trip_hours, progress=assignment_progress, initial_flows=initial_flows)
-    save_baseline(baseline, args.output, metadata)
+    if not baseline.assignment.converged and args.preview_on_limit:
+        save_preview(args.output, args.snapshot, baseline.assignment.flow,
+            baseline.assignment.relative_gap, metadata,
+            {'iteration': baseline.assignment.iterations,
+             'unserved_vehicles_per_hour': baseline.assignment.unserved_vehicles_per_hour,
+             'gap_basis': 'same_assignment_flow_and_loaded_shortest_paths',
+             'routing_scenarios_ready': False})
+    else:
+        save_baseline(baseline, args.output, metadata)
     print(json.dumps({'stage': 'published', 'baseline': str(args.output),
                       'relative_gap': baseline.assignment.relative_gap,
-                      'iterations': baseline.assignment.iterations}), flush=True)
+                      'iterations': baseline.assignment.iterations,
+                      'converged': baseline.assignment.converged}), flush=True)
 
 
 if __name__ == '__main__':

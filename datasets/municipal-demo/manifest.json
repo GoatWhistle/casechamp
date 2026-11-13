@@ -1,0 +1,194 @@
+[
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030066",
+    "action": "indices",
+    "run": 0,
+    "seconds": 18.02576016704552,
+    "status": null
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030066",
+    "action": "indices",
+    "run": 1,
+    "seconds": 0.4153465839335695,
+    "status": null
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030066",
+    "action": "roads",
+    "run": 0,
+    "seconds": 163.27384000003804,
+    "status": "candidates_found"
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030066",
+    "action": "roads",
+    "run": 1,
+    "seconds": 0.06479495798703283,
+    "status": "candidates_found"
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030066",
+    "action": "baseline",
+    "run": 0,
+    "seconds": 0.6955687080044299,
+    "status": null
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030066",
+    "action": "baseline",
+    "run": 1,
+    "seconds": 0.4250653750495985,
+    "status": null
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030066",
+    "action": "improve",
+    "run": 0,
+    "seconds": 0.28334908303804696,
+    "status": "awaiting_routing_baseline"
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030066",
+    "action": "improve",
+    "run": 1,
+    "seconds": 0.2342517499346286,
+    "status": "awaiting_routing_baseline"
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030137",
+    "action": "indices",
+    "run": 0,
+    "seconds": 0.13668595789931715,
+    "status": null
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030137",
+    "action": "indices",
+    "run": 1,
+    "seconds": 0.06885179097298533,
+    "status": null
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030137",
+    "action": "roads",
+    "run": 0,
+    "seconds": 0.8112759999930859,
+    "status": "candidates_found"
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030137",
+    "action": "roads",
+    "run": 1,
+    "seconds": 0.30589291697833687,
+    "status": "candidates_found"
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030137",
+    "action": "baseline",
+    "run": 0,
+    "seconds": 11.533495791023597,
+    "status": null
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030137",
+    "action": "baseline",
+    "run": 1,
+    "seconds": 0.6567600420676172,
+    "status": null
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030137",
+    "action": "improve",
+    "run": 0,
+    "seconds": 0.7046609580283985,
+    "status": "awaiting_routing_baseline"
+  },
+  {
+    "region": "07000000",
+    "municipality": "osm-relation-1030137",
+    "action": "improve",
+    "run": 1,
+    "seconds": 0.7752238339744508,
+    "status": "awaiting_routing_baseline"
+  },
+  {
+    "region": "50000000",
+    "municipality": "geoboundaries-2017-50074027B3453987182776",
+    "action": "indices",
+    "run": 0,
+    "seconds": 0.1872118329629302,
+    "status": null
+  },
+  {
+    "region": "50000000",
+    "municipality": "geoboundaries-2017-50074027B3453987182776",
+    "action": "indices",
+    "run": 1,
+    "seconds": 0.13275395892560482,
+    "status": null
+  },
+  {
+    "region": "50000000",
+    "municipality": "geoboundaries-2017-50074027B3453987182776",
+    "action": "roads",
+    "run": 0,
+    "seconds": 0.10571966704446822,
+    "status": "candidates_found"
+  },
+  {
+    "region": "50000000",
+    "municipality": "geoboundaries-2017-50074027B3453987182776",
+    "action": "roads",
+    "run": 1,
+    "seconds": 0.10429679194930941,
+    "status": "candidates_found"
+  },
+  {
+    "region": "50000000",
+    "municipality": "geoboundaries-2017-50074027B3453987182776",
+    "action": "baseline",
+    "run": 0,
+    "seconds": 52.45107733400073,
+    "status": null
+  },
+  {
+    "region": "50000000",
+    "municipality": "geoboundaries-2017-50074027B3453987182776",
+    "action": "baseline",
+    "run": 1,
+    "seconds": 0.830477417097427,
+    "status": null
+  },
+  {
+    "region": "50000000",
+    "municipality": "geoboundaries-2017-50074027B3453987182776",
+    "action": "improve",
+    "run": 0,
+    "seconds": 0.7680465410230681,
+    "status": "awaiting_routing_baseline"
+  },
+  {
+    "region": "50000000",
+    "municipality": "geoboundaries-2017-50074027B3453987182776",
+    "action": "improve",
+    "run": 1,
+    "seconds": 0.39713325002230704,
+    "status": "awaiting_routing_baseline"
+  }
+]

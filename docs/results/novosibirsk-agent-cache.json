@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-13",
+  "region_id": "50000000",
+  "scope": "real_tools_without_llm",
+  "byte_identical": true,
+  "records": [
+    {
+      "run": 0,
+      "cache_reopened": false,
+      "municipality": "Severny District",
+      "diagnosis_seconds": 0.8912140830652788,
+      "roads_seconds": 66.70764570799656,
+      "indices_seconds": 1.757375332992524,
+      "total_seconds": 69.35623512405436
+    },
+    {
+      "run": 1,
+      "cache_reopened": false,
+      "municipality": "Severny District",
+      "diagnosis_seconds": 0.21799129201099277,
+      "roads_seconds": 0.26666474994271994,
+      "indices_seconds": 0.3609899999573827,
+      "total_seconds": 0.8456460419110954
+    },
+    {
+      "run": 2,
+      "cache_reopened": true,
+      "municipality": "Severny District",
+      "diagnosis_seconds": 0.45260958292055875,
+      "roads_seconds": 0.2561237079789862,
+      "indices_seconds": 0.2283353339880705,
+      "total_seconds": 0.9370686248876154
+    }
+  ]
+}

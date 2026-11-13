@@ -1,4 +1,5 @@
 import json
+from typing import Literal
 from unittest.mock import Mock
 
 import pytest
@@ -11,7 +12,7 @@ from app.controller.municipalities.access import build_municipal_access_router
 from app.domain.errors import DataUnavailable
 from app.usecase.municipal_access import MunicipalAccessResult
 from app.usecase.municipal_scenarios import MunicipalTrafficBaseline, MunicipalTrafficCorridor
-from app.usecase.traffic import TrafficJob, TrafficScope
+from app.usecase.traffic import TrafficJob, TrafficRoad, TrafficScope
 
 
 def test_agent_and_http_return_same_accessibility_detail() -> None:
@@ -67,3 +68,40 @@ def test_agent_preserves_corridor_restrictions_and_emits_baseline_map() -> None:
     assert result["baseline_id"] == "published"
     assert "roads" not in result and "view" not in result
     assert context.deps.pending[0].traffic == view
+
+
+@pytest.mark.parametrize(("change", "edges"), [("lane_closure", [9]), ("closure", [4, 9])])
+def test_agent_passes_exact_local_segment_direction(change: Literal["lane_closure", "closure"], edges: list[int]) -> None:
+    scenarios = Mock()
+    scenarios.submit.return_value = TrafficJob("scenario", TrafficScope(), status="running")
+    context = Mock()
+    context.deps.pending = []
+    MunicipalTools(Mock(), scenarios).municipal_analysis(
+        context, "start", "region", "district", baseline_id="published",
+        change=change, way_ids=[10], edge_indices=edges,
+    )
+    request = scenarios.submit.call_args.args[0]
+    assert request.edge_indices == edges
+    assert request.kind == change
+    assert request.baseline_id == "published"
+    assert request.way_ids == [10]
+    assert context.deps.pending[0].traffic.id == "scenario"
+
+
+def test_agent_returns_segment_coordinates_and_reverse_direction() -> None:
+    scenarios = Mock()
+    road = TrafficRoad(10, [[43., 44.], [43.1, 44.1]], 100., 100., 1., 1.,
+                       edge_index=4, reverse_edge_index=9, model_lanes=1)
+    scenarios.baseline.return_value = MunicipalTrafficBaseline(
+        "published", "district", [], [road], 0.001, None, "sha",
+        TrafficJob("baseline", TrafficScope(), status="completed"),
+    )
+    context = Mock()
+    context.deps.pending = []
+    result = json.loads(MunicipalTools(Mock(), scenarios).municipal_analysis(
+        context, "baseline", "region", "district", way_ids=[10],
+    ))
+    assert result["segments"][0]["edge_index"] == 4
+    assert result["segments"][0]["reverse_edge_index"] == 9
+    assert result["segments"][0]["coordinates"] == road.coordinates
+    assert result["segment_scope"] == "published_load_overlay_only"

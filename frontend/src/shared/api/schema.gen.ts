@@ -3103,6 +3103,10 @@ export interface components {
             /** Artifact Sha256 */
             artifact_sha256: string;
             view: components["schemas"]["TrafficJob"];
+            /** Demand Zones */
+            demand_zones?: number | null;
+            /** Demand Cell Km */
+            demand_cell_km?: number | null;
         };
         /** MunicipalTrafficCorridor */
         MunicipalTrafficCorridor: {

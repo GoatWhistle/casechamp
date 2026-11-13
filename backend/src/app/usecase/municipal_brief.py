@@ -1,5 +1,6 @@
 from dataclasses import asdict
 
+from app.usecase.municipal_comparison import municipal_comparison
 from app.usecase.municipal_scenarios import MunicipalScenarios
 from app.usecase.traffic import TrafficJob
 
@@ -13,6 +14,8 @@ def municipal_brief(job: TrafficJob, scenarios: MunicipalScenarios) -> dict[str,
     effects = scenarios.effects(job.id) if job.status == 'completed' else None
     if effects is not None:
         value['municipal_effects'] = asdict(effects)
+    value['comparison'] = municipal_comparison(job, effects)
+    value['not_recalculated'] = ['walking_access', 'public_transport_access']
     value['load_basis'] = 'synthetic_fixed_od'
     value['network_totals_scope'] = 'stored_baseline_network'
     criteria = [item.criterion_id for item in effects.social if item.status == 'available'] if effects else []

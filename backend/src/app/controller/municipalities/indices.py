@@ -1,3 +1,4 @@
+import json
 from dataclasses import asdict
 from typing import Literal
 
@@ -7,6 +8,7 @@ from pydantic import BaseModel
 from app.domain.normative.index import IndexValue
 from app.usecase.municipal_indices import MunicipalIndexQueries
 from app.usecase.municipal_overview import municipal_overview
+from app.usecase.municipal_read_cache import MunicipalReadCache
 from app.usecase.municipal_service_priority import MunicipalServicePriority
 
 
@@ -83,7 +85,7 @@ class MunicipalOverviewResponse(BaseModel):
     source_table: str
 
 
-def build_municipal_indices_router(queries: MunicipalIndexQueries) -> APIRouter:
+def build_municipal_indices_router(queries: MunicipalIndexQueries, cache: MunicipalReadCache | None = None) -> APIRouter:
     router = APIRouter(tags=["municipalities"])
 
     @router.get("/regions/{region_id}/municipalities/{municipality_id}/indices")
@@ -92,9 +94,11 @@ def build_municipal_indices_router(queries: MunicipalIndexQueries) -> APIRouter:
         municipality_id: str,
         season: Literal["road", "summer", "winter"] = "road",
     ) -> MunicipalityIndicesResponse:
-        return MunicipalityIndicesResponse(
-            **asdict(queries.run(region_id, municipality_id, season))
-        )
+        def calculate() -> str:
+            return json.dumps(asdict(queries.run(region_id, municipality_id, season)), ensure_ascii=False)
+        value = cache.read("indices", {"region": region_id, "municipality": municipality_id,
+                                      "season": season}, calculate) if cache else calculate()
+        return MunicipalityIndicesResponse.model_validate_json(value)
 
     @router.get("/regions/{region_id}/municipalities-overview")
     def get_overview(region_id: str, criterion_id: str | None = None,
