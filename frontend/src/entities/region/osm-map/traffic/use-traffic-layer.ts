@@ -2,6 +2,7 @@ import type { Map as LibreMap, MapLayerMouseEvent } from "maplibre-gl"
 import { type RefObject, useEffect, useRef } from "react"
 import { selectTrafficRoad, useTrafficView } from "@/shared/hooks/use-traffic-view"
 import { motionMs, useReducedMotion } from "@/shared/motion"
+import { fitPadding } from "../camera/fit-padding"
 import { REGIONS_SOURCE } from "../osm-style"
 import { trafficBounds, trafficFeatures } from "./traffic-features"
 import { LINES, paintTraffic, SOURCE } from "./traffic-paint"
@@ -26,7 +27,7 @@ export function useTrafficLayer(engine: RefObject<LibreMap | null>, ready: boole
         [e, n],
       ],
       {
-        padding: 72,
+        padding: fitPadding(map, 72),
         maxZoom: view.variant === "baseline" ? 13 : 16,
         duration: reduced ? 0 : motionMs("--dur-map"),
       },

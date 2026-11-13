@@ -3,6 +3,7 @@ import type { GeoJSONSource, Map as LibreMap } from "maplibre-gl"
 import { type RefObject, useEffect, useRef } from "react"
 import type { NormativeRouteOverlay } from "@/shared/api/normative-map"
 import { motionMs, useReducedMotion } from "@/shared/motion"
+import { fitPadding } from "../camera/fit-padding"
 
 const SOURCE = "normative-route"
 export const ROUTE_LAYERS = [
@@ -41,7 +42,7 @@ export function useNormativeRouteLayer(
     if (!points.length) return
     map.stop()
     map.fitBounds(boundsOf(points), {
-      padding: 96,
+      padding: fitPadding(map, 96),
       maxZoom: 14,
       duration: reduced || overlay.instant ? 0 : motionMs("--dur-panel", map.getContainer()),
     })

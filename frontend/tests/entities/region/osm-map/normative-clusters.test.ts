@@ -23,7 +23,8 @@ it("preserves antimeridian viewports and clamps world copies and zoom", () => {
 it("interrupts an existing movement and opens a cluster instantly with reduced motion", () => {
   const stop = vi.fn()
   const fitBounds = vi.fn()
-  const map = { stop, fitBounds, getZoom: () => 17 } as unknown as LibreMap
+  const getContainer = () => ({ clientWidth: 1200, clientHeight: 800 })
+  const map = { stop, fitBounds, getZoom: () => 17, getContainer } as unknown as LibreMap
   expect(focusCluster(map, { count: 25, bounds: "[37,55,38,56]" }, true)).toBe(true)
   expect(stop).toHaveBeenCalledOnce()
   expect(fitBounds).toHaveBeenCalledWith(
@@ -32,7 +33,7 @@ it("interrupts an existing movement and opens a cluster instantly with reduced m
       [38, 56],
     ],
     {
-      padding: 96,
+      padding: { top: 96, right: 96, bottom: 96, left: 96 },
       maxZoom: 18,
       duration: 0,
     },

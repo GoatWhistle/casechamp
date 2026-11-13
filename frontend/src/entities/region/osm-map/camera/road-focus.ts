@@ -1,6 +1,7 @@
 import type { Feature, MultiLineString } from "geojson"
 import type { GeoJSONSource, Map as LibreMap } from "maplibre-gl"
 import type { ChatMapCommand } from "@/shared/api/chat-map"
+import { fitPadding } from "./fit-padding"
 
 const SOURCE = "focused-road"
 
@@ -59,7 +60,7 @@ export function focusRoad(map: LibreMap, lines: number[][][], duration: number) 
       [west, south],
       [east, north],
     ],
-    { padding: roadPadding(map), maxZoom: 16, duration, essential: false },
+    { padding: fitPadding(map, roadPadding(map)), maxZoom: 16, duration, essential: false },
   )
 }
 
