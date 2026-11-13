@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from "react"
-import { usePanelWidth } from "@/shared/hooks"
+import { COMPACT_LAYOUT, usePanelWidth } from "@/shared/hooks"
 import { useTranslation } from "@/shared/i18n"
 import { usePresence } from "@/shared/motion"
 import { Button, PanelResizer, ScrollArea } from "@/shared/ui"
@@ -19,7 +19,8 @@ const WIDTH_KEY = "plexus.map-legend-width"
 
 function initiallyOpen() {
   try {
-    return localStorage.getItem(COLLAPSED_KEY) !== "true"
+    const stored = localStorage.getItem(COLLAPSED_KEY)
+    return globalThis.matchMedia?.(COMPACT_LAYOUT).matches ? stored === "false" : stored !== "true"
   } catch {
     return true
   }

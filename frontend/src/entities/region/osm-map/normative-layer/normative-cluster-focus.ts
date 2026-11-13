@@ -1,5 +1,6 @@
 import type { Map as LibreMap } from "maplibre-gl"
 import { motionMs } from "@/shared/motion"
+import { fitPadding } from "../camera/fit-padding"
 
 export function focusCluster(
   map: LibreMap,
@@ -17,7 +18,7 @@ export function focusCluster(
       [east, north],
     ],
     {
-      padding: 96,
+      padding: fitPadding(map, 96),
       maxZoom: Math.min(18, map.getZoom() + 3),
       duration: reduced ? 0 : motionMs("--dur-panel", map.getContainer()),
     },

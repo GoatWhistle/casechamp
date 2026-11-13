@@ -3,6 +3,7 @@ import type { GeoJSONSource, Map as LibreMap, MapLayerMouseEvent } from "maplibr
 import { type RefObject, useEffect, useRef } from "react"
 import type { MunicipalityLayer } from "@/shared/api/municipalities"
 import { motionMs, useReducedMotion } from "@/shared/motion"
+import { fitPadding } from "../camera/fit-padding"
 import { NORMATIVE_OVERLAY_LAYERS } from "../normative-layer/use-normative-layer"
 import { CONTEXTUAL_WATER_LAYER, SELECTED_LAYER } from "../osm-style"
 import { roadLayers } from "../road-parts"
@@ -106,7 +107,7 @@ export function useMunicipalityLayer(
     const bounds = feature ? municipalityBounds(feature.geometry) : null
     if (bounds)
       map.fitBounds(bounds, {
-        padding: 60,
+        padding: fitPadding(map, 60),
         maxZoom: 11,
         duration: reduced ? 0 : motionMs("--dur-map", map.getContainer()),
       })

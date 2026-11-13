@@ -5,6 +5,7 @@ import type { StressImpact } from "@/shared/api/road-stress"
 import { selectStressImpact, useStressView } from "@/shared/hooks/use-stress-view"
 import { motionMs, useReducedMotion } from "@/shared/motion"
 import { useVisibleStressPoints } from "../stress-map/use-visible-stress-points"
+import { fitPadding } from "./camera/fit-padding"
 
 const SOURCE = "road-stress-view"
 export function useStressLayer(engine: RefObject<LibreMap | null>, ready: boolean) {
@@ -101,7 +102,7 @@ export function focusView(map: LibreMap, view: ReturnType<typeof useStressView>,
         [19, 41],
         [191, 81],
       ],
-      { padding: 80, duration: reduced ? 0 : motionMs("--dur-panel") },
+      { padding: fitPadding(map, 80), duration: reduced ? 0 : motionMs("--dur-panel") },
     )
   }
   if (coordinates.length) {
@@ -118,7 +119,11 @@ export function focusView(map: LibreMap, view: ReturnType<typeof useStressView>,
           ys.reduce((a, b) => Math.max(a, b), -Infinity),
         ],
       ],
-      { padding: routePadding(map), maxZoom: 12, duration: reduced ? 0 : motionMs("--dur-panel") },
+      {
+        padding: fitPadding(map, routePadding(map)),
+        maxZoom: 12,
+        duration: reduced ? 0 : motionMs("--dur-panel"),
+      },
     )
   }
 }

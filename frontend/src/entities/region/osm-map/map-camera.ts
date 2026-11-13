@@ -1,6 +1,7 @@
 import { type Map as LibreMap, LngLat, type LngLatBoundsLike, type MapOptions } from "maplibre-gl"
 import type { ChatMapCommand } from "@/shared/api/chat-map"
 import type { BoundaryAtlas, LonLatBounds } from "./boundary-geojson"
+import { fitPadding } from "./camera/fit-padding"
 import { fitNationalView } from "./camera/national-view"
 import { revealSelectedRegions } from "./camera/region-fill"
 import { focusRoad, updateRoadFocus } from "./camera/road-focus"
@@ -89,7 +90,7 @@ export function focusRegions(
     return
   }
   map.fitBounds(corners(frame), {
-    padding: ids.length ? { top: 96, right: 56, bottom: 144, left: 56 } : 24,
+    padding: fitPadding(map, { top: 96, right: 56, bottom: 144, left: 56 }),
     maxZoom: ids.length ? 8.5 : 18,
     duration,
     curve: 1.25,

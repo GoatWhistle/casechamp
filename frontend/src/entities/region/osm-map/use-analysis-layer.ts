@@ -3,6 +3,7 @@ import type { GeoJSONSource, Map as LibreMap } from "maplibre-gl"
 import { type RefObject, useEffect, useRef } from "react"
 import type { AnalysisDetail, AnalysisOverlay } from "@/shared/api/road-analysis"
 import { motionMs, useReducedMotion } from "@/shared/motion"
+import { fitPadding } from "./camera/fit-padding"
 import { REGIONS_SOURCE } from "./osm-style"
 import { addRoute, fadeIn, revealRoute } from "./paint/line-reveal"
 
@@ -75,7 +76,7 @@ export function useAnalysisLayer(
         [Math.max(...xs), Math.max(...ys)],
       ],
       {
-        padding: 96,
+        padding: fitPadding(map, 96),
         maxZoom: 12,
         duration: reduced || overlay.instant ? 0 : motionMs("--dur-map"),
       },

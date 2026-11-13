@@ -3,6 +3,7 @@ import type { GeoJSONSource, Map as LibreMap } from "maplibre-gl"
 import { type RefObject, useEffect, useRef } from "react"
 import type { CorridorOverlay } from "@/shared/api/chat-calculation"
 import { motionMs, useReducedMotion } from "@/shared/motion"
+import { fitPadding } from "./camera/fit-padding"
 import { addRoute, raiseRoute, removeRoute, revealRoute } from "./paint/line-reveal"
 
 const SOURCE = "road-corridor-closure"
@@ -55,7 +56,7 @@ export function useCorridorLayer(
         [Math.max(...xs), Math.max(...ys)],
       ],
       {
-        padding: 96,
+        padding: fitPadding(map, 96),
         maxZoom: 12,
         duration: reduced || overlay.instant ? 0 : motionMs("--dur-map"),
       },

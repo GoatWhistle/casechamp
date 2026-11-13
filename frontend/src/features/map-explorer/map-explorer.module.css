@@ -12,7 +12,7 @@
   block-size: 100dvh;
 }
 
-@media (min-width: 64rem) {
+@media (width >= 64rem) {
   .explorer:is([data-dock="closing"], [data-dock="closed"], [data-dock="opening"]) {
     grid-template-columns: minmax(0, 1fr) 0;
   }
@@ -68,7 +68,7 @@
 
 .controls {
   position: absolute;
-  inset-block-end: calc(var(--space-16) + var(--space-24));
+  inset-block-end: calc(var(--space-16) + var(--space-24) + env(safe-area-inset-bottom));
   inset-inline-end: var(--space-16);
   z-index: var(--layer-raised);
   display: grid;
@@ -84,11 +84,11 @@
   box-shadow: var(--shadow-raised);
 }
 
-@media (max-width: 64rem) {
+@media (width < 64rem) {
   .overlay {
     position: absolute;
-    inset-block-start: var(--space-16);
-    inset-inline: var(--space-16);
+    inset-block-start: calc(var(--space-16) + env(safe-area-inset-top));
+    inset-inline: var(--space-16) calc(var(--space-32) + var(--target-min) + var(--space-8));
     z-index: var(--layer-raised);
     display: flex;
     flex-direction: column;
@@ -106,14 +106,25 @@
     max-inline-size: 100%;
   }
 
-  .explorer,
-  .explorer[data-fullscreen="true"] {
-    grid-template-columns: 1fr;
-    grid-template-rows: var(--map-mobile-height) auto;
-    block-size: auto;
+  .explorer {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) var(--map-sheet-height);
+    min-block-size: 0;
   }
 
-  .explorer > :nth-child(2) {
-    min-block-size: 100dvh;
+  .explorer:is([data-dock="closing"], [data-dock="closed"], [data-dock="opening"]) {
+    grid-template-rows: minmax(0, 1fr) 0;
+  }
+}
+
+@media (width < 64rem) and (height < 30rem) {
+  .explorer {
+    grid-template-columns: minmax(0, 1fr) var(--map-side-width);
+    grid-template-rows: minmax(0, 1fr);
+  }
+
+  .explorer:is([data-dock="closing"], [data-dock="closed"], [data-dock="opening"]) {
+    grid-template-columns: minmax(0, 1fr) 0;
+    grid-template-rows: minmax(0, 1fr);
   }
 }
