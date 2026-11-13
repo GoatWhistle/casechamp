@@ -1,8 +1,19 @@
 export { useAirports } from "./airports.queries"
+export { AssignmentProgress } from "./assignment-progress/assignment-progress"
 export { useRegionCompositions } from "./composition.queries"
 export { IndexCoverage } from "./index-coverage/index-coverage"
 export { MiniMap } from "./mini-map/mini-map"
 export { boundaryName, modelRegionId } from "./model-region"
+export { municipalAccessLayer } from "./municipal-access/layer"
+export { useMunicipalAccess } from "./municipal-access/query"
+export { useMunicipalOverview } from "./municipal-overview.queries"
+export {
+  useCancelMunicipalScenario,
+  useMunicipalEffects,
+  useMunicipalScenario,
+  useMunicipalScenarioResult,
+  useMunicipalTraffic,
+} from "./municipal-traffic.queries"
 export { useMunicipalities } from "./municipalities.queries"
 export { useMunicipalityIndices } from "./municipality-indices.queries"
 export { NetworkModeControl } from "./network-mode-control/network-mode-control"
@@ -25,3 +36,4 @@ export {
   useRegions,
 } from "./region.queries"
 export { SeasonControl } from "./season-control/season-control"
+export { useTransitJourney } from "./transit/query"

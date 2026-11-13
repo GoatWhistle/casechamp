@@ -50,6 +50,8 @@ def test_complete_directory_replaces_old_snapshot_and_unpublished_rows_remain_in
             + json.dumps({**header, "id": "two", "observed_at": "2026-11-12T02:00:00"})
         )
         assert repository.latest("R", "employment_candidate") == [second]
+        assert repository.latest_by_region("employment_candidate") == {"R": [second]}
+        assert repository.latest_by_region("medical") == {}
         assert repository.latest("Other", "employment_candidate") is None
         assert repository.latest("R", "medical") is None
         command(
@@ -58,6 +60,8 @@ def test_complete_directory_replaces_old_snapshot_and_unpublished_rows_remain_in
         )
         with pytest.raises(DataUnavailable, match="incomplete"):
             repository.latest("R", "employment_candidate")
+        with pytest.raises(DataUnavailable, match="incomplete"):
+            repository.latest_by_region("employment_candidate")
     finally:
         command(f"DROP TABLE {prefix}")
         command(f"DROP TABLE {prefix}_facilities")

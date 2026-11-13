@@ -3,6 +3,8 @@ import sqlite3
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
 
 from shapely.geometry import box, mapping, shape
 from synthetic_traffic.geography_pbf_storage import query_vector_cache
@@ -35,6 +37,12 @@ def fixture(path, geometry, timestamp, coverage, basis="assembled_osm_area"):
 
 
 class GeographyUnionTests(unittest.TestCase):
+    def setUp(self):
+        space = patch('synthetic_traffic.geography_pbf_union.shutil.disk_usage',
+                      return_value=SimpleNamespace(free=100 * 1024**3))
+        space.start()
+        self.addCleanup(space.stop)
+
     def test_newer_source_updates_geometry_and_rtree_and_union_covers_both(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -97,3 +105,14 @@ class GeographyUnionTests(unittest.TestCase):
             self.assertFalse(
                 query_vector_cache(merged, [41.19, 49.99, 41.22, 50.02])["buildings"]
             )
+
+
+def test_union_refuses_insufficient_disk_before_creating_output(tmp_path):
+    north, south, output = (tmp_path / name for name in ('north.sqlite', 'south.sqlite', 'union.sqlite'))
+    coverage = box(39, 49, 42, 51)
+    fixture(north, box(40, 50, 40.01, 50.01), '2026-11-07', coverage)
+    fixture(south, box(41.2, 50, 41.21, 50.01), '2026-11-11', coverage)
+    with patch('synthetic_traffic.geography_pbf_union.shutil.disk_usage',
+               return_value=SimpleNamespace(free=1024)), unittest.TestCase().assertRaises(RuntimeError):
+        merge_vector_caches([north, south], output)
+    assert not output.exists()

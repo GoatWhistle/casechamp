@@ -47,14 +47,15 @@ def load_network(source: Path) -> Network:
 
 
 def load_places(
-    source: Path, network: Network, region: str | None = None
+    source: Path, network: Network, region: str | list[str] | None = None
 ) -> tuple[list[Zone], dict]:
+    regions = {region} if isinstance(region, str) else set(region or [])
     rows = pq.read_table(source / "places.parquet").to_pylist()
     seen = set()
     zones = []
     missing_population = 0.0
     for row in rows:
-        if row["point_id"] in seen or (region and row["region"] != region):
+        if row["point_id"] in seen or (regions and row["region"] not in regions):
             continue
         seen.add(row["point_id"])
         population = max(0.0, float(row["population"] or 0))

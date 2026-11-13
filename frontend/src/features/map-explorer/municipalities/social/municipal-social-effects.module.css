@@ -1,0 +1,36 @@
+.content {
+  display: grid;
+  gap: var(--space-8);
+  min-width: 0;
+}
+.heading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.table th,
+.table td {
+  padding: var(--space-8) var(--space-4);
+  text-align: right;
+  vertical-align: middle;
+}
+.table th:first-child {
+  text-align: left;
+}
+.table thead th {
+  font-weight: 400;
+}
+.table tbody th {
+  font-weight: 500;
+}
+.table td {
+  font-weight: 600;
+}
+.table td[data-alert="true"] {
+  color: var(--text-danger);
+}

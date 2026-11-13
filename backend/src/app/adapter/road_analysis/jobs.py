@@ -72,7 +72,7 @@ class AnalysisJobs:
 
     def submit(self, boundary: BoundaryShape, mode: AnalysisMode, percent: int) -> AnalysisJob:
         if mode != "criticality":
-            raise InvalidQuery("Use traffic_development for road improvement search")
+            raise InvalidQuery("Automatic road development search has been removed")
         fingerprint = self.fingerprint(boundary)
         with self.lock:
             for job in self.jobs.values():
@@ -95,7 +95,7 @@ class AnalysisJobs:
             job = self.jobs[analysis_id]
             if job.mode != "criticality":
                 raise InvalidQuery(
-                    "Historical improvement analyses are read-only; use traffic_development"
+                    "Historical improvement analyses are read-only"
                 )
             if not job.compatible or job.fingerprint != self.fingerprint(
                 self.boundaries[analysis_id]

@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from synthetic_traffic.model import Zone
-from tests.unit.adapter.traffic.test_calculation import snapshot
+from tests.unit.adapter.traffic.snapshot_fixture import snapshot
 
 from app.adapter.traffic.focus import resolve_focus
 from app.usecase.traffic import TrafficJob, TrafficScope

@@ -1,7 +1,7 @@
 import type { TrafficJob, TrafficMode } from "@/shared/api/traffic"
 import { showTrafficView, useTrafficView } from "@/shared/hooks/use-traffic-view"
 import { useFormatters, useTranslation } from "@/shared/i18n"
-import { Disclosure, Segmented, Stat } from "@/shared/ui"
+import { Button, Disclosure, Segmented, Stat } from "@/shared/ui"
 import { TrafficIndex } from "./traffic-index"
 import styles from "./traffic-results.module.css"
 
@@ -13,7 +13,13 @@ export function TrafficResults({ job }: { readonly job: TrafficJob }) {
   const variant = active ? view.variant : "baseline"
   return (
     <div className={styles.results}>
-      <TrafficIndex job={job} variant={variant} />
+      {job.id.startsWith("municipal-baseline-") ? (
+        <Button variant="secondary" onClick={() => showTrafficView(job, "baseline", "before")}>
+          {t("map:municipalTraffic.showLoad")}
+        </Button>
+      ) : (
+        <TrafficIndex job={job} variant={variant} />
+      )}
       <Disclosure title={t("traffic:loadDetails")}>
         <Segmented<TrafficMode>
           label={t("traffic:mapMode")}

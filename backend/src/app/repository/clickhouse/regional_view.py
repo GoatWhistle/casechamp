@@ -1,4 +1,4 @@
-from app.domain.normative.model import AccessRow
+from app.domain.normative.model import AccessRow, Facility
 from app.repository.clickhouse.client import ClickHouseReader
 from app.repository.clickhouse.normative_schema import SCHEMAS
 from app.repository.clickhouse.regional_view_map import RegionalViewMap
@@ -122,6 +122,19 @@ class ClickHouseRegionalViewRepository:
         return RegionalFacilityPage(
             view.run_id, [facility(row) for row in found], total, page, page_size
         )
+
+    def selected_facilities(self, run_id: str, identifiers: set[str]) -> list[Facility]:
+        if not identifiers:
+            return []
+        if not self.source.normalized(run_id):
+            return [facility(row) for row in self.source.legacy_record(run_id)["facilities"]
+                    if row["id"] in identifiers]
+        columns = ",".join(name for name in SCHEMAS["run_facilities"].names if name != "run_id")
+        records = self.reader.arrow(
+            f"SELECT {columns} FROM {self.table}_facilities WHERE run_id={{run:String}} AND id IN {{ids:Array(String)}} ORDER BY position",
+            {"run": run_id, "ids": sorted(identifiers)},
+        ).to_pylist()
+        return [facility(row) for row in records]
 
     def point(
         self, view: RegionalRunView, stage: RouteStage, origin_id: str

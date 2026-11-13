@@ -168,6 +168,7 @@ class ClickHouseRegionalMeasurementRepository:
 
 
 def restore_record(record: dict[str, Any]) -> RegionalMeasurement:
+    record.setdefault("model_revision", "regional-road-v1")
     record["measurement_definition"] = MeasurementDefinition(
         record.get("measurement_definition", MeasurementDefinition.SINGLE_REFERENCE_POINT)
     )

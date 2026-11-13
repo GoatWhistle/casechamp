@@ -131,6 +131,7 @@ def test_regional_snapshot_preserves_sources_geometry_and_scope_in_real_storage(
             result,
             run_id=uuid4().hex,
             region_id="Legacy",
+            model_revision="regional-road-v1",
             baseline_rows=legacy_rows,
             rows=legacy_rows,
             comparison=compare_routes(legacy_rows, legacy_rows, "minutes"),

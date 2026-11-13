@@ -6,6 +6,8 @@ from pydantic import BaseModel
 
 from app.domain.normative.index import IndexValue
 from app.usecase.municipal_indices import MunicipalIndexQueries
+from app.usecase.municipal_overview import municipal_overview
+from app.usecase.municipal_service_priority import MunicipalServicePriority
 
 
 class MunicipalMetricResponse(BaseModel):
@@ -61,6 +63,26 @@ class MunicipalityIndicesResponse(BaseModel):
     boundary_source_sha256: str
 
 
+class MunicipalOverviewItemResponse(BaseModel):
+    municipality_id: str
+    name: str
+    connectivity: MunicipalMetricResponse
+    difference_from_region: float | None
+    reasons: list[str]
+    service: MunicipalServicePriority | None = None
+
+
+class MunicipalOverviewResponse(BaseModel):
+    criterion_id: str | None = None
+    season: str = "road"
+    region_id: str
+    items: list[MunicipalOverviewItemResponse]
+    region_connectivity: MunicipalMetricResponse
+    model_version: str | None
+    artifact_version: str | None
+    source_table: str
+
+
 def build_municipal_indices_router(queries: MunicipalIndexQueries) -> APIRouter:
     router = APIRouter(tags=["municipalities"])
 
@@ -73,5 +95,14 @@ def build_municipal_indices_router(queries: MunicipalIndexQueries) -> APIRouter:
         return MunicipalityIndicesResponse(
             **asdict(queries.run(region_id, municipality_id, season))
         )
+
+    @router.get("/regions/{region_id}/municipalities-overview")
+    def get_overview(region_id: str, criterion_id: str | None = None,
+                     season: Literal["road", "summer", "winter"] = "road") -> MunicipalOverviewResponse:
+        return MunicipalOverviewResponse(**asdict(municipal_overview(
+            region_id, queries.municipalities, queries.repository, criterion_id,
+            queries.services.published if queries.services else None, season,
+            queries.services.published_overview if queries.services else None,
+        )))
 
     return router

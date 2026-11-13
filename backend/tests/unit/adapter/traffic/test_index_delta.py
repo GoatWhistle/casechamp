@@ -272,3 +272,56 @@ def test_unchanged_float64_assignment_does_not_create_float32_graph_diffs(tmp_pa
     )
     changed = delta.network.changed(network, network.free_hours)
     assert np.array_equal(changed.data, delta.network.base.data)
+
+
+def test_directed_city_access_uses_routes_to_markets_and_preserves_one_way_closure(tmp_path: Path) -> None:
+    original = make_network()
+    network = replace(original, **{
+        key: np.r_[getattr(original, key), value]
+        for key, value in {
+            "source": 2, "target": 3, "free_hours": 1., "capacity": 100.,
+            "length_km": 1., "way_id": 105, "shared": -1,
+        }.items()
+    })
+    delta = IndexDelta(GraphData(tmp_path, Snapshot(network)), network, network.free_hours,
+                       ["region"], lambda: None, directed=True)
+    decay = np.log(2) / 2
+    expected = (40 * (30 * np.exp(-decay * .6) + 100 * np.exp(-decay * 7.7))
+                + 20 * 100 * np.exp(-decay * 2.4)) / 175
+    assert delta.baseline[0].value == pytest.approx(expected, rel=2e-7)
+    assert delta.network.base[4, 3] == 0
+    selected = np.arange(1, 6)
+    closed = replace(network, **{
+        key: getattr(network, key)[selected]
+        for key in ("source", "target", "free_hours", "capacity", "length_km", "way_id", "shared")
+    })
+    result = delta.evaluate(closed, closed.free_hours)
+    expected_after = (40 * (30 * np.exp(-decay * .6) + 100 * np.exp(-decay * 9.7))
+                      + 20 * 100 * np.exp(-decay * 2.4)) / 175
+    assert result[0].value == pytest.approx(expected_after, rel=2e-7)
+    assert result[0].value < delta.baseline[0].value
+
+
+def test_live_index_scenario_requires_precomputed_market_trees(tmp_path: Path) -> None:
+    network = make_network()
+    data = GraphData(tmp_path, Snapshot(network))
+    with pytest.raises(FileNotFoundError, match="offline preparation"):
+        IndexDelta(data, network, network.free_hours, ["region"], lambda: None,
+                   directed=True, require_cached=True)
+    prepared = IndexDelta(data, network, network.free_hours, ["region"], lambda: None, directed=True)
+    restored = IndexDelta(data, network, network.free_hours, ["region"], lambda: None,
+                          directed=True, require_cached=True)
+    assert restored.baseline == prepared.baseline
+
+
+def test_scenario_uses_published_normalization_instead_of_reaggregating(tmp_path: Path) -> None:
+    network = make_network()
+    data = GraphData(tmp_path, Snapshot(network))
+    baseline = IndexDelta(data, network, network.free_hours, ["region"], lambda: None,
+                          directed=True, normalization=200)
+    assert baseline.baseline[0].normalization == 200
+    after = baseline.evaluate(network, network.free_hours)
+    assert after == baseline.baseline
+    with pytest.raises(ValueError, match="normalization"):
+        IndexDelta(data, network, network.free_hours, ["region"], lambda: None,
+                   directed=True, normalization=float('nan'))

@@ -15,6 +15,8 @@ export interface StatDelta {
 
 export interface StatProps {
   readonly label: string
+  readonly icon?: IconName
+  readonly layout?: "stack" | "row"
   readonly value: ReactNode
   readonly unit?: string | undefined
   readonly delta?: StatDelta | undefined
@@ -45,10 +47,20 @@ function Delta({ value, trend, tone = "neutral", label }: StatDelta) {
   )
 }
 
-export function Stat({ label, value, unit, delta, help, className }: StatProps) {
+export function Stat({
+  label,
+  icon,
+  layout = "stack",
+  value,
+  unit,
+  delta,
+  help,
+  className,
+}: StatProps) {
   return (
-    <div className={clsx(styles.stat, className)}>
+    <div className={clsx(styles.stat, className)} data-layout={layout}>
       <span className={styles.label}>
+        {icon ? <Icon name={icon} size="md" /> : null}
         {label}
         {help === undefined ? null : <span className={styles.help}>{help}</span>}
       </span>

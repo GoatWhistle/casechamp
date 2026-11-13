@@ -32,8 +32,12 @@ class MunicipalServiceQueries:
         walking_origins: Callable[[str], list[Origin]] | None = None,
         published: Callable[[Municipality], list[MunicipalNormativeValue]] | None = None,
         version: Callable[[Municipality], str] | None = None,
+        allow_live: bool = True,
+        published_overview: Callable[[list[Municipality], str], dict[str, list[MunicipalNormativeValue]]] | None = None,
     ) -> None:
+        self.published_overview = published_overview
         self.catalog = catalog
+        self.allow_live = allow_live
         self.road = road
         self.walking = walking
         self.walking_origins = walking_origins
@@ -54,6 +58,8 @@ class MunicipalServiceQueries:
     ) -> list[MunicipalNormativeValue]:
         published = self.published(municipality) if self.published else []
 
+        if not self.allow_live:
+            return merge_municipal_values(published, [])
         if {"N01", "N02", "N04"}.issubset({item.criterion_id for item in published}):
             return merge_municipal_values(published, [])
         key = (
@@ -142,7 +148,7 @@ class MunicipalServiceQueries:
                 reference_points=len(origins),
             )
             try:
-                catalog = self.catalog.catalog(municipality.region_id, criterion)
+                catalog = self.catalog.catalog(municipality.region_id, criterion, cross_region=policy.mode == "car")
                 routing = (
                     (self.walking.for_region(municipality.region_id) if self.walking else None)
                     if criterion == "N04"

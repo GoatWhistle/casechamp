@@ -4,11 +4,12 @@ from dataclasses import asdict
 from hashlib import sha256
 from pathlib import Path
 
-from synthetic_traffic.candidate_io import search
+from synthetic_traffic.baseline_store import save_baseline
 from synthetic_traffic.collection import collect
 from synthetic_traffic.demand import aggregate, generate
 from synthetic_traffic.housing import distribute
 from synthetic_traffic.housing_extract import extract
+from synthetic_traffic.incremental import prepare_incremental
 from synthetic_traffic.model import DemandParameters, Trip
 from synthetic_traffic.publish import publish_homes, publish_run
 from synthetic_traffic.report import compare
@@ -19,14 +20,6 @@ from synthetic_traffic.source import load_network, load_places
 def main() -> None:
     parser = argparse.ArgumentParser()
     commands = parser.add_subparsers(dest="command", required=True)
-    candidates = commands.add_parser("candidates")
-    candidates.add_argument("--snapshot", type=Path, required=True)
-    candidates.add_argument("--baseline", type=Path, required=True)
-    candidates.add_argument("--output", type=Path, required=True)
-    candidates.add_argument("--multiplier", type=float, default=1.0)
-    candidates.add_argument("--limit", type=int, default=3)
-    candidates.add_argument("--geography", type=Path)
-    candidates.add_argument("--workers", type=int, default=32)
     publish = commands.add_parser("publish")
     publish.add_argument("--homes", type=Path)
     publish.add_argument("--run", type=Path)
@@ -55,30 +48,9 @@ def main() -> None:
     run.add_argument("--tolerance", type=float, default=0.001)
     run.add_argument("--duration-hours", type=float, default=1.0)
     run.add_argument("--multipliers", type=float, nargs="+", default=[0.7, 1.0, 1.3])
+    baseline_parser = commands.add_parser("baseline", parents=[run], add_help=False)
+    baseline_parser.set_defaults(command="baseline")
     args = parser.parse_args()
-    if args.command == "candidates":
-        result = search(
-            args.snapshot,
-            args.baseline,
-            args.output,
-            args.multiplier,
-            args.limit,
-            args.geography,
-            args.workers,
-        )
-        print(
-            json.dumps(
-                {
-                    key: len(result[key])
-                    for key in [
-                        "existing_corridor_projects",
-                        "connections_for_review",
-                        "data_gaps",
-                    ]
-                }
-            )
-        )
-        return
     if args.command == "publish":
         if args.homes:
             print(json.dumps(publish_homes(args.homes), indent=2))
@@ -154,10 +126,16 @@ def main() -> None:
         raise ValueError(
             "No interzonal demand generated; refine zones or inspect disconnected origins"
         )
+    if args.command == "baseline":
+        baseline = prepare_incremental(network, trips, args.iterations, args.tolerance)
+        save_baseline(baseline, args.output, metadata)
+        print(json.dumps({"baseline": str(args.output), "converged": baseline.assignment.converged,
+                          "relative_gap": baseline.assignment.relative_gap, "trips": len(trips)}))
+        return
     projects = json.loads(args.projects.read_text()) if args.projects else []
     if not isinstance(projects, list) or any(not isinstance(p, dict) for p in projects):
         raise ValueError(
-            "Projects must be a JSON array; select entries from the candidate groups"
+            "Projects must be a JSON array of capacity or closure changes"
         )
     result = compare(
         network,

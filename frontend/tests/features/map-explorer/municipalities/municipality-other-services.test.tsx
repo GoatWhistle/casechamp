@@ -20,7 +20,11 @@ it("shows actual available secondary services with their existing criterion name
   )
   expect(screen.getByText(data.metric.normative_N03)).toBeDefined()
   expect(screen.getByText(data.metric.normative_N05)).toBeDefined()
-  expect(screen.getByText(ru.municipalCard.fireAssumption)).toBeDefined()
+  const help = screen.getByRole("button", {
+    name: ru.municipalCard.metricHelp.replace("{{name}}", data.metric.normative_N03),
+  })
+  const description = document.getElementById(help.getAttribute("aria-describedby") ?? "")
+  expect(description?.textContent).toContain(ru.municipalCard.fireAssumption)
   expect(screen.queryByText(data.metric.normative_N08)).toBeNull()
 })
 

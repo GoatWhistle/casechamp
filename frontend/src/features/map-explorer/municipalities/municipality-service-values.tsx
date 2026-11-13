@@ -1,6 +1,6 @@
 import type { components } from "@/shared/api"
 import { useFormatters, useTranslation } from "@/shared/i18n"
-import { NoValue } from "@/shared/ui"
+import { HelpTip, NoValue } from "@/shared/ui"
 import styles from "./municipality-index-card.module.css"
 
 export type MunicipalNormative =
@@ -35,10 +35,13 @@ export function MunicipalityServiceValue({
     return <NoValue label={t("map:municipalCard.unavailable")} />
   return min === max
     ? f.percent(min / 100, 0)
-    : t("map:municipalCard.range", { min: f.number(min, 0), max: f.number(max, 0) })
+    : t("map:municipalCard.thresholdPair", {
+        min: f.percent(min / 100, 0),
+        max: f.percent(max / 100, 0),
+      })
 }
 
-export function MunicipalityThreshold({ row }: { readonly row: MunicipalNormative | undefined }) {
+export function useMunicipalityThreshold(row: MunicipalNormative | undefined) {
   const { t } = useTranslation()
   const f = useFormatters()
   const values = row?.thresholds ?? []
@@ -50,5 +53,24 @@ export function MunicipalityThreshold({ row }: { readonly row: MunicipalNormativ
       ? f.number(min, 0)
       : t("map:municipalCard.limitRange", { min: f.number(min, 0), max: f.number(max, 0) })
   const unit = t(row?.unit === "metres" ? "map:municipalCard.metres" : "map:municipalCard.minutes")
-  return <span>{t("map:municipalCard.within", { value: limit, unit })}</span>
+  return t("map:municipalCard.within", { value: limit, unit })
+}
+
+export function MunicipalityServiceHelp({
+  row,
+  label,
+}: {
+  readonly row: MunicipalNormative | undefined
+  readonly label: string
+}) {
+  const { t } = useTranslation()
+  const threshold = useMunicipalityThreshold(row)
+  const content = [
+    threshold ?? t("map:municipalCard.unavailable"),
+    serviceCoverage(row).population ? t("map:municipalCard.settlementEstimate") : null,
+    row?.criterion_id === "N03" ? t("map:municipalCard.fireAssumption") : null,
+  ]
+    .filter(Boolean)
+    .join(". ")
+  return <HelpTip label={t("map:municipalCard.metricHelp", { name: label })} content={content} />
 }

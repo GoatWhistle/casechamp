@@ -34,3 +34,18 @@ def test_unknown_regional_catalogs_fail_without_returning_another_region(
             "unknown", criterion
         )
     repository.candidates.assert_not_called()
+
+
+def test_routing_catalog_keeps_origin_region_but_accepts_cross_border_targets() -> None:
+    repository = Mock(spec=RegionalCatalogRepository)
+    repository.region_name.return_value = "Origin region"
+    nearby = replace(facility(), id="neighbor-hospital", service="medical")
+    repository.routing_candidates.return_value = [nearby]
+    result = RegionalCatalogQueries(cast(RegionalCatalogRepository, repository)).catalog(
+        "origin", "N01", cross_region=True
+    )
+    assert result.region_id == "origin"
+    assert result.facilities == [nearby]
+    assert result.profile_verification == "unconfirmed"
+    repository.routing_candidates.assert_called_once_with("medical")
+    repository.candidates.assert_not_called()

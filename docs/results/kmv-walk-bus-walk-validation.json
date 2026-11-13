@@ -1,0 +1,616 @@
+{
+  "date": "2026-11-13",
+  "timetable_sha256": "a85258d9675ddf57677686072736ab5d02baf6a64bd79f526bb9bec7cd5402f8",
+  "scope": "one_named_service_two_confirmed_station_pins",
+  "clock_basis": "source_clock_same_zone_pilot",
+  "operating_service_verified": false,
+  "origin": {
+    "id": "osm-way-363555625",
+    "name": "проспект Калинина, 108",
+    "latitude": 44.02978688333334,
+    "longitude": 43.07158088333333,
+    "distance": 124.52751408479438
+  },
+  "checks": [
+    {
+      "destination": {
+        "id": "osm-node-2402103352",
+        "name": "",
+        "categories": [
+          "library"
+        ],
+        "latitude": 44.2010871,
+        "longitude": 43.122451,
+        "source_url": "https://www.openstreetmap.org/node/2402103352",
+        "snapshot_url": "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf",
+        "source_sha256": "a6db83fb55e03cc9730da9aff42730003b7d1591a38d4cf0fd15d4fe66743701",
+        "observed_at": "2026-11-07T21:21:36Z",
+        "distance": 437.24289508478944
+      },
+      "result": {
+        "status": "available",
+        "journey": {
+          "departure": 50400,
+          "arrival": 54869,
+          "boardings": 1,
+          "legs": [
+            {
+              "mode": "walk",
+              "source": "osm-way-363555625",
+              "target": "26015",
+              "departure": 50400,
+              "arrival": 50684,
+              "trip_id": null
+            },
+            {
+              "mode": "wait",
+              "source": "26015",
+              "target": "26015",
+              "departure": 50684,
+              "arrival": 52200,
+              "trip_id": null
+            },
+            {
+              "mode": "bus",
+              "source": "26015",
+              "target": "26064",
+              "departure": 52200,
+              "arrival": 54300,
+              "trip_id": "26.07.015:backward:0"
+            },
+            {
+              "mode": "walk",
+              "source": "26064",
+              "target": "osm-node-2402103352",
+              "departure": 54300,
+              "arrival": 54869,
+              "trip_id": null
+            }
+          ]
+        },
+        "walking_revision": "e9f59ce94b394d65a9e1a821",
+        "walking_links": [
+          {
+            "source": "osm-way-363555625",
+            "target": "osm-node-2402103352",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "osm-way-363555625",
+            "target": "26015",
+            "status": "available",
+            "metres": 396.2307794954553,
+            "seconds": 284
+          },
+          {
+            "source": "osm-way-363555625",
+            "target": "26064",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "26015",
+            "target": "osm-node-2402103352",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "26064",
+            "target": "osm-node-2402103352",
+            "status": "available",
+            "metres": 795.581963605686,
+            "seconds": 569
+          },
+          {
+            "source": "26015",
+            "target": "26064",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "26064",
+            "target": "26015",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          }
+        ],
+        "stops_with_coordinates": 2,
+        "stops_without_coordinates": 0,
+        "timetable_stop_count": 5,
+        "timetable_stops_without_coordinates": 3,
+        "departure": 50400,
+        "horizon": 64800,
+        "maximum_walk_metres": 3000.0,
+        "walking_speed_metres_per_second": 1.4,
+        "transfer_seconds": 300,
+        "coverage_complete": false
+      }
+    },
+    {
+      "destination": {
+        "id": "osm-node-12045277980",
+        "name": "3Z",
+        "categories": [
+          "medical"
+        ],
+        "latitude": 44.2014549,
+        "longitude": 43.1225529,
+        "source_url": "https://www.openstreetmap.org/node/12045277980",
+        "snapshot_url": "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf",
+        "source_sha256": "a6db83fb55e03cc9730da9aff42730003b7d1591a38d4cf0fd15d4fe66743701",
+        "observed_at": "2026-11-07T21:21:36Z",
+        "distance": 468.4927538487392
+      },
+      "result": {
+        "status": "available",
+        "journey": {
+          "departure": 50400,
+          "arrival": 54879,
+          "boardings": 1,
+          "legs": [
+            {
+              "mode": "walk",
+              "source": "osm-way-363555625",
+              "target": "26015",
+              "departure": 50400,
+              "arrival": 50684,
+              "trip_id": null
+            },
+            {
+              "mode": "wait",
+              "source": "26015",
+              "target": "26015",
+              "departure": 50684,
+              "arrival": 52200,
+              "trip_id": null
+            },
+            {
+              "mode": "bus",
+              "source": "26015",
+              "target": "26064",
+              "departure": 52200,
+              "arrival": 54300,
+              "trip_id": "26.07.015:backward:0"
+            },
+            {
+              "mode": "walk",
+              "source": "26064",
+              "target": "osm-node-12045277980",
+              "departure": 54300,
+              "arrival": 54879,
+              "trip_id": null
+            }
+          ]
+        },
+        "walking_revision": "e9f59ce94b394d65a9e1a821",
+        "walking_links": [
+          {
+            "source": "osm-way-363555625",
+            "target": "osm-node-12045277980",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "osm-way-363555625",
+            "target": "26015",
+            "status": "available",
+            "metres": 396.2307794954553,
+            "seconds": 284
+          },
+          {
+            "source": "osm-way-363555625",
+            "target": "26064",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "26015",
+            "target": "osm-node-12045277980",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "26064",
+            "target": "osm-node-12045277980",
+            "status": "available",
+            "metres": 810.332774557453,
+            "seconds": 579
+          },
+          {
+            "source": "26015",
+            "target": "26064",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "26064",
+            "target": "26015",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          }
+        ],
+        "stops_with_coordinates": 2,
+        "stops_without_coordinates": 0,
+        "timetable_stop_count": 5,
+        "timetable_stops_without_coordinates": 3,
+        "departure": 50400,
+        "horizon": 64800,
+        "maximum_walk_metres": 3000.0,
+        "walking_speed_metres_per_second": 1.4,
+        "transfer_seconds": 300,
+        "coverage_complete": false
+      }
+    },
+    {
+      "destination": {
+        "id": "osm-node-2232169301",
+        "name": "",
+        "categories": [
+          "medical"
+        ],
+        "latitude": 44.2010105,
+        "longitude": 43.1303125,
+        "source_url": "https://www.openstreetmap.org/node/2232169301",
+        "snapshot_url": "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf",
+        "source_sha256": "a6db83fb55e03cc9730da9aff42730003b7d1591a38d4cf0fd15d4fe66743701",
+        "observed_at": "2026-11-07T21:21:36Z",
+        "distance": 1014.4300276632811
+      },
+      "result": {
+        "status": "available",
+        "journey": {
+          "departure": 50400,
+          "arrival": 55493,
+          "boardings": 1,
+          "legs": [
+            {
+              "mode": "walk",
+              "source": "osm-way-363555625",
+              "target": "26015",
+              "departure": 50400,
+              "arrival": 50684,
+              "trip_id": null
+            },
+            {
+              "mode": "wait",
+              "source": "26015",
+              "target": "26015",
+              "departure": 50684,
+              "arrival": 52200,
+              "trip_id": null
+            },
+            {
+              "mode": "bus",
+              "source": "26015",
+              "target": "26064",
+              "departure": 52200,
+              "arrival": 54300,
+              "trip_id": "26.07.015:backward:0"
+            },
+            {
+              "mode": "walk",
+              "source": "26064",
+              "target": "osm-node-2232169301",
+              "departure": 54300,
+              "arrival": 55493,
+              "trip_id": null
+            }
+          ]
+        },
+        "walking_revision": "e9f59ce94b394d65a9e1a821",
+        "walking_links": [
+          {
+            "source": "osm-way-363555625",
+            "target": "osm-node-2232169301",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "osm-way-363555625",
+            "target": "26015",
+            "status": "available",
+            "metres": 396.2307794954553,
+            "seconds": 284
+          },
+          {
+            "source": "osm-way-363555625",
+            "target": "26064",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "26015",
+            "target": "osm-node-2232169301",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "26064",
+            "target": "osm-node-2232169301",
+            "status": "available",
+            "metres": 1670.11236401229,
+            "seconds": 1193
+          },
+          {
+            "source": "26015",
+            "target": "26064",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "26064",
+            "target": "26015",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          }
+        ],
+        "stops_with_coordinates": 2,
+        "stops_without_coordinates": 0,
+        "timetable_stop_count": 5,
+        "timetable_stops_without_coordinates": 3,
+        "departure": 50400,
+        "horizon": 64800,
+        "maximum_walk_metres": 3000.0,
+        "walking_speed_metres_per_second": 1.4,
+        "transfer_seconds": 300,
+        "coverage_complete": false
+      }
+    },
+    {
+      "destination": {
+        "id": "osm-way-213541408",
+        "name": "",
+        "categories": [
+          "medical"
+        ],
+        "latitude": 44.20009932222222,
+        "longitude": 43.13098685555556,
+        "source_url": "https://www.openstreetmap.org/way/213541408",
+        "snapshot_url": "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf",
+        "source_sha256": "a6db83fb55e03cc9730da9aff42730003b7d1591a38d4cf0fd15d4fe66743701",
+        "observed_at": "2026-11-07T21:21:36Z",
+        "distance": 1048.1513942179602
+      },
+      "result": {
+        "status": "available",
+        "journey": {
+          "departure": 50400,
+          "arrival": 55385,
+          "boardings": 1,
+          "legs": [
+            {
+              "mode": "walk",
+              "source": "osm-way-363555625",
+              "target": "26015",
+              "departure": 50400,
+              "arrival": 50684,
+              "trip_id": null
+            },
+            {
+              "mode": "wait",
+              "source": "26015",
+              "target": "26015",
+              "departure": 50684,
+              "arrival": 52200,
+              "trip_id": null
+            },
+            {
+              "mode": "bus",
+              "source": "26015",
+              "target": "26064",
+              "departure": 52200,
+              "arrival": 54300,
+              "trip_id": "26.07.015:backward:0"
+            },
+            {
+              "mode": "walk",
+              "source": "26064",
+              "target": "osm-way-213541408",
+              "departure": 54300,
+              "arrival": 55385,
+              "trip_id": null
+            }
+          ]
+        },
+        "walking_revision": "e9f59ce94b394d65a9e1a821",
+        "walking_links": [
+          {
+            "source": "osm-way-363555625",
+            "target": "osm-way-213541408",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "osm-way-363555625",
+            "target": "26015",
+            "status": "available",
+            "metres": 396.2307794954553,
+            "seconds": 284
+          },
+          {
+            "source": "osm-way-363555625",
+            "target": "26064",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "26015",
+            "target": "osm-way-213541408",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "26064",
+            "target": "osm-way-213541408",
+            "status": "available",
+            "metres": 1518.7368796078035,
+            "seconds": 1085
+          },
+          {
+            "source": "26015",
+            "target": "26064",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "26064",
+            "target": "26015",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          }
+        ],
+        "stops_with_coordinates": 2,
+        "stops_without_coordinates": 0,
+        "timetable_stop_count": 5,
+        "timetable_stops_without_coordinates": 3,
+        "departure": 50400,
+        "horizon": 64800,
+        "maximum_walk_metres": 3000.0,
+        "walking_speed_metres_per_second": 1.4,
+        "transfer_seconds": 300,
+        "coverage_complete": false
+      }
+    },
+    {
+      "destination": {
+        "id": "osm-way-213542336",
+        "name": "",
+        "categories": [
+          "medical"
+        ],
+        "latitude": 44.20525585,
+        "longitude": 43.127912699999996,
+        "source_url": "https://www.openstreetmap.org/way/213542336",
+        "snapshot_url": "https://download.geofabrik.de/russia/north-caucasus-fed-district-261107.osm.pbf",
+        "source_sha256": "a6db83fb55e03cc9730da9aff42730003b7d1591a38d4cf0fd15d4fe66743701",
+        "observed_at": "2026-11-07T21:21:36Z",
+        "distance": 1068.8529341146436
+      },
+      "result": {
+        "status": "available",
+        "journey": {
+          "departure": 50400,
+          "arrival": 55511,
+          "boardings": 1,
+          "legs": [
+            {
+              "mode": "walk",
+              "source": "osm-way-363555625",
+              "target": "26015",
+              "departure": 50400,
+              "arrival": 50684,
+              "trip_id": null
+            },
+            {
+              "mode": "wait",
+              "source": "26015",
+              "target": "26015",
+              "departure": 50684,
+              "arrival": 52200,
+              "trip_id": null
+            },
+            {
+              "mode": "bus",
+              "source": "26015",
+              "target": "26064",
+              "departure": 52200,
+              "arrival": 54300,
+              "trip_id": "26.07.015:backward:0"
+            },
+            {
+              "mode": "walk",
+              "source": "26064",
+              "target": "osm-way-213542336",
+              "departure": 54300,
+              "arrival": 55511,
+              "trip_id": null
+            }
+          ]
+        },
+        "walking_revision": "e9f59ce94b394d65a9e1a821",
+        "walking_links": [
+          {
+            "source": "osm-way-363555625",
+            "target": "osm-way-213542336",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "osm-way-363555625",
+            "target": "26015",
+            "status": "available",
+            "metres": 396.2307794954553,
+            "seconds": 284
+          },
+          {
+            "source": "osm-way-363555625",
+            "target": "26064",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "26015",
+            "target": "osm-way-213542336",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "26064",
+            "target": "osm-way-213542336",
+            "status": "available",
+            "metres": 1694.2156204209705,
+            "seconds": 1211
+          },
+          {
+            "source": "26015",
+            "target": "26064",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          },
+          {
+            "source": "26064",
+            "target": "26015",
+            "status": "outside_walking_limit",
+            "metres": null,
+            "seconds": null
+          }
+        ],
+        "stops_with_coordinates": 2,
+        "stops_without_coordinates": 0,
+        "timetable_stop_count": 5,
+        "timetable_stops_without_coordinates": 3,
+        "departure": 50400,
+        "horizon": 64800,
+        "maximum_walk_metres": 3000.0,
+        "walking_speed_metres_per_second": 1.4,
+        "transfer_seconds": 300,
+        "coverage_complete": false
+      }
+    }
+  ]
+}

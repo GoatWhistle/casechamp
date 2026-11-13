@@ -11,6 +11,7 @@ from app.domain.errors import DataUnavailable
 from app.domain.normative.index import IndexValue
 from app.domain.normative.model import AccessRow
 from app.domain.normative.scenario_index import scenario_policy
+from app.repository.files.immutable_snapshot import write_immutable
 from app.repository.files.municipal_dataset_heads import publish_municipal_source
 from app.usecase.municipal_dataset import (
     MunicipalSnapshotSource,
@@ -37,6 +38,9 @@ class JsonMunicipalDataset:
         self.directory = directory
 
     def _write(self, path: Path, content: bytes) -> None:
+        if path.relative_to(self.directory).parts[0] in {"sources", "aggregates", "boundaries"}:
+            write_immutable(path, content)
+            return
         path.parent.mkdir(parents=True, exist_ok=True)
         temporary: str | None = None
         try:
@@ -185,9 +189,7 @@ class JsonMunicipalDataset:
         source_key: str | None = None,
         boundary_snapshot_sha256: str | None = None,
     ) -> None:
-        boundary_sha = (
-            boundary_snapshot_sha256 or self.find_boundaries(municipality.region_id) or ""
-        )
+        boundary_sha = boundary_snapshot_sha256 or self.find_boundaries(municipality.region_id) or ""
         identifier = self._key(municipality, value.criterion_id, source_sha256 + boundary_sha)
         payload = {
             "aggregation_method": "municipal-aggregate-v4",
@@ -219,9 +221,7 @@ class JsonMunicipalDataset:
         criterion_id: str,
         boundary_snapshot_sha256: str | None = None,
     ) -> MunicipalNormativeValue | None:
-        boundary_sha = (
-            boundary_snapshot_sha256 or self.find_boundaries(municipality.region_id) or ""
-        )
+        boundary_sha = boundary_snapshot_sha256 or self.find_boundaries(municipality.region_id) or ""
         path = (
             self.directory
             / "aggregates"

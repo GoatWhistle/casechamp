@@ -5,15 +5,17 @@ import { motionMs, useReducedMotion } from "@/shared/motion"
 import { REGIONS_SOURCE } from "../osm-style"
 import { trafficBounds, trafficFeatures } from "./traffic-features"
 import { LINES, paintTraffic, SOURCE } from "./traffic-paint"
+import { useSegmentEndpoints } from "./use-segment-endpoints"
 
 export function useTrafficLayer(engine: RefObject<LibreMap | null>, ready: boolean) {
   const view = useTrafficView()
   const reduced = useReducedMotion()
+  useSegmentEndpoints(engine, ready, view.selected)
   const focus = useRef(0)
   useEffect(() => {
     const map = engine.current
     if (!ready || !map?.getSource(REGIONS_SOURCE)) return
-    const data = trafficFeatures(view.job, view.variant, view.mode)
+    const data = trafficFeatures(view.job, view.variant, view.mode, view.selected)
     paintTraffic(map, data)
     if (!view.job || view.focus === focus.current) return
     focus.current = view.focus
@@ -31,7 +33,7 @@ export function useTrafficLayer(engine: RefObject<LibreMap | null>, ready: boole
         duration: reduced ? 0 : motionMs("--dur-map"),
       },
     )
-  }, [engine, ready, view.job, view.variant, view.mode, view.focus, reduced])
+  }, [engine, ready, view.job, view.variant, view.mode, view.focus, view.selected, reduced])
 
   useEffect(() => {
     const map = engine.current

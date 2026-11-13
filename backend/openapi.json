@@ -1039,6 +1039,200 @@
         }
       }
     },
+    "/api/v1/regions/{region_id}/municipalities/{municipality_id}/access": {
+      "get": {
+        "tags": [
+          "municipalities"
+        ],
+        "summary": "Get Access",
+        "operationId": "get_access_api_v1_regions__region_id__municipalities__municipality_id__access_get",
+        "parameters": [
+          {
+            "name": "region_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Region Id"
+            }
+          },
+          {
+            "name": "municipality_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Municipality Id"
+            }
+          },
+          {
+            "name": "criterion_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Criterion Id"
+            }
+          },
+          {
+            "name": "threshold",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Threshold"
+            }
+          },
+          {
+            "name": "deficit_only",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true,
+              "title": "Deficit Only"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "title": "Offset"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 100,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MunicipalAccessResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/regions/{region_id}/transit": {
+      "get": {
+        "summary": "Coverage",
+        "operationId": "coverage_api_v1_regions__region_id__transit_get",
+        "parameters": [
+          {
+            "name": "region_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Region Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransitCoverage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/regions/{region_id}/transit-journeys": {
+      "post": {
+        "summary": "Plan",
+        "operationId": "plan_api_v1_regions__region_id__transit_journeys_post",
+        "parameters": [
+          {
+            "name": "region_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Region Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransitPlanRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransitPlanResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/regions/{region_id}/municipalities/{municipality_id}/indices": {
       "get": {
         "tags": [
@@ -1088,6 +1282,79 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/MunicipalityIndicesResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/regions/{region_id}/municipalities-overview": {
+      "get": {
+        "tags": [
+          "municipalities"
+        ],
+        "summary": "Get Overview",
+        "operationId": "get_overview_api_v1_regions__region_id__municipalities_overview_get",
+        "parameters": [
+          {
+            "name": "region_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Region Id"
+            }
+          },
+          {
+            "name": "criterion_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Criterion Id"
+            }
+          },
+          {
+            "name": "season",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "road",
+                "summer",
+                "winter"
+              ],
+              "type": "string",
+              "default": "road",
+              "title": "Season"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MunicipalOverviewResponse"
                 }
               }
             }
@@ -3566,45 +3833,6 @@
             }
           }
         }
-      },
-      "post": {
-        "tags": [
-          "synthetic traffic"
-        ],
-        "summary": "Submit",
-        "operationId": "submit_api_v1_traffic_jobs_post",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TrafficInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TrafficJob"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
       }
     },
     "/api/v1/traffic-jobs/{job_id}": {
@@ -3664,6 +3892,224 @@
             "schema": {
               "type": "string",
               "title": "Job Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrafficJob"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/municipal-scenarios/baseline/{region}/{municipality}": {
+      "get": {
+        "tags": [
+          "municipalities"
+        ],
+        "summary": "Baseline",
+        "operationId": "baseline_api_v1_municipal_scenarios_baseline__region___municipality__get",
+        "parameters": [
+          {
+            "name": "region",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Region"
+            }
+          },
+          {
+            "name": "municipality",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Municipality"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MunicipalTrafficBaseline"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/municipal-scenarios": {
+      "post": {
+        "tags": [
+          "municipalities"
+        ],
+        "summary": "Submit",
+        "operationId": "submit_api_v1_municipal_scenarios_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MunicipalScenarioRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrafficJob"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/municipal-scenarios/{identifier}": {
+      "get": {
+        "tags": [
+          "municipalities"
+        ],
+        "summary": "Get",
+        "operationId": "get_api_v1_municipal_scenarios__identifier__get",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Identifier"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrafficJob"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/municipal-scenarios/{identifier}/effects": {
+      "get": {
+        "tags": [
+          "municipalities"
+        ],
+        "summary": "Effects",
+        "operationId": "effects_api_v1_municipal_scenarios__identifier__effects_get",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Identifier"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MunicipalTrafficEffects"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/municipal-scenarios/{identifier}/cancel": {
+      "post": {
+        "tags": [
+          "municipalities"
+        ],
+        "summary": "Cancel",
+        "operationId": "cancel_api_v1_municipal_scenarios__identifier__cancel_post",
+        "parameters": [
+          {
+            "name": "identifier",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Identifier"
             }
           }
         ],
@@ -4054,6 +4500,368 @@
           "state"
         ],
         "title": "AccessResponse"
+      },
+      "AccessRow": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "population": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Population"
+          },
+          "latitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latitude"
+          },
+          "longitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Longitude"
+          },
+          "facility_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Facility Id"
+          },
+          "minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Minutes"
+          },
+          "excess_minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Excess Minutes"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "within",
+              "exceeded",
+              "unreachable",
+              "unknown",
+              "not_regulated",
+              "not_applicable"
+            ],
+            "title": "State"
+          },
+          "distance_metres": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Distance Metres"
+          },
+          "uncertainty": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "residential_reference_not_entrance",
+                "population_group_missing",
+                "territory_conditions_missing",
+                "facility_entrances_unverified",
+                "origin_unattached",
+                "path_unconfirmed",
+                "service_status_unconfirmed",
+                "medical_catchment_unconfirmed",
+                "transport_mode_unconfirmed",
+                "facility_profile_unconfirmed",
+                "fire_speed_assumed",
+                "fire_vehicle_access_unconfirmed",
+                "fire_readiness_unconfirmed",
+                "fire_adverse_conditions_unconfirmed",
+                "fire_directionality_unconfirmed",
+                "fire_destination_unconfirmed",
+                "fire_measurement_definition_unconfirmed",
+                "qualification_unconfirmed",
+                "evidence_outside_validity",
+                "normative_rule_unconfirmed",
+                "planning_scope_unconfirmed",
+                "reference_location_unconfirmed",
+                "measurement_version_unconfirmed",
+                "scenario_conditions_unconfirmed",
+                "inventory_incomplete",
+                "ownership_scope_unconfirmed",
+                "regional_adjustment_unconfirmed",
+                "medical_form_unconfirmed",
+                "adult_profile_unconfirmed"
+              ]
+            },
+            "type": "array",
+            "title": "Uncertainty",
+            "default": []
+          },
+          "routing_node": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Routing Node"
+          },
+          "approach_metres": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Approach Metres"
+          },
+          "threshold_minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Threshold Minutes"
+          },
+          "territory_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Territory Type"
+          },
+          "territory_source_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Territory Source Url"
+          },
+          "rule_set_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Rule Set Id"
+          },
+          "territory_verification_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Territory Verification Status"
+          },
+          "municipality_code": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Municipality Code"
+          },
+          "territory_structure_source_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Territory Structure Source Url"
+          },
+          "qualification_source_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Qualification Source Url"
+          },
+          "qualification_observed_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Qualification Observed At"
+          },
+          "catchment_source_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Catchment Source Url"
+          },
+          "threshold_source_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Threshold Source Url"
+          },
+          "travel_profile_source_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Travel Profile Source Url"
+          },
+          "measurement_method_source_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Measurement Method Source Url"
+          },
+          "origin_source_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin Source Url"
+          },
+          "origin_observed_at": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin Observed At"
+          },
+          "origin_source_sha256": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin Source Sha256"
+          },
+          "origin_reference_status": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin Reference Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "population",
+          "latitude",
+          "longitude",
+          "facility_id",
+          "minutes",
+          "excess_minutes",
+          "state"
+        ],
+        "title": "AccessRow"
       },
       "AccessibilityComparison": {
         "properties": {
@@ -5324,6 +6132,26 @@
                 "type": "null"
               }
             ]
+          },
+          "municipal_access": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MunicipalAccessMapTarget"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "transit": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TransitMapTarget"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "type": "object",
@@ -6415,6 +7243,129 @@
           "message"
         ],
         "title": "ErrorResponse"
+      },
+      "Facility": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "service": {
+            "type": "string",
+            "title": "Service"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "address": {
+            "type": "string",
+            "title": "Address"
+          },
+          "source_url": {
+            "type": "string",
+            "title": "Source Url"
+          },
+          "observed_at": {
+            "type": "string",
+            "title": "Observed At"
+          },
+          "latitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latitude"
+          },
+          "longitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Longitude"
+          },
+          "coordinate_source": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Coordinate Source"
+          },
+          "coordinate_status": {
+            "type": "string",
+            "title": "Coordinate Status"
+          },
+          "published_on": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Published On"
+          },
+          "source_sha256": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Sha256"
+          },
+          "coordinate_snapshot_sha256": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Coordinate Snapshot Sha256"
+          },
+          "coordinate_snapshot_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Coordinate Snapshot Url"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "service",
+          "name",
+          "address",
+          "source_url",
+          "observed_at",
+          "latitude",
+          "longitude",
+          "coordinate_source",
+          "coordinate_status"
+        ],
+        "title": "Facility"
       },
       "FacilityResponse": {
         "properties": {
@@ -7586,6 +8537,56 @@
         ],
         "title": "IndexValueResponse"
       },
+      "JourneyLeg": {
+        "properties": {
+          "mode": {
+            "type": "string",
+            "enum": [
+              "walk",
+              "wait",
+              "dwell",
+              "bus"
+            ],
+            "title": "Mode"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target"
+          },
+          "departure": {
+            "type": "integer",
+            "title": "Departure"
+          },
+          "arrival": {
+            "type": "integer",
+            "title": "Arrival"
+          },
+          "trip_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Trip Id"
+          }
+        },
+        "type": "object",
+        "required": [
+          "mode",
+          "source",
+          "target",
+          "departure",
+          "arrival"
+        ],
+        "title": "JourneyLeg"
+      },
       "LinkChange": {
         "properties": {
           "action": {
@@ -8063,6 +9064,202 @@
         ],
         "title": "MoneyEffect"
       },
+      "MunicipalAccessMapTarget": {
+        "properties": {
+          "region_id": {
+            "type": "string",
+            "title": "Region Id"
+          },
+          "municipality_id": {
+            "type": "string",
+            "title": "Municipality Id"
+          },
+          "criterion_id": {
+            "type": "string",
+            "title": "Criterion Id"
+          },
+          "threshold": {
+            "type": "number",
+            "title": "Threshold"
+          },
+          "deficit_only": {
+            "type": "boolean",
+            "title": "Deficit Only",
+            "default": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "region_id",
+          "municipality_id",
+          "criterion_id",
+          "threshold"
+        ],
+        "title": "MunicipalAccessMapTarget"
+      },
+      "MunicipalAccessPointResponse": {
+        "properties": {
+          "row": {
+            "$ref": "#/components/schemas/AccessRow"
+          },
+          "facility": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Facility"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "deficit": {
+            "type": "boolean",
+            "title": "Deficit"
+          }
+        },
+        "type": "object",
+        "required": [
+          "row",
+          "facility",
+          "deficit"
+        ],
+        "title": "MunicipalAccessPointResponse"
+      },
+      "MunicipalAccessResponse": {
+        "properties": {
+          "region_id": {
+            "type": "string",
+            "title": "Region Id"
+          },
+          "municipality_id": {
+            "type": "string",
+            "title": "Municipality Id"
+          },
+          "criterion_id": {
+            "type": "string",
+            "title": "Criterion Id"
+          },
+          "source_sha256": {
+            "type": "string",
+            "title": "Source Sha256"
+          },
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "measured_at": {
+            "type": "string",
+            "title": "Measured At"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit"
+          },
+          "mode": {
+            "type": "string",
+            "title": "Mode"
+          },
+          "threshold": {
+            "type": "number",
+            "title": "Threshold"
+          },
+          "reference_points": {
+            "type": "integer",
+            "title": "Reference Points"
+          },
+          "measured_points": {
+            "type": "integer",
+            "title": "Measured Points"
+          },
+          "unreachable_points": {
+            "type": "integer",
+            "title": "Unreachable Points"
+          },
+          "unresolved_points": {
+            "type": "integer",
+            "title": "Unresolved Points"
+          },
+          "deficit_points": {
+            "type": "integer",
+            "title": "Deficit Points"
+          },
+          "p90": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P90"
+          },
+          "worst_decile_mean": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Worst Decile Mean"
+          },
+          "points": {
+            "items": {
+              "$ref": "#/components/schemas/MunicipalAccessPointResponse"
+            },
+            "type": "array",
+            "title": "Points"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          },
+          "offset": {
+            "type": "integer",
+            "title": "Offset"
+          },
+          "limit": {
+            "type": "integer",
+            "title": "Limit"
+          },
+          "legal_compliance_confirmed": {
+            "type": "boolean",
+            "title": "Legal Compliance Confirmed"
+          },
+          "percentile_basis": {
+            "type": "string",
+            "title": "Percentile Basis"
+          }
+        },
+        "type": "object",
+        "required": [
+          "region_id",
+          "municipality_id",
+          "criterion_id",
+          "source_sha256",
+          "run_id",
+          "measured_at",
+          "unit",
+          "mode",
+          "threshold",
+          "reference_points",
+          "measured_points",
+          "unreachable_points",
+          "unresolved_points",
+          "deficit_points",
+          "p90",
+          "worst_decile_mean",
+          "points",
+          "total",
+          "offset",
+          "limit",
+          "legal_compliance_confirmed",
+          "percentile_basis"
+        ],
+        "title": "MunicipalAccessResponse"
+      },
       "MunicipalMetricResponse": {
         "properties": {
           "key": {
@@ -8302,6 +9499,698 @@
           "origin_kind"
         ],
         "title": "MunicipalNormativeResponse"
+      },
+      "MunicipalOverviewItemResponse": {
+        "properties": {
+          "municipality_id": {
+            "type": "string",
+            "title": "Municipality Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "connectivity": {
+            "$ref": "#/components/schemas/MunicipalMetricResponse"
+          },
+          "difference_from_region": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Difference From Region"
+          },
+          "reasons": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Reasons"
+          },
+          "service": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MunicipalServicePriority"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "municipality_id",
+          "name",
+          "connectivity",
+          "difference_from_region",
+          "reasons"
+        ],
+        "title": "MunicipalOverviewItemResponse"
+      },
+      "MunicipalOverviewResponse": {
+        "properties": {
+          "criterion_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Criterion Id"
+          },
+          "season": {
+            "type": "string",
+            "title": "Season",
+            "default": "road"
+          },
+          "region_id": {
+            "type": "string",
+            "title": "Region Id"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/MunicipalOverviewItemResponse"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "region_connectivity": {
+            "$ref": "#/components/schemas/MunicipalMetricResponse"
+          },
+          "model_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Version"
+          },
+          "artifact_version": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Artifact Version"
+          },
+          "source_table": {
+            "type": "string",
+            "title": "Source Table"
+          }
+        },
+        "type": "object",
+        "required": [
+          "region_id",
+          "items",
+          "region_connectivity",
+          "model_version",
+          "artifact_version",
+          "source_table"
+        ],
+        "title": "MunicipalOverviewResponse"
+      },
+      "MunicipalScenarioRequest": {
+        "properties": {
+          "baseline_id": {
+            "type": "string",
+            "title": "Baseline Id"
+          },
+          "region_id": {
+            "type": "string",
+            "title": "Region Id"
+          },
+          "municipality_id": {
+            "type": "string",
+            "title": "Municipality Id"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "capacity",
+              "closure",
+              "lane_closure"
+            ],
+            "title": "Kind"
+          },
+          "way_ids": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Way Ids"
+          },
+          "edge_indices": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "title": "Edge Indices"
+          }
+        },
+        "type": "object",
+        "required": [
+          "baseline_id",
+          "region_id",
+          "municipality_id",
+          "kind",
+          "way_ids"
+        ],
+        "title": "MunicipalScenarioRequest"
+      },
+      "MunicipalServicePriority": {
+        "properties": {
+          "criterion_id": {
+            "type": "string",
+            "title": "Criterion Id"
+          },
+          "threshold": {
+            "type": "number",
+            "title": "Threshold"
+          },
+          "unit": {
+            "type": "string",
+            "title": "Unit"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "default": "unavailable"
+          },
+          "reference_points": {
+            "type": "integer",
+            "title": "Reference Points",
+            "default": 0
+          },
+          "measured_points": {
+            "type": "integer",
+            "title": "Measured Points",
+            "default": 0
+          },
+          "confirmed_deficit_points": {
+            "type": "integer",
+            "title": "Confirmed Deficit Points",
+            "default": 0
+          },
+          "unresolved_points": {
+            "type": "integer",
+            "title": "Unresolved Points",
+            "default": 0
+          },
+          "confirmed_deficit_percent": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confirmed Deficit Percent"
+          },
+          "possible_deficit_percent": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Possible Deficit Percent"
+          },
+          "origin_kind": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Origin Kind"
+          },
+          "definition_sha256": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Definition Sha256"
+          },
+          "model_revision": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Revision"
+          }
+        },
+        "type": "object",
+        "required": [
+          "criterion_id",
+          "threshold",
+          "unit"
+        ],
+        "title": "MunicipalServicePriority"
+      },
+      "MunicipalSocialEffect": {
+        "properties": {
+          "criterion_id": {
+            "type": "string",
+            "title": "Criterion Id"
+          },
+          "threshold_minutes": {
+            "type": "number",
+            "title": "Threshold Minutes"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status",
+            "default": "unavailable"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason",
+            "default": "social_source_unavailable"
+          },
+          "source_sha256": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Sha256"
+          },
+          "reference_points": {
+            "type": "integer",
+            "title": "Reference Points",
+            "default": 0
+          },
+          "unresolved_points": {
+            "type": "integer",
+            "title": "Unresolved Points",
+            "default": 0
+          },
+          "lost_routes": {
+            "type": "integer",
+            "title": "Lost Routes",
+            "default": 0
+          },
+          "restored_routes": {
+            "type": "integer",
+            "title": "Restored Routes",
+            "default": 0
+          },
+          "delayed_points": {
+            "type": "integer",
+            "title": "Delayed Points",
+            "default": 0
+          },
+          "crossed_threshold_points": {
+            "type": "integer",
+            "title": "Crossed Threshold Points",
+            "default": 0
+          },
+          "before_within": {
+            "type": "integer",
+            "title": "Before Within",
+            "default": 0
+          },
+          "after_within": {
+            "type": "integer",
+            "title": "After Within",
+            "default": 0
+          },
+          "attached_facilities": {
+            "type": "integer",
+            "title": "Attached Facilities",
+            "default": 0
+          },
+          "unattached_facilities": {
+            "type": "integer",
+            "title": "Unattached Facilities",
+            "default": 0
+          },
+          "points": {
+            "items": {
+              "$ref": "#/components/schemas/MunicipalSocialPoint"
+            },
+            "type": "array",
+            "title": "Points",
+            "default": []
+          },
+          "method": {
+            "type": "string",
+            "title": "Method",
+            "default": "directed_loaded_network_fixed_attachments_known_objects_v1"
+          },
+          "legal_compliance_confirmed": {
+            "type": "boolean",
+            "title": "Legal Compliance Confirmed",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "criterion_id",
+          "threshold_minutes"
+        ],
+        "title": "MunicipalSocialEffect"
+      },
+      "MunicipalSocialPoint": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "latitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latitude"
+          },
+          "longitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Longitude"
+          },
+          "before_minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Before Minutes"
+          },
+          "after_minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Minutes"
+          },
+          "added_minutes": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Added Minutes"
+          },
+          "before_facility_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Before Facility Id"
+          },
+          "after_facility_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Facility Id"
+          },
+          "after_facility_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "After Facility Name"
+          },
+          "route_after_exists": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Route After Exists"
+          },
+          "crossed_threshold": {
+            "type": "boolean",
+            "title": "Crossed Threshold"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "latitude",
+          "longitude",
+          "before_minutes",
+          "after_minutes",
+          "added_minutes",
+          "before_facility_id",
+          "after_facility_id",
+          "after_facility_name",
+          "route_after_exists",
+          "crossed_threshold"
+        ],
+        "title": "MunicipalSocialPoint"
+      },
+      "MunicipalTrafficBaseline": {
+        "properties": {
+          "baseline_id": {
+            "type": "string",
+            "title": "Baseline Id"
+          },
+          "municipality_id": {
+            "type": "string",
+            "title": "Municipality Id"
+          },
+          "corridors": {
+            "items": {
+              "$ref": "#/components/schemas/MunicipalTrafficCorridor"
+            },
+            "type": "array",
+            "title": "Corridors"
+          },
+          "roads": {
+            "items": {
+              "$ref": "#/components/schemas/TrafficRoad"
+            },
+            "type": "array",
+            "title": "Roads"
+          },
+          "relative_gap": {
+            "type": "number",
+            "title": "Relative Gap"
+          },
+          "source_bounds": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Source Bounds"
+          },
+          "artifact_sha256": {
+            "type": "string",
+            "title": "Artifact Sha256"
+          },
+          "view": {
+            "$ref": "#/components/schemas/TrafficJob"
+          }
+        },
+        "type": "object",
+        "required": [
+          "baseline_id",
+          "municipality_id",
+          "corridors",
+          "roads",
+          "relative_gap",
+          "source_bounds",
+          "artifact_sha256",
+          "view"
+        ],
+        "title": "MunicipalTrafficBaseline"
+      },
+      "MunicipalTrafficCorridor": {
+        "properties": {
+          "way_id": {
+            "type": "integer",
+            "title": "Way Id"
+          },
+          "peak_ratio": {
+            "type": "number",
+            "title": "Peak Ratio"
+          },
+          "vehicle_hours": {
+            "type": "number",
+            "title": "Vehicle Hours"
+          },
+          "length_km": {
+            "type": "number",
+            "title": "Length Km"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "default": ""
+          },
+          "capacity_eligible": {
+            "type": "boolean",
+            "title": "Capacity Eligible",
+            "default": true
+          },
+          "capacity_reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Capacity Reason"
+          },
+          "connected_parts": {
+            "type": "integer",
+            "title": "Connected Parts",
+            "default": 1
+          }
+        },
+        "type": "object",
+        "required": [
+          "way_id",
+          "peak_ratio",
+          "vehicle_hours",
+          "length_km"
+        ],
+        "title": "MunicipalTrafficCorridor"
+      },
+      "MunicipalTrafficEffects": {
+        "properties": {
+          "municipality_id": {
+            "type": "string",
+            "title": "Municipality Id"
+          },
+          "before": {
+            "$ref": "#/components/schemas/MunicipalTrafficMetrics"
+          },
+          "after": {
+            "$ref": "#/components/schemas/MunicipalTrafficMetrics"
+          },
+          "method": {
+            "type": "string",
+            "title": "Method",
+            "default": "edge_midpoint_and_synthetic_origin_membership_v1"
+          },
+          "social": {
+            "items": {
+              "$ref": "#/components/schemas/MunicipalSocialEffect"
+            },
+            "type": "array",
+            "title": "Social",
+            "default": []
+          }
+        },
+        "type": "object",
+        "required": [
+          "municipality_id",
+          "before",
+          "after"
+        ],
+        "title": "MunicipalTrafficEffects"
+      },
+      "MunicipalTrafficMetrics": {
+        "properties": {
+          "vehicle_hours_on_local_edges": {
+            "type": "number",
+            "title": "Vehicle Hours On Local Edges"
+          },
+          "overloaded_directed_edges": {
+            "type": "integer",
+            "title": "Overloaded Directed Edges"
+          },
+          "unserved_departures": {
+            "type": "number",
+            "title": "Unserved Departures"
+          }
+        },
+        "type": "object",
+        "required": [
+          "vehicle_hours_on_local_edges",
+          "overloaded_directed_edges",
+          "unserved_departures"
+        ],
+        "title": "MunicipalTrafficMetrics"
       },
       "MunicipalityCollectionResponse": {
         "properties": {
@@ -12560,7 +14449,8 @@
               "connection",
               "closure",
               "opening",
-              "package"
+              "package",
+              "lane_closure"
             ],
             "title": "Kind"
           },
@@ -12685,6 +14575,29 @@
         ],
         "title": "TrafficAlternative"
       },
+      "TrafficAssignmentProgress": {
+        "properties": {
+          "iteration": {
+            "type": "integer",
+            "title": "Iteration"
+          },
+          "relative_gap": {
+            "type": "number",
+            "title": "Relative Gap"
+          },
+          "tolerance": {
+            "type": "number",
+            "title": "Tolerance",
+            "default": 0.001
+          }
+        },
+        "type": "object",
+        "required": [
+          "iteration",
+          "relative_gap"
+        ],
+        "title": "TrafficAssignmentProgress"
+      },
       "TrafficHypothesis": {
         "properties": {
           "source_place": {
@@ -12786,89 +14699,6 @@
         ],
         "title": "TrafficIndexValue"
       },
-      "TrafficInput": {
-        "properties": {
-          "places": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "maxItems": 2,
-            "title": "Places"
-          },
-          "region": {
-            "type": "string",
-            "maxLength": 128,
-            "title": "Region",
-            "default": ""
-          },
-          "regions": {
-            "items": {
-              "type": "string"
-            },
-            "type": "array",
-            "maxItems": 82,
-            "title": "Regions"
-          },
-          "bounds": {
-            "items": {
-              "type": "number"
-            },
-            "type": "array",
-            "maxItems": 4,
-            "title": "Bounds"
-          },
-          "demand_multiplier": {
-            "type": "number",
-            "maximum": 3.0,
-            "minimum": 0.1,
-            "title": "Demand Multiplier",
-            "default": 1
-          },
-          "pair_flow": {
-            "type": "number",
-            "maximum": 10000.0,
-            "exclusiveMinimum": 0.0,
-            "title": "Pair Flow",
-            "default": 1000
-          },
-          "max_projects": {
-            "type": "integer",
-            "maximum": 3.0,
-            "minimum": 1.0,
-            "title": "Max Projects",
-            "default": 3
-          },
-          "objective": {
-            "type": "string",
-            "enum": [
-              "connectivity",
-              "transit",
-              "congestion"
-            ],
-            "title": "Objective",
-            "default": "connectivity"
-          },
-          "focus_bounds": {
-            "items": {
-              "type": "number"
-            },
-            "type": "array",
-            "maxItems": 4,
-            "title": "Focus Bounds"
-          },
-          "hypotheses": {
-            "items": {
-              "$ref": "#/components/schemas/TrafficHypothesis"
-            },
-            "type": "array",
-            "maxItems": 32,
-            "title": "Hypotheses"
-          }
-        },
-        "type": "object",
-        "title": "TrafficInput"
-      },
       "TrafficJob": {
         "properties": {
           "id": {
@@ -12963,7 +14793,17 @@
           "version": {
             "type": "string",
             "title": "Version",
-            "default": "network_development_targets_catboost_v4"
+            "default": "traffic_result_v1"
+          },
+          "assignment_progress": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TrafficAssignmentProgress"
+              },
+              {
+                "type": "null"
+              }
+            ]
           }
         },
         "type": "object",
@@ -13065,6 +14905,61 @@
             "type": "boolean",
             "title": "New Link",
             "default": false
+          },
+          "edge_index": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Edge Index"
+          },
+          "reverse_edge_index": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reverse Edge Index"
+          },
+          "model_lanes": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model Lanes"
+          },
+          "shared_lane": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Shared Lane"
+          },
+          "closed": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Closed"
           }
         },
         "type": "object",
@@ -13171,6 +15066,450 @@
           "population"
         ],
         "title": "TrafficZone"
+      },
+      "TransitAccessResult": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "no_journey_in_covered_data"
+            ],
+            "title": "Status"
+          },
+          "journey": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/TransitJourney"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "walking_revision": {
+            "type": "string",
+            "title": "Walking Revision"
+          },
+          "walking_links": {
+            "items": {
+              "$ref": "#/components/schemas/WalkingLink"
+            },
+            "type": "array",
+            "title": "Walking Links"
+          },
+          "stops_with_coordinates": {
+            "type": "integer",
+            "title": "Stops With Coordinates"
+          },
+          "stops_without_coordinates": {
+            "type": "integer",
+            "title": "Stops Without Coordinates"
+          },
+          "timetable_stop_count": {
+            "type": "integer",
+            "title": "Timetable Stop Count"
+          },
+          "timetable_stops_without_coordinates": {
+            "type": "integer",
+            "title": "Timetable Stops Without Coordinates"
+          },
+          "departure": {
+            "type": "integer",
+            "title": "Departure"
+          },
+          "horizon": {
+            "type": "integer",
+            "title": "Horizon"
+          },
+          "maximum_walk_metres": {
+            "type": "number",
+            "title": "Maximum Walk Metres"
+          },
+          "walking_speed_metres_per_second": {
+            "type": "number",
+            "title": "Walking Speed Metres Per Second"
+          },
+          "transfer_seconds": {
+            "type": "integer",
+            "title": "Transfer Seconds"
+          },
+          "coverage_complete": {
+            "type": "boolean",
+            "title": "Coverage Complete",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "journey",
+          "walking_revision",
+          "walking_links",
+          "stops_with_coordinates",
+          "stops_without_coordinates",
+          "timetable_stop_count",
+          "timetable_stops_without_coordinates",
+          "departure",
+          "horizon",
+          "maximum_walk_metres",
+          "walking_speed_metres_per_second",
+          "transfer_seconds"
+        ],
+        "title": "TransitAccessResult"
+      },
+      "TransitCoverage": {
+        "properties": {
+          "snapshot_id": {
+            "type": "string",
+            "title": "Snapshot Id"
+          },
+          "source_date": {
+            "type": "string",
+            "title": "Source Date"
+          },
+          "source_url": {
+            "type": "string",
+            "title": "Source Url"
+          },
+          "clock_basis": {
+            "type": "string",
+            "title": "Clock Basis"
+          },
+          "stops": {
+            "items": {
+              "$ref": "#/components/schemas/TransitStop"
+            },
+            "type": "array",
+            "title": "Stops"
+          },
+          "located_stops": {
+            "type": "integer",
+            "title": "Located Stops"
+          },
+          "within_region_connections": {
+            "type": "integer",
+            "title": "Within Region Connections"
+          },
+          "coverage_complete": {
+            "type": "boolean",
+            "title": "Coverage Complete",
+            "default": false
+          },
+          "operating_service_verified": {
+            "type": "boolean",
+            "title": "Operating Service Verified",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "snapshot_id",
+          "source_date",
+          "source_url",
+          "clock_basis",
+          "stops",
+          "located_stops",
+          "within_region_connections"
+        ],
+        "title": "TransitCoverage"
+      },
+      "TransitJourney": {
+        "properties": {
+          "departure": {
+            "type": "integer",
+            "title": "Departure"
+          },
+          "arrival": {
+            "type": "integer",
+            "title": "Arrival"
+          },
+          "boardings": {
+            "type": "integer",
+            "title": "Boardings"
+          },
+          "legs": {
+            "items": {
+              "$ref": "#/components/schemas/JourneyLeg"
+            },
+            "type": "array",
+            "title": "Legs"
+          }
+        },
+        "type": "object",
+        "required": [
+          "departure",
+          "arrival",
+          "boardings",
+          "legs"
+        ],
+        "title": "TransitJourney"
+      },
+      "TransitMapPoint": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "origin",
+              "destination",
+              "stop"
+            ],
+            "title": "Role"
+          },
+          "latitude": {
+            "type": "number",
+            "title": "Latitude"
+          },
+          "longitude": {
+            "type": "number",
+            "title": "Longitude"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "role",
+          "latitude",
+          "longitude"
+        ],
+        "title": "TransitMapPoint"
+      },
+      "TransitMapTarget": {
+        "properties": {
+          "region_id": {
+            "type": "string",
+            "title": "Region Id"
+          },
+          "snapshot_id": {
+            "type": "string",
+            "title": "Snapshot Id"
+          },
+          "points": {
+            "items": {
+              "$ref": "#/components/schemas/TransitMapPoint"
+            },
+            "type": "array",
+            "title": "Points"
+          },
+          "geometry_status": {
+            "type": "string",
+            "title": "Geometry Status",
+            "default": "stops_only_not_route_geometry"
+          }
+        },
+        "type": "object",
+        "required": [
+          "region_id",
+          "snapshot_id",
+          "points"
+        ],
+        "title": "TransitMapTarget"
+      },
+      "TransitPlace": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "latitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latitude"
+          },
+          "longitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Longitude"
+          },
+          "coordinate_status": {
+            "type": "string",
+            "title": "Coordinate Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "latitude",
+          "longitude",
+          "coordinate_status"
+        ],
+        "title": "TransitPlace"
+      },
+      "TransitPlanRequest": {
+        "properties": {
+          "origin_id": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Origin Id"
+          },
+          "facility_id": {
+            "type": "string",
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Facility Id"
+          },
+          "departure_seconds": {
+            "type": "integer",
+            "exclusiveMaximum": 86400.0,
+            "minimum": 0.0,
+            "title": "Departure Seconds"
+          },
+          "horizon_seconds": {
+            "type": "integer",
+            "maximum": 172800.0,
+            "minimum": 1.0,
+            "title": "Horizon Seconds",
+            "default": 86400
+          },
+          "maximum_walk_metres": {
+            "type": "number",
+            "maximum": 10000.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Maximum Walk Metres",
+            "default": 3000.0
+          },
+          "transfer_seconds": {
+            "type": "integer",
+            "maximum": 3600.0,
+            "minimum": 0.0,
+            "title": "Transfer Seconds",
+            "default": 300
+          }
+        },
+        "type": "object",
+        "required": [
+          "origin_id",
+          "facility_id",
+          "departure_seconds"
+        ],
+        "title": "TransitPlanRequest"
+      },
+      "TransitPlanResponse": {
+        "properties": {
+          "coverage": {
+            "$ref": "#/components/schemas/TransitCoverage"
+          },
+          "origin": {
+            "$ref": "#/components/schemas/TransitPlace"
+          },
+          "destination": {
+            "$ref": "#/components/schemas/TransitPlace"
+          },
+          "result": {
+            "$ref": "#/components/schemas/TransitAccessResult"
+          },
+          "clock_scope": {
+            "type": "string",
+            "title": "Clock Scope"
+          },
+          "map_target": {
+            "$ref": "#/components/schemas/TransitMapTarget"
+          }
+        },
+        "type": "object",
+        "required": [
+          "coverage",
+          "origin",
+          "destination",
+          "result",
+          "clock_scope",
+          "map_target"
+        ],
+        "title": "TransitPlanResponse"
+      },
+      "TransitStop": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "region_id": {
+            "type": "string",
+            "title": "Region Id"
+          },
+          "region_code": {
+            "type": "string",
+            "title": "Region Code"
+          },
+          "latitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latitude"
+          },
+          "longitude": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Longitude"
+          },
+          "coordinate_status": {
+            "type": "string",
+            "title": "Coordinate Status"
+          },
+          "coordinate_source_url": {
+            "type": "string",
+            "title": "Coordinate Source Url"
+          },
+          "coordinate_source_sha256": {
+            "type": "string",
+            "title": "Coordinate Source Sha256"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "region_id",
+          "region_code",
+          "latitude",
+          "longitude",
+          "coordinate_status",
+          "coordinate_source_url",
+          "coordinate_source_sha256"
+        ],
+        "title": "TransitStop"
       },
       "TransportLink": {
         "properties": {
@@ -13402,6 +15741,58 @@
           "elapsed_seconds"
         ],
         "title": "VerifiedRoad"
+      },
+      "WalkingLink": {
+        "properties": {
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "target": {
+            "type": "string",
+            "title": "Target"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "available",
+              "unattached",
+              "outside_walking_limit"
+            ],
+            "title": "Status"
+          },
+          "metres": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Metres"
+          },
+          "seconds": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Seconds"
+          }
+        },
+        "type": "object",
+        "required": [
+          "source",
+          "target",
+          "status",
+          "metres",
+          "seconds"
+        ],
+        "title": "WalkingLink"
       },
       "WinterRoadResponse": {
         "properties": {

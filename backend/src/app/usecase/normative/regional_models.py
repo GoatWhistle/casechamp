@@ -7,6 +7,8 @@ from app.domain.normative.measurement_definition import MeasurementDefinition
 from app.usecase.normative.interface import NormativeFireRouting, NormativeRouting
 from app.usecase.normative.regional_catalog import ROAD_CRITERIA
 
+REGIONAL_ROAD_REVISION = "regional-road-cross-border-v2"
+
 
 class RegionalWalkingModels(Protocol):
     def for_region(self, region_id: str) -> NormativeRouting: ...
@@ -34,7 +36,7 @@ def regional_model(
     if criterion_id in ROAD_CRITERIA:
         if road is None:
             raise DataUnavailable("Regional road routing is not configured")
-        return RegionalModel(road, "car", "minutes", "regional-road-v1")
+        return RegionalModel(road, "car", "minutes", REGIONAL_ROAD_REVISION)
     if criterion_id in {"N04", "N09"}:
         if walking is None:
             raise DataUnavailable("Regional pedestrian routing is not configured")

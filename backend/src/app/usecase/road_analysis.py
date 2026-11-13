@@ -96,7 +96,7 @@ class RoadAnalysis:
 
     def submit(self, region_id: str, mode: AnalysisMode, percent: int = 20) -> AnalysisJob:
         if mode != "criticality":
-            raise InvalidQuery("Use traffic_development for road improvement search")
+            raise InvalidQuery("Automatic road development search has been removed")
         if type(percent) is not int or not 1 <= percent <= 200:
             raise InvalidQuery("Invalid analysis percentage")
         if not any(r.id == region_id for r in self.atlas.regions()):
@@ -115,7 +115,7 @@ class RoadAnalysis:
     def resume(self, analysis_id: str) -> AnalysisJob:
         if self.engine.get(analysis_id).mode != "criticality":
             raise InvalidQuery(
-                "Historical improvement analyses are read-only; use traffic_development"
+                "Historical improvement analyses are read-only"
             )
         return self.engine.resume(analysis_id)
 

@@ -100,7 +100,7 @@ def test_unaffected_origin_reuses_tree_and_loads():
     paths = baseline.paths.fork()
     paths.load(base)
     previous_load = paths.loads[0]
-    hours = base.free_hours.copy()
+    hours = baseline.assignment.hours.copy()
     hours[5] += 1
     paths.update(base, hours)
     paths.load(base)
@@ -143,3 +143,14 @@ def test_graph_initialization_checks_cancellation_between_origins():
     with pytest.raises(RuntimeError, match="Cancelled"):
         GraphCache(csr_matrix(np.array([[0.0, 1.0], [1.0, 0.0]])), [0, 1], check=cancel)
     assert len(checks) == 2
+
+
+def test_candidate_progress_matches_assignment_without_mutating_baseline():
+    base = network()
+    baseline = prepare_incremental(base, [Trip(0, 4, 20)], iterations=12)
+    saved_flow = baseline.assignment.flow.copy()
+    events = []
+    result = evaluate_incremental(baseline, base, iterations=12, progress=events.append)
+    assert [row["iteration"] for row in events] == list(range(1, result.iterations + 1))
+    assert events[-1]["relative_gap"] == result.relative_gap
+    np.testing.assert_array_equal(saved_flow, baseline.assignment.flow)

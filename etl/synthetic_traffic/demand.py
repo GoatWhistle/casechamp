@@ -1,4 +1,5 @@
 from collections import defaultdict
+from collections.abc import Callable
 from math import log
 
 import numpy as np
@@ -56,15 +57,18 @@ def aggregate(
 
 
 def generate(
-    network: Network, zones: list[Zone], parameters: DemandParameters
+    network: Network, zones: list[Zone], parameters: DemandParameters,
+    progress: Callable[[int, int], None] | None = None,
 ) -> tuple[list[Trip], dict[str, float]]:
     graph, _ = route_graph(network, network.free_hours)
     trips = []
     unavailable = 0.0
     population = np.array([z.population for z in zones])
     nodes = np.array([z.node for z in zones])
-    for zone in zones:
-        distances = dijkstra(graph, directed=True, indices=zone.node)[nodes]
+    for number, zone in enumerate(zones, 1):
+        distances = dijkstra(graph, directed=True, indices=zone.node, limit=parameters.max_trip_hours)[nodes]
+        if progress is not None:
+            progress(number, len(zones))
         weights = population * np.exp(-log(2) * distances / parameters.half_life_hours)
         weights[nodes == zone.node] = 0
         weights[distances > parameters.max_trip_hours] = 0

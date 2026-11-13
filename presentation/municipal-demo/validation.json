@@ -1,0 +1,229 @@
+{
+  "errors": [],
+  "requests": [],
+  "checks": [
+    {
+      "slide": "1",
+      "layout": []
+    },
+    {
+      "slide": "2",
+      "layout": [
+        {
+          "name": "",
+          "width": 1016,
+          "scroll": 1016,
+          "bottom": 584.203125
+        },
+        {
+          "name": "municipal-metrics",
+          "width": 1016,
+          "scroll": 1016,
+          "bottom": 663.76171875
+        },
+        {
+          "name": "municipal-chat",
+          "width": 338,
+          "scroll": 338,
+          "bottom": 786
+        },
+        {
+          "name": "municipal-detail",
+          "width": 365,
+          "scroll": 365,
+          "bottom": 772.93359375
+        }
+      ]
+    },
+    {
+      "slide": "3",
+      "layout": [
+        {
+          "name": "",
+          "width": 1016,
+          "scroll": 1016,
+          "bottom": 584.203125
+        },
+        {
+          "name": "municipal-metrics",
+          "width": 1016,
+          "scroll": 1016,
+          "bottom": 663.76171875
+        },
+        {
+          "name": "municipal-chat",
+          "width": 338,
+          "scroll": 338,
+          "bottom": 786
+        },
+        {
+          "name": "municipal-detail",
+          "width": 365,
+          "scroll": 365,
+          "bottom": 791.15625
+        }
+      ]
+    },
+    {
+      "slide": "4",
+      "layout": [
+        {
+          "name": "",
+          "width": 1016,
+          "scroll": 1016,
+          "bottom": 584.203125
+        },
+        {
+          "name": "municipal-metrics",
+          "width": 1016,
+          "scroll": 1016,
+          "bottom": 663.76171875
+        },
+        {
+          "name": "municipal-chat",
+          "width": 338,
+          "scroll": 338,
+          "bottom": 786
+        },
+        {
+          "name": "municipal-detail",
+          "width": 365,
+          "scroll": 365,
+          "bottom": 754.7109375
+        }
+      ]
+    },
+    {
+      "slide": "5",
+      "layout": [
+        {
+          "name": "",
+          "width": 1016,
+          "scroll": 1016,
+          "bottom": 584.203125
+        },
+        {
+          "name": "municipal-metrics",
+          "width": 1016,
+          "scroll": 1016,
+          "bottom": 663.76171875
+        },
+        {
+          "name": "municipal-chat",
+          "width": 338,
+          "scroll": 338,
+          "bottom": 786
+        },
+        {
+          "name": "municipal-detail",
+          "width": 365,
+          "scroll": 365,
+          "bottom": 754.7109375
+        }
+      ]
+    },
+    {
+      "slide": "6",
+      "layout": [
+        {
+          "name": "",
+          "width": 1016,
+          "scroll": 1016,
+          "bottom": 584.203125
+        },
+        {
+          "name": "municipal-metrics",
+          "width": 1016,
+          "scroll": 1016,
+          "bottom": 663.76171875
+        },
+        {
+          "name": "municipal-chat",
+          "width": 338,
+          "scroll": 338,
+          "bottom": 786
+        },
+        {
+          "name": "municipal-detail",
+          "width": 365,
+          "scroll": 365,
+          "bottom": 772.93359375
+        }
+      ]
+    },
+    {
+      "slide": "6.1",
+      "layout": [
+        {
+          "name": "",
+          "width": 1016,
+          "scroll": 1016,
+          "bottom": 584.203125
+        },
+        {
+          "name": "municipal-metrics",
+          "width": 1016,
+          "scroll": 1016,
+          "bottom": 663.76171875
+        },
+        {
+          "name": "municipal-chat",
+          "width": 338,
+          "scroll": 338,
+          "bottom": 786
+        },
+        {
+          "name": "municipal-detail",
+          "width": 365,
+          "scroll": 365,
+          "bottom": 772.93359375
+        }
+      ]
+    },
+    {
+      "slide": "6.2",
+      "layout": [
+        {
+          "name": "",
+          "width": 1016,
+          "scroll": 1016,
+          "bottom": 584.203125
+        },
+        {
+          "name": "municipal-metrics",
+          "width": 1016,
+          "scroll": 1016,
+          "bottom": 663.76171875
+        },
+        {
+          "name": "municipal-chat",
+          "width": 338,
+          "scroll": 338,
+          "bottom": 786
+        },
+        {
+          "name": "municipal-detail",
+          "width": 365,
+          "scroll": 365,
+          "bottom": 772.93359375
+        }
+      ]
+    },
+    {
+      "slide": "7",
+      "layout": []
+    },
+    {
+      "slide": "8",
+      "layout": []
+    },
+    {
+      "slide": "8.1",
+      "layout": []
+    },
+    {
+      "slide": "9",
+      "layout": []
+    }
+  ]
+}

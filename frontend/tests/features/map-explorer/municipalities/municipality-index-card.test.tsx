@@ -9,6 +9,9 @@ const query = vi.hoisted(() => vi.fn())
 vi.mock("@/entities/region", async (original) => ({
   ...(await original<typeof import("@/entities/region")>()),
   useMunicipalityIndices: query,
+  useMunicipalAccess: () => ({ isPending: true }),
+  useMunicipalTraffic: () => ({ isPending: true }),
+  useMunicipalScenario: () => ({ isPending: false, mutate: vi.fn() }),
 }))
 
 function card(id = "osm-relation-1") {
@@ -34,10 +37,10 @@ it("opens school and medical results immediately and restores a collapsed card w
   expect(screen.getByText(ru.municipalCard.school)).toBeDefined()
   expect(screen.getByText(ru.municipalCard.medical)).toBeDefined()
   expect(
-    screen.getByText(ru.municipalCard.range.replace("{{min}}", "50").replace("{{max}}", "75")),
+    screen.getByText(
+      ru.municipalCard.thresholdPair.replace("{{min}}", "50 %").replace("{{max}}", "75 %"),
+    ),
   ).toBeDefined()
-  expect(screen.getByText(ru.municipalCard.pointShare)).toBeDefined()
-  expect(screen.getAllByText(ru.municipalCard.settlementEstimate)).toHaveLength(2)
   const calls = query.mock.calls.length
   fireEvent.click(screen.getByRole("button", { name: label(ru.municipalCard.collapse) }))
   const restore = screen.getByRole("button", { name: label(ru.municipalCard.restore) })
@@ -80,6 +83,16 @@ it("shows real pending service status without inventing a coverage value", () =>
   })
   render(card())
   expect(screen.getAllByText(ru.municipalCard.pending)).toHaveLength(3)
-  expect(screen.queryByText(ru.municipalCard.pointShare)).toBeNull()
-  expect(screen.queryByText(ru.municipalCard.unavailable)).toBeNull()
+  for (const explanation of screen.queryAllByText(ru.municipalCard.unavailable)) {
+    expect(explanation.closest("[hidden]")).not.toBeNull()
+  }
+})
+
+it("shows services and roads together without hidden metric sections", () => {
+  query.mockReturnValue({ data: municipalIndices, isPending: false, isError: false })
+  render(card())
+  expect(screen.getByRole("region", { name: ru.municipalTraffic.title })).toBeDefined()
+  expect(screen.getByRole("region", { name: ru.municipalCard.school })).toBeDefined()
+  expect(screen.getByRole("region", { name: ru.municipalCard.medical })).toBeDefined()
+  expect(screen.queryByRole("tab")).toBeNull()
 })

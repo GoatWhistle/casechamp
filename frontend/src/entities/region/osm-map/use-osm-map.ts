@@ -16,6 +16,7 @@ import { motionMs, useReducedMotion } from "@/shared/motion"
 import type { BoundaryAtlas, RegionBoundary } from "./boundary-geojson"
 import { HOME_PADDING, MIN_MAP_ZOOM, resizeMapView } from "./camera/national-view"
 import { useMapControls } from "./camera/use-map-controls"
+import { useJourneyPoints } from "./journey/use-journey-points"
 import { aimCamera, corners, FLAT_MAP, keepFlat, roamConstrain } from "./map-camera"
 
 import { bindHover } from "./map-hover"
@@ -79,6 +80,7 @@ export function useOsmMap({
   useTransitLayer(engine, transit, styleReady)
   const airportHover = useAirportLayer(engine, airports, styleReady)
   useSettlementFocus(engine, command, styleReady)
+  useJourneyPoints(engine, styleReady)
   useNormativeLayer(engine, normative, styleReady)
   useMunicipalityLayer(engine, municipalities, styleReady)
   const roadState = useRef(roads)

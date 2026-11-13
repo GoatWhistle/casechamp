@@ -6,6 +6,8 @@ from app.usecase.analyst_brief import BUSINESS_BRIEF
 from app.usecase.calculation_tables import CalculationTables
 from app.usecase.chat_artifacts import ChatTable
 from app.usecase.closure_assessment import closure_indices, closure_traffic, index_evidence
+from app.usecase.municipal_brief import municipal_brief
+from app.usecase.municipal_scenarios import MunicipalScenarios
 from app.usecase.road_corridor import RoadCorridors
 from app.usecase.road_graph import RoadGraph, RoadJob
 from app.usecase.road_stress import StressPort, StressSummary
@@ -22,9 +24,11 @@ class CalculationReview:
 
 class CalculationReviews:
     def __init__(self, roads: RoadGraph | None, stress: StressPort | None,
-                 corridors: RoadCorridors | None = None, traffic: TrafficPort | None = None) -> None:
+                 corridors: RoadCorridors | None = None, traffic: TrafficPort | None = None,
+                 municipal: MunicipalScenarios | None = None) -> None:
         self.roads, self.stress, self.corridors = roads, stress, corridors
         self.traffic = traffic
+        self.municipal = municipal
 
     def tables(self, request: CalculationReview) -> list[ChatTable]:
         scenarios = [key for key in request.scenario_ids
@@ -36,6 +40,13 @@ class CalculationReviews:
     def prompt(self, request: CalculationReview) -> str:
         rows: list[dict[str, object]] = []
         for key in dict.fromkeys(request.traffic_ids):
+            if key.startswith("municipal-"):
+                if self.municipal is None:
+                    raise DataUnavailable("Municipal results unavailable")
+                municipal_job = self.municipal.get(key)
+                self.ready(municipal_job.status)
+                rows.append({"kind": "municipal_scenario", "result": municipal_brief(municipal_job, self.municipal)})
+                continue
             if self.traffic is None:
                 raise DataUnavailable("Traffic results unavailable")
             traffic_job = self.traffic.get(key)

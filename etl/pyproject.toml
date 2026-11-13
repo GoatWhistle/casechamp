@@ -6,7 +6,6 @@ dependencies = [
     "numpy>=2",
     "scipy>=1.17",
     "pyarrow>=26",
-    "catboost>=1.2.10,<2",
     "rasterio>=1.4",
     "shapely>=2",
     "numba>=0.67,<0.68",

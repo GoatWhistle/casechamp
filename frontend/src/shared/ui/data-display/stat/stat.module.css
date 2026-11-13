@@ -65,3 +65,24 @@
 .neutral {
   color: var(--text-muted);
 }
+
+.stat[data-layout="row"] {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: var(--space-8) var(--space-12);
+}
+
+.stat[data-layout="row"] .label {
+  color: var(--text-primary);
+  font-size: var(--font-size-body-sm);
+}
+
+.stat[data-layout="row"] .value {
+  justify-content: flex-end;
+  font-size: var(--font-size-body);
+  text-align: end;
+}
+
+.stat[data-layout="row"] .delta {
+  grid-column: 1 / -1;
+}

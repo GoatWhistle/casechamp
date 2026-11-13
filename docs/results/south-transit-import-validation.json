@@ -1,0 +1,45 @@
+{
+  "validated_at": "2026-11-13",
+  "artifact": "data/additional/transit/south-timetable-20261105-v2.json",
+  "sha256": "a85258d9675ddf57677686072736ab5d02baf6a64bd79f526bb9bec7cd5402f8",
+  "method": "explicit_daily_same_day_timetable_v1",
+  "source_rows": 11684,
+  "source_directions": 2102,
+  "accepted_directions": 378,
+  "accepted_trips": 503,
+  "rejected_directions": 1724,
+  "rejection_reasons": {
+    "unsupported_calendar": 949,
+    "unresolved_day_offset_or_time_order": 130,
+    "seasonal_timetable_requires_calendar": 350,
+    "missing_intermediate_event": 271,
+    "missing_stop_id": 16,
+    "unaligned_trip_columns": 8
+  },
+  "real_checks": {
+    "yeisk_krasnodar_five_forward_trips": true,
+    "first_reverse_193_minutes": true,
+    "karachaevsk_stavropol_external_stops_preserved": true,
+    "cherkessk_dwell_30_minutes": true
+  },
+  "coordinate_coverage_verified": false,
+  "operating_service_verified": false,
+  "sources": [
+    {
+      "path": "data/additional/all-regions/derived/bus/schedules.parquet",
+      "sha256": "90742aa87b6e212a43cc5d24098a80b7bfb4f089067ba3f8f57019f33bffc7aa"
+    },
+    {
+      "path": "data/additional/all-regions/derived/regions/07000000/bus_stop_schedules_20261105.parquet",
+      "sha256": "d2abd866440277b3e0c97db73349d3c8002fb7ee4e03a3bde2137a1e93a1e2c4"
+    },
+    {
+      "path": "data/additional/all-regions/derived/regions/03000000/bus_stop_schedules_20261105.parquet",
+      "sha256": "52a45a899a87cdcbb41968e627a1266a7260e9995b5d823138e954af45490689"
+    }
+  ],
+  "timezone_verified": false,
+  "source_clock_semantics": "unverified",
+  "v2_region_codes_preserved": true,
+  "v1_events_unchanged": true
+}

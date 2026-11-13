@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest"
 import { TrafficCard } from "@/features/map-chat/traffic/traffic-card"
 import type { TrafficJob } from "@/shared/api/traffic"
 import { LocaleProvider } from "@/shared/i18n"
+import map from "@/shared/i18n/locales/ru/map.json"
 import ru from "@/shared/i18n/locales/ru/traffic.json"
 
 const read = vi.hoisted(() => vi.fn())
@@ -107,4 +108,11 @@ describe("complete road proposals", () => {
     expect(screen.getByText(ru.unchanged)).toBeTruthy()
     expect(result.container.textContent).not.toContain("0,0000")
   })
+})
+
+it("renders a saved municipal baseline without polling a calculation endpoint", () => {
+  show({ ...job, id: "municipal-baseline-south-district", alternatives: [], indices: [] })
+  expect(read).not.toHaveBeenCalled()
+  expect(screen.getByRole("button", { name: map.municipalTraffic.showLoad })).toBeDefined()
+  expect(screen.queryByText(ru.indexUnavailable)).toBeNull()
 })

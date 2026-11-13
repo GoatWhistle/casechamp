@@ -7,11 +7,12 @@ import pytest
 from scipy.sparse.csgraph import floyd_warshall
 
 from app.adapter.traffic.index_delta import RegionOrigins
-from app.adapter.traffic.index_values import IndexValues
+from app.adapter.traffic.index_values import IndexValues, PopulationGroup
 
 
 class Owner:
     def __init__(self, modern: bool = True) -> None:
+        self.population_groups: list[PopulationGroup] = []
         self.modern = modern
         self.cities = [
             ("a", 0, 0.1, 30.0, "a-id"),
@@ -181,3 +182,21 @@ def test_trunk_override_preserves_unchanged_transfers_and_cached_access(tmp_path
     assert [row.value for row in actual] == pytest.approx(oracle(owner, raw), rel=1e-14)
     assert all(a is b for a, b in zip(actual, baseline, strict=True))
     assert aggregation.last_evaluation["transfers_changed"] is False
+
+
+def test_municipal_groups_share_regional_markets_normalization_and_scenario_times(tmp_path: Path) -> None:
+    owner = Owner()
+    owner.population_groups = [
+        PopulationGroup("municipality-one", "A", frozenset({"one"}), 40, 1),
+        PopulationGroup("municipality-two", "A", frozenset({"two"}), 60, 1),
+    ]
+    values = IndexValues(owner, lambda _: None)
+    before = values.prepare(None, None)
+    assert before[0].value == pytest.approx((before[2].value * 40 + before[3].value * 60) / 100)
+    changed, raw = candidate(tmp_path, owner, {0: {1: 10.0}, 3: {1: 10.0}, 6: {1: 10.0}})
+    after = values.evaluate(changed, None)
+    assert after[0].value == pytest.approx(oracle(owner, raw)[0])
+    assert after[0].value == pytest.approx((after[2].value * 40 + after[3].value * 60) / 100)
+    assert after[2].value < before[2].value
+    assert after[3].value == before[3].value
+    assert {row.normalization for row in after + before} == {175}

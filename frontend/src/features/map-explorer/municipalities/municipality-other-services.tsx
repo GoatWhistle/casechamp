@@ -1,10 +1,10 @@
 import { type MessageKey, useTranslation } from "@/shared/i18n"
+import { type IconName, Stat } from "@/shared/ui"
 import styles from "./municipality-index-card.module.css"
 import {
+  MunicipalityServiceHelp,
   MunicipalityServiceValue,
-  MunicipalityThreshold,
   type MunicipalNormative,
-  serviceCoverage,
 } from "./municipality-service-values"
 
 const LABELS: Readonly<Record<string, MessageKey>> = {
@@ -14,6 +14,15 @@ const LABELS: Readonly<Record<string, MessageKey>> = {
   N07: "data:metric.normative_N07",
   N08: "data:metric.normative_N08",
   N09: "data:metric.normative_N09",
+}
+
+const ICONS: Readonly<Record<string, IconName>> = {
+  N03: "fire",
+  N05: "office",
+  N06: "employment",
+  N07: "book",
+  N08: "bus",
+  N09: "bus",
 }
 
 export function MunicipalityOtherServices({
@@ -26,28 +35,20 @@ export function MunicipalityOtherServices({
   if (!available.length) return null
   return (
     <section className={styles.rows} aria-label={t("map:municipalCard.otherServices")}>
-      <p className={styles.headingRow}>{t("map:municipalCard.otherServices")}</p>
       {available.map((row) => (
         <div key={row.criterion_id}>
-          <div className={styles.row}>
-            <span>{t(LABELS[row.criterion_id] ?? "map:municipalCard.otherServices")}</span>
-            <strong>
-              <MunicipalityServiceValue row={row} />
-            </strong>
-          </div>
-          <p className={styles.note}>
-            <MunicipalityThreshold row={row} />
-            <span>
-              {t(
-                serviceCoverage(row).population
-                  ? "map:municipalCard.settlementEstimate"
-                  : "map:municipalCard.pointShare",
-              )}
-            </span>
-            {row.criterion_id === "N03" ? (
-              <span>{t("map:municipalCard.fireAssumption")}</span>
-            ) : null}
-          </p>
+          <Stat
+            layout="row"
+            icon={ICONS[row.criterion_id] ?? "building"}
+            label={t(LABELS[row.criterion_id] ?? "map:municipalCard.otherServices")}
+            value={<MunicipalityServiceValue row={row} />}
+            help={
+              <MunicipalityServiceHelp
+                row={row}
+                label={t(LABELS[row.criterion_id] ?? "map:municipalCard.otherServices")}
+              />
+            }
+          />
         </div>
       ))}
     </section>

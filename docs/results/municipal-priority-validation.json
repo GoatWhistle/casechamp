@@ -1,0 +1,391 @@
+{
+  "date": "2026-11-13",
+  "criterion_id": "N04",
+  "threshold_metres": 500,
+  "connectivity_season": "winter",
+  "scope": "reference-point deficit, not population share or legal compliance",
+  "verification": "full JSON result equality before/after optimizations, descending confirmed deficit, unknowns separate",
+  "runs": [
+    {
+      "region_id": "07000000",
+      "municipalities": 33,
+      "available": 33,
+      "before_seconds": 82.37093729199842,
+      "after_seconds": 0.3740835839416832,
+      "top_three": [
+        {
+          "municipality_id": "osm-relation-1030986",
+          "name": "городской округ Лермонтов",
+          "service": {
+            "criterion_id": "N04",
+            "threshold": 500.0,
+            "unit": "metres",
+            "status": "available",
+            "reference_points": 1047,
+            "measured_points": 1047,
+            "confirmed_deficit_points": 1023,
+            "unresolved_points": 0,
+            "confirmed_deficit_percent": 97.70773638968481,
+            "possible_deficit_percent": 97.70773638968481,
+            "origin_kind": "residential_reference_points",
+            "definition_sha256": "e4804d295e2edd2b4a90ca10662c71b34a1cfb753255a29952bdbe4ba28c5836",
+            "model_revision": "regional-walk-v2"
+          }
+        },
+        {
+          "municipality_id": "osm-relation-1030040",
+          "name": "Арзгирский муниципальный округ",
+          "service": {
+            "criterion_id": "N04",
+            "threshold": 500.0,
+            "unit": "metres",
+            "status": "available",
+            "reference_points": 28,
+            "measured_points": 27,
+            "confirmed_deficit_points": 27,
+            "unresolved_points": 1,
+            "confirmed_deficit_percent": 96.42857142857143,
+            "possible_deficit_percent": 100.0,
+            "origin_kind": "residential_reference_points",
+            "definition_sha256": "e4804d295e2edd2b4a90ca10662c71b34a1cfb753255a29952bdbe4ba28c5836",
+            "model_revision": "regional-walk-v2"
+          }
+        },
+        {
+          "municipality_id": "osm-relation-1029147",
+          "name": "Степновский муниципальный округ",
+          "service": {
+            "criterion_id": "N04",
+            "threshold": 500.0,
+            "unit": "metres",
+            "status": "available",
+            "reference_points": 157,
+            "measured_points": 157,
+            "confirmed_deficit_points": 151,
+            "unresolved_points": 0,
+            "confirmed_deficit_percent": 96.17834394904459,
+            "possible_deficit_percent": 96.17834394904459,
+            "origin_kind": "residential_reference_points",
+            "definition_sha256": "e4804d295e2edd2b4a90ca10662c71b34a1cfb753255a29952bdbe4ba28c5836",
+            "model_revision": "regional-walk-v2"
+          }
+        }
+      ]
+    },
+    {
+      "region_id": "03000000",
+      "municipalities": 45,
+      "available": 45,
+      "before_seconds": 96.04072862502653,
+      "after_seconds": 1.336667958064936,
+      "top_three": [
+        {
+          "municipality_id": "osm-relation-919000",
+          "name": "Тбилисский район",
+          "service": {
+            "criterion_id": "N04",
+            "threshold": 500.0,
+            "unit": "metres",
+            "status": "available",
+            "reference_points": 321,
+            "measured_points": 321,
+            "confirmed_deficit_points": 318,
+            "unresolved_points": 0,
+            "confirmed_deficit_percent": 99.06542056074767,
+            "possible_deficit_percent": 99.06542056074767,
+            "origin_kind": "residential_reference_points",
+            "definition_sha256": "e4804d295e2edd2b4a90ca10662c71b34a1cfb753255a29952bdbe4ba28c5836",
+            "model_revision": "regional-walk-v2"
+          }
+        },
+        {
+          "municipality_id": "osm-relation-365306",
+          "name": "Приморско-Ахтарский муниципальный округ",
+          "service": {
+            "criterion_id": "N04",
+            "threshold": 500.0,
+            "unit": "metres",
+            "status": "available",
+            "reference_points": 1798,
+            "measured_points": 1798,
+            "confirmed_deficit_points": 1765,
+            "unresolved_points": 0,
+            "confirmed_deficit_percent": 98.16462736373748,
+            "possible_deficit_percent": 98.16462736373748,
+            "origin_kind": "residential_reference_points",
+            "definition_sha256": "e4804d295e2edd2b4a90ca10662c71b34a1cfb753255a29952bdbe4ba28c5836",
+            "model_revision": "regional-walk-v2"
+          }
+        },
+        {
+          "municipality_id": "osm-relation-371552",
+          "name": "Кущёвский район",
+          "service": {
+            "criterion_id": "N04",
+            "threshold": 500.0,
+            "unit": "metres",
+            "status": "available",
+            "reference_points": 11506,
+            "measured_points": 11505,
+            "confirmed_deficit_points": 11177,
+            "unresolved_points": 1,
+            "confirmed_deficit_percent": 97.14062228402572,
+            "possible_deficit_percent": 97.14931340170345,
+            "origin_kind": "residential_reference_points",
+            "definition_sha256": "e4804d295e2edd2b4a90ca10662c71b34a1cfb753255a29952bdbe4ba28c5836",
+            "model_revision": "regional-walk-v2"
+          }
+        }
+      ]
+    }
+  ],
+  "timing_limitations": "Single local HTTP run per phase, two region requests concurrently; ongoing traffic assignment on same machine. Not a production latency guarantee.",
+  "medical_check": [
+    {
+      "region_id": "07000000",
+      "available": 33,
+      "top_three": [
+        {
+          "municipality_id": "osm-relation-1030065",
+          "name": "Левокумский муниципальный округ",
+          "connectivity": {
+            "key": "hansen_idx",
+            "value": 47.65699203658179,
+            "status": "available",
+            "reason": null,
+            "unit": "index_points",
+            "population": 35133,
+            "measured_population": 35133,
+            "settlements": 21,
+            "measured_settlements": 21,
+            "population_coverage": 1.0
+          },
+          "difference_from_region": -51.49443166468797,
+          "reasons": [
+            "below_region_connectivity",
+            "confirmed_service_deficit"
+          ],
+          "service": {
+            "criterion_id": "N01",
+            "threshold": 60.0,
+            "unit": "minutes",
+            "status": "available",
+            "reference_points": 21,
+            "measured_points": 21,
+            "confirmed_deficit_points": 4,
+            "unresolved_points": 0,
+            "confirmed_deficit_percent": 19.047619047619047,
+            "possible_deficit_percent": 19.047619047619047,
+            "origin_kind": "settlement_reference_points",
+            "definition_sha256": "0b9ef851dd1b71cc6592e1df474d27ef8795b2357e63999a056fb9cd1b3920c4",
+            "model_revision": "regional-road-cross-border-v2"
+          }
+        },
+        {
+          "municipality_id": "osm-relation-1030115",
+          "name": "Андроповский муниципальный округ",
+          "connectivity": {
+            "key": "hansen_idx",
+            "value": 96.6311442079985,
+            "status": "available",
+            "reason": null,
+            "unit": "index_points",
+            "population": 33557,
+            "measured_population": 33557,
+            "settlements": 29,
+            "measured_settlements": 29,
+            "population_coverage": 1.0
+          },
+          "difference_from_region": -2.5202794932712607,
+          "reasons": [
+            "below_region_connectivity",
+            "confirmed_service_deficit"
+          ],
+          "service": {
+            "criterion_id": "N01",
+            "threshold": 60.0,
+            "unit": "minutes",
+            "status": "available",
+            "reference_points": 29,
+            "measured_points": 29,
+            "confirmed_deficit_points": 3,
+            "unresolved_points": 0,
+            "confirmed_deficit_percent": 10.344827586206897,
+            "possible_deficit_percent": 10.344827586206897,
+            "origin_kind": "settlement_reference_points",
+            "definition_sha256": "0b9ef851dd1b71cc6592e1df474d27ef8795b2357e63999a056fb9cd1b3920c4",
+            "model_revision": "regional-road-cross-border-v2"
+          }
+        },
+        {
+          "municipality_id": "osm-relation-1030121",
+          "name": "Александровский муниципальный округ",
+          "connectivity": {
+            "key": "hansen_idx",
+            "value": 84.11603606463669,
+            "status": "available",
+            "reason": null,
+            "unit": "index_points",
+            "population": 46741,
+            "measured_population": 46741,
+            "settlements": 21,
+            "measured_settlements": 21,
+            "population_coverage": 1.0
+          },
+          "difference_from_region": -15.035387636633075,
+          "reasons": [
+            "below_region_connectivity",
+            "confirmed_service_deficit"
+          ],
+          "service": {
+            "criterion_id": "N01",
+            "threshold": 60.0,
+            "unit": "minutes",
+            "status": "available",
+            "reference_points": 21,
+            "measured_points": 21,
+            "confirmed_deficit_points": 2,
+            "unresolved_points": 0,
+            "confirmed_deficit_percent": 9.523809523809524,
+            "possible_deficit_percent": 9.523809523809524,
+            "origin_kind": "settlement_reference_points",
+            "definition_sha256": "0b9ef851dd1b71cc6592e1df474d27ef8795b2357e63999a056fb9cd1b3920c4",
+            "model_revision": "regional-road-cross-border-v2"
+          }
+        }
+      ]
+    },
+    {
+      "region_id": "03000000",
+      "available": 45,
+      "top_three": [
+        {
+          "municipality_id": "osm-relation-365168",
+          "name": "Апшеронский район",
+          "connectivity": {
+            "key": "hansen_idx",
+            "value": 77.50820811812262,
+            "status": "available",
+            "reason": null,
+            "unit": "index_points",
+            "population": 98685,
+            "measured_population": 98685,
+            "settlements": 52,
+            "measured_settlements": 52,
+            "population_coverage": 1.0
+          },
+          "difference_from_region": -15.971382290013949,
+          "reasons": [
+            "below_region_connectivity",
+            "confirmed_service_deficit"
+          ],
+          "service": {
+            "criterion_id": "N01",
+            "threshold": 60.0,
+            "unit": "minutes",
+            "status": "available",
+            "reference_points": 52,
+            "measured_points": 52,
+            "confirmed_deficit_points": 3,
+            "unresolved_points": 0,
+            "confirmed_deficit_percent": 5.769230769230769,
+            "possible_deficit_percent": 5.769230769230769,
+            "origin_kind": "settlement_reference_points",
+            "definition_sha256": "0b9ef851dd1b71cc6592e1df474d27ef8795b2357e63999a056fb9cd1b3920c4",
+            "model_revision": "regional-road-cross-border-v2"
+          }
+        },
+        {
+          "municipality_id": "osm-relation-364150",
+          "name": "Северский район",
+          "connectivity": {
+            "key": "hansen_idx",
+            "value": 110.36799005227857,
+            "status": "available",
+            "reason": null,
+            "unit": "index_points",
+            "population": 122982,
+            "measured_population": 122982,
+            "settlements": 48,
+            "measured_settlements": 48,
+            "population_coverage": 1.0
+          },
+          "difference_from_region": 16.888399644141998,
+          "reasons": [
+            "confirmed_service_deficit"
+          ],
+          "service": {
+            "criterion_id": "N01",
+            "threshold": 60.0,
+            "unit": "minutes",
+            "status": "available",
+            "reference_points": 48,
+            "measured_points": 48,
+            "confirmed_deficit_points": 2,
+            "unresolved_points": 0,
+            "confirmed_deficit_percent": 4.166666666666667,
+            "possible_deficit_percent": 4.166666666666667,
+            "origin_kind": "settlement_reference_points",
+            "definition_sha256": "0b9ef851dd1b71cc6592e1df474d27ef8795b2357e63999a056fb9cd1b3920c4",
+            "model_revision": "regional-road-cross-border-v2"
+          }
+        },
+        {
+          "municipality_id": "osm-relation-364156",
+          "name": "Абинский район",
+          "connectivity": {
+            "key": "hansen_idx",
+            "value": 91.57468011771512,
+            "status": "available",
+            "reason": null,
+            "unit": "index_points",
+            "population": 98943,
+            "measured_population": 98943,
+            "settlements": 35,
+            "measured_settlements": 35,
+            "population_coverage": 1.0
+          },
+          "difference_from_region": -1.904910290421455,
+          "reasons": [
+            "below_region_connectivity",
+            "confirmed_service_deficit"
+          ],
+          "service": {
+            "criterion_id": "N01",
+            "threshold": 60.0,
+            "unit": "minutes",
+            "status": "available",
+            "reference_points": 35,
+            "measured_points": 35,
+            "confirmed_deficit_points": 1,
+            "unresolved_points": 0,
+            "confirmed_deficit_percent": 2.857142857142857,
+            "possible_deficit_percent": 2.857142857142857,
+            "origin_kind": "settlement_reference_points",
+            "definition_sha256": "0b9ef851dd1b71cc6592e1df474d27ef8795b2357e63999a056fb9cd1b3920c4",
+            "model_revision": "regional-road-cross-border-v2"
+          }
+        }
+      ]
+    }
+  ],
+  "browser": {
+    "viewport": [
+      1440,
+      1000
+    ],
+    "card_content_width_px": 366,
+    "card_scroll_width_px": 366,
+    "municipality": "osm-relation-1030986",
+    "criterion": "N04",
+    "threshold": 500,
+    "deficit_points": 1023,
+    "p90_metres_display": "2852.7",
+    "tooltip_escape_preserves_panel": true,
+    "screenshots": [
+      "/tmp/plexus-priority-overview.png",
+      "/tmp/plexus-priority-detail.png"
+    ],
+    "log": "/tmp/plexus-priority-browser-success.log"
+  }
+}

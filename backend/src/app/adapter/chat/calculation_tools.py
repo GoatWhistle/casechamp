@@ -4,6 +4,7 @@ from dataclasses import asdict
 from pydantic_ai import Agent, ModelRetry, RunContext
 
 from app.adapter.chat.artifacts import ChatRun
+from app.adapter.chat.municipal_tools import MunicipalTools
 from app.adapter.chat.network_jobs import NetworkJobs
 from app.adapter.chat.network_scenarios import NetworkScenarios
 from app.adapter.chat.network_search import NetworkSearch
@@ -27,7 +28,9 @@ class CalculationTools:
         corridors: RoadCorridors | None = None,
         stress: StressPort | None = None,
         traffic: TrafficPort | None = None,
+        municipal: MunicipalTools | None = None,
     ) -> None:
+        self._municipal = municipal
         self._traffic = traffic
         self._stress = stress
         self._sensitivity = sensitivity
@@ -36,6 +39,8 @@ class CalculationTools:
         self._corridors = corridors
 
     def register(self, agent: Agent[ChatRun, str]) -> None:
+        if self._municipal is not None:
+            self._municipal.register(agent)
         if self._stress is not None:
             StressTools(self._stress, self._corridors, self._roads).register(agent)
         NetworkSearch(self._roads, self._corridors).register(agent)
@@ -50,16 +55,6 @@ class CalculationTools:
         model = self._roads.model_info() if self._roads else None
         return json.dumps(
             {
-                "road_development": {
-                    "available": self._traffic is not None,
-                    "calculate": "calculate_scenario(kind=traffic_development)",
-                    "objectives": ["connectivity", "transit", "congestion"],
-                    "default_objective": "connectivity",
-                    "scope": "bounds, exact region/regions, or resolved places; bounds describe the surrounding network context",
-                    "focus_bounds": "optional measured area for transit or congestion; use stored geographic bounds or the user's map selection",
-                    "workflow": "one adaptive search returns verified proposals, objective effects and map geometry",
-                    "data": "manage_calculation(kind=traffic_data)",
-                },
                 "settlement_connectivity": {
                     "available": self._corridors is not None,
                     "calculate": "calculate_scenario(kind=connectivity)",
@@ -74,7 +69,7 @@ class CalculationTools:
                 "national_road_stress": {
                     "available": self._stress is not None,
                     "calculate": "calculate_scenario(kind=close_selection, assessment=impact)",
-                    "includes": "regional Hansen plus national road-closure consequences",
+                    "includes": "regional city connectivity plus national road-closure consequences",
                     "selected_ways": "stress_test_roads",
                     "inspect": "inspect_road_stress_test",
                     "route": "compare_stress_route",
@@ -106,7 +101,7 @@ class CalculationTools:
                 "road_criticality": {
                     "available": self._analysis is not None and self._roads is not None,
                     "calculate": "calculate_scenario(kind=road_analysis, mode=criticality)",
-                    "purpose": "identify consequences of road loss; development uses road_development",
+                    "purpose": "identify consequences of road loss",
                 },
                 "transport_model": {
                     "available": self._roads is not None,

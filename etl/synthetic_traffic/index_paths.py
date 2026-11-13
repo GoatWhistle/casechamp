@@ -85,6 +85,7 @@ class DiskGraphCache:
         origins,
         cache_dir: str | Path,
         check: Callable[[], None] | None = None,
+        require_cached: bool = False,
     ):
         checkpoint(None, check)
         warmup()
@@ -104,6 +105,8 @@ class DiskGraphCache:
                 for kind in ("distance", "parent")
             )
         ]
+        if require_cached and missing:
+            raise FileNotFoundError("Published shortest-path baseline is incomplete; run offline preparation")
         required = len(missing) * (self.graph.shape[0] * 12 + 512)
         if disk_usage(self.directory).free < required * 1.1:
             raise OSError(

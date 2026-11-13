@@ -8,6 +8,7 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 CRITERIA = ('N01', 'N02', 'N03', 'N05', 'N06', 'N07', 'N08')
+CROSS_BORDER_CRITERIA = frozenset({'N01', 'N02', 'N05', 'N06', 'N07', 'N08'})
 
 
 def request(url: str, method: str = 'GET', command: dict | None = None) -> tuple[int, object]:
@@ -32,6 +33,7 @@ def main() -> None:
     parser.add_argument('--regions', type=Path, default=Path('.local/normative-national-inputs/regions.json'))
     parser.add_argument('--output', type=Path, default=Path('.local/regional-measurements-batch.json'))
     parser.add_argument('--resume', action='store_true')
+    parser.add_argument('--required-model-revision')
     parser.add_argument('--criteria', nargs='+', choices=tuple(f'N{i:02}' for i in range(1, 10)), default=CRITERIA)
     parser.add_argument('--fire-speed-kmh', type=float, default=40)
     args = parser.parse_args()
@@ -39,6 +41,8 @@ def main() -> None:
     complete = {
         (row['region_id'], row['criterion_id']) for row in records
         if row['status'] == 200 and (
+            not args.required_model_revision or row.get('model_revision') == args.required_model_revision
+        ) and (
             row['criterion_id'] != 'N03' or row.get('fire_speed_kmh') == args.fire_speed_kmh
         )
     }
@@ -67,7 +71,7 @@ def main() -> None:
                 save(args.output, records)
                 print(json.dumps(record, ensure_ascii=False), flush=True)
                 continue
-            if catalog['candidate_count'] == 0:
+            if catalog['candidate_count'] == 0 and criterion not in CROSS_BORDER_CRITERIA:
                 record = {'region_id': region['id'], 'region_name': region['name'], 'criterion_id': criterion,
                           'status': 204, 'reason': 'no_loaded_candidates', 'observed_at': datetime.now(UTC).isoformat()}
                 records.append(record)
@@ -78,7 +82,8 @@ def main() -> None:
                 cached_status, cached = request(url) if args.resume else (204, None)
             except (OSError, URLError, HTTPException, json.JSONDecodeError):
                 cached_status, cached = 503, None
-            reusable = criterion != 'N03' and cached_status == 200 and cached and not cached['closed_way_ids']
+            reusable = (criterion != 'N03' and cached_status == 200 and cached and not cached['closed_way_ids']
+                        and (not args.required_model_revision or cached.get('model_revision') == args.required_model_revision))
             for attempt in range(3):
                 try:
                     command = {'closed_way_ids': []}
@@ -98,6 +103,9 @@ def main() -> None:
                     time.sleep(5)
                     continue
                 break
+            if status == 200 and args.required_model_revision and body.get('model_revision') != args.required_model_revision:
+                status, body = 409, {'code': 'measurement_model_revision_mismatch',
+                                     'expected': args.required_model_revision, 'actual': body.get('model_revision')}
             record = {'region_id': region['id'], 'region_name': region['name'], 'criterion_id': criterion,
                       'observed_at': datetime.now(UTC).isoformat(), 'status': status,
                       'elapsed_seconds': time.perf_counter() - started}
@@ -107,13 +115,19 @@ def main() -> None:
                 record.update(run_id=body['run_id'], origins=body['origins'],
                               measured_paths=body['measured_paths'],
                               mode=body['mode'], unit=body['unit'],
-                              facilities=body['facilities'], qualification=body['qualification'], graph_revision=body['graph_revision'])
+                              facilities=body['facilities'], qualification=body['qualification'], graph_revision=body['graph_revision'],
+                              model_revision=body.get('model_revision'))
             else:
                 record['error'] = body
             records.append(record)
             save(args.output, records)
             print(json.dumps(record, ensure_ascii=False), flush=True)
+    latest = {(row['region_id'], row['criterion_id']): row for row in records}
+    failures = [(region['id'], criterion) for region in regions for criterion in args.criteria
+                if latest.get((region['id'], criterion), {}).get('status') not in (200, 204)]
     print('Regional measurement batch finished', len(records), flush=True)
+    if failures:
+        raise SystemExit('Regional measurement batch incomplete: ' + repr(failures))
 
 
 if __name__ == '__main__':

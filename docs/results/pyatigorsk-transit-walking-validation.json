@@ -1,0 +1,155 @@
+{
+  "date": "2026-11-13",
+  "graph_revision": "e9f59ce94b394d65a9e1a821",
+  "graph_nodes": 676452,
+  "graph_edges": 1459294,
+  "stop": "26015",
+  "stop_coordinate_status": "official_operator_pin_not_verified_entrance",
+  "walking_speed_metres_per_second": 1.4,
+  "maximum_metres": 3000,
+  "source_origins": [
+    {
+      "id": "osm-way-363555625",
+      "name": "проспект Калинина, 108",
+      "latitude": 44.02978688333334,
+      "longitude": 43.07158088333333,
+      "distance": 124.52751408479438
+    },
+    {
+      "id": "osm-way-1447172057",
+      "name": "Надречный переулок, 9",
+      "latitude": 44.03056113636364,
+      "longitude": 43.06979375454545,
+      "distance": 134.1598256629663
+    },
+    {
+      "id": "osm-way-533783982",
+      "name": "улица Бунимовича, 32",
+      "latitude": 44.030918400000004,
+      "longitude": 43.07317975,
+      "distance": 142.69160585867772
+    },
+    {
+      "id": "osm-way-533783514",
+      "name": "улица Рожанского, 33",
+      "latitude": 44.031922449999996,
+      "longitude": 43.070139850000004,
+      "distance": 152.02531897258385
+    },
+    {
+      "id": "osm-way-533783813",
+      "name": "улица Крайнего, 79",
+      "latitude": 44.032235275000005,
+      "longitude": 43.071946025,
+      "distance": 154.68724449038322
+    },
+    {
+      "id": "osm-way-533783981",
+      "name": "улица Бунимовича, 30",
+      "latitude": 44.03106755,
+      "longitude": 43.073316750000004,
+      "distance": 154.7832829389552
+    },
+    {
+      "id": "osm-way-533783473",
+      "name": "улица Рожанского, 31",
+      "latitude": 44.03215665,
+      "longitude": 43.07025925,
+      "distance": 166.91055878911934
+    },
+    {
+      "id": "osm-way-533783980",
+      "name": "улица Бунимовича, 28",
+      "latitude": 44.0309607,
+      "longitude": 43.073508000000004,
+      "distance": 169.12620176447743
+    },
+    {
+      "id": "osm-way-533783513",
+      "name": "улица Рожанского, 26",
+      "latitude": 44.031907950000004,
+      "longitude": 43.0697463,
+      "distance": 173.5451671599029
+    },
+    {
+      "id": "osm-way-533783807",
+      "name": "улица Крайнего, 77",
+      "latitude": 44.03241165,
+      "longitude": 43.072069225,
+      "distance": 176.3220916789245
+    }
+  ],
+  "links": [
+    {
+      "source": "osm-way-363555625",
+      "target": "26015",
+      "status": "available",
+      "metres": 396.2307794954553,
+      "seconds": 284
+    },
+    {
+      "source": "osm-way-1447172057",
+      "target": "26015",
+      "status": "available",
+      "metres": 502.2009019723315,
+      "seconds": 359
+    },
+    {
+      "source": "osm-way-533783982",
+      "target": "26015",
+      "status": "available",
+      "metres": 241.18059237117922,
+      "seconds": 173
+    },
+    {
+      "source": "osm-way-533783514",
+      "target": "26015",
+      "status": "available",
+      "metres": 240.99104998844638,
+      "seconds": 173
+    },
+    {
+      "source": "osm-way-533783813",
+      "target": "26015",
+      "status": "available",
+      "metres": 205.48539234154111,
+      "seconds": 147
+    },
+    {
+      "source": "osm-way-533783981",
+      "target": "26015",
+      "status": "available",
+      "metres": 270.4172501723868,
+      "seconds": 194
+    },
+    {
+      "source": "osm-way-533783473",
+      "target": "26015",
+      "status": "available",
+      "metres": 280.01862261231537,
+      "seconds": 201
+    },
+    {
+      "source": "osm-way-533783980",
+      "target": "26015",
+      "status": "available",
+      "metres": 265.8809054992876,
+      "seconds": 190
+    },
+    {
+      "source": "osm-way-533783513",
+      "target": "26015",
+      "status": "available",
+      "metres": 245.83220215741852,
+      "seconds": 176
+    },
+    {
+      "source": "osm-way-533783807",
+      "target": "26015",
+      "status": "available",
+      "metres": 235.59567360199907,
+      "seconds": 169
+    }
+  ],
+  "scope": "residential_reference_to_station_pin_only"
+}

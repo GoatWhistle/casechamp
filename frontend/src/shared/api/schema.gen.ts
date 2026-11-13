@@ -344,6 +344,57 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/regions/{region_id}/municipalities/{municipality_id}/access": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Access */
+        get: operations["get_access_api_v1_regions__region_id__municipalities__municipality_id__access_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/regions/{region_id}/transit": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Coverage */
+        get: operations["coverage_api_v1_regions__region_id__transit_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/regions/{region_id}/transit-journeys": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Plan */
+        post: operations["plan_api_v1_regions__region_id__transit_journeys_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/regions/{region_id}/municipalities/{municipality_id}/indices": {
         parameters: {
             query?: never;
@@ -353,6 +404,23 @@ export interface paths {
         };
         /** Get Indices */
         get: operations["get_indices_api_v1_regions__region_id__municipalities__municipality_id__indices_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/regions/{region_id}/municipalities-overview": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get Overview */
+        get: operations["get_overview_api_v1_regions__region_id__municipalities_overview_get"];
         put?: never;
         post?: never;
         delete?: never;
@@ -1040,8 +1108,7 @@ export interface paths {
         /** Recent */
         get: operations["recent_api_v1_traffic_jobs_get"];
         put?: never;
-        /** Submit */
-        post: operations["submit_api_v1_traffic_jobs_post"];
+        post?: never;
         delete?: never;
         options?: never;
         head?: never;
@@ -1076,6 +1143,91 @@ export interface paths {
         put?: never;
         /** Cancel */
         post: operations["cancel_api_v1_traffic_jobs__job_id__cancel_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/municipal-scenarios/baseline/{region}/{municipality}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Baseline */
+        get: operations["baseline_api_v1_municipal_scenarios_baseline__region___municipality__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/municipal-scenarios": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Submit */
+        post: operations["submit_api_v1_municipal_scenarios_post"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/municipal-scenarios/{identifier}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Get */
+        get: operations["get_api_v1_municipal_scenarios__identifier__get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/municipal-scenarios/{identifier}/effects": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** Effects */
+        get: operations["effects_api_v1_municipal_scenarios__identifier__effects_get"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/municipal-scenarios/{identifier}/cancel": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** Cancel */
+        post: operations["cancel_api_v1_municipal_scenarios__identifier__cancel_post"];
         delete?: never;
         options?: never;
         head?: never;
@@ -1151,6 +1303,75 @@ export interface components {
             origin_reference_status?: string | null;
             /** Rule Set Id */
             rule_set_id?: string | null;
+        };
+        /** AccessRow */
+        AccessRow: {
+            /** Id */
+            id: string;
+            /** Name */
+            name: string;
+            /** Population */
+            population: number | null;
+            /** Latitude */
+            latitude: number | null;
+            /** Longitude */
+            longitude: number | null;
+            /** Facility Id */
+            facility_id: string | null;
+            /** Minutes */
+            minutes: number | null;
+            /** Excess Minutes */
+            excess_minutes: number | null;
+            /**
+             * State
+             * @enum {string}
+             */
+            state: "within" | "exceeded" | "unreachable" | "unknown" | "not_regulated" | "not_applicable";
+            /** Distance Metres */
+            distance_metres?: number | null;
+            /**
+             * Uncertainty
+             * @default []
+             */
+            uncertainty: ("residential_reference_not_entrance" | "population_group_missing" | "territory_conditions_missing" | "facility_entrances_unverified" | "origin_unattached" | "path_unconfirmed" | "service_status_unconfirmed" | "medical_catchment_unconfirmed" | "transport_mode_unconfirmed" | "facility_profile_unconfirmed" | "fire_speed_assumed" | "fire_vehicle_access_unconfirmed" | "fire_readiness_unconfirmed" | "fire_adverse_conditions_unconfirmed" | "fire_directionality_unconfirmed" | "fire_destination_unconfirmed" | "fire_measurement_definition_unconfirmed" | "qualification_unconfirmed" | "evidence_outside_validity" | "normative_rule_unconfirmed" | "planning_scope_unconfirmed" | "reference_location_unconfirmed" | "measurement_version_unconfirmed" | "scenario_conditions_unconfirmed" | "inventory_incomplete" | "ownership_scope_unconfirmed" | "regional_adjustment_unconfirmed" | "medical_form_unconfirmed" | "adult_profile_unconfirmed")[];
+            /** Routing Node */
+            routing_node?: number | null;
+            /** Approach Metres */
+            approach_metres?: number | null;
+            /** Threshold Minutes */
+            threshold_minutes?: number | null;
+            /** Territory Type */
+            territory_type?: string | null;
+            /** Territory Source Url */
+            territory_source_url?: string | null;
+            /** Rule Set Id */
+            rule_set_id?: string | null;
+            /** Territory Verification Status */
+            territory_verification_status?: string | null;
+            /** Municipality Code */
+            municipality_code?: string | null;
+            /** Territory Structure Source Url */
+            territory_structure_source_url?: string | null;
+            /** Qualification Source Url */
+            qualification_source_url?: string | null;
+            /** Qualification Observed At */
+            qualification_observed_at?: string | null;
+            /** Catchment Source Url */
+            catchment_source_url?: string | null;
+            /** Threshold Source Url */
+            threshold_source_url?: string | null;
+            /** Travel Profile Source Url */
+            travel_profile_source_url?: string | null;
+            /** Measurement Method Source Url */
+            measurement_method_source_url?: string | null;
+            /** Origin Source Url */
+            origin_source_url?: string | null;
+            /** Origin Observed At */
+            origin_observed_at?: string | null;
+            /** Origin Source Sha256 */
+            origin_source_sha256?: string | null;
+            /** Origin Reference Status */
+            origin_reference_status?: string | null;
         };
         /** AccessibilityComparison */
         AccessibilityComparison: {
@@ -1568,6 +1789,8 @@ export interface components {
             region_ids: string[];
             settlement?: components["schemas"]["SettlementMapTarget"] | null;
             road?: components["schemas"]["RoadGeometry"] | null;
+            municipal_access?: components["schemas"]["MunicipalAccessMapTarget"] | null;
+            transit?: components["schemas"]["TransitMapTarget"] | null;
         };
         /** ChatMessageInput */
         ChatMessageInput: {
@@ -1944,6 +2167,37 @@ export interface components {
             /** Message */
             message: string;
         };
+        /** Facility */
+        Facility: {
+            /** Id */
+            id: string;
+            /** Service */
+            service: string;
+            /** Name */
+            name: string;
+            /** Address */
+            address: string;
+            /** Source Url */
+            source_url: string;
+            /** Observed At */
+            observed_at: string;
+            /** Latitude */
+            latitude: number | null;
+            /** Longitude */
+            longitude: number | null;
+            /** Coordinate Source */
+            coordinate_source: string | null;
+            /** Coordinate Status */
+            coordinate_status: string;
+            /** Published On */
+            published_on?: string | null;
+            /** Source Sha256 */
+            source_sha256?: string | null;
+            /** Coordinate Snapshot Sha256 */
+            coordinate_snapshot_sha256?: string | null;
+            /** Coordinate Snapshot Url */
+            coordinate_snapshot_url?: string | null;
+        };
         /** FacilityResponse */
         FacilityResponse: {
             /** Id */
@@ -2305,6 +2559,24 @@ export interface components {
             /** Population Share Percent */
             population_share_percent: number | null;
         };
+        /** JourneyLeg */
+        JourneyLeg: {
+            /**
+             * Mode
+             * @enum {string}
+             */
+            mode: "walk" | "wait" | "dwell" | "bus";
+            /** Source */
+            source: string;
+            /** Target */
+            target: string;
+            /** Departure */
+            departure: number;
+            /** Arrival */
+            arrival: number;
+            /** Trip Id */
+            trip_id?: string | null;
+        };
         /** LinkChange */
         LinkChange: {
             /** Action */
@@ -2473,6 +2745,76 @@ export interface components {
              */
             method: string;
         };
+        /** MunicipalAccessMapTarget */
+        MunicipalAccessMapTarget: {
+            /** Region Id */
+            region_id: string;
+            /** Municipality Id */
+            municipality_id: string;
+            /** Criterion Id */
+            criterion_id: string;
+            /** Threshold */
+            threshold: number;
+            /**
+             * Deficit Only
+             * @default true
+             */
+            deficit_only: boolean;
+        };
+        /** MunicipalAccessPointResponse */
+        MunicipalAccessPointResponse: {
+            row: components["schemas"]["AccessRow"];
+            facility: components["schemas"]["Facility"] | null;
+            /** Deficit */
+            deficit: boolean;
+        };
+        /** MunicipalAccessResponse */
+        MunicipalAccessResponse: {
+            /** Region Id */
+            region_id: string;
+            /** Municipality Id */
+            municipality_id: string;
+            /** Criterion Id */
+            criterion_id: string;
+            /** Source Sha256 */
+            source_sha256: string;
+            /** Run Id */
+            run_id: string;
+            /** Measured At */
+            measured_at: string;
+            /** Unit */
+            unit: string;
+            /** Mode */
+            mode: string;
+            /** Threshold */
+            threshold: number;
+            /** Reference Points */
+            reference_points: number;
+            /** Measured Points */
+            measured_points: number;
+            /** Unreachable Points */
+            unreachable_points: number;
+            /** Unresolved Points */
+            unresolved_points: number;
+            /** Deficit Points */
+            deficit_points: number;
+            /** P90 */
+            p90: number | null;
+            /** Worst Decile Mean */
+            worst_decile_mean: number | null;
+            /** Points */
+            points: components["schemas"]["MunicipalAccessPointResponse"][];
+            /** Total */
+            total: number;
+            /** Offset */
+            offset: number;
+            /** Limit */
+            limit: number;
+            /** Legal Compliance Confirmed */
+            legal_compliance_confirmed: boolean;
+            /** Percentile Basis */
+            percentile_basis: string;
+        };
         /** MunicipalMetricResponse */
         MunicipalMetricResponse: {
             /** Key */
@@ -2536,6 +2878,285 @@ export interface components {
             source_urls: string[];
             /** Origin Kind */
             origin_kind: string;
+        };
+        /** MunicipalOverviewItemResponse */
+        MunicipalOverviewItemResponse: {
+            /** Municipality Id */
+            municipality_id: string;
+            /** Name */
+            name: string;
+            connectivity: components["schemas"]["MunicipalMetricResponse"];
+            /** Difference From Region */
+            difference_from_region: number | null;
+            /** Reasons */
+            reasons: string[];
+            service?: components["schemas"]["MunicipalServicePriority"] | null;
+        };
+        /** MunicipalOverviewResponse */
+        MunicipalOverviewResponse: {
+            /** Criterion Id */
+            criterion_id?: string | null;
+            /**
+             * Season
+             * @default road
+             */
+            season: string;
+            /** Region Id */
+            region_id: string;
+            /** Items */
+            items: components["schemas"]["MunicipalOverviewItemResponse"][];
+            region_connectivity: components["schemas"]["MunicipalMetricResponse"];
+            /** Model Version */
+            model_version: string | null;
+            /** Artifact Version */
+            artifact_version: string | null;
+            /** Source Table */
+            source_table: string;
+        };
+        /** MunicipalScenarioRequest */
+        MunicipalScenarioRequest: {
+            /** Baseline Id */
+            baseline_id: string;
+            /** Region Id */
+            region_id: string;
+            /** Municipality Id */
+            municipality_id: string;
+            /**
+             * Kind
+             * @enum {string}
+             */
+            kind: "capacity" | "closure" | "lane_closure";
+            /** Way Ids */
+            way_ids: number[];
+            /** Edge Indices */
+            edge_indices?: number[];
+        };
+        /** MunicipalServicePriority */
+        MunicipalServicePriority: {
+            /** Criterion Id */
+            criterion_id: string;
+            /** Threshold */
+            threshold: number;
+            /** Unit */
+            unit: string;
+            /**
+             * Status
+             * @default unavailable
+             */
+            status: string;
+            /**
+             * Reference Points
+             * @default 0
+             */
+            reference_points: number;
+            /**
+             * Measured Points
+             * @default 0
+             */
+            measured_points: number;
+            /**
+             * Confirmed Deficit Points
+             * @default 0
+             */
+            confirmed_deficit_points: number;
+            /**
+             * Unresolved Points
+             * @default 0
+             */
+            unresolved_points: number;
+            /** Confirmed Deficit Percent */
+            confirmed_deficit_percent?: number | null;
+            /** Possible Deficit Percent */
+            possible_deficit_percent?: number | null;
+            /** Origin Kind */
+            origin_kind?: string | null;
+            /** Definition Sha256 */
+            definition_sha256?: string | null;
+            /** Model Revision */
+            model_revision?: string | null;
+        };
+        /** MunicipalSocialEffect */
+        MunicipalSocialEffect: {
+            /** Criterion Id */
+            criterion_id: string;
+            /** Threshold Minutes */
+            threshold_minutes: number;
+            /**
+             * Status
+             * @default unavailable
+             */
+            status: string;
+            /**
+             * Reason
+             * @default social_source_unavailable
+             */
+            reason: string | null;
+            /** Source Sha256 */
+            source_sha256?: string | null;
+            /**
+             * Reference Points
+             * @default 0
+             */
+            reference_points: number;
+            /**
+             * Unresolved Points
+             * @default 0
+             */
+            unresolved_points: number;
+            /**
+             * Lost Routes
+             * @default 0
+             */
+            lost_routes: number;
+            /**
+             * Restored Routes
+             * @default 0
+             */
+            restored_routes: number;
+            /**
+             * Delayed Points
+             * @default 0
+             */
+            delayed_points: number;
+            /**
+             * Crossed Threshold Points
+             * @default 0
+             */
+            crossed_threshold_points: number;
+            /**
+             * Before Within
+             * @default 0
+             */
+            before_within: number;
+            /**
+             * After Within
+             * @default 0
+             */
+            after_within: number;
+            /**
+             * Attached Facilities
+             * @default 0
+             */
+            attached_facilities: number;
+            /**
+             * Unattached Facilities
+             * @default 0
+             */
+            unattached_facilities: number;
+            /**
+             * Points
+             * @default []
+             */
+            points: components["schemas"]["MunicipalSocialPoint"][];
+            /**
+             * Method
+             * @default directed_loaded_network_fixed_attachments_known_objects_v1
+             */
+            method: string;
+            /**
+             * Legal Compliance Confirmed
+             * @default false
+             */
+            legal_compliance_confirmed: boolean;
+        };
+        /** MunicipalSocialPoint */
+        MunicipalSocialPoint: {
+            /** Id */
+            id: string;
+            /** Name */
+            name: string;
+            /** Latitude */
+            latitude: number | null;
+            /** Longitude */
+            longitude: number | null;
+            /** Before Minutes */
+            before_minutes: number | null;
+            /** After Minutes */
+            after_minutes: number | null;
+            /** Added Minutes */
+            added_minutes: number | null;
+            /** Before Facility Id */
+            before_facility_id: string | null;
+            /** After Facility Id */
+            after_facility_id: string | null;
+            /** After Facility Name */
+            after_facility_name: string | null;
+            /** Route After Exists */
+            route_after_exists: boolean | null;
+            /** Crossed Threshold */
+            crossed_threshold: boolean;
+        };
+        /** MunicipalTrafficBaseline */
+        MunicipalTrafficBaseline: {
+            /** Baseline Id */
+            baseline_id: string;
+            /** Municipality Id */
+            municipality_id: string;
+            /** Corridors */
+            corridors: components["schemas"]["MunicipalTrafficCorridor"][];
+            /** Roads */
+            roads: components["schemas"]["TrafficRoad"][];
+            /** Relative Gap */
+            relative_gap: number;
+            /** Source Bounds */
+            source_bounds: number[] | null;
+            /** Artifact Sha256 */
+            artifact_sha256: string;
+            view: components["schemas"]["TrafficJob"];
+        };
+        /** MunicipalTrafficCorridor */
+        MunicipalTrafficCorridor: {
+            /** Way Id */
+            way_id: number;
+            /** Peak Ratio */
+            peak_ratio: number;
+            /** Vehicle Hours */
+            vehicle_hours: number;
+            /** Length Km */
+            length_km: number;
+            /**
+             * Name
+             * @default
+             */
+            name: string;
+            /**
+             * Capacity Eligible
+             * @default true
+             */
+            capacity_eligible: boolean;
+            /** Capacity Reason */
+            capacity_reason?: string | null;
+            /**
+             * Connected Parts
+             * @default 1
+             */
+            connected_parts: number;
+        };
+        /** MunicipalTrafficEffects */
+        MunicipalTrafficEffects: {
+            /** Municipality Id */
+            municipality_id: string;
+            before: components["schemas"]["MunicipalTrafficMetrics"];
+            after: components["schemas"]["MunicipalTrafficMetrics"];
+            /**
+             * Method
+             * @default edge_midpoint_and_synthetic_origin_membership_v1
+             */
+            method: string;
+            /**
+             * Social
+             * @default []
+             */
+            social: components["schemas"]["MunicipalSocialEffect"][];
+        };
+        /** MunicipalTrafficMetrics */
+        MunicipalTrafficMetrics: {
+            /** Vehicle Hours On Local Edges */
+            vehicle_hours_on_local_edges: number;
+            /** Overloaded Directed Edges */
+            overloaded_directed_edges: number;
+            /** Unserved Departures */
+            unserved_departures: number;
         };
         /** MunicipalityCollectionResponse */
         MunicipalityCollectionResponse: {
@@ -3949,7 +4570,7 @@ export interface components {
              * Kind
              * @enum {string}
              */
-            kind: "capacity" | "connection" | "closure" | "opening" | "package";
+            kind: "capacity" | "connection" | "closure" | "opening" | "package" | "lane_closure";
             /** Way Ids */
             way_ids: number[];
             /** Length Km */
@@ -3985,6 +4606,18 @@ export interface components {
              * @default
              */
             objective_unit: string;
+        };
+        /** TrafficAssignmentProgress */
+        TrafficAssignmentProgress: {
+            /** Iteration */
+            iteration: number;
+            /** Relative Gap */
+            relative_gap: number;
+            /**
+             * Tolerance
+             * @default 0.001
+             */
+            tolerance: number;
         };
         /** TrafficHypothesis */
         TrafficHypothesis: {
@@ -4025,45 +4658,6 @@ export interface components {
             settlements: number;
             /** Normalization */
             normalization: number;
-        };
-        /** TrafficInput */
-        TrafficInput: {
-            /** Places */
-            places?: string[];
-            /**
-             * Region
-             * @default
-             */
-            region: string;
-            /** Regions */
-            regions?: string[];
-            /** Bounds */
-            bounds?: number[];
-            /**
-             * Demand Multiplier
-             * @default 1
-             */
-            demand_multiplier: number;
-            /**
-             * Pair Flow
-             * @default 1000
-             */
-            pair_flow: number;
-            /**
-             * Max Projects
-             * @default 3
-             */
-            max_projects: number;
-            /**
-             * Objective
-             * @default connectivity
-             * @enum {string}
-             */
-            objective: "connectivity" | "transit" | "congestion";
-            /** Focus Bounds */
-            focus_bounds?: number[];
-            /** Hypotheses */
-            hypotheses?: components["schemas"]["TrafficHypothesis"][];
         };
         /** TrafficJob */
         TrafficJob: {
@@ -4114,9 +4708,10 @@ export interface components {
             error: string;
             /**
              * Version
-             * @default network_development_targets_catboost_v4
+             * @default traffic_result_v1
              */
             version: string;
+            assignment_progress?: components["schemas"]["TrafficAssignmentProgress"] | null;
         };
         /** TrafficMetrics */
         TrafficMetrics: {
@@ -4157,6 +4752,16 @@ export interface components {
              * @default false
              */
             new_link: boolean;
+            /** Edge Index */
+            edge_index?: number | null;
+            /** Reverse Edge Index */
+            reverse_edge_index?: number | null;
+            /** Model Lanes */
+            model_lanes?: number | null;
+            /** Shared Lane */
+            shared_lane?: boolean | null;
+            /** Closed */
+            closed?: boolean | null;
         };
         /** TrafficScope */
         TrafficScope: {
@@ -4205,6 +4810,178 @@ export interface components {
             latitude: number;
             /** Population */
             population: number;
+        };
+        /** TransitAccessResult */
+        TransitAccessResult: {
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "available" | "no_journey_in_covered_data";
+            journey: components["schemas"]["TransitJourney"] | null;
+            /** Walking Revision */
+            walking_revision: string;
+            /** Walking Links */
+            walking_links: components["schemas"]["WalkingLink"][];
+            /** Stops With Coordinates */
+            stops_with_coordinates: number;
+            /** Stops Without Coordinates */
+            stops_without_coordinates: number;
+            /** Timetable Stop Count */
+            timetable_stop_count: number;
+            /** Timetable Stops Without Coordinates */
+            timetable_stops_without_coordinates: number;
+            /** Departure */
+            departure: number;
+            /** Horizon */
+            horizon: number;
+            /** Maximum Walk Metres */
+            maximum_walk_metres: number;
+            /** Walking Speed Metres Per Second */
+            walking_speed_metres_per_second: number;
+            /** Transfer Seconds */
+            transfer_seconds: number;
+            /**
+             * Coverage Complete
+             * @default false
+             */
+            coverage_complete: boolean;
+        };
+        /** TransitCoverage */
+        TransitCoverage: {
+            /** Snapshot Id */
+            snapshot_id: string;
+            /** Source Date */
+            source_date: string;
+            /** Source Url */
+            source_url: string;
+            /** Clock Basis */
+            clock_basis: string;
+            /** Stops */
+            stops: components["schemas"]["TransitStop"][];
+            /** Located Stops */
+            located_stops: number;
+            /** Within Region Connections */
+            within_region_connections: number;
+            /**
+             * Coverage Complete
+             * @default false
+             */
+            coverage_complete: boolean;
+            /**
+             * Operating Service Verified
+             * @default false
+             */
+            operating_service_verified: boolean;
+        };
+        /** TransitJourney */
+        TransitJourney: {
+            /** Departure */
+            departure: number;
+            /** Arrival */
+            arrival: number;
+            /** Boardings */
+            boardings: number;
+            /** Legs */
+            legs: components["schemas"]["JourneyLeg"][];
+        };
+        /** TransitMapPoint */
+        TransitMapPoint: {
+            /** Id */
+            id: string;
+            /** Name */
+            name: string;
+            /**
+             * Role
+             * @enum {string}
+             */
+            role: "origin" | "destination" | "stop";
+            /** Latitude */
+            latitude: number;
+            /** Longitude */
+            longitude: number;
+        };
+        /** TransitMapTarget */
+        TransitMapTarget: {
+            /** Region Id */
+            region_id: string;
+            /** Snapshot Id */
+            snapshot_id: string;
+            /** Points */
+            points: components["schemas"]["TransitMapPoint"][];
+            /**
+             * Geometry Status
+             * @default stops_only_not_route_geometry
+             */
+            geometry_status: string;
+        };
+        /** TransitPlace */
+        TransitPlace: {
+            /** Id */
+            id: string;
+            /** Name */
+            name: string;
+            /** Latitude */
+            latitude: number | null;
+            /** Longitude */
+            longitude: number | null;
+            /** Coordinate Status */
+            coordinate_status: string;
+        };
+        /** TransitPlanRequest */
+        TransitPlanRequest: {
+            /** Origin Id */
+            origin_id: string;
+            /** Facility Id */
+            facility_id: string;
+            /** Departure Seconds */
+            departure_seconds: number;
+            /**
+             * Horizon Seconds
+             * @default 86400
+             */
+            horizon_seconds: number;
+            /**
+             * Maximum Walk Metres
+             * @default 3000
+             */
+            maximum_walk_metres: number;
+            /**
+             * Transfer Seconds
+             * @default 300
+             */
+            transfer_seconds: number;
+        };
+        /** TransitPlanResponse */
+        TransitPlanResponse: {
+            coverage: components["schemas"]["TransitCoverage"];
+            origin: components["schemas"]["TransitPlace"];
+            destination: components["schemas"]["TransitPlace"];
+            result: components["schemas"]["TransitAccessResult"];
+            /** Clock Scope */
+            clock_scope: string;
+            map_target: components["schemas"]["TransitMapTarget"];
+        };
+        /** TransitStop */
+        TransitStop: {
+            /** Id */
+            id: string;
+            /** Name */
+            name: string;
+            /** Region Id */
+            region_id: string;
+            /** Region Code */
+            region_code: string;
+            /** Latitude */
+            latitude: number | null;
+            /** Longitude */
+            longitude: number | null;
+            /** Coordinate Status */
+            coordinate_status: string;
+            /** Coordinate Source Url */
+            coordinate_source_url: string;
+            /** Coordinate Source Sha256 */
+            coordinate_source_sha256: string;
         };
         /** TransportLink */
         TransportLink: {
@@ -4280,6 +5057,22 @@ export interface components {
             isolated_population: number;
             /** Elapsed Seconds */
             elapsed_seconds: number;
+        };
+        /** WalkingLink */
+        WalkingLink: {
+            /** Source */
+            source: string;
+            /** Target */
+            target: string;
+            /**
+             * Status
+             * @enum {string}
+             */
+            status: "available" | "unattached" | "outside_walking_limit";
+            /** Metres */
+            metres: number | null;
+            /** Seconds */
+            seconds: number | null;
         };
         /** WinterRoadResponse */
         WinterRoadResponse: {
@@ -5048,6 +5841,110 @@ export interface operations {
             };
         };
     };
+    get_access_api_v1_regions__region_id__municipalities__municipality_id__access_get: {
+        parameters: {
+            query: {
+                criterion_id: string;
+                threshold?: number | null;
+                deficit_only?: boolean;
+                offset?: number;
+                limit?: number;
+            };
+            header?: never;
+            path: {
+                region_id: string;
+                municipality_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MunicipalAccessResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    coverage_api_v1_regions__region_id__transit_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                region_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TransitCoverage"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    plan_api_v1_regions__region_id__transit_journeys_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                region_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["TransitPlanRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TransitPlanResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
     get_indices_api_v1_regions__region_id__municipalities__municipality_id__indices_get: {
         parameters: {
             query?: {
@@ -5069,6 +5966,40 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["MunicipalityIndicesResponse"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_overview_api_v1_regions__region_id__municipalities_overview_get: {
+        parameters: {
+            query?: {
+                criterion_id?: string | null;
+                season?: "road" | "summer" | "winter";
+            };
+            header?: never;
+            path: {
+                region_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MunicipalOverviewResponse"];
                 };
             };
             /** @description Validation Error */
@@ -6534,39 +7465,6 @@ export interface operations {
             };
         };
     };
-    submit_api_v1_traffic_jobs_post: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["TrafficInput"];
-            };
-        };
-        responses: {
-            /** @description Successful Response */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["TrafficJob"];
-                };
-            };
-            /** @description Validation Error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["HTTPValidationError"];
-                };
-            };
-        };
-    };
     get_api_v1_traffic_jobs__job_id__get: {
         parameters: {
             query?: never;
@@ -6604,6 +7502,164 @@ export interface operations {
             header?: never;
             path: {
                 job_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TrafficJob"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    baseline_api_v1_municipal_scenarios_baseline__region___municipality__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                region: string;
+                municipality: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MunicipalTrafficBaseline"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    submit_api_v1_municipal_scenarios_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["MunicipalScenarioRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TrafficJob"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    get_api_v1_municipal_scenarios__identifier__get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                identifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["TrafficJob"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    effects_api_v1_municipal_scenarios__identifier__effects_get: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                identifier: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["MunicipalTrafficEffects"];
+                };
+            };
+            /** @description Validation Error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["HTTPValidationError"];
+                };
+            };
+        };
+    };
+    cancel_api_v1_municipal_scenarios__identifier__cancel_post: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                identifier: string;
             };
             cookie?: never;
         };

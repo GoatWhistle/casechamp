@@ -21,6 +21,7 @@ def queries() -> tuple[RegionalMeasurements, Mock, Mock]:
     catalog = Mock(spec=RegionalCatalogRepository)
     catalog.region_name.return_value = "Selected region"
     catalog.candidates.return_value = [replace(facility(), service="medical")]
+    catalog.routing_candidates.return_value = catalog.candidates.return_value
     repository = Mock(spec=RegionalMeasurementRepository)
     repository.origins.return_value = [Origin("p", "Place", 100, 2, 0.1, 55, 65)]
     routing = Mock(spec=NormativeRouting)
@@ -52,7 +53,7 @@ def test_regional_medical_measurements_keep_physical_cost_without_cardiology_cla
     assert result.rows[0].threshold_minutes is None
     assert result.rows[0].excess_minutes is None
     assert result.qualification == "physical_only"
-    assert result.model_revision == "regional-road-v1"
+    assert result.model_revision == "regional-road-cross-border-v2"
 
 
 @pytest.mark.parametrize("criterion", ["N03", "N04", "N09"])

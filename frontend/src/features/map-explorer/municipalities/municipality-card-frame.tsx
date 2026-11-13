@@ -55,18 +55,17 @@ export function MunicipalityCardFrame({
           {null}
         </Button>
       </div>
-      {presence.mounted ? (
-        <ScrollArea
-          id={id}
-          label={t("map:municipalCard.details")}
-          className={styles.body}
-          inert={!open}
-          data-state={presence.state}
-          onTransitionEnd={presence.onTransitionEnd}
-        >
-          {children}
-        </ScrollArea>
-      ) : null}
+      <ScrollArea
+        id={id}
+        hidden={!presence.mounted}
+        label={t("map:municipalCard.details")}
+        className={styles.body}
+        inert={!open}
+        data-state={presence.state}
+        onTransitionEnd={presence.onTransitionEnd}
+      >
+        {children}
+      </ScrollArea>
     </section>
   )
 }

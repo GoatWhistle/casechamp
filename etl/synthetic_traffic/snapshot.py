@@ -64,7 +64,7 @@ def export_snapshot(destination: Path, bounds: list[float] | None) -> None:
     ]:
         print(f"Exporting {name}", flush=True)
         table = ipc.open_stream(
-            BytesIO(client.request(sql + " FORMAT ArrowStream"))
+            BytesIO(client.request(sql + " SETTINGS join_algorithm='grace_hash', grace_hash_join_initial_buckets=32, max_threads=2, max_bytes_before_external_sort=134217728, max_memory_usage=1200000000 FORMAT ArrowStream"))
         ).read_all()
         pq.write_table(table, destination / f"{name}.parquet")
     metadata = client.rows(revision_query)
@@ -94,7 +94,7 @@ def import_record(
                     "No intersection or turning capacity",
                     "Shared single lane combines both directions",
                     "Asymmetric lane counts use conservative representative capacity",
-                    "Bounds clip network; no external transit inferred",
+                    *( ["Bounds clip network; no external transit inferred"] if bounds else [] ),
                 ],
             },
             ensure_ascii=False,

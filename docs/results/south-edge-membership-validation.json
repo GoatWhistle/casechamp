@@ -1,0 +1,28 @@
+{
+  "date": "2026-11-13",
+  "scope": "exact_edge_selection_not_scenario_effect",
+  "records": [
+    {
+      "region_id": "07000000",
+      "municipality_id": "osm-relation-1030988",
+      "name": "городской округ Пятигорск",
+      "national_directed_edges": 17388986,
+      "selected_directed_edges": 6917,
+      "selection_sha256": "6babfa66da88b306c666c44a7b72089ff1d69a5f94ba168be56ce85b325430ba",
+      "oracle_seconds": 2.1832327080192044,
+      "bounded_seconds": 0.30197145906277,
+      "equal": true
+    },
+    {
+      "region_id": "03000000",
+      "municipality_id": "osm-relation-269701",
+      "name": "городской округ Краснодар",
+      "national_directed_edges": 17388986,
+      "selected_directed_edges": 51364,
+      "selection_sha256": "65e7304c007efb44a8f5f9defee01011825eb8b02a6f3c284fa6ac34839d7de0",
+      "oracle_seconds": 2.262334708007984,
+      "bounded_seconds": 0.369959041941911,
+      "equal": true
+    }
+  ]
+}

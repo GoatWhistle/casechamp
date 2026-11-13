@@ -66,6 +66,7 @@ export function selectTrafficRoad(selected: TrafficRoad | null) {
 }
 
 function preferredVariant(job: TrafficJob): string {
+  if (job.version === "municipal_fixed_od_v1") return job.alternatives[0]?.id ?? "baseline"
   const region = job.indices[0]?.region
   const ranked = usefulTrafficAlternatives(job)
     .filter((row) => row.indices?.some((index) => index.region === region))

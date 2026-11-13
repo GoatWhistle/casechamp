@@ -7,8 +7,16 @@ import type {
 } from "maplibre-gl"
 
 export const SOURCE = "agent-traffic"
-export const LINES = ["road", "relief", "project", "connection"] as const
-const ORDER = ["road", "relief", "project-outline", "project", "connection-outline", "connection"]
+export const LINES = ["road", "relief", "project", "closure", "connection"] as const
+const ORDER = [
+  "road",
+  "relief",
+  "project-outline",
+  "project",
+  "closure",
+  "connection-outline",
+  "connection",
+]
 
 export function paintTraffic(map: LibreMap, data: FeatureCollection<Geometry>) {
   if (map.getSource(SOURCE)) (map.getSource(SOURCE) as GeoJSONSource).setData(data)
@@ -44,8 +52,8 @@ function layers(map: LibreMap): LineLayerSpecification[] {
       type: "line",
       filter: ["all", ["==", ["get", "role"], "road"], ["!=", ["get", "project"], true]],
       paint: {
-        "line-color": red,
-        "line-opacity": 0.35,
+        "line-color": ["case", [">", ["get", "ratio"], 1], red, green],
+        "line-opacity": ["case", [">", ["get", "ratio"], 1], 0.9, 0.35],
         "line-width": ["interpolate", ["linear"], ["get", "flow"], 0, 1, 1800, 4, 5000, 7],
       },
     },
@@ -68,9 +76,16 @@ function layers(map: LibreMap): LineLayerSpecification[] {
       id: `${SOURCE}-project`,
       source: SOURCE,
       type: "line",
-      filter: selected,
+      filter: ["all", selected, ["!=", ["get", "closed"], true]],
       layout: { "line-cap": "round", "line-join": "round" },
       paint: { "line-color": red, "line-width": 6 },
+    },
+    {
+      id: `${SOURCE}-closure`,
+      source: SOURCE,
+      type: "line",
+      filter: ["==", ["get", "closed"], true],
+      paint: { "line-color": red, "line-width": 6, "line-dasharray": [1, 1] },
     },
     {
       id: `${SOURCE}-connection-outline`,

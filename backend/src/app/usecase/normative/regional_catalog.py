@@ -38,6 +38,7 @@ class RegionalCatalogRepository(Protocol):
     def region_name(self, region_id: str) -> str | None: ...
     def walking_available(self, region_id: str) -> bool: ...
     def candidates(self, region_id: str, category: str) -> list[Facility]: ...
+    def routing_candidates(self, category: str) -> list[Facility]: ...
 
 
 class RegionalCatalogQueries:
@@ -51,9 +52,10 @@ class RegionalCatalogQueries:
             raise InvalidQuery("Unknown regional service catalog")
         return category, name
 
-    def catalog(self, region_id: str, criterion_id: str) -> RegionalCatalog:
+    def catalog(self, region_id: str, criterion_id: str, *, cross_region: bool = False) -> RegionalCatalog:
         category, name = self.scope(region_id, criterion_id)
-        facilities = self.repository.candidates(region_id, category)
+        facilities = (self.repository.routing_candidates(category) if cross_region
+                      else self.repository.candidates(region_id, category))
         return RegionalCatalog(
             region_id,
             name,

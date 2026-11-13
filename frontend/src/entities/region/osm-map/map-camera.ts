@@ -4,6 +4,7 @@ import type { BoundaryAtlas, LonLatBounds } from "./boundary-geojson"
 import { fitNationalView } from "./camera/national-view"
 import { revealSelectedRegions } from "./camera/region-fill"
 import { focusRoad, updateRoadFocus } from "./camera/road-focus"
+import { focusJourney } from "./journey/journey-camera"
 import { NO_REGION, SELECTED_LAYER } from "./osm-style"
 
 const ROAM_BASE = 12
@@ -121,6 +122,11 @@ export function aimCamera(
   zoomDuration: number,
 ) {
   updateRoadFocus(map, command)
+  if (command?.transit) {
+    revealSelectedRegions(map, atlas, command.region_ids)
+    focusJourney(map, command.transit)
+    return
+  }
   if (command?.action === "focus_road" && command.road) {
     focusRoad(map, command.road.lines, duration)
     return

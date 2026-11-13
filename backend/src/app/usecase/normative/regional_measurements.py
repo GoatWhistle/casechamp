@@ -11,7 +11,11 @@ from app.domain.normative.measurement_definition import MeasurementDefinition
 from app.domain.normative.model import AccessRow, Facility, Origin, Uncertainty
 from app.usecase.normative.interface import NormativeFireRouting, NormativeRouting
 from app.usecase.normative.regional_catalog import RegionalCatalogQueries
-from app.usecase.normative.regional_models import RegionalWalkingModels, regional_model
+from app.usecase.normative.regional_models import (
+    REGIONAL_ROAD_REVISION,
+    RegionalWalkingModels,
+    regional_model,
+)
 from app.usecase.normative.regional_receipt import (
     RegionalMeasurementHead,
     RegionalMeasurementReceipt,
@@ -23,8 +27,6 @@ from app.usecase.normative.regional_view import (
     RegionalViewRepository,
 )
 from app.usecase.normative.route import NormativeRoute, RouteStage
-
-REGIONAL_ROAD_REVISION = "regional-road-v1"
 
 
 @dataclass(frozen=True, slots=True)
@@ -152,7 +154,7 @@ class RegionalMeasurements:
             criterion_id, region_id, self.routing, self.walking, self.fire, fire_profile
         )
         routing = model.routing
-        catalog = self.catalog.catalog(region_id, criterion_id)
+        catalog = self.catalog.catalog(region_id, criterion_id, cross_region=model.mode == "car")
         if not catalog.facilities:
             raise DataUnavailable("No regional candidate objects have been imported")
         origins = (

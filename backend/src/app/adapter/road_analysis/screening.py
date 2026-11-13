@@ -30,7 +30,7 @@ class CandidateScreening:
         self, boundary: BoundaryShape, mode: AnalysisMode, progress: Callable[[str, int, int], None]
     ) -> list[Candidate]:
         if mode != "criticality":
-            raise InvalidQuery("Use traffic_development for road improvement search")
+            raise InvalidQuery("Automatic road development search has been removed")
         data = self.base.data
         self.base.prepare()
         e, n = data.edges, data.nodes

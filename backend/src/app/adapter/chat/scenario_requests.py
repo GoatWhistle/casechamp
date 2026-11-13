@@ -4,7 +4,7 @@ from typing import Literal
 from pydantic import ConfigDict
 from pydantic.dataclasses import dataclass
 
-from app.adapter.chat.traffic_requests import TrafficData, TrafficDevelopment
+from app.adapter.chat.traffic_requests import TrafficData
 from app.domain.appraisal_inputs import ProjectAssumptions
 from app.usecase.connectivity import ConnectivityMode
 
@@ -55,8 +55,7 @@ class ConnectivityScenario:
 
 
 type TransportScenario = (
-    TrafficDevelopment
-    | NetworkScenario
+    NetworkScenario
     | SelectionClosure
     | AnalysisScenario
     | ConnectivityScenario

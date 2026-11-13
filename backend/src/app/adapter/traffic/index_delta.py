@@ -8,9 +8,9 @@ from synthetic_traffic.index_paths import DiskGraphCache
 from synthetic_traffic.model import Network
 
 from app.adapter.road_graph.data import GraphData
+from app.adapter.traffic.index_edge_positions import traffic_edge_positions
 from app.adapter.traffic.index_network import IndexNetwork
-from app.adapter.traffic.index_values import IndexValues
-from app.domain.errors import InvalidQuery
+from app.adapter.traffic.index_values import IndexValues, PopulationGroup
 from app.usecase.traffic import TrafficIndexValue
 
 
@@ -38,13 +38,21 @@ class IndexDelta:
         hours: Any,
         regions: list[str],
         checkpoint: Callable[[], None],
+        population_groups: list[PopulationGroup] | None = None,
+        directed: bool = False,
+        require_cached: bool = False,
+        normalization: float | None = None,
     ) -> None:
+        self.directed = directed
+        self.population_groups = population_groups or []
         data.load()
         self.modern = data.modern_model
         self.trunk = [] if self.modern else data.read("trunk")
         self.data = data
         self.cities = data.read("cities")
-        self.norm = float(data.read("normalization")[0][0])
+        self.norm = float(data.read("normalization")[0][0]) if normalization is None else normalization
+        if not np.isfinite(self.norm) or self.norm <= 0:
+            raise ValueError("City connectivity normalization must be finite and positive")
         points = {str(p[0]): (int(p[1]), float(p[2]) / 15) for p in data.read("points")}
         for city in self.cities:
             if (
@@ -77,32 +85,17 @@ class IndexDelta:
         ids = [int(w) for w in np.unique(network.way_id) if w >= 0]
         ways = data.indices_for(ids)
         edges = data.edges
-        selected = np.flatnonzero(np.isin(edges["way_idx"], list(ways.values())))
-        positions = {
-            (int(edges["src"][i]), int(edges["dst"][i]), int(edges["way_idx"][i])): int(i)
-            for i in selected
-        }
-        self.positions = {}
-        for i, way in enumerate(network.way_id):
-            if way < 0:
-                continue
-            key = (
-                int(network.raw_nodes[network.source[i]]),
-                int(network.raw_nodes[network.target[i]]),
-                ways[int(way)],
-            )
-            if key not in positions:
-                raise InvalidQuery("Traffic edge identity differs from the index graph")
-            self.positions[key[:2] + (int(way),)] = positions[key]
+        self.positions = traffic_edge_positions(edges, network, ways, self.count)
         checkpoint()
         self.network = IndexNetwork(
-            edges, data.allowed_edges("road"), self.positions, self.count, network, hours
+            edges, data.allowed_edges("road"), self.positions, self.count, network, hours, directed=directed
         )
         self.cache = DiskGraphCache(
-            self.network.base,
+            self.network.base.T.tocsr() if directed else self.network.base,
             [int(c[1]) for c in self.cities],
             cache_dir=data.root / "incremental-index",
             check=checkpoint,
+            require_cached=require_cached,
         )
         checkpoint()
         self.last_evaluation: dict[str, Any] = {}
@@ -110,7 +103,7 @@ class IndexDelta:
         self.reference_transfers: Any = None
         self.baseline = self.values(self.cache)
 
-    def evaluate(self, network: Network, hours: Any, deadline: float) -> list[TrafficIndexValue]:
+    def evaluate(self, network: Network, hours: Any, deadline: float | None = None) -> list[TrafficIndexValue]:
         started = monotonic()
         self.last_evaluation = {
             "directed_edge_changes": 0,
@@ -123,6 +116,9 @@ class IndexDelta:
         try:
             tick = monotonic()
             graph, delta = self.network.changed_with_delta(network, hours)
+            if self.directed:
+                graph = graph.T.tocsr()
+                delta = (delta[1], delta[0], delta[2], delta[3])
             self.last_evaluation.update(
                 graph_seconds=monotonic() - tick, directed_edge_changes=len(delta[0])
             )

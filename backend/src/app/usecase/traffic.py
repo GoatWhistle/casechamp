@@ -44,6 +44,11 @@ class TrafficRoad:
     ratio_after: float
     project: bool = False
     new_link: bool = False
+    edge_index: int | None = None
+    reverse_edge_index: int | None = None
+    model_lanes: int | None = None
+    shared_lane: bool | None = None
+    closed: bool | None = None
 
 
 @dataclass(frozen=True)
@@ -68,7 +73,7 @@ class TrafficIndexChange:
 @dataclass(frozen=True)
 class TrafficAlternative:
     id: str
-    kind: Literal["capacity", "connection", "closure", "opening", "package"]
+    kind: Literal["capacity", "connection", "closure", "opening", "package", "lane_closure"]
     way_ids: list[int]
     length_km: float
     vehicle_hours_saved: float | None
@@ -93,6 +98,13 @@ class TrafficZone:
 
 
 @dataclass(frozen=True)
+class TrafficAssignmentProgress:
+    iteration: int
+    relative_gap: float
+    tolerance: float = 0.001
+
+
+@dataclass(frozen=True)
 class TrafficJob:
     id: str
     scope: TrafficScope
@@ -108,7 +120,8 @@ class TrafficJob:
     indices: list[TrafficIndexValue] = field(default_factory=list)
     provenance: str = "{}"
     error: str = ""
-    version: str = "network_development_targets_catboost_v4"
+    version: str = "traffic_result_v1"
+    assignment_progress: TrafficAssignmentProgress | None = None
 
 
 class TrafficSource(Protocol):

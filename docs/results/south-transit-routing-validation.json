@@ -1,0 +1,201 @@
+{
+  "date": "2026-11-13",
+  "timetable": "data/additional/transit/south-timetable-20261105-v1.json",
+  "timetable_sha256": "979a83bcceac58e32a91d43aa73393559760b6812aba9495f7e6d3132e2c7fc2",
+  "connections": 1349,
+  "scope": "registry_stop_to_stop_only",
+  "transfer_buffer_seconds": 300,
+  "walking_access_verified": false,
+  "operating_service_verified": false,
+  "direct_service": {
+    "departure": 36000,
+    "arrival": 52860,
+    "boardings": 1,
+    "legs": [
+      {
+        "mode": "walk",
+        "source": "origin",
+        "target": "09001",
+        "departure": 36000,
+        "arrival": 36000,
+        "trip_id": null
+      },
+      {
+        "mode": "wait",
+        "source": "09001",
+        "target": "09001",
+        "departure": 36000,
+        "arrival": 37200,
+        "trip_id": null
+      },
+      {
+        "mode": "bus",
+        "source": "09001",
+        "target": "09011",
+        "departure": 37200,
+        "arrival": 38460,
+        "trip_id": "09.26.109:forward:0"
+      },
+      {
+        "mode": "dwell",
+        "source": "09011",
+        "target": "09011",
+        "departure": 38460,
+        "arrival": 38520,
+        "trip_id": "09.26.109:forward:0"
+      },
+      {
+        "mode": "bus",
+        "source": "09011",
+        "target": "09037",
+        "departure": 38520,
+        "arrival": 42300,
+        "trip_id": "09.26.109:forward:0"
+      },
+      {
+        "mode": "dwell",
+        "source": "09037",
+        "target": "09037",
+        "departure": 42300,
+        "arrival": 44100,
+        "trip_id": "09.26.109:forward:0"
+      },
+      {
+        "mode": "bus",
+        "source": "09037",
+        "target": "26035",
+        "departure": 44100,
+        "arrival": 52860,
+        "trip_id": "09.26.109:forward:0"
+      },
+      {
+        "mode": "walk",
+        "source": "26035",
+        "target": "destination",
+        "departure": 52860,
+        "arrival": 52860,
+        "trip_id": null
+      }
+    ]
+  },
+  "examples": [
+    {
+      "source_stop": "23013",
+      "target_stop": "23016",
+      "result": {
+        "departure": 21600,
+        "arrival": 39300,
+        "boardings": 1,
+        "legs": [
+          {
+            "mode": "walk",
+            "source": "origin",
+            "target": "23013",
+            "departure": 21600,
+            "arrival": 21600,
+            "trip_id": null
+          },
+          {
+            "mode": "wait",
+            "source": "23013",
+            "target": "23013",
+            "departure": 21600,
+            "arrival": 27600,
+            "trip_id": null
+          },
+          {
+            "mode": "bus",
+            "source": "23013",
+            "target": "23016",
+            "departure": 27600,
+            "arrival": 39300,
+            "trip_id": "23.23.160:forward:1"
+          },
+          {
+            "mode": "walk",
+            "source": "23016",
+            "target": "destination",
+            "departure": 39300,
+            "arrival": 39300,
+            "trip_id": null
+          }
+        ]
+      }
+    },
+    {
+      "source_stop": "09001",
+      "target_stop": "26035",
+      "result": {
+        "departure": 36000,
+        "arrival": 51000,
+        "boardings": 2,
+        "legs": [
+          {
+            "mode": "walk",
+            "source": "origin",
+            "target": "09001",
+            "departure": 36000,
+            "arrival": 36000,
+            "trip_id": null
+          },
+          {
+            "mode": "wait",
+            "source": "09001",
+            "target": "09001",
+            "departure": 36000,
+            "arrival": 36600,
+            "trip_id": null
+          },
+          {
+            "mode": "bus",
+            "source": "09001",
+            "target": "09011",
+            "departure": 36600,
+            "arrival": 37560,
+            "trip_id": "09.26.147:forward:0"
+          },
+          {
+            "mode": "dwell",
+            "source": "09011",
+            "target": "09011",
+            "departure": 37560,
+            "arrival": 37680,
+            "trip_id": "09.26.147:forward:0"
+          },
+          {
+            "mode": "bus",
+            "source": "09011",
+            "target": "09037",
+            "departure": 37680,
+            "arrival": 41700,
+            "trip_id": "09.26.147:forward:0"
+          },
+          {
+            "mode": "wait",
+            "source": "09037",
+            "target": "09037",
+            "departure": 41700,
+            "arrival": 42300,
+            "trip_id": null
+          },
+          {
+            "mode": "bus",
+            "source": "09037",
+            "target": "26035",
+            "departure": 42300,
+            "arrival": 51000,
+            "trip_id": "26.09.061:backward:1"
+          },
+          {
+            "mode": "walk",
+            "source": "26035",
+            "target": "destination",
+            "departure": 51000,
+            "arrival": 51000,
+            "trip_id": null
+          }
+        ]
+      }
+    }
+  ]
+}

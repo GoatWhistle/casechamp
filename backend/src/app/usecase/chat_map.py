@@ -6,6 +6,7 @@ from app.domain.transport import NetworkMode, Season
 from app.usecase.regions import RegionQueries
 from app.usecase.road_geometry import RoadGeometry, RoadGeometrySource
 from app.usecase.settlements import SettlementQueries
+from app.usecase.transit_map import TransitMapTarget
 
 MapAction = Literal["focus", "reset", "zoom_in", "zoom_out"]
 
@@ -20,11 +21,22 @@ class SettlementMapTarget:
 
 
 @dataclass(frozen=True, slots=True)
+class MunicipalAccessMapTarget:
+    region_id: str
+    municipality_id: str
+    criterion_id: str
+    threshold: float
+    deficit_only: bool = True
+
+
+@dataclass(frozen=True, slots=True)
 class ChatMapCommand:
     action: MapAction | Literal["focus_settlement", "focus_road"]
     region_ids: tuple[str, ...]
     settlement: SettlementMapTarget | None = None
     road: RoadGeometry | None = None
+    municipal_access: MunicipalAccessMapTarget | None = None
+    transit: TransitMapTarget | None = None
 
 
 def road_map_command(source: RoadGeometrySource, way_ids: list[int]) -> ChatMapCommand:

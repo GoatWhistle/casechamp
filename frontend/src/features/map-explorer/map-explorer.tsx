@@ -3,6 +3,7 @@ import { useLocation } from "react-router"
 import { boundaryName, type MapControls, modelRegionId, OsmMap } from "@/entities/region"
 import { useRoadGraph } from "@/entities/road-graph"
 import { usePanelWidth } from "@/shared/hooks"
+import { clearMunicipalAccess } from "@/shared/hooks/use-municipal-access-view"
 import { useNetworkMode } from "@/shared/hooks/use-network-mode"
 import { useTranslation } from "@/shared/i18n"
 import { PanelResizer } from "@/shared/ui"
@@ -71,7 +72,6 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
   })
   const cameraSelection = scope.selection
   const ready = geo.data !== undefined && regions.data !== undefined
-  const municipalities = useMunicipalitySelection(cameraSelection, season, ready)
   const {
     selectedPoint,
     selectPoint,
@@ -80,6 +80,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
     layer: normativeLayer,
     view: normativeView,
   } = useNormativeOverlay(normativeMode, scope.result, scope.facilities, normativeState)
+  const municipalities = useMunicipalitySelection(cameraSelection, season, ready, normativeLayer)
   const modelId = modelRegionId(cameraSelection, regions.data)
   const { links, airports, transit, modelCount, showModels, setShowModels } = useSelectedTransit(
     modelId,
@@ -137,7 +138,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
           <OsmMap
             transit={mapTransit}
             airports={mapAirports}
-            normative={normativeLayer}
+            normative={municipalities.mapLayer}
             roads={roadMapProps(roads)}
             outsideMask={geo.data.outside_mask ?? undefined}
             contextualRegions={geo.data.contextual_regions}
@@ -231,6 +232,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
         onMapCommand,
         roads,
         onChatChange: () => {
+          clearMunicipalAccess()
           setMapCommand(null)
           roads.clearOverlays()
         },

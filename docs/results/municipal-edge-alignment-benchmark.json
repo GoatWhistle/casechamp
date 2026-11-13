@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-13",
+  "sample": "synthetic directed graph, 1000000 edges, 100000 nodes, identical requested edge order",
+  "scope": "isolated edge identity alignment, not complete national scenario",
+  "array": {
+    "peak_rss_bytes": 154107904,
+    "elapsed_seconds": 0.7851917080115527
+  },
+  "dictionary": {
+    "peak_rss_bytes": 382074880,
+    "elapsed_seconds": 0.9345308330375701
+  },
+  "environment": "local macOS Python, one process per method",
+  "oracle": "both results equal arange(1000000)",
+  "limitations": [
+    "single run",
+    "RSS includes interpreter and common input arrays",
+    "not a national scenario latency benchmark"
+  ]
+}

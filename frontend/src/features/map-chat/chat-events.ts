@@ -132,5 +132,7 @@ export function applyMapEvent(event: ChatStreamEvent, active: boolean, onMap: Ma
       route: event.stress_route ?? null,
       regions: event.stress_test.regions ?? [],
     })
-  if (event.type === "map" && event.map) onMap(event.map)
+  if (event.type === "map" && event.map) {
+    onMap(event.map)
+  }
 }

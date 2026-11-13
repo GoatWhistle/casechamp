@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-13",
+  "before": {
+    "medical": {
+      "count": 24206,
+      "sha256": "5ee5e0fd3297703936e9d6995cddf46960f61cb7e834962eefdc27e8d39917e8",
+      "seconds": 1.2902760419528931
+    },
+    "mfc_candidate": {
+      "count": 1847,
+      "sha256": "9af912bfecdc20120582fd6810d12813a9b73d4a2dd4f4b6409f88018dd98352",
+      "seconds": 0.8584143749903888
+    },
+    "employment_candidate": {
+      "count": 291,
+      "sha256": "0623a32c2e80ea03dbd501079be3cffa2cd488a3dc8880d3843a350c0280bf1d",
+      "seconds": 0.8319550420856103
+    },
+    "library": {
+      "count": 7039,
+      "sha256": "610fdad792c727e1683279359bd93db66140adaa6036a8ab691a8f6ee79c7fdf",
+      "seconds": 0.8973049999913201
+    },
+    "bus_station": {
+      "count": 2779,
+      "sha256": "8470c89c16a4b31703d2cc252c094d2aef49fb11f36f512e74f08965bc52bcd9",
+      "seconds": 0.8957644590409473
+    }
+  },
+  "after": {
+    "medical": {
+      "count": 24206,
+      "sha256": "5ee5e0fd3297703936e9d6995cddf46960f61cb7e834962eefdc27e8d39917e8",
+      "seconds": 0.38269554101862013
+    },
+    "mfc_candidate": {
+      "count": 1847,
+      "sha256": "9af912bfecdc20120582fd6810d12813a9b73d4a2dd4f4b6409f88018dd98352",
+      "seconds": 0.06415920797735453
+    },
+    "employment_candidate": {
+      "count": 291,
+      "sha256": "0623a32c2e80ea03dbd501079be3cffa2cd488a3dc8880d3843a350c0280bf1d",
+      "seconds": 0.0404300419613719
+    },
+    "library": {
+      "count": 7039,
+      "sha256": "610fdad792c727e1683279359bd93db66140adaa6036a8ab691a8f6ee79c7fdf",
+      "seconds": 0.1170847499743104
+    },
+    "bus_station": {
+      "count": 2779,
+      "sha256": "8470c89c16a4b31703d2cc252c094d2aef49fb11f36f512e74f08965bc52bcd9",
+      "seconds": 0.06883637502323836
+    }
+  },
+  "all_facility_fields_equal": true,
+  "timing_scope": "single_local_read_per_category_not_end_to_end"
+}

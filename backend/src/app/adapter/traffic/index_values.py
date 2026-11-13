@@ -9,6 +9,15 @@ from scipy.sparse.csgraph import floyd_warshall
 from app.usecase.traffic import TrafficIndexValue
 
 
+@dataclass(frozen=True)
+class PopulationGroup:
+    name: str
+    region: str
+    point_ids: frozenset[str]
+    population: int
+    settlements: int
+
+
 @dataclass
 class RegionValues:
     raw: Any
@@ -26,6 +35,7 @@ class IndexValues:
         self.city_raw: Any = None
         self.transfers: Any = None
         self.last_evaluation: dict[str, Any] = {}
+        self.groups: list[PopulationGroup] = getattr(owner, "population_groups", [])
 
     def _read(self, cache: Any, origin: int, targets: Any, deadline: float | None) -> Any:
         self.check(deadline)
@@ -35,13 +45,14 @@ class IndexValues:
 
     def _transfers(self, raw: Any, deadline: float | None) -> Any:
         self.check(deadline)
-        road = raw + self.snaps[None, :] + self.snaps[:, None]
+        oriented = raw.T if getattr(self.owner, "directed", False) else raw
+        road = oriented + self.snaps[None, :] + self.snaps[:, None]
         indices = {city[0]: i for i, city in enumerate(self.owner.cities)}
         for source, target, mode, hours in self.owner.trunk:
             a, b = indices[source], indices[target]
             road[a, b] = min(road[a, b], hours + (1 if mode == "rail" else 2.5))
         np.fill_diagonal(road, 0)
-        result = floyd_warshall(road)
+        result = floyd_warshall(np.ascontiguousarray(road))
         self.check(deadline)
         return result
 
@@ -87,7 +98,7 @@ class IndexValues:
             )
             self.regions[region.name] = RegionValues(raw, road, access, value)
             result.append(value)
-        return result
+        return result + self.group_values({name: values.access for name, values in self.regions.items()})
 
     def _matches(self, nodes: Any, targets: Any) -> tuple[Any, Any]:
         if not len(nodes) or not len(targets):
@@ -158,6 +169,7 @@ class IndexValues:
         self.last_evaluation.update(transfers_changed=not same, transfer_seconds=monotonic() - tick)
         tick = monotonic()
         result, recomputed = [], 0
+        group_access = {name: values.access for name, values in self.regions.items()}
         for region in self.owner.regions:
             self.check(deadline)
             reference = self.regions[region.name]
@@ -169,6 +181,7 @@ class IndexValues:
             access = reference.access.copy()
             access[selected] = self._access(road, transfers, selected, deadline)
             recomputed += int(selected.sum())
+            group_access[region.name] = access
             result.append(
                 TrafficIndexValue(
                     region.name,
@@ -184,4 +197,23 @@ class IndexValues:
             aggregate_seconds=monotonic() - tick,
             values_seconds=monotonic() - started,
         )
+        return result + self.group_values(group_access)
+
+    def group_values(self, access: dict[str, Any]) -> list[TrafficIndexValue]:
+        regions = {region.name: region for region in self.owner.regions}
+        result = []
+        for group in self.groups:
+            region = regions.get(group.region)
+            if region is None or group.population <= 0:
+                raise ValueError("Population group needs a known region and positive population")
+            selected = np.array([point in group.point_ids for point in region.point_ids], dtype=bool)
+            measured_population = int(region.population[selected].sum())
+            if measured_population > group.population:
+                raise ValueError("Population group denominator is below its measured population")
+            result.append(TrafficIndexValue(
+                group.name,
+                float(access[group.region][selected] @ region.population[selected]
+                      / group.population / self.owner.norm * 100),
+                group.population, group.settlements, self.owner.norm,
+            ))
         return result

@@ -1,13 +1,18 @@
-from collections.abc import Callable
-from dataclasses import dataclass
+from collections.abc import Callable, Mapping
 from heapq import heappop, heappush
+from pathlib import Path
 from time import monotonic
 
 import numpy as np
 from numpy.typing import NDArray
 from scipy.sparse.csgraph import dijkstra
 from synthetic_traffic.assignment import route_graph
+from synthetic_traffic.edge_changes import edge_changes
+from synthetic_traffic.edge_index import EdgeIndex
 from synthetic_traffic.model import Network, Trip
+from synthetic_traffic.origin_store import OriginStore
+from synthetic_traffic.tree_routing import bounded_tree, load_tree
+from synthetic_traffic.tree_store import ArchiveTrees, Tree, TreeStore
 
 
 def checkpoint(deadline: float | None, check: Callable[[], None] | None = None) -> None:
@@ -15,12 +20,6 @@ def checkpoint(deadline: float | None, check: Callable[[], None] | None = None) 
         check()
     if deadline is not None and monotonic() >= deadline:
         raise TimeoutError("Traffic search deadline reached")
-
-
-@dataclass
-class Tree:
-    distance: NDArray[np.float64]
-    parent: NDArray[np.int64]
 
 
 class PathCache:
@@ -31,42 +30,52 @@ class PathCache:
         hours: NDArray[np.float64],
         deadline: float | None = None,
         check: Callable[[], None] | None = None,
+        tree_directory: Path | None = None,
+        path_limit: float = np.inf,
+        progress: Callable[[dict], None] | None = None,
+        replace_tree_cache: bool = False,
     ):
+        if tree_directory is not None and not replace_tree_cache and any(tree_directory.glob('*.npz')):
+            raise FileExistsError('Tree cache must be empty for a fresh baseline')
+        self.progress = progress
+        self.check = check
         self.trips = trips
         self.entries: dict[int, list[tuple[int, Trip]]] = {}
         for index, trip in enumerate(trips):
             self.entries.setdefault(trip.origin, []).append((index, trip))
         self.edges = self.edge_map(network, hours)
         graph, _ = route_graph(network, hours)
-        self.trees = {}
-        for origin in self.entries:
+        self.trees = {} if tree_directory is None else TreeStore(tree_directory)
+        for number, origin in enumerate(self.entries, 1):
             checkpoint(deadline, check)
-            distance, parent = dijkstra(
-                graph, directed=True, indices=origin, return_predecessors=True
-            )
-            self.trees[origin] = Tree(distance, parent.astype(np.int64))
+            self.trees[origin] = bounded_tree(graph, origin,
+                [trip.destination for _, trip in self.entries[origin]], path_limit)
+            if progress is not None:
+                progress({'stage': 'initial_paths', 'completed': number, 'total': len(self.entries)})
         self.repaired_origins = 0
         self.changed_nodes = 0
         self._shared_trees: set[int] = set()
-        self.loads: dict[
-            int, tuple[dict[tuple[int, int], float], float, dict[int, float]]
-        ] = {}
+        self.loads = {} if tree_directory is None else OriginStore(tree_directory.parent / 'loads', 'loads')
+        if replace_tree_cache:
+            self.loads.clear()
 
     @staticmethod
     def edge_map(
         network: Network, hours: NDArray[np.float64]
-    ) -> dict[tuple[int, int], tuple[float, int]]:
+    ) -> EdgeIndex:
         _, chosen = route_graph(network, hours)
-        return {
-            (int(network.source[e]), int(network.target[e])): (float(hours[e]), int(e))
-            for e in chosen
-        }
+        size = len(network.raw_nodes)
+        return EdgeIndex(network.source[chosen] * size + network.target[chosen],
+                         hours[chosen], chosen, size)
+
 
     def fork(self) -> "PathCache":
         result = object.__new__(PathCache)
         result.trips, result.entries = self.trips, self.entries
+        result.progress = getattr(self, "progress", None)
+        result.check = getattr(self, "check", None)
         result.edges = self.edges
-        result.trees = self.trees.copy()
+        result.trees = self.trees.fork() if isinstance(self.trees, (TreeStore, ArchiveTrees)) else self.trees.copy()
         self._shared_trees.update(self.trees)
         result._shared_trees = set(self.trees)
         result.repaired_origins = result.changed_nodes = 0
@@ -84,39 +93,38 @@ class PathCache:
 
     def _update_edges(
         self,
-        new: dict[tuple[int, int], tuple[float, int]],
+        new: Mapping[tuple[int, int], tuple[float, int]],
         deadline: float | None = None,
     ) -> None:
-        changed = {
-            key
-            for key in self.edges.keys() | new.keys()
-            if self.edges.get(key) != new.get(key)
-        }
-        incoming: dict[int, list[tuple[int, float]]] = {}
-        outgoing: dict[int, list[tuple[int, float]]] = {}
-        for (u, v), (weight, _) in new.items():
-            incoming.setdefault(v, []).append((u, weight))
-            outgoing.setdefault(u, []).append((v, weight))
-        for origin, tree in self.trees.items():
-            checkpoint(deadline)
-            invalid = {
-                v
-                for u, v in changed
-                if tree.parent[v] == u
-                and (u, v) in self.edges
-                and ((u, v) not in new or new[u, v][0] > self.edges[u, v][0])
-            }
-            improved = [
-                (u, v, new[u, v][0])
-                for u, v in changed
-                if (u, v) in new
-                and ((u, v) not in self.edges or new[u, v][0] < self.edges[u, v][0])
-                and tree.distance[u] + new[u, v][0] < tree.distance[v]
-            ]
+        changes = edge_changes(self.edges, new)
+        if not len(changes.increased_source) and not len(changes.decreased_source):
+            self.edges = new
+            return
+        if isinstance(new, EdgeIndex):
+            incoming, outgoing = new.adjacency()
+        else:
+            incoming = {}
+            outgoing = {}
+            for (u, v), (weight, _) in new.items():
+                incoming.setdefault(v, []).append((u, weight))
+                outgoing.setdefault(u, []).append((v, weight))
+        for number, (origin, tree) in enumerate(self.trees.items(), 1):
+            progress = getattr(self, "progress", None)
+            if progress is not None:
+                progress({"stage": "repairing_paths", "completed": number - 1, "total": len(self.trees)})
+            checkpoint(deadline, getattr(self, "check", None))
+            invalid, improved = changes.affected(tree)
             if not invalid and not improved:
                 continue
+            if np.isfinite(tree.limit):
+                graph = outgoing.matrix
+                self.trees[origin] = bounded_tree(graph, origin,
+                    [trip.destination for _, trip in self.entries[origin]], tree.limit)
+                self.loads.pop(origin, None)
+                self.repaired_origins += 1
+                continue
             if origin in self._shared_trees:
-                tree = Tree(tree.distance.copy(), tree.parent.copy())
+                tree = Tree(tree.distance.copy(), tree.parent.copy(), tree.limit)
                 self.trees[origin] = tree
                 self._shared_trees.remove(origin)
             self.repaired_origins += 1
@@ -127,7 +135,7 @@ class PathCache:
                     children.setdefault(int(tree.parent[v]), []).append(int(v))
                 pending = list(invalid)
                 while pending:
-                    checkpoint(deadline)
+                    checkpoint(deadline, getattr(self, "check", None))
                     for child in children.get(pending.pop(), []):
                         if child not in invalid:
                             invalid.add(child)
@@ -143,7 +151,7 @@ class PathCache:
                 if np.isfinite(tree.distance[u]):
                     heappush(heap, (float(tree.distance[u] + weight), v, u))
             while heap:
-                checkpoint(deadline)
+                checkpoint(deadline, getattr(self, "check", None))
                 distance, v, parent = heappop(heap)
                 if distance >= tree.distance[v]:
                     continue
@@ -152,6 +160,10 @@ class PathCache:
                 for target, weight in outgoing.get(v, []):
                     if distance + weight < tree.distance[target]:
                         heappush(heap, (distance + weight, target, v))
+            self.trees[origin] = tree
+        progress = getattr(self, "progress", None)
+        if progress is not None:
+            progress({"stage": "repairing_paths", "completed": len(self.trees), "total": len(self.trees)})
         self.edges = new
 
     def load(
@@ -160,40 +172,25 @@ class PathCache:
         flow = np.zeros(len(network.source))
         times: list[float | None] = [None] * len(self.trips)
         missing = 0.0
-        for origin in self.entries:
-            checkpoint(deadline)
+        for number, origin in enumerate(self.entries, 1):
+            checkpoint(deadline, getattr(self, "check", None))
             if origin not in self.loads:
                 self.loads[origin] = self._load_origin(origin)
             amounts, lost, reached = self.loads[origin]
             missing += lost
             for index, value in reached.items():
                 times[index] = value
-            for pair, amount in amounts.items():
-                flow[self.edges[pair][1]] += amount
+            indices = self.edges.edge_ids(amounts)
+            np.add.at(flow, indices, np.fromiter(amounts.values(), dtype=float))
+            progress = getattr(self, "progress", None)
+            if progress is not None:
+                progress({"stage": "loading_flows", "completed": number, "total": len(self.entries)})
         return flow, missing, times
 
     def _load_origin(
         self, origin: int
     ) -> tuple[dict[tuple[int, int], float], float, dict[int, float]]:
-        tree = self.trees[origin]
-        pending = np.zeros(len(tree.parent))
-        missing = 0.0
-        times = {}
-        amounts = {}
-        for index, trip in self.entries[origin]:
-            if np.isfinite(tree.distance[trip.destination]):
-                times[index] = float(tree.distance[trip.destination])
-                pending[trip.destination] += trip.vehicles_per_hour
-            else:
-                missing += trip.vehicles_per_hour
-        nodes = np.flatnonzero(tree.parent >= 0)
-        for node in nodes[np.argsort(-tree.distance[nodes])]:
-            amount = pending[node]
-            if amount:
-                parent = int(tree.parent[node])
-                amounts[parent, int(node)] = float(amount)
-                pending[parent] += amount
-        return amounts, missing, times
+        return load_tree(self.trees[origin], self.entries[origin])
 
 
 class GraphCache(PathCache):

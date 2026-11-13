@@ -75,7 +75,7 @@ class ClickHouseTrafficSource:
                 "collection": json.loads(sources[0]["record"]) if sources else None,
                 "coverage": "Russian Federation residential OSM objects; not observed traffic",
                 "runtime": "bounded windows up to 2000000 directed edges, 128 demand zones; nationwide inventory, local assignment",
-                "calculate": "calculate_scenario(kind=traffic_development)",
+                "saved_results_only": True,
             },
             ensure_ascii=False,
         )

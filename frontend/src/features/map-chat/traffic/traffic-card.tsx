@@ -1,6 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query"
 import { useEffect } from "react"
 import { type AnalysisCommentary, useResultCommentary } from "@/entities/chat"
+import { AssignmentProgress } from "@/entities/region"
 import { api, unwrap } from "@/shared/api/client"
 import { type TrafficJob, trafficJob, trafficTerminal } from "@/shared/api/traffic"
 import { updateTrafficView } from "@/shared/hooks/use-traffic-view"
@@ -21,8 +22,10 @@ export function TrafficCard({
   readonly onCommentary: (value: AnalysisCommentary) => void
 }) {
   const { t } = useTranslation()
+  const baseline = initial.id.startsWith("municipal-baseline-")
   const query = useQuery({
     queryKey: ["traffic-job", initial.id],
+    enabled: !baseline,
     queryFn: ({ signal }) => trafficJob(initial.id, signal),
     refetchInterval: (state) =>
       trafficTerminal(state.state.data?.status ?? initial.status) ? false : 1500,
@@ -33,17 +36,23 @@ export function TrafficCard({
     job.id,
     job.status === "completed" ? `${job.id}:${job.version}` : null,
     {
-      prompt: "Interpret the road improvements",
+      prompt: "Explain the saved road scenario and its local effects",
       calculation_review: { scenario_ids: [], stress_ids: [], traffic_ids: [job.id] },
     },
     commentary,
     onCommentary,
-    autoReview,
+    autoReview && !baseline,
   )
   const cancel = useMutation({
     mutationFn: () =>
       unwrap(
-        api.POST("/api/v1/traffic-jobs/{job_id}/cancel", { params: { path: { job_id: job.id } } }),
+        job.id.startsWith("municipal-")
+          ? api.POST("/api/v1/municipal-scenarios/{identifier}/cancel", {
+              params: { path: { identifier: job.id } },
+            })
+          : api.POST("/api/v1/traffic-jobs/{job_id}/cancel", {
+              params: { path: { job_id: job.id } },
+            }),
       ),
     onSuccess: () => {
       void query.refetch()
@@ -67,6 +76,7 @@ export function TrafficCard({
         ) : null}
       </div>
       {busy ? <Meter value={null} max={1} label={t(progressKey(job.stage))} thin /> : null}
+      {busy ? <AssignmentProgress value={job.assignment_progress} /> : null}
       {query.isError || cancel.isError ? (
         <Banner
           tone="danger"

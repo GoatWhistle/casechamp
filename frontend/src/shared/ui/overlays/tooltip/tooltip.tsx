@@ -83,10 +83,14 @@ function useTooltipState() {
   useEffect(() => {
     if (!open) return
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") hide()
+      if (event.key === "Escape") {
+        event.preventDefault()
+        event.stopPropagation()
+        hide()
+      }
     }
-    document.addEventListener("keydown", onKeyDown)
-    return () => document.removeEventListener("keydown", onKeyDown)
+    document.addEventListener("keydown", onKeyDown, true)
+    return () => document.removeEventListener("keydown", onKeyDown, true)
   }, [open, hide])
 
   return { open, instant, show, hide }

@@ -13,7 +13,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "etl"))
 from synthetic_traffic.assignment import assign, costs
 from synthetic_traffic.demand import aggregate, generate
 from synthetic_traffic.housing import distribute
-from synthetic_traffic.geography import polyline_km
 from synthetic_traffic.model import DemandParameters, Network, Trip, Zone
 from synthetic_traffic.projects import apply_project
 from synthetic_traffic.report import compare
@@ -183,20 +182,6 @@ class SyntheticTrafficTests(unittest.TestCase):
             saved = json.loads((path / "demand.json").read_text())
             self.assertEqual(saved[0]["vehicles_per_hour"], 2000)
 
-    def test_new_local_connection_takes_flow_without_creating_demand(self):
-        graph = network((0, 1), (1, 2), (1.0, 1.0), (100.0, 100.0))
-        project = {
-            "kind": "connection",
-            "source_node": 0,
-            "target_node": 2,
-            "length_km": polyline_km([[0, 0], [0.002, 0]]),
-            "geometry": {"type": "LineString", "coordinates": [[0, 0], [0.002, 0]]},
-            "speed_kmh": 40,
-        }
-        result = assign(apply_project(graph, project), [Trip(0, 2, 200)])
-        self.assertAlmostEqual(result.flow[-2], 200)
-        self.assertAlmostEqual(result.flow[0], 0)
-        self.assertEqual(result.unserved_vehicles_per_hour, 0)
 
     def test_assignment_conserves_flow_at_junctions(self):
         graph = network()
@@ -221,31 +206,6 @@ class SyntheticTrafficTests(unittest.TestCase):
             self.assertFalse(result["cases"][0]["baseline"]["converged"])
             self.assertIsNone(result["cases"][0]["projects"][0]["vehicle_hours_saved"])
 
-    def test_new_access_is_not_reported_as_negative_time_saving(self):
-        graph = network((0, 2), (1, 3), (1.0, 1.0), (1800.0, 1800.0))
-        project = {
-            "kind": "connection",
-            "source_node": 1,
-            "target_node": 2,
-            "length_km": polyline_km([[0.001, 0], [0.002, 0]]),
-            "geometry": {"type": "LineString", "coordinates": [[0.001, 0], [0.002, 0]]},
-            "speed_kmh": 40,
-        }
-        with tempfile.TemporaryDirectory() as temporary:
-            report = compare(
-                graph,
-                [Trip(0, 3, 100)],
-                [project],
-                Path(temporary) / "result",
-                1.0,
-                100,
-                0.001,
-                {},
-                [1.0],
-            )
-            result = report["cases"][0]["projects"][0]
-            self.assertEqual(result["unserved_vehicles_reduction"], 100)
-            self.assertIsNone(result["vehicle_hours_saved"])
 
     def test_invalid_demand_and_network_are_rejected(self):
         with self.assertRaises(ValueError):

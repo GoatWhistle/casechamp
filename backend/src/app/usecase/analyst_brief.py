@@ -1,4 +1,5 @@
 BUSINESS_BRIEF = """The user wants decision-useful business insight, with little reading effort.
+Call the population-weighted city accessibility indicator «Связность с городами» in user-facing Russian answers.
 Use the available evidence broadly, then select the findings that matter for this question.
 Connect changes in accessibility indices to concrete markets, routes and business operations:
 access lost or gained, slower deliveries, capacity pressure, and improvements worth

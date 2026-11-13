@@ -1,6 +1,7 @@
 import { type Season, useMunicipalityIndices } from "@/entities/region"
 import { useTranslation } from "@/shared/i18n"
 import { ErrorState, Skeleton } from "@/shared/ui"
+import { MunicipalTraffic } from "./municipal-traffic"
 import { MunicipalityCardFrame } from "./municipality-card-frame"
 import { MunicipalityConnectivity } from "./municipality-connectivity"
 import styles from "./municipality-index-card.module.css"
@@ -31,9 +32,10 @@ export function MunicipalityIndexCard({
         <ErrorState title={t("map:municipalCard.loadError")} onRetry={() => void query.refetch()} />
       ) : data ? (
         <div className={styles.content}>
+          <MunicipalityConnectivity data={data} />
           <MunicipalityServices rows={data.normative} />
           <MunicipalityOtherServices rows={data.normative} />
-          <MunicipalityConnectivity data={data} />
+          <MunicipalTraffic regionId={regionId} municipalityId={municipalityId} />
         </div>
       ) : null}
     </MunicipalityCardFrame>

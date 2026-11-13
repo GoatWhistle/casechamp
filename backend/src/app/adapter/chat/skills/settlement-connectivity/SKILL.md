@@ -1,6 +1,6 @@
 ---
 name: settlement-connectivity
-description: Compare existing routes between named settlements and the effect of specified closures. Development uses traffic-development.
+description: Compare existing routes between named settlements and the effect of specified closures.
 ---
 
 # Existing settlement routes
@@ -12,7 +12,7 @@ Use returned route geometry, travel times, distances and access results. Do not 
 or treat a lookup failure as proof that settlements have no road between them.
 
 This route comparison does not assign new traffic or predict queues. For increasing connectivity,
-faster transit or congestion relief, load traffic-development and use the requested objective.
+faster transit or congestion relief, inspect existing roads; automatic development search is unavailable.
 Do not attach assumed utilization or queue parameters to this tool.
 
 Read a saved result with `manage_calculation(kind=status, calculation_type=connectivity,

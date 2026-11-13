@@ -37,7 +37,7 @@ class RoadEvaluation:
     ) -> AnalysisDetail:
         if job.mode != "criticality":
             raise InvalidQuery(
-                "Historical improvement analyses are read-only; use traffic_development"
+                "Historical improvement analyses are read-only"
             )
         start = monotonic()
         region = self.roads.data.region_name(job.region_id)

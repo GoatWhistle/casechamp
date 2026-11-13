@@ -1,0 +1,12 @@
+.content {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.arrival {
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+.empty {
+  color: var(--text-secondary);
+}

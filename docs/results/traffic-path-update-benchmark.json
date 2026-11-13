@@ -1,0 +1,8 @@
+{
+  "changed_edges": 20000,
+  "origins": 12,
+  "exact_sets_equal": true,
+  "original_seconds": 2.296358500025235,
+  "batched_seconds": 0.019513332983478904,
+  "scope": "change classification only, synthetic fixed seed 42"
+}

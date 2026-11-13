@@ -29,13 +29,9 @@ def test_graph_calculations_are_unavailable_without_an_engine() -> None:
     assert result["economic_appraisal"]["available"] is False
 
 
-def test_development_has_one_adaptive_objective_interface() -> None:
+def test_removed_development_is_not_advertised() -> None:
     result = json.loads(CalculationTools(Mock(), traffic=Mock()).calculation_capabilities(Mock()))
-    development = result["road_development"]
-    assert development["available"] is True
-    assert development["objectives"] == ["connectivity", "transit", "congestion"]
-    assert development["default_objective"] == "connectivity"
-    assert "focus_bounds" in development
+    assert "road_development" not in result
     assert "automatic_road_analysis" not in result
     assert "new_connections" not in result
     assert "regional_sensitivity" not in result

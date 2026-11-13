@@ -20,9 +20,10 @@ class ClickHouseTrafficStore:
         jobs = []
         for row in reversed(rows):
             payload = json.loads(row["payload"])
+            payload.setdefault("version", "legacy_unversioned")
             payload.setdefault("indices", [])
-            for baseline in payload.get("baseline") or []:
-                baseline.setdefault("mean_trip_minutes", None)
+            if isinstance(payload.get("baseline"), dict):
+                payload["baseline"].setdefault("mean_trip_minutes", None)
             for alternative in payload["alternatives"]:
                 alternative.setdefault("indices", [])
                 alternative.setdefault("road_names", [])

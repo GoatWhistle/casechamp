@@ -1,14 +1,10 @@
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import replace
-from math import isfinite
 from pathlib import Path
 from threading import Event, Lock
-from uuid import uuid4
 
-from app.adapter.log.stdlib import StdlibLogger
-from app.adapter.traffic.calculation import TrafficCalculation
 from app.adapter.traffic.indices import TrafficIndices
-from app.domain.errors import DomainError, InvalidQuery
+from app.domain.errors import InvalidQuery
 from app.usecase.traffic import TrafficJob, TrafficScope, TrafficSource, TrafficStore
 from app.usecase.traffic_presentation import local_times
 
@@ -37,6 +33,8 @@ class TrafficJobs:
             if self.loaded:
                 return
             for job in self.store.load():
+                if job.version == "municipal_fixed_od_v1":
+                    continue
                 if job.status in {"queued", "running"}:
                     job = replace(job, status="cancelled", stage="interrupted")
                     self.store.save(job)
@@ -45,39 +43,7 @@ class TrafficJobs:
             self.loaded = True
 
     def submit(self, scope: TrafficScope) -> TrafficJob:
-        if (
-            scope.objective not in {"connectivity", "transit", "congestion"}
-            or (scope.objective == "transit" and not scope.focus_bounds and len(scope.places) != 1)
-            or len(scope.hypotheses) > 32
-            or any(
-                not 1 <= len(h.source_place.strip()) <= 128
-                or not 1 <= len(h.target_place.strip()) <= 128
-                or h.source_place.casefold() == h.target_place.casefold()
-                or len(h.rationale) > 1000
-                for h in scope.hypotheses
-            )
-            or len(scope.places) not in {0, 1, 2}
-            or not 1 <= scope.max_projects <= 3
-            or not isfinite(scope.demand_multiplier)
-            or not 0.1 <= scope.demand_multiplier <= 3
-            or not isfinite(scope.pair_flow)
-            or not 0 < scope.pair_flow <= 10000
-        ):
-            raise InvalidQuery(
-                "Use a city or pair, valid objective/focus, 1-3 projects, demand x0.1-3 and pair flow up to 10000"
-            )
-        self.load()
-        bounds = self.source.resolve(scope)
-        with self.lock:
-            active = [j for j in self.jobs.values() if j.status in {"queued", "running"}]
-            if len(active) >= 3:
-                raise InvalidQuery("Traffic queue is full; wait or cancel a saved job")
-            job = TrafficJob("traffic-" + uuid4().hex, scope, bounds=bounds)
-            self.store.save(job)
-            self.jobs[job.id] = job
-            self.stops[job.id] = Event()
-        self.pool.submit(self.run, job)
-        return job
+        raise InvalidQuery("Road development search has been removed; saved results are read-only")
 
     def get(self, job_id: str) -> TrafficJob:
         self.load()
@@ -107,42 +73,6 @@ class TrafficJobs:
     def checkpoint(self, job_id: str) -> None:
         if self.stops[job_id].is_set():
             raise InterruptedError()
-
-    def run(self, job: TrafficJob) -> None:
-        try:
-            self.checkpoint(job.id)
-            job = replace(job, status="running", stage="loading")
-            self.update(job)
-            path = self.cache / "traffic" / job.id
-            self.source.export(job.bounds, path)
-            self.checkpoint(job.id)
-            result = TrafficCalculation(self.indices, self.geography, self.workers).run(
-                job, path, self.update, lambda: self.checkpoint(job.id)
-            )
-            self.checkpoint(job.id)
-            self.update(result)
-        except InterruptedError:
-            self.update(replace(self.get(job.id), status="cancelled", stage="cancelled"))
-        except (
-            DomainError,
-            ValueError,
-            RuntimeError,
-            OSError,
-            TypeError,
-            IndexError,
-            KeyError,
-        ) as error:
-            StdlibLogger("app.traffic").error(
-                "traffic_calculation_failed", exc=error, job_id=job.id
-            )
-            code = (
-                "traffic_scope_too_large"
-                if "exceeds" in str(error)
-                else "traffic_assignment_not_converged"
-                if "converge" in str(error)
-                else "traffic_calculation_failed"
-            )
-            self.update(replace(self.get(job.id), status="failed", stage="failed", error=code))
 
     def inventory(self) -> str:
         return self.source.inventory()

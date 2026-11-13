@@ -41,7 +41,7 @@ def test_ordinary_provenance_retains_exact_representation() -> None:
     assert public_traffic_job(job) is job
 
 
-def test_http_list_detail_submit_and_cancel_hide_training_records() -> None:
+def test_http_history_remains_readable_and_search_cannot_be_started() -> None:
     job = example()
     port = Mock(spec=TrafficPort)
     port.submit.return_value = port.get.return_value = port.cancel.return_value = job
@@ -52,9 +52,10 @@ def test_http_list_detail_submit_and_cancel_hide_training_records() -> None:
         responses = [
             client.get("/traffic-jobs"),
             client.get("/traffic-jobs/stored"),
-            client.post("/traffic-jobs", json={}),
             client.post("/traffic-jobs/stored/cancel"),
         ]
+        assert client.post("/traffic-jobs", json={}).status_code == 405
+        port.submit.assert_not_called()
     for response in responses:
         assert response.status_code == 200
         body = response.json()

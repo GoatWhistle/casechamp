@@ -222,7 +222,7 @@ def test_incompatible_saved_ranking_is_not_exposed_as_verified(tmp_path: Path) -
 def test_legacy_improvement_search_cannot_launch_or_resume(tmp_path: Path) -> None:
     engine, pool = engine_for(tmp_path)
     try:
-        with pytest.raises(InvalidQuery, match="traffic_development"):
+        with pytest.raises(InvalidQuery, match="removed"):
             engine.submit(boundary(), "improvement", 20)
         old = AnalysisJob(
             "historical",

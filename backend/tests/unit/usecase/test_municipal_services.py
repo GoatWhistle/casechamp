@@ -1,5 +1,6 @@
 from types import SimpleNamespace
 from typing import cast
+from unittest.mock import Mock
 
 from app.domain.municipal_metrics import MunicipalObservation
 from app.domain.normative.model import AccessRow, Facility, Origin
@@ -63,7 +64,7 @@ def test_async_services_reuse_imported_thresholds_and_true_residential_origins()
     )
     catalog = cast(
         RegionalCatalogQueries,
-        SimpleNamespace(catalog=lambda *args: SimpleNamespace(facilities=[facility])),
+        SimpleNamespace(catalog=lambda *args, **kwargs: SimpleNamespace(facilities=[facility])),
     )
     road, walking = Routing(), Routing(True)
     service = MunicipalServiceQueries(
@@ -105,3 +106,18 @@ def test_async_services_reuse_imported_thresholds_and_true_residential_origins()
     assert values["N01"].thresholds == (60,)
     assert values["N02"].thresholds == (120,)
     assert road.calls == 1
+
+
+def test_published_only_mode_does_not_start_missing_measurements() -> None:
+    catalog = Mock()
+    road = Mock()
+    service = MunicipalServiceQueries(catalog, road, None, published=lambda _: [], allow_live=False)
+    try:
+        result = service.values(Mock(), [])
+        assert len(result) == 9
+        assert all(row.status == "unavailable" for row in result)
+        road.evaluate.assert_not_called()
+        catalog.catalog.assert_not_called()
+        assert not service._jobs
+    finally:
+        service.close()
