@@ -2,12 +2,24 @@ import type { AnalysisCommentary } from "@/entities/chat"
 import type { CalculationHandler } from "@/shared/api/chat-calculation"
 import type { MapCommandHandler } from "@/shared/api/chat-map"
 import { useTranslation } from "@/shared/i18n"
-import { Button, ChatMessage, Disclosure } from "@/shared/ui"
+import { Button, ChatMessage } from "@/shared/ui"
+import { BrandMark } from "@/shared/ui/brand"
 import { ChatFollowups } from "./calculation/chat-followups"
 import { ChatResultMap } from "./calculation/chat-result-map"
 import styles from "./chat-answer.module.css"
-import { chatStatusKey } from "./chat-copy"
 import type { ChatEntry } from "./use-map-chat"
+
+function ChatAuthor() {
+  const { t } = useTranslation()
+  return (
+    <>
+      <span className={styles.avatar}>
+        <BrandMark kind="symbol" tone="inverse" size="fill" rings={0} decorative />
+      </span>
+      {t("chat:roles.assistant")}
+    </>
+  )
+}
 
 export function ChatAnswer({
   message,
@@ -30,6 +42,7 @@ export function ChatAnswer({
   return (
     <ChatMessage
       speaker={message.role}
+      author={message.role === "assistant" ? <ChatAuthor /> : undefined}
       text={message.content}
       label={t(`chat:roles.${message.role}`)}
       footer={
@@ -44,15 +57,6 @@ export function ChatAnswer({
               />
             ) : null}
             <div className={styles.actions}>
-              {message.steps.length ? (
-                <Disclosure className={styles.steps} title={t("chat:steps")}>
-                  <ol>
-                    {message.steps.map((step) => (
-                      <li key={step}>{t(chatStatusKey(step))}</li>
-                    ))}
-                  </ol>
-                </Disclosure>
-              ) : null}
               {message.calculations?.map((calculation) => (
                 <ChatResultMap
                   key={calculation.corridor.id}

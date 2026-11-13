@@ -49,6 +49,9 @@
 }
 
 .composer .send {
+  --button-height: var(--space-32);
+
   flex: none;
-  border-radius: var(--radius-md);
+  margin: var(--space-4);
+  border-radius: var(--radius-pill);
 }

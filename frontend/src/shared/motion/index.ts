@@ -7,6 +7,7 @@ export {
   readPixels,
   readToken,
 } from "./css-tokens"
+export { fallbackDelay, type ReducedFadeToken } from "./fallback-delay"
 export { type StaggerStyle, staggerStyle } from "./stagger"
 export { Swap, type SwapPhase, type SwapProps } from "./swap/swap"
 export { type InputModality, useInputModality } from "./use-input-modality"

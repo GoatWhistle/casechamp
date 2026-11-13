@@ -167,3 +167,11 @@
   fill: var(--action-primary);
   stroke-width: var(--hairline);
 }
+
+.inkDisc {
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-pill);
+  background-color: var(--surface-inverse);
+  color: var(--text-on-inverse);
+}

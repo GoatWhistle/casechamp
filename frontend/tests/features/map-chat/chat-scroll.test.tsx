@@ -45,7 +45,6 @@ it("preserves the reading position after a small upward scroll during streaming"
       <LocaleProvider>
         <MapChat
           context={{ season: "summer", network_mode: "road", metric: "hansen" }}
-          summary={null}
           onMapCommand={vi.fn()}
         />
       </LocaleProvider>

@@ -34,6 +34,7 @@ export function TrafficIndex({
       <RegionHeading job={job} region={region} onChange={setSelected} />
       {ranked.length ? (
         <DataTable<TrafficAlternative>
+          scrollOrientation="horizontal"
           caption={t(targeted ? "traffic:objectiveComparison" : "traffic:comparison")}
           rows={ranked}
           rowKey={(row) => row.id}

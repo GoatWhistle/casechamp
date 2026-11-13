@@ -1,8 +1,6 @@
 .area {
   min-inline-size: 0;
   min-block-size: 0;
-  scrollbar-width: thin;
-  scrollbar-color: var(--scrollbar-thumb) transparent;
 }
 
 .area:focus-visible {

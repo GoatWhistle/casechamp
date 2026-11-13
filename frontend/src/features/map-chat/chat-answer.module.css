@@ -1,15 +1,15 @@
+.avatar {
+  composes: inkDisc from "../../shared/styles/compose.module.css";
+  inline-size: var(--space-24);
+  block-size: var(--space-24);
+  padding: calc(var(--space-4) + var(--space-2));
+}
+
 .actions {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: var(--space-4);
-}
-.steps {
-  color: var(--text-secondary);
-  font-size: var(--font-size-caption);
-}
-.steps:has([aria-expanded="true"]) {
-  flex-basis: 100%;
 }
 .action {
   font-size: var(--font-size-caption);
