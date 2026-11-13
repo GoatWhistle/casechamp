@@ -4,7 +4,7 @@
     "municipality": "osm-relation-1030066",
     "action": "indices",
     "run": 0,
-    "seconds": 18.02576016704552,
+    "seconds": 4.710467749973759,
     "status": null
   },
   {
@@ -12,7 +12,7 @@
     "municipality": "osm-relation-1030066",
     "action": "indices",
     "run": 1,
-    "seconds": 0.4153465839335695,
+    "seconds": 0.04769945808220655,
     "status": null
   },
   {
@@ -20,7 +20,7 @@
     "municipality": "osm-relation-1030066",
     "action": "roads",
     "run": 0,
-    "seconds": 163.27384000003804,
+    "seconds": 44.32750204100739,
     "status": "candidates_found"
   },
   {
@@ -28,7 +28,7 @@
     "municipality": "osm-relation-1030066",
     "action": "roads",
     "run": 1,
-    "seconds": 0.06479495798703283,
+    "seconds": 0.04507120803464204,
     "status": "candidates_found"
   },
   {
@@ -36,7 +36,7 @@
     "municipality": "osm-relation-1030066",
     "action": "baseline",
     "run": 0,
-    "seconds": 0.6955687080044299,
+    "seconds": 0.0825140419183299,
     "status": null
   },
   {
@@ -44,7 +44,7 @@
     "municipality": "osm-relation-1030066",
     "action": "baseline",
     "run": 1,
-    "seconds": 0.4250653750495985,
+    "seconds": 0.08689666702412069,
     "status": null
   },
   {
@@ -52,7 +52,7 @@
     "municipality": "osm-relation-1030066",
     "action": "improve",
     "run": 0,
-    "seconds": 0.28334908303804696,
+    "seconds": 0.07505479198880494,
     "status": "awaiting_routing_baseline"
   },
   {
@@ -60,7 +60,7 @@
     "municipality": "osm-relation-1030066",
     "action": "improve",
     "run": 1,
-    "seconds": 0.2342517499346286,
+    "seconds": 0.08492558391299099,
     "status": "awaiting_routing_baseline"
   },
   {
@@ -68,7 +68,7 @@
     "municipality": "osm-relation-1030137",
     "action": "indices",
     "run": 0,
-    "seconds": 0.13668595789931715,
+    "seconds": 0.6739887079456821,
     "status": null
   },
   {
@@ -76,7 +76,7 @@
     "municipality": "osm-relation-1030137",
     "action": "indices",
     "run": 1,
-    "seconds": 0.06885179097298533,
+    "seconds": 0.035901415976695716,
     "status": null
   },
   {
@@ -84,7 +84,7 @@
     "municipality": "osm-relation-1030137",
     "action": "roads",
     "run": 0,
-    "seconds": 0.8112759999930859,
+    "seconds": 4.45504083391279,
     "status": "candidates_found"
   },
   {
@@ -92,7 +92,7 @@
     "municipality": "osm-relation-1030137",
     "action": "roads",
     "run": 1,
-    "seconds": 0.30589291697833687,
+    "seconds": 0.054059999994933605,
     "status": "candidates_found"
   },
   {
@@ -100,7 +100,7 @@
     "municipality": "osm-relation-1030137",
     "action": "baseline",
     "run": 0,
-    "seconds": 11.533495791023597,
+    "seconds": 0.08556095894891769,
     "status": null
   },
   {
@@ -108,7 +108,7 @@
     "municipality": "osm-relation-1030137",
     "action": "baseline",
     "run": 1,
-    "seconds": 0.6567600420676172,
+    "seconds": 0.08238829195033759,
     "status": null
   },
   {
@@ -116,7 +116,7 @@
     "municipality": "osm-relation-1030137",
     "action": "improve",
     "run": 0,
-    "seconds": 0.7046609580283985,
+    "seconds": 0.06908050004858524,
     "status": "awaiting_routing_baseline"
   },
   {
@@ -124,7 +124,7 @@
     "municipality": "osm-relation-1030137",
     "action": "improve",
     "run": 1,
-    "seconds": 0.7752238339744508,
+    "seconds": 0.07023162499535829,
     "status": "awaiting_routing_baseline"
   },
   {
@@ -132,7 +132,7 @@
     "municipality": "geoboundaries-2017-50074027B3453987182776",
     "action": "indices",
     "run": 0,
-    "seconds": 0.1872118329629302,
+    "seconds": 0.4797682909993455,
     "status": null
   },
   {
@@ -140,7 +140,7 @@
     "municipality": "geoboundaries-2017-50074027B3453987182776",
     "action": "indices",
     "run": 1,
-    "seconds": 0.13275395892560482,
+    "seconds": 0.04284733394160867,
     "status": null
   },
   {
@@ -148,7 +148,7 @@
     "municipality": "geoboundaries-2017-50074027B3453987182776",
     "action": "roads",
     "run": 0,
-    "seconds": 0.10571966704446822,
+    "seconds": 18.590075500076637,
     "status": "candidates_found"
   },
   {
@@ -156,7 +156,7 @@
     "municipality": "geoboundaries-2017-50074027B3453987182776",
     "action": "roads",
     "run": 1,
-    "seconds": 0.10429679194930941,
+    "seconds": 0.0362669579917565,
     "status": "candidates_found"
   },
   {
@@ -164,7 +164,7 @@
     "municipality": "geoboundaries-2017-50074027B3453987182776",
     "action": "baseline",
     "run": 0,
-    "seconds": 52.45107733400073,
+    "seconds": 0.05717866704799235,
     "status": null
   },
   {
@@ -172,7 +172,7 @@
     "municipality": "geoboundaries-2017-50074027B3453987182776",
     "action": "baseline",
     "run": 1,
-    "seconds": 0.830477417097427,
+    "seconds": 0.054378333035856485,
     "status": null
   },
   {
@@ -180,7 +180,7 @@
     "municipality": "geoboundaries-2017-50074027B3453987182776",
     "action": "improve",
     "run": 0,
-    "seconds": 0.7680465410230681,
+    "seconds": 0.04878016700968146,
     "status": "awaiting_routing_baseline"
   },
   {
@@ -188,7 +188,7 @@
     "municipality": "geoboundaries-2017-50074027B3453987182776",
     "action": "improve",
     "run": 1,
-    "seconds": 0.39713325002230704,
+    "seconds": 0.052464667009189725,
     "status": "awaiting_routing_baseline"
   }
 ]
