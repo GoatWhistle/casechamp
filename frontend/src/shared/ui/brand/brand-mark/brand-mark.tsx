@@ -42,7 +42,7 @@ export interface BrandMarkProps {
   readonly size?: BrandMarkSize
   readonly decorative?: boolean
   readonly broken?: boolean
-  readonly rings?: 1 | 2 | 3
+  readonly rings?: 0 | 1 | 2 | 3
   readonly className?: string | undefined
 }
 

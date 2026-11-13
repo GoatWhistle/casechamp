@@ -1,60 +1,40 @@
-import { type ReactNode, useId, useState } from "react"
 import { type ChatContext, chatSessionTitle } from "@/entities/chat"
 import { useRegion } from "@/entities/region"
 import type { CalculationHandler } from "@/shared/api/chat-calculation"
 import type { MapCommandHandler } from "@/shared/api/chat-map"
 import { useTranslation } from "@/shared/i18n"
 import { Swap } from "@/shared/motion"
-import {
-  Banner,
-  Button,
-  ChatComposer,
-  Icon,
-  ScrollArea,
-  Tabs,
-  ThinkingDots,
-  Tooltip,
-} from "@/shared/ui"
+import { Banner, Button, ChatComposer, Icon, ScrollArea, ThinkingDots, Tooltip } from "@/shared/ui"
 import { ownedResults } from "./calculation/owned-results"
 import { ChatAnswer } from "./chat-answer"
 import { chatErrorKey, chatStatusKey } from "./chat-copy"
 import { ChatEmpty } from "./chat-empty"
 import styles from "./map-chat.module.css"
+import { QuickPrompts } from "./quick-prompts/quick-prompts"
 import { useChatScroll } from "./scroll/use-chat-scroll"
 import { ChatStorageNotice } from "./sessions/chat-storage-notice"
-import { type ChatEntry, useMapChat } from "./use-map-chat"
+import { useMapChat } from "./use-map-chat"
 
 export interface MapChatProps {
   readonly onSessionChange?: (() => void) | undefined
   readonly onCalculation?: CalculationHandler | undefined
   readonly context: ChatContext
-  readonly summary: ReactNode
-  readonly scenario?: ReactNode | ((onAsk: (prompt: string) => void) => ReactNode)
   readonly onMapCommand: MapCommandHandler
 }
 
-export function MapChat({
-  context,
-  summary,
-  onMapCommand,
-  onCalculation,
-  onSessionChange,
-}: MapChatProps) {
+export function MapChat({ context, onMapCommand, onCalculation, onSessionChange }: MapChatProps) {
   const { t } = useTranslation()
-  const [tab, setTab] = useState<"chat" | "summary">("chat")
   const chat = useMapChat(context, onMapCommand)
   const region = useRegion(context.region_id ?? "", context.season ?? "summer")
   const regionName = regionLabel(context.region_id, region.data, t)
   const active = chat.sessions.find((session) => session.id === chat.sessionId)
   const threadTitle = (active ? chatSessionTitle(active) : "") || t("chat:new")
-  const titleId = useId()
   const tail = chat.messages.at(-1)
   const { scroll, follow, scrollProps } = useChatScroll(tail)
   const startNew = () => {
     follow.current = true
     onSessionChange?.()
     chat.newSession()
-    setTab("chat")
   }
   const send = (prompt?: string) => {
     follow.current = true
@@ -63,38 +43,7 @@ export function MapChat({
 
   return (
     <aside className={styles.panel} aria-label={t("chat:panelLabel")}>
-      <div className={styles.bar}>
-        <Tabs
-          label={t("chat:panelLabel")}
-          value={tab}
-          onChange={setTab}
-          className={styles.tabs}
-          controls={{
-            chat: `${titleId}chat`,
-            summary: `${titleId}summary`,
-          }}
-          items={[
-            { value: "chat", label: t("chat:tab"), icon: "chat" },
-            { value: "summary", label: t("chat:summary"), icon: "overview" },
-          ]}
-        />
-      </div>
-      <div
-        id={`${titleId}summary`}
-        role="tabpanel"
-        aria-label={t("chat:summary")}
-        className={styles.summary}
-        data-hidden={tab !== "summary" || undefined}
-      >
-        {summary}
-      </div>
-      <div
-        id={`${titleId}chat`}
-        role="tabpanel"
-        aria-label={t("chat:tab")}
-        className={styles.chat}
-        data-hidden={tab !== "chat" || undefined}
-      >
+      <div className={styles.chat}>
         {chat.messages.length > 0 ? (
           <div className={styles.thread}>
             <p className={styles.threadTitle}>{threadTitle}</p>
@@ -145,9 +94,9 @@ export function MapChat({
                 onMapCommand={onMapCommand}
               />
             ))}
-            {showChatStatus(tail, chat.busy, Boolean(chat.error)) ? (
+            {tail && chat.busy && !chat.error ? (
               <p role="status" className={styles.status}>
-                {chat.busy ? <ThinkingDots /> : <Icon name="check" size="sm" />}
+                <ThinkingDots />
                 {t(chatStatusKey(chat.status))}
               </p>
             ) : null}
@@ -167,6 +116,7 @@ export function MapChat({
               }
             />
           ) : null}
+          <QuickPrompts busy={chat.busy} onAsk={send} />
           <ChatComposer
             context={
               <>
@@ -203,18 +153,4 @@ function regionLabel(
 ): string {
   if (!id) return t("chat:allRegions")
   return data?.id === id ? data.name : t("common:state.loading")
-}
-
-function hasResults(row: ChatEntry | undefined) {
-  return [
-    row?.calculations,
-    row?.stressTests,
-    row?.scenarios,
-    row?.analyses,
-    row?.trafficJobs,
-  ].some((items) => items?.length)
-}
-
-function showChatStatus(tail: ChatEntry | undefined, busy: boolean, failed: boolean) {
-  return Boolean(tail) && !failed && (busy || !hasResults(tail))
 }

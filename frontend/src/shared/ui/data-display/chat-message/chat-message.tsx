@@ -1,3 +1,4 @@
+import { clsx } from "clsx"
 import type { ReactNode } from "react"
 import Markdown from "react-markdown"
 import rehypeKatex from "rehype-katex"
@@ -12,13 +13,20 @@ export interface ChatMessageProps {
   readonly speaker: "user" | "assistant"
   readonly text: string
   readonly label: string
+  readonly author?: ReactNode
   readonly children?: ReactNode
   readonly footer?: ReactNode
 }
 
-export function ChatMessage({ speaker, text, label, children, footer }: ChatMessageProps) {
+export function ChatMessage({ speaker, text, label, author, children, footer }: ChatMessageProps) {
   return (
-    <article className={styles.message} data-role={speaker} aria-label={label} lang="ru">
+    <article
+      className={clsx(styles.message, speaker === "user" && styles.user)}
+      data-role={speaker}
+      aria-label={label}
+      lang="ru"
+    >
+      {author === undefined ? null : <div className={styles.author}>{author}</div>}
       {children}
       {text ? (
         <div className={styles.prose}>

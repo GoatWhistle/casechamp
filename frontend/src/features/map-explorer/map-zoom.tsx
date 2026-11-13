@@ -1,3 +1,4 @@
+import type { ReactNode } from "react"
 import type { MapControls } from "@/entities/region"
 import type { MessageKey } from "@/shared/i18n"
 import { useTranslation } from "@/shared/i18n"
@@ -7,6 +8,7 @@ import styles from "./map-explorer.module.css"
 export interface MapZoomProps {
   readonly controls: MapControls
   readonly onReset: () => void
+  readonly dock?: ReactNode
 }
 
 interface ZoomAction {
@@ -15,7 +17,7 @@ interface ZoomAction {
   readonly run: (instant?: boolean) => void
 }
 
-export function MapZoom({ controls, onReset }: MapZoomProps) {
+export function MapZoom({ controls, onReset, dock }: MapZoomProps) {
   const { t } = useTranslation()
   const actions: readonly ZoomAction[] = [
     { label: "map:zoomIn", icon: "plus", run: controls.zoomIn },
@@ -30,20 +32,23 @@ export function MapZoom({ controls, onReset }: MapZoomProps) {
     },
   ]
   return (
-    <div className={styles.zoom}>
-      {actions.map((action) => (
-        <Tooltip key={action.icon} content={t(action.label)} side="bottom" describe={false}>
-          <Button
-            variant="secondary"
-            size="compact"
-            icon={action.icon}
-            onClick={(event) => action.run(event.detail === 0)}
-            aria-label={t(action.label)}
-          >
-            {null}
-          </Button>
-        </Tooltip>
-      ))}
+    <div className={styles.controls}>
+      {dock}
+      <div className={styles.zoom}>
+        {actions.map((action) => (
+          <Tooltip key={action.icon} content={t(action.label)} side="bottom" describe={false}>
+            <Button
+              variant="secondary"
+              size="compact"
+              icon={action.icon}
+              onClick={(event) => action.run(event.detail === 0)}
+              aria-label={t(action.label)}
+            >
+              {null}
+            </Button>
+          </Tooltip>
+        ))}
+      </div>
     </div>
   )
 }

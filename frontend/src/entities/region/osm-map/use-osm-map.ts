@@ -140,7 +140,6 @@ export function useOsmMap({
     },
     [duration],
   )
-
   useEffect(() => {
     const element = container.current
     if (!element || atlas.collection.features.length === 0) return
@@ -169,8 +168,12 @@ export function useOsmMap({
     }
     const map = keepFlat(new LibreMap(options))
     engine.current = map
+    let width = element.clientWidth
     const resize = new ResizeObserver(() => {
-      resizeMapView(map, state.current.atlas.home, ready.current)
+      const shift = (element.clientWidth - width) / 2
+      width = element.clientWidth
+      const national = resizeMapView(map, state.current.atlas.home, ready.current)
+      if (!national && shift !== 0) map.panBy([shift, 0], { animate: false })
     })
     resize.observe(element)
     const onClick = (event: MapLayerMouseEvent) => {

@@ -50,6 +50,7 @@ export function AnalysisTable({ job }: { readonly job: AnalysisJob }) {
     })
   return (
     <DataTable
+      scrollOrientation="horizontal"
       className={styles.table}
       caption={t("chat:analysis.ranking")}
       columns={columns}

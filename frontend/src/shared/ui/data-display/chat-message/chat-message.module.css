@@ -1,29 +1,55 @@
 .message {
+  min-inline-size: 0;
+  margin-block-end: var(--space-24);
   font-size: var(--font-size-body-sm);
   line-height: var(--line-height-body);
-  margin-block-end: var(--space-24);
-  overflow-wrap: anywhere;
   animation: var(--motion-fade-in);
 }
 
-.message[data-role="user"] {
-  inline-size: fit-content;
-  margin-inline-start: var(--space-24);
-  margin-left: auto;
-  padding: var(--space-12) var(--space-16);
-  background: var(--action-primary);
-  color: var(--action-primary-text);
-  border-radius: var(--radius-lg);
+.user {
+  align-self: flex-end;
+  margin-inline-start: var(--space-32);
+  margin-block-end: var(--space-16);
+  padding: calc(var(--space-8) + var(--space-2)) calc(var(--space-12) + var(--space-2));
+  border-radius: var(--radius-xl);
+  border-end-end-radius: var(--radius-sm);
+  background-color: var(--surface-bubble);
   white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  margin-block-end: var(--space-8);
+  font-size: var(--font-size-label);
+  font-weight: var(--weight-semibold);
 }
 
 .prose {
-  font-size: var(--font-size-body-sm);
-  line-height: var(--line-height-body);
+  min-inline-size: 0;
+  color: var(--text-primary);
 }
 
 .prose > * + * {
-  margin-block-start: var(--space-12);
+  margin-block-start: var(--space-8);
+}
+
+.prose :where(p, li, blockquote, a) {
+  overflow-wrap: anywhere;
+}
+
+.prose li::marker {
+  color: var(--text-muted);
+}
+
+.prose strong {
+  font-weight: var(--weight-semibold);
+}
+
+.prose > * + :where(h1, h2, h3, h4) {
+  margin-block-start: var(--space-16);
 }
 
 .prose :where(ul, ol) {
@@ -31,11 +57,12 @@
 }
 
 .prose li + li {
-  margin-block-start: var(--space-8);
+  margin-block-start: var(--space-4);
 }
 
 .prose :where(h1, h2, h3, h4) {
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-body-sm);
+  line-height: var(--line-height-label);
   font-weight: var(--weight-semibold);
 }
 
@@ -70,8 +97,9 @@
 }
 
 .prose th {
-  font-weight: var(--weight-semibold);
-  background-color: var(--surface-sunken);
+  border-block-end-color: var(--border-default);
+  color: var(--text-muted);
+  font-weight: var(--weight-medium);
 }
 
 .prose blockquote {

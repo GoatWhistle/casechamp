@@ -20,7 +20,7 @@
 .row {
   display: flex;
   align-items: center;
-  border-block-end: var(--hairline) solid var(--border-subtle);
+  border-block-end: var(--hairline) solid var(--border-warm);
 }
 
 .item {

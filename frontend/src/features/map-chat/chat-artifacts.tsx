@@ -45,6 +45,7 @@ export function ChatArtifacts({ tables, charts }: ChatArtifactsProps) {
               />
             ) : (
               <DataTable<ChatRow>
+                scrollOrientation="horizontal"
                 caption={table.caption ? `${title}: ${table.caption}` : title}
                 className={styles.evidence}
                 columns={table.columns.map((column) => ({

@@ -2,11 +2,9 @@ import { type CSSProperties, type ReactNode, useCallback, useMemo, useRef } from
 import { useLocation } from "react-router"
 import { boundaryName, type MapControls, modelRegionId, OsmMap } from "@/entities/region"
 import { useRoadGraph } from "@/entities/road-graph"
-import { usePanelWidth } from "@/shared/hooks"
 import { clearMunicipalAccess } from "@/shared/hooks/use-municipal-access-view"
 import { useNetworkMode } from "@/shared/hooks/use-network-mode"
 import { useTranslation } from "@/shared/i18n"
-import { PanelResizer } from "@/shared/ui"
 import { MapPending } from "./explorer-states"
 import { HoverCard } from "./hover-card"
 import styles from "./map-explorer.module.css"
@@ -17,6 +15,9 @@ import { MapZoom } from "./map-zoom"
 import { normativeId } from "./metric"
 import { roadMapProps } from "./municipalities/road-map-props"
 import { useMunicipalitySelection } from "./municipalities/use-municipalities"
+import { DockToggle } from "./panel-dock/dock-toggle"
+import { PanelDock } from "./panel-dock/panel-dock"
+import { usePanelDock } from "./panel-dock/use-panel-dock"
 import { OverlayReset, RoadLayer } from "./road-legend"
 import { useMapSelection } from "./selection/use-map-selection"
 import { useNormativeMapScope } from "./selection/use-regional-scope"
@@ -30,7 +31,6 @@ import { useNormativeOverlay } from "./use-normative-overlay"
 export interface MapExplorerProps {
   readonly renderPanel: (slot: MapPanelSlot) => ReactNode
 }
-const PANEL_WIDTH_KEY = "plexus.map-panel-width"
 
 export function MapExplorer({ renderPanel }: MapExplorerProps) {
   const { networkMode } = useNetworkMode()
@@ -39,7 +39,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
   const { metric, season, selectedId, select, searchFor } = useExplorerParams()
   const { hoveredId, cardRef, point, onHover } = useMapHover()
   const host = useRef<HTMLDivElement | null>(null)
-  const panelWidth = usePanelWidth(host, PANEL_WIDTH_KEY)
+  const dock = usePanelDock(host)
   const {
     geo,
     regions,
@@ -101,9 +101,12 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
 
   const stepOf = useCallback((id: string) => scale.stepOf(valueAt(id)), [scale, valueAt])
   const clear = useCallback(() => selectRegion(null), [selectRegion])
+  const { toggle } = dock
   const controls = useCallback(
-    (value: MapControls) => <MapZoom controls={value} onReset={clear} />,
-    [clear],
+    (value: MapControls) => (
+      <MapZoom controls={value} onReset={clear} dock={<DockToggle dock={toggle} />} />
+    ),
+    [clear, toggle],
   )
 
   const hovered = hoveredId ? byId.get(hoveredId) : undefined
@@ -129,7 +132,8 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
       ref={host}
       className={styles.explorer}
       data-fullscreen={fullscreen}
-      style={{ "--panel-committed": panelWidth.width } as CSSProperties}
+      data-dock={dock.phase}
+      style={{ "--panel-committed": dock.width.width } as CSSProperties}
     >
       <div className={styles.stage}>
         {geo.data && regions.data ? (
@@ -202,49 +206,41 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
         ) : null}
       </div>
       <RegionSelectionStatus name={modelId ? byId.get(modelId)?.name : undefined} />
-      {renderPanel({
-        summary: (
-          <ExplorerSummary
-            metric={metric}
-            season={season}
-            selectedId={selectedId}
-            selectedName={boundaryName(selectedId, geo.data?.regions)}
-            searchFor={searchFor}
-            onClear={clear}
-          />
-        ),
-        normativeId: normativeMode,
-        normativeRegionName: scope.regionName,
-        normativeRegionId: scope.selection,
-        metricLabel: t(`data:metric.${metric}`),
-        selectedPoint,
-        onPoint: selectPoint,
-        onNormativeRegion: selectRegion,
-        normativeDisplay: normativeState.display,
-        onNormativeDisplay: normativeState.onDisplay,
-        routeStage: stage,
-        onRouteStage: selectStage,
-        regionCard,
-        selection: selectedId,
-        context: { region_id: modelId, season, network_mode: networkMode, metric },
-        onMapCommand,
-        roads,
-        onChatChange: () => {
-          clearMunicipalAccess()
-          setMapCommand(null)
-          roads.clearOverlays()
-        },
-      })}
-      <PanelResizer
-        className={styles.resizer}
-        width={panelWidth.width}
-        min={panelWidth.min}
-        max={panelWidth.max}
-        label={t("map:panelResize")}
-        onPreview={panelWidth.preview}
-        onCommit={panelWidth.commit}
-        onReset={panelWidth.reset}
-      />
+      <PanelDock dock={dock}>
+        {renderPanel({
+          summary: (
+            <ExplorerSummary
+              metric={metric}
+              season={season}
+              selectedId={selectedId}
+              selectedName={boundaryName(selectedId, geo.data?.regions)}
+              searchFor={searchFor}
+              onClear={clear}
+            />
+          ),
+          normativeId: normativeMode,
+          normativeRegionName: scope.regionName,
+          normativeRegionId: scope.selection,
+          metricLabel: t(`data:metric.${metric}`),
+          selectedPoint,
+          onPoint: selectPoint,
+          onNormativeRegion: selectRegion,
+          normativeDisplay: normativeState.display,
+          onNormativeDisplay: normativeState.onDisplay,
+          routeStage: stage,
+          onRouteStage: selectStage,
+          regionCard,
+          selection: selectedId,
+          context: { region_id: modelId, season, network_mode: networkMode, metric },
+          onMapCommand,
+          roads,
+          onChatChange: () => {
+            clearMunicipalAccess()
+            setMapCommand(null)
+            roads.clearOverlays()
+          },
+        })}
+      </PanelDock>
     </div>
   )
 }

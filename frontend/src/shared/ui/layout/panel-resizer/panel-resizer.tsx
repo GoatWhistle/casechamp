@@ -14,6 +14,8 @@ export interface PanelResizerProps {
   readonly edge?: "start" | "end"
   readonly controls?: string | undefined
   readonly grip?: boolean
+  readonly collapseBelow?: number | undefined
+  readonly onCollapse?: (() => void) | undefined
 }
 
 const STEP = 16
@@ -41,6 +43,7 @@ interface Drag {
   readonly startX: number
   readonly startWidth: number
   width: number
+  raw: number
 }
 
 export function PanelResizer({
@@ -55,27 +58,38 @@ export function PanelResizer({
   edge = "start",
   controls,
   grip = false,
+  collapseBelow,
+  onCollapse,
 }: PanelResizerProps) {
   const drag = useRef<Drag | null>(null)
   const frame = useRef<number | null>(null)
   const clamp = (value: number) => Math.round(Math.min(max, Math.max(min, value)))
   const direction = edge === "end" ? 1 : -1
+  const floor = onCollapse ? 0 : min
+  const shown = (raw: number) => Math.round(Math.min(max, Math.max(floor, raw)))
 
   const onPointerDown = (event: PointerEvent<HTMLDivElement>) => {
     if (event.button !== 0 || drag.current !== null) return
     event.preventDefault()
     event.currentTarget.setPointerCapture(event.pointerId)
-    drag.current = { id: event.pointerId, startX: event.clientX, startWidth: width, width }
+    drag.current = {
+      id: event.pointerId,
+      startX: event.clientX,
+      startWidth: width,
+      width,
+      raw: width,
+    }
   }
 
   const onPointerMove = (event: PointerEvent<HTMLDivElement>) => {
     const state = drag.current
     if (!state || state.id !== event.pointerId) return
-    state.width = clamp(state.startWidth + (event.clientX - state.startX) * direction)
+    state.raw = state.startWidth + (event.clientX - state.startX) * direction
+    state.width = clamp(state.raw)
     if (frame.current !== null) return
     frame.current = requestAnimationFrame(() => {
       frame.current = null
-      if (drag.current) onPreview(drag.current.width)
+      if (drag.current) onPreview(shown(drag.current.raw))
     })
   }
 
@@ -85,7 +99,8 @@ export function PanelResizer({
     drag.current = null
     if (frame.current !== null) cancelAnimationFrame(frame.current)
     frame.current = null
-    onCommit(state.width)
+    if (onCollapse && collapseBelow !== undefined && state.raw < collapseBelow) onCollapse()
+    else onCommit(state.width)
   }
 
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {

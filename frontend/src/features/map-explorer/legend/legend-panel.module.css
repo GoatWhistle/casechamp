@@ -121,3 +121,9 @@
     position: relative;
   }
 }
+
+@media (max-width: 48rem) {
+  .host {
+    display: none;
+  }
+}
