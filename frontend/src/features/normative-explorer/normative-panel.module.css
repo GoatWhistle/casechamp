@@ -6,9 +6,12 @@
 }
 .switcher {
   padding: var(--space-12) var(--space-16);
+  padding-inline-end: calc(var(--space-16) + var(--sheet-controls));
   border-block-end: var(--hairline) solid var(--border-subtle);
 }
 .chat {
+  --sheet-controls: 0rem;
+
   flex: 1;
   min-block-size: 0;
   display: grid;

@@ -18,7 +18,7 @@ export function MunicipalOverview({
   const query = useMunicipalOverview(regionId, "", season)
   const { t } = useTranslation()
   return (
-    <MunicipalityCardFrame name={t("map:municipalOverview.title")} onClear={onClear}>
+    <MunicipalityCardFrame name={t("map:municipalOverview.title")} onClear={onClear} foldOnPhone>
       <div className={styles.heading}>
         <span>{t("map:municipalOverview.connectivity")}</span>
         <HelpTip

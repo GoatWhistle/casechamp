@@ -44,3 +44,21 @@ export function resizeMapView(map: LibreMap, home: LonLatBounds, ready: boolean)
   map.redraw()
   return national
 }
+
+export function observeMapResize(
+  map: LibreMap,
+  element: HTMLElement,
+  home: () => LonLatBounds,
+  ready: { readonly current: boolean },
+): ResizeObserver {
+  let size = [element.clientWidth, element.clientHeight] as const
+  const resize = new ResizeObserver(() => {
+    const next = [element.clientWidth, element.clientHeight] as const
+    const shift: [number, number] = [(next[0] - size[0]) / 2, (next[1] - size[1]) / 2]
+    size = next
+    const national = resizeMapView(map, home(), ready.current)
+    if (!national && (shift[0] !== 0 || shift[1] !== 0)) map.panBy(shift, { animate: false })
+  })
+  resize.observe(element)
+  return resize
+}

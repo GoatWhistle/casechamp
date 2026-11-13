@@ -2,6 +2,7 @@ import type { AnimationEvent, ReactNode } from "react"
 import { useTranslation } from "@/shared/i18n"
 import { PanelResizer } from "@/shared/ui"
 import styles from "./panel-dock.module.css"
+import { SheetBar } from "./sheet-bar"
 import type { PanelDockState } from "./use-panel-dock"
 
 export interface PanelDockProps {
@@ -11,7 +12,7 @@ export interface PanelDockProps {
 
 export function PanelDock({ dock, children }: PanelDockProps) {
   const { t } = useTranslation()
-  const { width, phase } = dock
+  const { width, phase, compact } = dock
   const settle = (event: AnimationEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) dock.settle()
   }
@@ -20,12 +21,16 @@ export function PanelDock({ dock, children }: PanelDockProps) {
       <div
         className={styles.slot}
         data-phase={phase}
+        data-sheet={dock.sheet}
+        data-morph={dock.morphing || undefined}
+        data-dock-slot
         inert={phase === "closed"}
         onAnimationEnd={settle}
       >
+        {compact ? <SheetBar dock={dock} /> : null}
         {children}
       </div>
-      {phase === "open" ? (
+      {phase === "open" && !compact ? (
         <PanelResizer
           className={styles.resizer}
           width={width.width}

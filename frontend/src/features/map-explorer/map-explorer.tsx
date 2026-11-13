@@ -18,6 +18,7 @@ import { useMunicipalitySelection } from "./municipalities/use-municipalities"
 import { DockToggle } from "./panel-dock/dock-toggle"
 import { PanelDock } from "./panel-dock/panel-dock"
 import { usePanelDock } from "./panel-dock/use-panel-dock"
+import { useSheetReveal } from "./panel-dock/use-sheet-reveal"
 import { OverlayReset, RoadLayer } from "./road-legend"
 import { useMapSelection } from "./selection/use-map-selection"
 import { useNormativeMapScope } from "./selection/use-regional-scope"
@@ -99,6 +100,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
     select,
   )
 
+  const sheet = useSheetReveal(dock, onMapCommand, roads)
   const stepOf = useCallback((id: string) => scale.stepOf(valueAt(id)), [scale, valueAt])
   const clear = useCallback(() => selectRegion(null), [selectRegion])
   const { toggle } = dock
@@ -135,7 +137,7 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
       data-dock={dock.phase}
       style={{ "--panel-committed": dock.width.width } as CSSProperties}
     >
-      <div className={styles.stage}>
+      <div className={styles.stage} inert={dock.covering}>
         {geo.data && regions.data ? (
           <OsmMap
             transit={mapTransit}
@@ -232,8 +234,8 @@ export function MapExplorer({ renderPanel }: MapExplorerProps) {
           regionCard,
           selection: selectedId,
           context: { region_id: modelId, season, network_mode: networkMode, metric },
-          onMapCommand,
-          roads,
+          onMapCommand: sheet.onMapCommand,
+          roads: sheet.roads,
           onChatChange: () => {
             clearMunicipalAccess()
             setMapCommand(null)

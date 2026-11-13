@@ -22,7 +22,7 @@
   padding: var(--space-24) 0 0;
 }
 
-@media (max-width: 64rem) {
+@media (width < 64rem) {
   .panel {
     border-inline-start: 0;
     border-block-start: var(--hairline) solid var(--border-subtle);

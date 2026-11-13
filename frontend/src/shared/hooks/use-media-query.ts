@@ -11,3 +11,5 @@ export function useMediaQuery(query: string): boolean {
     () => false,
   )
 }
+
+export const COMPACT_LAYOUT = "(width < 64rem)"

@@ -56,7 +56,9 @@
   --map-panel-max: 760px;
   --resizer-hit: 12px;
   --map-min-height: 560px;
-  --map-mobile-height: 62dvh;
+  --map-sheet-height: max(56dvh, 18rem);
+  --map-side-width: min(50%, var(--map-panel-width));
+  --sheet-controls: 0rem;
   --legend-width: 240px;
   --legend-default-width: 320px;
   --legend-max-width: 480px;

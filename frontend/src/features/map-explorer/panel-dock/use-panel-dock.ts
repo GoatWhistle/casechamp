@@ -1,12 +1,16 @@
 import { type RefObject, useCallback, useEffect, useMemo, useState } from "react"
-import { usePanelWidth } from "@/shared/hooks"
-import { fallbackDelay } from "@/shared/motion"
+import { flushSync } from "react-dom"
+import { COMPACT_LAYOUT, useMediaQuery, usePanelWidth } from "@/shared/hooks"
+import { fallbackDelay, withViewTransition } from "@/shared/motion"
 
 export type DockPhase = "open" | "closing" | "closed" | "opening"
+export type SheetSize = "half" | "full"
 
 const WIDTH_KEY = "plexus.map-panel-width"
 const COLLAPSED_KEY = "plexus.map-panel-collapsed"
 const COLLAPSE_SHARE = 0.6
+
+const FLIPPED: Readonly<Record<SheetSize, SheetSize>> = { half: "full", full: "half" }
 
 const SETTLED: Readonly<Record<DockPhase, DockPhase>> = {
   open: "open",
@@ -32,10 +36,19 @@ function saveCollapsed(collapsed: boolean) {
   }
 }
 
+function keepInView(anchor: Element | null) {
+  requestAnimationFrame(() => {
+    if (anchor instanceof HTMLElement) anchor.scrollIntoView?.({ block: "nearest" })
+  })
+}
+
 export function usePanelDock(host: RefObject<HTMLElement | null>) {
   const width = usePanelWidth(host, WIDTH_KEY)
   const { width: current, min, commit } = width
+  const compact = useMediaQuery(COMPACT_LAYOUT)
   const [phase, setPhase] = useState<DockPhase>(() => (readCollapsed() ? "closed" : "open"))
+  const [sheet, setSheet] = useState<SheetSize>("half")
+  const [morphing, setMorphing] = useState(false)
   const collapseBelow = min * COLLAPSE_SHARE
 
   const collapse = useCallback((instant = false) => {
@@ -50,6 +63,31 @@ export function usePanelDock(host: RefObject<HTMLElement | null>) {
   }, [commit, current])
 
   const settle = useCallback(() => setPhase((phase) => SETTLED[phase]), [])
+
+  const resize = useCallback(async (next: (size: SheetSize) => SheetSize, instant: boolean) => {
+    if (instant) {
+      setSheet(next)
+      return
+    }
+    flushSync(() => setMorphing(true))
+    await withViewTransition("layout", () => setSheet(next)).finally(() => setMorphing(false))
+  }, [])
+
+  const toggleSheet = useCallback(
+    (instant = false) => void resize((size) => FLIPPED[size], instant),
+    [resize],
+  )
+
+  const covering = compact && sheet === "full"
+  const reveal = useCallback(() => {
+    if (!covering) return
+    const anchor = document.activeElement
+    void resize(() => "half", false).then(() => keepInView(anchor))
+  }, [covering, resize])
+
+  useEffect(() => {
+    if (sheet === "full" && (!compact || phase === "closed")) setSheet("half")
+  }, [compact, phase, sheet])
 
   useEffect(() => {
     if (phase !== "closing" && phase !== "opening") return
@@ -67,7 +105,21 @@ export function usePanelDock(host: RefObject<HTMLElement | null>) {
   const docked = phase === "closed" || phase === "closing"
   const toggle = useMemo(() => ({ docked, collapse, expand }), [docked, collapse, expand])
 
-  return { width, phase, collapseBelow, collapse, expand, settle, toggle }
+  return {
+    width,
+    phase,
+    sheet,
+    compact,
+    morphing,
+    covering: covering && phase === "open",
+    collapseBelow,
+    collapse,
+    expand,
+    settle,
+    toggle,
+    toggleSheet,
+    reveal,
+  }
 }
 
 export type PanelDockState = ReturnType<typeof usePanelDock>

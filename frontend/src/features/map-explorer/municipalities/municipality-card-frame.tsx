@@ -1,4 +1,5 @@
 import { type ReactNode, useId, useRef, useState } from "react"
+import { COMPACT_LAYOUT } from "@/shared/hooks"
 import { useTranslation } from "@/shared/i18n"
 import { usePresence } from "@/shared/motion"
 import { Button, ScrollArea } from "@/shared/ui"
@@ -7,14 +8,18 @@ import styles from "./municipality-index-card.module.css"
 export function MunicipalityCardFrame({
   name,
   onClear,
+  foldOnPhone = false,
   children,
 }: {
   readonly name: string
   readonly onClear: () => void
+  readonly foldOnPhone?: boolean
   readonly children: ReactNode
 }) {
   const { t } = useTranslation()
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(
+    () => !(foldOnPhone && globalThis.matchMedia?.(COMPACT_LAYOUT).matches),
+  )
   const presence = usePresence(open, "--dur-fast-exit")
   const id = useId()
   const toggle = useRef<HTMLButtonElement>(null)

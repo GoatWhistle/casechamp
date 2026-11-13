@@ -14,7 +14,7 @@ import type { NormativeMapLayer } from "@/shared/api/normative-map"
 import type { RoadLayerProps } from "@/shared/api/road-graph"
 import { motionMs, useReducedMotion } from "@/shared/motion"
 import type { BoundaryAtlas, RegionBoundary } from "./boundary-geojson"
-import { HOME_PADDING, MIN_MAP_ZOOM, resizeMapView } from "./camera/national-view"
+import { HOME_PADDING, MIN_MAP_ZOOM, observeMapResize } from "./camera/national-view"
 import { useMapControls } from "./camera/use-map-controls"
 import { useJourneyPoints } from "./journey/use-journey-points"
 import { aimCamera, corners, FLAT_MAP, keepFlat, roamConstrain } from "./map-camera"
@@ -168,14 +168,7 @@ export function useOsmMap({
     }
     const map = keepFlat(new LibreMap(options))
     engine.current = map
-    let width = element.clientWidth
-    const resize = new ResizeObserver(() => {
-      const shift = (element.clientWidth - width) / 2
-      width = element.clientWidth
-      const national = resizeMapView(map, state.current.atlas.home, ready.current)
-      if (!national && shift !== 0) map.panBy([shift, 0], { animate: false })
-    })
-    resize.observe(element)
+    const resize = observeMapResize(map, element, () => state.current.atlas.home, ready)
     const onClick = (event: MapLayerMouseEvent) => {
       if (blocksRegionSelection(map, event.point)) return
       const id = event.features?.[0]?.id

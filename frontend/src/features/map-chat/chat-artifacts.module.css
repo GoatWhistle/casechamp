@@ -10,9 +10,17 @@
 }
 
 .source {
+  position: relative;
   color: var(--text-accent);
   font-size: var(--font-size-caption);
   text-underline-offset: var(--space-4);
+}
+
+.source::before {
+  content: "";
+  position: absolute;
+  inset-block: calc((var(--space-16) - var(--target-min)) / 2);
+  inset-inline: 0;
 }
 
 .heading {

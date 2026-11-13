@@ -42,7 +42,7 @@
   animation: var(--motion-scale-in);
 }
 
-@media (min-width: 64rem) {
+@media (width >= 64rem) {
   .slot:is([data-phase="closing"], [data-phase="opening"]) {
     position: absolute;
     inset-block: 0;
@@ -64,8 +64,86 @@
   }
 }
 
-@media (max-width: 64rem) {
-  .resizer {
+@media (width < 64rem) {
+  .slot {
+    --sheet-controls: calc(var(--target-min) * 2 + var(--space-8));
+
+    position: relative;
+    z-index: var(--layer-sticky);
+    padding-block-end: env(safe-area-inset-bottom);
+    border-start-start-radius: var(--radius-xl);
+    border-start-end-radius: var(--radius-xl);
+    background-color: var(--surface-paper);
+    box-shadow: var(--shadow-sheet);
+  }
+
+  .slot > * {
+    min-inline-size: 0;
+  }
+
+  .slot[data-morph] {
+    view-transition-name: map-sheet;
+  }
+
+  .slot:is([data-phase="closing"], [data-phase="opening"]) {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    block-size: var(--map-sheet-height);
+  }
+
+  .slot[data-phase="opening"] {
+    animation: var(--motion-sheet-in);
+  }
+
+  .slot[data-phase="closing"] {
+    animation: var(--motion-sheet-out);
+  }
+
+  .slot[data-phase="closed"] {
     display: none;
+  }
+
+  .slot[data-sheet="full"] {
+    position: absolute;
+    inset: 0;
+    block-size: auto;
+    padding-block-start: env(safe-area-inset-top);
+    border-radius: 0;
+  }
+
+  .resizer,
+  .toggle {
+    display: none;
+  }
+}
+
+@media (width < 64rem) and (height < 30rem) {
+  .slot {
+    border-radius: 0;
+    border-start-start-radius: var(--radius-xl);
+    border-end-start-radius: var(--radius-xl);
+    padding-inline-end: env(safe-area-inset-right);
+  }
+
+  .slot:is([data-phase="closing"], [data-phase="opening"]) {
+    inset-block: 0;
+    inset-inline: auto 0;
+    inline-size: var(--map-side-width);
+    block-size: auto;
+  }
+
+  .slot[data-phase="opening"] {
+    animation: var(--motion-drawer-in);
+  }
+
+  .slot[data-phase="closing"] {
+    animation: var(--motion-drawer-out);
+  }
+
+  .slot[data-sheet="full"] {
+    inset: 0;
+    inline-size: auto;
+    border-radius: 0;
   }
 }
