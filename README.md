@@ -9,7 +9,7 @@
 <p align="center">
 <!-- readme:buttons -->
 <a href="#запуск"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/readme/button-run.dark.png"><img src="docs/readme/button-run.light.png" width="216" height="44" alt="Запустить локально"></picture></a>
-<a href="#попробовать-за-две-минуты"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/readme/button-try.dark.png"><img src="docs/readme/button-try.light.png" width="211" height="44" alt="Маршрут проверки"></picture></a>
+<a href="#попробовать-за-две-минуты"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/readme/button-try.dark.png"><img src="docs/readme/button-try.light.png" width="165" height="44" alt="Попробовать"></picture></a>
 <a href="docs/README.md"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/readme/button-docs.dark.png"><img src="docs/readme/button-docs.light.png" width="175" height="44" alt="Документация"></picture></a>
 <!-- /readme:buttons -->
 </p>
@@ -54,7 +54,7 @@
 <p align="center">
 <img src="docs/readme/hero-map.jpg" width="880" alt="Карта Plexus: регионы России окрашены по индексу Хансена, поверх лежит дорожный граф, выбрана Тверская область, справа её сводка: 131,50 и 8-е место из 82">
 <br>
-<sub>Локальный стенд с данными из ClickHouse, 12 ноября 2026 года. Лето, базовая сеть, выбрана Тверская область.</sub>
+<sub>Локальный запуск с данными из ClickHouse, 12 ноября 2026 года. Лето, базовая сеть, выбрана Тверская область.</sub>
 </p>
 
 > **Пропуск в данных виден как ошибка, нулевой эффект остаётся нулём.** Если ClickHouse недоступен, API отвечает 503 и не подставляет файлы. Без матриц лаборатория `/scenarios` показывает ошибку и не рисует результатов. Удаление связи, которой нет в сценарии, отклоняется. Удаление летнего парома между Хоро и Нюрбой дало Якутии 0,00 %: паром не лежит на кратчайших путях, и ни один индекс пункта не изменился.
@@ -90,7 +90,7 @@ flowchart LR
 
 ## Попробовать за две минуты
 
-Запустите стенд по разделу [«Запуск»](#запуск). Первые ответы API после старта приходят медленнее, пока данные загружаются в память.
+Запустите Plexus по разделу [«Запуск»](#запуск). Первые ответы API после старта приходят медленнее, пока данные загружаются в память.
 
 | Что сделать | Что увидите |
 | --- | --- |
@@ -98,7 +98,7 @@ flowchart LR
 | Откройте «Сценарий», затем «Дороги», выберите участок на карте и нажмите «Пересчитать индекс» | Индекс до и после, затронутые пункты и вновь изолированные жители; полный пересчёт занимает минуты |
 | Напишите в чат: «Закрой М-10 и М-11 между Москвой и Санкт-Петербургом» | По расчёту на каждый регион, через который проходят трассы, с изменением индекса; около минуты на регион |
 
-Значения первой строки сняты 12 ноября 2026 года для лета и базовой сети. Чат работает при серверной авторизации провайдера модели. Полный маршрут со сравнением регионов и денежной оценкой: [проверка на стенде](docs/for-jury.md). Соответствие пунктам кейса: [карта требований](docs/requirements-map.md).
+Значения первой строки сняты 12 ноября 2026 года для лета и базовой сети. Чат работает при серверной авторизации провайдера модели.
 
 ## Результаты
 
@@ -189,7 +189,7 @@ uv run pytest tests/unit tests/integration
 | `API_URL` | Куда Vite проксирует `/api` в разработке |
 | `PORT` | Внешний порт интерфейса в Compose, по умолчанию 8080 |
 
-Картинки этого README рисуются из токенов и знака продукта: `cd frontend && npm run readme`. Снимок карты: `npm run readme:hero` при запущенном стенде.
+Картинки этого README рисуются из токенов и знака продукта: `cd frontend && npm run readme`. Снимок карты: `npm run readme:hero` при запущенном приложении.
 
 </details>
 
@@ -209,8 +209,8 @@ uv run pytest tests/unit tests/integration
 | [Потенциальная доступность](docs/potential-accessibility.md) | Сравнение методов и полнота расписаний |
 | [Термины](docs/glossary.md) | Словарь транспортной доступности |
 | [ИИ в проекте](docs/ai-register.md) | Какие задачи решал ИИ и как проверялись результаты |
+| [Чат рядом с картой](docs/chat.md) | Агент, его инструменты и навыки |
 | [Зависимости и права](docs/dependencies.md) | Версии, лицензии и условия данных |
-| [Комплект сдачи](docs/submission/README.md) | Паспорт, презентация и речь |
 
 ## Ограничения
 
@@ -227,5 +227,5 @@ uv run pytest tests/unit tests/integration
 <picture><source media="(prefers-color-scheme: dark)" srcset="docs/readme/footer.dark.png"><img src="docs/readme/footer.light.png" width="125" height="56" alt="Plexus"></picture>
 <!-- /readme:footer -->
 <br>
-<sub>Кейс А2 «Транспорт и территории». Дорожные данные © участники OpenStreetMap, ODbL.</sub>
+<sub>Team GoatWhistle, 2026. Licensed under <a href="LICENSE">MIT</a>. Дорожные данные © участники OpenStreetMap, ODbL.</sub>
 </p>
