@@ -2,7 +2,7 @@ import sys
 import unittest
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "etl"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from road_traffic.candidates import candidate_roads, coordinate_predicate, literal
 from road_traffic.geography import GEOD, RegionCoverage

@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 from scipy.sparse.csgraph import dijkstra
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'etl'))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from graphlib import build_csr
 from market_distances import market_distances
 

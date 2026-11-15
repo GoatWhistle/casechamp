@@ -4,7 +4,7 @@ import tempfile
 from pathlib import Path
 import duckdb
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'etl'))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from additional_data import REGION_MAP, normalize_name, route_matches, optional_access
 
 

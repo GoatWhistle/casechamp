@@ -5,7 +5,7 @@ from pathlib import Path
 from unittest.mock import patch
 from uuid import uuid4
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "etl"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from road_traffic.assumptions import POLICY, lane_view_sql
 from road_traffic.storage import Storage
 

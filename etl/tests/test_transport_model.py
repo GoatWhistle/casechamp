@@ -9,7 +9,7 @@ import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "etl"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from indices import palma
 from manual_links import link_hours
 from seasonality import operating_season

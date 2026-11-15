@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pyarrow as pa
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 MAIN = Path(os.environ.get("ROAD_CAPACITY_SOURCE_ROOT", ROOT))
 sys.path[:0] = [str(ROOT / "etl"), str(MAIN / "etl"), str(MAIN / "backend/src")]
 

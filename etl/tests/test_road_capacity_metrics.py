@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 from scipy.sparse import csr_matrix
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 MAIN = Path(os.environ.get("ROAD_CAPACITY_SOURCE_ROOT", ROOT))
 sys.path[:0] = [str(ROOT / "etl"), str(MAIN / "etl"), str(MAIN / "backend/src")]
 

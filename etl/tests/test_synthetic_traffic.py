@@ -9,7 +9,7 @@ import numpy as np
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "etl"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from synthetic_traffic.assignment import assign, costs
 from synthetic_traffic.demand import aggregate, generate
 from synthetic_traffic.housing import distribute

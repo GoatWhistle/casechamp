@@ -8,7 +8,7 @@ from unittest.mock import patch
 from uuid import uuid4
 
 SOURCE_ROOT = Path(
-    os.environ.get("ROAD_TRAFFIC_SOURCE_ROOT", Path(__file__).resolve().parents[1])
+    os.environ.get("ROAD_TRAFFIC_SOURCE_ROOT", Path(__file__).resolve().parents[2])
 )
 sys.path.insert(0, str(SOURCE_ROOT / "etl"))
 

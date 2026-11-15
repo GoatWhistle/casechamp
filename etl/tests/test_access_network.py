@@ -6,7 +6,7 @@ import duckdb
 import numpy as np
 import pandas as pd
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "etl"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from access_network import anchor_cities, trunk_matrix
 from access_russia import manual_edges
 

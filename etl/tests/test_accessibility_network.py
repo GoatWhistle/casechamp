@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 from scipy.sparse.csgraph import dijkstra
 
-sys.path[:0] = [str(Path(__file__).resolve().parents[1] / 'etl'), str(Path(__file__).resolve().parents[1] / 'backend/src')]
+sys.path[:0] = [str(Path(__file__).resolve().parents[1]), str(Path(__file__).resolve().parents[2] / 'backend/src')]
 from accessibility.network import best_times, ferry_edges, local_matrix
 from accessibility.report import regional_values
 from graphlib import build_csr

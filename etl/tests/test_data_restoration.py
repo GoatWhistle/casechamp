@@ -9,7 +9,7 @@ import duckdb
 from pathlib import Path
 from unittest.mock import patch
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "etl"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from artifacts import source_record, verified_source, write_json
 from download import fetch
 from load import main

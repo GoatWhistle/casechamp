@@ -4,7 +4,7 @@ import unittest
 import zipfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "etl"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from road_traffic.observations import kuzbass_observations, number, observation
 from road_traffic.source_discovery import owners_for_regions
@@ -59,7 +59,7 @@ class RoadTrafficSourceTests(unittest.TestCase):
         )
 
     def test_every_atlas_region_has_official_owner_provenance(self):
-        root = Path(__file__).resolve().parents[1]
+        root = Path(__file__).resolve().parents[2]
         rows = owners_for_regions(root, root / "datasets/additional/road-traffic")
         self.assertEqual(len(rows), 82)
         self.assertEqual(len({row["region_id"] for row in rows}), 82)

@@ -9,7 +9,7 @@ import pyarrow.parquet as pq
 import duckdb
 import pyarrow as pa
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'etl'))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import osm_extract
 import graph_russia
 from road_access import include_way

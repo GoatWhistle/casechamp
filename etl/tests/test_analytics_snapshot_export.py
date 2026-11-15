@@ -7,7 +7,7 @@ from urllib.parse import urlsplit
 
 import pytest
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "etl" / "analytics"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "analytics"))
 import export_snapshot as snapshot
 
 
