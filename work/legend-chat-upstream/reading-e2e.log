@@ -1,8 +1,0 @@
-
-Running 1 test using 1 worker
-
-(node:45090) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
-(Use `node --trace-warnings ...` to show where the warning was created)
-  ✓  1 [chromium] › e2e/chat-reading.spec.ts:5:1 › long saved replies retain their title and reading position as content grows (5.5s)
-
-  1 passed (6.7s)

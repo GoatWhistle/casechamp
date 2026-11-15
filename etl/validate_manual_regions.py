@@ -77,7 +77,7 @@ def validate(code, root):
 
 
 if __name__ == '__main__':
-    codes = sys.argv[1:] or [item['code'] for item in json.loads((BASE / 'prompts/regions_todo.json').read_text())[:70]]
+    codes = sys.argv[1:] or [item['code'] for item in json.loads((BASE / 'data_manual/regions_todo.json').read_text())[:70]]
     results = [validate(code, BASE) for code in codes]
     print(json.dumps(results, ensure_ascii=False, indent=2))
     sys.exit(any(result['errors'] for result in results))

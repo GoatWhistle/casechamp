@@ -23,4 +23,4 @@ uv.lock -diff linguist-generated
 **/schema.gen.ts -diff linguist-generated
 
 datasets/**/inspection/*.txt -whitespace linguist-generated
-work/eda/figures/*.svg -whitespace linguist-generated
+etl/eda/figures/*.svg -whitespace linguist-generated

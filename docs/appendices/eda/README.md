@@ -122,13 +122,13 @@
 Результаты сохранены вместе со скриптами. Основные расчёты используют Python, numpy и pandas; портовые PDF требуют pdftotext. Графики используют matplotlib; зависимости не добавлялись в приложение. Материалы ИИ — код извлечения, вычисления и эти выводы; проверка включает чтение первичных методологий, контроль входных SHA-256, кодов пропуска, уровней и единиц, согласованность ключей, независимые контрольные пересчёты и просмотр рисунков. Разведка не заменяет внешнюю валидацию целевого индекса.
 
 ```bash
-python3 work/eda/representativeness.py
-python3 work/eda/graph/analyze_graph.py --input-root datasets/intercity_connectivity --out work/eda/graph/results
-python3 work/eda/graph-extra/destination_sensitivity.py --input-root datasets/intercity_connectivity --out work/eda/graph-extra/results
-python3 work/eda/ports/analyze.py --repo .
-python3 work/eda/air-distance/analyze.py --repo .
-python3 work/eda/validate.py
-python3 work/eda/plot_findings.py
+python3 etl/eda/representativeness.py
+python3 etl/eda/graph/analyze_graph.py --input-root datasets/intercity_connectivity --out etl/eda/graph/results
+python3 etl/eda/graph-extra/destination_sensitivity.py --input-root datasets/intercity_connectivity --out etl/eda/graph-extra/results
+python3 etl/eda/ports/analyze.py --repo .
+python3 etl/eda/air-distance/analyze.py --repo .
+python3 etl/eda/validate.py
+python3 etl/eda/plot_findings.py
 ```
 
 Команды муниципального анализа и необходимые входы приведены в [инструкции](territories/README.md). Окружение исходного расчёта графа сохранено в [environment.json](graph/environment.json). CSV и JSON показывают условные расчёты без изменения исходных файлов. Карта РФ не скачивалась.

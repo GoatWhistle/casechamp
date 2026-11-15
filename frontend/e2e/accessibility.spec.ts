@@ -21,7 +21,7 @@ for (const width of [1440, 1920]) {
     await expect(panel.getByText(ru.sensitivity)).toBeVisible()
     await expect(panel.getByRole("table", { name: ru.effects })).toBeVisible()
     await panel.scrollIntoViewIfNeeded()
-    await panel.screenshot({ path: `../work/accessibility-model/comparison-${width}.png` })
+    await panel.screenshot({ path: `test-results/accessibility-model/comparison-${width}.png` })
     const accessibility = await new AxeBuilder({ page }).include("section").analyze()
     expect(accessibility.violations).toEqual([])
     expect(errors).toEqual([])

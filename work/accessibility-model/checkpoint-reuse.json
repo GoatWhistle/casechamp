@@ -1,5 +1,0 @@
-{
-  "from": "data/accessibility-cache/d974f339a31d03fd-3835a615dfb02303",
-  "to": "data/accessibility-cache/d974f339a31d03fd-032b6f1148e03f6a",
-  "reason": "Potential routing and aggregation unchanged. Replaced only previous-index SQL with bounded streaming; formatted code and added pinned-source selection. Reused three completed summer checkpoints."
-}

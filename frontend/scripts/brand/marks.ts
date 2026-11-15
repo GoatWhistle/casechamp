@@ -22,7 +22,6 @@ export interface Mark {
 }
 
 const SVG = /<svg\b[^>]*\bviewBox="([^"]+)"[^>]*>([\s\S]*?)<\/svg>/
-const SHELL_MARK = /<template id="brand-mark">\s*([\s\S]*?)\s*<\/template>/
 
 const PALETTE_TOKENS: Readonly<Record<keyof ThemePalette, string>> = {
   base: "--text-primary",
@@ -37,15 +36,10 @@ const PALETTE_TOKENS: Readonly<Record<keyof ThemePalette, string>> = {
 
 export function readMark(repoRoot: string): Mark {
   const symbol = join(repoRoot, "docs", "brand", "symbol.svg")
-  const shell = join(repoRoot, "presentation", "src", "shell.html")
-  const svg = existsSync(symbol)
-    ? readFileSync(symbol, "utf8")
-    : (SHELL_MARK.exec(readFileSync(shell, "utf8"))?.[1] ?? "")
+  const svg = existsSync(symbol) ? readFileSync(symbol, "utf8") : ""
   const match = SVG.exec(svg)
   if (match === null)
-    throw new Error(
-      "brand mark not found: docs/brand/symbol.svg or brand-mark in presentation/src/shell.html",
-    )
+    throw new Error("brand mark not found: docs/brand/symbol.svg")
   return { viewBox: match[1] ?? "0 0 32 32", body: (match[2] ?? "").trim() }
 }
 

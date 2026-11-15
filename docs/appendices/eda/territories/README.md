@@ -5,10 +5,10 @@
 Запуск из корня репозитория; нужны Python, numpy и pandas. Исходные ZIP читаются без изменения. Результаты сохраняются рядом со скриптами.
 
 ```bash
-python3 work/eda/territories/analyze.py
-python3 work/eda/territories/settlement_join.py
-python3 work/eda/territories/report.py
-python3 work/eda/territories/audit_raw_zeros.py
+python3 etl/eda/territories/analyze.py
+python3 etl/eda/territories/settlement_join.py
+python3 etl/eda/territories/report.py
+python3 etl/eda/territories/audit_raw_zeros.py
 ```
 
 `analyze.py` проверяет ключи, уровни, единицы и коды пропуска, формирует совместные выборки, временные когорты и региональные соединения. `settlement_join.py` отдельно проверяет строгий полный ОКТМО для населения переписи. `report.py` рассчитывает описательные региональные интенсивности. `audit_raw_zeros.py` полностью проходит исходный муниципальный раздел, а не только извлечённые транспортные показатели; этот проход заметно дольше.

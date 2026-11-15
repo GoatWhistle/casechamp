@@ -1,4 +1,0 @@
-nodes exact 6990556
-edges exact 17393384
-regional matrix exact 454680
-{'nodes': {'rows': 6990556, 'columns': ['node', 'lat', 'lon'], 'exact': True}, 'edges': {'rows': 17393384, 'columns': ['src', 'dst', 'h', 'km', 'way_idx'], 'exact': True}, 'regional_matrix': {'rows': 454680, 'exact': True, 'infinities': np.int64(47733)}, 'airports': {'exact': True, 'airports': 285, 'assignments': 195}, 'seconds': 40.470851874910295}

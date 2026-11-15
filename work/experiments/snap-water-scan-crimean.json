@@ -1,7 +1,0 @@
-{
-  "source": "crimean.osm.pbf",
-  "candidate_segments": 1950,
-  "water_ways_processed": 7685,
-  "matches": [],
-  "scope": "strict crossings of linear OSM waterway ways only; no denominator for PBF coverage, no confirmation of barriers or navigability"
-}

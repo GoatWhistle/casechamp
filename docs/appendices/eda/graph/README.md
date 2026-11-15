@@ -5,7 +5,7 @@
 Скрипты читают исходный ZIP без изменения данных. Нужны Python 3, numpy и pandas; сеть не используется.
 
 ```bash
-python3 work/eda/graph/analyze_graph.py --input-root datasets/intercity_connectivity --out work/eda/graph/results
+python3 etl/eda/graph/analyze_graph.py --input-root datasets/intercity_connectivity --out etl/eda/graph/results
 ```
 
 `graph_metrics.py` содержит формулы доступности, анализ чувствительности и проверку треугольной согласованности. `analyze_graph.py` читает исходники, проверяет структуру, формирует таблицы и проверяет монотонность условного сценария. Конкретные параметры и трактовки записаны в `results/summary.json`.
